@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD40348C1B31ACF600365029 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD40348B1B31ACF600365029 /* SWXMLHash.swift */; };
+		AD4034901B31AD1100365029 /* tpgURLconstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD40348F1B31AD1100365029 /* tpgURLconstruct.swift */; };
+		AD4034931B31AFEB00365029 /* HorairesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4034911B31AFEB00365029 /* HorairesCellView.swift */; };
+		AD4034941B31AFEB00365029 /* HorairesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4034921B31AFEB00365029 /* HorairesCellView.xib */; };
+		AD921D881B31AAD4000029E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D871B31AAD4000029E3 /* AppDelegate.swift */; };
+		AD921D8A1B31AAD4000029E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D891B31AAD4000029E3 /* ViewController.swift */; };
+		AD921D8C1B31AAD4000029E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD921D8B1B31AAD4000029E3 /* Assets.xcassets */; };
+		AD921D8F1B31AAD4000029E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD921D8D1B31AAD4000029E3 /* Main.storyboard */; };
+		ADA798701B32059B00F9F590 /* ProblemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7986F1B32059B00F9F590 /* ProblemesViewController.swift */; };
+		ADE459541B359A7C009B41AF /* ProblemesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE459521B359A7C009B41AF /* ProblemesCellView.swift */; };
+		ADE459551B359A7C009B41AF /* ProblemesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE459531B359A7C009B41AF /* ProblemesCellView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AD40348B1B31ACF600365029 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
+		AD40348F1B31AD1100365029 /* tpgURLconstruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURLconstruct.swift; sourceTree = "<group>"; };
+		AD4034911B31AFEB00365029 /* HorairesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorairesCellView.swift; sourceTree = "<group>"; };
+		AD4034921B31AFEB00365029 /* HorairesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorairesCellView.xib; sourceTree = "<group>"; };
+		AD921D841B31AAD4000029E3 /* Mon tpg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mon tpg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD921D871B31AAD4000029E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AD921D891B31AAD4000029E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AD921D8B1B31AAD4000029E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD921D8E1B31AAD4000029E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD921D901B31AAD4000029E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADA7986F1B32059B00F9F590 /* ProblemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesViewController.swift; sourceTree = "<group>"; };
+		ADE459521B359A7C009B41AF /* ProblemesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesCellView.swift; sourceTree = "<group>"; };
+		ADE459531B359A7C009B41AF /* ProblemesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemesCellView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD921D811B31AAD4000029E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD921D7B1B31AAD4000029E3 = {
+			isa = PBXGroup;
+			children = (
+				AD921D861B31AAD4000029E3 /* Mon tpg */,
+				AD921D851B31AAD4000029E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD921D851B31AAD4000029E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD921D841B31AAD4000029E3 /* Mon tpg.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD921D861B31AAD4000029E3 /* Mon tpg */ = {
+			isa = PBXGroup;
+			children = (
+				AD921D871B31AAD4000029E3 /* AppDelegate.swift */,
+				AD921D891B31AAD4000029E3 /* ViewController.swift */,
+				AD40348F1B31AD1100365029 /* tpgURLconstruct.swift */,
+				AD4034911B31AFEB00365029 /* HorairesCellView.swift */,
+				AD4034921B31AFEB00365029 /* HorairesCellView.xib */,
+				ADE459521B359A7C009B41AF /* ProblemesCellView.swift */,
+				ADE459531B359A7C009B41AF /* ProblemesCellView.xib */,
+				AD40348B1B31ACF600365029 /* SWXMLHash.swift */,
+				AD921D8B1B31AAD4000029E3 /* Assets.xcassets */,
+				AD921D8D1B31AAD4000029E3 /* Main.storyboard */,
+				ADA7986F1B32059B00F9F590 /* ProblemesViewController.swift */,
+				AD921D901B31AAD4000029E3 /* Info.plist */,
+			);
+			path = "Mon tpg";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD921D831B31AAD4000029E3 /* Mon tpg */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD921D931B31AAD4000029E3 /* Build configuration list for PBXNativeTarget "Mon tpg" */;
+			buildPhases = (
+				AD921D801B31AAD4000029E3 /* Sources */,
+				AD921D811B31AAD4000029E3 /* Frameworks */,
+				AD921D821B31AAD4000029E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mon tpg";
+			productName = "Mon tpg";
+			productReference = AD921D841B31AAD4000029E3 /* Mon tpg.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD921D7C1B31AAD4000029E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = dacostafaro;
+				TargetAttributes = {
+					AD921D831B31AAD4000029E3 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = AD921D7F1B31AAD4000029E3 /* Build configuration list for PBXProject "Mon tpg" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD921D7B1B31AAD4000029E3;
+			productRefGroup = AD921D851B31AAD4000029E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD921D831B31AAD4000029E3 /* Mon tpg */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD921D821B31AAD4000029E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD921D8C1B31AAD4000029E3 /* Assets.xcassets in Resources */,
+				AD4034941B31AFEB00365029 /* HorairesCellView.xib in Resources */,
+				ADE459551B359A7C009B41AF /* ProblemesCellView.xib in Resources */,
+				AD921D8F1B31AAD4000029E3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD921D801B31AAD4000029E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE459541B359A7C009B41AF /* ProblemesCellView.swift in Sources */,
+				AD921D8A1B31AAD4000029E3 /* ViewController.swift in Sources */,
+				AD40348C1B31ACF600365029 /* SWXMLHash.swift in Sources */,
+				AD921D881B31AAD4000029E3 /* AppDelegate.swift in Sources */,
+				AD4034901B31AD1100365029 /* tpgURLconstruct.swift in Sources */,
+				ADA798701B32059B00F9F590 /* ProblemesViewController.swift in Sources */,
+				AD4034931B31AFEB00365029 /* HorairesCellView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AD921D8D1B31AAD4000029E3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD921D8E1B31AAD4000029E3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD921D911B31AAD4000029E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AD921D921B31AAD4000029E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AD921D941B31AAD4000029E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Mon tpg/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.Mon-tpg";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AD921D951B31AAD4000029E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Mon tpg/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.Mon-tpg";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD921D7F1B31AAD4000029E3 /* Build configuration list for PBXProject "Mon tpg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD921D911B31AAD4000029E3 /* Debug */,
+				AD921D921B31AAD4000029E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD921D931B31AAD4000029E3 /* Build configuration list for PBXNativeTarget "Mon tpg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD921D941B31AAD4000029E3 /* Debug */,
+				AD921D951B31AAD4000029E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD921D7C1B31AAD4000029E3 /* Project object */;
+}
