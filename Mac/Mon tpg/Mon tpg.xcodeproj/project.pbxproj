@@ -7,37 +7,72 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD40348C1B31ACF600365029 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD40348B1B31ACF600365029 /* SWXMLHash.swift */; };
-		AD4034901B31AD1100365029 /* tpgURLconstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD40348F1B31AD1100365029 /* tpgURLconstruct.swift */; };
-		AD4034931B31AFEB00365029 /* HorairesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4034911B31AFEB00365029 /* HorairesCellView.swift */; };
-		AD4034941B31AFEB00365029 /* HorairesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4034921B31AFEB00365029 /* HorairesCellView.xib */; };
-		AD921D881B31AAD4000029E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D871B31AAD4000029E3 /* AppDelegate.swift */; };
-		AD921D8A1B31AAD4000029E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D891B31AAD4000029E3 /* ViewController.swift */; };
-		AD921D8C1B31AAD4000029E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD921D8B1B31AAD4000029E3 /* Assets.xcassets */; };
-		AD921D8F1B31AAD4000029E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD921D8D1B31AAD4000029E3 /* Main.storyboard */; };
-		ADA798701B32059B00F9F590 /* ProblemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7986F1B32059B00F9F590 /* ProblemesViewController.swift */; };
-		ADE459541B359A7C009B41AF /* ProblemesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE459521B359A7C009B41AF /* ProblemesCellView.swift */; };
-		ADE459551B359A7C009B41AF /* ProblemesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE459531B359A7C009B41AF /* ProblemesCellView.xib */; };
+		AD19705F1B6BA82C00A13492 /* ConnectionsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19705E1B6BA82C00A13492 /* ConnectionsCellView.xib */; };
+		AD1970611B6BA8B100A13492 /* ConnectionsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1970601B6BA8B100A13492 /* ConnectionsCellView.swift */; };
+		AD1A4A931B3AD5CA00C843BC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1A4A921B3AD5CA00C843BC /* MapKit.framework */; };
+		AD1A4A961B3AD86C00C843BC /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1A4A941B3AD86C00C843BC /* ConnectionsViewController.swift */; };
+		AD1A4A991B3AE7FC00C843BC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1A4A981B3AE7FC00C843BC /* StringExtension.swift */; };
+		ADAC6F041B370BEB0087497F /* HorairesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC6EFC1B370BEB0087497F /* HorairesCellView.swift */; };
+		ADAC6F051B370BEB0087497F /* HorairesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC6EFD1B370BEB0087497F /* HorairesCellView.xib */; };
+		ADAC6F061B370BEB0087497F /* PlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC6EFE1B370BEB0087497F /* PlansViewController.swift */; };
+		ADAC6F071B370BEB0087497F /* ProblemesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC6EFF1B370BEB0087497F /* ProblemesCellView.swift */; };
+		ADAC6F081B370BEB0087497F /* ProblemesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC6F001B370BEB0087497F /* ProblemesCellView.xib */; };
+		ADAC6F091B370BEB0087497F /* ProblemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC6F011B370BEB0087497F /* ProblemesViewController.swift */; };
+		ADAC6F0A1B370BEB0087497F /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC6F021B370BEB0087497F /* SWXMLHash.swift */; };
+		ADAC6F0B1B370BEB0087497F /* tpgURLconstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC6F031B370BEB0087497F /* tpgURLconstruct.swift */; };
+		ADFF63E21B370BC300CE3D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF63E11B370BC300CE3D22 /* AppDelegate.swift */; };
+		ADFF63E41B370BC300CE3D22 /* HorairesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF63E31B370BC300CE3D22 /* HorairesViewController.swift */; };
+		ADFF63E61B370BC300CE3D22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFF63E51B370BC300CE3D22 /* Images.xcassets */; };
+		ADFF63E91B370BC300CE3D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF63E71B370BC300CE3D22 /* Main.storyboard */; };
+		ADFF63F51B370BC300CE3D22 /* Mon_tpgTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF63F41B370BC300CE3D22 /* Mon_tpgTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		ADFF63EF1B370BC300CE3D22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADFF63D41B370BC300CE3D22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADFF63DB1B370BC300CE3D22;
+			remoteInfo = "Mon tpg";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		AD40348B1B31ACF600365029 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
-		AD40348F1B31AD1100365029 /* tpgURLconstruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURLconstruct.swift; sourceTree = "<group>"; };
-		AD4034911B31AFEB00365029 /* HorairesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorairesCellView.swift; sourceTree = "<group>"; };
-		AD4034921B31AFEB00365029 /* HorairesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorairesCellView.xib; sourceTree = "<group>"; };
-		AD921D841B31AAD4000029E3 /* Mon tpg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mon tpg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD921D871B31AAD4000029E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AD921D891B31AAD4000029E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AD921D8B1B31AAD4000029E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AD921D8E1B31AAD4000029E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AD921D901B31AAD4000029E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADA7986F1B32059B00F9F590 /* ProblemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesViewController.swift; sourceTree = "<group>"; };
-		ADE459521B359A7C009B41AF /* ProblemesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesCellView.swift; sourceTree = "<group>"; };
-		ADE459531B359A7C009B41AF /* ProblemesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemesCellView.xib; sourceTree = "<group>"; };
+		AD19705E1B6BA82C00A13492 /* ConnectionsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionsCellView.xib; sourceTree = "<group>"; };
+		AD1970601B6BA8B100A13492 /* ConnectionsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsCellView.swift; sourceTree = "<group>"; };
+		AD1A4A921B3AD5CA00C843BC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AD1A4A941B3AD86C00C843BC /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		AD1A4A981B3AE7FC00C843BC /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		ADAC6EFC1B370BEB0087497F /* HorairesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorairesCellView.swift; sourceTree = "<group>"; };
+		ADAC6EFD1B370BEB0087497F /* HorairesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorairesCellView.xib; sourceTree = "<group>"; };
+		ADAC6EFE1B370BEB0087497F /* PlansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
+		ADAC6EFF1B370BEB0087497F /* ProblemesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesCellView.swift; sourceTree = "<group>"; };
+		ADAC6F001B370BEB0087497F /* ProblemesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemesCellView.xib; sourceTree = "<group>"; };
+		ADAC6F011B370BEB0087497F /* ProblemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesViewController.swift; sourceTree = "<group>"; };
+		ADAC6F021B370BEB0087497F /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
+		ADAC6F031B370BEB0087497F /* tpgURLconstruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURLconstruct.swift; sourceTree = "<group>"; };
+		ADAC6F0C1B370D3E0087497F /* Mon tpg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Mon tpg.entitlements"; sourceTree = "<group>"; };
+		ADFF63DC1B370BC300CE3D22 /* Mon tpg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mon tpg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF63E01B370BC300CE3D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFF63E11B370BC300CE3D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ADFF63E31B370BC300CE3D22 /* HorairesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorairesViewController.swift; sourceTree = "<group>"; };
+		ADFF63E51B370BC300CE3D22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		ADFF63E81B370BC300CE3D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ADFF63EE1B370BC300CE3D22 /* Mon tpgTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mon tpgTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF63F31B370BC300CE3D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFF63F41B370BC300CE3D22 /* Mon_tpgTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mon_tpgTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AD921D811B31AAD4000029E3 /* Frameworks */ = {
+		ADFF63D91B370BC300CE3D22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD1A4A931B3AD5CA00C843BC /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF63EB1B370BC300CE3D22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,51 +82,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AD921D7B1B31AAD4000029E3 = {
+		ADFF63D31B370BC300CE3D22 = {
 			isa = PBXGroup;
 			children = (
-				AD921D861B31AAD4000029E3 /* Mon tpg */,
-				AD921D851B31AAD4000029E3 /* Products */,
+				AD1A4A921B3AD5CA00C843BC /* MapKit.framework */,
+				ADFF63DE1B370BC300CE3D22 /* Mon tpg */,
+				ADFF63F11B370BC300CE3D22 /* Mon tpgTests */,
+				ADFF63DD1B370BC300CE3D22 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AD921D851B31AAD4000029E3 /* Products */ = {
+		ADFF63DD1B370BC300CE3D22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD921D841B31AAD4000029E3 /* Mon tpg.app */,
+				ADFF63DC1B370BC300CE3D22 /* Mon tpg.app */,
+				ADFF63EE1B370BC300CE3D22 /* Mon tpgTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AD921D861B31AAD4000029E3 /* Mon tpg */ = {
+		ADFF63DE1B370BC300CE3D22 /* Mon tpg */ = {
 			isa = PBXGroup;
 			children = (
-				AD921D871B31AAD4000029E3 /* AppDelegate.swift */,
-				AD921D891B31AAD4000029E3 /* ViewController.swift */,
-				AD40348F1B31AD1100365029 /* tpgURLconstruct.swift */,
-				AD4034911B31AFEB00365029 /* HorairesCellView.swift */,
-				AD4034921B31AFEB00365029 /* HorairesCellView.xib */,
-				ADE459521B359A7C009B41AF /* ProblemesCellView.swift */,
-				ADE459531B359A7C009B41AF /* ProblemesCellView.xib */,
-				AD40348B1B31ACF600365029 /* SWXMLHash.swift */,
-				AD921D8B1B31AAD4000029E3 /* Assets.xcassets */,
-				AD921D8D1B31AAD4000029E3 /* Main.storyboard */,
-				ADA7986F1B32059B00F9F590 /* ProblemesViewController.swift */,
-				AD921D901B31AAD4000029E3 /* Info.plist */,
+				ADAC6F0C1B370D3E0087497F /* Mon tpg.entitlements */,
+				ADFF63E11B370BC300CE3D22 /* AppDelegate.swift */,
+				ADFF63E31B370BC300CE3D22 /* HorairesViewController.swift */,
+				ADAC6EFC1B370BEB0087497F /* HorairesCellView.swift */,
+				ADAC6EFD1B370BEB0087497F /* HorairesCellView.xib */,
+				ADAC6EFE1B370BEB0087497F /* PlansViewController.swift */,
+				AD1A4A941B3AD86C00C843BC /* ConnectionsViewController.swift */,
+				AD1970601B6BA8B100A13492 /* ConnectionsCellView.swift */,
+				AD19705E1B6BA82C00A13492 /* ConnectionsCellView.xib */,
+				AD1A4A981B3AE7FC00C843BC /* StringExtension.swift */,
+				ADAC6EFF1B370BEB0087497F /* ProblemesCellView.swift */,
+				ADAC6F001B370BEB0087497F /* ProblemesCellView.xib */,
+				ADAC6F011B370BEB0087497F /* ProblemesViewController.swift */,
+				ADAC6F021B370BEB0087497F /* SWXMLHash.swift */,
+				ADAC6F031B370BEB0087497F /* tpgURLconstruct.swift */,
+				ADFF63E51B370BC300CE3D22 /* Images.xcassets */,
+				ADFF63E71B370BC300CE3D22 /* Main.storyboard */,
+				ADFF63DF1B370BC300CE3D22 /* Supporting Files */,
 			);
 			path = "Mon tpg";
+			sourceTree = "<group>";
+		};
+		ADFF63DF1B370BC300CE3D22 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF63E01B370BC300CE3D22 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ADFF63F11B370BC300CE3D22 /* Mon tpgTests */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF63F41B370BC300CE3D22 /* Mon_tpgTests.swift */,
+				ADFF63F21B370BC300CE3D22 /* Supporting Files */,
+			);
+			path = "Mon tpgTests";
+			sourceTree = "<group>";
+		};
+		ADFF63F21B370BC300CE3D22 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF63F31B370BC300CE3D22 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AD921D831B31AAD4000029E3 /* Mon tpg */ = {
+		ADFF63DB1B370BC300CE3D22 /* Mon tpg */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD921D931B31AAD4000029E3 /* Build configuration list for PBXNativeTarget "Mon tpg" */;
+			buildConfigurationList = ADFF63F81B370BC300CE3D22 /* Build configuration list for PBXNativeTarget "Mon tpg" */;
 			buildPhases = (
-				AD921D801B31AAD4000029E3 /* Sources */,
-				AD921D811B31AAD4000029E3 /* Frameworks */,
-				AD921D821B31AAD4000029E3 /* Resources */,
+				ADFF63D81B370BC300CE3D22 /* Sources */,
+				ADFF63D91B370BC300CE3D22 /* Frameworks */,
+				ADFF63DA1B370BC300CE3D22 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -99,24 +168,57 @@
 			);
 			name = "Mon tpg";
 			productName = "Mon tpg";
-			productReference = AD921D841B31AAD4000029E3 /* Mon tpg.app */;
+			productReference = ADFF63DC1B370BC300CE3D22 /* Mon tpg.app */;
 			productType = "com.apple.product-type.application";
+		};
+		ADFF63ED1B370BC300CE3D22 /* Mon tpgTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADFF63FB1B370BC300CE3D22 /* Build configuration list for PBXNativeTarget "Mon tpgTests" */;
+			buildPhases = (
+				ADFF63EA1B370BC300CE3D22 /* Sources */,
+				ADFF63EB1B370BC300CE3D22 /* Frameworks */,
+				ADFF63EC1B370BC300CE3D22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADFF63F01B370BC300CE3D22 /* PBXTargetDependency */,
+			);
+			name = "Mon tpgTests";
+			productName = "Mon tpgTests";
+			productReference = ADFF63EE1B370BC300CE3D22 /* Mon tpgTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AD921D7C1B31AAD4000029E3 /* Project object */ = {
+		ADFF63D41B370BC300CE3D22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = dacostafaro;
 				TargetAttributes = {
-					AD921D831B31AAD4000029E3 = {
-						CreatedOnToolsVersion = 7.0;
+					ADFF63DB1B370BC300CE3D22 = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 767R4Y4A3U;
+						SystemCapabilities = {
+							com.apple.Maps.Mac = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					ADFF63ED1B370BC300CE3D22 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = ADFF63DB1B370BC300CE3D22;
 					};
 				};
 			};
-			buildConfigurationList = AD921D7F1B31AAD4000029E3 /* Build configuration list for PBXProject "Mon tpg" */;
+			buildConfigurationList = ADFF63D71B370BC300CE3D22 /* Build configuration list for PBXProject "Mon tpg" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -124,52 +226,81 @@
 				en,
 				Base,
 			);
-			mainGroup = AD921D7B1B31AAD4000029E3;
-			productRefGroup = AD921D851B31AAD4000029E3 /* Products */;
+			mainGroup = ADFF63D31B370BC300CE3D22;
+			productRefGroup = ADFF63DD1B370BC300CE3D22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AD921D831B31AAD4000029E3 /* Mon tpg */,
+				ADFF63DB1B370BC300CE3D22 /* Mon tpg */,
+				ADFF63ED1B370BC300CE3D22 /* Mon tpgTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AD921D821B31AAD4000029E3 /* Resources */ = {
+		ADFF63DA1B370BC300CE3D22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD921D8C1B31AAD4000029E3 /* Assets.xcassets in Resources */,
-				AD4034941B31AFEB00365029 /* HorairesCellView.xib in Resources */,
-				ADE459551B359A7C009B41AF /* ProblemesCellView.xib in Resources */,
-				AD921D8F1B31AAD4000029E3 /* Main.storyboard in Resources */,
+				AD19705F1B6BA82C00A13492 /* ConnectionsCellView.xib in Resources */,
+				ADFF63E61B370BC300CE3D22 /* Images.xcassets in Resources */,
+				ADAC6F051B370BEB0087497F /* HorairesCellView.xib in Resources */,
+				ADAC6F081B370BEB0087497F /* ProblemesCellView.xib in Resources */,
+				ADFF63E91B370BC300CE3D22 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF63EC1B370BC300CE3D22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AD921D801B31AAD4000029E3 /* Sources */ = {
+		ADFF63D81B370BC300CE3D22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADE459541B359A7C009B41AF /* ProblemesCellView.swift in Sources */,
-				AD921D8A1B31AAD4000029E3 /* ViewController.swift in Sources */,
-				AD40348C1B31ACF600365029 /* SWXMLHash.swift in Sources */,
-				AD921D881B31AAD4000029E3 /* AppDelegate.swift in Sources */,
-				AD4034901B31AD1100365029 /* tpgURLconstruct.swift in Sources */,
-				ADA798701B32059B00F9F590 /* ProblemesViewController.swift in Sources */,
-				AD4034931B31AFEB00365029 /* HorairesCellView.swift in Sources */,
+				ADAC6F071B370BEB0087497F /* ProblemesCellView.swift in Sources */,
+				AD1970611B6BA8B100A13492 /* ConnectionsCellView.swift in Sources */,
+				ADFF63E41B370BC300CE3D22 /* HorairesViewController.swift in Sources */,
+				AD1A4A991B3AE7FC00C843BC /* StringExtension.swift in Sources */,
+				ADAC6F0A1B370BEB0087497F /* SWXMLHash.swift in Sources */,
+				ADAC6F0B1B370BEB0087497F /* tpgURLconstruct.swift in Sources */,
+				ADAC6F061B370BEB0087497F /* PlansViewController.swift in Sources */,
+				ADAC6F041B370BEB0087497F /* HorairesCellView.swift in Sources */,
+				ADAC6F091B370BEB0087497F /* ProblemesViewController.swift in Sources */,
+				ADFF63E21B370BC300CE3D22 /* AppDelegate.swift in Sources */,
+				AD1A4A961B3AD86C00C843BC /* ConnectionsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF63EA1B370BC300CE3D22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADFF63F51B370BC300CE3D22 /* Mon_tpgTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		ADFF63F01B370BC300CE3D22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADFF63DB1B370BC300CE3D22 /* Mon tpg */;
+			targetProxy = ADFF63EF1B370BC300CE3D22 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		AD921D8D1B31AAD4000029E3 /* Main.storyboard */ = {
+		ADFF63E71B370BC300CE3D22 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AD921D8E1B31AAD4000029E3 /* Base */,
+				ADFF63E81B370BC300CE3D22 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -177,7 +308,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		AD921D911B31AAD4000029E3 /* Debug */ = {
+		ADFF63F61B370BC300CE3D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -207,6 +338,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -221,7 +353,7 @@
 			};
 			name = Debug;
 		};
-		AD921D921B31AAD4000029E3 /* Release */ = {
+		ADFF63F71B370BC300CE3D22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,52 +389,103 @@
 			};
 			name = Release;
 		};
-		AD921D941B31AAD4000029E3 /* Debug */ = {
+		ADFF63F91B370BC300CE3D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mon tpg/Mon tpg.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Mon tpg/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.Mon-tpg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.monTpgMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		AD921D951B31AAD4000029E3 /* Release */ = {
+		ADFF63FA1B370BC300CE3D22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mon tpg/Mon tpg.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Mon tpg/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.Mon-tpg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.monTpgMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		ADFF63FC1B370BC300CE3D22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Mon tpgTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mon tpg.app/Contents/MacOS/Mon tpg";
+			};
+			name = Debug;
+		};
+		ADFF63FD1B370BC300CE3D22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Mon tpgTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mon tpg.app/Contents/MacOS/Mon tpg";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD921D7F1B31AAD4000029E3 /* Build configuration list for PBXProject "Mon tpg" */ = {
+		ADFF63D71B370BC300CE3D22 /* Build configuration list for PBXProject "Mon tpg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AD921D911B31AAD4000029E3 /* Debug */,
-				AD921D921B31AAD4000029E3 /* Release */,
+				ADFF63F61B370BC300CE3D22 /* Debug */,
+				ADFF63F71B370BC300CE3D22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD921D931B31AAD4000029E3 /* Build configuration list for PBXNativeTarget "Mon tpg" */ = {
+		ADFF63F81B370BC300CE3D22 /* Build configuration list for PBXNativeTarget "Mon tpg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AD921D941B31AAD4000029E3 /* Debug */,
-				AD921D951B31AAD4000029E3 /* Release */,
+				ADFF63F91B370BC300CE3D22 /* Debug */,
+				ADFF63FA1B370BC300CE3D22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADFF63FB1B370BC300CE3D22 /* Build configuration list for PBXNativeTarget "Mon tpgTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADFF63FC1B370BC300CE3D22 /* Debug */,
+				ADFF63FD1B370BC300CE3D22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = AD921D7C1B31AAD4000029E3 /* Project object */;
+	rootObject = ADFF63D41B370BC300CE3D22 /* Project object */;
 }

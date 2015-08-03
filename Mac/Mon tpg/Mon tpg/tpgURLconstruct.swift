@@ -41,7 +41,28 @@ class tpgURLconstruct {
                 url += protegerURL(stopName)
             }
         }
-        print(url)
+        return url
+    }
+    
+    func getPhysicalStops(stopName: String!) -> String {
+        var url = "http://rtpi.data.tpg.ch/v1/GetPhysicalStops"
+        if typeFichier == .XML {
+            url += ".xml"
+        }
+        else {
+            url += ".json"
+        }
+        url += "?key="
+        url += cleAPI
+        if stopName != "" && stopName != nil {
+            if let _ = stopName.rangeOfString("[^a-zA-Z0-9-\\s]", options: .RegularExpressionSearch) {
+                return ""
+            }
+            else {
+                url += "&stopName="
+                url += protegerURL(stopName)
+            }
+        }
         return url
     }
     

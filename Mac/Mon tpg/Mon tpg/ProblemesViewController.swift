@@ -31,7 +31,6 @@ func colorWithHexColorString(colorString: String) -> NSColor?
 
 
 class ProblemesViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate  {
-    
     @IBOutlet weak var labelProblemes: NSTextField!
     @IBOutlet weak var tableau: NSTableView!
     var tpgURLconstructor: tpgURLconstruct! = nil
@@ -97,6 +96,9 @@ class ProblemesViewController: NSViewController, NSTableViewDataSource, NSTableV
             }
         }
         return NSColor(red:0.78, green:0.78, blue:0.78, alpha:1)
+    }
+    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+        return AnyObject?()
     }
 }
 
