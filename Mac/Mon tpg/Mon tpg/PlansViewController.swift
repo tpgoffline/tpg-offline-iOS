@@ -13,6 +13,9 @@ class PlansViewController: NSViewController {
     @IBOutlet weak var imageView: NSImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let image = NSImage(named: "Plan peripherique")
+        imageView.image = image
+        combo.stringValue = "Plan périphérique"
         // Do view setup here.
     }
     

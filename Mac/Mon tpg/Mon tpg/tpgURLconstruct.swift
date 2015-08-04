@@ -33,7 +33,7 @@ class tpgURLconstruct {
         url += "?key="
         url += cleAPI
         if stopName != "" && stopName != nil {
-            if let _ = stopName.rangeOfString("[^a-zA-Z0-9-]", options: .RegularExpressionSearch) {
+            if let _ = stopName.rangeOfString("[^a-zA-Z0-9-\\s]", options: .RegularExpressionSearch) {
                 return ""
             }
             else {
@@ -76,7 +76,7 @@ class tpgURLconstruct {
         }
         url += "?key="
         url += cleAPI
-        if let _ = stopCode.rangeOfString("[^a-zA-Z0-9]", options: .RegularExpressionSearch) {
+        if let _ = stopCode.rangeOfString("[^a-zA-Z0-9-\\s]", options: .RegularExpressionSearch) {
             return ""
         }
         else {

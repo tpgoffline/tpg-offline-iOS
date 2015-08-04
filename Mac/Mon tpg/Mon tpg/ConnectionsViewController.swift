@@ -12,6 +12,7 @@ import MapKit
 
 class ConnectionsViewController: NSViewController, NSComboBoxDataSource, NSComboBoxDelegate, MKMapViewDelegate, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var arret: NSComboBox!
+    @IBOutlet weak var arretPhysique: NSComboBox!
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var tableau: NSTableView!
     @IBOutlet weak var labelStation: NSTextField!
@@ -19,7 +20,7 @@ class ConnectionsViewController: NSViewController, NSComboBoxDataSource, NSCombo
     var xmlStops: XMLIndexer!
     var arrets:Int! = 0
     var arretSelectione = 0
-    var idAnnotation = 0
+    var nomArretPhysique = [String]()
     var tableauArretsPhysiques = [[String]]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class ConnectionsViewController: NSViewController, NSComboBoxDataSource, NSCombo
     }
     
     @IBAction func actualiserArret(sender: AnyObject!) {
+        arretPhysique.enabled = true
         tableauArretsPhysiques = [[String]]()
         if map.annotations.count != 0 {
             print( "\(_stdlib_getDemangledTypeName(map.annotations[0]))")
@@ -48,7 +50,9 @@ class ConnectionsViewController: NSViewController, NSComboBoxDataSource, NSCombo
         let data = NSData(contentsOfURL: url)!
         var xmlPhysicalStop = SWXMLHash.parse(data)
         let theSpan:MKCoordinateSpan = MKCoordinateSpanMake(0.005 , 0.005)
+        nomArretPhysique = [String]()
         for x in (xmlPhysicalStop["stops"]["stops"]["stop"][0]["physicalStops"]["physicalStop"]) {
+            nomArretPhysique.append((x["physicalStopCode"].element?.text)!)
             let latitude = CLLocationDegrees(((x["coordinates"]["latitude"].element?.text)!).doubleValue)
             let longitude = CLLocationDegrees(((x["coordinates"]["longitude"].element?.text)!).doubleValue)
             let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -59,8 +63,6 @@ class ConnectionsViewController: NSViewController, NSComboBoxDataSource, NSCombo
             anotation.title = x["stopName"].element?.text
             anotation.subtitle = x["physicalStopCode"].element?.text
             map.addAnnotation(anotation)
-            idAnnotation += 1
-            print(idAnnotation)
             for y in x["connections"]["connection"] {
                 tableauArretsPhysiques.append([String(UTF8String: (x["physicalStopCode"].element?.text)!)!, String(UTF8String: (y["lineCode"].element?.text)!)!, String(UTF8String: (y["destinationName"].element?.text)!)!])
             }
@@ -68,16 +70,35 @@ class ConnectionsViewController: NSViewController, NSComboBoxDataSource, NSCombo
         labelStation.stringValue = arret.stringValue + " (" + String(tableauArretsPhysiques.count) + " arrets)"
         print(tableauArretsPhysiques, appendNewline: true)
         tableau.reloadData()
-        idAnnotation = 0
+        arretPhysique.reloadData()
+        arretPhysique.stringValue = "Tous"
     }
     func numberOfItemsInComboBox(aComboBox: NSComboBox) -> Int {
-        if xmlStops != nil {
-            return xmlStops["stops"]["stops"]["stop"].all.count
+        if aComboBox.identifier == "NSCoBoAr" {
+            if xmlStops != nil {
+                return xmlStops["stops"]["stops"]["stop"].all.count
+            }
+        }
+        if aComboBox.identifier == "NSCoBoArrPhy" {
+            if tableauArretsPhysiques.count != 0 {
+                return nomArretPhysique.count + 1
+            }
         }
         return 0
     }
     func comboBox(aComboBox: NSComboBox, objectValueForItemAtIndex index: Int) -> AnyObject {
-        return (xmlStops["stops"]["stops"]["stop"][index]["stopName"].element?.text)!
+        if aComboBox.identifier == "NSCoBoAr" {
+            return (xmlStops["stops"]["stops"]["stop"][index]["stopName"].element?.text)!
+        }
+        if aComboBox.identifier == "NSCoBoArrPhy" {
+            if index == 0 {
+                return "Tous"
+            }
+            else {
+                return (nomArretPhysique[index - 1])
+            }
+        }
+        return ""
     }
     
     func numberOfRowsInTableView(tableau: NSTableView) -> Int
@@ -108,5 +129,57 @@ class ConnectionsViewController: NSViewController, NSComboBoxDataSource, NSCombo
     }
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         return AnyObject?()
+    }
+    @IBAction func actualiserStation(sender: AnyObject!) {
+        tableauArretsPhysiques = [[String]]()
+        if map.annotations.count != 0 {
+            print( "\(_stdlib_getDemangledTypeName(map.annotations[0]))")
+        }
+        for x in map.annotations {
+            if ("\(_stdlib_getDemangledTypeName(x))" == "NSKVONotifying_MKPointAnnotation") {
+                map.removeAnnotation((x as! MKPointAnnotation))
+            }
+        }
+        let urlString = tpgURLconstructor.getPhysicalStops(arret.stringValue)
+        let url = NSURL(string: urlString)!
+        let data = NSData(contentsOfURL: url)!
+        var xmlPhysicalStop = SWXMLHash.parse(data)
+        let theSpan:MKCoordinateSpan = MKCoordinateSpanMake(0.005 , 0.005)
+        for x in (xmlPhysicalStop["stops"]["stops"]["stop"][0]["physicalStops"]["physicalStop"]) {
+            if ((x["physicalStopCode"].element?.text)! == arretPhysique.stringValue) {
+                let latitude = CLLocationDegrees(((x["coordinates"]["latitude"].element?.text)!).doubleValue)
+                let longitude = CLLocationDegrees(((x["coordinates"]["longitude"].element?.text)!).doubleValue)
+                let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let theRegion:MKCoordinateRegion = MKCoordinateRegionMake(location, theSpan)
+                map.setRegion(theRegion, animated: true)
+                let anotation = MKPointAnnotation()
+                anotation.coordinate = location
+                anotation.title = x["stopName"].element?.text
+                anotation.subtitle = x["physicalStopCode"].element?.text
+                map.addAnnotation(anotation)
+                for y in x["connections"]["connection"] {
+                    tableauArretsPhysiques.append([String(UTF8String: (x["physicalStopCode"].element?.text)!)!, String(UTF8String: (y["lineCode"].element?.text)!)!, String(UTF8String: (y["destinationName"].element?.text)!)!])
+                }
+            }
+            else if arretPhysique.stringValue == "Tous" {
+                let latitude = CLLocationDegrees(((x["coordinates"]["latitude"].element?.text)!).doubleValue)
+                let longitude = CLLocationDegrees(((x["coordinates"]["longitude"].element?.text)!).doubleValue)
+                let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let theRegion:MKCoordinateRegion = MKCoordinateRegionMake(location, theSpan)
+                map.setRegion(theRegion, animated: true)
+                let anotation = MKPointAnnotation()
+                anotation.coordinate = location
+                anotation.title = x["stopName"].element?.text
+                anotation.subtitle = x["physicalStopCode"].element?.text
+                map.addAnnotation(anotation)
+                for y in x["connections"]["connection"] {
+                    tableauArretsPhysiques.append([String(UTF8String: (x["physicalStopCode"].element?.text)!)!, String(UTF8String: (y["lineCode"].element?.text)!)!, String(UTF8String: (y["destinationName"].element?.text)!)!])
+                }
+            }
+            print((x["physicalStopCode"].element?.text)!, appendNewline: true)
+            print(arretPhysique.stringValue, appendNewline: true)
+        }
+        tableau.reloadData()
+        arretPhysique.reloadData()
     }
 }

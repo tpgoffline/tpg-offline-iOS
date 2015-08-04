@@ -8,18 +8,25 @@
 
 import Cocoa
 
-class HorairesViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate  {
+class HorairesViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSComboBoxDataSource, NSComboBoxDelegate  {
     
-    @IBOutlet weak var stationField: NSTextField!
+    @IBOutlet weak var stationField: NSComboBox!
     @IBOutlet weak var tableau: NSTableView!
     var tpgURLconstructor: tpgURLconstruct! = nil
     var horaires: Int = 0
+    var xmlStops: XMLIndexer!
     var xmlNextDepartures: XMLIndexer! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         tpgURLconstructor = tpgURLconstruct(cleAPI: "d95be980-0830-11e5-a039-0002a5d5c51b")
         let nib = NSNib(nibNamed: "HorairesCellView", bundle: NSBundle.mainBundle())
         tableau.registerNib(nib!, forIdentifier: "HorairesCellView")
+        let urlString = tpgURLconstructor.getStopsURL(nil)
+        let url = NSURL(string: urlString)!
+        let data = NSData(contentsOfURL: url)!
+        xmlStops = SWXMLHash.parse(data)
+        stationField.reloadData()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -112,7 +119,7 @@ class HorairesViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 dateFormatter.dateFormat = "HH:mm:ss"
                 var texte = dateFormatter.stringFromDate(date!)
                 texte += " | >1h"
-               cell.time.stringValue = texte
+                cell.time.stringValue = texte
             }
             else {
                 let date = dateFormatter.dateFromString(elem.text!)
@@ -134,5 +141,16 @@ class HorairesViewController: NSViewController, NSTableViewDataSource, NSTableVi
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         return AnyObject?()
     }
+    func numberOfItemsInComboBox(aComboBox: NSComboBox) -> Int {
+        if xmlStops != nil {
+            return xmlStops["stops"]["stops"]["stop"].all.count
+        }
+        
+        return 0
+    }
+    func comboBox(aComboBox: NSComboBox, objectValueForItemAtIndex index: Int) -> AnyObject {
+        return (xmlStops["stops"]["stops"]["stop"][index]["stopName"].element?.text)!
+    }
+    
 }
 

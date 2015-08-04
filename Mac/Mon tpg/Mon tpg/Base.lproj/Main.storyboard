@@ -681,22 +681,14 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iXK-Ys-aQA">
-                                <rect key="frame" x="80" y="359" width="529" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="u8N-sc-URd">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="90" horizontalPageScroll="10" verticalLineScroll="90" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdL-wU-Qpj">
-                                <rect key="frame" x="20" y="12" width="589" height="298"/>
+                                <rect key="frame" x="20" y="12" width="589" height="340"/>
                                 <clipView key="contentView" id="f7c-i8-63o">
-                                    <rect key="frame" x="1" y="1" width="438" height="296"/>
+                                    <rect key="frame" x="1" y="1" width="587" height="338"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="88" viewBased="YES" id="oxj-gM-0nF">
-                                            <rect key="frame" x="0.0" y="0.0" width="587" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="587" height="338"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -740,40 +732,43 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="icD-CF-iL5">
-                                <rect key="frame" x="14" y="323" width="601" height="32"/>
-                                <buttonCell key="cell" type="push" title="Rechercher horaires" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TVJ-5g-SCA">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gbO-hy-rPo">
+                                <rect key="frame" x="81" y="356" width="531" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="v1v-xK-UTB"/>
+                                </constraints>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesDataSource="YES" numberOfVisibleItems="5" id="EL9-Xd-CCE">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
                                 <connections>
-                                    <action selector="rechercheCodeStation:" target="XfG-lQ-9wD" id="1ZT-jj-mJi"/>
+                                    <action selector="rechercheCodeStation:" target="XfG-lQ-9wD" id="OGk-Gr-VNt"/>
+                                    <outlet property="dataSource" destination="XfG-lQ-9wD" id="QHM-v3-Qbv"/>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="G7F-Fh-wxj"/>
                                 </connections>
-                            </button>
+                            </comboBox>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ygk-rW-JFs" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="1gK-RI-rfY"/>
-                            <constraint firstItem="icD-CF-iL5" firstAttribute="top" secondItem="iXK-Ys-aQA" secondAttribute="bottom" constant="8" id="BMF-K1-ZzT"/>
+                            <constraint firstItem="gbO-hy-rPo" firstAttribute="leading" secondItem="Ygk-rW-JFs" secondAttribute="trailing" constant="9" id="CGK-8o-24d"/>
                             <constraint firstItem="NdL-wU-Qpj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Fib-St-dXm"/>
-                            <constraint firstAttribute="trailing" secondItem="icD-CF-iL5" secondAttribute="trailing" constant="20" id="Nup-1i-6re"/>
-                            <constraint firstItem="iXK-Ys-aQA" firstAttribute="leading" secondItem="Ygk-rW-JFs" secondAttribute="trailing" constant="8" id="WWK-kf-OMI"/>
+                            <constraint firstAttribute="trailing" secondItem="gbO-hy-rPo" secondAttribute="trailing" constant="20" id="Gza-2n-oQt"/>
+                            <constraint firstItem="gbO-hy-rPo" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="19" id="Ogq-KV-ivu"/>
                             <constraint firstAttribute="bottom" secondItem="NdL-wU-Qpj" secondAttribute="bottom" constant="12" id="ZMP-hI-OP7"/>
-                            <constraint firstItem="iXK-Ys-aQA" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="18" id="b8c-rh-ZK8"/>
-                            <constraint firstItem="NdL-wU-Qpj" firstAttribute="top" secondItem="icD-CF-iL5" secondAttribute="bottom" constant="20" id="bva-i7-Thk"/>
-                            <constraint firstAttribute="trailing" secondItem="iXK-Ys-aQA" secondAttribute="trailing" constant="20" id="g7S-AY-9OA"/>
                             <constraint firstItem="Ygk-rW-JFs" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="pOh-Ti-95c"/>
-                            <constraint firstItem="icD-CF-iL5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="sR7-xG-aPx"/>
                             <constraint firstAttribute="trailing" secondItem="NdL-wU-Qpj" secondAttribute="trailing" constant="20" id="tyr-62-r6E"/>
+                            <constraint firstItem="NdL-wU-Qpj" firstAttribute="top" secondItem="gbO-hy-rPo" secondAttribute="bottom" constant="8" symbolic="YES" id="yFX-V9-dL7"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="stationField" destination="iXK-Ys-aQA" id="zS1-lb-aPG"/>
+                        <outlet property="stationField" destination="gbO-hy-rPo" id="fIZ-rM-lvA"/>
                         <outlet property="tableau" destination="oxj-gM-0nF" id="bv9-z9-hgh"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="781" y="492.5"/>
+            <point key="canvasLocation" x="780.5" y="492.5"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="Ffh-QK-ztl">
@@ -989,7 +984,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5yt-4v-zAe">
+                            <comboBox identifier="NSCoBoAr" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5yt-4v-zAe">
                                 <rect key="frame" x="80" y="355" width="532" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="fUF-t2-gYd"/>
@@ -1012,25 +1007,25 @@
                                 </connections>
                             </mapView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqB-WD-Wox">
-                                <rect key="frame" x="371" y="20" width="238" height="306"/>
+                                <rect key="frame" x="371" y="20" width="238" height="268"/>
                                 <clipView key="contentView" id="Y3e-hb-Qhp">
-                                    <rect key="frame" x="1" y="1" width="236" height="304"/>
+                                    <rect key="frame" x="1" y="1" width="236" height="266"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowSizeStyle="automatic" viewBased="YES" id="z92-Kn-tKX">
-                                            <rect key="frame" x="0.0" y="0.0" width="236" height="304"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" id="z92-Kn-tKX">
+                                            <rect key="frame" x="0.0" y="0.0" width="236" height="266"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn width="233" minWidth="40" maxWidth="1000" id="Rh0-JX-blJ">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" alignment="left" title="Arret">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Arret">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" enabled="NO" alignment="left" title="Text Cell" id="3Ly-6i-0ZP">
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="3Ly-6i-0ZP">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1085,14 +1080,29 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <comboBox identifier="NSCoBoArrPhy" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ijE-q6-Nla">
+                                <rect key="frame" x="373" y="299" width="239" height="26"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesDataSource="YES" numberOfVisibleItems="5" id="JM4-61-4Bq">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                                <connections>
+                                    <action selector="actualiserStation:" target="aT2-LK-qWr" id="vlc-HM-AAX"/>
+                                    <outlet property="dataSource" destination="aT2-LK-qWr" id="VeZ-KT-5L1"/>
+                                    <outlet property="delegate" destination="aT2-LK-qWr" id="VJn-w2-sn4"/>
+                                </connections>
+                            </comboBox>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="ijE-q6-Nla" firstAttribute="leading" secondItem="Trn-6e-h4c" secondAttribute="trailing" constant="10" id="7A4-zj-Hy6"/>
+                            <constraint firstAttribute="trailing" secondItem="ijE-q6-Nla" secondAttribute="trailing" constant="20" id="Cap-cJ-IpA"/>
                             <constraint firstItem="Trn-6e-h4c" firstAttribute="leading" secondItem="bSC-Dr-sDf" secondAttribute="leading" constant="20" id="Caq-Wv-YTQ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5yt-4v-zAe" secondAttribute="trailing" constant="20" id="Iq7-Ps-iVA"/>
                             <constraint firstItem="5yt-4v-zAe" firstAttribute="top" secondItem="bSC-Dr-sDf" secondAttribute="top" constant="20" id="L4Q-hc-Kji"/>
                             <constraint firstAttribute="trailing" secondItem="5yt-4v-zAe" secondAttribute="trailing" constant="20" id="Orw-xQ-u0D"/>
                             <constraint firstItem="6K8-8c-ERh" firstAttribute="top" secondItem="5yt-4v-zAe" secondAttribute="bottom" constant="8" id="QBC-0p-8bt"/>
-                            <constraint firstItem="sqB-WD-Wox" firstAttribute="top" secondItem="5yt-4v-zAe" secondAttribute="bottom" constant="33" id="UNe-c6-fny"/>
+                            <constraint firstItem="sqB-WD-Wox" firstAttribute="top" secondItem="5yt-4v-zAe" secondAttribute="bottom" constant="71" id="UNe-c6-fny"/>
                             <constraint firstItem="sqB-WD-Wox" firstAttribute="leading" secondItem="Trn-6e-h4c" secondAttribute="trailing" constant="8" id="Upo-T0-9WM"/>
                             <constraint firstAttribute="trailing" secondItem="6K8-8c-ERh" secondAttribute="trailing" constant="20" id="ZMo-Po-w0h"/>
                             <constraint firstAttribute="bottom" secondItem="sqB-WD-Wox" secondAttribute="bottom" constant="20" id="a9t-c6-67P"/>
@@ -1104,10 +1114,12 @@
                             <constraint firstItem="5yt-4v-zAe" firstAttribute="leading" secondItem="3Mf-co-vg8" secondAttribute="trailing" constant="8" id="pjd-gE-5F0"/>
                             <constraint firstItem="3Mf-co-vg8" firstAttribute="leading" secondItem="bSC-Dr-sDf" secondAttribute="leading" constant="20" id="qN2-Ly-W1v"/>
                             <constraint firstAttribute="trailing" secondItem="sqB-WD-Wox" secondAttribute="trailing" constant="20" id="vad-3Q-exu"/>
+                            <constraint firstItem="ijE-q6-Nla" firstAttribute="top" secondItem="6K8-8c-ERh" secondAttribute="bottom" constant="11" id="z9X-Cg-vu5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="arret" destination="5yt-4v-zAe" id="JBv-NE-EUu"/>
+                        <outlet property="arretPhysique" destination="ijE-q6-Nla" id="aLe-si-cgq"/>
                         <outlet property="labelStation" destination="6K8-8c-ERh" id="hyA-4u-YVo"/>
                         <outlet property="map" destination="Trn-6e-h4c" id="fry-zc-9ZD"/>
                         <outlet property="tableau" destination="z92-Kn-tKX" id="oQX-uJ-20b"/>
