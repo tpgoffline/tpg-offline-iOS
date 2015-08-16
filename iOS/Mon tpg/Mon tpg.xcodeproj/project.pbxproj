@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		002F421F1B80BABD00BA9A6C /* arrets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 002F421E1B80BABD00BA9A6C /* arrets.xml */; };
+		002F42221B80BCFE00BA9A6C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002F42211B80BCFE00BA9A6C /* MapKit.framework */; };
+		002F42271B80C03700BA9A6C /* tpgURLconstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002F42261B80C03700BA9A6C /* tpgURLconstruct.swift */; };
 		AD40348A1B31ACF000365029 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4034891B31ACF000365029 /* SWXMLHash.swift */; };
-		AD40348E1B31AD0C00365029 /* tpgURLconstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD40348D1B31AD0C00365029 /* tpgURLconstruct.swift */; };
 		AD921D6A1B31AAAE000029E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D691B31AAAE000029E3 /* AppDelegate.swift */; };
 		AD921D6C1B31AAAE000029E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D6B1B31AAAE000029E3 /* ViewController.swift */; };
 		AD921D6F1B31AAAE000029E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD921D6D1B31AAAE000029E3 /* Main.storyboard */; };
@@ -19,8 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		002F421E1B80BABD00BA9A6C /* arrets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = arrets.xml; sourceTree = "<group>"; };
+		002F42211B80BCFE00BA9A6C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		002F42231B80BD6B00BA9A6C /* Mon tpg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Mon tpg.entitlements"; sourceTree = "<group>"; };
+		002F42261B80C03700BA9A6C /* tpgURLconstruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURLconstruct.swift; sourceTree = "<group>"; };
 		AD4034891B31ACF000365029 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
-		AD40348D1B31AD0C00365029 /* tpgURLconstruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURLconstruct.swift; sourceTree = "<group>"; };
 		AD921D661B31AAAE000029E3 /* Mon tpg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mon tpg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD921D691B31AAAE000029E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD921D6B1B31AAAE000029E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,15 +42,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				002F42221B80BCFE00BA9A6C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		002F42201B80BAC500BA9A6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				002F421E1B80BABD00BA9A6C /* arrets.xml */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		AD921D5D1B31AAAE000029E3 = {
 			isa = PBXGroup;
 			children = (
+				002F42211B80BCFE00BA9A6C /* MapKit.framework */,
 				AD921D681B31AAAE000029E3 /* Mon tpg */,
 				AD921D671B31AAAE000029E3 /* Products */,
 			);
@@ -62,13 +77,15 @@
 		AD921D681B31AAAE000029E3 /* Mon tpg */ = {
 			isa = PBXGroup;
 			children = (
+				002F42231B80BD6B00BA9A6C /* Mon tpg.entitlements */,
+				002F42201B80BAC500BA9A6C /* Resources */,
 				AD921D691B31AAAE000029E3 /* AppDelegate.swift */,
 				AD921D6B1B31AAAE000029E3 /* ViewController.swift */,
 				ADE0C1E71B31AB870018C0D9 /* ArretTableViewController.swift */,
 				ADE0C1E81B31AB870018C0D9 /* ListeArretTableViewController.swift */,
-				AD40348D1B31AD0C00365029 /* tpgURLconstruct.swift */,
 				AD921D6D1B31AAAE000029E3 /* Main.storyboard */,
 				AD4034891B31ACF000365029 /* SWXMLHash.swift */,
+				002F42261B80C03700BA9A6C /* tpgURLconstruct.swift */,
 				AD921D701B31AAAE000029E3 /* Assets.xcassets */,
 				AD921D721B31AAAE000029E3 /* LaunchScreen.storyboard */,
 				AD921D751B31AAAE000029E3 /* Info.plist */,
@@ -108,6 +125,14 @@
 					AD921D651B31AAAE000029E3 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 767R4Y4A3U;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -136,6 +161,7 @@
 			files = (
 				AD921D741B31AAAE000029E3 /* LaunchScreen.storyboard in Resources */,
 				AD921D711B31AAAE000029E3 /* Assets.xcassets in Resources */,
+				002F421F1B80BABD00BA9A6C /* arrets.xml in Resources */,
 				AD921D6F1B31AAAE000029E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,7 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE0C1EA1B31AB870018C0D9 /* ListeArretTableViewController.swift in Sources */,
-				AD40348E1B31AD0C00365029 /* tpgURLconstruct.swift in Sources */,
+				002F42271B80C03700BA9A6C /* tpgURLconstruct.swift in Sources */,
 				ADE0C1E91B31AB870018C0D9 /* ArretTableViewController.swift in Sources */,
 				AD921D6C1B31AAAE000029E3 /* ViewController.swift in Sources */,
 				AD40348A1B31ACF000365029 /* SWXMLHash.swift in Sources */,
@@ -263,6 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mon tpg/Mon tpg.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mon tpg/Info.plist";
@@ -277,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Mon tpg/Mon tpg.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mon tpg/Info.plist";

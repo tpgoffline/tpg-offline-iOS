@@ -23,6 +23,7 @@ class ArretTableViewController: UITableViewController {
         super.viewDidLoad()
         tpgURLConstruct = tpgURLconstruct(cleAPI: "d95be980-0830-11e5-a039-0002a5d5c51b")
         let url = NSURL(string: tpgURLConstruct.getNextDeparturesURL(arretCode))!
+        print(url, appendNewline: true)
         let data = NSData(contentsOfURL: url)!
         self.xmlArret = SWXMLHash.lazy(data)
         nombreSections = [xmlArret["nextDepartures"]["stop"]["connections"]["connection"].all.count, xmlArret["nextDepartures"]["stop"]["departures"]["departure"].all.count]

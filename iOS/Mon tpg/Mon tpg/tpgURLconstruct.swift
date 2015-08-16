@@ -33,8 +33,35 @@ class tpgURLconstruct {
         url += "?key="
         url += cleAPI
         if stopName != "" && stopName != nil {
-            url += "&stopName="
-            url += protegerURL(stopName)
+            if let _ = stopName.rangeOfString("[^a-zA-Z0-9-\'\\s]", options: .RegularExpressionSearch) {
+                return ""
+            }
+            else {
+                url += "&stopName="
+                url += protegerURL(stopName)
+            }
+        }
+        return url
+    }
+    
+    func getPhysicalStops(stopName: String!) -> String {
+        var url = "http://rtpi.data.tpg.ch/v1/GetPhysicalStops"
+        if typeFichier == .XML {
+            url += ".xml"
+        }
+        else {
+            url += ".json"
+        }
+        url += "?key="
+        url += cleAPI
+        if stopName != "" && stopName != nil {
+            if let _ = stopName.rangeOfString("[^a-zA-Z0-9-\'\\s]", options: .RegularExpressionSearch) {
+                return ""
+            }
+            else {
+                url += "&stopName="
+                url += protegerURL(stopName)
+            }
         }
         return url
     }
@@ -49,8 +76,37 @@ class tpgURLconstruct {
         }
         url += "?key="
         url += cleAPI
-        url += "&stopCode="
-        url += protegerURL(stopCode)
+        if let _ = stopCode.rangeOfString("[^a-zA-Z0-9-\'\\s]", options: .RegularExpressionSearch) {
+            return ""
+        }
+        else {
+            url += "&stopCode="
+            url += protegerURL(stopCode)
+        }
+        return url
+    }
+    func getDisruptionsURL() -> String {
+        var url = "http://rtpi.data.tpg.ch/v1/GetDisruptions"
+        if typeFichier == .XML {
+            url += ".xml"
+        }
+        else {
+            url += ".json"
+        }
+        url += "?key="
+        url += cleAPI
+        return url
+    }
+    func getLinesColorsURL() -> String {
+        var url = "http://rtpi.data.tpg.ch/v1/GetLinesColors"
+        if typeFichier == .XML {
+            url += ".xml"
+        }
+        else {
+            url += ".json"
+        }
+        url += "?key="
+        url += cleAPI
         return url
     }
     func protegerURL(url: String) -> String {
@@ -58,10 +114,14 @@ class tpgURLconstruct {
         let urlProtege = String(NSString(data: data!, encoding: NSASCIIStringEncoding)!)
         var chaine = ""
         for x in urlProtege.characters {
-            if x == " " {
+            switch x {
+            case " ":
                 chaine += "%20"
-            }
-            else {
+            case "&":
+                chaine += ""
+            case "=":
+                chaine += ""
+            default:
                 chaine += String(x)
             }
         }
