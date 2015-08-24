@@ -45,7 +45,8 @@ class ListeArretTableViewController: UITableViewController {
             print((sender as! UITableViewCell).tag, appendNewline: true)
             let arretViewController = segue.destinationViewController as! ArretTableViewController
             arretViewController.arret = ((sender as! UITableViewCell).textLabel?.text)!
-            arretViewController.arretCode = (self.xmlArrets["stops"]["stops"]["stop"][(sender as! UITableViewCell).tag]["stopName"].element?.text)!
+            arretViewController.arretCode = (self.xmlArrets["stops"]["stops"]["stop"][(sender as! UITableViewCell).tag]["stopCode"].element?.text)!
+            print((self.xmlArrets["stops"]["stops"]["stop"][(sender as! UITableViewCell).tag]["stopCode"].element?.text)!, appendNewline: true)
         }
     }
 }

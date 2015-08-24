@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Mon tpg.xcscheme</key>
+		<key>tpg offline today.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>tpg offline.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +17,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>ADFF63DB1B370BC300CE3D22</key>
+		<key>00E5314B1B8B485B00C84BC8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ADFF63ED1B370BC300CE3D22</key>
+		<key>00E531611B8B488B00C84BC8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>00E531811B8B490F00C84BC8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

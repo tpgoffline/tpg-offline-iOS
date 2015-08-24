@@ -121,6 +121,8 @@ class tpgURLconstruct {
                 chaine += ""
             case "=":
                 chaine += ""
+            case "'":
+                chaine += "%27"
             default:
                 chaine += String(x)
             }

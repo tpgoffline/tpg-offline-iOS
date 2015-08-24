@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HaZ-qO-msw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HaZ-qO-msw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="depart" id="m9m-iB-Jjx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="arrettableviewcell" id="m9m-iB-Jjx" customClass="ArretTableViewCell" customModule="Mon_tpg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m9m-iB-Jjx" id="O5D-0g-gpJ">
@@ -108,39 +108,11 @@
                                         <constraint firstItem="r1O-zU-ZEX" firstAttribute="leading" secondItem="a1f-Tz-etr" secondAttribute="trailing" constant="8" id="scD-tY-S08"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="direction" id="BC5-Zx-5uj">
-                                <rect key="frame" x="0.0" y="130" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BC5-Zx-5uj" id="HhN-ea-Wbd">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Picto 1" translatesAutoresizingMaskIntoConstraints="NO" id="N53-VD-RDT">
-                                            <rect key="frame" x="8" y="4" width="46" height="35"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="dIO-PT-dEx"/>
-                                                <constraint firstAttribute="width" constant="46" id="faZ-6f-I6V"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJp-N9-cao">
-                                            <rect key="frame" x="62" y="11" width="497" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="YJF-aW-TFh"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="N53-VD-RDT" firstAttribute="centerY" secondItem="HhN-ea-Wbd" secondAttribute="centerY" id="4vU-wB-z04"/>
-                                        <constraint firstItem="tJp-N9-cao" firstAttribute="centerY" secondItem="HhN-ea-Wbd" secondAttribute="centerY" id="Sv9-tB-zGq"/>
-                                        <constraint firstItem="tJp-N9-cao" firstAttribute="leading" secondItem="N53-VD-RDT" secondAttribute="trailing" constant="8" id="eTH-lJ-Z5K"/>
-                                        <constraint firstItem="N53-VD-RDT" firstAttribute="leading" secondItem="HhN-ea-Wbd" secondAttribute="leadingMargin" id="h18-QL-kjF"/>
-                                        <constraint firstItem="tJp-N9-cao" firstAttribute="trailing" secondItem="HhN-ea-Wbd" secondAttribute="trailingMargin" id="vBb-bL-wP4"/>
-                                    </constraints>
-                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageLigne" destination="a1f-Tz-etr" id="1z8-4C-ANH"/>
+                                    <outlet property="labelDirection" destination="r1O-zU-ZEX" id="XJI-H0-JzA"/>
+                                    <outlet property="labeltempsProchainDepart" destination="XtF-VS-ZI0" id="Jot-4Y-FNf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -148,6 +120,9 @@
                             <outlet property="delegate" destination="Top-X0-PSF" id="yhO-kL-mtf"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="nFK-4p-BAy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="acj-JI-VFl"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMa-9X-m5O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

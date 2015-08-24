@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8164.2"/>
-        <plugIn identifier="com.apple.MapKitIBPlugin" version="8164.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8173.3"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="8173.3"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -688,7 +688,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="88" viewBased="YES" id="oxj-gM-0nF">
-                                            <rect key="frame" x="0.0" y="0.0" width="587" height="338"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="587" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -733,7 +733,7 @@
                                 </scroller>
                             </scrollView>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gbO-hy-rPo">
-                                <rect key="frame" x="81" y="356" width="531" height="26"/>
+                                <rect key="frame" x="81" y="356" width="497" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="v1v-xK-UTB"/>
                                 </constraints>
@@ -748,15 +748,28 @@
                                     <outlet property="delegate" destination="XfG-lQ-9wD" id="G7F-Fh-wxj"/>
                                 </connections>
                             </comboBox>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aFA-Bg-IoX">
+                                <rect key="frame" x="577" y="352" width="47" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Tfv-KN-Te0"/>
+                                    <constraint firstAttribute="height" constant="21" id="gv9-lb-Wo5"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nfx-g4-BKy">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ygk-rW-JFs" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="1gK-RI-rfY"/>
+                            <constraint firstItem="aFA-Bg-IoX" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="19" id="31e-G6-ju6"/>
                             <constraint firstItem="gbO-hy-rPo" firstAttribute="leading" secondItem="Ygk-rW-JFs" secondAttribute="trailing" constant="9" id="CGK-8o-24d"/>
                             <constraint firstItem="NdL-wU-Qpj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Fib-St-dXm"/>
-                            <constraint firstAttribute="trailing" secondItem="gbO-hy-rPo" secondAttribute="trailing" constant="20" id="Gza-2n-oQt"/>
+                            <constraint firstAttribute="trailing" secondItem="gbO-hy-rPo" secondAttribute="trailing" constant="54" id="Gza-2n-oQt"/>
                             <constraint firstItem="gbO-hy-rPo" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="19" id="Ogq-KV-ivu"/>
                             <constraint firstAttribute="bottom" secondItem="NdL-wU-Qpj" secondAttribute="bottom" constant="12" id="ZMP-hI-OP7"/>
                             <constraint firstItem="Ygk-rW-JFs" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="pOh-Ti-95c"/>
+                            <constraint firstAttribute="trailing" secondItem="aFA-Bg-IoX" secondAttribute="trailing" constant="11" id="req-KS-jWw"/>
                             <constraint firstAttribute="trailing" secondItem="NdL-wU-Qpj" secondAttribute="trailing" constant="20" id="tyr-62-r6E"/>
                             <constraint firstItem="NdL-wU-Qpj" firstAttribute="top" secondItem="gbO-hy-rPo" secondAttribute="bottom" constant="8" symbolic="YES" id="yFX-V9-dL7"/>
                         </constraints>
@@ -1013,7 +1026,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" id="z92-Kn-tKX">
-                                            <rect key="frame" x="0.0" y="0.0" width="236" height="266"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="236" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1130,4 +1143,7 @@
             <point key="canvasLocation" x="780.5" y="1796.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSShareTemplate" width="11" height="16"/>
+    </resources>
 </document>

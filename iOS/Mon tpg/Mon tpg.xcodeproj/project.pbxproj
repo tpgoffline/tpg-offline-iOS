@@ -10,6 +10,7 @@
 		002F421F1B80BABD00BA9A6C /* arrets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 002F421E1B80BABD00BA9A6C /* arrets.xml */; };
 		002F42221B80BCFE00BA9A6C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002F42211B80BCFE00BA9A6C /* MapKit.framework */; };
 		002F42271B80C03700BA9A6C /* tpgURLconstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002F42261B80C03700BA9A6C /* tpgURLconstruct.swift */; };
+		00CCA0431B80D0F700CBD5D8 /* ArretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCA0421B80D0F700CBD5D8 /* ArretTableViewCell.swift */; };
 		AD40348A1B31ACF000365029 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4034891B31ACF000365029 /* SWXMLHash.swift */; };
 		AD921D6A1B31AAAE000029E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D691B31AAAE000029E3 /* AppDelegate.swift */; };
 		AD921D6C1B31AAAE000029E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD921D6B1B31AAAE000029E3 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		002F42211B80BCFE00BA9A6C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		002F42231B80BD6B00BA9A6C /* Mon tpg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Mon tpg.entitlements"; sourceTree = "<group>"; };
 		002F42261B80C03700BA9A6C /* tpgURLconstruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURLconstruct.swift; sourceTree = "<group>"; };
+		00CCA0421B80D0F700CBD5D8 /* ArretTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArretTableViewCell.swift; sourceTree = "<group>"; };
 		AD4034891B31ACF000365029 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		AD921D661B31AAAE000029E3 /* Mon tpg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mon tpg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD921D691B31AAAE000029E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				ADE0C1E71B31AB870018C0D9 /* ArretTableViewController.swift */,
 				ADE0C1E81B31AB870018C0D9 /* ListeArretTableViewController.swift */,
 				AD921D6D1B31AAAE000029E3 /* Main.storyboard */,
+				00CCA0421B80D0F700CBD5D8 /* ArretTableViewCell.swift */,
 				AD4034891B31ACF000365029 /* SWXMLHash.swift */,
 				002F42261B80C03700BA9A6C /* tpgURLconstruct.swift */,
 				AD921D701B31AAAE000029E3 /* Assets.xcassets */,
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE0C1EA1B31AB870018C0D9 /* ListeArretTableViewController.swift in Sources */,
+				00CCA0431B80D0F700CBD5D8 /* ArretTableViewCell.swift in Sources */,
 				002F42271B80C03700BA9A6C /* tpgURLconstruct.swift in Sources */,
 				ADE0C1E91B31AB870018C0D9 /* ArretTableViewController.swift in Sources */,
 				AD921D6C1B31AAAE000029E3 /* ViewController.swift in Sources */,
@@ -294,7 +298,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mon tpg/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.Mon-tpg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -309,7 +313,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Mon tpg/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.Mon-tpg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

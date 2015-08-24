@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0700"
-   version = "1.3">
+   wasCreatedForAppExtension = "YES"
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,10 +15,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADFF63DB1B370BC300CE3D22"
-               BuildableName = "Mon tpg.app"
-               BlueprintName = "Mon tpg"
-               ReferencedContainer = "container:Mon tpg.xcodeproj">
+               BlueprintIdentifier = "00E531611B8B488B00C84BC8"
+               BuildableName = "tpg offline today.appex"
+               BlueprintName = "tpg offline today"
+               ReferencedContainer = "container:tpg offline.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E5314B1B8B485B00C84BC8"
+               BuildableName = "tpg offline.app"
+               BlueprintName = "tpg offline"
+               ReferencedContainer = "container:tpg offline.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,24 +43,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADFF63ED1B370BC300CE3D22"
-               BuildableName = "Mon tpgTests.xctest"
-               BlueprintName = "Mon tpgTests"
-               ReferencedContainer = "container:Mon tpg.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADFF63DB1B370BC300CE3D22"
-            BuildableName = "Mon tpg.app"
-            BlueprintName = "Mon tpg"
-            ReferencedContainer = "container:Mon tpg.xcodeproj">
+            BlueprintIdentifier = "00E531611B8B488B00C84BC8"
+            BuildableName = "tpg offline today.appex"
+            BlueprintName = "tpg offline today"
+            ReferencedContainer = "container:tpg offline.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -53,22 +58,23 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADFF63DB1B370BC300CE3D22"
-            BuildableName = "Mon tpg.app"
-            BlueprintName = "Mon tpg"
-            ReferencedContainer = "container:Mon tpg.xcodeproj">
+            BlueprintIdentifier = "00E5314B1B8B485B00C84BC8"
+            BuildableName = "tpg offline.app"
+            BlueprintName = "tpg offline"
+            ReferencedContainer = "container:tpg offline.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,15 +85,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADFF63DB1B370BC300CE3D22"
-            BuildableName = "Mon tpg.app"
-            BlueprintName = "Mon tpg"
-            ReferencedContainer = "container:Mon tpg.xcodeproj">
+            BlueprintIdentifier = "00E5314B1B8B485B00C84BC8"
+            BuildableName = "tpg offline.app"
+            BlueprintName = "tpg offline"
+            ReferencedContainer = "container:tpg offline.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
