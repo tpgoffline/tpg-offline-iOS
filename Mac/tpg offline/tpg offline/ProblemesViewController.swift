@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SWXMLHash
 
 func colorWithHexColorString(colorString: String) -> NSColor?
 {
@@ -91,7 +92,7 @@ class ProblemesViewController: NSViewController, NSTableViewDataSource, NSTableV
     func trouverHexa(lineCode:String!) -> NSColor!{
         for x in xmlLinesColor["colors"]["colors"]["color"] {
             if x["lineCode"].element?.text == lineCode {
-                print(colorWithHexColorString((x["hexa"].element?.text)!), appendNewline: true)
+                print(colorWithHexColorString((x["hexa"].element?.text)!), terminator: "\n")
                 return colorWithHexColorString((x["hexa"].element?.text)!)
             }
         }

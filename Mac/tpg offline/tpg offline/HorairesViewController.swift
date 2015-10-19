@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SWXMLHash
 
 class HorairesViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSComboBoxDataSource, NSComboBoxDelegate  {
     
@@ -55,19 +56,19 @@ class HorairesViewController: NSViewController, NSTableViewDataSource, NSTableVi
         else {
             let url = NSURL(string: urlString)!
             let data = NSData(contentsOfURL: url)!
-            var xml = SWXMLHash.parse(data)
+            let xml = SWXMLHash.parse(data)
             switch xml["stops"]["stops"]["stop"][0]["stopName"] {
             case .Element(let elem):
                 stationField.stringValue = elem.text!
                 rechercheHoraire((xml["stops"]["stops"]["stop"][0]["stopCode"].element?.text)!)
-            case .Error( _):
+            case .XMLError( _):
                 let alerte = NSAlert()
                 alerte.alertStyle = NSAlertStyle.WarningAlertStyle
                 alerte.messageText = "Ouuups !"
                 alerte.informativeText = "L'arret n'as pas été trouvé"
                 alerte.runModal()
             default:
-                print("", appendNewline: false)
+                print("", terminator: "")
             }
         }
     }
@@ -130,10 +131,10 @@ class HorairesViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 texte += " min"
                 cell.time.stringValue = texte
             }
-        case .Error( _):
+        case .XMLError( _):
             cell.time.stringValue = "Plus aucun départ"
         default:
-            print("", appendNewline: false)
+            print("", terminator: "")
         }
         
         return cell

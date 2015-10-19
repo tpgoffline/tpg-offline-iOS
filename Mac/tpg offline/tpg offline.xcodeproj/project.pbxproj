@@ -7,15 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E531831B8B490F00C84BC8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E531641B8B488B00C84BC8 /* NotificationCenter.framework */; };
-		00E531881B8B490F00C84BC8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531871B8B490F00C84BC8 /* TodayViewController.swift */; };
-		00E5318B1B8B490F00C84BC8 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E531891B8B490F00C84BC8 /* TodayViewController.xib */; };
-		00E5318F1B8B490F00C84BC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00E5318D1B8B490F00C84BC8 /* InfoPlist.strings */; };
-		00E531921B8B490F00C84BC8 /* tpg offline today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 00E531821B8B490F00C84BC8 /* tpg offline today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		00E531A51B8B49E300C84BC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531971B8B49E300C84BC8 /* AppDelegate.swift */; };
-		00E531A61B8B49E300C84BC8 /* ConnectionsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531981B8B49E300C84BC8 /* ConnectionsCellView.swift */; };
-		00E531A71B8B49E300C84BC8 /* ConnectionsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E531991B8B49E300C84BC8 /* ConnectionsCellView.xib */; };
-		00E531A81B8B49E300C84BC8 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5319A1B8B49E300C84BC8 /* ConnectionsViewController.swift */; };
+		00E531A61B8B49E300C84BC8 /* ConnexionsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531981B8B49E300C84BC8 /* ConnexionsCellView.swift */; };
+		00E531A71B8B49E300C84BC8 /* ConnexionsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E531991B8B49E300C84BC8 /* ConnexionsCellView.xib */; };
+		00E531A81B8B49E300C84BC8 /* ConnexionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5319A1B8B49E300C84BC8 /* ConnexionsViewController.swift */; };
 		00E531A91B8B49E300C84BC8 /* HorairesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5319B1B8B49E300C84BC8 /* HorairesCellView.swift */; };
 		00E531AA1B8B49E300C84BC8 /* HorairesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5319C1B8B49E300C84BC8 /* HorairesCellView.xib */; };
 		00E531AB1B8B49E300C84BC8 /* HorairesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5319D1B8B49E300C84BC8 /* HorairesViewController.swift */; };
@@ -24,21 +19,11 @@
 		00E531AE1B8B49E300C84BC8 /* ProblemesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E531A01B8B49E300C84BC8 /* ProblemesCellView.xib */; };
 		00E531AF1B8B49E300C84BC8 /* ProblemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531A11B8B49E300C84BC8 /* ProblemesViewController.swift */; };
 		00E531B01B8B49E300C84BC8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531A21B8B49E300C84BC8 /* StringExtension.swift */; };
-		00E531B11B8B49E300C84BC8 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531A31B8B49E300C84BC8 /* SWXMLHash.swift */; };
 		00E531B21B8B49E300C84BC8 /* tpgURLconstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E531A41B8B49E300C84BC8 /* tpgURLconstruct.swift */; };
 		00E531B41B8B49ED00C84BC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E531B31B8B49ED00C84BC8 /* Images.xcassets */; };
 		00E531B71B8B4A1300C84BC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E531B51B8B4A1300C84BC8 /* Main.storyboard */; };
+		0C699A126EB6252D52CE1F68 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D33747F539AB4DEBA66BF04 /* Pods_tpg_offline.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		00E531901B8B490F00C84BC8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 00E531441B8B485B00C84BC8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00E531811B8B490F00C84BC8;
-			remoteInfo = "tpg offline today";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		00E5317D1B8B488B00C84BC8 /* Embed App Extensions */ = {
@@ -47,7 +32,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				00E531921B8B490F00C84BC8 /* tpg offline today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,29 +42,28 @@
 		00E5314C1B8B485B00C84BC8 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E531581B8B485B00C84BC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E531641B8B488B00C84BC8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		00E531821B8B490F00C84BC8 /* tpg offline today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		00E531861B8B490F00C84BC8 /* tpg_offline_today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tpg_offline_today.entitlements; sourceTree = "<group>"; };
-		00E531871B8B490F00C84BC8 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		00E5318A1B8B490F00C84BC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
-		00E5318C1B8B490F00C84BC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E5318E1B8B490F00C84BC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		00E531961B8B498600C84BC8 /* tpg offline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tpg offline.entitlements"; sourceTree = "<group>"; };
 		00E531971B8B49E300C84BC8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		00E531981B8B49E300C84BC8 /* ConnectionsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsCellView.swift; sourceTree = "<group>"; };
-		00E531991B8B49E300C84BC8 /* ConnectionsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionsCellView.xib; sourceTree = "<group>"; };
-		00E5319A1B8B49E300C84BC8 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		00E531981B8B49E300C84BC8 /* ConnexionsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ConnexionsCellView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00E531991B8B49E300C84BC8 /* ConnexionsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnexionsCellView.xib; sourceTree = "<group>"; };
+		00E5319A1B8B49E300C84BC8 /* ConnexionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ConnexionsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E5319B1B8B49E300C84BC8 /* HorairesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorairesCellView.swift; sourceTree = "<group>"; };
 		00E5319C1B8B49E300C84BC8 /* HorairesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorairesCellView.xib; sourceTree = "<group>"; };
-		00E5319D1B8B49E300C84BC8 /* HorairesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorairesViewController.swift; sourceTree = "<group>"; };
+		00E5319D1B8B49E300C84BC8 /* HorairesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HorairesViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E5319E1B8B49E300C84BC8 /* PlansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
 		00E5319F1B8B49E300C84BC8 /* ProblemesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesCellView.swift; sourceTree = "<group>"; };
 		00E531A01B8B49E300C84BC8 /* ProblemesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemesCellView.xib; sourceTree = "<group>"; };
 		00E531A11B8B49E300C84BC8 /* ProblemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemesViewController.swift; sourceTree = "<group>"; };
 		00E531A21B8B49E300C84BC8 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		00E531A31B8B49E300C84BC8 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		00E531A41B8B49E300C84BC8 /* tpgURLconstruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURLconstruct.swift; sourceTree = "<group>"; };
 		00E531B31B8B49ED00C84BC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		00E531B61B8B4A1300C84BC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1D33747F539AB4DEBA66BF04 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A9F731DF93B2AD83D0532DB /* Pods-tpg offline today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline today/Pods-tpg offline today.debug.xcconfig"; sourceTree = "<group>"; };
+		675E8F035123146ECFE1D4E6 /* Pods_tpg_offline_today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		870040068E3DFC12EBCE2F55 /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
+		AD32E1E3320AFA7A959C2A4F /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
+		FD3FD98C61A7A8C8B03FB29F /* Pods-tpg offline today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline today.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline today/Pods-tpg offline today.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00E5317F1B8B490F00C84BC8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00E531831B8B490F00C84BC8 /* NotificationCenter.framework in Frameworks */,
+				0C699A126EB6252D52CE1F68 /* Pods_tpg_offline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,9 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				00E5314E1B8B485B00C84BC8 /* tpg offline */,
-				00E531841B8B490F00C84BC8 /* tpg offline today */,
 				00E531631B8B488B00C84BC8 /* Frameworks */,
 				00E5314D1B8B485B00C84BC8 /* Products */,
+				3B57236A488BD3EF64AE4CE7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				00E5314C1B8B485B00C84BC8 /* tpg offline.app */,
-				00E531821B8B490F00C84BC8 /* tpg offline today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,10 +101,10 @@
 			children = (
 				00E531961B8B498600C84BC8 /* tpg offline.entitlements */,
 				00E531971B8B49E300C84BC8 /* AppDelegate.swift */,
-				00E531981B8B49E300C84BC8 /* ConnectionsCellView.swift */,
-				00E531991B8B49E300C84BC8 /* ConnectionsCellView.xib */,
+				00E531981B8B49E300C84BC8 /* ConnexionsCellView.swift */,
+				00E531991B8B49E300C84BC8 /* ConnexionsCellView.xib */,
 				00E531B51B8B4A1300C84BC8 /* Main.storyboard */,
-				00E5319A1B8B49E300C84BC8 /* ConnectionsViewController.swift */,
+				00E5319A1B8B49E300C84BC8 /* ConnexionsViewController.swift */,
 				00E5319B1B8B49E300C84BC8 /* HorairesCellView.swift */,
 				00E5319C1B8B49E300C84BC8 /* HorairesCellView.xib */,
 				00E5319D1B8B49E300C84BC8 /* HorairesViewController.swift */,
@@ -138,7 +113,6 @@
 				00E531A01B8B49E300C84BC8 /* ProblemesCellView.xib */,
 				00E531A11B8B49E300C84BC8 /* ProblemesViewController.swift */,
 				00E531A21B8B49E300C84BC8 /* StringExtension.swift */,
-				00E531A31B8B49E300C84BC8 /* SWXMLHash.swift */,
 				00E531A41B8B49E300C84BC8 /* tpgURLconstruct.swift */,
 				00E531B31B8B49ED00C84BC8 /* Images.xcassets */,
 				00E531581B8B485B00C84BC8 /* Info.plist */,
@@ -150,28 +124,21 @@
 			isa = PBXGroup;
 			children = (
 				00E531641B8B488B00C84BC8 /* NotificationCenter.framework */,
+				1D33747F539AB4DEBA66BF04 /* Pods_tpg_offline.framework */,
+				675E8F035123146ECFE1D4E6 /* Pods_tpg_offline_today.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		00E531841B8B490F00C84BC8 /* tpg offline today */ = {
+		3B57236A488BD3EF64AE4CE7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				00E531871B8B490F00C84BC8 /* TodayViewController.swift */,
-				00E531891B8B490F00C84BC8 /* TodayViewController.xib */,
-				00E5318C1B8B490F00C84BC8 /* Info.plist */,
-				00E5318D1B8B490F00C84BC8 /* InfoPlist.strings */,
-				00E531851B8B490F00C84BC8 /* Supporting Files */,
+				870040068E3DFC12EBCE2F55 /* Pods-tpg offline.debug.xcconfig */,
+				AD32E1E3320AFA7A959C2A4F /* Pods-tpg offline.release.xcconfig */,
+				2A9F731DF93B2AD83D0532DB /* Pods-tpg offline today.debug.xcconfig */,
+				FD3FD98C61A7A8C8B03FB29F /* Pods-tpg offline today.release.xcconfig */,
 			);
-			path = "tpg offline today";
-			sourceTree = "<group>";
-		};
-		00E531851B8B490F00C84BC8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				00E531861B8B490F00C84BC8 /* tpg_offline_today.entitlements */,
-			);
-			name = "Supporting Files";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,37 +148,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E5315B1B8B485B00C84BC8 /* Build configuration list for PBXNativeTarget "tpg offline" */;
 			buildPhases = (
+				0BEA930AB0318C30FFE82DDE /* Check Pods Manifest.lock */,
 				00E531481B8B485B00C84BC8 /* Sources */,
 				00E531491B8B485B00C84BC8 /* Frameworks */,
 				00E5314A1B8B485B00C84BC8 /* Resources */,
 				00E5317D1B8B488B00C84BC8 /* Embed App Extensions */,
+				E8E510C6866F3721A89E49F9 /* Embed Pods Frameworks */,
+				1A0CA7D8CF6B93154C9F20D7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				00E531911B8B490F00C84BC8 /* PBXTargetDependency */,
 			);
 			name = "tpg offline";
 			productName = "tpg offline";
 			productReference = 00E5314C1B8B485B00C84BC8 /* tpg offline.app */;
 			productType = "com.apple.product-type.application";
-		};
-		00E531811B8B490F00C84BC8 /* tpg offline today */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 00E531931B8B491000C84BC8 /* Build configuration list for PBXNativeTarget "tpg offline today" */;
-			buildPhases = (
-				00E5317E1B8B490F00C84BC8 /* Sources */,
-				00E5317F1B8B490F00C84BC8 /* Frameworks */,
-				00E531801B8B490F00C84BC8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "tpg offline today";
-			productName = "tpg offline today";
-			productReference = 00E531821B8B490F00C84BC8 /* tpg offline today.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -219,6 +171,7 @@
 		00E531441B8B485B00C84BC8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = dacostafaro;
@@ -228,17 +181,9 @@
 						DevelopmentTeam = 767R4Y4A3U;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Sandbox = {
-								enabled = 1;
-							};
-						};
-					};
-					00E531811B8B490F00C84BC8 = {
-						CreatedOnToolsVersion = 7.0;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
 							};
 						};
@@ -259,7 +204,6 @@
 			projectRoot = "";
 			targets = (
 				00E5314B1B8B485B00C84BC8 /* tpg offline */,
-				00E531811B8B490F00C84BC8 /* tpg offline today */,
 			);
 		};
 /* End PBXProject section */
@@ -272,21 +216,60 @@
 				00E531AE1B8B49E300C84BC8 /* ProblemesCellView.xib in Resources */,
 				00E531B71B8B4A1300C84BC8 /* Main.storyboard in Resources */,
 				00E531B41B8B49ED00C84BC8 /* Images.xcassets in Resources */,
-				00E531A71B8B49E300C84BC8 /* ConnectionsCellView.xib in Resources */,
+				00E531A71B8B49E300C84BC8 /* ConnexionsCellView.xib in Resources */,
 				00E531AA1B8B49E300C84BC8 /* HorairesCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		00E531801B8B490F00C84BC8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BEA930AB0318C30FFE82DDE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E5318B1B8B490F00C84BC8 /* TodayViewController.xib in Resources */,
-				00E5318F1B8B490F00C84BC8 /* InfoPlist.strings in Resources */,
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		1A0CA7D8CF6B93154C9F20D7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8E510C6866F3721A89E49F9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00E531481B8B485B00C84BC8 /* Sources */ = {
@@ -295,53 +278,20 @@
 			files = (
 				00E531AF1B8B49E300C84BC8 /* ProblemesViewController.swift in Sources */,
 				00E531AD1B8B49E300C84BC8 /* ProblemesCellView.swift in Sources */,
-				00E531A61B8B49E300C84BC8 /* ConnectionsCellView.swift in Sources */,
+				00E531A61B8B49E300C84BC8 /* ConnexionsCellView.swift in Sources */,
 				00E531B21B8B49E300C84BC8 /* tpgURLconstruct.swift in Sources */,
-				00E531B11B8B49E300C84BC8 /* SWXMLHash.swift in Sources */,
 				00E531A91B8B49E300C84BC8 /* HorairesCellView.swift in Sources */,
 				00E531AB1B8B49E300C84BC8 /* HorairesViewController.swift in Sources */,
 				00E531B01B8B49E300C84BC8 /* StringExtension.swift in Sources */,
 				00E531A51B8B49E300C84BC8 /* AppDelegate.swift in Sources */,
-				00E531A81B8B49E300C84BC8 /* ConnectionsViewController.swift in Sources */,
+				00E531A81B8B49E300C84BC8 /* ConnexionsViewController.swift in Sources */,
 				00E531AC1B8B49E300C84BC8 /* PlansViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00E5317E1B8B490F00C84BC8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00E531881B8B490F00C84BC8 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		00E531911B8B490F00C84BC8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 00E531811B8B490F00C84BC8 /* tpg offline today */;
-			targetProxy = 00E531901B8B490F00C84BC8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		00E531891B8B490F00C84BC8 /* TodayViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				00E5318A1B8B490F00C84BC8 /* Base */,
-			);
-			name = TodayViewController.xib;
-			sourceTree = "<group>";
-		};
-		00E5318D1B8B490F00C84BC8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				00E5318E1B8B490F00C84BC8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		00E531B51B8B4A1300C84BC8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -435,11 +385,11 @@
 		};
 		00E5315C1B8B485B00C84BC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 870040068E3DFC12EBCE2F55 /* Pods-tpg offline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "tpg offline/tpg offline.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "tpg offline/Info.plist";
@@ -452,45 +402,17 @@
 		};
 		00E5315D1B8B485B00C84BC8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD32E1E3320AFA7A959C2A4F /* Pods-tpg offline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "tpg offline/tpg offline.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "tpg offline/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgofflinemac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		00E531941B8B491000C84BC8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "tpg offline today/tpg_offline_today.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "tpg offline today/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgofflinemac.tpg-offline-today";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		00E531951B8B491000C84BC8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "tpg offline today/tpg_offline_today.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "tpg offline today/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgofflinemac.tpg-offline-today";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -513,14 +435,7 @@
 				00E5315D1B8B485B00C84BC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		00E531931B8B491000C84BC8 /* Build configuration list for PBXNativeTarget "tpg offline today" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				00E531941B8B491000C84BC8 /* Debug */,
-				00E531951B8B491000C84BC8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

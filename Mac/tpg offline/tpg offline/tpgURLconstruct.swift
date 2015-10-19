@@ -16,6 +16,8 @@ enum TypeFichier: String {
 class tpgURLconstruct {
     var cleAPI = ""
     var typeFichier = TypeFichier.XML
+    let dns = "http://prod.ivtr-od.tpg.ch/v1/"
+    let regexCorrect = "[^a-zA-Z0-9-\'\\sàâêëéèîïôûùüç]"
     
     init(cleAPI:String, typeFichier:TypeFichier=TypeFichier.XML) {
         self.cleAPI = cleAPI
@@ -23,7 +25,7 @@ class tpgURLconstruct {
     }
     
     func getStopsURL(stopName: String!) -> String {
-        var url = "http://rtpi.data.tpg.ch/v1/GetStops"
+        var url = dns + "GetStops"
         if typeFichier == .XML {
             url += ".xml"
         }
@@ -33,7 +35,7 @@ class tpgURLconstruct {
         url += "?key="
         url += cleAPI
         if stopName != "" && stopName != nil {
-            if let _ = stopName.rangeOfString("[^a-zA-Z0-9-\'\\s]", options: .RegularExpressionSearch) {
+            if let _ = stopName.rangeOfString(regexCorrect, options: .RegularExpressionSearch) {
                 return ""
             }
             else {
@@ -45,7 +47,7 @@ class tpgURLconstruct {
     }
     
     func getPhysicalStops(stopName: String!) -> String {
-        var url = "http://rtpi.data.tpg.ch/v1/GetPhysicalStops"
+        var url = dns + "GetPhysicalStops"
         if typeFichier == .XML {
             url += ".xml"
         }
@@ -55,7 +57,7 @@ class tpgURLconstruct {
         url += "?key="
         url += cleAPI
         if stopName != "" && stopName != nil {
-            if let _ = stopName.rangeOfString("[^a-zA-Z0-9-\'\\s]", options: .RegularExpressionSearch) {
+            if let _ = stopName.rangeOfString(regexCorrect, options: .RegularExpressionSearch) {
                 return ""
             }
             else {
@@ -67,7 +69,7 @@ class tpgURLconstruct {
     }
     
     func getNextDeparturesURL(stopCode: String) -> String {
-        var url = "http://rtpi.data.tpg.ch/v1/GetNextDepartures"
+        var url = dns + "GetNextDepartures"
         if typeFichier == .XML {
             url += ".xml"
         }
@@ -76,7 +78,7 @@ class tpgURLconstruct {
         }
         url += "?key="
         url += cleAPI
-        if let _ = stopCode.rangeOfString("[^a-zA-Z0-9-\'\\s]", options: .RegularExpressionSearch) {
+        if let _ = stopCode.rangeOfString(regexCorrect, options: .RegularExpressionSearch) {
             return ""
         }
         else {
@@ -86,7 +88,7 @@ class tpgURLconstruct {
         return url
     }
     func getDisruptionsURL() -> String {
-        var url = "http://rtpi.data.tpg.ch/v1/GetDisruptions"
+        var url = dns + "GetDisruptions"
         if typeFichier == .XML {
             url += ".xml"
         }
@@ -98,7 +100,7 @@ class tpgURLconstruct {
         return url
     }
     func getLinesColorsURL() -> String {
-        var url = "http://rtpi.data.tpg.ch/v1/GetLinesColors"
+        var url = dns + "GetLinesColors"
         if typeFichier == .XML {
             url += ".xml"
         }
@@ -115,6 +117,32 @@ class tpgURLconstruct {
         var chaine = ""
         for x in urlProtege.characters {
             switch x {
+            case "à":
+                chaine += "a"
+            case "â":
+                chaine += "a"
+            case "ê":
+                chaine += "e"
+            case "é":
+                chaine += "e"
+            case "ë":
+                chaine += "e"
+            case "è":
+                chaine += "e"
+            case "î":
+                chaine += "i"
+            case "ï":
+                chaine += "i"
+            case "ô":
+                chaine += "o"
+            case "û":
+                chaine += "u"
+            case "ù":
+                chaine += "u"
+            case "ü":
+                chaine += "u"
+            case "ç":
+                chaine += "c"
             case " ":
                 chaine += "%20"
             case "&":
