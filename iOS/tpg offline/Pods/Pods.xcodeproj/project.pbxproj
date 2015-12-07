@@ -1,0 +1,1459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0039EEF8B31575F0A84A492BA8089E7D /* FAKFoundationIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25D804662EFD5F17A18386425EF305 /* FAKFoundationIcons.m */; };
+		00E3A68D030F24BE47B99D1D1A1720E2 /* UIColor+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = F04F7726A899478B9D5B08C5F970115A /* UIColor+ChameleonPrivate.m */; };
+		0308B2902DB5695DBD6AD4564FCBD4F2 /* FAKIonIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = 614C7C84FE16274924573114DD4092AF /* FAKIonIcons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03F8D3C0A7C01EF3B6137D0680C0FFA8 /* PDTSimpleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CD4793F617E60678D50F3B4FC3F65545 /* PDTSimpleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06FC44BB5DBC9FBC6604931B1C97F12F /* INTULocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49DBA40D193304986AC392598B1EA5A5 /* INTULocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		072BEEF7E71F00675E87028A9A668B84 /* UIImage+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = B75D2D7DAC828351A443F49ECAA38FE5 /* UIImage+ChameleonPrivate.m */; };
+		0B1AC909F43FD2AD6BE051127942C053 /* PDTSimpleCalendarViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 404011242FFE5A6E9E8F2BF216E9B324 /* PDTSimpleCalendarViewFlowLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		160634C0F5454A32E810DDF5BA9E5985 /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 714683460A8BDE10F9710044BA18EFF6 /* NSArray+Chameleon.m */; };
+		1716FA0939818C49FE4BBE6A658E9834 /* UIButton+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 715B256ECABA069C6C307DF341C29732 /* UIButton+Chameleon.m */; };
+		1A95D9723C194E02E91E8D943EE9620F /* PDTSimpleCalendarViewWeekdayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5717BB1C3C2DC23F78CC86275A1441B3 /* PDTSimpleCalendarViewWeekdayHeader.m */; };
+		1DE26E57570167EE496080D68F855A01 /* UIImage+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8086B584B26A0559AC7A4ADF8975058D /* UIImage+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20505126E2C0BF354BDFC804D0C88AB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
+		2139B6A9B4241F53BB478C43D51921CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBDCDC8219668A958122180B9FC509EB /* QuartzCore.framework */; };
+		23795D7EC1AF274A6AFF4233B1E84C4C /* UINavigationController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE47871E93001B7EC9ACF96BD6E13D /* UINavigationController+Chameleon.m */; };
+		237DBD4AA2591207CC798EE5577A36CA /* PDTSimpleCalendarViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E43F37A3F5A407B042E6F429B492A9D /* PDTSimpleCalendarViewFlowLayout.m */; };
+		245EA13CF687AD999AFAE54F5E22DE05 /* INTULocationRequestDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 13747BCE6AEE79E858E8F2C397E27499 /* INTULocationRequestDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29DB8AAB20B9088A34901CEC43319146 /* FAKIonIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C8C67A3BC3198341A86F5DA5DA679C /* FAKIonIcons.m */; };
+		2E2946436612A5B920BE18E09BF80CAF /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 492963E68CE2658E72B87D1D7E0715FA /* UIViewController+Chameleon.m */; };
+		3132A9EBC1F85B6971B934C88914CD58 /* UILabel+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A73F57D92F9A5B0B42A2C1A8E57B3B /* UILabel+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3241DF7F6F8EDD17C8EF4265FCFF3622 /* PDTSimpleCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02530D54FF0A430A78F136674DB55A5F /* PDTSimpleCalendarViewCell.m */; };
+		337166F44CD41FBD5074A886981DE532 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 356FE535032DF9C2C49A2C7D21FFE08C /* zocial-regular-webfont.ttf */; };
+		348D54AEDE56D054CF1FE144C8034127 /* INTULocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1354FB1F09B308E7B1728993A0CD818E /* INTULocationManager.m */; };
+		3959AEE0134F0E863AC4DB059BAF0C9F /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7D0B748DF2BCEDC4107A8CCF8ED08 /* FAKIcon.m */; };
+		3CCCC6F0C10F65283522C54CF1D6E761 /* UIButton+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EE0658C0D8280C77E75A2E411BCAC35 /* UIButton+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D1FF907F6AD5186FAF926C0F20083AE /* Chameleon_.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FF577154D39FFDAE62788DF7819982 /* Chameleon_.m */; };
+		3EC5B14874C6570500292FB5739E1150 /* PDTSimpleCalendarViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F42ABE50E1C7DFA206EF04A3C9D13643 /* PDTSimpleCalendarViewHeader.m */; };
+		41E19345B5C2331DAA02119D782F4E5F /* ChameleonMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = DB4F7E120C01E036DDACEF3D7AE72CDD /* ChameleonMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42B81612C22744B21A3AC57DC36F7DD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
+		44F8A74A03C14125EAFD788C490FD4A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
+		4B181B0AC8894DE05050B3F6718D392C /* ChameleonConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B386B0CA691B46C6784FA26EE8BFED21 /* ChameleonConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BE6DDB084A2D3467B7DCFA8EB004583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
+		4E53C48294089DC928E3A7BD1C2DE4D7 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44D6F61DA7F3E7E4B04BDFDC851F7F /* UIColor+Chameleon.m */; };
+		5066BB1B9249A0D1A5D5B1C29C3D661E /* INTULocationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F828E3BD9A2C82C597BABF5814585A93 /* INTULocationRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5463C51DD3A9FC35667EC1EB7420F6BC /* PDTSimpleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9103F7AAD4B573911BAE036A8297874 /* PDTSimpleCalendar-dummy.m */; };
+		5A96CA13F91E55E7BB73E52BD59CE9D4 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
+		5AEA2F6273636026297A3A38EE7325A8 /* PDTSimpleCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 984C3302B0A320E73E7165D7020387DA /* PDTSimpleCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BF38591007E7E4ADAD878E405949598 /* ChameleonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DFAA14B2151751E08AE41DC8B49EE /* ChameleonConstants.m */; };
+		5BFF83DA99463594922E324F61931692 /* PDTSimpleCalendarViewHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4F31A011340596AEAB33481FE272D0 /* PDTSimpleCalendarViewHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5DDE404634EFC3EC47C2A0465E75558A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
+		60FD66A0C4A398F6DF3E89C15E01EB64 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E385189948B6ECF9A7663A9366D18FDE /* foundation-icons.ttf */; };
+		63F95195CE74AD49AED3FDFABE016D83 /* INTULocationManager+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = BE2ABB0588DB3A5EBB4417432E00B229 /* INTULocationManager+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		650E9C1297EAE9A8E153D5F4FD3FFF51 /* FontAwesomeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E01A35F333FAA045E306FDEDC880FF /* FontAwesomeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		69FF0CFBCBC82DC80D6135D76A845AD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A5B2617A7166468E55C721EA33493 /* UIKit.framework */; };
+		6B2021C94A1E8DE397BA9072FC73C77D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
+		7684852F540BB5B520A48E7FDDD20D8B /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FB12D12CA5D6787BEC1BD8022B392B6 /* ionicons.ttf */; };
+		7A8C05065D9F9BA2C218F75AD6B1F798 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F8B78A35AE5DC154BD5AA4A983EBF /* UIAppearance+Swift.m */; };
+		7EDDB8F47291F592694D7135A10DAFFF /* UIViewController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 8222D21A3D3362BA120534F99EEF00B2 /* UIViewController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		854283650126B8707A6A537527271DB2 /* PDTSimpleCalendarViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F40C06679112982A4D2F4F0CD871C09 /* PDTSimpleCalendarViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8EE3EC7DD8974BFBEBF75A618EBBFDC3 /* INTULocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6B65341F0DA8658F373DAA68D4D61C /* INTULocationRequest.m */; };
+		8FF68AEC20BF30072F4AD866513FE44E /* FAKFoundationIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = 26C62BDE5F655A4F8EA91F8800F710E6 /* FAKFoundationIcons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B9A49ACF3256835B723CBBCD326DE11 /* PDTSimpleCalendarViewWeekdayHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 047252555F31CA1D7B84C61BEAB01FB2 /* PDTSimpleCalendarViewWeekdayHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9EEBF7B1602C1C17236C4EA0DD9717E2 /* UILabel+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E07F62B206745DA28B59A29BCAA1C4 /* UILabel+Chameleon.m */; };
+		A37E4933BC6CB5D541B5AC4521631878 /* FAKZocial.h in Headers */ = {isa = PBXBuildFile; fileRef = D09295B7345F9435B54EB7E06FC7689F /* FAKZocial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A77D6337BFA4737675BD50072B9FB1F1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129CAC7C8AA8DEED58CF57D71BBD6CA /* SwiftyJSON.swift */; };
+		B3429381360BE9C37D00301284E4B63A /* UIView+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = F30015094BCD70BEF38C06C956A67DC1 /* UIView+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC96108EBCE6F29BACA0662BC5B15254 /* FontAwesomeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CF18C44343300A965A73FDF911F6FBB /* FontAwesomeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD0425F55B4A01C3D49172049D1BF7A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F81E8DFC2A3B3D39023F9D20076AAD /* CoreText.framework */; };
+		C314ED8A89C5897B3B1C8FECE266E34C /* INTULocationManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D4A854D5B0032CDE1DB039EDD218636B /* INTULocationManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C59A78C9247621B660AE7AAD46E82446 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85DF19A81A21FC31E624AD01E1E672C8 /* FontAwesome.otf */; };
+		C5D22B9D6600C31DC02CEC59BDA086B0 /* UIColor+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 483EE87DC25995F1008C6C8BD39100B6 /* UIColor+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C61ED2CF225C6D9872D34F5455C945D4 /* NSArray+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 40FB4B9438BB2C76E9A98A5414A47718 /* NSArray+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C67E03EC22D124DE998695EF86B99E25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A5B2617A7166468E55C721EA33493 /* UIKit.framework */; };
+		C7C9CD529976AACD2C42B0EF2FB88D8F /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 548B38EE91236858CC3D1D165BF08113 /* SwiftyJSON-dummy.m */; };
+		C84DFC79CACF46C6275670861ADBA6D4 /* UINavigationController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 54F4694AD5623F7CA8CF7397AE7C5C9F /* UINavigationController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC51E5C010ABC87B9CAAA1CB721A6A94 /* UIColor+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = A61F72489D8C4E279ECCFE68790D91F7 /* UIColor+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D140AE94F6E42075FEC37162DD5F36D9 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 7041B4107B7A9BE7F43309DB3D715103 /* FAKFontAwesome.m */; };
+		D5AAD857809AA9EA2268561729EF7492 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0EFB271CA6B024D84E875861117378 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8B25CA4E48EEE4831E896F4077A6D3A /* FontAwesomeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D79844FED76EECB3E96907AEC41E525 /* FontAwesomeKit-dummy.m */; };
+		D8CBB295F72802B913B30D7AF4CB13ED /* PDTSimpleCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636C3DD43D3118F14A82327197313379 /* PDTSimpleCalendarViewController.m */; };
+		DBD220F2A48C1644E5E1ACF39E20350B /* FAKZocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 274521CEBC85051C23203D8902F23761 /* FAKZocial.m */; };
+		DDD470435EE37EBA46CD0FF081559295 /* ChameleonFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F79674D8476BE0267B1271ADCDA2EC /* ChameleonFramework-dummy.m */; };
+		DFBB9FA86B4F26AF435900587A9B09CD /* PDTSimpleCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BBAB7095B4294F8B48B8591D5DBE4543 /* PDTSimpleCalendarViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFDAB04F787BC7FB9EA75BDB0E773937 /* FAKFontAwesome.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C68B4065D1556F2BE59783EF796F75C /* FAKFontAwesome.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E04963F0C6D76377186361A0AF79A4C6 /* Chameleon_.h in Headers */ = {isa = PBXBuildFile; fileRef = 7220EA51C4CF3721B415D7C80BBD23F7 /* Chameleon_.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E53E2CD0E939A133E73880E7B3BB4DBF /* ChameleonEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = EC436210598DBE0B8101A089DC5DF366 /* ChameleonEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED545537CDC6C83EBA629FE6524D550A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0AB3C85FA5E9164DD219A4ABB70A8 /* CoreGraphics.framework */; };
+		F31EDCED1A28DD7D186F4552A0E5B9C4 /* INTULocationManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7883DC9BE5A62CB948F579F4724B5B /* INTULocationManager-dummy.m */; };
+		F32D7BD1DA58639964C91FA86A002AB4 /* UIView+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDBBA0B62CEAD4531E61790EFBDEACF /* UIView+ChameleonPrivate.m */; };
+		F41CB5FFBB71B707F5CE8F5C23F3F895 /* FAKIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = 443D13D959F2F300E8AD262E8372AB31 /* FAKIcon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F42C0219054AC4DA5FDFE87117FC3A60 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5CC9B27F3CF472FE72A905E8C2D7A9D /* Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8607D1CE12E8BD5D844F29DD20A9C6 /* Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F85099F6E9B7DB837BAB856EB61A6F07 /* UIAppearance+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 34ED27C14A4484460B21FC5DD9F77445 /* UIAppearance+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA90B7D6EBE7A289796856FF2B310FC0 /* ChameleonFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 35C32C21DA14DC677CE17F728B810F1A /* ChameleonFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21F1C2CBD689E7D2AEDEB8414A780056 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E004CDD81299D7F12D840E6C31834CD8;
+			remoteInfo = SwiftyJSON;
+		};
+		48EEBC8F0286245606199BE1FF565E89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77AB16E71967928775ACD2706514E867;
+			remoteInfo = PDTSimpleCalendar;
+		};
+		8CFE2971EC0E83613AF2C099FFCB2E9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0FE1CF55DD4F78BEE237C1243C98367;
+			remoteInfo = INTULocationManager;
+		};
+		CBA22C79BB53983CCAE817ED908C56C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BE9D4B6FF6D92923152CB0534F2BB94;
+			remoteInfo = FontAwesomeKit;
+		};
+		E0ADD22F229896490356CFE5F392C8A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B57F4EE4746045CEAE2D933A3C8EC9E;
+			remoteInfo = ChameleonFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02530D54FF0A430A78F136674DB55A5F /* PDTSimpleCalendarViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewCell.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.m; sourceTree = "<group>"; };
+		047252555F31CA1D7B84C61BEAB01FB2 /* PDTSimpleCalendarViewWeekdayHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewWeekdayHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.h; sourceTree = "<group>"; };
+		05F79674D8476BE0267B1271ADCDA2EC /* ChameleonFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChameleonFramework-dummy.m"; sourceTree = "<group>"; };
+		0CDE47871E93001B7EC9ACF96BD6E13D /* UINavigationController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Chameleon.m"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.m"; sourceTree = "<group>"; };
+		0CF18C44343300A965A73FDF911F6FBB /* FontAwesomeKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FontAwesomeKit.h; path = FontAwesomeKit/FontAwesomeKit.h; sourceTree = "<group>"; };
+		1354FB1F09B308E7B1728993A0CD818E /* INTULocationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INTULocationManager.m; path = LocationManager/INTULocationManager/INTULocationManager.m; sourceTree = "<group>"; };
+		13747BCE6AEE79E858E8F2C397E27499 /* INTULocationRequestDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INTULocationRequestDefines.h; path = LocationManager/INTULocationManager/INTULocationRequestDefines.h; sourceTree = "<group>"; };
+		19E07F62B206745DA28B59A29BCAA1C4 /* UILabel+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Chameleon.m"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.m"; sourceTree = "<group>"; };
+		1ACAACE277E638F8F4FBA64F601DBC71 /* FontAwesomeKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FontAwesomeKit.modulemap; sourceTree = "<group>"; };
+		1F8607D1CE12E8BD5D844F29DD20A9C6 /* Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon.h; path = "Pod/Classes/Objective-C/Chameleon.h"; sourceTree = "<group>"; };
+		23BA587C2231150275C177EECC1180C3 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		26C62BDE5F655A4F8EA91F8800F710E6 /* FAKFoundationIcons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKFoundationIcons.h; path = FontAwesomeKit/FAKFoundationIcons.h; sourceTree = "<group>"; };
+		26FF577154D39FFDAE62788DF7819982 /* Chameleon_.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Chameleon_.m; path = "Pod/Classes/Objective-C/Chameleon_.m"; sourceTree = "<group>"; };
+		274521CEBC85051C23203D8902F23761 /* FAKZocial.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKZocial.m; path = FontAwesomeKit/FAKZocial.m; sourceTree = "<group>"; };
+		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
+		2C68B4065D1556F2BE59783EF796F75C /* FAKFontAwesome.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKFontAwesome.h; path = FontAwesomeKit/FAKFontAwesome.h; sourceTree = "<group>"; };
+		2D5F8B78A35AE5DC154BD5AA4A983EBF /* UIAppearance+Swift.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAppearance+Swift.m"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.m"; sourceTree = "<group>"; };
+		2EB36844A24B08BDC073FEBE79F26E30 /* ChameleonFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-prefix.pch"; sourceTree = "<group>"; };
+		3129CAC7C8AA8DEED58CF57D71BBD6CA /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		34ED27C14A4484460B21FC5DD9F77445 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAppearance+Swift.h"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.h"; sourceTree = "<group>"; };
+		356FE535032DF9C2C49A2C7D21FFE08C /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
+		35C32C21DA14DC677CE17F728B810F1A /* ChameleonFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-umbrella.h"; sourceTree = "<group>"; };
+		36E01A35F333FAA045E306FDEDC880FF /* FontAwesomeKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeKit-umbrella.h"; sourceTree = "<group>"; };
+		37A73F57D92F9A5B0B42A2C1A8E57B3B /* UILabel+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+Chameleon.h"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.h"; sourceTree = "<group>"; };
+		3D79844FED76EECB3E96907AEC41E525 /* FontAwesomeKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesomeKit-dummy.m"; sourceTree = "<group>"; };
+		404011242FFE5A6E9E8F2BF216E9B324 /* PDTSimpleCalendarViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewFlowLayout.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.h; sourceTree = "<group>"; };
+		40DF5DD3AB7481D78003313EFEBBC146 /* ChameleonFramework.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChameleonFramework.xcconfig; sourceTree = "<group>"; };
+		40FB4B9438BB2C76E9A98A5414A47718 /* NSArray+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Chameleon.h"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.h"; sourceTree = "<group>"; };
+		443D13D959F2F300E8AD262E8372AB31 /* FAKIcon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKIcon.h; path = FontAwesomeKit/FAKIcon.h; sourceTree = "<group>"; };
+		483EE87DC25995F1008C6C8BD39100B6 /* UIColor+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+Chameleon.h"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.h"; sourceTree = "<group>"; };
+		492963E68CE2658E72B87D1D7E0715FA /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Chameleon.m"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		49DBA40D193304986AC392598B1EA5A5 /* INTULocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INTULocationManager.h; path = LocationManager/INTULocationManager/INTULocationManager.h; sourceTree = "<group>"; };
+		506A5B2617A7166468E55C721EA33493 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		52F32C95237C65614877B087939B6BB0 /* PDTSimpleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDTSimpleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		548541CB4F8E88B2DFFA4F57ED0F824C /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		548B38EE91236858CC3D1D165BF08113 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		54F4694AD5623F7CA8CF7397AE7C5C9F /* UINavigationController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Chameleon.h"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.h"; sourceTree = "<group>"; };
+		5538B68EDBF800666891B10625C0F6CE /* FontAwesomeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FontAwesomeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5717BB1C3C2DC23F78CC86275A1441B3 /* PDTSimpleCalendarViewWeekdayHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewWeekdayHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.m; sourceTree = "<group>"; };
+		614C7C84FE16274924573114DD4092AF /* FAKIonIcons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKIonIcons.h; path = FontAwesomeKit/FAKIonIcons.h; sourceTree = "<group>"; };
+		636C3DD43D3118F14A82327197313379 /* PDTSimpleCalendarViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewController.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.m; sourceTree = "<group>"; };
+		651EBBC60999A4D3FEFEE6946DD4CAE2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6843D4DA2497218CCC81D2A3F8C40623 /* INTULocationManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = INTULocationManager.modulemap; sourceTree = "<group>"; };
+		6E1017072D2B3E4082B9AC4C111D8E27 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		6F40C06679112982A4D2F4F0CD871C09 /* PDTSimpleCalendarViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewCell.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.h; sourceTree = "<group>"; };
+		7041B4107B7A9BE7F43309DB3D715103 /* FAKFontAwesome.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKFontAwesome.m; path = FontAwesomeKit/FAKFontAwesome.m; sourceTree = "<group>"; };
+		714683460A8BDE10F9710044BA18EFF6 /* NSArray+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Chameleon.m"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.m"; sourceTree = "<group>"; };
+		715B256ECABA069C6C307DF341C29732 /* UIButton+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Chameleon.m"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.m"; sourceTree = "<group>"; };
+		7220EA51C4CF3721B415D7C80BBD23F7 /* Chameleon_.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon_.h; path = "Pod/Classes/Objective-C/Chameleon_.h"; sourceTree = "<group>"; };
+		744A337BBFF329569EE9C3E6144FA628 /* INTULocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = INTULocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
+		7D7883DC9BE5A62CB948F579F4724B5B /* INTULocationManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "INTULocationManager-dummy.m"; sourceTree = "<group>"; };
+		7DF541A074B1F1CBDF8C0434AB638307 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EE0658C0D8280C77E75A2E411BCAC35 /* UIButton+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+Chameleon.h"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.h"; sourceTree = "<group>"; };
+		8086B584B26A0559AC7A4ADF8975058D /* UIImage+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		80DEBB8063ADADF1B0F02BB70436AAC4 /* PDTSimpleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-prefix.pch"; sourceTree = "<group>"; };
+		8222D21A3D3362BA120534F99EEF00B2 /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Chameleon.h"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.h"; sourceTree = "<group>"; };
+		85DF19A81A21FC31E624AD01E1E672C8 /* FontAwesome.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = FontAwesome.otf; path = FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
+		87415D56D6F8B144F56E40C1A0FB2B96 /* INTULocationManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager-prefix.pch"; sourceTree = "<group>"; };
+		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		8CD588CD57F458A2FAF21C0C6F115630 /* FontAwesomeKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeKit-prefix.pch"; sourceTree = "<group>"; };
+		8E43F37A3F5A407B042E6F429B492A9D /* PDTSimpleCalendarViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewFlowLayout.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.m; sourceTree = "<group>"; };
+		8FB12D12CA5D6787BEC1BD8022B392B6 /* ionicons.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = ionicons.ttf; path = FontAwesomeKit/ionicons.ttf; sourceTree = "<group>"; };
+		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		9816D69DB2A460E306B2CEC3D6BA9F37 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		984C3302B0A320E73E7165D7020387DA /* PDTSimpleCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendar.h; path = PDTSimpleCalendar/PDTSimpleCalendar.h; sourceTree = "<group>"; };
+		9A0EFB271CA6B024D84E875861117378 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		A2E7D0B748DF2BCEDC4107A8CCF8ED08 /* FAKIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKIcon.m; path = FontAwesomeKit/FAKIcon.m; sourceTree = "<group>"; };
+		A61F72489D8C4E279ECCFE68790D91F7 /* UIColor+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		A6B3C314BA418871B2BF868DDF786A2F /* PDTSimpleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PDTSimpleCalendar.modulemap; sourceTree = "<group>"; };
+		A7E0D868C4DD25F758072C2E570FD438 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA25D804662EFD5F17A18386425EF305 /* FAKFoundationIcons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKFoundationIcons.m; path = FontAwesomeKit/FAKFoundationIcons.m; sourceTree = "<group>"; };
+		ABDBBA0B62CEAD4531E61790EFBDEACF /* UIView+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		B02C096194CA75183CE0923AD360B23D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B386B0CA691B46C6784FA26EE8BFED21 /* ChameleonConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonConstants.h; path = "Pod/Classes/Objective-C/ChameleonConstants.h"; sourceTree = "<group>"; };
+		B4EDDB7A2264FB76893F19D774284A74 /* PDTSimpleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PDTSimpleCalendar.xcconfig; sourceTree = "<group>"; };
+		B75D2D7DAC828351A443F49ECAA38FE5 /* UIImage+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BBAB7095B4294F8B48B8591D5DBE4543 /* PDTSimpleCalendarViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewController.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.h; sourceTree = "<group>"; };
+		BE2ABB0588DB3A5EBB4417432E00B229 /* INTULocationManager+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "INTULocationManager+Internal.h"; path = "LocationManager/INTULocationManager/INTULocationManager+Internal.h"; sourceTree = "<group>"; };
+		C2C0AB3C85FA5E9164DD219A4ABB70A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		C5C8C67A3BC3198341A86F5DA5DA679C /* FAKIonIcons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKIonIcons.m; path = FontAwesomeKit/FAKIonIcons.m; sourceTree = "<group>"; };
+		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		CD4793F617E60678D50F3B4FC3F65545 /* PDTSimpleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-umbrella.h"; sourceTree = "<group>"; };
+		CE4F31A011340596AEAB33481FE272D0 /* PDTSimpleCalendarViewHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.h; sourceTree = "<group>"; };
+		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D09295B7345F9435B54EB7E06FC7689F /* FAKZocial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKZocial.h; path = FontAwesomeKit/FAKZocial.h; sourceTree = "<group>"; };
+		D24DFAA14B2151751E08AE41DC8B49EE /* ChameleonConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ChameleonConstants.m; path = "Pod/Classes/Objective-C/ChameleonConstants.m"; sourceTree = "<group>"; };
+		D4A854D5B0032CDE1DB039EDD218636B /* INTULocationManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager-umbrella.h"; sourceTree = "<group>"; };
+		D9103F7AAD4B573911BAE036A8297874 /* PDTSimpleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PDTSimpleCalendar-dummy.m"; sourceTree = "<group>"; };
+		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		DA6B65341F0DA8658F373DAA68D4D61C /* INTULocationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INTULocationRequest.m; path = LocationManager/INTULocationManager/INTULocationRequest.m; sourceTree = "<group>"; };
+		DB4F7E120C01E036DDACEF3D7AE72CDD /* ChameleonMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonMacros.h; path = "Pod/Classes/Objective-C/ChameleonMacros.h"; sourceTree = "<group>"; };
+		DE44D6F61DA7F3E7E4B04BDFDC851F7F /* UIColor+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Chameleon.m"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.m"; sourceTree = "<group>"; };
+		E193DF697BB9C438F126C90FE025F7B1 /* INTULocationManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = INTULocationManager.xcconfig; sourceTree = "<group>"; };
+		E385189948B6ECF9A7663A9366D18FDE /* foundation-icons.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
+		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
+		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9569600DFE9BC00EBD158496AD08DA3 /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC436210598DBE0B8101A089DC5DF366 /* ChameleonEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonEnums.h; path = "Pod/Classes/Objective-C/ChameleonEnums.h"; sourceTree = "<group>"; };
+		EDDA2093D531EB29C5FB0DE2C1BBF584 /* FontAwesomeKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesomeKit.xcconfig; sourceTree = "<group>"; };
+		EE0D467DAB348EB9CF19715AACF14AAD /* ChameleonFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ChameleonFramework.modulemap; sourceTree = "<group>"; };
+		F04F7726A899478B9D5B08C5F970115A /* UIColor+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		F2D7808A14147A291293532F21E1AD8B /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		F30015094BCD70BEF38C06C956A67DC1 /* UIView+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		F42ABE50E1C7DFA206EF04A3C9D13643 /* PDTSimpleCalendarViewHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.m; sourceTree = "<group>"; };
+		F828E3BD9A2C82C597BABF5814585A93 /* INTULocationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INTULocationRequest.h; path = LocationManager/INTULocationManager/INTULocationRequest.h; sourceTree = "<group>"; };
+		F9F81E8DFC2A3B3D39023F9D20076AAD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		FA210FDD2B18A04613E07D64F1D38870 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBDCDC8219668A958122180B9FC509EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A334CB54D912E74D09D1BE01BED724B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B2021C94A1E8DE397BA9072FC73C77D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20C0EC90C4DD9E9EF185CFA388C96084 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20505126E2C0BF354BDFC804D0C88AB2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C9550AB6D56A7830662A6D8B0C8B3DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD0425F55B4A01C3D49172049D1BF7A6 /* CoreText.framework in Frameworks */,
+				5DDE404634EFC3EC47C2A0465E75558A /* Foundation.framework in Frameworks */,
+				69FF0CFBCBC82DC80D6135D76A845AD8 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D0E661242C853E94F4299270086801D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED545537CDC6C83EBA629FE6524D550A /* CoreGraphics.framework in Frameworks */,
+				42B81612C22744B21A3AC57DC36F7DD3 /* Foundation.framework in Frameworks */,
+				2139B6A9B4241F53BB478C43D51921CC /* QuartzCore.framework in Frameworks */,
+				C67E03EC22D124DE998695EF86B99E25 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6EAF8EF38F5C0DDD0E3F8314C472E82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BE6DDB084A2D3467B7DCFA8EB004583 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F847666C931B7CD24B0E419C94204AF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44F8A74A03C14125EAFD788C490FD4A2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E4AE2A07D35F8121541F0B8B6FD037A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7E0D868C4DD25F758072C2E570FD438 /* Info.plist */,
+				6E1017072D2B3E4082B9AC4C111D8E27 /* SwiftyJSON.modulemap */,
+				23BA587C2231150275C177EECC1180C3 /* SwiftyJSON.xcconfig */,
+				548B38EE91236858CC3D1D165BF08113 /* SwiftyJSON-dummy.m */,
+				F2D7808A14147A291293532F21E1AD8B /* SwiftyJSON-prefix.pch */,
+				9A0EFB271CA6B024D84E875861117378 /* SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
+			sourceTree = "<group>";
+		};
+		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67ACCD40386E4BF5A9E17B8DA0AF47A4 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4608EDF1450F707138F0F32560EB3632 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				3129CAC7C8AA8DEED58CF57D71BBD6CA /* SwiftyJSON.swift */,
+				0E4AE2A07D35F8121541F0B8B6FD037A /* Support Files */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		4D839AB839DBE680CAB13A46727D0790 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				1F8607D1CE12E8BD5D844F29DD20A9C6 /* Chameleon.h */,
+				7220EA51C4CF3721B415D7C80BBD23F7 /* Chameleon_.h */,
+				26FF577154D39FFDAE62788DF7819982 /* Chameleon_.m */,
+				B386B0CA691B46C6784FA26EE8BFED21 /* ChameleonConstants.h */,
+				D24DFAA14B2151751E08AE41DC8B49EE /* ChameleonConstants.m */,
+				EC436210598DBE0B8101A089DC5DF366 /* ChameleonEnums.h */,
+				DB4F7E120C01E036DDACEF3D7AE72CDD /* ChameleonMacros.h */,
+				40FB4B9438BB2C76E9A98A5414A47718 /* NSArray+Chameleon.h */,
+				714683460A8BDE10F9710044BA18EFF6 /* NSArray+Chameleon.m */,
+				34ED27C14A4484460B21FC5DD9F77445 /* UIAppearance+Swift.h */,
+				2D5F8B78A35AE5DC154BD5AA4A983EBF /* UIAppearance+Swift.m */,
+				7EE0658C0D8280C77E75A2E411BCAC35 /* UIButton+Chameleon.h */,
+				715B256ECABA069C6C307DF341C29732 /* UIButton+Chameleon.m */,
+				483EE87DC25995F1008C6C8BD39100B6 /* UIColor+Chameleon.h */,
+				DE44D6F61DA7F3E7E4B04BDFDC851F7F /* UIColor+Chameleon.m */,
+				A61F72489D8C4E279ECCFE68790D91F7 /* UIColor+ChameleonPrivate.h */,
+				F04F7726A899478B9D5B08C5F970115A /* UIColor+ChameleonPrivate.m */,
+				8086B584B26A0559AC7A4ADF8975058D /* UIImage+ChameleonPrivate.h */,
+				B75D2D7DAC828351A443F49ECAA38FE5 /* UIImage+ChameleonPrivate.m */,
+				37A73F57D92F9A5B0B42A2C1A8E57B3B /* UILabel+Chameleon.h */,
+				19E07F62B206745DA28B59A29BCAA1C4 /* UILabel+Chameleon.m */,
+				54F4694AD5623F7CA8CF7397AE7C5C9F /* UINavigationController+Chameleon.h */,
+				0CDE47871E93001B7EC9ACF96BD6E13D /* UINavigationController+Chameleon.m */,
+				F30015094BCD70BEF38C06C956A67DC1 /* UIView+ChameleonPrivate.h */,
+				ABDBBA0B62CEAD4531E61790EFBDEACF /* UIView+ChameleonPrivate.m */,
+				8222D21A3D3362BA120534F99EEF00B2 /* UIViewController+Chameleon.h */,
+				492963E68CE2658E72B87D1D7E0715FA /* UIViewController+Chameleon.m */,
+			);
+			name = Default;
+			sourceTree = "<group>";
+		};
+		5DCEA146EC5D34116E2F70E7D1CD53E7 /* Zocial */ = {
+			isa = PBXGroup;
+			children = (
+				D09295B7345F9435B54EB7E06FC7689F /* FAKZocial.h */,
+				274521CEBC85051C23203D8902F23761 /* FAKZocial.m */,
+				BB5515841E36014EB729FE745E36B8E3 /* Resources */,
+			);
+			name = Zocial;
+			sourceTree = "<group>";
+		};
+		615B13299D3ECD9B8DEEC1E9487400AE /* FoundationIcons */ = {
+			isa = PBXGroup;
+			children = (
+				26C62BDE5F655A4F8EA91F8800F710E6 /* FAKFoundationIcons.h */,
+				AA25D804662EFD5F17A18386425EF305 /* FAKFoundationIcons.m */,
+				9E040FC2233618C03306FB5FDF0C1990 /* Resources */,
+			);
+			name = FoundationIcons;
+			sourceTree = "<group>";
+		};
+		67ACCD40386E4BF5A9E17B8DA0AF47A4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C2C0AB3C85FA5E9164DD219A4ABB70A8 /* CoreGraphics.framework */,
+				F9F81E8DFC2A3B3D39023F9D20076AAD /* CoreText.framework */,
+				D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */,
+				FBDCDC8219668A958122180B9FC509EB /* QuartzCore.framework */,
+				506A5B2617A7166468E55C721EA33493 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		6FF49860B9E8A26565AADDE2BEA6D7F8 /* PDTSimpleCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				984C3302B0A320E73E7165D7020387DA /* PDTSimpleCalendar.h */,
+				6F40C06679112982A4D2F4F0CD871C09 /* PDTSimpleCalendarViewCell.h */,
+				02530D54FF0A430A78F136674DB55A5F /* PDTSimpleCalendarViewCell.m */,
+				BBAB7095B4294F8B48B8591D5DBE4543 /* PDTSimpleCalendarViewController.h */,
+				636C3DD43D3118F14A82327197313379 /* PDTSimpleCalendarViewController.m */,
+				404011242FFE5A6E9E8F2BF216E9B324 /* PDTSimpleCalendarViewFlowLayout.h */,
+				8E43F37A3F5A407B042E6F429B492A9D /* PDTSimpleCalendarViewFlowLayout.m */,
+				CE4F31A011340596AEAB33481FE272D0 /* PDTSimpleCalendarViewHeader.h */,
+				F42ABE50E1C7DFA206EF04A3C9D13643 /* PDTSimpleCalendarViewHeader.m */,
+				047252555F31CA1D7B84C61BEAB01FB2 /* PDTSimpleCalendarViewWeekdayHeader.h */,
+				5717BB1C3C2DC23F78CC86275A1441B3 /* PDTSimpleCalendarViewWeekdayHeader.m */,
+				EC324B085D767B4DA59EBC80767480EC /* Support Files */,
+			);
+			path = PDTSimpleCalendar;
+			sourceTree = "<group>";
+		};
+		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */,
+				79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */,
+				D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */,
+				87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */,
+				894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */,
+				E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */,
+				CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */,
+				2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */,
+				977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */,
+				DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
+				E79628BDA02164BB07580E5258E68F34 /* Pods */,
+				85D849E969CB744093EADFB2C95C0A61 /* Products */,
+				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		85D849E969CB744093EADFB2C95C0A61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9569600DFE9BC00EBD158496AD08DA3 /* ChameleonFramework.framework */,
+				5538B68EDBF800666891B10625C0F6CE /* FontAwesomeKit.framework */,
+				744A337BBFF329569EE9C3E6144FA628 /* INTULocationManager.framework */,
+				52F32C95237C65614877B087939B6BB0 /* PDTSimpleCalendar.framework */,
+				7DF541A074B1F1CBDF8C0434AB638307 /* Pods.framework */,
+				548541CB4F8E88B2DFFA4F57ED0F824C /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8917BD7A08B36B694FC12D0467CF0F6D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				443D13D959F2F300E8AD262E8372AB31 /* FAKIcon.h */,
+				A2E7D0B748DF2BCEDC4107A8CCF8ED08 /* FAKIcon.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		8E762603BE310AC8479E29B0977D35A1 /* IonIcons */ = {
+			isa = PBXGroup;
+			children = (
+				614C7C84FE16274924573114DD4092AF /* FAKIonIcons.h */,
+				C5C8C67A3BC3198341A86F5DA5DA679C /* FAKIonIcons.m */,
+				B6A3DD907306954ACC9BDA83CC09CA9F /* Resources */,
+			);
+			name = IonIcons;
+			sourceTree = "<group>";
+		};
+		8FF8EEFE6BF6152DB9331AA2489DC488 /* INTULocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				49DBA40D193304986AC392598B1EA5A5 /* INTULocationManager.h */,
+				1354FB1F09B308E7B1728993A0CD818E /* INTULocationManager.m */,
+				BE2ABB0588DB3A5EBB4417432E00B229 /* INTULocationManager+Internal.h */,
+				F828E3BD9A2C82C597BABF5814585A93 /* INTULocationRequest.h */,
+				DA6B65341F0DA8658F373DAA68D4D61C /* INTULocationRequest.m */,
+				13747BCE6AEE79E858E8F2C397E27499 /* INTULocationRequestDefines.h */,
+				C33CE61BB228EA1CDF906FD076C8A7BB /* Support Files */,
+			);
+			path = INTULocationManager;
+			sourceTree = "<group>";
+		};
+		967846D769FF38E21EF362AF49808F5C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				85DF19A81A21FC31E624AD01E1E672C8 /* FontAwesome.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9E040FC2233618C03306FB5FDF0C1990 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E385189948B6ECF9A7663A9366D18FDE /* foundation-icons.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B6252F34DA9C0B4131B91D740FC21C0E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1ACAACE277E638F8F4FBA64F601DBC71 /* FontAwesomeKit.modulemap */,
+				EDDA2093D531EB29C5FB0DE2C1BBF584 /* FontAwesomeKit.xcconfig */,
+				3D79844FED76EECB3E96907AEC41E525 /* FontAwesomeKit-dummy.m */,
+				8CD588CD57F458A2FAF21C0C6F115630 /* FontAwesomeKit-prefix.pch */,
+				36E01A35F333FAA045E306FDEDC880FF /* FontAwesomeKit-umbrella.h */,
+				FA210FDD2B18A04613E07D64F1D38870 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FontAwesomeKit";
+			sourceTree = "<group>";
+		};
+		B6A3DD907306954ACC9BDA83CC09CA9F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8FB12D12CA5D6787BEC1BD8022B392B6 /* ionicons.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				75D98FF52E597A11900E131B6C4E1ADA /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BB5515841E36014EB729FE745E36B8E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				356FE535032DF9C2C49A2C7D21FFE08C /* zocial-regular-webfont.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C33CE61BB228EA1CDF906FD076C8A7BB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				651EBBC60999A4D3FEFEE6946DD4CAE2 /* Info.plist */,
+				6843D4DA2497218CCC81D2A3F8C40623 /* INTULocationManager.modulemap */,
+				E193DF697BB9C438F126C90FE025F7B1 /* INTULocationManager.xcconfig */,
+				7D7883DC9BE5A62CB948F579F4724B5B /* INTULocationManager-dummy.m */,
+				87415D56D6F8B144F56E40C1A0FB2B96 /* INTULocationManager-prefix.pch */,
+				D4A854D5B0032CDE1DB039EDD218636B /* INTULocationManager-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/INTULocationManager";
+			sourceTree = "<group>";
+		};
+		C82A44DA80535C97FF676EBB62A918C9 /* ChameleonFramework */ = {
+			isa = PBXGroup;
+			children = (
+				4D839AB839DBE680CAB13A46727D0790 /* Default */,
+				FE0A034438E2C20E07F00A556812A586 /* Support Files */,
+			);
+			path = ChameleonFramework;
+			sourceTree = "<group>";
+		};
+		E79628BDA02164BB07580E5258E68F34 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C82A44DA80535C97FF676EBB62A918C9 /* ChameleonFramework */,
+				FB8FD88D2CF8CC1FE8CAF3A831BCC3D7 /* FontAwesomeKit */,
+				8FF8EEFE6BF6152DB9331AA2489DC488 /* INTULocationManager */,
+				6FF49860B9E8A26565AADDE2BEA6D7F8 /* PDTSimpleCalendar */,
+				4608EDF1450F707138F0F32560EB3632 /* SwiftyJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E9B7A8A4ED52188C0C17EF533D7650F2 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				2C68B4065D1556F2BE59783EF796F75C /* FAKFontAwesome.h */,
+				7041B4107B7A9BE7F43309DB3D715103 /* FAKFontAwesome.m */,
+				967846D769FF38E21EF362AF49808F5C /* Resources */,
+			);
+			name = FontAwesome;
+			sourceTree = "<group>";
+		};
+		EC324B085D767B4DA59EBC80767480EC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B02C096194CA75183CE0923AD360B23D /* Info.plist */,
+				A6B3C314BA418871B2BF868DDF786A2F /* PDTSimpleCalendar.modulemap */,
+				B4EDDB7A2264FB76893F19D774284A74 /* PDTSimpleCalendar.xcconfig */,
+				D9103F7AAD4B573911BAE036A8297874 /* PDTSimpleCalendar-dummy.m */,
+				80DEBB8063ADADF1B0F02BB70436AAC4 /* PDTSimpleCalendar-prefix.pch */,
+				CD4793F617E60678D50F3B4FC3F65545 /* PDTSimpleCalendar-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PDTSimpleCalendar";
+			sourceTree = "<group>";
+		};
+		FB8FD88D2CF8CC1FE8CAF3A831BCC3D7 /* FontAwesomeKit */ = {
+			isa = PBXGroup;
+			children = (
+				0CF18C44343300A965A73FDF911F6FBB /* FontAwesomeKit.h */,
+				8917BD7A08B36B694FC12D0467CF0F6D /* Core */,
+				E9B7A8A4ED52188C0C17EF533D7650F2 /* FontAwesome */,
+				615B13299D3ECD9B8DEEC1E9487400AE /* FoundationIcons */,
+				8E762603BE310AC8479E29B0977D35A1 /* IonIcons */,
+				B6252F34DA9C0B4131B91D740FC21C0E /* Support Files */,
+				5DCEA146EC5D34116E2F70E7D1CD53E7 /* Zocial */,
+			);
+			path = FontAwesomeKit;
+			sourceTree = "<group>";
+		};
+		FE0A034438E2C20E07F00A556812A586 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE0D467DAB348EB9CF19715AACF14AAD /* ChameleonFramework.modulemap */,
+				40DF5DD3AB7481D78003313EFEBBC146 /* ChameleonFramework.xcconfig */,
+				05F79674D8476BE0267B1271ADCDA2EC /* ChameleonFramework-dummy.m */,
+				2EB36844A24B08BDC073FEBE79F26E30 /* ChameleonFramework-prefix.pch */,
+				35C32C21DA14DC677CE17F728B810F1A /* ChameleonFramework-umbrella.h */,
+				9816D69DB2A460E306B2CEC3D6BA9F37 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ChameleonFramework";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		193BD53FEC9AE8E1225754EA29E81662 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03F8D3C0A7C01EF3B6137D0680C0FFA8 /* PDTSimpleCalendar-umbrella.h in Headers */,
+				5AEA2F6273636026297A3A38EE7325A8 /* PDTSimpleCalendar.h in Headers */,
+				854283650126B8707A6A537527271DB2 /* PDTSimpleCalendarViewCell.h in Headers */,
+				DFBB9FA86B4F26AF435900587A9B09CD /* PDTSimpleCalendarViewController.h in Headers */,
+				0B1AC909F43FD2AD6BE051127942C053 /* PDTSimpleCalendarViewFlowLayout.h in Headers */,
+				5BFF83DA99463594922E324F61931692 /* PDTSimpleCalendarViewHeader.h in Headers */,
+				9B9A49ACF3256835B723CBBCD326DE11 /* PDTSimpleCalendarViewWeekdayHeader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		244CC8645A6588E7A3FC533BDB5356CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5AAD857809AA9EA2268561729EF7492 /* SwiftyJSON-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40F639DE65D946A85FEBA9C514E7C1F4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5CC9B27F3CF472FE72A905E8C2D7A9D /* Chameleon.h in Headers */,
+				E04963F0C6D76377186361A0AF79A4C6 /* Chameleon_.h in Headers */,
+				4B181B0AC8894DE05050B3F6718D392C /* ChameleonConstants.h in Headers */,
+				E53E2CD0E939A133E73880E7B3BB4DBF /* ChameleonEnums.h in Headers */,
+				FA90B7D6EBE7A289796856FF2B310FC0 /* ChameleonFramework-umbrella.h in Headers */,
+				41E19345B5C2331DAA02119D782F4E5F /* ChameleonMacros.h in Headers */,
+				C61ED2CF225C6D9872D34F5455C945D4 /* NSArray+Chameleon.h in Headers */,
+				F85099F6E9B7DB837BAB856EB61A6F07 /* UIAppearance+Swift.h in Headers */,
+				3CCCC6F0C10F65283522C54CF1D6E761 /* UIButton+Chameleon.h in Headers */,
+				C5D22B9D6600C31DC02CEC59BDA086B0 /* UIColor+Chameleon.h in Headers */,
+				CC51E5C010ABC87B9CAAA1CB721A6A94 /* UIColor+ChameleonPrivate.h in Headers */,
+				1DE26E57570167EE496080D68F855A01 /* UIImage+ChameleonPrivate.h in Headers */,
+				3132A9EBC1F85B6971B934C88914CD58 /* UILabel+Chameleon.h in Headers */,
+				C84DFC79CACF46C6275670861ADBA6D4 /* UINavigationController+Chameleon.h in Headers */,
+				B3429381360BE9C37D00301284E4B63A /* UIView+ChameleonPrivate.h in Headers */,
+				7EDDB8F47291F592694D7135A10DAFFF /* UIViewController+Chameleon.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0FD4C7BBA6628AECC611B6F02ADC782 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFDAB04F787BC7FB9EA75BDB0E773937 /* FAKFontAwesome.h in Headers */,
+				8FF68AEC20BF30072F4AD866513FE44E /* FAKFoundationIcons.h in Headers */,
+				F41CB5FFBB71B707F5CE8F5C23F3F895 /* FAKIcon.h in Headers */,
+				0308B2902DB5695DBD6AD4564FCBD4F2 /* FAKIonIcons.h in Headers */,
+				A37E4933BC6CB5D541B5AC4521631878 /* FAKZocial.h in Headers */,
+				650E9C1297EAE9A8E153D5F4FD3FFF51 /* FontAwesomeKit-umbrella.h in Headers */,
+				BC96108EBCE6F29BACA0662BC5B15254 /* FontAwesomeKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A69F237BD6986CE847DEDE73EC8BD9A5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63F95195CE74AD49AED3FDFABE016D83 /* INTULocationManager+Internal.h in Headers */,
+				C314ED8A89C5897B3B1C8FECE266E34C /* INTULocationManager-umbrella.h in Headers */,
+				06FC44BB5DBC9FBC6604931B1C97F12F /* INTULocationManager.h in Headers */,
+				5066BB1B9249A0D1A5D5B1C29C3D661E /* INTULocationRequest.h in Headers */,
+				245EA13CF687AD999AFAE54F5E22DE05 /* INTULocationRequestDefines.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDD1EFFD2BFB179D24176B154B4E7395 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F42C0219054AC4DA5FDFE87117FC3A60 /* Pods-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		11864E046D7956ADF2B17F4D740ED81A /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7B7EF15172F3FBFB93CD851FE176BBD /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				C10F4288D8F066859DFEC11092AC6891 /* Sources */,
+				20C0EC90C4DD9E9EF185CFA388C96084 /* Frameworks */,
+				DDD1EFFD2BFB179D24176B154B4E7395 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68DA82670E44FE0334AD2904314BFEB1 /* PBXTargetDependency */,
+				8F547D5DEF71976D544567BEE7CE10B2 /* PBXTargetDependency */,
+				CD5AB612967E1BCDBA6BCA969543819C /* PBXTargetDependency */,
+				0BF0932011CDD7653017EE9A44AF58FE /* PBXTargetDependency */,
+				2D1BB9D8223BEFA90B1DD2B750B08CE2 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 7DF541A074B1F1CBDF8C0434AB638307 /* Pods.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB6295A47A047994DB2288444E240A0E /* Build configuration list for PBXNativeTarget "PDTSimpleCalendar" */;
+			buildPhases = (
+				41150AC80251A01A8C37895E7E43D7AC /* Sources */,
+				F847666C931B7CD24B0E419C94204AF8 /* Frameworks */,
+				193BD53FEC9AE8E1225754EA29E81662 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PDTSimpleCalendar;
+			productName = PDTSimpleCalendar;
+			productReference = 52F32C95237C65614877B087939B6BB0 /* PDTSimpleCalendar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8BE9D4B6FF6D92923152CB0534F2BB94 /* FontAwesomeKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02A213487B2CA59049C1D63AF426CD3E /* Build configuration list for PBXNativeTarget "FontAwesomeKit" */;
+			buildPhases = (
+				7EEECA680190D957E28D25D28D8374BA /* Sources */,
+				3C9550AB6D56A7830662A6D8B0C8B3DC /* Frameworks */,
+				A0FD4C7BBA6628AECC611B6F02ADC782 /* Headers */,
+				2D96547AC8E532341B6E6EC8C83E9257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FontAwesomeKit;
+			productName = FontAwesomeKit;
+			productReference = 5538B68EDBF800666891B10625C0F6CE /* FontAwesomeKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9B57F4EE4746045CEAE2D933A3C8EC9E /* ChameleonFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 085A04470B2B1DFD89B69ED30150E0C0 /* Build configuration list for PBXNativeTarget "ChameleonFramework" */;
+			buildPhases = (
+				89476504D00DCE7D76865152A8267270 /* Sources */,
+				3D0E661242C853E94F4299270086801D /* Frameworks */,
+				40F639DE65D946A85FEBA9C514E7C1F4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChameleonFramework;
+			productName = ChameleonFramework;
+			productReference = E9569600DFE9BC00EBD158496AD08DA3 /* ChameleonFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B0FE1CF55DD4F78BEE237C1243C98367 /* INTULocationManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45DF2E32D10D11B106288E2EBA9DC576 /* Build configuration list for PBXNativeTarget "INTULocationManager" */;
+			buildPhases = (
+				88DB08FCBAA45821517CA0CF12CCFEA6 /* Sources */,
+				0A334CB54D912E74D09D1BE01BED724B /* Frameworks */,
+				A69F237BD6986CE847DEDE73EC8BD9A5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = INTULocationManager;
+			productName = INTULocationManager;
+			productReference = 744A337BBFF329569EE9C3E6144FA628 /* INTULocationManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E004CDD81299D7F12D840E6C31834CD8 /* SwiftyJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 592AA51144110D61866FF1E9869124AB /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildPhases = (
+				DABF96AF2366B387A0EB0BACC7EFDC59 /* Sources */,
+				E6EAF8EF38F5C0DDD0E3F8314C472E82 /* Frameworks */,
+				244CC8645A6588E7A3FC533BDB5356CD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = 548541CB4F8E88B2DFFA4F57ED0F824C /* SwiftyJSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 85D849E969CB744093EADFB2C95C0A61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B57F4EE4746045CEAE2D933A3C8EC9E /* ChameleonFramework */,
+				8BE9D4B6FF6D92923152CB0534F2BB94 /* FontAwesomeKit */,
+				B0FE1CF55DD4F78BEE237C1243C98367 /* INTULocationManager */,
+				77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */,
+				11864E046D7956ADF2B17F4D740ED81A /* Pods */,
+				E004CDD81299D7F12D840E6C31834CD8 /* SwiftyJSON */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D96547AC8E532341B6E6EC8C83E9257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C59A78C9247621B660AE7AAD46E82446 /* FontAwesome.otf in Resources */,
+				60FD66A0C4A398F6DF3E89C15E01EB64 /* foundation-icons.ttf in Resources */,
+				7684852F540BB5B520A48E7FDDD20D8B /* ionicons.ttf in Resources */,
+				337166F44CD41FBD5074A886981DE532 /* zocial-regular-webfont.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41150AC80251A01A8C37895E7E43D7AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5463C51DD3A9FC35667EC1EB7420F6BC /* PDTSimpleCalendar-dummy.m in Sources */,
+				3241DF7F6F8EDD17C8EF4265FCFF3622 /* PDTSimpleCalendarViewCell.m in Sources */,
+				D8CBB295F72802B913B30D7AF4CB13ED /* PDTSimpleCalendarViewController.m in Sources */,
+				237DBD4AA2591207CC798EE5577A36CA /* PDTSimpleCalendarViewFlowLayout.m in Sources */,
+				3EC5B14874C6570500292FB5739E1150 /* PDTSimpleCalendarViewHeader.m in Sources */,
+				1A95D9723C194E02E91E8D943EE9620F /* PDTSimpleCalendarViewWeekdayHeader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EEECA680190D957E28D25D28D8374BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D140AE94F6E42075FEC37162DD5F36D9 /* FAKFontAwesome.m in Sources */,
+				0039EEF8B31575F0A84A492BA8089E7D /* FAKFoundationIcons.m in Sources */,
+				3959AEE0134F0E863AC4DB059BAF0C9F /* FAKIcon.m in Sources */,
+				29DB8AAB20B9088A34901CEC43319146 /* FAKIonIcons.m in Sources */,
+				DBD220F2A48C1644E5E1ACF39E20350B /* FAKZocial.m in Sources */,
+				D8B25CA4E48EEE4831E896F4077A6D3A /* FontAwesomeKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DB08FCBAA45821517CA0CF12CCFEA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F31EDCED1A28DD7D186F4552A0E5B9C4 /* INTULocationManager-dummy.m in Sources */,
+				348D54AEDE56D054CF1FE144C8034127 /* INTULocationManager.m in Sources */,
+				8EE3EC7DD8974BFBEBF75A618EBBFDC3 /* INTULocationRequest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89476504D00DCE7D76865152A8267270 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D1FF907F6AD5186FAF926C0F20083AE /* Chameleon_.m in Sources */,
+				5BF38591007E7E4ADAD878E405949598 /* ChameleonConstants.m in Sources */,
+				DDD470435EE37EBA46CD0FF081559295 /* ChameleonFramework-dummy.m in Sources */,
+				160634C0F5454A32E810DDF5BA9E5985 /* NSArray+Chameleon.m in Sources */,
+				7A8C05065D9F9BA2C218F75AD6B1F798 /* UIAppearance+Swift.m in Sources */,
+				1716FA0939818C49FE4BBE6A658E9834 /* UIButton+Chameleon.m in Sources */,
+				4E53C48294089DC928E3A7BD1C2DE4D7 /* UIColor+Chameleon.m in Sources */,
+				00E3A68D030F24BE47B99D1D1A1720E2 /* UIColor+ChameleonPrivate.m in Sources */,
+				072BEEF7E71F00675E87028A9A668B84 /* UIImage+ChameleonPrivate.m in Sources */,
+				9EEBF7B1602C1C17236C4EA0DD9717E2 /* UILabel+Chameleon.m in Sources */,
+				23795D7EC1AF274A6AFF4233B1E84C4C /* UINavigationController+Chameleon.m in Sources */,
+				F32D7BD1DA58639964C91FA86A002AB4 /* UIView+ChameleonPrivate.m in Sources */,
+				2E2946436612A5B920BE18E09BF80CAF /* UIViewController+Chameleon.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C10F4288D8F066859DFEC11092AC6891 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A96CA13F91E55E7BB73E52BD59CE9D4 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DABF96AF2366B387A0EB0BACC7EFDC59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7C9CD529976AACD2C42B0EF2FB88D8F /* SwiftyJSON-dummy.m in Sources */,
+				A77D6337BFA4737675BD50072B9FB1F1 /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0BF0932011CDD7653017EE9A44AF58FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PDTSimpleCalendar;
+			target = 77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */;
+			targetProxy = 48EEBC8F0286245606199BE1FF565E89 /* PBXContainerItemProxy */;
+		};
+		2D1BB9D8223BEFA90B1DD2B750B08CE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = E004CDD81299D7F12D840E6C31834CD8 /* SwiftyJSON */;
+			targetProxy = 21F1C2CBD689E7D2AEDEB8414A780056 /* PBXContainerItemProxy */;
+		};
+		68DA82670E44FE0334AD2904314BFEB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChameleonFramework;
+			target = 9B57F4EE4746045CEAE2D933A3C8EC9E /* ChameleonFramework */;
+			targetProxy = E0ADD22F229896490356CFE5F392C8A2 /* PBXContainerItemProxy */;
+		};
+		8F547D5DEF71976D544567BEE7CE10B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FontAwesomeKit;
+			target = 8BE9D4B6FF6D92923152CB0534F2BB94 /* FontAwesomeKit */;
+			targetProxy = CBA22C79BB53983CCAE817ED908C56C7 /* PBXContainerItemProxy */;
+		};
+		CD5AB612967E1BCDBA6BCA969543819C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = INTULocationManager;
+			target = B0FE1CF55DD4F78BEE237C1243C98367 /* INTULocationManager */;
+			targetProxy = 8CFE2971EC0E83613AF2C099FFCB2E9E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		14F7DBBBD50886B741D3F2415098D801 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E193DF697BB9C438F126C90FE025F7B1 /* INTULocationManager.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/INTULocationManager/INTULocationManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/INTULocationManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/INTULocationManager/INTULocationManager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = INTULocationManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		22DD3EF2B1FE96DCF5F93D90B4784E34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40DF5DD3AB7481D78003313EFEBBC146 /* ChameleonFramework.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ChameleonFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3931AF2D812FF5DA69F449F736CAB572 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23BA587C2231150275C177EECC1180C3 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3C2252B0FF3154A94E20C5E5492410A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		523163A13B9158E3BA3E546A229B2B73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDDA2093D531EB29C5FB0DE2C1BBF584 /* FontAwesomeKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FontAwesomeKit/FontAwesomeKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FontAwesomeKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FontAwesomeKit/FontAwesomeKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = FontAwesomeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		547C637F02780DE7DA06DF0A0E2B0BA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40DF5DD3AB7481D78003313EFEBBC146 /* ChameleonFramework.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ChameleonFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6DE935FDDFF75DE5BCD03D8C12FE7ABD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23BA587C2231150275C177EECC1180C3 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		98C7C15CA97103B55A4CB63264241C08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9F88C7B2F408D06F0195F5D1C9F9CF8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4EDDB7A2264FB76893F19D774284A74 /* PDTSimpleCalendar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PDTSimpleCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PDTSimpleCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		E43846B588E1892F3093F3B7082B6DFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E641ACC84D92DD5F4B616DCFDB1782EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E193DF697BB9C438F126C90FE025F7B1 /* INTULocationManager.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/INTULocationManager/INTULocationManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/INTULocationManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/INTULocationManager/INTULocationManager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = INTULocationManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E9696D0C2D949AA652F263D42FB6BD2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4EDDB7A2264FB76893F19D774284A74 /* PDTSimpleCalendar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PDTSimpleCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PDTSimpleCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EB40540D18DE5FF9F704D1EF2B1764B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDDA2093D531EB29C5FB0DE2C1BBF584 /* FontAwesomeKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FontAwesomeKit/FontAwesomeKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FontAwesomeKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FontAwesomeKit/FontAwesomeKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = FontAwesomeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02A213487B2CA59049C1D63AF426CD3E /* Build configuration list for PBXNativeTarget "FontAwesomeKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				523163A13B9158E3BA3E546A229B2B73 /* Debug */,
+				EB40540D18DE5FF9F704D1EF2B1764B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		085A04470B2B1DFD89B69ED30150E0C0 /* Build configuration list for PBXNativeTarget "ChameleonFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				547C637F02780DE7DA06DF0A0E2B0BA4 /* Debug */,
+				22DD3EF2B1FE96DCF5F93D90B4784E34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */,
+				E43846B588E1892F3093F3B7082B6DFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45DF2E32D10D11B106288E2EBA9DC576 /* Build configuration list for PBXNativeTarget "INTULocationManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14F7DBBBD50886B741D3F2415098D801 /* Debug */,
+				E641ACC84D92DD5F4B616DCFDB1782EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		592AA51144110D61866FF1E9869124AB /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DE935FDDFF75DE5BCD03D8C12FE7ABD /* Debug */,
+				3931AF2D812FF5DA69F449F736CAB572 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7B7EF15172F3FBFB93CD851FE176BBD /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C2252B0FF3154A94E20C5E5492410A9 /* Debug */,
+				98C7C15CA97103B55A4CB63264241C08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB6295A47A047994DB2288444E240A0E /* Build configuration list for PBXNativeTarget "PDTSimpleCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F88C7B2F408D06F0195F5D1C9F9CF8A /* Debug */,
+				E9696D0C2D949AA652F263D42FB6BD2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

@@ -1,0 +1,38 @@
+PODS:
+  - ChameleonFramework (2.0.6):
+    - ChameleonFramework/Default (= 2.0.6)
+  - ChameleonFramework/Default (2.0.6)
+  - FontAwesomeKit (2.2.0):
+    - FontAwesomeKit/Core (= 2.2.0)
+    - FontAwesomeKit/FontAwesome (= 2.2.0)
+    - FontAwesomeKit/FoundationIcons (= 2.2.0)
+    - FontAwesomeKit/IonIcons (= 2.2.0)
+    - FontAwesomeKit/Zocial (= 2.2.0)
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/FoundationIcons (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/IonIcons (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.2.0):
+    - FontAwesomeKit/Core
+  - INTULocationManager (4.1.1)
+  - PDTSimpleCalendar (0.9.1)
+  - SwiftyJSON (2.3.1)
+
+DEPENDENCIES:
+  - ChameleonFramework
+  - FontAwesomeKit
+  - INTULocationManager
+  - PDTSimpleCalendar
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
+  FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
+  INTULocationManager: 83c7373048d583cda57e25eefb9bb8a3675acf16
+  PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+
+COCOAPODS: 0.39.0
