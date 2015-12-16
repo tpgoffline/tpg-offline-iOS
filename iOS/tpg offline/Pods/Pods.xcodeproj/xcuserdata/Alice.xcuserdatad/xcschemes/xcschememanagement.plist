@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BGTableViewRowActionWithImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,7 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>11864E046D7956ADF2B17F4D740ED81A</key>
+		<key>2A7B8E276C618BAF387EF310A8754AB7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3879BD99EEF80EE64DCCA79D26D44734</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6DEB1257FFCB1CBE0DB9FC1C561CAC06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9387E40D2D596E96A368C2BB32BD8EAD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9B57F4EE4746045CEAE2D933A3C8EC9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B0FE1CF55DD4F78BEE237C1243C98367</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E004CDD81299D7F12D840E6C31834CD8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

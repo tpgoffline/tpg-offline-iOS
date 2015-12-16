@@ -84,16 +84,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/BGTableViewRowActionWithImage.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FontAwesomeKit.framework"
   install_framework "Pods/INTULocationManager.framework"
   install_framework "Pods/PDTSimpleCalendar.framework"
+  install_framework "Pods/SCLAlertView.framework"
   install_framework "Pods/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/BGTableViewRowActionWithImage.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FontAwesomeKit.framework"
   install_framework "Pods/INTULocationManager.framework"
   install_framework "Pods/PDTSimpleCalendar.framework"
+  install_framework "Pods/SCLAlertView.framework"
   install_framework "Pods/SwiftyJSON.framework"
 fi

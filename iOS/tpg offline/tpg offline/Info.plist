@@ -28,11 +28,11 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>tpg offline a besoin de votre localisation pour </string>
+	<string>tpg offline a besoin de votre localisation pour afficher les arrets à proximité.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>tpg offline a besoin de votre localisation pour </string>
+	<string>tpg offline a besoin de votre localisation pour afficher les arrets à proximité.</string>
 	<key>NSLocationWhenInUsageDescription</key>
-	<string>tpg offline a besoin de votre localisation pour </string>
+	<string>tpg offline a besoin de votre localisation pour afficher les arrets à proximité.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

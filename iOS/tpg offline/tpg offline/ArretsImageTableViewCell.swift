@@ -11,6 +11,7 @@ import UIKit
 class ArretsImageTableViewCell: UITableViewCell {
     @IBOutlet weak var labelLogo: UILabel!
     @IBOutlet weak var nomArret: UILabel!
+    @IBOutlet weak var sousTitreArret: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

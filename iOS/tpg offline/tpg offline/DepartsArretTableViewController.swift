@@ -9,9 +9,11 @@
 import UIKit
 import SwiftyJSON
 import FontAwesomeKit
+import BGTableViewRowActionWithImage
+import SCLAlertView
 
 class DepartsArretTableViewController: UITableViewController {
-    var stopCode = ""
+    var arret: Arret!
     var departs:JSON = []
     var listeBackgroundColor = [String:UIColor]()
     var listeColor = [String:UIColor]()
@@ -23,9 +25,9 @@ class DepartsArretTableViewController: UITableViewController {
         self.refreshControl?.tintColor = UIColor.whiteColor()
         self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl!)
-        if let dataDeparts = NSData(contentsOfURL: NSURL(string: "http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode=" + stopCode)!) {
+        if let dataDeparts = NSData(contentsOfURL: NSURL(string: "http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode=" + (arret!.stopCode))!) {
             departs = JSON(data: dataDeparts)
-            title = departs["stop"]["stopName"].string
+            title = arret?.nomComplet
             let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
             let couleurs = JSON(data: dataCouleurs!)
             for var i = 0; i < couleurs["colors"].count; i++ {
@@ -40,20 +42,14 @@ class DepartsArretTableViewController: UITableViewController {
             }))
             presentViewController(alert, animated: true, completion: nil)
         }
-        var arrayFavoris = defaults.valueForKey("arretsFavoris") as! [String:String]?
-        if arrayFavoris != nil {
-            if arrayFavoris![title!] != nil {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
-            }
-            else {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
-            }
+        if ((AppValues.stopCodeFavoris.indexOf(arret.stopCode)) != nil) {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
         }
         else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,76 +69,146 @@ class DepartsArretTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("departArretCell", forIndexPath: indexPath) as! DepartsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("departArretCell", forIndexPath: indexPath)
         
         cell.backgroundColor = listeBackgroundColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
         
-        cell.pictoLigne.text = departs["departures"][indexPath.row]["line"]["lineCode"].string!
-        cell.labelDirection.text = departs["departures"][indexPath.row]["line"]["destinationName"].string
-        
-        cell.pictoLigne.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
-        cell.labelDirection.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
-        cell.labelTempsRestant.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
-        
-        cell.pictoLigne.layer.cornerRadius = cell.pictoLigne.layer.bounds.height / 2
-        cell.pictoLigne.layer.borderColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]?.CGColor
-        cell.pictoLigne.layer.borderWidth = 1
+        let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
+        labelPictoLigne.text = departs["departures"][indexPath.row]["line"]["lineCode"].string!
+        labelPictoLigne.textAlignment = .Center
+        labelPictoLigne.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
+        labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
+        labelPictoLigne.layer.borderColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]?.CGColor
+        labelPictoLigne.layer.borderWidth = 1
+        let image = labelToImage(labelPictoLigne)
+        cell.imageView?.image = image
+        let labelAccesory = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+        labelAccesory.textAlignment = .Right
+        //cell.pictoLigne.text = departs["departures"][indexPath.row]["line"]["lineCode"].string!
+        cell.textLabel!.text = departs["departures"][indexPath.row]["line"]["destinationName"].string
+        cell.detailTextLabel!.text = ""
+        cell.textLabel!.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
+        labelAccesory.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
         
         if (departs["departures"][indexPath.row]["waitingTime"].string == "no more") {
-            cell.labelTempsRestant.text = "Fin"
+            labelAccesory.text = "Fin"
         }
         else if (departs["departures"][indexPath.row]["waitingTime"].string == "&gt;1h") {
-            cell.labelTempsRestant.text = ">1h"
+            labelAccesory.text = ">1h"
         }
         else if (departs["departures"][indexPath.row]["waitingTime"].string == "0") {
             let iconeBus = FAKFontAwesome.busIconWithSize(20)
             iconeBus.addAttribute(NSForegroundColorAttributeName, value: listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!])
-            cell.labelTempsRestant.attributedText = iconeBus.attributedString()
+            labelAccesory.attributedText = iconeBus.attributedString()
         }
         else {
-            cell.labelTempsRestant.text = departs["departures"][indexPath.row]["waitingTime"].string! + "'"
+           labelAccesory.text = departs["departures"][indexPath.row]["waitingTime"].string! + "'"
         }
+        cell.accessoryView = labelAccesory
         
         return cell
     }
     
+    func labelToImage(label: UILabel!) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
+            label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     func toggleFavorite(sender: AnyObject!) {
-        var arrayFavoris = defaults.valueForKey("arretsFavoris") as! [String:String]?
-        if arrayFavoris == nil {
-            let array: [String:String] = [title! : stopCode]
-            defaults.setValue(array, forKey: "arretsFavoris")
+        if AppValues.arretsFavoris.isEmpty {
+            let array: [String:Arret] = [arret.stopCode : arret]
+            AppValues.stopCodeFavoris.append(arret.stopCode)
+            AppValues.arretsFavoris = array
+            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(array)
+            defaults.setObject(encodedData, forKey: "arretsFavoris")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
         }
         else {
-            if arrayFavoris![title!] != nil {
-                arrayFavoris?.removeAtIndex((arrayFavoris?.indexForKey(title!))!)
+            if ((AppValues.stopCodeFavoris.indexOf(arret.stopCode)) != nil) {
+                AppValues.arretsFavoris.removeValueForKey(arret.stopCode)
+                AppValues.stopCodeFavoris.removeAtIndex(AppValues.stopCodeFavoris.indexOf(arret.stopCode)!)
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
             }
             else {
-                arrayFavoris![title!] = stopCode
+                AppValues.arretsFavoris![arret.stopCode] = arret
+                AppValues.stopCodeFavoris.append(arret.stopCode)
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
             }
-            defaults.setValue(arrayFavoris, forKey: "arretsFavoris")
+            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.arretsFavoris!)
+            defaults.setObject(encodedData, forKey: "arretsFavoris")
         }
     }
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     // Return false if you do not want the specified item to be editable.
     return true
     }
-    */
     
-    /*
-    // Override to support editing the table view.
+    
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let timerAction = BGTableViewRowActionWithImage.rowActionWithStyle(UITableViewRowActionStyle.Default, title: "Rappeler", titleColor: UIColor.blackColor(), backgroundColor: UIColor.flatYellowColor(), image: FAKIonIcons.iosTimeOutlineIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), forCellHeight: 44) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            let alertView = SCLAlertView()
+            alertView.addButton("A l'heure du départ", action: { () -> Void in
+                self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 0, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                let okView = SCLAlertView()
+                okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.", closeButtonTitle: "OK", duration: 10)
+            })
+            alertView.addButton("5 min avant le départ", action: { () -> Void in
+                self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 5, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                let okView = SCLAlertView()
+                okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée 5 minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
+            })
+            alertView.addButton("10 min avant le départ", action: { () -> Void in
+                self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 10, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                let okView = SCLAlertView()
+                okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée 10 minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
+            })
+            alertView.addButton("Autre", action: { () -> Void in
+                alertView.hideView()
+                let customValueAlert = SCLAlertView()
+                let txt = customValueAlert.addTextField("Nombres de minutes")
+                txt.keyboardType = .NumberPad
+                customValueAlert.addButton("Rappeler", action: { () -> Void in
+                    self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: Int(txt.text!)!, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                    customValueAlert.hideView()
+                    let okView = SCLAlertView()
+                    okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée \(txt.text!) minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
+                })
+                customValueAlert.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié ?", closeButtonTitle: "Annuler")
+            })
+            alertView.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié ?", closeButtonTitle: "Annuler")
+            tableView.setEditing(false, animated: true)
+        }
+        return [timerAction]
+    }
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
+    
+    func scheduleNotification(hour: String, before: Int, ligne: String, direction: String) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+        let time = dateFormatter.dateFromString(hour)
+        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
+        
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: time!, options: NSCalendarOptions())
+        let reminder = UILocalNotification()
+        reminder.fireDate = date
+        reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va partir dans " + String(before) + " minutes"
+        reminder.alertAction = "OK"
+        reminder.soundName = "sound.aif"
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(reminder)
+        
+        print("Firing at \(now.hour):\(now.minute-before):\(now.second)")
     }
-    */
     
     /*
     // Override to support rearranging the table view.
@@ -174,7 +240,7 @@ class DepartsArretTableViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
-        if let dataDeparts = NSData(contentsOfURL: NSURL(string: "http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode=" + stopCode)!) {
+        if let dataDeparts = NSData(contentsOfURL: NSURL(string: "http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode=" + arret.stopCode)!) {
             departs = JSON(data: dataDeparts)
         }
         else {
