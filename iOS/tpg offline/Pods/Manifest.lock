@@ -18,27 +18,30 @@ PODS:
     - FontAwesomeKit/Core
   - FontAwesomeKit/Zocial (2.2.0):
     - FontAwesomeKit/Core
-  - INTULocationManager (4.1.1)
+  - JVFloatLabeledTextField (1.1.0)
   - PDTSimpleCalendar (0.9.1)
   - SCLAlertView (0.4.3)
+  - SwiftLocation (0.2.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - BGTableViewRowActionWithImage
   - ChameleonFramework
   - FontAwesomeKit
-  - INTULocationManager
+  - JVFloatLabeledTextField
   - PDTSimpleCalendar
   - SCLAlertView
+  - SwiftLocation
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   BGTableViewRowActionWithImage: 4093bc2f297e6f3aed95096c3df94418acef3cdb
   ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
-  INTULocationManager: 83c7373048d583cda57e25eefb9bb8a3675acf16
+  JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
   SCLAlertView: a5c726a80a938fd3127edd7dbc19da33fb936ca3
+  SwiftLocation: ea78ae4a822581bde7379d98c8513273723c8840
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

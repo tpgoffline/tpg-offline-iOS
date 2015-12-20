@@ -10,8 +10,8 @@ import UIKit
 
 struct AppValues {
     static var arrets: [String: Arret]! = [:]
-    static var stopCode: [String]! = []
-    static var nomsCompletsArrets: [String:String]!  = [:] // [stopName : stopCode]
+    static var stopName: [String]! = []
+    static var nomsCompletsArrets: [String:String]!  = [:] // [stopCode : stopName]
     static var arretsFavoris: [String: Arret]!  = [:]
-    static var stopCodeFavoris: [String]!  = []
+    static var nomCompletsFavoris: [String]!  = []
 }

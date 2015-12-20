@@ -1,3 +1,4 @@
+
 //
 //  ArretsTableViewController.swift
 //  tpg offline
@@ -11,7 +12,7 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import CoreLocation
-import INTULocationManager
+import SwiftLocation
 
 class ArretsTableViewController: UITableViewController {
     var arretsLocalisation:JSON = []
@@ -37,7 +38,7 @@ class ArretsTableViewController: UITableViewController {
             let decoded  = defaults.objectForKey("arretsFavoris")
             AppValues.arretsFavoris = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as! [String:Arret]
             for (_, y) in AppValues.arretsFavoris {
-                AppValues.stopCodeFavoris.append(y.stopCode)
+                AppValues.nomCompletsFavoris.append(y.nomComplet)
             }
         }
         /*locationManager.delegate = self
@@ -57,29 +58,42 @@ class ArretsTableViewController: UITableViewController {
         tableView.tableHeaderView = self.searchController.searchBar
         
         // Tab Bar and Navigation Bar
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
         tabBarController!.tabBar.barTintColor = UIColor.flatOrangeColorDark()
         tabBarController!.tabBar.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         tabBarController!.tabBar.items![0].title = "Horaires"
-        let iconeBus = FAKIonIcons.iosClockOutlineIconWithSize(20)
-        iconeBus.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        tabBarController!.tabBar.items![0].image = iconeBus.imageWithSize(CGSize(width: 20, height: 20))
+        let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
+        iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        tabBarController!.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        tabBarController!.tabBar.items![1].title = "Incidents"
+        let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
+        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        tabBarController!.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        tabBarController!.tabBar.items![2].title = "Plans"
+        let iconePlan = FAKFontAwesome.mapIconWithSize(20)
+        iconePlan.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        tabBarController!.tabBar.items![2].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
         if let dataArrets = tpgUrl.getAllStops() {
             let arrets = JSON(data: dataArrets)
             
             for var i = 0; i < arrets["stops"].count; i++ {
-                AppValues.stopCode.append(arrets["stops"][i]["stopCode"].string!)
-                AppValues.nomsCompletsArrets[arrets["stops"][i]["stopName"].string!] = arrets["stops"][i]["stopCode"].string!
-                AppValues.arrets[arrets["stops"][i]["stopCode"].string!] = Arret(
+                AppValues.stopName.append(arrets["stops"][i]["stopName"].string!)
+                AppValues.nomsCompletsArrets[arrets["stops"][i]["stopCode"].string!] = arrets["stops"][i]["stopName"].string!
+                AppValues.arrets[arrets["stops"][i]["stopName"].string!] = Arret(
                     nomComplet: arrets["stops"][i]["stopName"].string!,
                     titre: arrets["stops"][i]["titleName"].string!,
                     sousTitre: arrets["stops"][i]["subTitleName"].string!,
                     stopCode: arrets["stops"][i]["stopCode"].string!
                 )
             }
-            AppValues.stopCode = AppValues.stopCode.sort({ (value1, value2) -> Bool in
+            AppValues.stopName = AppValues.stopName.sort({ (value1, value2) -> Bool in
                 if (value1.lowercaseString < value2.lowercaseString) {
                     return true
                 } else {
@@ -143,22 +157,16 @@ class ArretsTableViewController: UITableViewController {
     }
     
     func requestLocation() {
-        let locMgr = INTULocationManager.sharedInstance()
-        locMgr.requestLocationWithDesiredAccuracy(INTULocationAccuracy.Block, timeout: 20.0) { (location, achievedAccuracy, status) -> Void in
-            if status == INTULocationStatus.Success {
-                let location = location
-                self.locationManager.stopUpdatingLocation()
+        do {
+            try SwiftLocation.shared.currentLocation(Accuracy.Block, timeout: 20, onSuccess: { (location) -> Void in
                 if let dataArretsLocalisation = self.tpgUrl.getStopsbyLocation(location!) {
                     self.arretsLocalisation = JSON(data: dataArretsLocalisation)
                     self.tableView.reloadData()
-                }
-            }
-            else if status == INTULocationStatus.TimedOut {
-                print("TimedOut")
-            }
-            else {
-                print("Error")
-            }
+                }}, onFail: { (error) -> Void in
+                    print("Erreur")
+            })
+        } catch (let error) {
+            print("Error \(error)")
         }
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -168,22 +176,22 @@ class ArretsTableViewController: UITableViewController {
                 let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
                 iconLocation.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[arretsLocalisation["stops"][indexPath.row]["stopCode"].stringValue]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[arretsLocalisation["stops"][indexPath.row]["stopCode"].stringValue]!.sousTitre
+                cell.textLabel?.text = AppValues.arrets[AppValues.nomsCompletsArrets[arretsLocalisation["stops"][indexPath.row]["stopCode"].stringValue]!]!.titre
+                cell.detailTextLabel!.text = AppValues.arrets[AppValues.nomsCompletsArrets[arretsLocalisation["stops"][indexPath.row]["stopCode"].stringValue]!]!.sousTitre
             }
             else if indexPath.section == 1 {
                 let iconFavoris = FAKFontAwesome.starIconWithSize(20)
                 iconFavoris.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.accessoryView = UIImageView(image: iconFavoris.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arretsFavoris[AppValues.stopCodeFavoris[indexPath.row]]?.titre
-                cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.stopCodeFavoris[indexPath.row]]?.sousTitre
+                cell.textLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.titre
+                cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.sousTitre
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[(AppValues.stopCode[indexPath.row])]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[(AppValues.stopCode[indexPath.row])]!.sousTitre
+                cell.textLabel?.text = AppValues.arrets[(AppValues.stopName[indexPath.row])]!.titre
+                cell.detailTextLabel!.text = AppValues.arrets[(AppValues.stopName[indexPath.row])]!.sousTitre
             }
             
             let backgroundView = UIView()
@@ -218,13 +226,13 @@ class ArretsTableViewController: UITableViewController {
             }
             else {
                 if tableView.indexPathForSelectedRow!.section == 0 {
-                    departsArretsViewController.arret = AppValues.arrets[arretsLocalisation["stops"][tableView.indexPathForSelectedRow!.row]["stopCode"].string!]
+                    departsArretsViewController.arret = AppValues.arrets[AppValues.nomsCompletsArrets[arretsLocalisation["stops"][tableView.indexPathForSelectedRow!.row]["stopCode"].stringValue]!]
                 }
                 else if tableView.indexPathForSelectedRow!.section == 1 {
-                    departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.stopCodeFavoris[tableView.indexPathForSelectedRow!.row]]
+                    departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[tableView.indexPathForSelectedRow!.row]]
                 }
                 else {
-                    departsArretsViewController.arret = AppValues.arrets[AppValues.stopCode[(tableView.indexPathForSelectedRow?.row)!]]!
+                    departsArretsViewController.arret = AppValues.arrets[AppValues.stopName[(tableView.indexPathForSelectedRow?.row)!]]!
                 }
             }
         }

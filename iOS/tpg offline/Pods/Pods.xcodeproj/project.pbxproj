@@ -7,301 +7,325 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0039EEF8B31575F0A84A492BA8089E7D /* FAKFoundationIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD3309496F440E27DA712A473A5150 /* FAKFoundationIcons.m */; };
-		00E3A68D030F24BE47B99D1D1A1720E2 /* UIColor+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409755E5EB7706419C1237B2EFFAA8 /* UIColor+ChameleonPrivate.m */; };
-		0308B2902DB5695DBD6AD4564FCBD4F2 /* FAKIonIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = BC8AD9DD564F24F25674A745D5D57AFC /* FAKIonIcons.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		03F8D3C0A7C01EF3B6137D0680C0FFA8 /* PDTSimpleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D34AB131994337091BF848561BA705C3 /* PDTSimpleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06FC44BB5DBC9FBC6604931B1C97F12F /* INTULocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C5BD88E6FAE7BCCFCCAFB7BE8D011705 /* INTULocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		072BEEF7E71F00675E87028A9A668B84 /* UIImage+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CC48A348B75E27F7988AD3B816175 /* UIImage+ChameleonPrivate.m */; };
-		0B1AC909F43FD2AD6BE051127942C053 /* PDTSimpleCalendarViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8975F91CB60F7C0E6638A8BACB916E2E /* PDTSimpleCalendarViewFlowLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		160634C0F5454A32E810DDF5BA9E5985 /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EA35271D774FF94D3EE4FF9CC6CD81 /* NSArray+Chameleon.m */; };
-		1716FA0939818C49FE4BBE6A658E9834 /* UIButton+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C8771CB76583857C2459F237D06246 /* UIButton+Chameleon.m */; };
-		1A95D9723C194E02E91E8D943EE9620F /* PDTSimpleCalendarViewWeekdayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFAC6D517A8DFBC825A4C967CD71E5 /* PDTSimpleCalendarViewWeekdayHeader.m */; };
-		1DE26E57570167EE496080D68F855A01 /* UIImage+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFA3368C1949BDCC61410E7E738AD52 /* UIImage+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2139B6A9B4241F53BB478C43D51921CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBDCDC8219668A958122180B9FC509EB /* QuartzCore.framework */; };
-		2335FA1BEBC4246E674159F840B86492 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
-		23795D7EC1AF274A6AFF4233B1E84C4C /* UINavigationController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49937395C5E8F936DE67254B2D15BC /* UINavigationController+Chameleon.m */; };
-		237DBD4AA2591207CC798EE5577A36CA /* PDTSimpleCalendarViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BAB5C79AEECCF07207A84F3E7100CA /* PDTSimpleCalendarViewFlowLayout.m */; };
-		245EA13CF687AD999AFAE54F5E22DE05 /* INTULocationRequestDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D58E71D7F4A2B6DD1E968FBBA44EAED /* INTULocationRequestDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2896AB8603372B69EA951DDC8EE8B6F8 /* BGTableViewRowActionWithImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC952CDE0ECA94DC14F51AEDE8FF9332 /* BGTableViewRowActionWithImage-dummy.m */; };
-		29DB8AAB20B9088A34901CEC43319146 /* FAKIonIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = A76E24F0373DCE81CFB2BBD844FC8E46 /* FAKIonIcons.m */; };
-		2E2946436612A5B920BE18E09BF80CAF /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = E985E37F879F815691F95FD77AC190D2 /* UIViewController+Chameleon.m */; };
-		3132A9EBC1F85B6971B934C88914CD58 /* UILabel+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C62E5DFA50C7085F3F1053E7E3857C4 /* UILabel+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3241DF7F6F8EDD17C8EF4265FCFF3622 /* PDTSimpleCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 579B069BCABE184213D84C3B1A9409E5 /* PDTSimpleCalendarViewCell.m */; };
-		337166F44CD41FBD5074A886981DE532 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8097A2FB0893F03DD5B34D72ABAB385 /* zocial-regular-webfont.ttf */; };
-		348D54AEDE56D054CF1FE144C8034127 /* INTULocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22BA4529B9D9F1B38122A85393511E /* INTULocationManager.m */; };
-		3959AEE0134F0E863AC4DB059BAF0C9F /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 19395AB59E3F111B960AA2EDBD648DF0 /* FAKIcon.m */; };
-		39DAF532BDA7BE3E8E44341676FA1F30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A5B2617A7166468E55C721EA33493 /* UIKit.framework */; };
-		3CCCC6F0C10F65283522C54CF1D6E761 /* UIButton+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 6141F3CAD39C2591E085647AADE294FD /* UIButton+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3D1FF907F6AD5186FAF926C0F20083AE /* Chameleon_.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F37DEB9214BCEFEE1D3ED0D52325F45 /* Chameleon_.m */; };
-		3EC5B14874C6570500292FB5739E1150 /* PDTSimpleCalendarViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A30336013123D6A00ACCEB8BB57F7FB0 /* PDTSimpleCalendarViewHeader.m */; };
-		41E19345B5C2331DAA02119D782F4E5F /* ChameleonMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C8897D783ADACFC6E524625A6B7024B /* ChameleonMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42B81612C22744B21A3AC57DC36F7DD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		44F8A74A03C14125EAFD788C490FD4A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		4B181B0AC8894DE05050B3F6718D392C /* ChameleonConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 5158B6796BC9EE4A8C2795F1CE2071D4 /* ChameleonConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4E53C48294089DC928E3A7BD1C2DE4D7 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD592287892E2DA43D16775B4B6B22C /* UIColor+Chameleon.m */; };
-		5066BB1B9249A0D1A5D5B1C29C3D661E /* INTULocationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FA6BD8C9F075DEE6D5AA8C921B437C9 /* INTULocationRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		54344728DEB143F4AA726332677C4B4D /* BGTableViewRowActionWithImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3507FDAA91C372F5722F5B1971098780 /* BGTableViewRowActionWithImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5463C51DD3A9FC35667EC1EB7420F6BC /* PDTSimpleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EF346161A05C1C49D9BA55B6DCEE42 /* PDTSimpleCalendar-dummy.m */; };
-		5AEA2F6273636026297A3A38EE7325A8 /* PDTSimpleCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B93D1B1F130858D63A38FCAC92A4E4 /* PDTSimpleCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BE48CCA8CBF0180260D742F2D74BACA /* BGTableViewRowActionWithImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 83CBE46CA8404EEF71A27A84ED8533CE /* BGTableViewRowActionWithImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BF38591007E7E4ADAD878E405949598 /* ChameleonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C6BADE8503DF8081A6CB2038A618CED /* ChameleonConstants.m */; };
-		5BFF83DA99463594922E324F61931692 /* PDTSimpleCalendarViewHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C5E4419D13E9A7DB12DCA579DA96EABC /* PDTSimpleCalendarViewHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5DDE404634EFC3EC47C2A0465E75558A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		60FD66A0C4A398F6DF3E89C15E01EB64 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E5DF7403F13905E9AF7E50A9563E4BA /* foundation-icons.ttf */; };
-		614AE45EA91BB78685744A9E315DBEBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		63F95195CE74AD49AED3FDFABE016D83 /* INTULocationManager+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 91397BCCC63BEDB9EBD74B0FE56FBC3B /* INTULocationManager+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		643F49A4EEFC899E748B7E7C93C57930 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31C1B086CA3FA43AFD06C687AC7650 /* SCLAlertView.swift */; };
-		650E9C1297EAE9A8E153D5F4FD3FFF51 /* FontAwesomeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3538604E652ED65F6152C23C1723590 /* FontAwesomeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		69FF0CFBCBC82DC80D6135D76A845AD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A5B2617A7166468E55C721EA33493 /* UIKit.framework */; };
-		6B2021C94A1E8DE397BA9072FC73C77D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		6E7AA41B3841E22E007A568888D2FEB2 /* SCLAlertView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 877EBEF6E3046DCE7C5FDFA4A710D3DF /* SCLAlertView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7233171FAA0EC2BCE308A4F795340638 /* SCLAlertView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F63FA8BAD336606FFBC6D790C61021 /* SCLAlertView-dummy.m */; };
-		7684852F540BB5B520A48E7FDDD20D8B /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 887AF97FB07AE9AD51839AE8FB0FC061 /* ionicons.ttf */; };
-		7A8C05065D9F9BA2C218F75AD6B1F798 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = 73901E1487934E431ED9F4C945302523 /* UIAppearance+Swift.m */; };
-		7E6B5FBC836AEE1873A1FC62DE4E72C7 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AFF9230AF841D6B332696B828D9C8 /* SwiftyJSON-dummy.m */; };
-		7EDDB8F47291F592694D7135A10DAFFF /* UIViewController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CB52BFDEF1CB300BD61285BA74C0E78 /* UIViewController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		807BB7D33AB5AA32711013D975DB8580 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = D3D60937B5EC5423E9F2B572CFF2CA35 /* Info.plist */; };
-		854283650126B8707A6A537527271DB2 /* PDTSimpleCalendarViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 62446DA9483EC80A2AA725201891BF34 /* PDTSimpleCalendarViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8EE3EC7DD8974BFBEBF75A618EBBFDC3 /* INTULocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 804197D6531A3A92D08290CB78A07B2B /* INTULocationRequest.m */; };
-		8FF68AEC20BF30072F4AD866513FE44E /* FAKFoundationIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E5D882162AA80039FE4C2B86F9EB68 /* FAKFoundationIcons.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9B9A49ACF3256835B723CBBCD326DE11 /* PDTSimpleCalendarViewWeekdayHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9DCA669B2F3C1FEE7F1AAE6AAA24AD /* PDTSimpleCalendarViewWeekdayHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9EEBF7B1602C1C17236C4EA0DD9717E2 /* UILabel+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = B208C44B11CFCF283286660DC94CEE1C /* UILabel+Chameleon.m */; };
-		A182105733DB42B8B048C0D5D96F4B91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		A37E4933BC6CB5D541B5AC4521631878 /* FAKZocial.h in Headers */ = {isa = PBXBuildFile; fileRef = 451183131BDA0A1B9BD99A39CC8C6214 /* FAKZocial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3429381360BE9C37D00301284E4B63A /* UIView+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 48F3ACD4DB2F521198A878ABE64E6FD0 /* UIView+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BAB5BDC184C597AEA4B3BC96841B4650 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F22DC60172083536FF6A96E7420F6AD2 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BC96108EBCE6F29BACA0662BC5B15254 /* FontAwesomeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C1526773CC53549FAACAA844CE63AB96 /* FontAwesomeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BD0425F55B4A01C3D49172049D1BF7A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F81E8DFC2A3B3D39023F9D20076AAD /* CoreText.framework */; };
-		C314ED8A89C5897B3B1C8FECE266E34C /* INTULocationManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8A97957C19E68871D5052564393101 /* INTULocationManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C58A73615BF688802308B3CD5D9AD28B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC10452D271A92209922DAC59888F14 /* SwiftyJSON.swift */; };
-		C59A78C9247621B660AE7AAD46E82446 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6CAE84C39577ADAEACECDC106DC0781A /* FontAwesome.otf */; };
-		C5D22B9D6600C31DC02CEC59BDA086B0 /* UIColor+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 188DB422CFAEBD415EB929A74876C0B5 /* UIColor+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C61ED2CF225C6D9872D34F5455C945D4 /* NSArray+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = D409B100AE1160DA533487B701B68971 /* NSArray+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C67E03EC22D124DE998695EF86B99E25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A5B2617A7166468E55C721EA33493 /* UIKit.framework */; };
-		C84DFC79CACF46C6275670861ADBA6D4 /* UINavigationController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 78BA77DF14311288CFFF5F8E64E897AD /* UINavigationController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC51E5C010ABC87B9CAAA1CB721A6A94 /* UIColor+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E69655DA996ACAA354FC4ED21624694 /* UIColor+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D140AE94F6E42075FEC37162DD5F36D9 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AF97F9A0E1281532B45314B07DAA06 /* FAKFontAwesome.m */; };
-		D541FB12C433FD12634ACF7BFEC6EEEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		D8B25CA4E48EEE4831E896F4077A6D3A /* FontAwesomeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89EAF80DADC7EE09D56B2292327BDA /* FontAwesomeKit-dummy.m */; };
-		D8CBB295F72802B913B30D7AF4CB13ED /* PDTSimpleCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7A513533C4A1EC9ADCF52A65E122B9 /* PDTSimpleCalendarViewController.m */; };
-		DBD220F2A48C1644E5E1ACF39E20350B /* FAKZocial.m in Sources */ = {isa = PBXBuildFile; fileRef = FC445A4AFE13C6965DB6488C2BB043C5 /* FAKZocial.m */; };
-		DDD470435EE37EBA46CD0FF081559295 /* ChameleonFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F7CEB2E975B3C416AFF1736E620901 /* ChameleonFramework-dummy.m */; };
-		DFBB9FA86B4F26AF435900587A9B09CD /* PDTSimpleCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 83E9D0C3D62B1CF75F1016626CA1A2FF /* PDTSimpleCalendarViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DFDAB04F787BC7FB9EA75BDB0E773937 /* FAKFontAwesome.h in Headers */ = {isa = PBXBuildFile; fileRef = A40865E72FC212A5C08662C5565CDDE6 /* FAKFontAwesome.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E04963F0C6D76377186361A0AF79A4C6 /* Chameleon_.h in Headers */ = {isa = PBXBuildFile; fileRef = 4308B9F876BB1BF9355E1CFA36E61EC4 /* Chameleon_.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E33F37FB12E4D910DE732E0CAEFB9201 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */; };
-		E53E2CD0E939A133E73880E7B3BB4DBF /* ChameleonEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = CD0B1BB70DCC10966FA0E27BFE8CE754 /* ChameleonEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBDB2A34B833393C4673D1263CB36B72 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED545537CDC6C83EBA629FE6524D550A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0AB3C85FA5E9164DD219A4ABB70A8 /* CoreGraphics.framework */; };
-		EF12797A01859E4A4DB6C1E3C6B43E1A /* BGTableViewRowActionWithImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DDCD5ACA496D28A2FE34CF41FE1ABC /* BGTableViewRowActionWithImage.m */; };
-		F31EDCED1A28DD7D186F4552A0E5B9C4 /* INTULocationManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E5210BCC89AADEF0BDEEF5F56B8094 /* INTULocationManager-dummy.m */; };
-		F32D7BD1DA58639964C91FA86A002AB4 /* UIView+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C7B6D910752693D98575D7FBFE163 /* UIView+ChameleonPrivate.m */; };
-		F41CB5FFBB71B707F5CE8F5C23F3F895 /* FAKIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = B08EDA1D51C2903D41EDA10B161025E6 /* FAKIcon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F5CC9B27F3CF472FE72A905E8C2D7A9D /* Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AFD3D21413ACF04DEAB70B5A645B981 /* Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F85099F6E9B7DB837BAB856EB61A6F07 /* UIAppearance+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 327EC7282C00A6AE9824C50623B19BEE /* UIAppearance+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA90B7D6EBE7A289796856FF2B310FC0 /* ChameleonFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FAF929A00E43E2F6E006BE5897389CF /* ChameleonFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0039EEF8B31575F0A84A492BA8089E7D /* FAKFoundationIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 21859F4248A8358C31730EB9D03281C3 /* FAKFoundationIcons.m */; };
+		00E3A68D030F24BE47B99D1D1A1720E2 /* UIColor+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE3891C342D3A854D4260F244AA7E2 /* UIColor+ChameleonPrivate.m */; };
+		0308B2902DB5695DBD6AD4564FCBD4F2 /* FAKIonIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = B72934A2E81A5BB5B3C417239DB04DCC /* FAKIonIcons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03F8D3C0A7C01EF3B6137D0680C0FFA8 /* PDTSimpleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D086631F94FA5C4E768B655C47CF2E /* PDTSimpleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0515C2D5132E7FA965417A8B84456CA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		072BEEF7E71F00675E87028A9A668B84 /* UIImage+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6A6EE5C6262F7EE857CB3511652135 /* UIImage+ChameleonPrivate.m */; };
+		0B1AC909F43FD2AD6BE051127942C053 /* PDTSimpleCalendarViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FCBAB750D1ECA364975FC0817184643 /* PDTSimpleCalendarViewFlowLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EB35B097E213174C1AD213E1D33DD98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936778123B3142022551B7FC2CC42CE0 /* UIKit.framework */; };
+		160634C0F5454A32E810DDF5BA9E5985 /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F35F8400E469D4DA35EFCBDB91FC0 /* NSArray+Chameleon.m */; };
+		1716FA0939818C49FE4BBE6A658E9834 /* UIButton+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D65C986409F3CDE2824F947B4F6FE3 /* UIButton+Chameleon.m */; };
+		198232E4CA68917D9671AA50B66099F5 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C28423FFA0D4DEAE1F118E094BDF3DA3 /* JVFloatLabeledTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1A95D9723C194E02E91E8D943EE9620F /* PDTSimpleCalendarViewWeekdayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F20811548347033FE373B3BA180D9186 /* PDTSimpleCalendarViewWeekdayHeader.m */; };
+		1DE26E57570167EE496080D68F855A01 /* UIImage+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D04FFCBBC8020EBB1510C1EA64A7853 /* UIImage+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2139B6A9B4241F53BB478C43D51921CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FC02FB7BA0B7B756908BEB80487BEA /* QuartzCore.framework */; };
+		23795D7EC1AF274A6AFF4233B1E84C4C /* UINavigationController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F27F5F3D7FB3C6625C89E64FE6779BC /* UINavigationController+Chameleon.m */; };
+		237DBD4AA2591207CC798EE5577A36CA /* PDTSimpleCalendarViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 88509661EB0C3AF10DE45FF422A6F72C /* PDTSimpleCalendarViewFlowLayout.m */; };
+		28359B198D280DBF82E0A96D95B44DAC /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1D2EBFDE1083D9938B7AB36CB04769 /* SwiftyJSON-dummy.m */; };
+		2896AB8603372B69EA951DDC8EE8B6F8 /* BGTableViewRowActionWithImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4D7448C865EB11ACCE0A5FA352BF79 /* BGTableViewRowActionWithImage-dummy.m */; };
+		29DB8AAB20B9088A34901CEC43319146 /* FAKIonIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FADD14E0E5C9906B7815F1FF1936F5F /* FAKIonIcons.m */; };
+		2E098F8674E278C1713C5A208FB04924 /* SwiftLocation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E69AB6E83E6268814F2AEB455A31FEF /* SwiftLocation-dummy.m */; };
+		2E2946436612A5B920BE18E09BF80CAF /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB10A6F5520361F726C2F1443D7B88D /* UIViewController+Chameleon.m */; };
+		3132A9EBC1F85B6971B934C88914CD58 /* UILabel+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = D2ED9A1CDE22D7CAEF1166E4544BEEBC /* UILabel+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3241DF7F6F8EDD17C8EF4265FCFF3622 /* PDTSimpleCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7D82EAC36B71866B38E19A1E02EB9 /* PDTSimpleCalendarViewCell.m */; };
+		3260802C71D0241B23AF5BCFCCA6C0C2 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CEC7C7F98515D4E04CD1379F9D6B34B /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		337166F44CD41FBD5074A886981DE532 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EADCF687F3D25B9C790C54115A8B39CF /* zocial-regular-webfont.ttf */; };
+		3959AEE0134F0E863AC4DB059BAF0C9F /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BECD7DC12E0D592CF52D4D2FFD0339F /* FAKIcon.m */; };
+		39DAF532BDA7BE3E8E44341676FA1F30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936778123B3142022551B7FC2CC42CE0 /* UIKit.framework */; };
+		3CCCC6F0C10F65283522C54CF1D6E761 /* UIButton+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 2432B6F51B271D5C12CBFB9FBABFDFE8 /* UIButton+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D1FF907F6AD5186FAF926C0F20083AE /* Chameleon_.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D1B6A852F3392D52B5B74E0F603D1B /* Chameleon_.m */; };
+		3EC5B14874C6570500292FB5739E1150 /* PDTSimpleCalendarViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D62758DFA95D63F6C5220ECAE7977 /* PDTSimpleCalendarViewHeader.m */; };
+		417F39D9D19170E2CACB2020BB4F45C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		41E19345B5C2331DAA02119D782F4E5F /* ChameleonMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = BDD3256ECEC8AD2E5B8D3B1DD49901E4 /* ChameleonMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		427931B0786A8693254FC951F4F97BAC /* SCLAlertView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5444E475754FB0EF105A3C7E4792F8B /* SCLAlertView-dummy.m */; };
+		42B81612C22744B21A3AC57DC36F7DD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		43E15BFC2EDA06F2698684402E4E70A5 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC557A1A886A1E12795B701455147566 /* SCLAlertView.swift */; };
+		44F8A74A03C14125EAFD788C490FD4A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		4B181B0AC8894DE05050B3F6718D392C /* ChameleonConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BF2AE5922A090D682B39FACC5234E1A /* ChameleonConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E53C48294089DC928E3A7BD1C2DE4D7 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D19CB252182BEE6360D37C248823F2C /* UIColor+Chameleon.m */; };
+		54344728DEB143F4AA726332677C4B4D /* BGTableViewRowActionWithImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7818E00D439F9363B698CAFBC8AA18ED /* BGTableViewRowActionWithImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5463C51DD3A9FC35667EC1EB7420F6BC /* PDTSimpleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F0B4D33EBF59A7A9D65E2335F6D7B4 /* PDTSimpleCalendar-dummy.m */; };
+		5AAE8A13DBAB4BD0141A8D95B11AE554 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936778123B3142022551B7FC2CC42CE0 /* UIKit.framework */; };
+		5AEA2F6273636026297A3A38EE7325A8 /* PDTSimpleCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EDBB637F6CA7D200EBCE4ADFF9518BC /* PDTSimpleCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BE48CCA8CBF0180260D742F2D74BACA /* BGTableViewRowActionWithImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D1816CB8E3686C8EA9A8FEC173846F0 /* BGTableViewRowActionWithImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BF38591007E7E4ADAD878E405949598 /* ChameleonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC282CF1E8C47B4AE0D348E3A173FA97 /* ChameleonConstants.m */; };
+		5BFF83DA99463594922E324F61931692 /* PDTSimpleCalendarViewHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = BAAE51659BF517E0F37026CDDC8FCF31 /* PDTSimpleCalendarViewHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5DDE404634EFC3EC47C2A0465E75558A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		5F5E407E5FA2BB0ED54F51C87BDE0834 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60FD66A0C4A398F6DF3E89C15E01EB64 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4701E8E0BF2F9F819FFDD57FCAE7D815 /* foundation-icons.ttf */; };
+		650E9C1297EAE9A8E153D5F4FD3FFF51 /* FontAwesomeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1490CC2659CD1B747F9B61CDBAB5B51 /* FontAwesomeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		69FF0CFBCBC82DC80D6135D76A845AD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936778123B3142022551B7FC2CC42CE0 /* UIKit.framework */; };
+		6F94E159E26C1DB49F349ED2A3E21364 /* JVFloatLabeledTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABC03548D36BFF5E1235FDD0E033057 /* JVFloatLabeledTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75C47EE0535C492DA596EE18324A31DC /* SCLAlertView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15D388AD45AFA4BC9CBB9DA78FCD3476 /* SCLAlertView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7684852F540BB5B520A48E7FDDD20D8B /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C990340BAF5D0ADB8A4B3B873972E19 /* ionicons.ttf */; };
+		7A8C05065D9F9BA2C218F75AD6B1F798 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2FE0C979FD6BF4AC737666BCEA3F6C /* UIAppearance+Swift.m */; };
+		7EDDB8F47291F592694D7135A10DAFFF /* UIViewController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 31D7817FBD6402B52773372BC3C82908 /* UIViewController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		854283650126B8707A6A537527271DB2 /* PDTSimpleCalendarViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B80127405F1B172E83F64E1C6603C7F /* PDTSimpleCalendarViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		861F0CD743C2952E530F782F5BEE42C7 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C848B15503D9A6AA8A5DBE297D5BEBA /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D8F6A29BDA7BA5A8202366313D34A9F /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
+		8EF2DD255BD0B12BA77831FAED650BF7 /* SwiftLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E39047D5C1147F41BFA9CFDBB87581 /* SwiftLocation.swift */; };
+		8FF68AEC20BF30072F4AD866513FE44E /* FAKFoundationIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = F6743E2AB264F056CA0B23F50D50F06D /* FAKFoundationIcons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		973568245D337B094D81E743E1D7AF22 /* NSString+TextDirectionality.h in Headers */ = {isa = PBXBuildFile; fileRef = 56580E2966BE6BFB634D9307EBA21F27 /* NSString+TextDirectionality.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B9A49ACF3256835B723CBBCD326DE11 /* PDTSimpleCalendarViewWeekdayHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BDA2A52D67443C6BA16832174ED2587 /* PDTSimpleCalendarViewWeekdayHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C94C96078F783F759AECACF879B37BD /* JVFloatLabeledTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6208A5DB7C07DABC6FC0F8F419488A48 /* JVFloatLabeledTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9EEBF7B1602C1C17236C4EA0DD9717E2 /* UILabel+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE30DFA0E27A990400FF12D48359AE1 /* UILabel+Chameleon.m */; };
+		A129D3C2926AB631B58E5DFC94224AF3 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = C93577A2BFF6FB24B2E3D29E8A788BAE /* Info.plist */; };
+		A181D747EBCB41E43127C988230BCA23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		A37E4933BC6CB5D541B5AC4521631878 /* FAKZocial.h in Headers */ = {isa = PBXBuildFile; fileRef = C0527593BBBD1401B1C84A935913A326 /* FAKZocial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3429381360BE9C37D00301284E4B63A /* UIView+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = CB35FB3CCDC4E7A26BA031D3E0FB2D06 /* UIView+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4FD573C645EE4C9A0E0667AF6A00201 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F518F0580A3EC9470B478729609F3BF /* CoreLocation.framework */; };
+		BC96108EBCE6F29BACA0662BC5B15254 /* FontAwesomeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B8F535AD755C634C5E2680E98F2B57 /* FontAwesomeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD0425F55B4A01C3D49172049D1BF7A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35411B3B17A6B347412A82AB1D9CB871 /* CoreText.framework */; };
+		C59A78C9247621B660AE7AAD46E82446 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = F5451FD5F14DF4672D77ABC43E0B71C2 /* FontAwesome.otf */; };
+		C5D22B9D6600C31DC02CEC59BDA086B0 /* UIColor+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 284380B8AF87ED7768E98BFAF81A721A /* UIColor+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C61ED2CF225C6D9872D34F5455C945D4 /* NSArray+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = B722882B6B5FD0FE624BA2137AF127B0 /* NSArray+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C67E03EC22D124DE998695EF86B99E25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936778123B3142022551B7FC2CC42CE0 /* UIKit.framework */; };
+		C84DFC79CACF46C6275670861ADBA6D4 /* UINavigationController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 732A0AC687485E8EBA2324BAA322EC2B /* UINavigationController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC51E5C010ABC87B9CAAA1CB721A6A94 /* UIColor+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = CB4EB2090FEC40023AE704348D9D6F90 /* UIColor+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF437C064F5F4BAA2F3901B4B9C7AD26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		D140AE94F6E42075FEC37162DD5F36D9 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F2CD4018ED486D57525663E8D50197 /* FAKFontAwesome.m */; };
+		D8B25CA4E48EEE4831E896F4077A6D3A /* FontAwesomeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E82E45F83DE3983A8D9FF3898D62A07 /* FontAwesomeKit-dummy.m */; };
+		D8CBB295F72802B913B30D7AF4CB13ED /* PDTSimpleCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4054850529F1A06564FDDFECC92966 /* PDTSimpleCalendarViewController.m */; };
+		DAF51B7884529BC719E6A2B1A38CEB00 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D44EF44EB118A6BCFF097717B5B71F9 /* SwiftyJSON.swift */; };
+		DBD220F2A48C1644E5E1ACF39E20350B /* FAKZocial.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C54967962B034357231050B304EA54 /* FAKZocial.m */; };
+		DDD470435EE37EBA46CD0FF081559295 /* ChameleonFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 229BFFE387822490144CC57BCE5C78F8 /* ChameleonFramework-dummy.m */; };
+		DE85AE93A77AC07D2364A0F82857B71C /* SwiftLocation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 342F213A8DEDD4A19C5558AEE0FE2755 /* SwiftLocation.bundle */; };
+		DFBB9FA86B4F26AF435900587A9B09CD /* PDTSimpleCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D3D39E943EA5C039597E29D4CEC13A27 /* PDTSimpleCalendarViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFDAB04F787BC7FB9EA75BDB0E773937 /* FAKFontAwesome.h in Headers */ = {isa = PBXBuildFile; fileRef = 5064D27ED57D46EFB6E27C40416BECBA /* FAKFontAwesome.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E04963F0C6D76377186361A0AF79A4C6 /* Chameleon_.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C223C43D7A32DC71082B6098FE039A2 /* Chameleon_.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E215BEEA20003F82591AC99111A35600 /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4036D37577FC5C71D9A73623588215D3 /* JVFloatLabeledTextView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E33F37FB12E4D910DE732E0CAEFB9201 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		E4D75B1B0072095A98068C68A0062559 /* JVFloatLabeledTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6223B9069B94417FB2B0DE61D1D8824 /* JVFloatLabeledTextField-dummy.m */; };
+		E53E2CD0E939A133E73880E7B3BB4DBF /* ChameleonEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = 69E44B92BE07F6A99B68638CF87E7812 /* ChameleonEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8DD8380D6B4958A77EAC0DE1A6967A9 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE288F993E2B9F3670151558EC8BC48 /* NSString+TextDirectionality.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		ED545537CDC6C83EBA629FE6524D550A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5191EDF4EB288042EC71219594E632 /* CoreGraphics.framework */; };
+		EF12797A01859E4A4DB6C1E3C6B43E1A /* BGTableViewRowActionWithImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 510CAEAA8EBD2E8E97C6BE3B05F95F27 /* BGTableViewRowActionWithImage.m */; };
+		F0EAB229A95B874BB9C4DDAA51B5E422 /* SwiftLocation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D8CD73D9D0E7BDA45D81B0F196185 /* SwiftLocation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F13D33C950D0F652E93C806086B5C712 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */; };
+		F32D7BD1DA58639964C91FA86A002AB4 /* UIView+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A1F4FDF681C7468B4A95267E51C4C /* UIView+ChameleonPrivate.m */; };
+		F41CB5FFBB71B707F5CE8F5C23F3F895 /* FAKIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = C7FAE46CBF841EAB960FA29646A02769 /* FAKIcon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5CC9B27F3CF472FE72A905E8C2D7A9D /* Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CE5A57EAEB50D27022ECC9237F756EE /* Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F85099F6E9B7DB837BAB856EB61A6F07 /* UIAppearance+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF7ECBE9BD26E8C6256C4926D0A3535 /* UIAppearance+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA90B7D6EBE7A289796856FF2B310FC0 /* ChameleonFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E81BBB5BE543EDC9D81194D5DD953162 /* ChameleonFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		10B1F980F321BFF92EBDBF3AC4808B38 /* PBXContainerItemProxy */ = {
+		17B9506F589F6B846CED1FB0E5651BE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B57F4EE4746045CEAE2D933A3C8EC9E;
-			remoteInfo = ChameleonFramework;
-		};
-		31C995D053A2A3DF300BF1C5F9E4E70F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0FE1CF55DD4F78BEE237C1243C98367;
-			remoteInfo = INTULocationManager;
-		};
-		37845D0F73D9FFC4885F2CB01C381351 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9387E40D2D596E96A368C2BB32BD8EAD;
+			remoteGlobalIDString = A56D20C76133E602A480343083D2B58F;
 			remoteInfo = SwiftyJSON;
 		};
-		648BEFDDC3809F354DDC15397E523757 /* PBXContainerItemProxy */ = {
+		3CFE017AE2A32A9FA386F06A564EFB5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2A7B8E276C618BAF387EF310A8754AB7;
+			remoteGlobalIDString = 29C609B26B3192ECF80B8028C27C3659;
 			remoteInfo = SCLAlertView;
 		};
-		682370C91A87556FF5811D238A0585F1 /* PBXContainerItemProxy */ = {
+		46EA58D276CBEFDD6C4F5F0E44D6C0B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D1BFA084E87E09033010910E512B370;
+			remoteInfo = SwiftLocation;
+		};
+		8040564DDABCDE0B3B90C00EA1E78ECA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6DEB1257FFCB1CBE0DB9FC1C561CAC06;
 			remoteInfo = BGTableViewRowActionWithImage;
 		};
-		A041BC1CED8EA1E18D3AC56E4A1E1EDC /* PBXContainerItemProxy */ = {
+		8287192E354E02F374B2A7AF097D6C33 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8BE9D4B6FF6D92923152CB0534F2BB94;
-			remoteInfo = FontAwesomeKit;
+			remoteGlobalIDString = 4F4458D61FD38B1BCC89A6EEB0461043;
+			remoteInfo = "SwiftLocation-SwiftLocation";
 		};
-		D8CE5CD735FFE9A6B4F1577BF0AD27AF /* PBXContainerItemProxy */ = {
+		AD6C480E464916FA730E9025216A0CF9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 77AB16E71967928775ACD2706514E867;
 			remoteInfo = PDTSimpleCalendar;
 		};
+		BF3B2040B690280FFD92951ACC660CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 735882DA95E7FCCEC084FC1C5384FF8A;
+			remoteInfo = JVFloatLabeledTextField;
+		};
+		E705C814C29A1BC16953D839FDB5D018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BE9D4B6FF6D92923152CB0534F2BB94;
+			remoteInfo = FontAwesomeKit;
+		};
+		F690C1DBF6599CA56A9AFCF23D88728B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B57F4EE4746045CEAE2D933A3C8EC9E;
+			remoteInfo = ChameleonFramework;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00281F785C2B1A7F5DB6D60705D461E8 /* BGTableViewRowActionWithImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BGTableViewRowActionWithImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C14F4A51948E8E8423411BC85368065 /* ChameleonFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ChameleonFramework.modulemap; sourceTree = "<group>"; };
-		0C62E5DFA50C7085F3F1053E7E3857C4 /* UILabel+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+Chameleon.h"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.h"; sourceTree = "<group>"; };
-		0E5DF7403F13905E9AF7E50A9563E4BA /* foundation-icons.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
-		1011FD9C1D46EAACC8757F5A4832F493 /* ChameleonFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-prefix.pch"; sourceTree = "<group>"; };
-		10B93D1B1F130858D63A38FCAC92A4E4 /* PDTSimpleCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendar.h; path = PDTSimpleCalendar/PDTSimpleCalendar.h; sourceTree = "<group>"; };
-		157D1D70B09CF35B0EDEAF5577927AC3 /* INTULocationManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = INTULocationManager.xcconfig; sourceTree = "<group>"; };
-		16AF97F9A0E1281532B45314B07DAA06 /* FAKFontAwesome.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKFontAwesome.m; path = FontAwesomeKit/FAKFontAwesome.m; sourceTree = "<group>"; };
-		1710E16344C86ABDD1FC417866AFCD67 /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		188DB422CFAEBD415EB929A74876C0B5 /* UIColor+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+Chameleon.h"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.h"; sourceTree = "<group>"; };
-		19395AB59E3F111B960AA2EDBD648DF0 /* FAKIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKIcon.m; path = FontAwesomeKit/FAKIcon.m; sourceTree = "<group>"; };
-		1AFD3D21413ACF04DEAB70B5A645B981 /* Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon.h; path = "Pod/Classes/Objective-C/Chameleon.h"; sourceTree = "<group>"; };
-		23BAB5C79AEECCF07207A84F3E7100CA /* PDTSimpleCalendarViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewFlowLayout.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.m; sourceTree = "<group>"; };
-		23F63FA8BAD336606FFBC6D790C61021 /* SCLAlertView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCLAlertView-dummy.m"; sourceTree = "<group>"; };
+		0D1816CB8E3686C8EA9A8FEC173846F0 /* BGTableViewRowActionWithImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BGTableViewRowActionWithImage.h; sourceTree = "<group>"; };
+		1528A0F1722C478487FD3AEB19D7A878 /* SCLAlertView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCLAlertView.xcconfig; sourceTree = "<group>"; };
+		15D388AD45AFA4BC9CBB9DA78FCD3476 /* SCLAlertView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView-umbrella.h"; sourceTree = "<group>"; };
+		17835E24D144DDC78803EED94C7399EC /* FontAwesomeKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FontAwesomeKit.modulemap; sourceTree = "<group>"; };
+		1BC254A55BF1B16ACEB67CE6AF5F3B77 /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C77B7C17F9BA88566E159CF06E02845 /* SwiftLocation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftLocation.modulemap; sourceTree = "<group>"; };
+		1CE288F993E2B9F3670151558EC8BC48 /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+TextDirectionality.m"; path = "JVFloatLabeledTextField/JVFloatLabeledTextField/NSString+TextDirectionality.m"; sourceTree = "<group>"; };
+		1E82E45F83DE3983A8D9FF3898D62A07 /* FontAwesomeKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesomeKit-dummy.m"; sourceTree = "<group>"; };
+		1F635357A39F8B208939DE3CC9941D97 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21859F4248A8358C31730EB9D03281C3 /* FAKFoundationIcons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKFoundationIcons.m; path = FontAwesomeKit/FAKFoundationIcons.m; sourceTree = "<group>"; };
+		229BFFE387822490144CC57BCE5C78F8 /* ChameleonFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChameleonFramework-dummy.m"; sourceTree = "<group>"; };
+		240D69BFE00EE6B15E617CF58142FCC0 /* JVFloatLabeledTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JVFloatLabeledTextField-prefix.pch"; sourceTree = "<group>"; };
+		2432B6F51B271D5C12CBFB9FBABFDFE8 /* UIButton+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+Chameleon.h"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.h"; sourceTree = "<group>"; };
+		26D1B6A852F3392D52B5B74E0F603D1B /* Chameleon_.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Chameleon_.m; path = "Pod/Classes/Objective-C/Chameleon_.m"; sourceTree = "<group>"; };
+		27B7D82EAC36B71866B38E19A1E02EB9 /* PDTSimpleCalendarViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewCell.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.m; sourceTree = "<group>"; };
+		284380B8AF87ED7768E98BFAF81A721A /* UIColor+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+Chameleon.h"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.h"; sourceTree = "<group>"; };
+		2938A774592C6EDE13916C9C01696A4E /* SwiftLocation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLocation.xcconfig; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		2E69655DA996ACAA354FC4ED21624694 /* UIColor+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.h"; sourceTree = "<group>"; };
-		301A417EE1A05D823633B6BB1BBC12DC /* FontAwesomeKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FontAwesomeKit.modulemap; sourceTree = "<group>"; };
-		327EC7282C00A6AE9824C50623B19BEE /* UIAppearance+Swift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAppearance+Swift.h"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.h"; sourceTree = "<group>"; };
-		3507FDAA91C372F5722F5B1971098780 /* BGTableViewRowActionWithImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BGTableViewRowActionWithImage-umbrella.h"; sourceTree = "<group>"; };
-		38EFAC6D517A8DFBC825A4C967CD71E5 /* PDTSimpleCalendarViewWeekdayHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewWeekdayHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.m; sourceTree = "<group>"; };
-		3B5C7B6D910752693D98575D7FBFE163 /* UIView+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.m"; sourceTree = "<group>"; };
-		3C8897D783ADACFC6E524625A6B7024B /* ChameleonMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonMacros.h; path = "Pod/Classes/Objective-C/ChameleonMacros.h"; sourceTree = "<group>"; };
-		3F37DEB9214BCEFEE1D3ED0D52325F45 /* Chameleon_.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Chameleon_.m; path = "Pod/Classes/Objective-C/Chameleon_.m"; sourceTree = "<group>"; };
-		4308B9F876BB1BF9355E1CFA36E61EC4 /* Chameleon_.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon_.h; path = "Pod/Classes/Objective-C/Chameleon_.h"; sourceTree = "<group>"; };
-		444921DC1586B325E2B959F8F3522BBC /* ChameleonFramework.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChameleonFramework.xcconfig; sourceTree = "<group>"; };
-		44C88C89F99730F8803509EBD300226A /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		451183131BDA0A1B9BD99A39CC8C6214 /* FAKZocial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKZocial.h; path = FontAwesomeKit/FAKZocial.h; sourceTree = "<group>"; };
-		45165E875522D90AD7F20236182E7E63 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46409755E5EB7706419C1237B2EFFAA8 /* UIColor+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.m"; sourceTree = "<group>"; };
-		48F3ACD4DB2F521198A878ABE64E6FD0 /* UIView+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.h"; sourceTree = "<group>"; };
-		4D9AFF9230AF841D6B332696B828D9C8 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		4F1E08AF18D8591A2B666D9D0D3A9E9E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F22BA4529B9D9F1B38122A85393511E /* INTULocationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INTULocationManager.m; path = LocationManager/INTULocationManager/INTULocationManager.m; sourceTree = "<group>"; };
-		506A5B2617A7166468E55C721EA33493 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		5158B6796BC9EE4A8C2795F1CE2071D4 /* ChameleonConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonConstants.h; path = "Pod/Classes/Objective-C/ChameleonConstants.h"; sourceTree = "<group>"; };
-		51BD5F60D4111C5CB90E480BA880D620 /* SCLAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SCLAlertView.modulemap; sourceTree = "<group>"; };
-		579B069BCABE184213D84C3B1A9409E5 /* PDTSimpleCalendarViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewCell.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.m; sourceTree = "<group>"; };
-		5AAE05D685945CB7EBB1CF1CEA878B55 /* SCLAlertView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCLAlertView.xcconfig; sourceTree = "<group>"; };
-		6141F3CAD39C2591E085647AADE294FD /* UIButton+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+Chameleon.h"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.h"; sourceTree = "<group>"; };
-		62446DA9483EC80A2AA725201891BF34 /* PDTSimpleCalendarViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewCell.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.h; sourceTree = "<group>"; };
-		68AB67BDADE67F6336E8C6A323076335 /* INTULocationManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager-prefix.pch"; sourceTree = "<group>"; };
-		6C6BADE8503DF8081A6CB2038A618CED /* ChameleonConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ChameleonConstants.m; path = "Pod/Classes/Objective-C/ChameleonConstants.m"; sourceTree = "<group>"; };
-		6CAE84C39577ADAEACECDC106DC0781A /* FontAwesome.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = FontAwesome.otf; path = FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
-		6D3AF5BBBDA238ECECF242E247A656C1 /* PDTSimpleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PDTSimpleCalendar.xcconfig; sourceTree = "<group>"; };
-		6F0CF816FFBF923EB1ED6AED6B5A268C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F49937395C5E8F936DE67254B2D15BC /* UINavigationController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Chameleon.m"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.m"; sourceTree = "<group>"; };
-		73901E1487934E431ED9F4C945302523 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAppearance+Swift.m"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.m"; sourceTree = "<group>"; };
-		74211696012DDDF97B82B30D5281305B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		77D67217A17B64BE91A1213D2FD0DCC2 /* BGTableViewRowActionWithImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BGTableViewRowActionWithImage.xcconfig; sourceTree = "<group>"; };
-		78BA77DF14311288CFFF5F8E64E897AD /* UINavigationController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Chameleon.h"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.h"; sourceTree = "<group>"; };
+		2D19CB252182BEE6360D37C248823F2C /* UIColor+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Chameleon.m"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.m"; sourceTree = "<group>"; };
+		3167388CA05BA483E99AB22C225206D1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31D7817FBD6402B52773372BC3C82908 /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Chameleon.h"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.h"; sourceTree = "<group>"; };
+		342F213A8DEDD4A19C5558AEE0FE2755 /* SwiftLocation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftLocation.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		35411B3B17A6B347412A82AB1D9CB871 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		3A5191EDF4EB288042EC71219594E632 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		3ABC03548D36BFF5E1235FDD0E033057 /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JVFloatLabeledTextView.h; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextView.h; sourceTree = "<group>"; };
+		3C9B5B507AA0CEE355B4D624822CC06C /* BGTableViewRowActionWithImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BGTableViewRowActionWithImage-prefix.pch"; sourceTree = "<group>"; };
+		3D04FFCBBC8020EBB1510C1EA64A7853 /* UIImage+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		3EDBB637F6CA7D200EBCE4ADFF9518BC /* PDTSimpleCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendar.h; path = PDTSimpleCalendar/PDTSimpleCalendar.h; sourceTree = "<group>"; };
+		3F27F5F3D7FB3C6625C89E64FE6779BC /* UINavigationController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Chameleon.m"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.m"; sourceTree = "<group>"; };
+		40196091FEA5F668712AEAF2D277BA62 /* SwiftLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4036D37577FC5C71D9A73623588215D3 /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JVFloatLabeledTextView.m; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextView.m; sourceTree = "<group>"; };
+		46A14C3088B0602D337A878701BEDD65 /* JVFloatLabeledTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JVFloatLabeledTextField.xcconfig; sourceTree = "<group>"; };
+		4701E8E0BF2F9F819FFDD57FCAE7D815 /* foundation-icons.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
+		487D62758DFA95D63F6C5220ECAE7977 /* PDTSimpleCalendarViewHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.m; sourceTree = "<group>"; };
+		49351431C4196E73503588AEE20A8F78 /* BGTableViewRowActionWithImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BGTableViewRowActionWithImage.modulemap; sourceTree = "<group>"; };
+		4B80127405F1B172E83F64E1C6603C7F /* PDTSimpleCalendarViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewCell.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.h; sourceTree = "<group>"; };
+		4CEC7C7F98515D4E04CD1379F9D6B34B /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JVFloatLabeledTextField.h; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		4D44EF44EB118A6BCFF097717B5B71F9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		5064D27ED57D46EFB6E27C40416BECBA /* FAKFontAwesome.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKFontAwesome.h; path = FontAwesomeKit/FAKFontAwesome.h; sourceTree = "<group>"; };
+		510CAEAA8EBD2E8E97C6BE3B05F95F27 /* BGTableViewRowActionWithImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BGTableViewRowActionWithImage.m; sourceTree = "<group>"; };
+		51E39047D5C1147F41BFA9CFDBB87581 /* SwiftLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftLocation.swift; path = Pod/Classes/SwiftLocation.swift; sourceTree = "<group>"; };
+		53C03F9B15410682DB9306B5836673E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56580E2966BE6BFB634D9307EBA21F27 /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+TextDirectionality.h"; path = "JVFloatLabeledTextField/JVFloatLabeledTextField/NSString+TextDirectionality.h"; sourceTree = "<group>"; };
+		59BFCF1F153208C8B002006A53D12378 /* JVFloatLabeledTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = JVFloatLabeledTextField.modulemap; sourceTree = "<group>"; };
+		5BDA2A52D67443C6BA16832174ED2587 /* PDTSimpleCalendarViewWeekdayHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewWeekdayHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.h; sourceTree = "<group>"; };
+		5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5F518F0580A3EC9470B478729609F3BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		61B9E56E1532C175BAFAC32ECADEA191 /* FontAwesomeKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeKit-prefix.pch"; sourceTree = "<group>"; };
+		6208A5DB7C07DABC6FC0F8F419488A48 /* JVFloatLabeledTextField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JVFloatLabeledTextField-umbrella.h"; sourceTree = "<group>"; };
+		69E44B92BE07F6A99B68638CF87E7812 /* ChameleonEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonEnums.h; path = "Pod/Classes/Objective-C/ChameleonEnums.h"; sourceTree = "<group>"; };
+		69FE3891C342D3A854D4260F244AA7E2 /* UIColor+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		6C848B15503D9A6AA8A5DBE297D5BEBA /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		6E69AB6E83E6268814F2AEB455A31FEF /* SwiftLocation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftLocation-dummy.m"; sourceTree = "<group>"; };
+		6E9D2B6946CA1507F7F6DA064B924DD8 /* ChameleonFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ChameleonFramework.modulemap; sourceTree = "<group>"; };
+		6FCBAB750D1ECA364975FC0817184643 /* PDTSimpleCalendarViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewFlowLayout.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.h; sourceTree = "<group>"; };
+		70498AA139ABFD55595F5703D4607449 /* FontAwesomeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FontAwesomeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		708B10DC2798EE0AEA6511F528E5991F /* ChameleonFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-prefix.pch"; sourceTree = "<group>"; };
+		70D65C986409F3CDE2824F947B4F6FE3 /* UIButton+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Chameleon.m"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.m"; sourceTree = "<group>"; };
+		732A0AC687485E8EBA2324BAA322EC2B /* UINavigationController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Chameleon.h"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.h"; sourceTree = "<group>"; };
+		7509D8CCDEFFFD633157BCF8AB30DDF3 /* SCLAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SCLAlertView.modulemap; sourceTree = "<group>"; };
+		7818E00D439F9363B698CAFBC8AA18ED /* BGTableViewRowActionWithImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BGTableViewRowActionWithImage-umbrella.h"; sourceTree = "<group>"; };
+		788B923333C623D25D1E9351DD80E4E8 /* PDTSimpleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PDTSimpleCalendar.xcconfig; sourceTree = "<group>"; };
+		78FC02FB7BA0B7B756908BEB80487BEA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		7E8A97957C19E68871D5052564393101 /* INTULocationManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager-umbrella.h"; sourceTree = "<group>"; };
-		7FAF929A00E43E2F6E006BE5897389CF /* ChameleonFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-umbrella.h"; sourceTree = "<group>"; };
-		804197D6531A3A92D08290CB78A07B2B /* INTULocationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INTULocationRequest.m; path = LocationManager/INTULocationManager/INTULocationRequest.m; sourceTree = "<group>"; };
-		8326FBA38CF2C7105F7A2F841229B555 /* FontAwesomeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FontAwesomeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		83CBE46CA8404EEF71A27A84ED8533CE /* BGTableViewRowActionWithImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BGTableViewRowActionWithImage.h; sourceTree = "<group>"; };
-		83E9D0C3D62B1CF75F1016626CA1A2FF /* PDTSimpleCalendarViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewController.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.h; sourceTree = "<group>"; };
-		84119FF2C1BB6845FA0EB9312830409C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		85DDCD5ACA496D28A2FE34CF41FE1ABC /* BGTableViewRowActionWithImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BGTableViewRowActionWithImage.m; sourceTree = "<group>"; };
-		877EBEF6E3046DCE7C5FDFA4A710D3DF /* SCLAlertView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView-umbrella.h"; sourceTree = "<group>"; };
+		7A68C3FF04FAFE8ADD462D07B7F705F5 /* SCLAlertView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView-prefix.pch"; sourceTree = "<group>"; };
+		7AE30DFA0E27A990400FF12D48359AE1 /* UILabel+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Chameleon.m"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.m"; sourceTree = "<group>"; };
+		7CB10A6F5520361F726C2F1443D7B88D /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Chameleon.m"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		7CE5A57EAEB50D27022ECC9237F756EE /* Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon.h; path = "Pod/Classes/Objective-C/Chameleon.h"; sourceTree = "<group>"; };
+		7F9A2154EDE15F2F262C116E5E90DD74 /* ChameleonFramework.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChameleonFramework.xcconfig; sourceTree = "<group>"; };
+		8287D759B00B1FC3FC1EB8E53BA8F842 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		873742D9BFD89FC2440D30ADB2988FAE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		879D8CD73D9D0E7BDA45D81B0F196185 /* SwiftLocation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLocation-umbrella.h"; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		87EA35271D774FF94D3EE4FF9CC6CD81 /* NSArray+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Chameleon.m"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.m"; sourceTree = "<group>"; };
-		887AF97FB07AE9AD51839AE8FB0FC061 /* ionicons.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = ionicons.ttf; path = FontAwesomeKit/ionicons.ttf; sourceTree = "<group>"; };
+		88509661EB0C3AF10DE45FF422A6F72C /* PDTSimpleCalendarViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewFlowLayout.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.m; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		8975F91CB60F7C0E6638A8BACB916E2E /* PDTSimpleCalendarViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewFlowLayout.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.h; sourceTree = "<group>"; };
-		8AD6B949F0C28536B1992C6CFA9A949C /* FontAwesomeKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeKit-prefix.pch"; sourceTree = "<group>"; };
-		8D58E71D7F4A2B6DD1E968FBBA44EAED /* INTULocationRequestDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INTULocationRequestDefines.h; path = LocationManager/INTULocationManager/INTULocationRequestDefines.h; sourceTree = "<group>"; };
-		8D9E8E4F3499EC01A103307E5DF87537 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DAD3309496F440E27DA712A473A5150 /* FAKFoundationIcons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKFoundationIcons.m; path = FontAwesomeKit/FAKFoundationIcons.m; sourceTree = "<group>"; };
-		8EC10452D271A92209922DAC59888F14 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		91397BCCC63BEDB9EBD74B0FE56FBC3B /* INTULocationManager+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "INTULocationManager+Internal.h"; path = "LocationManager/INTULocationManager/INTULocationManager+Internal.h"; sourceTree = "<group>"; };
-		93061D01F18AA409E7E9A681DC86597A /* BGTableViewRowActionWithImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BGTableViewRowActionWithImage-prefix.pch"; sourceTree = "<group>"; };
-		9729EE232719EDCBC182E5307841BA42 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		8C223C43D7A32DC71082B6098FE039A2 /* Chameleon_.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon_.h; path = "Pod/Classes/Objective-C/Chameleon_.h"; sourceTree = "<group>"; };
+		8FADD14E0E5C9906B7815F1FF1936F5F /* FAKIonIcons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKIonIcons.m; path = FontAwesomeKit/FAKIonIcons.m; sourceTree = "<group>"; };
+		92CE839C55113CADE3E830F7669C0EE6 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		936778123B3142022551B7FC2CC42CE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		989C3F763A0CF6B3E1A64C8B42724769 /* BGTableViewRowActionWithImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BGTableViewRowActionWithImage.modulemap; sourceTree = "<group>"; };
-		98E1979F4113AEE99E6560CF766EF6AE /* PDTSimpleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PDTSimpleCalendar.modulemap; sourceTree = "<group>"; };
-		9C89EAF80DADC7EE09D56B2292327BDA /* FontAwesomeKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesomeKit-dummy.m"; sourceTree = "<group>"; };
-		9CB52BFDEF1CB300BD61285BA74C0E78 /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Chameleon.h"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.h"; sourceTree = "<group>"; };
-		9F7A513533C4A1EC9ADCF52A65E122B9 /* PDTSimpleCalendarViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewController.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.m; sourceTree = "<group>"; };
-		9FA6BD8C9F075DEE6D5AA8C921B437C9 /* INTULocationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INTULocationRequest.h; path = LocationManager/INTULocationManager/INTULocationRequest.h; sourceTree = "<group>"; };
-		A30336013123D6A00ACCEB8BB57F7FB0 /* PDTSimpleCalendarViewHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.m; sourceTree = "<group>"; };
-		A40865E72FC212A5C08662C5565CDDE6 /* FAKFontAwesome.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKFontAwesome.h; path = FontAwesomeKit/FAKFontAwesome.h; sourceTree = "<group>"; };
-		A76E24F0373DCE81CFB2BBD844FC8E46 /* FAKIonIcons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKIonIcons.m; path = FontAwesomeKit/FAKIonIcons.m; sourceTree = "<group>"; };
-		A9E5210BCC89AADEF0BDEEF5F56B8094 /* INTULocationManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "INTULocationManager-dummy.m"; sourceTree = "<group>"; };
-		AB7CC48A348B75E27F7988AD3B816175 /* UIImage+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.m"; sourceTree = "<group>"; };
-		AFD592287892E2DA43D16775B4B6B22C /* UIColor+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Chameleon.m"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.m"; sourceTree = "<group>"; };
-		B08EDA1D51C2903D41EDA10B161025E6 /* FAKIcon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKIcon.h; path = FontAwesomeKit/FAKIcon.h; sourceTree = "<group>"; };
-		B208C44B11CFCF283286660DC94CEE1C /* UILabel+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Chameleon.m"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.m"; sourceTree = "<group>"; };
-		B6F7CEB2E975B3C416AFF1736E620901 /* ChameleonFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChameleonFramework-dummy.m"; sourceTree = "<group>"; };
-		B7EF346161A05C1C49D9BA55B6DCEE42 /* PDTSimpleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PDTSimpleCalendar-dummy.m"; sourceTree = "<group>"; };
-		BA33BF1FE79C9B59956EFF4924A4505E /* INTULocationManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = INTULocationManager.modulemap; sourceTree = "<group>"; };
+		981FF570C4236F50012320B5F98A3D9E /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		9BECD7DC12E0D592CF52D4D2FFD0339F /* FAKIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKIcon.m; path = FontAwesomeKit/FAKIcon.m; sourceTree = "<group>"; };
+		9BF2AE5922A090D682B39FACC5234E1A /* ChameleonConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonConstants.h; path = "Pod/Classes/Objective-C/ChameleonConstants.h"; sourceTree = "<group>"; };
+		9C990340BAF5D0ADB8A4B3B873972E19 /* ionicons.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = ionicons.ttf; path = FontAwesomeKit/ionicons.ttf; sourceTree = "<group>"; };
+		9D5A1F4FDF681C7468B4A95267E51C4C /* UIView+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		A0F4F494D27880E588482E389B991DC2 /* SCLAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCLAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E573D4BB77279C7E769BA311769769 /* JVFloatLabeledTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JVFloatLabeledTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAF7ECBE9BD26E8C6256C4926D0A3535 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAppearance+Swift.h"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.h"; sourceTree = "<group>"; };
+		B458AF5846508BDAAC8BA892187B907C /* PDTSimpleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-prefix.pch"; sourceTree = "<group>"; };
+		B4B1C05151C288A73A1E6384928972BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5C54967962B034357231050B304EA54 /* FAKZocial.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKZocial.m; path = FontAwesomeKit/FAKZocial.m; sourceTree = "<group>"; };
+		B6D086631F94FA5C4E768B655C47CF2E /* PDTSimpleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-umbrella.h"; sourceTree = "<group>"; };
+		B722882B6B5FD0FE624BA2137AF127B0 /* NSArray+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Chameleon.h"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.h"; sourceTree = "<group>"; };
+		B72934A2E81A5BB5B3C417239DB04DCC /* FAKIonIcons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKIonIcons.h; path = FontAwesomeKit/FAKIonIcons.h; sourceTree = "<group>"; };
+		B9F3C16E3867003987B601FEAB48B905 /* PDTSimpleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDTSimpleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA4D7448C865EB11ACCE0A5FA352BF79 /* BGTableViewRowActionWithImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BGTableViewRowActionWithImage-dummy.m"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BC8AD9DD564F24F25674A745D5D57AFC /* FAKIonIcons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKIonIcons.h; path = FontAwesomeKit/FAKIonIcons.h; sourceTree = "<group>"; };
-		BF9DCA669B2F3C1FEE7F1AAE6AAA24AD /* PDTSimpleCalendarViewWeekdayHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewWeekdayHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.h; sourceTree = "<group>"; };
-		C052EE910DD5F1480CCF35857414FD6A /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		C1526773CC53549FAACAA844CE63AB96 /* FontAwesomeKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FontAwesomeKit.h; path = FontAwesomeKit/FontAwesomeKit.h; sourceTree = "<group>"; };
-		C161CFFB2EF0E8899C70806D4F1D25E9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2C0AB3C85FA5E9164DD219A4ABB70A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		C4C8771CB76583857C2459F237D06246 /* UIButton+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Chameleon.m"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.m"; sourceTree = "<group>"; };
-		C5BD88E6FAE7BCCFCCAFB7BE8D011705 /* INTULocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INTULocationManager.h; path = LocationManager/INTULocationManager/INTULocationManager.h; sourceTree = "<group>"; };
-		C5E4419D13E9A7DB12DCA579DA96EABC /* PDTSimpleCalendarViewHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.h; sourceTree = "<group>"; };
-		CAAF692CFCF6C66812CC3E53F50F4C51 /* PDTSimpleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDTSimpleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAAE51659BF517E0F37026CDDC8FCF31 /* PDTSimpleCalendarViewHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.h; sourceTree = "<group>"; };
+		BC282CF1E8C47B4AE0D348E3A173FA97 /* ChameleonConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ChameleonConstants.m; path = "Pod/Classes/Objective-C/ChameleonConstants.m"; sourceTree = "<group>"; };
+		BC557A1A886A1E12795B701455147566 /* SCLAlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
+		BDD3256ECEC8AD2E5B8D3B1DD49901E4 /* ChameleonMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonMacros.h; path = "Pod/Classes/Objective-C/ChameleonMacros.h"; sourceTree = "<group>"; };
+		BE19E35A921ACB176AE8D00A8BF7CAFA /* BGTableViewRowActionWithImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BGTableViewRowActionWithImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEBD7C469E68C756A94544042CF74A54 /* PDTSimpleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PDTSimpleCalendar.modulemap; sourceTree = "<group>"; };
+		C0527593BBBD1401B1C84A935913A326 /* FAKZocial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKZocial.h; path = FontAwesomeKit/FAKZocial.h; sourceTree = "<group>"; };
+		C28423FFA0D4DEAE1F118E094BDF3DA3 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JVFloatLabeledTextField.m; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		C5444E475754FB0EF105A3C7E4792F8B /* SCLAlertView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCLAlertView-dummy.m"; sourceTree = "<group>"; };
+		C63AC06EE67BF925FCDEB9F384EC3F05 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7FAE46CBF841EAB960FA29646A02769 /* FAKIcon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKIcon.h; path = FontAwesomeKit/FAKIcon.h; sourceTree = "<group>"; };
+		C8B8F535AD755C634C5E2680E98F2B57 /* FontAwesomeKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FontAwesomeKit.h; path = FontAwesomeKit/FontAwesomeKit.h; sourceTree = "<group>"; };
+		C8F2CD4018ED486D57525663E8D50197 /* FAKFontAwesome.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKFontAwesome.m; path = FontAwesomeKit/FAKFontAwesome.m; sourceTree = "<group>"; };
+		C93577A2BFF6FB24B2E3D29E8A788BAE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = SCLAlertView/Info.plist; sourceTree = "<group>"; };
+		CA257005F2A580AE7DC0973D73CBBE11 /* BGTableViewRowActionWithImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BGTableViewRowActionWithImage.xcconfig; sourceTree = "<group>"; };
+		CB35FB3CCDC4E7A26BA031D3E0FB2D06 /* UIView+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		CB4EB2090FEC40023AE704348D9D6F90 /* UIColor+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.h"; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		CD0B1BB70DCC10966FA0E27BFE8CE754 /* ChameleonEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonEnums.h; path = "Pod/Classes/Objective-C/ChameleonEnums.h"; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D34AB131994337091BF848561BA705C3 /* PDTSimpleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-umbrella.h"; sourceTree = "<group>"; };
-		D3D60937B5EC5423E9F2B572CFF2CA35 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = SCLAlertView/Info.plist; sourceTree = "<group>"; };
-		D3DBC938A7330F3FA1947F19C841B8DC /* INTULocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = INTULocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D409B100AE1160DA533487B701B68971 /* NSArray+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Chameleon.h"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.h"; sourceTree = "<group>"; };
+		D2ED9A1CDE22D7CAEF1166E4544BEEBC /* UILabel+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+Chameleon.h"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.h"; sourceTree = "<group>"; };
+		D3D39E943EA5C039597E29D4CEC13A27 /* PDTSimpleCalendarViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewController.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.h; sourceTree = "<group>"; };
+		D84CF7EB70B3D9D2087FCF752B012F86 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		DAF6467E30C8E546E8B5233ED8B67B00 /* FontAwesomeKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesomeKit.xcconfig; sourceTree = "<group>"; };
-		DC952CDE0ECA94DC14F51AEDE8FF9332 /* BGTableViewRowActionWithImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BGTableViewRowActionWithImage-dummy.m"; sourceTree = "<group>"; };
-		DE3B442DE278507FB1ACE9548A96844A /* SCLAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCLAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3538604E652ED65F6152C23C1723590 /* FontAwesomeKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeKit-umbrella.h"; sourceTree = "<group>"; };
-		E6E5D882162AA80039FE4C2B86F9EB68 /* FAKFoundationIcons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKFoundationIcons.h; path = FontAwesomeKit/FAKFoundationIcons.h; sourceTree = "<group>"; };
+		DB6A6EE5C6262F7EE857CB3511652135 /* UIImage+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		DF2FE0C979FD6BF4AC737666BCEA3F6C /* UIAppearance+Swift.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAppearance+Swift.m"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.m"; sourceTree = "<group>"; };
+		E6547E107A67B84C1363B2E401C4F90F /* FontAwesomeKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesomeKit.xcconfig; sourceTree = "<group>"; };
+		E6BF2F0C542048ED7829F954A6808D40 /* SwiftLocation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLocation-prefix.pch"; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
+		E81BBB5BE543EDC9D81194D5DD953162 /* ChameleonFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-umbrella.h"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E84E08E9011C56C080808AD91FB20C9F /* PDTSimpleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-prefix.pch"; sourceTree = "<group>"; };
-		E985E37F879F815691F95FD77AC190D2 /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Chameleon.m"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.m"; sourceTree = "<group>"; };
-		EA2C60A63D8E126BC8D8FBA119BE6708 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBFA3368C1949BDCC61410E7E738AD52 /* UIImage+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.h"; sourceTree = "<group>"; };
-		EE31C1B086CA3FA43AFD06C687AC7650 /* SCLAlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
-		F22DC60172083536FF6A96E7420F6AD2 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		F3DFAACF4754696C300BBC5FADDC4A34 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		F8097A2FB0893F03DD5B34D72ABAB385 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
-		F986127A5EE5D8DF49B0D282018F6815 /* SCLAlertView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView-prefix.pch"; sourceTree = "<group>"; };
-		F9F81E8DFC2A3B3D39023F9D20076AAD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
-		FBDCDC8219668A958122180B9FC509EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		FC445A4AFE13C6965DB6488C2BB043C5 /* FAKZocial.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FAKZocial.m; path = FontAwesomeKit/FAKZocial.m; sourceTree = "<group>"; };
+		E9F0B4D33EBF59A7A9D65E2335F6D7B4 /* PDTSimpleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PDTSimpleCalendar-dummy.m"; sourceTree = "<group>"; };
+		EADCF687F3D25B9C790C54115A8B39CF /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
+		EC963A04853BC60745B0C12C10D21950 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		ED1D2EBFDE1083D9938B7AB36CB04769 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		F1490CC2659CD1B747F9B61CDBAB5B51 /* FontAwesomeKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeKit-umbrella.h"; sourceTree = "<group>"; };
+		F19F049E51A7C609CC91DA50400F5D5B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F20811548347033FE373B3BA180D9186 /* PDTSimpleCalendarViewWeekdayHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewWeekdayHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.m; sourceTree = "<group>"; };
+		F27D52C66B4C8B2E03EA21E481B4B99D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5451FD5F14DF4672D77ABC43E0B71C2 /* FontAwesome.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = FontAwesome.otf; path = FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
+		F6223B9069B94417FB2B0DE61D1D8824 /* JVFloatLabeledTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JVFloatLabeledTextField-dummy.m"; sourceTree = "<group>"; };
+		F6743E2AB264F056CA0B23F50D50F06D /* FAKFoundationIcons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FAKFoundationIcons.h; path = FontAwesomeKit/FAKFoundationIcons.h; sourceTree = "<group>"; };
+		FA4054850529F1A06564FDDFECC92966 /* PDTSimpleCalendarViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewController.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.m; sourceTree = "<group>"; };
+		FD1F35F8400E469D4DA35EFCBDB91FC0 /* NSArray+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Chameleon.m"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0A334CB54D912E74D09D1BE01BED724B /* Frameworks */ = {
+		16A1C1A017FFA2ACABAE1DBFC31737DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B2021C94A1E8DE397BA9072FC73C77D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		13438F099E523E618B9965BB15EB371E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A182105733DB42B8B048C0D5D96F4B91 /* Foundation.framework in Frameworks */,
+				417F39D9D19170E2CACB2020BB4F45C7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,11 +350,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90E2AEE10DF29828E3AEBD8F86BBB5E5 /* Frameworks */ = {
+		8D7163BB2DB667C25BFED54091CE8727 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D541FB12C433FD12634ACF7BFEC6EEEC /* Foundation.framework in Frameworks */,
+				B4FD573C645EE4C9A0E0667AF6A00201 /* CoreLocation.framework in Frameworks */,
+				F13D33C950D0F652E93C806086B5C712 /* Foundation.framework in Frameworks */,
+				5AAE8A13DBAB4BD0141A8D95B11AE554 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,11 +369,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1AC1CB9D8A9FEDE9E6797EC52DD1A38 /* Frameworks */ = {
+		AFB8F345FF94842D570000E1158593D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				614AE45EA91BB78685744A9E315DBEBF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1C38C1DA10720CB8024F66CFA5D3275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0515C2D5132E7FA965417A8B84456CA5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D82CCBF9B2CFA52EEF6D94B98301D00D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A181D747EBCB41E43127C988230BCA23 /* Foundation.framework in Frameworks */,
+				0EB35B097E213174C1AD213E1D33DD98 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB1405240DDF1219DB62DF0EAB18C921 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF437C064F5F4BAA2F3901B4B9C7AD26 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,239 +412,180 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05CABF7B5E85DF2A2CB9E371AE37316E /* PDTSimpleCalendar */ = {
+		0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				10B93D1B1F130858D63A38FCAC92A4E4 /* PDTSimpleCalendar.h */,
-				62446DA9483EC80A2AA725201891BF34 /* PDTSimpleCalendarViewCell.h */,
-				579B069BCABE184213D84C3B1A9409E5 /* PDTSimpleCalendarViewCell.m */,
-				83E9D0C3D62B1CF75F1016626CA1A2FF /* PDTSimpleCalendarViewController.h */,
-				9F7A513533C4A1EC9ADCF52A65E122B9 /* PDTSimpleCalendarViewController.m */,
-				8975F91CB60F7C0E6638A8BACB916E2E /* PDTSimpleCalendarViewFlowLayout.h */,
-				23BAB5C79AEECCF07207A84F3E7100CA /* PDTSimpleCalendarViewFlowLayout.m */,
-				C5E4419D13E9A7DB12DCA579DA96EABC /* PDTSimpleCalendarViewHeader.h */,
-				A30336013123D6A00ACCEB8BB57F7FB0 /* PDTSimpleCalendarViewHeader.m */,
-				BF9DCA669B2F3C1FEE7F1AAE6AAA24AD /* PDTSimpleCalendarViewWeekdayHeader.h */,
-				38EFAC6D517A8DFBC825A4C967CD71E5 /* PDTSimpleCalendarViewWeekdayHeader.m */,
-				0626D4969719CD75D5A735C579F13CE1 /* Support Files */,
+				5B07BA6791CD6C905A3412ACAD702AB8 /* iOS */,
 			);
-			path = PDTSimpleCalendar;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0626D4969719CD75D5A735C579F13CE1 /* Support Files */ = {
+		1951B3DE34514ED27B6F37424D10324F /* Zocial */ = {
 			isa = PBXGroup;
 			children = (
-				84119FF2C1BB6845FA0EB9312830409C /* Info.plist */,
-				98E1979F4113AEE99E6560CF766EF6AE /* PDTSimpleCalendar.modulemap */,
-				6D3AF5BBBDA238ECECF242E247A656C1 /* PDTSimpleCalendar.xcconfig */,
-				B7EF346161A05C1C49D9BA55B6DCEE42 /* PDTSimpleCalendar-dummy.m */,
-				E84E08E9011C56C080808AD91FB20C9F /* PDTSimpleCalendar-prefix.pch */,
-				D34AB131994337091BF848561BA705C3 /* PDTSimpleCalendar-umbrella.h */,
+				C0527593BBBD1401B1C84A935913A326 /* FAKZocial.h */,
+				B5C54967962B034357231050B304EA54 /* FAKZocial.m */,
+				44D28744371C7DA5052B10E4290EAA21 /* Resources */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/PDTSimpleCalendar";
+			name = Zocial;
 			sourceTree = "<group>";
 		};
-		1438E0556B19969E44A473536148F061 /* Support Files */ = {
+		2507D5A8A8B5E5D2A2D39880E3AF1C74 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				989C3F763A0CF6B3E1A64C8B42724769 /* BGTableViewRowActionWithImage.modulemap */,
-				77D67217A17B64BE91A1213D2FD0DCC2 /* BGTableViewRowActionWithImage.xcconfig */,
-				DC952CDE0ECA94DC14F51AEDE8FF9332 /* BGTableViewRowActionWithImage-dummy.m */,
-				93061D01F18AA409E7E9A681DC86597A /* BGTableViewRowActionWithImage-prefix.pch */,
-				3507FDAA91C372F5722F5B1971098780 /* BGTableViewRowActionWithImage-umbrella.h */,
-				4F1E08AF18D8591A2B666D9D0D3A9E9E /* Info.plist */,
+				49351431C4196E73503588AEE20A8F78 /* BGTableViewRowActionWithImage.modulemap */,
+				CA257005F2A580AE7DC0973D73CBBE11 /* BGTableViewRowActionWithImage.xcconfig */,
+				BA4D7448C865EB11ACCE0A5FA352BF79 /* BGTableViewRowActionWithImage-dummy.m */,
+				3C9B5B507AA0CEE355B4D624822CC06C /* BGTableViewRowActionWithImage-prefix.pch */,
+				7818E00D439F9363B698CAFBC8AA18ED /* BGTableViewRowActionWithImage-umbrella.h */,
+				F19F049E51A7C609CC91DA50400F5D5B /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/BGTableViewRowActionWithImage";
 			sourceTree = "<group>";
 		};
-		1EA886FEA184E0F8FD0085CA70B8EBA4 /* Resources */ = {
+		33A08ED27DF2CDA30505E36F90FA5E24 /* JVFloatLabeledTextField */ = {
 			isa = PBXGroup;
 			children = (
-				6CAE84C39577ADAEACECDC106DC0781A /* FontAwesome.otf */,
+				4CEC7C7F98515D4E04CD1379F9D6B34B /* JVFloatLabeledTextField.h */,
+				C28423FFA0D4DEAE1F118E094BDF3DA3 /* JVFloatLabeledTextField.m */,
+				3ABC03548D36BFF5E1235FDD0E033057 /* JVFloatLabeledTextView.h */,
+				4036D37577FC5C71D9A73623588215D3 /* JVFloatLabeledTextView.m */,
+				56580E2966BE6BFB634D9307EBA21F27 /* NSString+TextDirectionality.h */,
+				1CE288F993E2B9F3670151558EC8BC48 /* NSString+TextDirectionality.m */,
+				EBC7A45F1BEB16AE610D96F55A2DF527 /* Support Files */,
+			);
+			path = JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
+		3F5023317E8E413BCFC2777B326E8841 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				17835E24D144DDC78803EED94C7399EC /* FontAwesomeKit.modulemap */,
+				E6547E107A67B84C1363B2E401C4F90F /* FontAwesomeKit.xcconfig */,
+				1E82E45F83DE3983A8D9FF3898D62A07 /* FontAwesomeKit-dummy.m */,
+				61B9E56E1532C175BAFAC32ECADEA191 /* FontAwesomeKit-prefix.pch */,
+				F1490CC2659CD1B747F9B61CDBAB5B51 /* FontAwesomeKit-umbrella.h */,
+				1F635357A39F8B208939DE3CC9941D97 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FontAwesomeKit";
+			sourceTree = "<group>";
+		};
+		443F6AB608B54E128ACCA66FF251EA7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE19E35A921ACB176AE8D00A8BF7CAFA /* BGTableViewRowActionWithImage.framework */,
+				1BC254A55BF1B16ACEB67CE6AF5F3B77 /* ChameleonFramework.framework */,
+				70498AA139ABFD55595F5703D4607449 /* FontAwesomeKit.framework */,
+				A6E573D4BB77279C7E769BA311769769 /* JVFloatLabeledTextField.framework */,
+				B9F3C16E3867003987B601FEAB48B905 /* PDTSimpleCalendar.framework */,
+				3167388CA05BA483E99AB22C225206D1 /* Pods.framework */,
+				A0F4F494D27880E588482E389B991DC2 /* SCLAlertView.framework */,
+				342F213A8DEDD4A19C5558AEE0FE2755 /* SwiftLocation.bundle */,
+				40196091FEA5F668712AEAF2D277BA62 /* SwiftLocation.framework */,
+				8287D759B00B1FC3FC1EB8E53BA8F842 /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		44D28744371C7DA5052B10E4290EAA21 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EADCF687F3D25B9C790C54115A8B39CF /* zocial-regular-webfont.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
+		46E7B8C8326E7409FCB8F63B6F088769 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				67ACCD40386E4BF5A9E17B8DA0AF47A4 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2498D1D43C31507BEA5862E1B842E63D /* INTULocationManager */ = {
-			isa = PBXGroup;
-			children = (
-				C5BD88E6FAE7BCCFCCAFB7BE8D011705 /* INTULocationManager.h */,
-				4F22BA4529B9D9F1B38122A85393511E /* INTULocationManager.m */,
-				91397BCCC63BEDB9EBD74B0FE56FBC3B /* INTULocationManager+Internal.h */,
-				9FA6BD8C9F075DEE6D5AA8C921B437C9 /* INTULocationRequest.h */,
-				804197D6531A3A92D08290CB78A07B2B /* INTULocationRequest.m */,
-				8D58E71D7F4A2B6DD1E968FBBA44EAED /* INTULocationRequestDefines.h */,
-				2B85E347898DF08B18F37CB6E01693E1 /* Support Files */,
-			);
-			path = INTULocationManager;
-			sourceTree = "<group>";
-		};
-		2B85E347898DF08B18F37CB6E01693E1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				45165E875522D90AD7F20236182E7E63 /* Info.plist */,
-				BA33BF1FE79C9B59956EFF4924A4505E /* INTULocationManager.modulemap */,
-				157D1D70B09CF35B0EDEAF5577927AC3 /* INTULocationManager.xcconfig */,
-				A9E5210BCC89AADEF0BDEEF5F56B8094 /* INTULocationManager-dummy.m */,
-				68AB67BDADE67F6336E8C6A323076335 /* INTULocationManager-prefix.pch */,
-				7E8A97957C19E68871D5052564393101 /* INTULocationManager-umbrella.h */,
+				53C03F9B15410682DB9306B5836673E5 /* Info.plist */,
+				BEBD7C469E68C756A94544042CF74A54 /* PDTSimpleCalendar.modulemap */,
+				788B923333C623D25D1E9351DD80E4E8 /* PDTSimpleCalendar.xcconfig */,
+				E9F0B4D33EBF59A7A9D65E2335F6D7B4 /* PDTSimpleCalendar-dummy.m */,
+				B458AF5846508BDAAC8BA892187B907C /* PDTSimpleCalendar-prefix.pch */,
+				B6D086631F94FA5C4E768B655C47CF2E /* PDTSimpleCalendar-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/INTULocationManager";
+			path = "../Target Support Files/PDTSimpleCalendar";
 			sourceTree = "<group>";
 		};
-		326182CA7638DC2D6C194C59B8EA9ABE /* Default */ = {
+		58DF51E4E64F0364D5018EBB346CBD87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1AFD3D21413ACF04DEAB70B5A645B981 /* Chameleon.h */,
-				4308B9F876BB1BF9355E1CFA36E61EC4 /* Chameleon_.h */,
-				3F37DEB9214BCEFEE1D3ED0D52325F45 /* Chameleon_.m */,
-				5158B6796BC9EE4A8C2795F1CE2071D4 /* ChameleonConstants.h */,
-				6C6BADE8503DF8081A6CB2038A618CED /* ChameleonConstants.m */,
-				CD0B1BB70DCC10966FA0E27BFE8CE754 /* ChameleonEnums.h */,
-				3C8897D783ADACFC6E524625A6B7024B /* ChameleonMacros.h */,
-				D409B100AE1160DA533487B701B68971 /* NSArray+Chameleon.h */,
-				87EA35271D774FF94D3EE4FF9CC6CD81 /* NSArray+Chameleon.m */,
-				327EC7282C00A6AE9824C50623B19BEE /* UIAppearance+Swift.h */,
-				73901E1487934E431ED9F4C945302523 /* UIAppearance+Swift.m */,
-				6141F3CAD39C2591E085647AADE294FD /* UIButton+Chameleon.h */,
-				C4C8771CB76583857C2459F237D06246 /* UIButton+Chameleon.m */,
-				188DB422CFAEBD415EB929A74876C0B5 /* UIColor+Chameleon.h */,
-				AFD592287892E2DA43D16775B4B6B22C /* UIColor+Chameleon.m */,
-				2E69655DA996ACAA354FC4ED21624694 /* UIColor+ChameleonPrivate.h */,
-				46409755E5EB7706419C1237B2EFFAA8 /* UIColor+ChameleonPrivate.m */,
-				EBFA3368C1949BDCC61410E7E738AD52 /* UIImage+ChameleonPrivate.h */,
-				AB7CC48A348B75E27F7988AD3B816175 /* UIImage+ChameleonPrivate.m */,
-				0C62E5DFA50C7085F3F1053E7E3857C4 /* UILabel+Chameleon.h */,
-				B208C44B11CFCF283286660DC94CEE1C /* UILabel+Chameleon.m */,
-				78BA77DF14311288CFFF5F8E64E897AD /* UINavigationController+Chameleon.h */,
-				6F49937395C5E8F936DE67254B2D15BC /* UINavigationController+Chameleon.m */,
-				48F3ACD4DB2F521198A878ABE64E6FD0 /* UIView+ChameleonPrivate.h */,
-				3B5C7B6D910752693D98575D7FBFE163 /* UIView+ChameleonPrivate.m */,
-				9CB52BFDEF1CB300BD61285BA74C0E78 /* UIViewController+Chameleon.h */,
-				E985E37F879F815691F95FD77AC190D2 /* UIViewController+Chameleon.m */,
+				F5451FD5F14DF4672D77ABC43E0B71C2 /* FontAwesome.otf */,
 			);
-			name = Default;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		334DF6266D18309A32892F3E39497528 /* Zocial */ = {
+		5B07BA6791CD6C905A3412ACAD702AB8 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				451183131BDA0A1B9BD99A39CC8C6214 /* FAKZocial.h */,
-				FC445A4AFE13C6965DB6488C2BB043C5 /* FAKZocial.m */,
-				62D623F7244D484FB041976225D2E781 /* Resources */,
+				3A5191EDF4EB288042EC71219594E632 /* CoreGraphics.framework */,
+				5F518F0580A3EC9470B478729609F3BF /* CoreLocation.framework */,
+				35411B3B17A6B347412A82AB1D9CB871 /* CoreText.framework */,
+				5F34529B51C24CB50E0A85BD72D447F4 /* Foundation.framework */,
+				78FC02FB7BA0B7B756908BEB80487BEA /* QuartzCore.framework */,
+				936778123B3142022551B7FC2CC42CE0 /* UIKit.framework */,
 			);
-			name = Zocial;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		35F12305DB8C95724C1D0AC4375BBA3C /* SwiftyJSON */ = {
+		5E70E3AAEB4409A0E359BA31ACBBF065 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EC10452D271A92209922DAC59888F14 /* SwiftyJSON.swift */,
-				B35F55866D1A5D814CE28E2E18914A78 /* Support Files */,
+				F27D52C66B4C8B2E03EA21E481B4B99D /* Info.plist */,
+				981FF570C4236F50012320B5F98A3D9E /* SwiftyJSON.modulemap */,
+				92CE839C55113CADE3E830F7669C0EE6 /* SwiftyJSON.xcconfig */,
+				ED1D2EBFDE1083D9938B7AB36CB04769 /* SwiftyJSON-dummy.m */,
+				EC963A04853BC60745B0C12C10D21950 /* SwiftyJSON-prefix.pch */,
+				6C848B15503D9A6AA8A5DBE297D5BEBA /* SwiftyJSON-umbrella.h */,
 			);
-			path = SwiftyJSON;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
-		424DAC69805D579419FFD2AD0378800F /* ChameleonFramework */ = {
+		64D815BA6F13D5DFED0ACE049DEAFE28 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				326182CA7638DC2D6C194C59B8EA9ABE /* Default */,
-				464285298576B3CC0A489A781387CDCA /* Support Files */,
+				873742D9BFD89FC2440D30ADB2988FAE /* Info.plist */,
+				7509D8CCDEFFFD633157BCF8AB30DDF3 /* SCLAlertView.modulemap */,
+				1528A0F1722C478487FD3AEB19D7A878 /* SCLAlertView.xcconfig */,
+				C5444E475754FB0EF105A3C7E4792F8B /* SCLAlertView-dummy.m */,
+				7A68C3FF04FAFE8ADD462D07B7F705F5 /* SCLAlertView-prefix.pch */,
+				15D388AD45AFA4BC9CBB9DA78FCD3476 /* SCLAlertView-umbrella.h */,
 			);
-			path = ChameleonFramework;
+			name = "Support Files";
+			path = "../Target Support Files/SCLAlertView";
 			sourceTree = "<group>";
 		};
-		45619929BD4306D6957C0C14BE418E86 /* FontAwesomeKit */ = {
+		698440C0BE0C41173396E7EE4EE6A445 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C1526773CC53549FAACAA844CE63AB96 /* FontAwesomeKit.h */,
-				509CB8AEB834FBED803FCF911FBA0810 /* Core */,
-				A63AA380F3792E65A70C0318B059EF9A /* FontAwesome */,
-				6547F250E3EA0DD4489E5BC2AB727E57 /* FoundationIcons */,
-				CA9865E97049C52718DA12F77A2EC36B /* IonIcons */,
-				A845D68155C4A4BA04EFFF1E2B0F2523 /* Support Files */,
-				334DF6266D18309A32892F3E39497528 /* Zocial */,
-			);
-			path = FontAwesomeKit;
-			sourceTree = "<group>";
-		};
-		464285298576B3CC0A489A781387CDCA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0C14F4A51948E8E8423411BC85368065 /* ChameleonFramework.modulemap */,
-				444921DC1586B325E2B959F8F3522BBC /* ChameleonFramework.xcconfig */,
-				B6F7CEB2E975B3C416AFF1736E620901 /* ChameleonFramework-dummy.m */,
-				1011FD9C1D46EAACC8757F5A4832F493 /* ChameleonFramework-prefix.pch */,
-				7FAF929A00E43E2F6E006BE5897389CF /* ChameleonFramework-umbrella.h */,
-				C161CFFB2EF0E8899C70806D4F1D25E9 /* Info.plist */,
+				6E9D2B6946CA1507F7F6DA064B924DD8 /* ChameleonFramework.modulemap */,
+				7F9A2154EDE15F2F262C116E5E90DD74 /* ChameleonFramework.xcconfig */,
+				229BFFE387822490144CC57BCE5C78F8 /* ChameleonFramework-dummy.m */,
+				708B10DC2798EE0AEA6511F528E5991F /* ChameleonFramework-prefix.pch */,
+				E81BBB5BE543EDC9D81194D5DD953162 /* ChameleonFramework-umbrella.h */,
+				B4B1C05151C288A73A1E6384928972BB /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ChameleonFramework";
 			sourceTree = "<group>";
 		};
-		509CB8AEB834FBED803FCF911FBA0810 /* Core */ = {
+		6D48A3FC2351B7EB38FB170D7CBBD673 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B08EDA1D51C2903D41EDA10B161025E6 /* FAKIcon.h */,
-				19395AB59E3F111B960AA2EDBD648DF0 /* FAKIcon.m */,
+				C63AC06EE67BF925FCDEB9F384EC3F05 /* Info.plist */,
+				1C77B7C17F9BA88566E159CF06E02845 /* SwiftLocation.modulemap */,
+				2938A774592C6EDE13916C9C01696A4E /* SwiftLocation.xcconfig */,
+				6E69AB6E83E6268814F2AEB455A31FEF /* SwiftLocation-dummy.m */,
+				E6BF2F0C542048ED7829F954A6808D40 /* SwiftLocation-prefix.pch */,
+				879D8CD73D9D0E7BDA45D81B0F196185 /* SwiftLocation-umbrella.h */,
 			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		62D623F7244D484FB041976225D2E781 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F8097A2FB0893F03DD5B34D72ABAB385 /* zocial-regular-webfont.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		6547F250E3EA0DD4489E5BC2AB727E57 /* FoundationIcons */ = {
-			isa = PBXGroup;
-			children = (
-				E6E5D882162AA80039FE4C2B86F9EB68 /* FAKFoundationIcons.h */,
-				8DAD3309496F440E27DA712A473A5150 /* FAKFoundationIcons.m */,
-				CB7ED3DD103E3E123BAAE64574FF9952 /* Resources */,
-			);
-			name = FoundationIcons;
-			sourceTree = "<group>";
-		};
-		67ACCD40386E4BF5A9E17B8DA0AF47A4 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				C2C0AB3C85FA5E9164DD219A4ABB70A8 /* CoreGraphics.framework */,
-				F9F81E8DFC2A3B3D39023F9D20076AAD /* CoreText.framework */,
-				D06DE372ABB13C90BA607C6CB5F826C4 /* Foundation.framework */,
-				FBDCDC8219668A958122180B9FC509EB /* QuartzCore.framework */,
-				506A5B2617A7166468E55C721EA33493 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		750A33D8CC71E97BE23F81C674E68307 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				00281F785C2B1A7F5DB6D60705D461E8 /* BGTableViewRowActionWithImage.framework */,
-				1710E16344C86ABDD1FC417866AFCD67 /* ChameleonFramework.framework */,
-				8326FBA38CF2C7105F7A2F841229B555 /* FontAwesomeKit.framework */,
-				D3DBC938A7330F3FA1947F19C841B8DC /* INTULocationManager.framework */,
-				CAAF692CFCF6C66812CC3E53F50F4C51 /* PDTSimpleCalendar.framework */,
-				74211696012DDDF97B82B30D5281305B /* Pods.framework */,
-				DE3B442DE278507FB1ACE9548A96844A /* SCLAlertView.framework */,
-				44C88C89F99730F8803509EBD300226A /* SwiftyJSON.framework */,
-			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLocation";
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -615,75 +606,83 @@
 			path = "Target Support Files/Pods";
 			sourceTree = "<group>";
 		};
+		789A2C7CB3DAA78A9A30BCF716BA70BB /* FoundationIcons */ = {
+			isa = PBXGroup;
+			children = (
+				F6743E2AB264F056CA0B23F50D50F06D /* FAKFoundationIcons.h */,
+				21859F4248A8358C31730EB9D03281C3 /* FAKFoundationIcons.m */,
+				C95FF19FF1185A88DAB3D2ECD4776870 /* Resources */,
+			);
+			name = FoundationIcons;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
-				C3C0C1193D0DC34B983C1D2FD7B21629 /* Pods */,
-				750A33D8CC71E97BE23F81C674E68307 /* Products */,
+				0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */,
+				D8D586B54D3C6A7DD1F2DC1D3C6490A5 /* Pods */,
+				443F6AB608B54E128ACCA66FF251EA7A /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A63AA380F3792E65A70C0318B059EF9A /* FontAwesome */ = {
+		8ED61792671F0348090457D16FE02FF5 /* FontAwesome */ = {
 			isa = PBXGroup;
 			children = (
-				A40865E72FC212A5C08662C5565CDDE6 /* FAKFontAwesome.h */,
-				16AF97F9A0E1281532B45314B07DAA06 /* FAKFontAwesome.m */,
-				1EA886FEA184E0F8FD0085CA70B8EBA4 /* Resources */,
+				5064D27ED57D46EFB6E27C40416BECBA /* FAKFontAwesome.h */,
+				C8F2CD4018ED486D57525663E8D50197 /* FAKFontAwesome.m */,
+				58DF51E4E64F0364D5018EBB346CBD87 /* Resources */,
 			);
 			name = FontAwesome;
 			sourceTree = "<group>";
 		};
-		A845D68155C4A4BA04EFFF1E2B0F2523 /* Support Files */ = {
+		9DFF711AC2D9CE7AA1C7F4FCD14EFA15 /* SwiftLocation */ = {
 			isa = PBXGroup;
 			children = (
-				301A417EE1A05D823633B6BB1BBC12DC /* FontAwesomeKit.modulemap */,
-				DAF6467E30C8E546E8B5233ED8B67B00 /* FontAwesomeKit.xcconfig */,
-				9C89EAF80DADC7EE09D56B2292327BDA /* FontAwesomeKit-dummy.m */,
-				8AD6B949F0C28536B1992C6CFA9A949C /* FontAwesomeKit-prefix.pch */,
-				E3538604E652ED65F6152C23C1723590 /* FontAwesomeKit-umbrella.h */,
-				8D9E8E4F3499EC01A103307E5DF87537 /* Info.plist */,
+				51E39047D5C1147F41BFA9CFDBB87581 /* SwiftLocation.swift */,
+				6D48A3FC2351B7EB38FB170D7CBBD673 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/FontAwesomeKit";
+			path = SwiftLocation;
 			sourceTree = "<group>";
 		};
-		B35F55866D1A5D814CE28E2E18914A78 /* Support Files */ = {
+		9EE28BA19A7881CC3B782AE04B8C3700 /* ChameleonFramework */ = {
 			isa = PBXGroup;
 			children = (
-				6F0CF816FFBF923EB1ED6AED6B5A268C /* Info.plist */,
-				C052EE910DD5F1480CCF35857414FD6A /* SwiftyJSON.modulemap */,
-				9729EE232719EDCBC182E5307841BA42 /* SwiftyJSON.xcconfig */,
-				4D9AFF9230AF841D6B332696B828D9C8 /* SwiftyJSON-dummy.m */,
-				F3DFAACF4754696C300BBC5FADDC4A34 /* SwiftyJSON-prefix.pch */,
-				F22DC60172083536FF6A96E7420F6AD2 /* SwiftyJSON-umbrella.h */,
+				FD7032FB5A58135D4A009274598C928D /* Default */,
+				698440C0BE0C41173396E7EE4EE6A445 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
+			path = ChameleonFramework;
 			sourceTree = "<group>";
 		};
-		B54141C2CEF9F2ECC94D749239619DCB /* Support Files */ = {
+		A5F5B782A218D684207B603384A3A916 /* BGTableViewRowActionWithImage */ = {
 			isa = PBXGroup;
 			children = (
-				EA2C60A63D8E126BC8D8FBA119BE6708 /* Info.plist */,
-				51BD5F60D4111C5CB90E480BA880D620 /* SCLAlertView.modulemap */,
-				5AAE05D685945CB7EBB1CF1CEA878B55 /* SCLAlertView.xcconfig */,
-				23F63FA8BAD336606FFBC6D790C61021 /* SCLAlertView-dummy.m */,
-				F986127A5EE5D8DF49B0D282018F6815 /* SCLAlertView-prefix.pch */,
-				877EBEF6E3046DCE7C5FDFA4A710D3DF /* SCLAlertView-umbrella.h */,
+				0D1816CB8E3686C8EA9A8FEC173846F0 /* BGTableViewRowActionWithImage.h */,
+				510CAEAA8EBD2E8E97C6BE3B05F95F27 /* BGTableViewRowActionWithImage.m */,
+				2507D5A8A8B5E5D2A2D39880E3AF1C74 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SCLAlertView";
+			path = BGTableViewRowActionWithImage;
 			sourceTree = "<group>";
 		};
-		B5D4DAED4C77E06B88B90DEA71C99DF0 /* Resources */ = {
+		B4F9DAF20B6BF18C3FA794297B924FB5 /* IonIcons */ = {
 			isa = PBXGroup;
 			children = (
-				887AF97FB07AE9AD51839AE8FB0FC061 /* ionicons.ttf */,
+				B72934A2E81A5BB5B3C417239DB04DCC /* FAKIonIcons.h */,
+				8FADD14E0E5C9906B7815F1FF1936F5F /* FAKIonIcons.m */,
+				C580D28DEA278DC0C9E4F6DBA207189F /* Resources */,
 			);
-			name = Resources;
+			name = IonIcons;
+			sourceTree = "<group>";
+		};
+		B627DDBF0A649A2DF1F119EF2040D803 /* SCLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				C93577A2BFF6FB24B2E3D29E8A788BAE /* Info.plist */,
+				BC557A1A886A1E12795B701455147566 /* SCLAlertView.swift */,
+				64D815BA6F13D5DFED0ACE049DEAFE28 /* Support Files */,
+			);
+			path = SCLAlertView;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -694,61 +693,147 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		C3C0C1193D0DC34B983C1D2FD7B21629 /* Pods */ = {
+		B864E87190EE9AF5BF4EE90549D4BFCB /* PDTSimpleCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				FB226249B1C7A91102EB58A69FE67465 /* BGTableViewRowActionWithImage */,
-				424DAC69805D579419FFD2AD0378800F /* ChameleonFramework */,
-				45619929BD4306D6957C0C14BE418E86 /* FontAwesomeKit */,
-				2498D1D43C31507BEA5862E1B842E63D /* INTULocationManager */,
-				05CABF7B5E85DF2A2CB9E371AE37316E /* PDTSimpleCalendar */,
-				E8D7845713A34E29126B97C2AF44D8B9 /* SCLAlertView */,
-				35F12305DB8C95724C1D0AC4375BBA3C /* SwiftyJSON */,
+				3EDBB637F6CA7D200EBCE4ADFF9518BC /* PDTSimpleCalendar.h */,
+				4B80127405F1B172E83F64E1C6603C7F /* PDTSimpleCalendarViewCell.h */,
+				27B7D82EAC36B71866B38E19A1E02EB9 /* PDTSimpleCalendarViewCell.m */,
+				D3D39E943EA5C039597E29D4CEC13A27 /* PDTSimpleCalendarViewController.h */,
+				FA4054850529F1A06564FDDFECC92966 /* PDTSimpleCalendarViewController.m */,
+				6FCBAB750D1ECA364975FC0817184643 /* PDTSimpleCalendarViewFlowLayout.h */,
+				88509661EB0C3AF10DE45FF422A6F72C /* PDTSimpleCalendarViewFlowLayout.m */,
+				BAAE51659BF517E0F37026CDDC8FCF31 /* PDTSimpleCalendarViewHeader.h */,
+				487D62758DFA95D63F6C5220ECAE7977 /* PDTSimpleCalendarViewHeader.m */,
+				5BDA2A52D67443C6BA16832174ED2587 /* PDTSimpleCalendarViewWeekdayHeader.h */,
+				F20811548347033FE373B3BA180D9186 /* PDTSimpleCalendarViewWeekdayHeader.m */,
+				46E7B8C8326E7409FCB8F63B6F088769 /* Support Files */,
 			);
-			name = Pods;
+			path = PDTSimpleCalendar;
 			sourceTree = "<group>";
 		};
-		CA9865E97049C52718DA12F77A2EC36B /* IonIcons */ = {
+		C580D28DEA278DC0C9E4F6DBA207189F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BC8AD9DD564F24F25674A745D5D57AFC /* FAKIonIcons.h */,
-				A76E24F0373DCE81CFB2BBD844FC8E46 /* FAKIonIcons.m */,
-				B5D4DAED4C77E06B88B90DEA71C99DF0 /* Resources */,
-			);
-			name = IonIcons;
-			sourceTree = "<group>";
-		};
-		CB7ED3DD103E3E123BAAE64574FF9952 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0E5DF7403F13905E9AF7E50A9563E4BA /* foundation-icons.ttf */,
+				9C990340BAF5D0ADB8A4B3B873972E19 /* ionicons.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		E8D7845713A34E29126B97C2AF44D8B9 /* SCLAlertView */ = {
+		C95FF19FF1185A88DAB3D2ECD4776870 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D3D60937B5EC5423E9F2B572CFF2CA35 /* Info.plist */,
-				EE31C1B086CA3FA43AFD06C687AC7650 /* SCLAlertView.swift */,
-				B54141C2CEF9F2ECC94D749239619DCB /* Support Files */,
+				4701E8E0BF2F9F819FFDD57FCAE7D815 /* foundation-icons.ttf */,
 			);
-			path = SCLAlertView;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		FB226249B1C7A91102EB58A69FE67465 /* BGTableViewRowActionWithImage */ = {
+		D8D586B54D3C6A7DD1F2DC1D3C6490A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				83CBE46CA8404EEF71A27A84ED8533CE /* BGTableViewRowActionWithImage.h */,
-				85DDCD5ACA496D28A2FE34CF41FE1ABC /* BGTableViewRowActionWithImage.m */,
-				1438E0556B19969E44A473536148F061 /* Support Files */,
+				A5F5B782A218D684207B603384A3A916 /* BGTableViewRowActionWithImage */,
+				9EE28BA19A7881CC3B782AE04B8C3700 /* ChameleonFramework */,
+				E939E52B74A9E12D52453B31C986B1D4 /* FontAwesomeKit */,
+				33A08ED27DF2CDA30505E36F90FA5E24 /* JVFloatLabeledTextField */,
+				B864E87190EE9AF5BF4EE90549D4BFCB /* PDTSimpleCalendar */,
+				B627DDBF0A649A2DF1F119EF2040D803 /* SCLAlertView */,
+				9DFF711AC2D9CE7AA1C7F4FCD14EFA15 /* SwiftLocation */,
+				FB9C6FAA8E08B2755C4D502BA45251C8 /* SwiftyJSON */,
 			);
-			path = BGTableViewRowActionWithImage;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E939E52B74A9E12D52453B31C986B1D4 /* FontAwesomeKit */ = {
+			isa = PBXGroup;
+			children = (
+				C8B8F535AD755C634C5E2680E98F2B57 /* FontAwesomeKit.h */,
+				EC725815167DED1C1D49847CFFBC2A33 /* Core */,
+				8ED61792671F0348090457D16FE02FF5 /* FontAwesome */,
+				789A2C7CB3DAA78A9A30BCF716BA70BB /* FoundationIcons */,
+				B4F9DAF20B6BF18C3FA794297B924FB5 /* IonIcons */,
+				3F5023317E8E413BCFC2777B326E8841 /* Support Files */,
+				1951B3DE34514ED27B6F37424D10324F /* Zocial */,
+			);
+			path = FontAwesomeKit;
+			sourceTree = "<group>";
+		};
+		EBC7A45F1BEB16AE610D96F55A2DF527 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D84CF7EB70B3D9D2087FCF752B012F86 /* Info.plist */,
+				59BFCF1F153208C8B002006A53D12378 /* JVFloatLabeledTextField.modulemap */,
+				46A14C3088B0602D337A878701BEDD65 /* JVFloatLabeledTextField.xcconfig */,
+				F6223B9069B94417FB2B0DE61D1D8824 /* JVFloatLabeledTextField-dummy.m */,
+				240D69BFE00EE6B15E617CF58142FCC0 /* JVFloatLabeledTextField-prefix.pch */,
+				6208A5DB7C07DABC6FC0F8F419488A48 /* JVFloatLabeledTextField-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JVFloatLabeledTextField";
+			sourceTree = "<group>";
+		};
+		EC725815167DED1C1D49847CFFBC2A33 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C7FAE46CBF841EAB960FA29646A02769 /* FAKIcon.h */,
+				9BECD7DC12E0D592CF52D4D2FFD0339F /* FAKIcon.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		FB9C6FAA8E08B2755C4D502BA45251C8 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				4D44EF44EB118A6BCFF097717B5B71F9 /* SwiftyJSON.swift */,
+				5E70E3AAEB4409A0E359BA31ACBBF065 /* Support Files */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		FD7032FB5A58135D4A009274598C928D /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				7CE5A57EAEB50D27022ECC9237F756EE /* Chameleon.h */,
+				8C223C43D7A32DC71082B6098FE039A2 /* Chameleon_.h */,
+				26D1B6A852F3392D52B5B74E0F603D1B /* Chameleon_.m */,
+				9BF2AE5922A090D682B39FACC5234E1A /* ChameleonConstants.h */,
+				BC282CF1E8C47B4AE0D348E3A173FA97 /* ChameleonConstants.m */,
+				69E44B92BE07F6A99B68638CF87E7812 /* ChameleonEnums.h */,
+				BDD3256ECEC8AD2E5B8D3B1DD49901E4 /* ChameleonMacros.h */,
+				B722882B6B5FD0FE624BA2137AF127B0 /* NSArray+Chameleon.h */,
+				FD1F35F8400E469D4DA35EFCBDB91FC0 /* NSArray+Chameleon.m */,
+				AAF7ECBE9BD26E8C6256C4926D0A3535 /* UIAppearance+Swift.h */,
+				DF2FE0C979FD6BF4AC737666BCEA3F6C /* UIAppearance+Swift.m */,
+				2432B6F51B271D5C12CBFB9FBABFDFE8 /* UIButton+Chameleon.h */,
+				70D65C986409F3CDE2824F947B4F6FE3 /* UIButton+Chameleon.m */,
+				284380B8AF87ED7768E98BFAF81A721A /* UIColor+Chameleon.h */,
+				2D19CB252182BEE6360D37C248823F2C /* UIColor+Chameleon.m */,
+				CB4EB2090FEC40023AE704348D9D6F90 /* UIColor+ChameleonPrivate.h */,
+				69FE3891C342D3A854D4260F244AA7E2 /* UIColor+ChameleonPrivate.m */,
+				3D04FFCBBC8020EBB1510C1EA64A7853 /* UIImage+ChameleonPrivate.h */,
+				DB6A6EE5C6262F7EE857CB3511652135 /* UIImage+ChameleonPrivate.m */,
+				D2ED9A1CDE22D7CAEF1166E4544BEEBC /* UILabel+Chameleon.h */,
+				7AE30DFA0E27A990400FF12D48359AE1 /* UILabel+Chameleon.m */,
+				732A0AC687485E8EBA2324BAA322EC2B /* UINavigationController+Chameleon.h */,
+				3F27F5F3D7FB3C6625C89E64FE6779BC /* UINavigationController+Chameleon.m */,
+				CB35FB3CCDC4E7A26BA031D3E0FB2D06 /* UIView+ChameleonPrivate.h */,
+				9D5A1F4FDF681C7468B4A95267E51C4C /* UIView+ChameleonPrivate.m */,
+				31D7817FBD6402B52773372BC3C82908 /* UIViewController+Chameleon.h */,
+				7CB10A6F5520361F726C2F1443D7B88D /* UIViewController+Chameleon.m */,
+			);
+			name = Default;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0126FA83E7B3BD16F361AD15444B5177 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5E407E5FA2BB0ED54F51C87BDE0834 /* Pods-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		193BD53FEC9AE8E1225754EA29E81662 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,6 +845,25 @@
 				0B1AC909F43FD2AD6BE051127942C053 /* PDTSimpleCalendarViewFlowLayout.h in Headers */,
 				5BFF83DA99463594922E324F61931692 /* PDTSimpleCalendarViewHeader.h in Headers */,
 				9B9A49ACF3256835B723CBBCD326DE11 /* PDTSimpleCalendarViewWeekdayHeader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BD2F5639136F313602663A57DD61136 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				861F0CD743C2952E530F782F5BEE42C7 /* SwiftyJSON-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A9C429E7C809599E676D5831C2AAFB8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C94C96078F783F759AECACF879B37BD /* JVFloatLabeledTextField-umbrella.h in Headers */,
+				3260802C71D0241B23AF5BCFCCA6C0C2 /* JVFloatLabeledTextField.h in Headers */,
+				6F94E159E26C1DB49F349ED2A3E21364 /* JVFloatLabeledTextView.h in Headers */,
+				973568245D337B094D81E743E1D7AF22 /* NSString+TextDirectionality.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,11 +899,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		540843650B2F3618E954E45FB0212024 /* Headers */ = {
+		9EB2CA0AB2694955BE979B3E84679614 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAB5BDC184C597AEA4B3BC96841B4650 /* SwiftyJSON-umbrella.h in Headers */,
+				75C47EE0535C492DA596EE18324A31DC /* SCLAlertView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,44 +921,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A69F237BD6986CE847DEDE73EC8BD9A5 /* Headers */ = {
+		BF4BD84EC71485D0E64F18609CE9BF80 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63F95195CE74AD49AED3FDFABE016D83 /* INTULocationManager+Internal.h in Headers */,
-				C314ED8A89C5897B3B1C8FECE266E34C /* INTULocationManager-umbrella.h in Headers */,
-				06FC44BB5DBC9FBC6604931B1C97F12F /* INTULocationManager.h in Headers */,
-				5066BB1B9249A0D1A5D5B1C29C3D661E /* INTULocationRequest.h in Headers */,
-				245EA13CF687AD999AFAE54F5E22DE05 /* INTULocationRequestDefines.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7BC0A4ED4588BB462CDD32CA8431872 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EBDB2A34B833393C4673D1263CB36B72 /* Pods-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE9A88C19FB2020B2EDD5A63A4F51F1D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E7AA41B3841E22E007A568888D2FEB2 /* SCLAlertView-umbrella.h in Headers */,
+				F0EAB229A95B874BB9C4DDAA51B5E422 /* SwiftLocation-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2A7B8E276C618BAF387EF310A8754AB7 /* SCLAlertView */ = {
+		29C609B26B3192ECF80B8028C27C3659 /* SCLAlertView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E326484F3B3CAB114082FDEA1ADCCCC6 /* Build configuration list for PBXNativeTarget "SCLAlertView" */;
+			buildConfigurationList = 8921A6C924D124C88469F9B11A891433 /* Build configuration list for PBXNativeTarget "SCLAlertView" */;
 			buildPhases = (
-				6F6986D61E2904386ED29D79B203C935 /* Sources */,
-				F1AC1CB9D8A9FEDE9E6797EC52DD1A38 /* Frameworks */,
-				BE9A88C19FB2020B2EDD5A63A4F51F1D /* Headers */,
+				FE00F198A5A3E2D763C3C7F9C602D014 /* Sources */,
+				EB1405240DDF1219DB62DF0EAB18C921 /* Frameworks */,
+				9EB2CA0AB2694955BE979B3E84679614 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -862,32 +946,69 @@
 			);
 			name = SCLAlertView;
 			productName = SCLAlertView;
-			productReference = DE3B442DE278507FB1ACE9548A96844A /* SCLAlertView.framework */;
+			productReference = A0F4F494D27880E588482E389B991DC2 /* SCLAlertView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3879BD99EEF80EE64DCCA79D26D44734 /* Pods */ = {
+		4310700187C04718FDF9F3B120804484 /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 285F19B983A676FBA0175005780D1D8C /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = 9C47E2192EC55286F899364BB9C29A5E /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				FB70DC621AD39389AD8B9DE4E3BC09A0 /* Sources */,
-				13438F099E523E618B9965BB15EB371E /* Frameworks */,
-				B7BC0A4ED4588BB462CDD32CA8431872 /* Headers */,
+				F1FD37408A948ACBD2FE3E469A649114 /* Sources */,
+				16A1C1A017FFA2ACABAE1DBFC31737DF /* Frameworks */,
+				0126FA83E7B3BD16F361AD15444B5177 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7E706803224E7AF7DE9D45A5C3F664B0 /* PBXTargetDependency */,
-				B96D7E85783B6D57FDEEE8B9E9C2ADAF /* PBXTargetDependency */,
-				C6F3E00AFC29CE2374CDBF70107C40E2 /* PBXTargetDependency */,
-				6A5EBC32BCBE2F495D641F4B3C2C60D0 /* PBXTargetDependency */,
-				12042DE132210A6A18C838112E64234D /* PBXTargetDependency */,
-				63DE6D703647806E5996A38E1EC701DF /* PBXTargetDependency */,
-				CDA93C026975FD15B181B93D291FB901 /* PBXTargetDependency */,
+				9CC769570AE4DB8D2977DC5A18A55CB1 /* PBXTargetDependency */,
+				C6BAA4CF5513EB5D208ED8CC83169902 /* PBXTargetDependency */,
+				BE5912E68CFEBE7129F8E8A4F333E817 /* PBXTargetDependency */,
+				33D134212A55322D1F44D3C333FF506A /* PBXTargetDependency */,
+				957F6F7D35724EFD15DF6AC9CBB0E814 /* PBXTargetDependency */,
+				40D35D80D06EDB7DF714BD205F5D8E1F /* PBXTargetDependency */,
+				54EBE2656ACE2821B30D815357EB8008 /* PBXTargetDependency */,
+				E19EB89B8E4F2DD9D8FE43B6D29EB53E /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = 74211696012DDDF97B82B30D5281305B /* Pods.framework */;
+			productReference = 3167388CA05BA483E99AB22C225206D1 /* Pods.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		4D1BFA084E87E09033010910E512B370 /* SwiftLocation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96A2CF61E7BD63CDC992539919CAD3A3 /* Build configuration list for PBXNativeTarget "SwiftLocation" */;
+			buildPhases = (
+				7A63993DBD78B717CB44FCA62B7B2C82 /* Sources */,
+				8D7163BB2DB667C25BFED54091CE8727 /* Frameworks */,
+				BA7F3C4079A1CDB4DDB78B44BAAB9B3D /* Resources */,
+				BF4BD84EC71485D0E64F18609CE9BF80 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3EA446B48F1D71F3EDEE8FED75F7262B /* PBXTargetDependency */,
+			);
+			name = SwiftLocation;
+			productName = SwiftLocation;
+			productReference = 40196091FEA5F668712AEAF2D277BA62 /* SwiftLocation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4F4458D61FD38B1BCC89A6EEB0461043 /* SwiftLocation-SwiftLocation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 901718BA74327042461B627C6936CBC5 /* Build configuration list for PBXNativeTarget "SwiftLocation-SwiftLocation" */;
+			buildPhases = (
+				69B6D1895150F023AC55E11D80352433 /* Sources */,
+				AFB8F345FF94842D570000E1158593D3 /* Frameworks */,
+				526710B04BDA46DD91E261A11F9D71B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftLocation-SwiftLocation";
+			productName = "SwiftLocation-SwiftLocation";
+			productReference = 342F213A8DEDD4A19C5558AEE0FE2755 /* SwiftLocation.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 		6DEB1257FFCB1CBE0DB9FC1C561CAC06 /* BGTableViewRowActionWithImage */ = {
 			isa = PBXNativeTarget;
@@ -903,7 +1024,24 @@
 			);
 			name = BGTableViewRowActionWithImage;
 			productName = BGTableViewRowActionWithImage;
-			productReference = 00281F785C2B1A7F5DB6D60705D461E8 /* BGTableViewRowActionWithImage.framework */;
+			productReference = BE19E35A921ACB176AE8D00A8BF7CAFA /* BGTableViewRowActionWithImage.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		735882DA95E7FCCEC084FC1C5384FF8A /* JVFloatLabeledTextField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AAA4A1EDCFEF2936F91B22E96958622 /* Build configuration list for PBXNativeTarget "JVFloatLabeledTextField" */;
+			buildPhases = (
+				E7B2A321AE4CF1B886E351E966B94039 /* Sources */,
+				D82CCBF9B2CFA52EEF6D94B98301D00D /* Frameworks */,
+				2A9C429E7C809599E676D5831C2AAFB8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JVFloatLabeledTextField;
+			productName = JVFloatLabeledTextField;
+			productReference = A6E573D4BB77279C7E769BA311769769 /* JVFloatLabeledTextField.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */ = {
@@ -920,7 +1058,7 @@
 			);
 			name = PDTSimpleCalendar;
 			productName = PDTSimpleCalendar;
-			productReference = CAAF692CFCF6C66812CC3E53F50F4C51 /* PDTSimpleCalendar.framework */;
+			productReference = B9F3C16E3867003987B601FEAB48B905 /* PDTSimpleCalendar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8BE9D4B6FF6D92923152CB0534F2BB94 /* FontAwesomeKit */ = {
@@ -938,24 +1076,7 @@
 			);
 			name = FontAwesomeKit;
 			productName = FontAwesomeKit;
-			productReference = 8326FBA38CF2C7105F7A2F841229B555 /* FontAwesomeKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9387E40D2D596E96A368C2BB32BD8EAD /* SwiftyJSON */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6584D14860D14BF2E525FB1BB1CA90BA /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
-			buildPhases = (
-				1090EADF903293984BE1FBDC22E1B8A2 /* Sources */,
-				90E2AEE10DF29828E3AEBD8F86BBB5E5 /* Frameworks */,
-				540843650B2F3618E954E45FB0212024 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftyJSON;
-			productName = SwiftyJSON;
-			productReference = 44C88C89F99730F8803509EBD300226A /* SwiftyJSON.framework */;
+			productReference = 70498AA139ABFD55595F5703D4607449 /* FontAwesomeKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9B57F4EE4746045CEAE2D933A3C8EC9E /* ChameleonFramework */ = {
@@ -972,24 +1093,24 @@
 			);
 			name = ChameleonFramework;
 			productName = ChameleonFramework;
-			productReference = 1710E16344C86ABDD1FC417866AFCD67 /* ChameleonFramework.framework */;
+			productReference = 1BC254A55BF1B16ACEB67CE6AF5F3B77 /* ChameleonFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B0FE1CF55DD4F78BEE237C1243C98367 /* INTULocationManager */ = {
+		A56D20C76133E602A480343083D2B58F /* SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 45DF2E32D10D11B106288E2EBA9DC576 /* Build configuration list for PBXNativeTarget "INTULocationManager" */;
+			buildConfigurationList = 2C655C73C5148AD4C4719044949BAD43 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				88DB08FCBAA45821517CA0CF12CCFEA6 /* Sources */,
-				0A334CB54D912E74D09D1BE01BED724B /* Frameworks */,
-				A69F237BD6986CE847DEDE73EC8BD9A5 /* Headers */,
+				F300063F2E32473348AAE524546F6226 /* Sources */,
+				C1C38C1DA10720CB8024F66CFA5D3275 /* Frameworks */,
+				1BD2F5639136F313602663A57DD61136 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = INTULocationManager;
-			productName = INTULocationManager;
-			productReference = D3DBC938A7330F3FA1947F19C841B8DC /* INTULocationManager.framework */;
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = 8287D759B00B1FC3FC1EB8E53BA8F842 /* SwiftyJSON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1009,18 +1130,20 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 750A33D8CC71E97BE23F81C674E68307 /* Products */;
+			productRefGroup = 443F6AB608B54E128ACCA66FF251EA7A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				6DEB1257FFCB1CBE0DB9FC1C561CAC06 /* BGTableViewRowActionWithImage */,
 				9B57F4EE4746045CEAE2D933A3C8EC9E /* ChameleonFramework */,
 				8BE9D4B6FF6D92923152CB0534F2BB94 /* FontAwesomeKit */,
-				B0FE1CF55DD4F78BEE237C1243C98367 /* INTULocationManager */,
+				735882DA95E7FCCEC084FC1C5384FF8A /* JVFloatLabeledTextField */,
 				77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */,
-				3879BD99EEF80EE64DCCA79D26D44734 /* Pods */,
-				2A7B8E276C618BAF387EF310A8754AB7 /* SCLAlertView */,
-				9387E40D2D596E96A368C2BB32BD8EAD /* SwiftyJSON */,
+				4310700187C04718FDF9F3B120804484 /* Pods */,
+				29C609B26B3192ECF80B8028C27C3659 /* SCLAlertView */,
+				4D1BFA084E87E09033010910E512B370 /* SwiftLocation */,
+				4F4458D61FD38B1BCC89A6EEB0461043 /* SwiftLocation-SwiftLocation */,
+				A56D20C76133E602A480343083D2B58F /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
@@ -1037,18 +1160,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		1090EADF903293984BE1FBDC22E1B8A2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		526710B04BDA46DD91E261A11F9D71B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E6B5FBC836AEE1873A1FC62DE4E72C7 /* SwiftyJSON-dummy.m in Sources */,
-				C58A73615BF688802308B3CD5D9AD28B /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA7F3C4079A1CDB4DDB78B44BAAB9B3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE85AE93A77AC07D2364A0F82857B71C /* SwiftLocation.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		41150AC80251A01A8C37895E7E43D7AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1071,13 +1200,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F6986D61E2904386ED29D79B203C935 /* Sources */ = {
+		69B6D1895150F023AC55E11D80352433 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				807BB7D33AB5AA32711013D975DB8580 /* Info.plist in Sources */,
-				7233171FAA0EC2BCE308A4F795340638 /* SCLAlertView-dummy.m in Sources */,
-				643F49A4EEFC899E748B7E7C93C57930 /* SCLAlertView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A63993DBD78B717CB44FCA62B7B2C82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E098F8674E278C1713C5A208FB04924 /* SwiftLocation-dummy.m in Sources */,
+				8EF2DD255BD0B12BA77831FAED650BF7 /* SwiftLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,16 +1226,6 @@
 				29DB8AAB20B9088A34901CEC43319146 /* FAKIonIcons.m in Sources */,
 				DBD220F2A48C1644E5E1ACF39E20350B /* FAKZocial.m in Sources */,
 				D8B25CA4E48EEE4831E896F4077A6D3A /* FontAwesomeKit-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		88DB08FCBAA45821517CA0CF12CCFEA6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F31EDCED1A28DD7D186F4552A0E5B9C4 /* INTULocationManager-dummy.m in Sources */,
-				348D54AEDE56D054CF1FE144C8034127 /* INTULocationManager.m in Sources */,
-				8EE3EC7DD8974BFBEBF75A618EBBFDC3 /* INTULocationRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1124,65 +1249,107 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB70DC621AD39389AD8B9DE4E3BC09A0 /* Sources */ = {
+		E7B2A321AE4CF1B886E351E966B94039 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2335FA1BEBC4246E674159F840B86492 /* Pods-dummy.m in Sources */,
+				E4D75B1B0072095A98068C68A0062559 /* JVFloatLabeledTextField-dummy.m in Sources */,
+				198232E4CA68917D9671AA50B66099F5 /* JVFloatLabeledTextField.m in Sources */,
+				E215BEEA20003F82591AC99111A35600 /* JVFloatLabeledTextView.m in Sources */,
+				E8DD8380D6B4958A77EAC0DE1A6967A9 /* NSString+TextDirectionality.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1FD37408A948ACBD2FE3E469A649114 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D8F6A29BDA7BA5A8202366313D34A9F /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F300063F2E32473348AAE524546F6226 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28359B198D280DBF82E0A96D95B44DAC /* SwiftyJSON-dummy.m in Sources */,
+				DAF51B7884529BC719E6A2B1A38CEB00 /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE00F198A5A3E2D763C3C7F9C602D014 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A129D3C2926AB631B58E5DFC94224AF3 /* Info.plist in Sources */,
+				427931B0786A8693254FC951F4F97BAC /* SCLAlertView-dummy.m in Sources */,
+				43E15BFC2EDA06F2698684402E4E70A5 /* SCLAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		12042DE132210A6A18C838112E64234D /* PBXTargetDependency */ = {
+		33D134212A55322D1F44D3C333FF506A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JVFloatLabeledTextField;
+			target = 735882DA95E7FCCEC084FC1C5384FF8A /* JVFloatLabeledTextField */;
+			targetProxy = BF3B2040B690280FFD92951ACC660CCF /* PBXContainerItemProxy */;
+		};
+		3EA446B48F1D71F3EDEE8FED75F7262B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftLocation-SwiftLocation";
+			target = 4F4458D61FD38B1BCC89A6EEB0461043 /* SwiftLocation-SwiftLocation */;
+			targetProxy = 8287192E354E02F374B2A7AF097D6C33 /* PBXContainerItemProxy */;
+		};
+		40D35D80D06EDB7DF714BD205F5D8E1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SCLAlertView;
+			target = 29C609B26B3192ECF80B8028C27C3659 /* SCLAlertView */;
+			targetProxy = 3CFE017AE2A32A9FA386F06A564EFB5C /* PBXContainerItemProxy */;
+		};
+		54EBE2656ACE2821B30D815357EB8008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLocation;
+			target = 4D1BFA084E87E09033010910E512B370 /* SwiftLocation */;
+			targetProxy = 46EA58D276CBEFDD6C4F5F0E44D6C0B5 /* PBXContainerItemProxy */;
+		};
+		957F6F7D35724EFD15DF6AC9CBB0E814 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PDTSimpleCalendar;
 			target = 77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */;
-			targetProxy = D8CE5CD735FFE9A6B4F1577BF0AD27AF /* PBXContainerItemProxy */;
+			targetProxy = AD6C480E464916FA730E9025216A0CF9 /* PBXContainerItemProxy */;
 		};
-		63DE6D703647806E5996A38E1EC701DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SCLAlertView;
-			target = 2A7B8E276C618BAF387EF310A8754AB7 /* SCLAlertView */;
-			targetProxy = 648BEFDDC3809F354DDC15397E523757 /* PBXContainerItemProxy */;
-		};
-		6A5EBC32BCBE2F495D641F4B3C2C60D0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = INTULocationManager;
-			target = B0FE1CF55DD4F78BEE237C1243C98367 /* INTULocationManager */;
-			targetProxy = 31C995D053A2A3DF300BF1C5F9E4E70F /* PBXContainerItemProxy */;
-		};
-		7E706803224E7AF7DE9D45A5C3F664B0 /* PBXTargetDependency */ = {
+		9CC769570AE4DB8D2977DC5A18A55CB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BGTableViewRowActionWithImage;
 			target = 6DEB1257FFCB1CBE0DB9FC1C561CAC06 /* BGTableViewRowActionWithImage */;
-			targetProxy = 682370C91A87556FF5811D238A0585F1 /* PBXContainerItemProxy */;
+			targetProxy = 8040564DDABCDE0B3B90C00EA1E78ECA /* PBXContainerItemProxy */;
 		};
-		B96D7E85783B6D57FDEEE8B9E9C2ADAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ChameleonFramework;
-			target = 9B57F4EE4746045CEAE2D933A3C8EC9E /* ChameleonFramework */;
-			targetProxy = 10B1F980F321BFF92EBDBF3AC4808B38 /* PBXContainerItemProxy */;
-		};
-		C6F3E00AFC29CE2374CDBF70107C40E2 /* PBXTargetDependency */ = {
+		BE5912E68CFEBE7129F8E8A4F333E817 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FontAwesomeKit;
 			target = 8BE9D4B6FF6D92923152CB0534F2BB94 /* FontAwesomeKit */;
-			targetProxy = A041BC1CED8EA1E18D3AC56E4A1E1EDC /* PBXContainerItemProxy */;
+			targetProxy = E705C814C29A1BC16953D839FDB5D018 /* PBXContainerItemProxy */;
 		};
-		CDA93C026975FD15B181B93D291FB901 /* PBXTargetDependency */ = {
+		C6BAA4CF5513EB5D208ED8CC83169902 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChameleonFramework;
+			target = 9B57F4EE4746045CEAE2D933A3C8EC9E /* ChameleonFramework */;
+			targetProxy = F690C1DBF6599CA56A9AFCF23D88728B /* PBXContainerItemProxy */;
+		};
+		E19EB89B8E4F2DD9D8FE43B6D29EB53E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyJSON;
-			target = 9387E40D2D596E96A368C2BB32BD8EAD /* SwiftyJSON */;
-			targetProxy = 37845D0F73D9FFC4885F2CB01C381351 /* PBXContainerItemProxy */;
+			target = A56D20C76133E602A480343083D2B58F /* SwiftyJSON */;
+			targetProxy = 17B9506F589F6B846CED1FB0E5651BE3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		14F7DBBBD50886B741D3F2415098D801 /* Debug */ = {
+		031F7DB7AADCA1C243D970FF09B6534F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 157D1D70B09CF35B0EDEAF5577927AC3 /* INTULocationManager.xcconfig */;
+			baseConfigurationReference = 1528A0F1722C478487FD3AEB19D7A878 /* SCLAlertView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1191,44 +1358,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/INTULocationManager/INTULocationManager-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/INTULocationManager/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SCLAlertView/SCLAlertView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCLAlertView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/INTULocationManager/INTULocationManager.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = INTULocationManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1FD770CFDB81E0324E596721206C739A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MODULEMAP_FILE = "Target Support Files/SCLAlertView/SCLAlertView.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods;
+				PRODUCT_NAME = SCLAlertView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1239,7 +1376,7 @@
 		};
 		22DD3EF2B1FE96DCF5F93D90B4784E34 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 444921DC1586B325E2B959F8F3522BBC /* ChameleonFramework.xcconfig */;
+			baseConfigurationReference = 7F9A2154EDE15F2F262C116E5E90DD74 /* ChameleonFramework.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1264,9 +1401,9 @@
 			};
 			name = Release;
 		};
-		27123DDE96A97D2B44968E76D892CC2E /* Debug */ = {
+		523163A13B9158E3BA3E546A229B2B73 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AAE05D685945CB7EBB1CF1CEA878B55 /* SCLAlertView.xcconfig */;
+			baseConfigurationReference = E6547E107A67B84C1363B2E401C4F90F /* FontAwesomeKit.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1275,14 +1412,80 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SCLAlertView/SCLAlertView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SCLAlertView/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FontAwesomeKit/FontAwesomeKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FontAwesomeKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SCLAlertView/SCLAlertView.modulemap";
+				MODULEMAP_FILE = "Target Support Files/FontAwesomeKit/FontAwesomeKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SCLAlertView;
+				PRODUCT_NAME = FontAwesomeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		547C637F02780DE7DA06DF0A0E2B0BA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F9A2154EDE15F2F262C116E5E90DD74 /* ChameleonFramework.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ChameleonFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5E7BB4CB2F3F825EB2ABA5F7D8BE0A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2938A774592C6EDE13916C9C01696A4E /* SwiftLocation.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = SwiftLocation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		7EF57462D1AA3F04A4B371DC3FC1482D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2938A774592C6EDE13916C9C01696A4E /* SwiftLocation.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLocation/SwiftLocation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLocation/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftLocation/SwiftLocation.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftLocation;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1292,7 +1495,34 @@
 			};
 			name = Debug;
 		};
-		4EA4F5D785CB1599D22EBD6AEF04853C /* Debug */ = {
+		93E68BAA77DDDFF6410E39C48839D128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2938A774592C6EDE13916C9C01696A4E /* SwiftLocation.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLocation/SwiftLocation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLocation/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftLocation/SwiftLocation.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftLocation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9D2634C00EA39801B7A764676CDA6383 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
 			buildSettings = {
@@ -1323,117 +1553,9 @@
 			};
 			name = Debug;
 		};
-		523163A13B9158E3BA3E546A229B2B73 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAF6467E30C8E546E8B5233ED8B67B00 /* FontAwesomeKit.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FontAwesomeKit/FontAwesomeKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FontAwesomeKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FontAwesomeKit/FontAwesomeKit.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FontAwesomeKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		547C637F02780DE7DA06DF0A0E2B0BA4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 444921DC1586B325E2B959F8F3522BBC /* ChameleonFramework.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = ChameleonFramework;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6F79C328E1E3CE512472AC394379F90B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AAE05D685945CB7EBB1CF1CEA878B55 /* SCLAlertView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SCLAlertView/SCLAlertView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SCLAlertView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SCLAlertView/SCLAlertView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SCLAlertView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7F5CB153BE3936526F3AC13F142570B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9729EE232719EDCBC182E5307841BA42 /* SwiftyJSON.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		9F88C7B2F408D06F0195F5D1C9F9CF8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D3AF5BBBDA238ECECF242E247A656C1 /* PDTSimpleCalendar.xcconfig */;
+			baseConfigurationReference = 788B923333C623D25D1E9351DD80E4E8 /* PDTSimpleCalendar.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1460,7 +1582,7 @@
 		};
 		A06512E4C0BCAAB52D229565439DBB45 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77D67217A17B64BE91A1213D2FD0DCC2 /* BGTableViewRowActionWithImage.xcconfig */;
+			baseConfigurationReference = CA257005F2A580AE7DC0973D73CBBE11 /* BGTableViewRowActionWithImage.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1484,6 +1606,76 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		A31A4A00C8E2E5A518214149957F98CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1528A0F1722C478487FD3AEB19D7A878 /* SCLAlertView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SCLAlertView/SCLAlertView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCLAlertView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SCLAlertView/SCLAlertView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SCLAlertView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B353E710DB0006B3CF16A4B9CB0D4AA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BC5E1514C35FEC8AFE18E416F6F9CE1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2938A774592C6EDE13916C9C01696A4E /* SwiftLocation.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = SwiftLocation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 		C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1524,6 +1716,33 @@
 			};
 			name = Debug;
 		};
+		C9118C3E237A91D5B959342B4A3136E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46A14C3088B0602D337A878701BEDD65 /* JVFloatLabeledTextField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JVFloatLabeledTextField/JVFloatLabeledTextField-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JVFloatLabeledTextField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JVFloatLabeledTextField/JVFloatLabeledTextField.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = JVFloatLabeledTextField;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		E43846B588E1892F3093F3B7082B6DFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1558,64 +1777,9 @@
 			};
 			name = Release;
 		};
-		E46D75B988F1F0745AAD431C8D046D0D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9729EE232719EDCBC182E5307841BA42 /* SwiftyJSON.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E641ACC84D92DD5F4B616DCFDB1782EC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 157D1D70B09CF35B0EDEAF5577927AC3 /* INTULocationManager.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/INTULocationManager/INTULocationManager-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/INTULocationManager/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/INTULocationManager/INTULocationManager.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = INTULocationManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		E9696D0C2D949AA652F263D42FB6BD2F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D3AF5BBBDA238ECECF242E247A656C1 /* PDTSimpleCalendar.xcconfig */;
+			baseConfigurationReference = 788B923333C623D25D1E9351DD80E4E8 /* PDTSimpleCalendar.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1642,7 +1806,7 @@
 		};
 		EB40540D18DE5FF9F704D1EF2B1764B0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAF6467E30C8E546E8B5233ED8B67B00 /* FontAwesomeKit.xcconfig */;
+			baseConfigurationReference = E6547E107A67B84C1363B2E401C4F90F /* FontAwesomeKit.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1667,9 +1831,64 @@
 			};
 			name = Release;
 		};
+		EBFAF8345E94CB07739639D2D8E71FE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92CE839C55113CADE3E830F7669C0EE6 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		ECF801D648DD4E191B8E70B9FC532253 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92CE839C55113CADE3E830F7669C0EE6 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		ED0D7CF74AEEF034963DB1A37708866B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77D67217A17B64BE91A1213D2FD0DCC2 /* BGTableViewRowActionWithImage.xcconfig */;
+			baseConfigurationReference = CA257005F2A580AE7DC0973D73CBBE11 /* BGTableViewRowActionWithImage.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1686,6 +1905,33 @@
 				MODULEMAP_FILE = "Target Support Files/BGTableViewRowActionWithImage/BGTableViewRowActionWithImage.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = BGTableViewRowActionWithImage;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F283517FB57938B34D661A1ECDF2BE28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46A14C3088B0602D337A878701BEDD65 /* JVFloatLabeledTextField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JVFloatLabeledTextField/JVFloatLabeledTextField-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JVFloatLabeledTextField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JVFloatLabeledTextField/JVFloatLabeledTextField.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = JVFloatLabeledTextField;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1715,11 +1961,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		285F19B983A676FBA0175005780D1D8C /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		2C655C73C5148AD4C4719044949BAD43 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4EA4F5D785CB1599D22EBD6AEF04853C /* Debug */,
-				1FD770CFDB81E0324E596721206C739A /* Release */,
+				EBFAF8345E94CB07739639D2D8E71FE6 /* Debug */,
+				ECF801D648DD4E191B8E70B9FC532253 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1733,20 +1979,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		45DF2E32D10D11B106288E2EBA9DC576 /* Build configuration list for PBXNativeTarget "INTULocationManager" */ = {
+		3AAA4A1EDCFEF2936F91B22E96958622 /* Build configuration list for PBXNativeTarget "JVFloatLabeledTextField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14F7DBBBD50886B741D3F2415098D801 /* Debug */,
-				E641ACC84D92DD5F4B616DCFDB1782EC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6584D14860D14BF2E525FB1BB1CA90BA /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E46D75B988F1F0745AAD431C8D046D0D /* Debug */,
-				7F5CB153BE3936526F3AC13F142570B1 /* Release */,
+				C9118C3E237A91D5B959342B4A3136E3 /* Debug */,
+				F283517FB57938B34D661A1ECDF2BE28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1760,20 +1997,47 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8921A6C924D124C88469F9B11A891433 /* Build configuration list for PBXNativeTarget "SCLAlertView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31A4A00C8E2E5A518214149957F98CA /* Debug */,
+				031F7DB7AADCA1C243D970FF09B6534F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		901718BA74327042461B627C6936CBC5 /* Build configuration list for PBXNativeTarget "SwiftLocation-SwiftLocation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E7BB4CB2F3F825EB2ABA5F7D8BE0A26 /* Debug */,
+				BC5E1514C35FEC8AFE18E416F6F9CE1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96A2CF61E7BD63CDC992539919CAD3A3 /* Build configuration list for PBXNativeTarget "SwiftLocation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7EF57462D1AA3F04A4B371DC3FC1482D /* Debug */,
+				93E68BAA77DDDFF6410E39C48839D128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C47E2192EC55286F899364BB9C29A5E /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D2634C00EA39801B7A764676CDA6383 /* Debug */,
+				B353E710DB0006B3CF16A4B9CB0D4AA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DB6295A47A047994DB2288444E240A0E /* Build configuration list for PBXNativeTarget "PDTSimpleCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F88C7B2F408D06F0195F5D1C9F9CF8A /* Debug */,
 				E9696D0C2D949AA652F263D42FB6BD2F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E326484F3B3CAB114082FDEA1ADCCCC6 /* Build configuration list for PBXNativeTarget "SCLAlertView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27123DDE96A97D2B44968E76D892CC2E /* Debug */,
-				6F79C328E1E3CE512472AC394379F90B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

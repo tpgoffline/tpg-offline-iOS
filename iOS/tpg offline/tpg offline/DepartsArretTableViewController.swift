@@ -36,20 +36,19 @@ class DepartsArretTableViewController: UITableViewController {
             }
         }
         else {
-            let alert = UIAlertController(title: "Données non disponibles", message: "tpg offline n'est actuellement pas connecté à internet", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+            let alert = SCLAlertView()
+            alert.showError("Pas d'internet", subTitle: "tpg offline n'est actuellement pas connecté à internet", closeButtonTitle: "Fermer", duration: 10).setDismissBlock({ () -> Void in
                 self.navigationController?.popViewControllerAnimated(true)
-            }))
-            presentViewController(alert, animated: true, completion: nil)
+            })
         }
-        if ((AppValues.stopCodeFavoris.indexOf(arret.stopCode)) != nil) {
+        if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
         }
         else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -91,7 +90,6 @@ class DepartsArretTableViewController: UITableViewController {
         labelAccesory.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
         
         if (departs["departures"][indexPath.row]["waitingTime"].string == "no more") {
-            labelAccesory.text = "Fin"
         }
         else if (departs["departures"][indexPath.row]["waitingTime"].string == "&gt;1h") {
             labelAccesory.text = ">1h"
@@ -102,7 +100,7 @@ class DepartsArretTableViewController: UITableViewController {
             labelAccesory.attributedText = iconeBus.attributedString()
         }
         else {
-           labelAccesory.text = departs["departures"][indexPath.row]["waitingTime"].string! + "'"
+            labelAccesory.text = departs["departures"][indexPath.row]["waitingTime"].string! + "'"
         }
         cell.accessoryView = labelAccesory
         
@@ -111,7 +109,7 @@ class DepartsArretTableViewController: UITableViewController {
     
     func labelToImage(label: UILabel!) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
-            label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -120,22 +118,23 @@ class DepartsArretTableViewController: UITableViewController {
     
     func toggleFavorite(sender: AnyObject!) {
         if AppValues.arretsFavoris.isEmpty {
-            let array: [String:Arret] = [arret.stopCode : arret]
-            AppValues.stopCodeFavoris.append(arret.stopCode)
+            let array: [String:Arret] = [arret.nomComplet : arret]
+            AppValues.nomCompletsFavoris.append(arret.nomComplet)
             AppValues.arretsFavoris = array
+            
             let encodedData = NSKeyedArchiver.archivedDataWithRootObject(array)
             defaults.setObject(encodedData, forKey: "arretsFavoris")
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
         }
         else {
-            if ((AppValues.stopCodeFavoris.indexOf(arret.stopCode)) != nil) {
-                AppValues.arretsFavoris.removeValueForKey(arret.stopCode)
-                AppValues.stopCodeFavoris.removeAtIndex(AppValues.stopCodeFavoris.indexOf(arret.stopCode)!)
+            if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
+                AppValues.arretsFavoris.removeValueForKey(arret.nomComplet)
+                AppValues.nomCompletsFavoris.removeAtIndex(AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)!)
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
             }
             else {
-                AppValues.arretsFavoris![arret.stopCode] = arret
-                AppValues.stopCodeFavoris.append(arret.stopCode)
+                AppValues.arretsFavoris![arret.nomComplet] = arret
+                AppValues.nomCompletsFavoris.append(arret.nomComplet)
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
             }
             let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.arretsFavoris!)
@@ -145,8 +144,8 @@ class DepartsArretTableViewController: UITableViewController {
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
+        // Return false if you do not want the specified item to be editable.
+        return true
     }
     
     
@@ -154,36 +153,50 @@ class DepartsArretTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let timerAction = BGTableViewRowActionWithImage.rowActionWithStyle(UITableViewRowActionStyle.Default, title: "Rappeler", titleColor: UIColor.blackColor(), backgroundColor: UIColor.flatYellowColor(), image: FAKIonIcons.iosTimeOutlineIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), forCellHeight: 44) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             let alertView = SCLAlertView()
-            alertView.addButton("A l'heure du départ", action: { () -> Void in
-                self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 0, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
-                let okView = SCLAlertView()
-                okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.", closeButtonTitle: "OK", duration: 10)
-            })
-            alertView.addButton("5 min avant le départ", action: { () -> Void in
-                self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 5, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
-                let okView = SCLAlertView()
-                okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée 5 minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
-            })
-            alertView.addButton("10 min avant le départ", action: { () -> Void in
-                self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 10, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
-                let okView = SCLAlertView()
-                okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée 10 minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
-            })
-            alertView.addButton("Autre", action: { () -> Void in
-                alertView.hideView()
-                let customValueAlert = SCLAlertView()
-                let txt = customValueAlert.addTextField("Nombres de minutes")
-                txt.keyboardType = .NumberPad
-                customValueAlert.addButton("Rappeler", action: { () -> Void in
-                    self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: Int(txt.text!)!, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
-                    customValueAlert.hideView()
-                    let okView = SCLAlertView()
-                    okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée \(txt.text!) minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
+            if self.departs["departures"][indexPath.row]["waitingTime"].string == "no more" {
+                alertView.showError("Le service est terminé", subTitle: "Il est impossible de définir des rappels sur des lignes dont le service est terminé.", closeButtonTitle: "OK", duration: 10).setDismissBlock({ () -> Void in
+                    tableView.setEditing(false, animated: true)
                 })
-                customValueAlert.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié ?", closeButtonTitle: "Annuler")
-            })
-            alertView.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié ?", closeButtonTitle: "Annuler")
-            tableView.setEditing(false, animated: true)
+            }
+            else if self.departs["departures"][indexPath.row]["waitingTime"].string == "0" {
+                alertView.showWarning("Le bus arrive", subTitle: "Dépêchez vous, vous allez le rater !", closeButtonTitle: "OK", duration: 10)
+            }
+            else {
+                alertView.addButton("A l'heure du départ", action: { () -> Void in
+                    self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 0, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                    
+                })
+                if Int(self.departs["departures"][indexPath.row]["waitingTime"].string!)! > 5 {
+                    alertView.addButton("5 min avant le départ", action: { () -> Void in
+                        self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 5, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                    })
+                }
+                if Int(self.departs["departures"][indexPath.row]["waitingTime"].string!)! > 10 {
+                    alertView.addButton("10 min avant le départ", action: { () -> Void in
+                        self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: 10, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                    })
+                }
+                alertView.addButton("Autre", action: { () -> Void in
+                    alertView.hideView()
+                    let customValueAlert = SCLAlertView()
+                    let txt = customValueAlert.addTextField("Nombres de minutes")
+                    txt.keyboardType = .NumberPad
+                    customValueAlert.addButton("Rappeler", action: { () -> Void in
+                        if Int(self.departs["departures"][indexPath.row]["waitingTime"].string!)! < Int(txt.text!)! {
+                            customValueAlert.hideView()
+                            SCLAlertView().showError("Il y a un problème", subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.", closeButtonTitle: "OK", duration: 10)
+                            
+                        }
+                        else {
+                            self.scheduleNotification(self.departs["departures"][indexPath.row]["timestamp"].string!, before: Int(txt.text!)!, ligne: self.departs["departures"][indexPath.row]["line"]["lineCode"].string!, direction: self.departs["departures"][indexPath.row]["line"]["destinationName"].string!)
+                            customValueAlert.hideView()
+                        }
+                    })
+                    customValueAlert.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié ?", closeButtonTitle: "Annuler")
+                })
+                alertView.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié ?", closeButtonTitle: "Annuler")
+                tableView.setEditing(false, animated: true)
+            }
         }
         return [timerAction]
     }
@@ -203,11 +216,19 @@ class DepartsArretTableViewController: UITableViewController {
         reminder.fireDate = date
         reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va partir dans " + String(before) + " minutes"
         reminder.alertAction = "OK"
-        reminder.soundName = "sound.aif"
+        reminder.soundName = UILocalNotificationDefaultSoundName
         
         UIApplication.sharedApplication().scheduleLocalNotification(reminder)
         
         print("Firing at \(now.hour):\(now.minute-before):\(now.second)")
+        
+        let okView = SCLAlertView()
+        if before == 0 {
+            okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.", closeButtonTitle: "OK", duration: 10)
+        }
+        else {
+            okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
+        }
     }
     
     /*

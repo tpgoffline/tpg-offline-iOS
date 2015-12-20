@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -28,18 +27,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Développé par Da Costa Faro Rémy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6k-5z-uN5">
-                                <rect key="frame" x="20" y="559" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.9882352941176471" green="0.44705882352941173" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="d6k-5z-uN5" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="ODy-6P-8Ew"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="d6k-5z-uN5" secondAttribute="bottom" constant="20" id="QmQ-rL-g22"/>
-                            <constraint firstItem="d6k-5z-uN5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="dQZ-ul-Hmz"/>
                             <constraint firstItem="c4L-2Y-u9d" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lcK-em-HdB"/>
                             <constraint firstItem="c4L-2Y-u9d" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wZv-yR-di5"/>
                         </constraints>

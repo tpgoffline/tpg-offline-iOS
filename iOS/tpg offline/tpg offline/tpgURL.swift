@@ -27,7 +27,7 @@ class tpgURL {
     }
     
     func getStopsbyCode(stopCode: String) -> NSData? {
-        var url = dns + "GetStops."
+        var url = dns + "GetStops."   
         url += typeDonnes.rawValue
         url += "?key=" + cleAPI
         url += "&stopCode=" + stopCode
@@ -71,6 +71,18 @@ class tpgURL {
         url += "?key=" + cleAPI
         url += "&latitude=" + String(location.coordinate.latitude)
         url += "&longitude=" + String(location.coordinate.longitude)
+        if let data = NSData(contentsOfURL: NSURL(string: url)!) {
+            return data
+        }
+        else {
+            return nil
+        }
+    }
+    
+    func getDisruptions() -> NSData? {
+        var url = dns + "GetDisruptions."
+        url += typeDonnes.rawValue
+        url += "?key=" + cleAPI
         if let data = NSData(contentsOfURL: NSURL(string: url)!) {
             return data
         }
