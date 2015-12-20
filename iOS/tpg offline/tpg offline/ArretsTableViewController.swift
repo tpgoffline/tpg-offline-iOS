@@ -31,21 +31,6 @@ class ArretsTableViewController: UITableViewController {
         self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl!)
         
-        if defaults.objectForKey("arretsFavoris") == nil {
-            AppValues.arretsFavoris = [:]
-        }
-        else {
-            let decoded  = defaults.objectForKey("arretsFavoris")
-            AppValues.arretsFavoris = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as! [String:Arret]
-            for (_, y) in AppValues.arretsFavoris {
-                AppValues.nomCompletsFavoris.append(y.nomComplet)
-            }
-        }
-        /*locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()*/
-        
         requestLocation()
         
         // Result Search Controller
@@ -57,50 +42,9 @@ class ArretsTableViewController: UITableViewController {
         searchController.searchBar.tintColor = UIColor.whiteColor()
         tableView.tableHeaderView = self.searchController.searchBar
         
-        // Tab Bar and Navigation Bar
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
-        tabBarController!.tabBar.barTintColor = UIColor.flatOrangeColorDark()
-        tabBarController!.tabBar.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        tabBarController!.tabBar.items![0].title = "Horaires"
-        let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
-        iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        tabBarController!.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        tabBarController!.tabBar.items![1].title = "Incidents"
-        let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
-        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        tabBarController!.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        tabBarController!.tabBar.items![2].title = "Plans"
-        let iconePlan = FAKFontAwesome.mapIconWithSize(20)
-        iconePlan.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        tabBarController!.tabBar.items![2].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        if let dataArrets = tpgUrl.getAllStops() {
-            let arrets = JSON(data: dataArrets)
-            
-            for var i = 0; i < arrets["stops"].count; i++ {
-                AppValues.stopName.append(arrets["stops"][i]["stopName"].string!)
-                AppValues.nomsCompletsArrets[arrets["stops"][i]["stopCode"].string!] = arrets["stops"][i]["stopName"].string!
-                AppValues.arrets[arrets["stops"][i]["stopName"].string!] = Arret(
-                    nomComplet: arrets["stops"][i]["stopName"].string!,
-                    titre: arrets["stops"][i]["titleName"].string!,
-                    sousTitre: arrets["stops"][i]["subTitleName"].string!,
-                    stopCode: arrets["stops"][i]["stopCode"].string!
-                )
-            }
-            AppValues.stopName = AppValues.stopName.sort({ (value1, value2) -> Bool in
-                if (value1.lowercaseString < value2.lowercaseString) {
-                    return true
-                } else {
-                    return false
-                }
-            })
-        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }

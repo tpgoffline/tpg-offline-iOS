@@ -72,6 +72,8 @@ class IncidentsTableViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
+        aucunProbleme = false
+        erreur = false
         if let dataArrets = tpgUrl.getDisruptions() {
             let json = JSON(data: dataArrets)
             if json["disruptions"].count != 0 {

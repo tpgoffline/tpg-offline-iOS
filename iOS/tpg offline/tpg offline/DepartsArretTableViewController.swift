@@ -90,8 +90,12 @@ class DepartsArretTableViewController: UITableViewController {
         labelAccesory.textColor = listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!]
         
         if (departs["departures"][indexPath.row]["waitingTime"].string == "no more") {
+            let iconTimes = FAKFontAwesome.timesIconWithSize(20)
+            iconTimes.addAttribute(NSForegroundColorAttributeName, value: listeColor[departs["departures"][indexPath.row]["line"]["lineCode"].string!])
+            labelAccesory.attributedText = iconTimes.attributedString()
         }
         else if (departs["departures"][indexPath.row]["waitingTime"].string == "&gt;1h") {
+            
             labelAccesory.text = ">1h"
         }
         else if (departs["departures"][indexPath.row]["waitingTime"].string == "0") {
