@@ -33,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for (_, y) in AppValues.arretsFavoris {
                 AppValues.nomCompletsFavoris.append(y.nomComplet)
             }
+            AppValues.nomCompletsFavoris = AppValues.nomCompletsFavoris.sort({ (value1, value2) -> Bool in
+                if (value1.lowercaseString < value2.lowercaseString) {
+                    return true
+                } else {
+                    return false
+                }
+            })
         }
 
         // Tab Bar
@@ -57,7 +64,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         iconePlan.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![2].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        tabBarController.selectedIndex = 0
+        tabBarController.tabBar.items![3].title = "Ticket"
+        let iconeTicket = FAKFontAwesome.ticketIconWithSize(20)
+        iconeTicket.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        tabBarController.tabBar.items![3].image = iconeTicket.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        tabBarController.tabBar.items![4].title = "Paramètres"
+        let iconeParametre = FAKFontAwesome.cogIconWithSize(20)
+        iconeParametre.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        tabBarController.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        tabBarController.selectedIndex = defaults.integerForKey("selectedTabBar")
+        
         
         if let dataArrets = tpgUrl.getAllStops() {
             let arrets = JSON(data: dataArrets)

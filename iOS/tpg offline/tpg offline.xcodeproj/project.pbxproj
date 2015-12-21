@@ -17,6 +17,8 @@
 		002B47F71C01FA87000BF3E8 /* DepartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B47F41C01FA87000BF3E8 /* DepartsTableViewCell.swift */; };
 		002E5C761C132A680008623D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002E5C751C132A680008623D /* MapKit.framework */; };
 		002E5C781C1337DD0008623D /* NSUserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */; };
+		00391C471C271D1E005250D4 /* ParametresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00391C461C271D1E005250D4 /* ParametresTableViewController.swift */; };
+		00391C491C271DA6005250D4 /* ChoixMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */; };
 		003D10EE1C21A47400F9857E /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 003D10ED1C21A46800F9857E /* ionicons.ttf */; };
 		003EBAC91C0B46E20024043B /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 003EBAC81C0B46CF0024043B /* FontAwesome.otf */; };
 		004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D812A1C24737800C6AD55 /* Perturbations.swift */; };
@@ -29,6 +31,10 @@
 		00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B39B8A1C131C05006FC8A3 /* tpgURL.swift */; };
 		00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C8DD551C0CCACC004743A5 /* couleursLignes.json */; };
 		00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D0355B1C0E25D600B3697D /* CoreLocation.framework */; };
+		00DCD9571C285A280094C0EB /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCD9561C285A280094C0EB /* TicketTableViewController.swift */; };
+		00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCD9581C285EBB0094C0EB /* Ticket.swift */; };
+		00DCD95B1C2865E40094C0EB /* Sound.aif in Resources */ = {isa = PBXBuildFile; fileRef = 00DCD95A1C2865E40094C0EB /* Sound.aif */; };
+		00DCD95D1C286B870094C0EB /* AchatTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCD95C1C286B870094C0EB /* AchatTicketViewController.swift */; };
 		00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* PlansTableViewController.swift */; };
 		9A3249041D299B19414F5B0F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 253CE6CB67EE399CF499A811 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +52,8 @@
 		002B47F41C01FA87000BF3E8 /* DepartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartsTableViewCell.swift; sourceTree = "<group>"; };
 		002E5C751C132A680008623D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsExtension.swift; sourceTree = "<group>"; };
+		00391C461C271D1E005250D4 /* ParametresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParametresTableViewController.swift; sourceTree = "<group>"; };
+		00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoixMenuTableViewController.swift; sourceTree = "<group>"; };
 		003D10ED1C21A46800F9857E /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
 		003EBAC81C0B46CF0024043B /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		004D812A1C24737800C6AD55 /* Perturbations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perturbations.swift; sourceTree = "<group>"; };
@@ -58,6 +66,10 @@
 		00B39B8A1C131C05006FC8A3 /* tpgURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURL.swift; sourceTree = "<group>"; };
 		00C8DD551C0CCACC004743A5 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
 		00D0355B1C0E25D600B3697D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		00DCD9561C285A280094C0EB /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
+		00DCD9581C285EBB0094C0EB /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		00DCD95A1C2865E40094C0EB /* Sound.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.aif; sourceTree = "<group>"; };
+		00DCD95C1C286B870094C0EB /* AchatTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchatTicketViewController.swift; sourceTree = "<group>"; };
 		00DDC0B11C255CED002B288E /* PlansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansTableViewController.swift; sourceTree = "<group>"; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738857BA4906BA386D963D3B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +93,7 @@
 		002B47D41C01FA6F000BF3E8 = {
 			isa = PBXGroup;
 			children = (
+				00DCD95A1C2865E40094C0EB /* Sound.aif */,
 				00C8DD551C0CCACC004743A5 /* couleursLignes.json */,
 				003D10ED1C21A46800F9857E /* ionicons.ttf */,
 				003EBAC81C0B46CF0024043B /* FontAwesome.otf */,
@@ -103,12 +116,14 @@
 		002B47DF1C01FA6F000BF3E8 /* tpg offline */ = {
 			isa = PBXGroup;
 			children = (
+				002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */,
+				00DCD9551C2858D10094C0EB /* Ticket */,
+				00391C451C271D07005250D4 /* Paramètres */,
 				00DDC0B01C255CC9002B288E /* Plans */,
 				00DDC0AF1C254FED002B288E /* Extensions */,
 				00DDC0AE1C254FE5002B288E /* Général */,
 				00DDC0AD1C254FDE002B288E /* Incidents */,
 				00DDC0AC1C254FD7002B288E /* Départs */,
-				002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */,
 				005DF8121C0DF75300377031 /* UITableViewCell */,
 				002B47E41C01FA6F000BF3E8 /* Main.storyboard */,
 				002B47E71C01FA6F000BF3E8 /* Assets.xcassets */,
@@ -118,6 +133,15 @@
 			path = "tpg offline";
 			sourceTree = "<group>";
 		};
+		00391C451C271D07005250D4 /* Paramètres */ = {
+			isa = PBXGroup;
+			children = (
+				00391C461C271D1E005250D4 /* ParametresTableViewController.swift */,
+				00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */,
+			);
+			name = "Paramètres";
+			sourceTree = "<group>";
+		};
 		005DF8121C0DF75300377031 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +149,15 @@
 				005DF8101C0DF74E00377031 /* ArretsImageTableViewCell.swift */,
 			);
 			name = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		00DCD9551C2858D10094C0EB /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				00DCD9561C285A280094C0EB /* TicketTableViewController.swift */,
+				00DCD95C1C286B870094C0EB /* AchatTicketViewController.swift */,
+			);
+			name = Ticket;
 			sourceTree = "<group>";
 		};
 		00DDC0AC1C254FD7002B288E /* Départs */ = {
@@ -151,6 +184,7 @@
 				004D812A1C24737800C6AD55 /* Perturbations.swift */,
 				00500AF31C1B396F00341F7A /* Arret.swift */,
 				00B39B8A1C131C05006FC8A3 /* tpgURL.swift */,
+				00DCD9581C285EBB0094C0EB /* Ticket.swift */,
 			);
 			name = "Général";
 			sourceTree = "<group>";
@@ -262,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DCD95B1C2865E40094C0EB /* Sound.aif in Resources */,
 				003D10EE1C21A47400F9857E /* ionicons.ttf in Resources */,
 				003EBAC91C0B46E20024043B /* FontAwesome.otf in Resources */,
 				002B47EB1C01FA6F000BF3E8 /* LaunchScreen.storyboard in Resources */,
@@ -329,14 +364,19 @@
 			files = (
 				002B47F61C01FA87000BF3E8 /* DepartsArretTableViewController.swift in Sources */,
 				00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */,
+				00DCD95D1C286B870094C0EB /* AchatTicketViewController.swift in Sources */,
 				002E5C781C1337DD0008623D /* NSUserDefaultsExtension.swift in Sources */,
 				007266281C259191009EFEB5 /* PlanViewController.swift in Sources */,
+				00391C491C271DA6005250D4 /* ChoixMenuTableViewController.swift in Sources */,
 				008F53191C18744500127BDA /* AppValues.swift in Sources */,
+				00391C471C271D1E005250D4 /* ParametresTableViewController.swift in Sources */,
 				002B47F51C01FA87000BF3E8 /* ArretsTableViewController.swift in Sources */,
 				002B47F71C01FA87000BF3E8 /* DepartsTableViewCell.swift in Sources */,
 				004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */,
 				00500AF41C1B396F00341F7A /* Arret.swift in Sources */,
 				002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */,
+				00DCD9571C285A280094C0EB /* TicketTableViewController.swift in Sources */,
+				00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */,
 				004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */,
 				005DF8111C0DF74E00377031 /* ArretsImageTableViewCell.swift in Sources */,
 				008B84441C232D84007BE1B3 /* IncidentsTableViewController.swift in Sources */,

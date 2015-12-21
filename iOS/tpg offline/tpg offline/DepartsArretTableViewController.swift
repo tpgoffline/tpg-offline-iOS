@@ -218,9 +218,13 @@ class DepartsArretTableViewController: UITableViewController {
         let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: time!, options: NSCalendarOptions())
         let reminder = UILocalNotification()
         reminder.fireDate = date
-        reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va partir dans " + String(before) + " minutes"
-        reminder.alertAction = "OK"
-        reminder.soundName = UILocalNotificationDefaultSoundName
+        if before == 0 {
+            reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va immédiatement"
+        }
+        else {
+            reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va partir dans " + String(before) + " minutes"
+        }
+        reminder.soundName = "Sound.aif"
         
         UIApplication.sharedApplication().scheduleLocalNotification(reminder)
         

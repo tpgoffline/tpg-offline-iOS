@@ -27,11 +27,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo blanc" translatesAutoresizingMaskIntoConstraints="NO" id="mtR-2s-q3N">
+                                <rect key="frame" x="203" y="500" width="194" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="7uf-2v-OuP"/>
+                                    <constraint firstAttribute="width" constant="194" id="sKx-0r-rsp"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.9882352941176471" green="0.44705882352941173" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="mtR-2s-q3N" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hJe-Fh-Dfh"/>
                             <constraint firstItem="c4L-2Y-u9d" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lcK-em-HdB"/>
                             <constraint firstItem="c4L-2Y-u9d" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wZv-yR-di5"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="mtR-2s-q3N" secondAttribute="bottom" constant="20" id="ztc-M4-2bQ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +49,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo blanc" width="550" height="595"/>
+    </resources>
 </document>

@@ -74,6 +74,7 @@ class IncidentsTableViewController: UITableViewController {
     {
         aucunProbleme = false
         erreur = false
+        distrubtions = []
         if let dataArrets = tpgUrl.getDisruptions() {
             let json = JSON(data: dataArrets)
             if json["disruptions"].count != 0 {
@@ -140,7 +141,7 @@ class IncidentsTableViewController: UITableViewController {
             cell.detailTextLabel?.textColor = UIColor.blackColor()
         }
         else if erreur {
-            cell.backgroundColor = UIColor.flatRedColor()
+            cell.backgroundColor = UIColor.flatRedColorDark()
             let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
             iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
             cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
