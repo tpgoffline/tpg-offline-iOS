@@ -13,7 +13,11 @@ import FontAwesomeKit
 
 class ParametresTableViewController: UITableViewController {
 
-    let listeRows = [["Choix du menu par défault", "showChoixDuMenuParDefault"]]
+    let listeRows = [
+        [FAKFontAwesome.barsIconWithSize(20) ,"Choix du menu par défault", "showChoixDuMenuParDefault"],
+        [FAKFontAwesome.locationArrowIconWithSize(20) ,"Localisation", "showLocationMenu"]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,16 +49,19 @@ class ParametresTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("parametresCell", forIndexPath: indexPath)
 
-        cell.textLabel!.text = listeRows[indexPath.row][0]
+        cell.textLabel!.text = (listeRows[indexPath.row][1] as! String)
         let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
         iconCheveron.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-
+        let icone = listeRows[indexPath.row][0] as! FAKFontAwesome
+        icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        cell.imageView?.image = icone.imageWithSize(CGSize(width: 20, height: 20))
+        
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(listeRows[indexPath.row][1], sender: self)
+        performSegueWithIdentifier(listeRows[indexPath.row][2] as! String, sender: self)
     }
 
     /*

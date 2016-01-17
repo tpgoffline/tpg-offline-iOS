@@ -15,7 +15,7 @@ import CoreLocation
 import SwiftLocation
 
 class ArretsTableViewController: UITableViewController {
-    var arretsLocalisation:JSON = []
+    var arretsLocalisation = [Arret]()
     var filtredResults = [Arret]()
     let searchController = UISearchController(searchResultsController: nil)
     let locationManager = CLLocationManager()
@@ -64,7 +64,6 @@ class ArretsTableViewController: UITableViewController {
         tableView.reloadData()
         self.refreshControl!.endRefreshing()
     }
-    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -84,7 +83,7 @@ class ArretsTableViewController: UITableViewController {
         }
         else {
             if section == 0 {
-                return arretsLocalisation["stops"].count
+                return arretsLocalisation.count
             }
             else if section == 1 {
                 if (AppValues.arretsFavoris == nil) {
@@ -102,12 +101,49 @@ class ArretsTableViewController: UITableViewController {
     
     func requestLocation() {
         do {
-            try SwiftLocation.shared.currentLocation(Accuracy.Block, timeout: 20, onSuccess: { (location) -> Void in
-                if let dataArretsLocalisation = self.tpgUrl.getStopsbyLocation(location!) {
+            self.arretsLocalisation = []
+            var accurency = Accuracy.Block
+            if self.defaults.integerForKey("locationAccurency") == 1 {
+                accurency = Accuracy.House
+            }
+            else if self.defaults.integerForKey("locationAccurency") == 2 {
+                accurency = Accuracy.Room
+            }
+            try SwiftLocation.shared.currentLocation(accurency, timeout: 20, onSuccess: { (location) -> Void in
+                /*if let dataArretsLocalisation = self.tpgUrl.getStopsbyLocation(location!) {
                     self.arretsLocalisation = JSON(data: dataArretsLocalisation)
                     self.tableView.reloadData()
-                }}, onFail: { (error) -> Void in
-                    print("Erreur")
+
+                
+                }*/
+                print("Résultat de la localisation")
+                
+                if self.defaults.integerForKey("proximityDistance") == 0 {
+                    self.defaults.setInteger(500, forKey: "proximityDistance")
+                }
+                
+                for x in [Arret](AppValues.arrets.values) {
+                    x.distance = location!.distanceFromLocation(x.location)
+
+                    if (location!.distanceFromLocation(x.location) <= Double(self.defaults.integerForKey("proximityDistance"))) {
+                        
+                        self.arretsLocalisation.append(x)
+                        print(x.stopCode)
+                        print(String(location!.distanceFromLocation(x.location)))
+                    }
+                }
+                self.arretsLocalisation.sortInPlace({ (arret1, arret2) -> Bool in
+                    if arret1.distance < arret2.distance {
+                        return true
+                    }
+                    else {
+                        return false
+                    }
+                })
+                self.tableView.reloadData()
+                
+                }, onFail: { (error) -> Void in
+                    print("Erreur de localisation")
             })
         } catch (let error) {
             print("Error \(error)")
@@ -120,8 +156,8 @@ class ArretsTableViewController: UITableViewController {
                 let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
                 iconLocation.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[AppValues.nomsCompletsArrets[arretsLocalisation["stops"][indexPath.row]["stopCode"].stringValue]!]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[AppValues.nomsCompletsArrets[arretsLocalisation["stops"][indexPath.row]["stopCode"].stringValue]!]!.sousTitre
+                cell.textLabel?.text = arretsLocalisation[indexPath.row].nomComplet
+                cell.detailTextLabel!.text = "~" + String(Int(arretsLocalisation[indexPath.row].distance!)) + "m"
             }
             else if indexPath.section == 1 {
                 let iconFavoris = FAKFontAwesome.starIconWithSize(20)
@@ -170,7 +206,7 @@ class ArretsTableViewController: UITableViewController {
             }
             else {
                 if tableView.indexPathForSelectedRow!.section == 0 {
-                    departsArretsViewController.arret = AppValues.arrets[AppValues.nomsCompletsArrets[arretsLocalisation["stops"][tableView.indexPathForSelectedRow!.row]["stopCode"].stringValue]!]
+                    departsArretsViewController.arret = arretsLocalisation[tableView.indexPathForSelectedRow!.row]
                 }
                 else if tableView.indexPathForSelectedRow!.section == 1 {
                     departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[tableView.indexPathForSelectedRow!.row]]

@@ -1,6 +1,0 @@
-framework module PDTSimpleCalendar {
-  umbrella header "PDTSimpleCalendar-umbrella.h"
-
-  export *
-  module * { export * }
-}

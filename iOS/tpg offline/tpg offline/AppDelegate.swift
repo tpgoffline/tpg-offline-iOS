@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import FontAwesomeKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,28 +49,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = window?.rootViewController as! UITabBarController
         tabBarController.tabBar.barTintColor = UIColor.flatOrangeColorDark()
         tabBarController.tabBar.tintColor = UIColor.whiteColor()
-
-        tabBarController.tabBar.items![0].title = "Horaires"
+        
+        tabBarController.moreNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        tabBarController.moreNavigationController.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
+        tabBarController.moreNavigationController.navigationBar.tintColor = UIColor.whiteColor()
+        
+        //tabBarController.tabBar.items![0].title = "Horaires"
         let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
         iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        tabBarController.tabBar.items![1].title = "Incidents"
+        //tabBarController.tabBar.items![1].title = "Incidents"
         let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
         iconeAttention.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        tabBarController.tabBar.items![2].title = "Plans"
+        //tabBarController.tabBar.items![2].title = "Itinéraires"
+        let iconeItineraire = FAKFontAwesome.mapSignsIconWithSize(20)
+        iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        tabBarController.tabBar.items![2].image = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        //tabBarController.tabBar.items![3].title = "Plans"
         let iconePlan = FAKFontAwesome.mapIconWithSize(20)
         iconePlan.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        tabBarController.tabBar.items![2].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        tabBarController.tabBar.items![3].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        tabBarController.tabBar.items![3].title = "Ticket"
+        /*tabBarController.tabBar.items![4].title = "Ticket"
         let iconeTicket = FAKFontAwesome.ticketIconWithSize(20)
         iconeTicket.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        tabBarController.tabBar.items![3].image = iconeTicket.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        tabBarController.tabBar.items![4].image = iconeTicket.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)*/
         
-        tabBarController.tabBar.items![4].title = "Paramètres"
+        //tabBarController.tabBar.items![4].title = "Paramètres"
         let iconeParametre = FAKFontAwesome.cogIconWithSize(20)
         iconeParametre.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
@@ -87,7 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     nomComplet: arrets["stops"][i]["stopName"].string!,
                     titre: arrets["stops"][i]["titleName"].string!,
                     sousTitre: arrets["stops"][i]["subTitleName"].string!,
-                    stopCode: arrets["stops"][i]["stopCode"].string!
+                    stopCode: arrets["stops"][i]["stopCode"].string!,
+                    location: CLLocation(
+                        latitude: arrets["stops"][i]["locationX"].double!,
+                        longitude: arrets["stops"][i]["locationY"].double!
+                    ),
+                    idTransportAPI: arrets["stops"][i]["idTransportAPI"].string!
                 )
             }
             AppValues.stopName = AppValues.stopName.sort({ (value1, value2) -> Bool in

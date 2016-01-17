@@ -137,7 +137,7 @@ class IncidentsTableViewController: UITableViewController {
             cell.imageView?.image = iconeSmile.imageWithSize(CGSize(width: 25, height: 25))
             cell.textLabel?.text = "Aucun incident"
             cell.textLabel?.textColor = UIColor.blackColor()
-            cell.detailTextLabel!.text = "Tout vas bien sur tout le réseau. Une belle journée s'annonce..."
+            cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Une belle journée s'annonce..."
             cell.detailTextLabel?.textColor = UIColor.blackColor()
         }
         else if erreur {
