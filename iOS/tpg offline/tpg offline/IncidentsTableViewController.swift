@@ -56,8 +56,7 @@ class IncidentsTableViewController: UITableViewController {
         for var i = 0; i < couleurs["colors"].count; i++ {
             listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
             listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
-        }
-        // Uncomment the following line to preserve selection between presentations
+        }         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
     
@@ -137,7 +136,21 @@ class IncidentsTableViewController: UITableViewController {
             cell.imageView?.image = iconeSmile.imageWithSize(CGSize(width: 25, height: 25))
             cell.textLabel?.text = "Aucun incident"
             cell.textLabel?.textColor = UIColor.blackColor()
-            cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Une belle journée s'annonce..."
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "HH"
+            let heure = Int(dateFormatter.stringFromDate(NSDate()))
+            if heure < 6 {
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !"
+            }
+            else if heure < 18 {
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne journée !"
+            }
+            else if heure < 22 {
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne soirée !"
+            }
+            else {
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !"
+            }
             cell.detailTextLabel?.textColor = UIColor.blackColor()
         }
         else if erreur {

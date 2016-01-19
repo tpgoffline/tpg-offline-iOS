@@ -93,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for var i = 0; i < arrets["stops"].count; i++ {
                 AppValues.stopName.append(arrets["stops"][i]["stopName"].string!)
                 AppValues.nomsCompletsArrets[arrets["stops"][i]["stopCode"].string!] = arrets["stops"][i]["stopName"].string!
+                AppValues.transportAPIIDArrets[arrets["stops"][i]["idTransportAPI"].string!] = arrets["stops"][i]["stopName"].string!
                 AppValues.arrets[arrets["stops"][i]["stopName"].string!] = Arret(
                     nomComplet: arrets["stops"][i]["stopName"].string!,
                     titre: arrets["stops"][i]["titleName"].string!,

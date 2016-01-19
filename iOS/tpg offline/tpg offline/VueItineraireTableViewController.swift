@@ -13,30 +13,25 @@ import FontAwesomeKit
 import SCLAlertView
 
 class VueItineraireTableViewController: UITableViewController {
-    var itineraire: JSON! = []
+    
     var compteur = 0
+    var listeBackgroundColor = [String:UIColor]()
+    var listeColor = [String:UIColor]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var url = "http://transport.opendata.ch/v1/connections?"
-        url += "from=" + ItineraireEnCours.itineraire.depart!.idTransportAPI
-        url += "&to=" + ItineraireEnCours.itineraire.arrivee!.idTransportAPI
-        url += "&date=" + String(ItineraireEnCours.itineraire.date!.year) + "-" + String(ItineraireEnCours.itineraire.date!.month) + "-" + String(ItineraireEnCours.itineraire.date!.day)
-        url += "&time=" + String(ItineraireEnCours.itineraire.date!.hour) + ":" + String(ItineraireEnCours.itineraire.date!.minute)
-        url += "&isArrivalTime=" + String(Int(ItineraireEnCours.itineraire.dateArrivee))
-        if let data = NSData(contentsOfURL: NSURL(string: url)!) {
-            itineraire = JSON(data: data)
+        
+        let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
+        let couleurs = JSON(data: dataCouleurs!)
+        for var i = 0; i < couleurs["colors"].count; i++ {
+            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
+            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
         }
-        else {
-            let alerte = SCLAlertView()
-            alerte.showError("Pas d'interent", subTitle: "Vous devez être connecté à internet pour construire un itinéraire", closeButtonTitle: "OK", duration: 10).setDismissBlock({ () -> Void in
-                self.navigationController?.popViewControllerAnimated(true)
-            })
-        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: FAKIonIcons.iosArrowRightIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "itineraireSuivant:")]
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,83 +48,104 @@ class VueItineraireTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return itineraire["connections"][compteur]["sections"].count
+        return ItineraireEnCours.json["connections"][compteur]["sections"].count
     }
-    
-    func itineraireSuivant(sender: AnyObject!) {
-        if itineraire["connections"].count > compteur + 1 {
-            compteur++
-            tableView.reloadData()
-        }
-        if itineraire["connections"].count - 1 == compteur {
-            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: FAKIonIcons.iosArrowLeftIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "itinerairePrecedent:")]
-        }
-        else {
-            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: FAKIonIcons.iosArrowRightIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "itineraireSuivant:"), UIBarButtonItem(image: FAKIonIcons.iosArrowLeftIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "itinerairePrecedent:")]
-        }
+        
+    func labelToImage(label: UILabel!) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
+        label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
-    func itinerairePrecedent(sender: AnyObject!) {
-        if compteur - 1 >= 0 {
-            compteur--
-            tableView.reloadData()
-        }
-        if compteur == 0 {
-            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: FAKIonIcons.iosArrowRightIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "itineraireSuivant:")]
-        }
-        else {
-            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: FAKIonIcons.iosArrowRightIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "itineraireSuivant:"), UIBarButtonItem(image: FAKIonIcons.iosArrowLeftIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "itinerairePrecedent:")]
-        }
-    }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("itineraireCell", forIndexPath: indexPath) as! ItineraireTableViewCell
         
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.flatOrangeColorDark()
-        cell.selectedBackgroundView = backgroundView
+        var couleurTexte = UIColor.whiteColor()
         
-        if itineraire["connections"][compteur]["sections"][indexPath.row]["walk"].type == .Null {
-            if itineraire["connections"][compteur]["sections"][indexPath.row]["journey"]["categoryCode"].intValue == 6 {
-                let icone = FAKIonIcons.androidBusIconWithSize(40)
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-                cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 40, height: 40))
+        if ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["walk"].type == .Null {
+            
+            cell.ligneLabel.text = "Ligne " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]
+            var icone = FAKIonIcons.androidTrainIconWithSize(21)
+            switch ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["categoryCode"].intValue {
+            case 6:
+                icone = FAKIonIcons.androidBusIconWithSize(21)
+            
+            case 4:
+                icone = FAKIonIcons.androidBoatIconWithSize(21)
+                
+            case 9:
+                icone = FAKIonIcons.androidSubwayIconWithSize(21)
+                
+            default:
+                cell.backgroundColor = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
+                cell.ligneLabel.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue
             }
-            else if itineraire["connections"][compteur]["sections"][indexPath.row]["journey"]["categoryCode"].intValue == 4 {
-                let icone = FAKIonIcons.androidBoatIconWithSize(40)
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-                cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 40, height: 40))
+            
+            icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+            cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 21, height: 21))
+            let attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
+            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["to"].stringValue))
+            cell.directionLabel.attributedText = attributedString
+
+            if ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["operator"].stringValue == "TPG" {
+                cell.backgroundColor = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]
+                couleurTexte = listeColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!
+                
+                let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
+                labelPictoLigne.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]
+                labelPictoLigne.textAlignment = .Center
+                labelPictoLigne.textColor = listeColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!
+                labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
+                labelPictoLigne.layer.borderColor = listeColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!.CGColor
+                labelPictoLigne.layer.borderWidth = 1
+                let image = labelToImage(labelPictoLigne)
+                for x in cell.iconeImageView.constraints {
+                    if x.identifier == "iconeImageViewHeight" {
+                        x.constant = 24
+                    }
+                }
+                cell.iconeImageView.image = image
             }
-            else if itineraire["connections"][compteur]["sections"][indexPath.row]["journey"]["categoryCode"].intValue == 9 {
-                let icone = FAKIonIcons.androidSubwayIconWithSize(40)
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-                cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 40, height: 40))
-            }
-            else {
-                let icone = FAKIonIcons.androidTrainIconWithSize(40)
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-                cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 40, height: 40))
-            }
-            cell.ligneLabel.text = itineraire["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue
-            cell.directionLabel.text = "Direction " + itineraire["connections"][compteur]["sections"][indexPath.row]["journey"]["to"].stringValue
+            
+            
+            cell.ligneLabel.textColor = couleurTexte
+            cell.directionLabel.textColor = couleurTexte
+            cell.departLabel.textColor = couleurTexte
+            cell.heureDepartLabel.textColor = couleurTexte
+            cell.arriveeLabel.textColor = couleurTexte
+            cell.heureArriveeLabel.textColor = couleurTexte
         }
         else {
-            let icone = FAKIonIcons.androidWalkIconWithSize(40)
+            let icone = FAKIonIcons.androidWalkIconWithSize(42)
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-            cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 40, height: 40))
+            cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 42, height: 42))
             cell.ligneLabel.text = "Marche"
-            cell.directionLabel.text = itineraire["connections"][compteur]["sections"][indexPath.row]["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)"
+            cell.directionLabel.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)"
         }
         
-        cell.departLabel.text = "De : " + itineraire["connections"][compteur]["sections"][indexPath.row]["departure"]["station"]["name"].stringValue
+        var icone = FAKIonIcons.logOutIconWithSize(21)
+        icone.addAttribute(NSForegroundColorAttributeName, value: couleurTexte)
+        var attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
+        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["station"]["name"].stringValue))
+        cell.departLabel.attributedText = attributedString
+
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        var timestamp = itineraire["connections"][compteur]["sections"][indexPath.row]["departure"]["departureTimestamp"].intValue
+        var timestamp = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["departureTimestamp"].intValue
         cell.heureDepartLabel.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
-        timestamp = itineraire["connections"][compteur]["sections"][indexPath.row]["arrival"]["arrivalTimestamp"].intValue
-        cell.arriveeLabel.text = "A : " + itineraire["connections"][compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue
+        
+        timestamp = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["arrival"]["arrivalTimestamp"].intValue
         cell.heureArriveeLabel.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
-
+        
+        icone = FAKIonIcons.logInIconWithSize(21)
+        icone.addAttribute(NSForegroundColorAttributeName, value: couleurTexte)
+        attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
+        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue))
+        cell.arriveeLabel.attributedText = attributedString
+        
         
         return cell
     }

@@ -216,6 +216,7 @@ class DepartsArretTableViewController: UITableViewController {
                     let customValueAlert = SCLAlertView()
                     let txt = customValueAlert.addTextField("Nombre de minutes")
                     txt.keyboardType = .NumberPad
+                    txt.becomeFirstResponder()
                     customValueAlert.addButton("Rappeler", action: { () -> Void in
                         if Int(self.listeDeparts[indexPath.row].tempsRestant)! < Int(txt.text!)! {
                             customValueAlert.hideView()

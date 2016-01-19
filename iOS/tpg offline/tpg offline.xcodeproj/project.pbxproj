@@ -41,6 +41,8 @@
 		00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */; };
 		00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C491C4810E1008E8B2A /* Itineraire.swift */; };
 		00C98C4C1C481573008E8B2A /* ItineraireTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C4B1C481573008E8B2A /* ItineraireTableViewController.swift */; };
+		00CA21D11C4EA43200CCB994 /* ListeItinerairesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA21D01C4EA43200CCB994 /* ListeItinerairesTableViewController.swift */; };
+		00CA21D31C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */; };
 		00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D0355B1C0E25D600B3697D /* CoreLocation.framework */; };
 		00D7C3D21C4BDCAE00D6864C /* ItineraireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */; };
 		00DCD9571C285A280094C0EB /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCD9561C285A280094C0EB /* TicketTableViewController.swift */; };
@@ -90,6 +92,8 @@
 		00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgArretSelectionTableViewController.swift; sourceTree = "<group>"; };
 		00C98C491C4810E1008E8B2A /* Itineraire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itineraire.swift; sourceTree = "<group>"; };
 		00C98C4B1C481573008E8B2A /* ItineraireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraireTableViewController.swift; sourceTree = "<group>"; };
+		00CA21D01C4EA43200CCB994 /* ListeItinerairesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeItinerairesTableViewController.swift; sourceTree = "<group>"; };
+		00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeItinerairesTableViewCell.swift; sourceTree = "<group>"; };
 		00D0355B1C0E25D600B3697D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraireTableViewCell.swift; sourceTree = "<group>"; };
 		00DCD9561C285A280094C0EB /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				007D924A1C4A989F0036BEE6 /* SwitchTableViewCell.swift */,
 				007D924C1C4A98A80036BEE6 /* ButtonTableViewCell.swift */,
 				00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */,
+				00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				007CF3571C497D48006C1898 /* CalendarSelectionViewController.swift */,
 				00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */,
 				007D924E1C4AA27E0036BEE6 /* VueItineraireTableViewController.swift */,
+				00CA21D01C4EA43200CCB994 /* ListeItinerairesTableViewController.swift */,
 			);
 			name = "Itinéraires";
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				002B47F61C01FA87000BF3E8 /* DepartsArretTableViewController.swift in Sources */,
+				00CA21D31C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift in Sources */,
 				00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */,
 				000ECABD1C469A3500E4FC92 /* RouteViewController.swift in Sources */,
 				00C98C4C1C481573008E8B2A /* ItineraireTableViewController.swift in Sources */,
@@ -433,6 +440,7 @@
 				007D924F1C4AA27E0036BEE6 /* VueItineraireTableViewController.swift in Sources */,
 				00391C491C271DA6005250D4 /* ChoixMenuTableViewController.swift in Sources */,
 				008F53191C18744500127BDA /* AppValues.swift in Sources */,
+				00CA21D11C4EA43200CCB994 /* ListeItinerairesTableViewController.swift in Sources */,
 				007CF3581C497D48006C1898 /* CalendarSelectionViewController.swift in Sources */,
 				00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */,
 				00391C471C271D1E005250D4 /* ParametresTableViewController.swift in Sources */,

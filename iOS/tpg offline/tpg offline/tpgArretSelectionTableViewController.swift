@@ -246,6 +246,14 @@ class tpgArretSelectionTableViewController: UITableViewController {
         filtredResults = [Arret](AppValues.arrets.values).filter { arret in
             return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
         }
+        filtredResults.sortInPlace { (arret1, arret2) -> Bool in
+            if arret1.nomComplet.lowercaseString < arret2.nomComplet.lowercaseString {
+                return true
+            }
+            else {
+                return false
+            }
+        }
         
         tableView.reloadData()
     }

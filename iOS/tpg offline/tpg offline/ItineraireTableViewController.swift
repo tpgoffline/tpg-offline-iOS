@@ -15,13 +15,14 @@ import SCLAlertView
 
 struct ItineraireEnCours {
     static var itineraire: Itineraire!
+    static var json: JSON!
 }
 
 class ItineraireTableViewController: UITableViewController {
     let row = [["itineraryCell", FAKIonIcons.logOutIconWithSize(20), "Départ", "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.logInIconWithSize(20), "Arrivée", "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.calendarIconWithSize(20), "Date", "selectDate"], ["itineraryCell", FAKIonIcons.clockIconWithSize(20), "Heure", "selectHour"], ["switchCell", "Heure de départ", "Heure d'arrivée"], ["buttonCell", "Rechercher"]]
     override func viewDidLoad() {
         super.viewDidLoad()
-        ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: nil, dateArrivee: false)
+        ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
         
         // Do any additional setup after loading the view.
     }
