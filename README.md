@@ -1,4 +1,4 @@
-# Mon tpg
+# tpg offline
 Application Mac, iOS et watchOS pour les transports publics genevois
 
 http://remydcf.github.io/tpg-offline
