@@ -53,10 +53,9 @@ class ArretsTableViewController: UITableViewController {
             return false
         })
         
-        /*if(traitCollection.forceTouchCapability == .Available){
+        if(traitCollection.forceTouchCapability == .Available){
             registerForPreviewingWithDelegate(self, sourceView: view)
-        }*/
-        previewer = registerForPreviewingWithDelegate(self, sourceView: view)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
