@@ -7,5 +7,7 @@
 #import "FAKFoundationIcons.h"
 #import "FAKZocial.h"
 #import "FAKIonIcons.h"
+#import "FAKOcticons.h"
+#import "FAKMaterialIcons.h"
 
 #endif

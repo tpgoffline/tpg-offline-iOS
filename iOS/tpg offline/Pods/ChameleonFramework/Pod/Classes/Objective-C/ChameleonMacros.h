@@ -99,9 +99,6 @@
 #define AverageColorFromImage(image) [UIColor colorWithAverageColorFromImage:image]
 #define AverageColorFromImageWithAlpha(image, alpha) [UIColor colorWithAverageColorFromImage:image withAlpha:alpha]
 
-#define RandomFlatColorWithShade(shade) [UIColor colorWithRandomFlatColorOfShadeStyle:shade]
-#define RandomFlatColorWithShadeAndAlpha(shade, alpha) [UIColor colorWithRandomFlatColorOfShadeStyle:shade withAlpha:alpha]
-
 #define ComplementaryFlatColor(color) [UIColor colorWithComplementaryFlatColorOf:color]
 #define ComplementaryFlatColorWithAlpha(color, alpha) [UIColor colorWithComplementaryFlatColorOf:color withAlpha:alpha]
 
@@ -113,6 +110,8 @@
 #define HexColor(hexString) [UIColor colorWithHexString:hexString]
 #define HexColorWithAlpha(hexString, alpha) [UIColor colorWithHexString:hexString withAlpha:alpha]
 
+#define RandomFlatColorInArray(colors) [UIColor colorWithRandomColorInArray:colors]
+#define RandomFlatColorExcluding(colors) [UIColor colorWithRandomFlatColorExcludingColorsInArray:colors];
 #define RandomFlatColorWithShade(shade) [UIColor colorWithRandomFlatColorOfShadeStyle:shade]
 #define RandomFlatColorWithShadeAndAlpha(shade, alpha) [UIColor colorWithRandomFlatColorOfShadeStyle:shade withAlpha:alpha]
 

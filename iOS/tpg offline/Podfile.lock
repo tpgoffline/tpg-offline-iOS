@@ -1,52 +1,102 @@
 PODS:
   - BGTableViewRowActionWithImage (0.3.0)
-  - ChameleonFramework (2.0.6):
-    - ChameleonFramework/Default (= 2.0.6)
-  - ChameleonFramework/Default (2.0.6)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - DGRunkeeperSwitch (1.1.1)
-  - EFCircularSlider (0.2.0)
-  - FontAwesomeKit (2.2.0):
-    - FontAwesomeKit/Core (= 2.2.0)
-    - FontAwesomeKit/FontAwesome (= 2.2.0)
-    - FontAwesomeKit/FoundationIcons (= 2.2.0)
-    - FontAwesomeKit/IonIcons (= 2.2.0)
-    - FontAwesomeKit/Zocial (= 2.2.0)
-  - FontAwesomeKit/Core (2.2.0)
-  - FontAwesomeKit/FontAwesome (2.2.0):
+  - EFCircularSlider (0.1.0)
+  - FontAwesomeKit (2.2.1):
+    - FontAwesomeKit/Core (= 2.2.1)
+    - FontAwesomeKit/FontAwesome (= 2.2.1)
+    - FontAwesomeKit/FoundationIcons (= 2.2.1)
+    - FontAwesomeKit/IonIcons (= 2.2.1)
+    - FontAwesomeKit/Material (= 2.2.1)
+    - FontAwesomeKit/Octicons (= 2.2.1)
+    - FontAwesomeKit/Zocial (= 2.2.1)
+  - FontAwesomeKit/Core (2.2.1)
+  - FontAwesomeKit/FontAwesome (2.2.1):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/FoundationIcons (2.2.0):
+  - FontAwesomeKit/FoundationIcons (2.2.1):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/IonIcons (2.2.0):
+  - FontAwesomeKit/IonIcons (2.2.1):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/Zocial (2.2.0):
+  - FontAwesomeKit/Material (2.2.1):
     - FontAwesomeKit/Core
-  - FSCalendar (1.7.2)
-  - SCLAlertView (0.4.3)
+  - FontAwesomeKit/Octicons (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.2.1):
+    - FontAwesomeKit/Core
+  - FSCalendar (1.8.0)
+  - SCLAlertView (0.5)
   - SwiftLocation (0.2.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - BGTableViewRowActionWithImage
-  - ChameleonFramework
-  - DGRunkeeperSwitch
-  - EFCircularSlider
-  - FontAwesomeKit
-  - FSCalendar
-  - SCLAlertView
-  - SwiftLocation
-  - SwiftyJSON
+  - BGTableViewRowActionWithImage (from `https://github.com/benguild/BGTableViewRowActionWithImage.git`)
+  - ChameleonFramework (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - DGRunkeeperSwitch (from `https://github.com/gontovnik/DGRunkeeperSwitch.git`)
+  - EFCircularSlider (~> 0.1.0)
+  - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
+  - FSCalendar (from `https://github.com/WenchaoIOS/FSCalendar.git`)
+  - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
+  - SwiftLocation (from `https://github.com/malcommac/SwiftLocation.git`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  BGTableViewRowActionWithImage:
+    :git: https://github.com/benguild/BGTableViewRowActionWithImage.git
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+  DGRunkeeperSwitch:
+    :git: https://github.com/gontovnik/DGRunkeeperSwitch.git
+  FontAwesomeKit:
+    :git: https://github.com/PrideChung/FontAwesomeKit.git
+  FSCalendar:
+    :git: https://github.com/WenchaoIOS/FSCalendar.git
+  SCLAlertView:
+    :git: https://github.com/vikmeup/SCLAlertView-Swift.git
+  SwiftLocation:
+    :git: https://github.com/malcommac/SwiftLocation.git
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  BGTableViewRowActionWithImage:
+    :commit: 23600b7c4bc1ae15648a931dc59e6ed8660c2bd9
+    :git: https://github.com/benguild/BGTableViewRowActionWithImage.git
+  ChameleonFramework:
+    :commit: e091996dface3f46ca955f02723482f970bddf75
+    :git: https://github.com/ViccAlexander/Chameleon.git
+  DGRunkeeperSwitch:
+    :commit: 8e1c17765f01de9112d4c98b036fe3225d4a5e67
+    :git: https://github.com/gontovnik/DGRunkeeperSwitch.git
+  FontAwesomeKit:
+    :commit: e0923ecdc9ef5661b24adaf2be725386f9590d1d
+    :git: https://github.com/PrideChung/FontAwesomeKit.git
+  FSCalendar:
+    :commit: bb86d7085f58d53667f57664acd9077a0e3d0aac
+    :git: https://github.com/WenchaoIOS/FSCalendar.git
+  SCLAlertView:
+    :commit: 7ceca834355c529e5fadd20ba6de616e23a88bac
+    :git: https://github.com/vikmeup/SCLAlertView-Swift.git
+  SwiftLocation:
+    :commit: d830d36762f58c4ab8fc3e74a4636d7436e9c6c8
+    :git: https://github.com/malcommac/SwiftLocation.git
+  SwiftyJSON:
+    :commit: 929539eb6a3304eaa9153ca44041a78b85bf2ee5
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   BGTableViewRowActionWithImage: 687380a0a13f72af2c93c7e41f054a4c03e78188
-  ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
-  EFCircularSlider: 3af1dd6f86eb3eeeeaab0345ef3d6d1c2fc93d17
-  FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
-  FSCalendar: 38f5b3de1aeaa7dc03a3e997bdc6fb3ff3a88b8d
-  SCLAlertView: a5c726a80a938fd3127edd7dbc19da33fb936ca3
+  EFCircularSlider: 5a4baa272264e845577945c86e23d5d3996d3c37
+  FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
+  FSCalendar: a283f4d9c4249a0ce43a08c3f4f7ad27b295e4cf
+  SCLAlertView: 51a328f3985e13e6bfe8dc77123543480fa615f9
   SwiftLocation: ea78ae4a822581bde7379d98c8513273723c8840
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 90c44fb85a1694f0fe36660957fb1d157f5eb179
+PODFILE CHECKSUM: 042ae8741c82b9cd9d585fda4f19947648c3efc4
 
 COCOAPODS: 1.0.0.beta.2

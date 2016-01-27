@@ -1,13 +1,13 @@
 use_frameworks!
 
 target 'tpg offline' do
-pod 'SwiftyJSON'
-pod 'ChameleonFramework'
-pod 'FontAwesomeKit'
-pod 'SwiftLocation'
-pod 'BGTableViewRowActionWithImage'
-pod 'SCLAlertView'
-pod 'FSCalendar'
-pod 'EFCircularSlider'
-pod 'DGRunkeeperSwitch'
+pod 'SwiftyJSON', git: "https://github.com/SwiftyJSON/SwiftyJSON.git"
+pod 'ChameleonFramework' , git: "https://github.com/ViccAlexander/Chameleon.git"
+pod 'FontAwesomeKit', git: "https://github.com/PrideChung/FontAwesomeKit.git"
+pod 'SwiftLocation', git: "https://github.com/malcommac/SwiftLocation.git"
+pod 'BGTableViewRowActionWithImage', git: "https://github.com/benguild/BGTableViewRowActionWithImage.git"
+pod 'SCLAlertView', git: "https://github.com/vikmeup/SCLAlertView-Swift.git"
+pod 'FSCalendar', git: "https://github.com/WenchaoIOS/FSCalendar.git"
+pod 'EFCircularSlider', "~> 0.1.0"
+pod 'DGRunkeeperSwitch', git: "https://github.com/gontovnik/DGRunkeeperSwitch.git"
 end

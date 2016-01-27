@@ -15,9 +15,13 @@
     CGDataProviderRef fontDataProvider = CGDataProviderCreateWithURL((__bridge CFURLRef)url);
     CGFontRef newFont = CGFontCreateWithDataProvider(fontDataProvider);
     CGDataProviderRelease(fontDataProvider);
-    CFErrorRef error;
+    CFErrorRef error = NULL;
     CTFontManagerRegisterGraphicsFont(newFont, &error);
     CGFontRelease(newFont);
+    
+    if (error) {
+        CFRelease(error);
+    }
 }
 
 + (NSDictionary *)allIcons
@@ -35,6 +39,21 @@
     FAKIcon *icon = [[self alloc] init];
     icon.mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:code attributes:@{NSFontAttributeName: [self iconFontWithSize:size]}];
     return icon;
+}
+
++ (instancetype)iconWithIdentifier:(NSString *)identifier size:(CGFloat)size error:(NSError **)error
+{
+    NSString *iconCode = [[self allIcons] objectForKey:identifier];
+    
+    // If iconCode does not exist, return an error
+    if (!iconCode) {
+        NSDictionary *errorDetail = @{ NSLocalizedDescriptionKey: @"Invalid identifier."};
+        *error = [NSError errorWithDomain:@"FontAwesomeKit"
+                                     code:-100
+                                 userInfo:errorDetail];
+        return nil;
+    }
+    return [self iconWithCode:iconCode size:size];
 }
 
 - (NSAttributedString *)attributedString

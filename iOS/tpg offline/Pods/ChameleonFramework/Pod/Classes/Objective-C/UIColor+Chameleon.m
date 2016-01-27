@@ -659,6 +659,41 @@
     return [self flatColors][randomColorChosen];
 }
 
++ (UIColor *)colorWithRandomColorInArray:(NSArray *)colors {
+    
+    UIColor *randomColor;
+    if (colors.count) {
+        
+        //Pick a random index
+        NSInteger randomIndex = arc4random() % colors.count;
+        
+        //Return the color at the random index
+        randomColor = colors[randomIndex];
+        
+    } else {
+        return nil;
+    }
+    
+    NSAssert([randomColor isKindOfClass:[UIColor class]], @"Hmm... one of your objects in your 'colors' array is not a UIColor object.");
+    
+    //Return
+    return randomColor;
+}
+
++ (UIColor *)colorWithRandomFlatColorExcludingColorsInArray:(NSArray *)colors {
+    
+    //Set random flat color
+    UIColor *randomColor = [[self class] randomFlatColor];
+    
+    //If the selected color is blacklisted select a new color
+    while ([colors containsObject:randomColor]) {
+        randomColor = [[self class] randomFlatColor];
+    }
+    
+    //Return
+    return randomColor;
+}
+
 + (UIColor *)colorWithRandomFlatColorOfShadeStyle:(UIShadeStyle)shadeStyle {
     
     //Return color with default alpha value of 1.0
@@ -746,6 +781,22 @@
     }
     
     return nil;
+}
+
+- (NSString *)hexValue {
+    
+    UIColor *currentColor = self;
+    if (CGColorGetNumberOfComponents(self.CGColor) < 4) {
+        const CGFloat *components = CGColorGetComponents(self.CGColor);
+        currentColor = [UIColor colorWithRed:components[0] green:components[0] blue:components[0] alpha:components[1]];
+    }
+    
+    if (CGColorSpaceGetModel(CGColorGetColorSpace(currentColor.CGColor)) != kCGColorSpaceModelRGB) {
+        return [NSString stringWithFormat:@"#FFFFFF"];
+    }
+    
+    return [NSString stringWithFormat:@"#%02X%02X%02X", (int)((CGColorGetComponents(currentColor.CGColor))[0]*255.0), (int)((CGColorGetComponents(currentColor.CGColor))[1]*255.0), (int)((CGColorGetComponents(currentColor.CGColor))[2]*255.0)];
+    
 }
 
 - (UIColor *)lightenByPercentage:(CGFloat)percentage {

@@ -1,20 +1,22 @@
-FontAwesomeKit
+FontAwesomeKit ![Cocoapods Version](https://img.shields.io/cocoapods/v/FontAwesomeKit.svg?style=flat) ![Platform](https://img.shields.io/cocoapods/p/FontAwesomeKit.svg?style=flat) ![License](https://img.shields.io/cocoapods/l/FontAwesomeKit.svg?style=flat)
 ==============
 Icon font library for iOS. Currently supports Font-Awesome, Foundation icons, Zocial, and ionicons.
 
 ![image](http://i.minus.com/i3vNn0fTwcJeI.png)
 
-![image](http://i.minus.com/ivKqhOLJLVvmJ.png)
+![image](http://i2.minus.com/ivKqhOLJLVvmJ.png)
 
-## Version 2.1 Notable Changes
+## Version 2.2 Notable Changes
 ### Not Just Awesome. New Icon Fonts Added
 
-Currently FontAwesomeKit supports **4** different icon fonts.
+Currently FontAwesomeKit supports **6** different icon fonts.
 
-- [FontAwesome 4.2](http://fortawesome.github.io/Font-Awesome/) Our old friend, contains **479** icons
+- [FontAwesome 4.5](http://fontawesome.io) Our old friend, contains **605** icons
 - [Foundation icons](http://zurb.com/playground/foundation-icon-fonts-3) Contains **283** icons.
 - [Zocial](http://zocial.smcllns.com/) Contains **99** social icons.
-- [ionicons 1.5.2](http://ionicons.com/) Contains **601** icons, lots of iOS 7 style outlined icons.
+- [ionicons 2.0.0](http://ionicons.com/) Contains **733** icons, lots of iOS 7 style outlined icons.
+- [Octicons 2.4.1](https://octicons.github.com/) Contains **206** icons, built with love by [Github](https://github.com/).
+- [Material 2.0.0](https://google.github.io/material-design-icons/) Contains **743** icons, built by Google for Material design.
 
 ### API Reforged, Take Advantage of NSAttributedString
 Thanks to `NSAttributedString` the API is more clean and object oriented. All hail `NSAttributedString`!
@@ -26,20 +28,23 @@ Please notice that FontAwesome has renamed lots of it's icons in the recent 4.0 
 ### Requirements
 - Xcode 5
 - iOS 6.0 +
+- tvOS 9.0
 - ARC enabled
 - CoreText framework
 
 ### Install with CocoaPods (Strongly Recommended)
 FontAwesomeKit now supports sub spec, only get the fonts you need.
 
-Add `pod 'FontAwesomeKit', '~> 2.1.0'` to Podfile to install all icon fonts.
+Add `pod 'FontAwesomeKit', '~> 2.2.0'` to Podfile to install all icon fonts.
 
 Or select icon fonts with:  
 
 `pod 'FontAwesomeKit/FontAwesome'`  
 `pod 'FontAwesomeKit/FoundationIcons'`  
 `pod 'FontAwesomeKit/Zocial'`  
-`pod 'FontAwesomeKit/IonIcons'`  
+`pod 'FontAwesomeKit/IonIcons'`
+`pod 'FontAwesomeKit/Octicons'`
+`pod 'FontAwesomeKit/Material'`
 
 Run `pod install` or `pod update` to install selected icon fonts.
 
@@ -52,7 +57,9 @@ Or import icon fonts you installed with sub specs
 `#import FontAwesomeKit/FAKFontAwesome.h`  
 `#import FontAwesomeKit/FAKFoundationIcons.h`  
 `#import FontAwesomeKit/FAKZocial.h`  
-`#import FontAwesomeKit/FAKIonIcons.h`  
+`#import FontAwesomeKit/FAKIonIcons.h`
+`#import FontAwesomeKit/FAKOcticons.h`
+`#import FontAwesomeKit/FAKMaterialIcons.h`
 
 #####*important:*
 If you deleted a sub spec in Podfile, please delete Xcode's derived data in organizer(command+shift+2 to bring up). Otherwise Xcode will keep copying font files those supposed to be deleted to the app bundle.
@@ -69,8 +76,22 @@ FAKFontAwesome *starIcon = [FAKFontAwesome starIconWithSize:15];
 FAKFoundationIcons *bookmarkIcon = [FAKFoundationIcons bookmarkIconWithSize:15];
 FAKZocial *twitterIcon = [FAKZocial twitterIconWithSize:15];  
 FAKIonIcons *mailIcon = [FAKIonIcons ios7EmailIconWithSize:48];
+FAKOcticons *repoIcon = [FAKOcticons repoIconWithSize:48];
+FAKMaterialIcons *androidIcon = [FAKMaterialIcons androidIconWithSize:48];
+
 ```
 Now you can use these class methods and pass in the font size instead of finding an icon with constants. Corresponding icon fonts will automatically setup for you.
+
+#### Creating icons using identifiers
+It is now possible to use identifiers to create icons. Check each documentation to get the appropriate identifier. Also, make sure you use an existing identifier, else the method will return nil and an error will be set.
+
+```objective-c
+NSError *error;
+FAKFontAwesome *starIcon = [FAKFontAwesome  iconWithIdentifier:@"fa-star" size:15 error:error];
+FAKFoundationIcons *bookmarkIcon = [FAKFoundationIcons iconWithIdentifier:@"fi-bookmark" size:15 error:error];
+FAKZocial *twitterIcon = [FAKZocial iconWithIdentifier:@"zocial.twitter" size:15 error:error];
+FAKIonIcons *mailIcon = [FAKIonIcons iconWithIdentifier:@"ion-ios-email" size:48 error:error];
+```
 
 ### Setting Attributes for An Icon
 ```objective-c

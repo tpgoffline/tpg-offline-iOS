@@ -13,7 +13,7 @@ import UIKit
 
 public class DGRunkeeperSwitchRoundedLayer: CALayer {
 
-    override public var frame: CGRect {
+    override public var bounds: CGRect {
         didSet { cornerRadius = bounds.height / 2.0 }
     }
     
@@ -23,7 +23,7 @@ public class DGRunkeeperSwitchRoundedLayer: CALayer {
 // MARK: DGRunkeeperSwitch
 
 public class DGRunkeeperSwitch: UIControl {
-
+    
     // MARK: -
     // MARK: Public vars
     
@@ -89,7 +89,7 @@ public class DGRunkeeperSwitch: UIControl {
     
     // MARK: -
     // MARK: Constructors
-
+    
     public init(leftTitle: String!, rightTitle: String!) {
         super.init(frame: CGRect.zero)
         
@@ -98,7 +98,7 @@ public class DGRunkeeperSwitch: UIControl {
         
         finishInit()
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -190,7 +190,6 @@ public class DGRunkeeperSwitch: UIControl {
             selectedBackgroundView.frame = frame
         } else if gesture.state == .Ended || gesture.state == .Failed || gesture.state == .Cancelled {
             let velocityX = gesture.velocityInView(self).x
-            
             if velocityX > 500.0 {
                 setSelectedIndex(1, animated: true)
             } else if velocityX < -500.0 {
@@ -204,8 +203,11 @@ public class DGRunkeeperSwitch: UIControl {
     }
     
     public func setSelectedIndex(selectedIndex: Int, animated: Bool) {
+        
+        // Reset switch on half pan gestures
+        var catchHalfSwitch:Bool = false
         if self.selectedIndex == selectedIndex {
-            return
+            catchHalfSwitch = true
         }
         
         self.selectedIndex = selectedIndex
@@ -214,7 +216,9 @@ public class DGRunkeeperSwitch: UIControl {
                 self.layoutSubviews()
                 }, completion: { (finished) -> Void in
                     if finished {
-                        self.sendActionsForControlEvents(.ValueChanged)
+                        if (!catchHalfSwitch) {
+                            self.sendActionsForControlEvents(.ValueChanged)
+                        }
                     }
             })
         } else {

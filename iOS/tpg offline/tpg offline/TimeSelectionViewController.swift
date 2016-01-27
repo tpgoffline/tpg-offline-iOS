@@ -28,7 +28,6 @@ class TimeSelectionViewController: UIViewController {
         hourSlider.minimumValue = 0
         hourSlider.maximumValue = 24
         hourSlider.labelColor = UIColor.whiteColor()
-        hourSlider.handleType = .BigCircle;
         hourSlider.handleColor = hourSlider.filledColor;
         view.addSubview(hourSlider)
         hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
@@ -43,7 +42,6 @@ class TimeSelectionViewController: UIViewController {
         minuteSlider.maximumValue = 60
         minuteSlider.snapToLabels = false
         minuteSlider.labelColor = UIColor.whiteColor()
-        minuteSlider.handleType = .BigCircle;
         minuteSlider.handleColor = minuteSlider.filledColor;
         view.addSubview(minuteSlider)
         minuteSlider.addTarget(self, action: "minuteChanged:", forControlEvents: .ValueChanged)
