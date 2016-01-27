@@ -21,6 +21,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
     let locationManager = CLLocationManager()
     let tpgUrl = tpgURL()
     let defaults = NSUserDefaults.standardUserDefaults()
+    var arretsKeys: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,14 @@ class tpgArretSelectionTableViewController: UITableViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        arretsKeys = [String](AppValues.arrets.keys)
+        arretsKeys.sortInPlace({ (string1, string2) -> Bool in
+            if string1.lowercaseString < string2.lowercaseString {
+                return true
+            }
+            return false
+        })
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -155,14 +164,14 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 iconFavoris.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.accessoryView = UIImageView(image: iconFavoris.imageWithSize(CGSize(width: 20, height: 20)))
                 cell.textLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.titre
-                cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.sousTitre!
+                cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.sousTitre
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[(AppValues.stopName[indexPath.row])]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[(AppValues.stopName[indexPath.row])]!.sousTitre
+                cell.textLabel?.text = AppValues.arrets[arretsKeys[indexPath.row]]!.titre
+                cell.detailTextLabel!.text = AppValues.arrets[arretsKeys[indexPath.row]]!.sousTitre
             }
             
             let backgroundView = UIView()
@@ -199,7 +208,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]
             }
             else {
-                arret = AppValues.arrets[AppValues.stopName[indexPath.row]]!
+                arret = AppValues.arrets[arretsKeys[indexPath.row]]!
             }
         }
         if (depart == true) {

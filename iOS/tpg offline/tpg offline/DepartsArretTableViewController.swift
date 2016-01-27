@@ -31,7 +31,7 @@ class DepartsArretTableViewController: UITableViewController {
             title = arret?.nomComplet
             let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
             let couleurs = JSON(data: dataCouleurs!)
-            for var i = 0; i < couleurs["colors"].count; i++ {
+            for i in 0 ..< couleurs["colors"].count {
                 listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
                 listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
             }
@@ -65,7 +65,7 @@ class DepartsArretTableViewController: UITableViewController {
         }
         else {
             let alert = SCLAlertView()
-            alert.showError("Pas d'internet", subTitle: "tpg offline n'est actuellement pas connecté à internet", closeButtonTitle: "Fermer", duration: 10).setDismissBlock({ () -> Void in
+            alert.showError("Pas de réseau", subTitle: "tpg offline n'est actuellement pas connecté au réseau", closeButtonTitle: "Fermer", duration: 10).setDismissBlock({ () -> Void in
                 self.navigationController?.popViewControllerAnimated(true)
             })
         }

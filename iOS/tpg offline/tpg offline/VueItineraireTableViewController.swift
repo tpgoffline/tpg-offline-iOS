@@ -23,7 +23,7 @@ class VueItineraireTableViewController: UITableViewController {
         
         let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
         let couleurs = JSON(data: dataCouleurs!)
-        for var i = 0; i < couleurs["colors"].count; i++ {
+        for i in 0 ..< couleurs["colors"].count {
             listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
             listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
         }

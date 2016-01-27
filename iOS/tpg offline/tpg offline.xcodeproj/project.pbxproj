@@ -52,6 +52,7 @@
 		00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* PlansTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
+		ADF8B3741C592532003CE1EA /* Departs in Resources */ = {isa = PBXBuildFile; fileRef = ADF8B3731C592532003CE1EA /* Departs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D3491A7E1B71A24C25DCFF /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
+		ADF8B3731C592532003CE1EA /* Departs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Departs; sourceTree = "<group>"; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 			children = (
 				00DCD95A1C2865E40094C0EB /* Sound.aif */,
 				00C8DD551C0CCACC004743A5 /* couleursLignes.json */,
+				ADF8B3731C592532003CE1EA /* Departs */,
 				003D10ED1C21A46800F9857E /* ionicons.ttf */,
 				003EBAC81C0B46CF0024043B /* FontAwesome.otf */,
 				0019B2131C0F38BD00DD1A4D /* arrets.json */,
@@ -367,6 +370,7 @@
 				002B47EB1C01FA6F000BF3E8 /* LaunchScreen.storyboard in Resources */,
 				002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
+				ADF8B3741C592532003CE1EA /* Departs in Resources */,
 				0019B2141C0F38BD00DD1A4D /* arrets.json in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
 			);

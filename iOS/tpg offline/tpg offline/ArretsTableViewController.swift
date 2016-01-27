@@ -21,7 +21,7 @@ class ArretsTableViewController: UITableViewController {
     let locationManager = CLLocationManager()
     let tpgUrl = tpgURL()
     let defaults = NSUserDefaults.standardUserDefaults()
-    
+    var arretsKeys: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +45,18 @@ class ArretsTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
+        arretsKeys = [String](AppValues.arrets.keys)
+        arretsKeys.sortInPlace({ (string1, string2) -> Bool in
+            if string1.lowercaseString < string2.lowercaseString {
+                return true
+            }
+            return false
+        })
+        
+        /*if(traitCollection.forceTouchCapability == .Available){
+            registerForPreviewingWithDelegate(self, sourceView: view)
+        }*/
+        previewer = registerForPreviewingWithDelegate(self, sourceView: view)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
@@ -170,8 +182,8 @@ class ArretsTableViewController: UITableViewController {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[(AppValues.stopName[indexPath.row])]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[(AppValues.stopName[indexPath.row])]!.sousTitre
+                cell.textLabel?.text = AppValues.arrets[arretsKeys[indexPath.row]]!.titre
+                cell.detailTextLabel!.text = AppValues.arrets[arretsKeys[indexPath.row]]!.sousTitre
             }
             
             let backgroundView = UIView()
@@ -212,7 +224,7 @@ class ArretsTableViewController: UITableViewController {
                     departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[tableView.indexPathForSelectedRow!.row]]
                 }
                 else {
-                    departsArretsViewController.arret = AppValues.arrets[AppValues.stopName[(tableView.indexPathForSelectedRow?.row)!]]!
+                    departsArretsViewController.arret = AppValues.arrets[self.arretsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                 }
             }
         }
@@ -240,5 +252,39 @@ class ArretsTableViewController: UITableViewController {
 extension ArretsTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
+extension ArretsTableViewController : UIViewControllerPreviewingDelegate {
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = tableView.indexPathForRowAtPoint(location) else { return nil }
+        
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return nil }
+        
+        guard let detailVC = storyboard?.instantiateViewControllerWithIdentifier("departsArretTableViewController") as? DepartsArretTableViewController else { return nil }
+        
+        if searchController.active {
+            detailVC.arret = filtredResults[indexPath.row]
+        }
+        else {
+            if indexPath.section == 0 {
+                detailVC.arret = arretsLocalisation[indexPath.row]
+            }
+            else if indexPath.section == 1 {
+                detailVC.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]
+            }
+            else {
+                detailVC.arret = AppValues.arrets[self.arretsKeys[indexPath.row]]
+            }
+        }
+        previewingContext.sourceRect = cell.frame
+        return detailVC
+    }
+
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        
+        showViewController(viewControllerToCommit, sender: self)
+        
     }
 }

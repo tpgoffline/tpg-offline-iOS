@@ -90,29 +90,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let dataArrets = tpgUrl.getAllStops() {
             let arrets = JSON(data: dataArrets)
             
-            for var i = 0; i < arrets["stops"].count; i++ {
-                AppValues.stopName.append(arrets["stops"][i]["stopName"].string!)
-                AppValues.nomsCompletsArrets[arrets["stops"][i]["stopCode"].string!] = arrets["stops"][i]["stopName"].string!
-                AppValues.transportAPIIDArrets[arrets["stops"][i]["idTransportAPI"].string!] = arrets["stops"][i]["stopName"].string!
-                AppValues.arrets[arrets["stops"][i]["stopName"].string!] = Arret(
-                    nomComplet: arrets["stops"][i]["stopName"].string!,
-                    titre: arrets["stops"][i]["titleName"].string!,
-                    sousTitre: arrets["stops"][i]["subTitleName"].string!,
-                    stopCode: arrets["stops"][i]["stopCode"].string!,
+            
+            for (_, subJson) in arrets["stops"] {
+                AppValues.arrets[subJson["stopName"].string!] = Arret(
+                    nomComplet: subJson["stopName"].string!,
+                    titre: subJson["titleName"].string!,
+                    sousTitre: subJson["subTitleName"].string!,
+                    stopCode: subJson["stopCode"].string!,
                     location: CLLocation(
-                        latitude: arrets["stops"][i]["locationX"].double!,
-                        longitude: arrets["stops"][i]["locationY"].double!
+                        latitude: subJson["locationX"].double!,
+                        longitude: subJson["locationY"].double!
                     ),
-                    idTransportAPI: arrets["stops"][i]["idTransportAPI"].string!
+                    idTransportAPI: subJson["idTransportAPI"].string!
                 )
             }
-            AppValues.stopName = AppValues.stopName.sort({ (value1, value2) -> Bool in
-                if (value1.lowercaseString < value2.lowercaseString) {
-                    return true
-                } else {
-                    return false
-                }
-            })
         }
 
         return true

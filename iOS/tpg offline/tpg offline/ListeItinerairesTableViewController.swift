@@ -23,12 +23,13 @@ class ListeItinerairesTableViewController: UITableViewController {
         url += "&date=" + String(ItineraireEnCours.itineraire.date!.year) + "-" + String(ItineraireEnCours.itineraire.date!.month) + "-" + String(ItineraireEnCours.itineraire.date!.day)
         url += "&time=" + String(ItineraireEnCours.itineraire.date!.hour) + ":" + String(ItineraireEnCours.itineraire.date!.minute)
         url += "&isArrivalTime=" + String(Int(ItineraireEnCours.itineraire.dateArrivee))
+        ItineraireEnCours.json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
         if let data = NSData(contentsOfURL: NSURL(string: url)!) {
             ItineraireEnCours.json = JSON(data: data)
         }
         else {
             let alerte = SCLAlertView()
-            alerte.showError("Pas d'interent", subTitle: "Vous devez être connecté à internet pour construire un itinéraire. Si vous êtes connecté à internet, le serveur est peut-être indisponible.", closeButtonTitle: "OK", duration: 10).setDismissBlock({ () -> Void in
+            alerte.showError("Pas de réseau", subTitle: "Vous devez être connecté au réseau pour construire un itinéraire. Si vous êtes connecté au réseau, le serveur est peut-être indisponible.", closeButtonTitle: "OK", duration: 10).setDismissBlock({ () -> Void in
                 self.navigationController?.popViewControllerAnimated(true)
             })
         }
