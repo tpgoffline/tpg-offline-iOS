@@ -158,9 +158,9 @@ class IncidentsTableViewController: UITableViewController {
             let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
             iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
             cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
-            cell.textLabel?.text = "Pas d'internet !"
+            cell.textLabel?.text = "Pas de réseau !"
             cell.textLabel?.textColor = UIColor.whiteColor()
-            cell.detailTextLabel!.text = "tpg offline n'est pas connecté à internet. Il est impossible de charger les perturbations en cours sur le réseau tpg sans internet."
+            cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau."
             cell.detailTextLabel?.textColor = UIColor.whiteColor()
         }
         else {
