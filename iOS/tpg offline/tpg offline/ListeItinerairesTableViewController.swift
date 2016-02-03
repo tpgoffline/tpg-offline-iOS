@@ -137,6 +137,12 @@ class ListeItinerairesTableViewController: UITableViewController {
         if segue.identifier == "voirItineraire" {
             let destinationViewController: VueItineraireTableViewController = (segue.destinationViewController) as! VueItineraireTableViewController
             destinationViewController.compteur = (tableView.indexPathForSelectedRow?.row)!
+            var listeHoraires = [NSDate]()
+            for (_, subJson) in ItineraireEnCours.json["connections"][(tableView.indexPathForSelectedRow?.row)!]["sections"] {
+                listeHoraires.append(NSDate(timeIntervalSince1970: Double(subJson["arrival"]["arrivalTimestamp"].intValue)))
+            }
+            destinationViewController.listeHeures = listeHoraires
+            
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

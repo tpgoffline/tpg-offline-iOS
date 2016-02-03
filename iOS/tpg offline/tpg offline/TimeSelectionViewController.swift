@@ -22,27 +22,29 @@ class TimeSelectionViewController: UIViewController {
         hourSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 130, y: (view.bounds.height / 2) - 87, width: 260, height: 260))
         hourSlider.unfilledColor = UIColor.flatLimeColorDark()
         hourSlider.filledColor = UIColor.flatLimeColor()
-        hourSlider.setInnerMarkingLabels(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"])
+        hourSlider.innerMarkingLabels = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"])
         hourSlider.labelFont = UIFont.systemFontOfSize(14)
         hourSlider.lineWidth = 8
         hourSlider.minimumValue = 0
         hourSlider.maximumValue = 24
         hourSlider.labelColor = UIColor.whiteColor()
-        hourSlider.handleColor = hourSlider.filledColor;
+        hourSlider.handleColor = hourSlider.filledColor
+        hourSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(hourSlider)
         hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
         
         minuteSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 80, y: (view.bounds.height / 2) - 37, width: 160, height: 160))
         minuteSlider.unfilledColor = UIColor.flatMintColorDark()
         minuteSlider.filledColor = UIColor.flatMintColor()
-        minuteSlider.setInnerMarkingLabels(["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"])
+        minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"])
         minuteSlider.labelFont = UIFont.systemFontOfSize(12)
         minuteSlider.lineWidth = 8
         minuteSlider.minimumValue = 0
         minuteSlider.maximumValue = 60
         minuteSlider.snapToLabels = false
         minuteSlider.labelColor = UIColor.whiteColor()
-        minuteSlider.handleColor = minuteSlider.filledColor;
+        minuteSlider.handleColor = minuteSlider.filledColor
+        minuteSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(minuteSlider)
         minuteSlider.addTarget(self, action: "minuteChanged:", forControlEvents: .ValueChanged)
         
@@ -86,7 +88,6 @@ class TimeSelectionViewController: UIViewController {
             ItineraireEnCours.itineraire.date!.hour = 0
         }
         ItineraireEnCours.itineraire.date!.minute = Int(minuteSlider.currentValue)
-        print(ItineraireEnCours.itineraire.date)
     }
     func hourChanged(sender: AnyObject!) {
         if minuteSlider.currentValue < 10 {
@@ -100,6 +101,5 @@ class TimeSelectionViewController: UIViewController {
             ItineraireEnCours.itineraire.date!.minute = 0
         }
         ItineraireEnCours.itineraire.date!.hour = Int(hourSlider.currentValue)
-        print(ItineraireEnCours.itineraire.date)
     }
 }

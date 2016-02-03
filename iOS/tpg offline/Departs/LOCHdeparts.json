@@ -1,694 +1,834 @@
 {
-  "LUN" : [
-    {
-      "timestamp" : "2016-01-27T14:36:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T14:58:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T15:22:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T15:40:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T15:52:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:04:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:16:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:28:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:40:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:52:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:04:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:16:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:28:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:40:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:52:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:04:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:16:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:28:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:40:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:58:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T19:28:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T20:07:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T20:47:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T21:27:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T22:07:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T22:46:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T23:26:43+0100",
-      "ligne" : "4",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T14:35:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T14:55:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T15:14:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T15:34:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T16:03:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T16:14:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T16:30:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T16:43:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T16:58:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T17:13:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T17:29:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T17:43:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T17:59:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T18:13:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T18:29:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T18:43:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T18:59:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T19:13:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T19:41:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T20:11:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T20:39:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T21:19:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T22:04:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T22:49:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T23:33:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-28T00:18:43+0100",
-      "ligne" : "42",
-      "destination" : "Carouge"
-    },
-    {
-      "timestamp" : "2016-01-27T14:35:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T15:14:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T15:55:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T16:23:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T16:53:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T17:22:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T17:52:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T18:21:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T18:49:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T19:24:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T19:53:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T20:23:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T20:53:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T21:23:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T22:03:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T22:48:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T23:32:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-28T00:16:43+0100",
-      "ligne" : "42",
-      "destination" : "Cr. Confignon"
-    },
-    {
-      "timestamp" : "2016-01-27T14:51:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T15:35:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T16:09:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T16:38:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T17:09:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T17:37:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T18:07:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T18:35:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T19:04:43+0100",
-      "ligne" : "42",
-      "destination" : "Lully"
-    },
-    {
-      "timestamp" : "2016-01-27T14:45:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T15:10:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T15:34:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T15:46:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T15:57:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:10:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:22:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:34:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:45:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T16:58:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:09:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:22:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:34:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:46:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T17:58:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:10:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:22:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:33:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T18:46:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T19:10:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T19:47:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T20:27:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T21:07:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T21:47:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T22:26:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T23:06:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T23:46:44+0100",
-      "ligne" : "D",
-      "destination" : "Bel-Air"
-    },
-    {
-      "timestamp" : "2016-01-27T14:54:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T15:17:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T15:41:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T16:06:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T16:32:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T16:57:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T17:21:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T17:45:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T18:09:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T18:32:44+0100",
-      "ligne" : "D",
-      "destination" : "Neydens-Vitam"
-    },
-    {
-      "timestamp" : "2016-01-27T14:40:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T16:19:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T16:45:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T17:09:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T17:33:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T17:57:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T18:20:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T18:43:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T18:55:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T19:06:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T19:18:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T19:31:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T19:45:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T20:03:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T20:37:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T21:17:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T21:56:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T22:36:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T23:15:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T23:55:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    },
-    {
-      "timestamp" : "2016-01-28T00:35:44+0100",
-      "ligne" : "D",
-      "destination" : "St-Julien-Gare"
-    }
-  ]
+    "LUN": [
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T14:36:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T14:58:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T15:22:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T15:40:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T15:52:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:04:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:16:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:28:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:40:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:52:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:04:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:16:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:28:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:40:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:52:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:04:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:16:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:28:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:40:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:58:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T19:28:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T20:07:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T20:47:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T21:27:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T22:07:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T22:46:42+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "4",
+            "timestamp": "2016-02-03T23:26:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T14:46:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T15:05:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T15:29:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T15:54:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:13:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:26:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:39:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T16:51:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:03:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:15:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:27:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:39:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T17:51:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:03:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:14:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:26:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:37:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T18:49:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T19:00:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T19:12:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T19:25:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T19:38:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T19:54:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T20:20:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T20:57:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T21:37:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T22:16:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T22:56:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-03T23:35:42+0100"
+        },
+        {
+            "destination": "P+R Perly",
+            "ligne": "4",
+            "timestamp": "2016-02-04T00:15:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T14:55:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T15:14:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T15:34:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:03:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:14:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:30:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:43:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:58:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:13:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:29:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:43:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:59:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:13:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:29:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:43:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:59:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T19:13:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T19:41:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T20:11:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T20:39:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T21:19:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T22:04:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T22:49:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-03T23:33:42+0100"
+        },
+        {
+            "destination": "Carouge",
+            "ligne": "42",
+            "timestamp": "2016-02-04T00:18:42+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T15:14:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T15:55:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:23:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:53:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:22:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:52:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:21:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:49:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T19:24:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T19:53:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T20:23:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T20:53:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T21:23:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T22:03:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T22:48:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-03T23:32:43+0100"
+        },
+        {
+            "destination": "Cr. Confignon",
+            "ligne": "42",
+            "timestamp": "2016-02-04T00:16:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T14:52:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T15:35:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:09:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T16:38:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:09:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T17:37:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:07:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T18:35:43+0100"
+        },
+        {
+            "destination": "Lully",
+            "ligne": "42",
+            "timestamp": "2016-02-03T19:04:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T14:46:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T15:10:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T15:34:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T15:46:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T15:57:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:10:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:22:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:34:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:45:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:58:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:09:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:22:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:34:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:46:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:58:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:10:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:22:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:33:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:46:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T19:10:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T19:47:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T20:27:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T21:07:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T21:47:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T22:26:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T23:06:43+0100"
+        },
+        {
+            "destination": "Bel-Air",
+            "ligne": "D",
+            "timestamp": "2016-02-03T23:46:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T14:56:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T15:17:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T15:41:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:06:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:32:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:57:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:21:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:45:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:09:43+0100"
+        },
+        {
+            "destination": "Neydens-Vitam",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:32:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T14:44:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:19:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T16:45:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:09:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:33:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T17:57:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:20:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:43:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T18:55:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T19:06:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T19:18:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T19:31:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T19:45:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T20:03:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T20:37:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T21:17:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T21:56:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T22:36:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T23:15:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-03T23:55:43+0100"
+        },
+        {
+            "destination": "St-Julien-Gare",
+            "ligne": "D",
+            "timestamp": "2016-02-04T00:35:43+0100"
+        }
+    ]
 }

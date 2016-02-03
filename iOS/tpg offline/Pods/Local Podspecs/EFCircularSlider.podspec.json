@@ -17,6 +17,6 @@
     "git": "https://github.com/eliotfowler/EFCircularSlider.git",
     "tag": "0.2.0"
   },
-  "source_files": "EFCircularSlider/EFCircularSlider.{h,m}",
+  "source_files": "EFCircularSlider/**/*.{h,m}",
   "requires_arc": true
 }

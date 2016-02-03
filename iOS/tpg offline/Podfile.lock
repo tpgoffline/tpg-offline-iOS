@@ -4,7 +4,7 @@ PODS:
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
   - DGRunkeeperSwitch (1.1.1)
-  - EFCircularSlider (0.1.0)
+  - EFCircularSlider (0.2.0)
   - FontAwesomeKit (2.2.1):
     - FontAwesomeKit/Core (= 2.2.1)
     - FontAwesomeKit/FontAwesome (= 2.2.1)
@@ -35,7 +35,7 @@ DEPENDENCIES:
   - BGTableViewRowActionWithImage (from `https://github.com/benguild/BGTableViewRowActionWithImage.git`)
   - ChameleonFramework (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DGRunkeeperSwitch (from `https://github.com/gontovnik/DGRunkeeperSwitch.git`)
-  - EFCircularSlider (~> 0.1.0)
+  - EFCircularSlider (from `https://github.com/RemyDCF/EFCircularSlider.git`)
   - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
   - FSCalendar (from `https://github.com/WenchaoIOS/FSCalendar.git`)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
@@ -49,6 +49,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/ViccAlexander/Chameleon.git
   DGRunkeeperSwitch:
     :git: https://github.com/gontovnik/DGRunkeeperSwitch.git
+  EFCircularSlider:
+    :git: https://github.com/RemyDCF/EFCircularSlider.git
   FontAwesomeKit:
     :git: https://github.com/PrideChung/FontAwesomeKit.git
   FSCalendar:
@@ -70,6 +72,9 @@ CHECKOUT OPTIONS:
   DGRunkeeperSwitch:
     :commit: 8e1c17765f01de9112d4c98b036fe3225d4a5e67
     :git: https://github.com/gontovnik/DGRunkeeperSwitch.git
+  EFCircularSlider:
+    :commit: 52783c3f13b87fea6b5384fb2fbd4e287a3dd65f
+    :git: https://github.com/RemyDCF/EFCircularSlider.git
   FontAwesomeKit:
     :commit: e0923ecdc9ef5661b24adaf2be725386f9590d1d
     :git: https://github.com/PrideChung/FontAwesomeKit.git
@@ -90,13 +95,13 @@ SPEC CHECKSUMS:
   BGTableViewRowActionWithImage: 687380a0a13f72af2c93c7e41f054a4c03e78188
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
-  EFCircularSlider: 5a4baa272264e845577945c86e23d5d3996d3c37
+  EFCircularSlider: 8c9e901891fb813e89c4158508eefa8e35903454
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   FSCalendar: a283f4d9c4249a0ce43a08c3f4f7ad27b295e4cf
   SCLAlertView: 51a328f3985e13e6bfe8dc77123543480fa615f9
   SwiftLocation: ea78ae4a822581bde7379d98c8513273723c8840
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 042ae8741c82b9cd9d585fda4f19947648c3efc4
+PODFILE CHECKSUM: d440b453ae7e960dc33b479ca05fb1828fe2da59
 
-COCOAPODS: 1.0.0.beta.2
+COCOAPODS: 1.0.0.beta.3

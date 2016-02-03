@@ -1,139 +1,134 @@
 {
-  "LUN" : [
-    {
-      "timestamp" : "2016-01-27T14:59:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T15:49:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T16:29:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T16:54:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T17:19:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T17:49:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T18:19:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T18:49:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T19:48:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T20:48:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T21:48:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T22:47:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T23:57:11+0100",
-      "ligne" : "46",
-      "destination" : "Bardonnex"
-    },
-    {
-      "timestamp" : "2016-01-27T14:37:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T15:26:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T16:16:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T16:56:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T17:26:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T17:56:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T18:26:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T18:56:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T19:26:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T20:26:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T21:26:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T22:26:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-27T23:25:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    },
-    {
-      "timestamp" : "2016-01-28T00:15:11+0100",
-      "ligne" : "46",
-      "destination" : "Stade de Genève"
-    }
-  ]
+    "LUN": [
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T14:58:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T15:48:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T16:28:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T16:53:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T17:18:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T17:48:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T18:18:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T18:48:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T19:47:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T20:47:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T21:47:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T22:47:59+0100"
+        },
+        {
+            "destination": "Bardonnex",
+            "ligne": "46",
+            "timestamp": "2016-02-03T23:56:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T15:25:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T16:15:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T16:56:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T17:26:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T17:56:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T18:26:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T18:55:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T19:25:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T20:25:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T21:25:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T22:25:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-03T23:25:59+0100"
+        },
+        {
+            "destination": "Stade de Genève",
+            "ligne": "46",
+            "timestamp": "2016-02-04T00:14:59+0100"
+        }
+    ]
 }

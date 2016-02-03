@@ -9,6 +9,18 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>tpg offline Dev.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
+		<key>tpg offline tvos.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
 		<key>tpg offline.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +30,21 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>002B47DC1C01FA6F000BF3E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>004499931C624DA900CAA058</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>00C6835C1C624170000709AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>00C683981C6243F4000709AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

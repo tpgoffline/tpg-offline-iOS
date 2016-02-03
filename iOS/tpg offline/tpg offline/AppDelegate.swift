@@ -54,32 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.moreNavigationController.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         tabBarController.moreNavigationController.navigationBar.tintColor = UIColor.whiteColor()
         
-        //tabBarController.tabBar.items![0].title = "Horaires"
         let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
         iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        //tabBarController.tabBar.items![1].title = "Incidents"
         let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
         iconeAttention.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        //tabBarController.tabBar.items![2].title = "Itinéraires"
         let iconeItineraire = FAKFontAwesome.mapSignsIconWithSize(20)
         iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![2].image = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        //tabBarController.tabBar.items![3].title = "Plans"
         let iconePlan = FAKFontAwesome.mapIconWithSize(20)
         iconePlan.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![3].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        /*tabBarController.tabBar.items![4].title = "Ticket"
-        let iconeTicket = FAKFontAwesome.ticketIconWithSize(20)
-        iconeTicket.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        tabBarController.tabBar.items![4].image = iconeTicket.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)*/
-        
-        //tabBarController.tabBar.items![4].title = "Paramètres"
+ 
         let iconeParametre = FAKFontAwesome.cogIconWithSize(20)
         iconeParametre.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
         tabBarController.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)

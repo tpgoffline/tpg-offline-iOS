@@ -17,6 +17,7 @@ class VueItineraireTableViewController: UITableViewController {
     var compteur = 0
     var listeBackgroundColor = [String:UIColor]()
     var listeColor = [String:UIColor]()
+    var listeHeures = [NSDate]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class VueItineraireTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKIonIcons.iosClockOutlineIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "rappel:")
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,50 +151,40 @@ class VueItineraireTableViewController: UITableViewController {
         
         return cell
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
+    func rappel(sender: AnyObject!) {
+        let alerte = SCLAlertView()
+        alerte.addButton("5 min avant le premier départ") { 
+            self.scheduleNotification(self.listeHeures[0], ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][0]["journey"]["to"].stringValue)
+            alerte.hideView()
+            SCLAlertView().showSuccess("Vous serez notifié", subTitle: "Vous recevrez une notification 5 minutes avant le premier départ", closeButtonTitle: "OK", duration: 10)
+        }
+        alerte.addButton("5 min avant tout les départs") { 
+            for (_, subJson) in ItineraireEnCours.json["connections"][self.compteur]["sections"] {
+                if subJson["walk"].type == .Null {
+                    self.scheduleNotification(self.listeHeures[0], ligne: subJson["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: subJson["journey"]["to"].stringValue)
+                }
+            }
+            alerte.hideView()
+            SCLAlertView().showSuccess("Vous serez notifié", subTitle: "Vous recevrez une notification 5 minutes avant tout les départs", closeButtonTitle: "OK", duration: 10)
+        }
+        let icone = FAKIonIcons.iosClockIconWithSize(20)
+        icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        
+        alerte.showNotice("Rappel", subTitle: "Combien de temps avant le départ du premier / de tout des départ(s) voulez vous être rappelé ?", closeButtonTitle: "Annuler", circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
     }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    func scheduleNotification(time: NSDate, ligne: String, direction: String) {
+        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time)
+        
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let date = cal.dateBySettingHour(now.hour, minute: now.minute - 5, second: now.second, ofDate: time, options: NSCalendarOptions())
+        let reminder = UILocalNotification()
+        reminder.fireDate = date
+
+        reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va partir dans 5 minutes"
+        reminder.soundName = "Sound.aif"
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(reminder)
+        
+        print("Firing at \(now.hour):\(now.minute-5):\(now.second)")
     }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }

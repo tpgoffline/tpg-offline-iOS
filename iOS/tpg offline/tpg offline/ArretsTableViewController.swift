@@ -53,8 +53,10 @@ class ArretsTableViewController: UITableViewController {
             return false
         })
         
-        if(traitCollection.forceTouchCapability == .Available){
-            registerForPreviewingWithDelegate(self, sourceView: view)
+        if #available(iOS 9.0, *) {
+            if(traitCollection.forceTouchCapability == .Available){
+                registerForPreviewingWithDelegate(self, sourceView: view)
+            }
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -277,7 +279,9 @@ extension ArretsTableViewController : UIViewControllerPreviewingDelegate {
                 detailVC.arret = AppValues.arrets[self.arretsKeys[indexPath.row]]
             }
         }
-        previewingContext.sourceRect = cell.frame
+        if #available(iOS 9.0, *) {
+            previewingContext.sourceRect = cell.frame
+        }
         return detailVC
     }
 

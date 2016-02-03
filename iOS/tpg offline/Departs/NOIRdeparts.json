@@ -1,14 +1,14 @@
 {
-  "LUN" : [
-    {
-      "timestamp" : "2016-01-27T17:26:14+0100",
-      "ligne" : "X",
-      "destination" : "Chancy-Douane"
-    },
-    {
-      "timestamp" : "2016-01-27T17:47:14+0100",
-      "ligne" : "X",
-      "destination" : "Dardagny"
-    }
-  ]
+    "LUN": [
+        {
+            "destination": "Chancy-Douane",
+            "ligne": "X",
+            "timestamp": "2016-02-03T17:26:35+0100"
+        },
+        {
+            "destination": "Dardagny",
+            "ligne": "X",
+            "timestamp": "2016-02-03T17:46:35+0100"
+        }
+    ]
 }

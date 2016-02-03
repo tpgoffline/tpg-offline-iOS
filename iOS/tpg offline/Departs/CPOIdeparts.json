@@ -1,14 +1,14 @@
 {
-  "LUN" : [
-    {
-      "timestamp" : "2016-01-27T18:04:36+0100",
-      "ligne" : "A",
-      "destination" : "Rive"
-    },
-    {
-      "timestamp" : "2016-01-27T19:25:36+0100",
-      "ligne" : "A",
-      "destination" : "Rive"
-    }
-  ]
+    "LUN": [
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-03T18:03:47+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-03T19:24:47+0100"
+        }
+    ]
 }

@@ -1,514 +1,944 @@
 {
-  "LUN" : [
-    {
-      "timestamp" : "2016-01-28T00:15:42+0100",
-      "ligne" : "14",
-      "destination" : "Bachet"
-    },
-    {
-      "timestamp" : "2016-01-28T00:25:42+0100",
-      "ligne" : "14",
-      "destination" : "Bachet"
-    },
-    {
-      "timestamp" : "2016-01-28T00:35:42+0100",
-      "ligne" : "14",
-      "destination" : "Bachet"
-    },
-    {
-      "timestamp" : "2016-01-28T00:44:42+0100",
-      "ligne" : "14",
-      "destination" : "Bachet"
-    },
-    {
-      "timestamp" : "2016-01-27T14:37:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T14:43:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T14:46:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T14:58:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T14:59:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:07:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:11:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:18:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:23:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:29:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:35:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:41:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:47:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:53:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:56:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T15:59:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:06:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:12:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:18:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:24:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:30:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:35:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:40:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:45:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:50:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T16:55:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:01:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:06:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:11:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:17:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:22:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:27:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:32:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:37:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:43:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:48:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:53:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T17:58:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:04:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:09:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:14:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:19:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:25:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:30:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:35:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:40:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:46:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:51:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T18:56:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:01:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:07:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:12:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:17:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:22:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:28:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:33:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:38:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:43:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:49:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:54:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T19:59:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:04:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:10:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:15:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:19:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:24:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:30:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:36:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:44:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:51:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:59:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T21:06:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T21:14:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T21:21:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T21:28:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T21:35:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T21:45:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T21:55:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T22:05:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T22:15:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T22:25:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T22:35:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T22:45:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T22:55:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T23:05:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T23:15:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T23:24:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T23:34:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T23:44:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T23:54:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-28T00:04:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-28T00:14:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-28T00:24:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-28T00:34:42+0100",
-      "ligne" : "14",
-      "destination" : "Meyrin-Gravière"
-    },
-    {
-      "timestamp" : "2016-01-27T20:10:42+0100",
-      "ligne" : "18",
-      "destination" : "Palettes"
-    },
-    {
-      "timestamp" : "2016-01-27T20:25:42+0100",
-      "ligne" : "18",
-      "destination" : "Palettes"
-    },
-    {
-      "timestamp" : "2016-01-27T21:18:42+0100",
-      "ligne" : "18",
-      "destination" : "Palettes"
-    },
-    {
-      "timestamp" : "2016-01-27T21:39:42+0100",
-      "ligne" : "18",
-      "destination" : "Palettes"
-    }
-  ]
+    "LUN": [
+        {
+            "destination": "Bachet",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:15:42+0100"
+        },
+        {
+            "destination": "Bachet",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:25:42+0100"
+        },
+        {
+            "destination": "Bachet",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:35:42+0100"
+        },
+        {
+            "destination": "Bachet",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:44:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:42:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:51:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:53:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:58:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:08:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:11:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:17:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:23:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:29:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:35:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:41:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:47:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:53:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:56:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:59:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:06:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:12:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:18:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:24:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:30:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:35:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:40:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:45:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:50:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:55:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:01:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:06:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:11:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:17:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:22:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:27:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:32:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:37:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:43:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:48:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:53:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:58:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:04:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:09:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:14:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:19:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:25:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:30:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:35:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:40:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:46:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:51:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:56:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:01:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:07:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:12:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:17:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:22:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:28:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:33:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:38:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:43:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:49:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:54:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:59:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:04:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:10:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:15:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:19:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:24:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:30:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:36:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:44:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:51:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:59:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:06:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:14:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:21:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:28:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:35:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:45:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:55:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:05:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:15:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:25:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:35:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:45:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:55:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:05:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:15:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:24:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:34:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:44:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:54:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:04:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:14:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:24:42+0100"
+        },
+        {
+            "destination": "Meyrin-Gravière",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:34:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:40:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:46:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:52:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T14:58:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:03:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:10:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:16:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:22:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:28:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:34:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:40:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:46:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:52:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T15:58:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:04:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:09:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:15:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:20:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:25:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:30:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:35:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:41:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:46:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:51:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T16:56:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:02:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:07:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:12:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:18:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:23:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:28:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:33:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:38:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:43:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:49:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:54:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T17:59:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:05:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:10:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:15:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:20:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:25:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:31:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:36:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:41:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:47:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:52:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T18:57:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:02:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:07:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:13:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:18:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:23:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:28:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:34:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:39:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:44:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:50:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T19:55:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:01:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:07:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:15:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:22:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:30:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:37:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:45:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T20:52:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:00:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:07:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:16:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:26:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:36:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:46:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T21:56:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:06:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:16:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:26:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:36:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:46:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T22:56:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:06:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:16:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:26:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:36:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:46:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-03T23:56:42+0100"
+        },
+        {
+            "destination": "P+R Bernex",
+            "ligne": "14",
+            "timestamp": "2016-02-04T00:06:42+0100"
+        },
+        {
+            "destination": "Palettes",
+            "ligne": "18",
+            "timestamp": "2016-02-03T20:10:42+0100"
+        },
+        {
+            "destination": "Palettes",
+            "ligne": "18",
+            "timestamp": "2016-02-03T20:25:42+0100"
+        },
+        {
+            "destination": "Palettes",
+            "ligne": "18",
+            "timestamp": "2016-02-03T21:18:42+0100"
+        },
+        {
+            "destination": "Palettes",
+            "ligne": "18",
+            "timestamp": "2016-02-03T21:39:42+0100"
+        }
+    ]
 }

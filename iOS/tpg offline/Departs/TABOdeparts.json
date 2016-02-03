@@ -1,39 +1,39 @@
 {
-  "LUN" : [
-    {
-      "timestamp" : "2016-01-27T16:47:28+0100",
-      "ligne" : "W",
-      "destination" : "Satigny-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T17:17:28+0100",
-      "ligne" : "W",
-      "destination" : "Satigny-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T17:48:28+0100",
-      "ligne" : "W",
-      "destination" : "Satigny-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T18:17:28+0100",
-      "ligne" : "W",
-      "destination" : "Satigny-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T18:47:28+0100",
-      "ligne" : "W",
-      "destination" : "Satigny-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T19:17:28+0100",
-      "ligne" : "W",
-      "destination" : "Satigny-Gare"
-    },
-    {
-      "timestamp" : "2016-01-27T19:46:28+0100",
-      "ligne" : "W",
-      "destination" : "Satigny-Gare"
-    }
-  ]
+    "LUN": [
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "W",
+            "timestamp": "2016-02-03T16:47:24+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "W",
+            "timestamp": "2016-02-03T17:17:24+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "W",
+            "timestamp": "2016-02-03T17:48:24+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "W",
+            "timestamp": "2016-02-03T18:17:24+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "W",
+            "timestamp": "2016-02-03T18:47:24+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "W",
+            "timestamp": "2016-02-03T19:17:24+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "W",
+            "timestamp": "2016-02-03T19:46:24+0100"
+        }
+    ]
 }
