@@ -1,224 +1,538 @@
 {
+    "DIM": [
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T14:33:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T15:33:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T16:36:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T17:38:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T18:41:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T19:43:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T20:45:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T21:48:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T22:50:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T23:51:57+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-15T00:51:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T13:50:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T14:49:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T15:50:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T16:54:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T17:57:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T18:59:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T20:02:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T21:05:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T22:06:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T23:07:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-15T00:08:57+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-15T01:07:57+0100"
+        }
+    ],
     "LUN": [
         {
-            "destination": "Ferney-Voltaire",
-            "ligne": "Y",
-            "timestamp": "2016-02-03T14:50:14+0100"
+            "destination": "Thoiry",
+            "ligne": "NA",
+            "timestamp": "2016-02-13T01:48:49+0100"
+        },
+        {
+            "destination": "Thoiry",
+            "ligne": "NA",
+            "timestamp": "2016-02-13T02:28:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T15:20:14+0100"
+            "timestamp": "2016-02-12T12:22:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T15:50:14+0100"
+            "timestamp": "2016-02-12T12:49:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T16:18:14+0100"
+            "timestamp": "2016-02-12T13:19:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T16:33:14+0100"
+            "timestamp": "2016-02-12T13:49:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T16:48:14+0100"
+            "timestamp": "2016-02-12T14:19:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T17:03:14+0100"
+            "timestamp": "2016-02-12T14:49:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T17:17:14+0100"
+            "timestamp": "2016-02-12T15:19:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T17:32:14+0100"
+            "timestamp": "2016-02-12T15:49:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T17:47:14+0100"
+            "timestamp": "2016-02-12T16:17:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:02:14+0100"
+            "timestamp": "2016-02-12T16:32:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:17:14+0100"
+            "timestamp": "2016-02-12T16:47:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:32:14+0100"
+            "timestamp": "2016-02-12T17:02:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:47:14+0100"
+            "timestamp": "2016-02-12T17:17:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T19:02:14+0100"
+            "timestamp": "2016-02-12T17:32:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T19:17:14+0100"
+            "timestamp": "2016-02-12T17:47:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T19:42:14+0100"
+            "timestamp": "2016-02-12T18:02:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T20:46:14+0100"
+            "timestamp": "2016-02-12T18:17:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T21:49:14+0100"
+            "timestamp": "2016-02-12T18:32:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T22:51:14+0100"
+            "timestamp": "2016-02-12T18:47:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-03T23:52:14+0100"
+            "timestamp": "2016-02-12T19:02:49+0100"
         },
         {
             "destination": "Ferney-Voltaire",
             "ligne": "Y",
-            "timestamp": "2016-02-04T00:52:14+0100"
+            "timestamp": "2016-02-12T19:17:49+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T19:41:49+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T20:45:49+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T21:48:49+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T22:50:49+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T23:51:49+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T00:51:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T15:02:14+0100"
+            "timestamp": "2016-02-12T12:32:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T15:33:14+0100"
+            "timestamp": "2016-02-12T13:02:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T16:01:14+0100"
+            "timestamp": "2016-02-12T13:29:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T16:37:14+0100"
+            "timestamp": "2016-02-12T13:59:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T16:58:14+0100"
+            "timestamp": "2016-02-12T14:29:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T17:14:14+0100"
+            "timestamp": "2016-02-12T14:59:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T17:29:14+0100"
+            "timestamp": "2016-02-12T15:30:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T17:46:14+0100"
+            "timestamp": "2016-02-12T16:00:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:01:14+0100"
+            "timestamp": "2016-02-12T16:34:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:16:14+0100"
+            "timestamp": "2016-02-12T16:57:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:32:14+0100"
+            "timestamp": "2016-02-12T17:13:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T18:47:14+0100"
+            "timestamp": "2016-02-12T17:28:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T19:00:14+0100"
+            "timestamp": "2016-02-12T17:45:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T19:13:14+0100"
+            "timestamp": "2016-02-12T18:00:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T19:27:14+0100"
+            "timestamp": "2016-02-12T18:16:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T19:42:14+0100"
+            "timestamp": "2016-02-12T18:32:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T20:08:14+0100"
+            "timestamp": "2016-02-12T18:46:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T21:06:14+0100"
+            "timestamp": "2016-02-12T18:59:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T22:07:14+0100"
+            "timestamp": "2016-02-12T19:13:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-03T23:10:14+0100"
+            "timestamp": "2016-02-12T19:26:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-04T00:11:14+0100"
+            "timestamp": "2016-02-12T19:41:49+0100"
         },
         {
             "destination": "Val-Thoiry",
             "ligne": "Y",
-            "timestamp": "2016-02-04T01:09:14+0100"
+            "timestamp": "2016-02-12T20:07:49+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T21:05:49+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T22:07:49+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-12T23:10:49+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T00:10:49+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T01:09:49+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "Ferney av. Jura",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T14:29:47+0100"
+        },
+        {
+            "destination": "Ferney av. Jura",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T15:14:47+0100"
+        },
+        {
+            "destination": "Ferney av. Jura",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T15:59:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T16:44:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T17:29:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T18:14:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T18:59:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T19:44:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T20:47:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T21:49:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T22:51:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T23:52:47+0100"
+        },
+        {
+            "destination": "Ferney-Voltaire",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T00:52:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T14:27:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T15:10:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T15:54:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T16:39:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T17:23:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T18:08:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T18:53:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T19:37:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T20:22:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T21:06:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T22:06:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-13T23:08:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T00:09:47+0100"
+        },
+        {
+            "destination": "Val-Thoiry",
+            "ligne": "Y",
+            "timestamp": "2016-02-14T01:08:47+0100"
         }
     ]
 }

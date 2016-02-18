@@ -1,84 +1,203 @@
 {
+    "DIM": [
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T14:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T15:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T16:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T17:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T18:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T19:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T20:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T21:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T22:09:23+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-14T23:09:23+0100"
+        }
+    ],
     "LUN": [
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T14:54:11+0100"
+            "timestamp": "2016-02-12T12:41:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T15:25:11+0100"
+            "timestamp": "2016-02-12T13:25:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T15:46:11+0100"
+            "timestamp": "2016-02-12T14:09:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T16:08:11+0100"
+            "timestamp": "2016-02-12T14:53:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T16:30:11+0100"
+            "timestamp": "2016-02-12T15:24:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T16:52:11+0100"
+            "timestamp": "2016-02-12T15:46:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T17:15:11+0100"
+            "timestamp": "2016-02-12T16:08:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T17:37:11+0100"
+            "timestamp": "2016-02-12T16:30:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T18:00:11+0100"
+            "timestamp": "2016-02-12T16:52:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T18:23:11+0100"
+            "timestamp": "2016-02-12T17:15:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T18:45:11+0100"
+            "timestamp": "2016-02-12T17:37:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T19:09:11+0100"
+            "timestamp": "2016-02-12T18:00:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T20:09:11+0100"
+            "timestamp": "2016-02-12T18:23:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T21:09:11+0100"
+            "timestamp": "2016-02-12T18:45:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T22:09:11+0100"
+            "timestamp": "2016-02-12T19:09:52+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "F",
-            "timestamp": "2016-02-03T23:09:11+0100"
+            "timestamp": "2016-02-12T20:09:52+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-12T21:09:52+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-12T22:09:52+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-12T23:09:52+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T14:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T15:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T16:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T17:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T18:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T19:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T20:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T21:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T22:10:03+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "F",
+            "timestamp": "2016-02-13T23:10:03+0100"
         }
     ]
 }

@@ -16,25 +16,45 @@ class CalendarSelectionViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        calendar.selectionColor = AppValues.secondaryColor
+        calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
+        calendar.backgroundColor = AppValues.primaryColor
+        calendar.tintColor = AppValues.textColor
+        calendar.headerTitleColor = AppValues.textColor
+        calendar.weekdayTextColor = AppValues.textColor
+        calendar.titleDefaultColor = AppValues.textColor
+        calendar.titlePlaceholderColor = AppValues.textColor
+        calendar.titleTodayColor = AppValues.textColor
+        calendar.titleSelectionColor = AppValues.textColor
+        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!), scrollToDate: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        calendar.selectionColor = AppValues.secondaryColor
+        calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
+        calendar.backgroundColor = AppValues.primaryColor
+        calendar.tintColor = AppValues.textColor
+        calendar.headerTitleColor = AppValues.textColor
+        calendar.weekdayTextColor = AppValues.textColor
+        calendar.titleDefaultColor = AppValues.textColor
+        calendar.titlePlaceholderColor = AppValues.textColor
+        calendar.titleTodayColor = AppValues.textColor
+        calendar.titleSelectionColor = AppValues.textColor
+        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!), scrollToDate: true)
     }
-    */
-
 }
 
 extension CalendarSelectionViewController : FSCalendarDataSource, FSCalendarDelegate {

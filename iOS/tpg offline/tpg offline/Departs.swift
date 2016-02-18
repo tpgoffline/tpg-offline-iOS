@@ -28,17 +28,28 @@ class Departs {
     }
     
     func calculerTempsRestant() {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-        let time = dateFormatter.dateFromString(self.timestamp)
-        print(NSDateComponents().calendar?.compareDate(NSDate(), toDate: time!, toUnitGranularity: [NSCalendarUnit.Hour, NSCalendarUnit.Minute]))
-        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: time!)
-        let nows: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: NSDate())
-        if now.hour <= nows.hour && now.minute < nows.minute {
-            self.tempsRestant = "-1"
-        }
-        else {
-            self.tempsRestant = String(((now.hour - nows.hour) * 60) + now.minute - nows.minute)
-        }
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+		let time = dateFormatter.dateFromString(timestamp)
+		let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
+		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: NSDate())
+		if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
+			self.tempsRestant = String(tempsTimestamp.minute - now.minute)
+		}
+		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour + 1 == now.hour && tempsTimestamp.minute < now.hour {
+			self.tempsRestant = String((60 - now.minute) + tempsTimestamp.minute)
+		}
+		else if tempsTimestamp.hour > now.hour {
+			self.tempsRestant = String(((tempsTimestamp.hour - now.hour) * 60) + tempsTimestamp.minute)
+		}
+		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute == now.minute && tempsTimestamp.second >= now.second {
+			self.tempsRestant =  "0"
+		}
+		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute - 1 == now.minute && tempsTimestamp.second <= now.second {
+			self.tempsRestant =  "0"
+		}
+		else {
+			self.tempsRestant =  "-1"
+		}
     }
 }

@@ -18,6 +18,7 @@ class VueItineraireTableViewController: UITableViewController {
     var listeBackgroundColor = [String:UIColor]()
     var listeColor = [String:UIColor]()
     var listeHeures = [NSDate]()
+	let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +30,41 @@ class VueItineraireTableViewController: UITableViewController {
             listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKIonIcons.iosClockOutlineIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "rappel:")
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+
+		var listeItems = [UIBarButtonItem(image: FAKIonIcons.iosClockOutlineIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "rappel:")]
+		if AppValues.favorisItineraires.indexForKey(ItineraireEnCours.itineraire.id.UUIDString) != nil {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		else {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+        self.navigationItem.rightBarButtonItems = listeItems
+        tableView.backgroundColor = AppValues.primaryColor
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-    // MARK: - Table view data source
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        tableView.backgroundColor = AppValues.primaryColor
+        tableView.reloadData()
+    }
+        
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return ItineraireEnCours.json["connections"][compteur]["sections"].count
     }
         
@@ -122,10 +137,12 @@ class VueItineraireTableViewController: UITableViewController {
         }
         else {
             let icone = FAKIonIcons.androidWalkIconWithSize(42)
-            icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+            icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 42, height: 42))
             cell.ligneLabel.text = "Marche"
             cell.directionLabel.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)"
+            cell.ligneLabel.textColor = AppValues.textColor
+            cell.directionLabel.textColor = AppValues.textColor
         }
         
         var icone = FAKIonIcons.logOutIconWithSize(21)
@@ -161,7 +178,7 @@ class VueItineraireTableViewController: UITableViewController {
         alerte.addButton("5 min avant tout les départs") { 
             for (_, subJson) in ItineraireEnCours.json["connections"][self.compteur]["sections"] {
                 if subJson["walk"].type == .Null {
-                    self.scheduleNotification(self.listeHeures[0], ligne: subJson["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: subJson["journey"]["to"].stringValue)
+					self.scheduleNotification(NSDate(timeIntervalSince1970: Double(subJson["departure"]["departureTimestamp"].intValue)), ligne: subJson["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: subJson["journey"]["to"].stringValue)
                 }
             }
             alerte.hideView()
@@ -172,10 +189,46 @@ class VueItineraireTableViewController: UITableViewController {
         
         alerte.showNotice("Rappel", subTitle: "Combien de temps avant le départ du premier / de tout des départ(s) voulez vous être rappelé ?", closeButtonTitle: "Annuler", circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
     }
+	func toggleFavorite(sender: AnyObject!) {
+		if AppValues.favorisItineraires.isEmpty {
+			let itineraire = Itineraire(depart: ItineraireEnCours.itineraire.depart, arrivee: ItineraireEnCours.itineraire.arrivee)
+			itineraire.id = ItineraireEnCours.itineraire.id
+			let array: [String:Itineraire] = [ItineraireEnCours.itineraire.id.UUIDString : itineraire]
+			AppValues.favorisItineraires = array
+			
+			let encodedData = NSKeyedArchiver.archivedDataWithRootObject(array)
+			defaults.setObject(encodedData, forKey: "itinerairesFavoris")
+		}
+		else {
+			if AppValues.favorisItineraires.indexForKey(ItineraireEnCours.itineraire.id.UUIDString) != nil {
+				AppValues.favorisItineraires.removeValueForKey(ItineraireEnCours.itineraire!.id.UUIDString)
+			}
+			else {
+				AppValues.favorisItineraires[ItineraireEnCours.itineraire.id.UUIDString] = Itineraire(depart: ItineraireEnCours.itineraire.depart, arrivee: ItineraireEnCours.itineraire.arrivee)
+				AppValues.favorisItineraires[ItineraireEnCours.itineraire.id.UUIDString]!.id = ItineraireEnCours.itineraire.id
+			}
+			let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.arretsFavoris!)
+			defaults.setObject(encodedData, forKey: "arretsFavoris")
+		}
+		var listeItems = [UIBarButtonItem(image: FAKIonIcons.iosClockOutlineIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "rappel:")]
+		if AppValues.favorisItineraires.indexForKey(ItineraireEnCours.itineraire.id.UUIDString) != nil {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		else {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		self.navigationItem.rightBarButtonItems = listeItems
+	}
+
     func scheduleNotification(time: NSDate, ligne: String, direction: String) {
         let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time)
-        
+		
         let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+		if now.minute - 5 < 0 {
+			now.minute += 60
+			now.hour -= 1
+		}
+		
         let date = cal.dateBySettingHour(now.hour, minute: now.minute - 5, second: now.second, ofDate: time, options: NSCalendarOptions())
         let reminder = UILocalNotification()
         reminder.fireDate = date

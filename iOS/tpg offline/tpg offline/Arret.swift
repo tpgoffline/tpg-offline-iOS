@@ -17,7 +17,7 @@ class Arret : NSObject, NSCoding {
     var location: CLLocation!
     var distance: Double?
     var idTransportAPI: String!
-    
+	
     override init() {
         super.init()
     }

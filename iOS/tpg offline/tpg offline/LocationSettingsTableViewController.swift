@@ -25,6 +25,18 @@ class LocationSettingsTableViewController: UITableViewController {
             defaults.setInteger(500, forKey: "proximityDistance")
         }
         rowSelected[1] = values[1].indexOf(defaults.integerForKey("proximityDistance"))!
+        tableView.backgroundColor = AppValues.primaryColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        tableView.backgroundColor = AppValues.primaryColor
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,12 +64,14 @@ class LocationSettingsTableViewController: UITableViewController {
         cell.selectionStyle = .None
         if indexPath.row == rowSelected[indexPath.section] {
             let iconOk = FAKFontAwesome.checkIconWithSize(20)
-            iconOk.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+            iconOk.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.accessoryView = UIImageView(image: iconOk.imageWithSize(CGSize(width: 20, height: 20)))
         }
         else {
             cell.accessoryView = nil
         }
+        cell.textLabel?.textColor = AppValues.textColor
+        cell.backgroundColor = AppValues.primaryColor
         
         return cell
     }
@@ -74,11 +88,11 @@ class LocationSettingsTableViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView()
-        returnedView.backgroundColor = UIColor.flatOrangeColorDark()
+        returnedView.backgroundColor = AppValues.secondaryColor
         
         let label = UILabel(frame: CGRect(x: 20, y: 5, width: 500, height: 30))
         label.text = headers[section]
-        label.textColor = UIColor.whiteColor()
+        label.textColor = AppValues.textColor
         returnedView.addSubview(label)
         
         return returnedView

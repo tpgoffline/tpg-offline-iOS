@@ -1,239 +1,603 @@
 {
+    "DIM": [
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T13:54:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T14:54:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T15:54:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T16:55:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T17:55:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T18:54:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T19:54:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T20:54:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T21:53:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T22:53:52+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-14T23:57:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T14:42:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T15:45:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T16:47:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T17:47:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T18:46:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T19:46:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T20:46:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T21:48:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T22:47:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T23:47:52+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-15T00:47:52+0100"
+        }
+    ],
     "LUN": [
         {
-            "destination": "Gy",
-            "ligne": "A",
-            "timestamp": "2016-02-03T14:45:18+0100"
+            "destination": "Bus scolaire",
+            "ligne": "80",
+            "timestamp": "2016-02-12T13:13:14+0100"
+        },
+        {
+            "destination": "Bus scolaire",
+            "ligne": "80",
+            "timestamp": "2016-02-12T16:17:14+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T15:14:18+0100"
+            "timestamp": "2016-02-12T12:44:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T15:47:18+0100"
+            "timestamp": "2016-02-12T13:15:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:06:18+0100"
+            "timestamp": "2016-02-12T13:45:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:21:18+0100"
+            "timestamp": "2016-02-12T14:14:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:36:18+0100"
+            "timestamp": "2016-02-12T14:44:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:52:18+0100"
+            "timestamp": "2016-02-12T15:14:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:07:18+0100"
+            "timestamp": "2016-02-12T15:47:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:22:18+0100"
+            "timestamp": "2016-02-12T16:06:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:53:18+0100"
+            "timestamp": "2016-02-12T16:21:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T18:08:18+0100"
+            "timestamp": "2016-02-12T16:36:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T18:23:18+0100"
+            "timestamp": "2016-02-12T16:52:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T18:39:18+0100"
+            "timestamp": "2016-02-12T17:07:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T19:12:18+0100"
+            "timestamp": "2016-02-12T17:22:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T19:40:18+0100"
+            "timestamp": "2016-02-12T17:53:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T20:09:18+0100"
+            "timestamp": "2016-02-12T18:08:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T20:39:18+0100"
+            "timestamp": "2016-02-12T18:23:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T21:09:18+0100"
+            "timestamp": "2016-02-12T18:39:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T21:53:18+0100"
+            "timestamp": "2016-02-12T19:12:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T22:53:18+0100"
+            "timestamp": "2016-02-12T19:40:15+0100"
         },
         {
             "destination": "Gy",
             "ligne": "A",
-            "timestamp": "2016-02-03T23:57:18+0100"
+            "timestamp": "2016-02-12T20:09:15+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-12T20:39:15+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-12T21:09:15+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-12T21:54:15+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-12T22:53:15+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-12T23:57:15+0100"
         },
         {
             "destination": "Gy - Corsinge",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:37:18+0100"
+            "timestamp": "2016-02-12T12:25:15+0100"
         },
         {
             "destination": "Gy - Corsinge",
             "ligne": "A",
-            "timestamp": "2016-02-03T18:53:18+0100"
+            "timestamp": "2016-02-12T17:37:15+0100"
+        },
+        {
+            "destination": "Gy - Corsinge",
+            "ligne": "A",
+            "timestamp": "2016-02-12T18:53:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T14:53:18+0100"
+            "timestamp": "2016-02-12T12:32:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T15:23:18+0100"
+            "timestamp": "2016-02-12T12:55:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T15:53:18+0100"
+            "timestamp": "2016-02-12T13:21:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:10:18+0100"
+            "timestamp": "2016-02-12T13:23:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:26:18+0100"
+            "timestamp": "2016-02-12T13:53:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:41:18+0100"
+            "timestamp": "2016-02-12T14:23:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T16:57:18+0100"
+            "timestamp": "2016-02-12T14:53:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:13:18+0100"
+            "timestamp": "2016-02-12T15:23:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:29:18+0100"
+            "timestamp": "2016-02-12T15:53:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:44:18+0100"
+            "timestamp": "2016-02-12T16:10:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T17:59:18+0100"
+            "timestamp": "2016-02-12T16:26:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T18:15:18+0100"
+            "timestamp": "2016-02-12T16:41:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T18:32:18+0100"
+            "timestamp": "2016-02-12T16:57:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T18:47:18+0100"
+            "timestamp": "2016-02-12T17:13:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T19:02:18+0100"
+            "timestamp": "2016-02-12T17:29:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T19:30:18+0100"
+            "timestamp": "2016-02-12T17:45:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T19:36:18+0100"
+            "timestamp": "2016-02-12T18:00:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T19:59:18+0100"
+            "timestamp": "2016-02-12T18:16:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T20:29:18+0100"
+            "timestamp": "2016-02-12T18:33:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T20:59:18+0100"
+            "timestamp": "2016-02-12T18:47:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T21:48:18+0100"
+            "timestamp": "2016-02-12T19:02:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T22:48:18+0100"
+            "timestamp": "2016-02-12T19:30:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-03T23:48:18+0100"
+            "timestamp": "2016-02-12T19:36:15+0100"
         },
         {
             "destination": "Rive",
             "ligne": "A",
-            "timestamp": "2016-02-04T00:48:18+0100"
+            "timestamp": "2016-02-12T19:59:15+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-12T20:29:15+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-12T20:59:15+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-12T21:48:15+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-12T22:48:15+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-12T23:48:15+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T00:48:15+0100"
+        },
+        {
+            "destination": "Hermance",
+            "ligne": "NS",
+            "timestamp": "2016-02-13T02:10:15+0100"
+        },
+        {
+            "destination": "Hermance",
+            "ligne": "NS",
+            "timestamp": "2016-02-13T03:25:15+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T14:04:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T14:35:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T15:05:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T15:35:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T16:05:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T16:35:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T17:05:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T17:36:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T18:06:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T18:36:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T19:54:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T20:54:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T21:54:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T22:54:04+0100"
+        },
+        {
+            "destination": "Gy",
+            "ligne": "A",
+            "timestamp": "2016-02-13T23:58:04+0100"
+        },
+        {
+            "destination": "Gy - Corsinge",
+            "ligne": "A",
+            "timestamp": "2016-02-13T19:15:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T14:15:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T14:45:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T15:15:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T15:44:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T16:14:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T16:44:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T17:15:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T17:44:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T18:14:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T18:44:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T19:14:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T19:51:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T20:49:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T21:49:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T22:49:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-13T23:48:04+0100"
+        },
+        {
+            "destination": "Rive",
+            "ligne": "A",
+            "timestamp": "2016-02-14T00:48:04+0100"
+        },
+        {
+            "destination": "Hermance",
+            "ligne": "NS",
+            "timestamp": "2016-02-14T02:11:04+0100"
+        },
+        {
+            "destination": "Hermance",
+            "ligne": "NS",
+            "timestamp": "2016-02-14T03:25:04+0100"
         }
     ]
 }

@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
+import DGElasticPullToRefresh
 
 class IncidentsTableViewController: UITableViewController {
     
@@ -23,12 +24,19 @@ class IncidentsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.tintColor = UIColor.whiteColor()
-        self.refreshControl?.backgroundColor = UIColor.flatOrangeColorDark()
-        self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl!)
-        
+		let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+		loadingView.tintColor = AppValues.textColor
+		
+		tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+			
+			self!.refresh(loadingView)
+			self?.tableView.dg_stopLoading()
+			
+			}, loadingView: loadingView)
+		
+		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+		
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
@@ -56,17 +64,26 @@ class IncidentsTableViewController: UITableViewController {
         for i in 0 ..< couleurs["colors"].count {
             listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
             listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
-        }         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        }
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        tableView.backgroundColor = AppValues.primaryColor
+		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+		
         tableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     func refresh(sender:AnyObject)
@@ -95,19 +112,18 @@ class IncidentsTableViewController: UITableViewController {
         }
 
         tableView.reloadData()
-        self.refreshControl!.endRefreshing()
     }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
+	
+	deinit {
+		tableView.dg_removePullToRefresh()
+	}
+	
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         if aucunProbleme == true {
             return 1
         }

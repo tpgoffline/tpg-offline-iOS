@@ -1,239 +1,573 @@
 {
+    "DIM": [
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T15:24:42+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T17:39:42+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T19:54:42+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T20:59:42+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T22:04:42+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T23:08:42+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-15T00:13:42+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-15T01:18:42+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-14T14:15:42+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-14T16:30:42+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-14T18:44:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T14:37:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T15:38:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T16:52:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T17:53:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T19:07:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T20:13:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T21:18:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T22:23:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T23:28:42+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-15T00:33:42+0100"
+        }
+    ],
     "LUN": [
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T14:43:41+0100"
+            "timestamp": "2016-02-12T13:42:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T15:11:41+0100"
+            "timestamp": "2016-02-12T14:12:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T15:41:41+0100"
+            "timestamp": "2016-02-12T14:41:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:12:41+0100"
+            "timestamp": "2016-02-12T15:11:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:55:41+0100"
+            "timestamp": "2016-02-12T15:41:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:10:41+0100"
+            "timestamp": "2016-02-12T16:12:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:24:41+0100"
+            "timestamp": "2016-02-12T17:55:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:39:41+0100"
+            "timestamp": "2016-02-12T18:10:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:43:41+0100"
+            "timestamp": "2016-02-12T18:24:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T20:35:41+0100"
+            "timestamp": "2016-02-12T18:39:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T21:05:41+0100"
+            "timestamp": "2016-02-12T19:43:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T22:04:41+0100"
+            "timestamp": "2016-02-12T20:35:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-03T23:09:41+0100"
+            "timestamp": "2016-02-12T21:05:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-04T00:14:41+0100"
+            "timestamp": "2016-02-12T22:04:20+0100"
         },
         {
             "destination": "Jussy",
             "ligne": "C",
-            "timestamp": "2016-02-04T01:17:41+0100"
+            "timestamp": "2016-02-12T23:09:20+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T00:14:20+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T01:18:20+0100"
         },
         {
             "destination": "Malagnou",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:29:41+0100"
+            "timestamp": "2016-02-12T12:28:21+0100"
+        },
+        {
+            "destination": "Malagnou",
+            "ligne": "C",
+            "timestamp": "2016-02-12T12:51:21+0100"
+        },
+        {
+            "destination": "Malagnou",
+            "ligne": "C",
+            "timestamp": "2016-02-12T16:29:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:31:41+0100"
+            "timestamp": "2016-02-12T12:33:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:42:41+0100"
+            "timestamp": "2016-02-12T12:51:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:56:41+0100"
+            "timestamp": "2016-02-12T13:15:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:10:41+0100"
+            "timestamp": "2016-02-12T16:32:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:23:41+0100"
+            "timestamp": "2016-02-12T16:42:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:40:41+0100"
+            "timestamp": "2016-02-12T16:57:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:52:41+0100"
+            "timestamp": "2016-02-12T17:10:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:07:41+0100"
+            "timestamp": "2016-02-12T17:24:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:21:41+0100"
+            "timestamp": "2016-02-12T17:40:21+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T20:06:41+0100"
+            "timestamp": "2016-02-12T18:53:21+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-12T19:07:21+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-12T19:22:21+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-12T20:06:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T15:03:41+0100"
+            "timestamp": "2016-02-12T13:11:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T15:33:41+0100"
+            "timestamp": "2016-02-12T13:36:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T15:59:41+0100"
+            "timestamp": "2016-02-12T14:03:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:16:41+0100"
+            "timestamp": "2016-02-12T14:33:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:53:41+0100"
+            "timestamp": "2016-02-12T15:03:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:07:41+0100"
+            "timestamp": "2016-02-12T15:33:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:22:41+0100"
+            "timestamp": "2016-02-12T15:59:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:37:41+0100"
+            "timestamp": "2016-02-12T16:16:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:52:41+0100"
+            "timestamp": "2016-02-12T16:53:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:07:41+0100"
+            "timestamp": "2016-02-12T17:07:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:23:41+0100"
+            "timestamp": "2016-02-12T17:22:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:38:41+0100"
+            "timestamp": "2016-02-12T17:37:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:53:41+0100"
+            "timestamp": "2016-02-12T17:52:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:13:41+0100"
+            "timestamp": "2016-02-12T18:07:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:43:41+0100"
+            "timestamp": "2016-02-12T18:23:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T20:12:41+0100"
+            "timestamp": "2016-02-12T18:38:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T20:43:41+0100"
+            "timestamp": "2016-02-12T18:53:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T21:17:41+0100"
+            "timestamp": "2016-02-12T19:13:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T22:22:41+0100"
+            "timestamp": "2016-02-12T19:43:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T23:27:41+0100"
+            "timestamp": "2016-02-12T20:13:21+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-04T00:32:41+0100"
+            "timestamp": "2016-02-12T20:43:21+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-12T21:17:21+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-12T22:22:21+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-12T23:27:21+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T00:32:21+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "NK",
+            "timestamp": "2016-02-13T02:44:21+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T14:46:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T15:16:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T15:46:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T16:16:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T17:46:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T18:15:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T19:21:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T19:56:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T20:59:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T22:04:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-13T23:09:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T00:13:26+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-14T01:18:26+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-13T14:18:26+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-13T16:46:26+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-13T17:16:26+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "C",
+            "timestamp": "2016-02-13T18:45:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T14:38:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T15:07:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T15:37:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T16:07:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T16:37:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T17:07:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T17:37:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T18:07:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T18:37:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T19:05:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T20:12:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T21:18:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T22:23:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T23:28:26+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T00:33:26+0100"
+        },
+        {
+            "destination": "Monniaz",
+            "ligne": "NK",
+            "timestamp": "2016-02-14T02:44:26+0100"
         }
     ]
 }

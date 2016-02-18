@@ -4,24 +4,13 @@ use_frameworks!
 
 target 'tpg offline' do
 	pod 'SwiftyJSON', git: "https://github.com/SwiftyJSON/SwiftyJSON.git"
-	pod 'ChameleonFramework' , git: "https://github.com/ViccAlexander/Chameleon.git"
+	pod 'ChameleonFramework/Swift' , git: "https://github.com/ViccAlexander/Chameleon.git"
 	pod 'FontAwesomeKit', git: "https://github.com/PrideChung/FontAwesomeKit.git"
-	pod 'SwiftLocation', git: "https://github.com/malcommac/SwiftLocation.git"
 	pod 'BGTableViewRowActionWithImage', git: "https://github.com/benguild/BGTableViewRowActionWithImage.git"
-	pod 'SCLAlertView', git: "https://github.com/vikmeup/SCLAlertView-Swift.git"
+	pod 'SCLAlertView', git:"https://github.com/Pevika/SCLAlertView-Swift.git" #git: "https://github.com/vikmeup/SCLAlertView-Swift.git"
 	pod 'FSCalendar', git: "https://github.com/WenchaoIOS/FSCalendar.git"
 	pod 'EFCircularSlider', git: "https://github.com/RemyDCF/EFCircularSlider.git"
 	pod 'DGRunkeeperSwitch', git: "https://github.com/gontovnik/DGRunkeeperSwitch.git"
-end
-
-target "tpg offline Dev" do
-pod 'SwiftyJSON', git: "https://github.com/SwiftyJSON/SwiftyJSON.git"
-	pod 'ChameleonFramework' , git: "https://github.com/ViccAlexander/Chameleon.git"
-	pod 'FontAwesomeKit', git: "https://github.com/PrideChung/FontAwesomeKit.git"
-	pod 'SwiftLocation', git: "https://github.com/malcommac/SwiftLocation.git"
-	pod 'BGTableViewRowActionWithImage', git: "https://github.com/benguild/BGTableViewRowActionWithImage.git"
-	pod 'SCLAlertView', git: "https://github.com/vikmeup/SCLAlertView-Swift.git"
-	pod 'FSCalendar', git: "https://github.com/WenchaoIOS/FSCalendar.git"
-	pod 'EFCircularSlider', git: "https://github.com/RemyDCF/EFCircularSlider.git"
-	pod 'DGRunkeeperSwitch', git: "https://github.com/gontovnik/DGRunkeeperSwitch.git"
+	pod 'PermissionScope', git:"https://github.com/nickoneill/PermissionScope.git"
+	pod 'DGElasticPullToRefresh', git:"https://github.com/gontovnik/DGElasticPullToRefresh.git"
 end

@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+#import "CALayer+FSExtension.h"
 #import "FSCalendar+IBExtension.h"
 #import "FSCalendar.h"
 #import "FSCalendarAppearance.h"
@@ -7,6 +8,7 @@
 #import "FSCalendarCollectionView.h"
 #import "FSCalendarConstance.h"
 #import "FSCalendarDynamicHeader.h"
+#import "FSCalendarEventIndicator.h"
 #import "FSCalendarFlowLayout.h"
 #import "FSCalendarHeader.h"
 #import "FSCalendarStickyHeader.h"

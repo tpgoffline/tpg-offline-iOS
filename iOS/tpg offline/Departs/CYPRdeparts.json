@@ -1,129 +1,328 @@
 {
+    "DIM": [
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T13:48:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T14:56:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T15:58:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T17:12:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T18:13:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T19:25:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T20:31:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T21:36:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T22:40:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T23:45:51+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-15T00:50:51+0100"
+        }
+    ],
     "LUN": [
+        {
+            "destination": "Bus scolaire",
+            "ligne": "97",
+            "timestamp": "2016-02-12T16:22:56+0100"
+        },
+        {
+            "destination": "Jussy",
+            "ligne": "C",
+            "timestamp": "2016-02-12T13:20:57+0100"
+        },
         {
             "destination": "Malagnou",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:54:13+0100"
+            "timestamp": "2016-02-12T12:50:57+0100"
+        },
+        {
+            "destination": "Malagnou",
+            "ligne": "C",
+            "timestamp": "2016-02-12T13:13:57+0100"
+        },
+        {
+            "destination": "Malagnou",
+            "ligne": "C",
+            "timestamp": "2016-02-12T16:53:57+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:20:13+0100"
+            "timestamp": "2016-02-12T16:19:57+0100"
         },
         {
             "destination": "Monniaz",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:16:13+0100"
+            "timestamp": "2016-02-12T17:15:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T14:57:13+0100"
+            "timestamp": "2016-02-12T12:26:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T15:26:13+0100"
+            "timestamp": "2016-02-12T13:33:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T15:56:13+0100"
+            "timestamp": "2016-02-12T13:57:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:24:13+0100"
+            "timestamp": "2016-02-12T14:24:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T16:40:13+0100"
+            "timestamp": "2016-02-12T14:55:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:17:13+0100"
+            "timestamp": "2016-02-12T15:25:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:31:13+0100"
+            "timestamp": "2016-02-12T15:55:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T17:46:13+0100"
+            "timestamp": "2016-02-12T16:23:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:01:13+0100"
+            "timestamp": "2016-02-12T16:40:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:15:13+0100"
+            "timestamp": "2016-02-12T17:16:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:30:13+0100"
+            "timestamp": "2016-02-12T17:30:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T18:46:13+0100"
+            "timestamp": "2016-02-12T17:45:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:00:13+0100"
+            "timestamp": "2016-02-12T18:00:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:15:13+0100"
+            "timestamp": "2016-02-12T18:15:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T19:35:13+0100"
+            "timestamp": "2016-02-12T18:29:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T20:04:13+0100"
+            "timestamp": "2016-02-12T18:45:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T20:32:13+0100"
+            "timestamp": "2016-02-12T18:59:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T21:03:13+0100"
+            "timestamp": "2016-02-12T19:14:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T21:37:13+0100"
+            "timestamp": "2016-02-12T19:34:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T22:42:13+0100"
+            "timestamp": "2016-02-12T20:04:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-03T23:47:13+0100"
+            "timestamp": "2016-02-12T20:32:57+0100"
         },
         {
             "destination": "P+R Sous-Moulin",
             "ligne": "C",
-            "timestamp": "2016-02-04T00:52:13+0100"
+            "timestamp": "2016-02-12T21:02:57+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-12T21:36:57+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-12T22:41:57+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-12T23:46:57+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T00:51:57+0100"
+        },
+        {
+            "destination": "Ville-la-Grand",
+            "ligne": "NV",
+            "timestamp": "2016-02-13T01:32:57+0100"
+        },
+        {
+            "destination": "Ville-la-Grand",
+            "ligne": "NV",
+            "timestamp": "2016-02-13T03:17:57+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T14:18:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T14:59:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T15:29:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T15:59:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T16:29:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T16:59:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T17:29:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T17:59:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T18:29:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T18:58:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T19:26:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T20:32:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T21:37:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T22:42:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-13T23:47:19+0100"
+        },
+        {
+            "destination": "P+R Sous-Moulin",
+            "ligne": "C",
+            "timestamp": "2016-02-14T00:51:19+0100"
+        },
+        {
+            "destination": "Ville-la-Grand",
+            "ligne": "NV",
+            "timestamp": "2016-02-14T01:33:19+0100"
+        },
+        {
+            "destination": "Ville-la-Grand",
+            "ligne": "NV",
+            "timestamp": "2016-02-14T03:18:19+0100"
         }
     ]
 }

@@ -1,214 +1,543 @@
 {
+    "DIM": [
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T14:34:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T15:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T16:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T17:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T18:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T19:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T20:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T21:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T22:33:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T23:32:21+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-15T00:31:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T14:16:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T15:16:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T16:16:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T17:16:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T18:16:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T19:16:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T20:16:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T21:15:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T22:15:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T23:15:21+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-15T00:15:21+0100"
+        }
+    ],
     "LUN": [
         {
-            "destination": "Avusy",
-            "ligne": "L",
-            "timestamp": "2016-02-03T14:56:13+0100"
+            "destination": "Bus scolaire",
+            "ligne": "85",
+            "timestamp": "2016-02-12T13:26:05+0100"
+        },
+        {
+            "destination": "Bus scolaire",
+            "ligne": "85",
+            "timestamp": "2016-02-12T16:30:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T15:28:13+0100"
+            "timestamp": "2016-02-12T12:27:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T15:48:13+0100"
+            "timestamp": "2016-02-12T12:42:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T16:10:13+0100"
+            "timestamp": "2016-02-12T13:26:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T16:29:13+0100"
+            "timestamp": "2016-02-12T13:56:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T16:45:13+0100"
+            "timestamp": "2016-02-12T14:26:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T17:06:13+0100"
+            "timestamp": "2016-02-12T14:56:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T17:26:13+0100"
+            "timestamp": "2016-02-12T15:28:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T17:46:13+0100"
+            "timestamp": "2016-02-12T15:48:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T18:06:13+0100"
+            "timestamp": "2016-02-12T16:10:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T18:26:13+0100"
+            "timestamp": "2016-02-12T16:29:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T18:46:13+0100"
+            "timestamp": "2016-02-12T16:45:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T19:06:13+0100"
+            "timestamp": "2016-02-12T17:06:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T19:30:13+0100"
+            "timestamp": "2016-02-12T17:26:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T20:00:13+0100"
+            "timestamp": "2016-02-12T17:46:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T20:29:13+0100"
+            "timestamp": "2016-02-12T18:06:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T20:59:13+0100"
+            "timestamp": "2016-02-12T18:26:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T21:34:13+0100"
+            "timestamp": "2016-02-12T18:46:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T22:33:13+0100"
+            "timestamp": "2016-02-12T19:06:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-03T23:32:13+0100"
+            "timestamp": "2016-02-12T19:30:05+0100"
         },
         {
             "destination": "Avusy",
             "ligne": "L",
-            "timestamp": "2016-02-04T00:32:13+0100"
+            "timestamp": "2016-02-12T20:00:05+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-12T20:30:05+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-12T20:59:05+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-12T21:34:05+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-12T22:33:05+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-12T23:33:05+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T00:32:05+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T14:41:14+0100"
+            "timestamp": "2016-02-12T12:33:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T15:12:14+0100"
+            "timestamp": "2016-02-12T13:08:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T15:42:14+0100"
+            "timestamp": "2016-02-12T13:22:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T16:10:14+0100"
+            "timestamp": "2016-02-12T14:10:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T16:31:14+0100"
+            "timestamp": "2016-02-12T14:42:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T16:51:14+0100"
+            "timestamp": "2016-02-12T15:12:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T17:13:14+0100"
+            "timestamp": "2016-02-12T15:42:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T17:29:14+0100"
+            "timestamp": "2016-02-12T16:10:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T17:49:14+0100"
+            "timestamp": "2016-02-12T16:32:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T18:09:14+0100"
+            "timestamp": "2016-02-12T16:52:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T18:29:14+0100"
+            "timestamp": "2016-02-12T17:13:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T18:49:14+0100"
+            "timestamp": "2016-02-12T17:29:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T19:09:14+0100"
+            "timestamp": "2016-02-12T17:49:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T19:29:14+0100"
+            "timestamp": "2016-02-12T18:09:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T19:48:14+0100"
+            "timestamp": "2016-02-12T18:29:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T20:16:14+0100"
+            "timestamp": "2016-02-12T18:49:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T20:46:14+0100"
+            "timestamp": "2016-02-12T19:09:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T21:16:14+0100"
+            "timestamp": "2016-02-12T19:29:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T22:16:14+0100"
+            "timestamp": "2016-02-12T19:48:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-03T23:16:14+0100"
+            "timestamp": "2016-02-12T20:16:06+0100"
         },
         {
             "destination": "Lancy-Hubert",
             "ligne": "L",
-            "timestamp": "2016-02-04T00:15:14+0100"
+            "timestamp": "2016-02-12T20:46:06+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-12T21:16:06+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-12T22:16:06+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-12T23:16:06+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T00:16:06+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T14:19:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T14:49:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T15:19:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T15:49:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T16:19:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T16:49:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T17:19:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T17:49:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T18:19:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T18:49:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T19:34:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T20:33:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T21:33:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T22:33:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-13T23:32:41+0100"
+        },
+        {
+            "destination": "Avusy",
+            "ligne": "L",
+            "timestamp": "2016-02-14T00:33:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T14:01:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T14:30:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T15:00:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T15:30:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T16:00:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T16:30:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T17:00:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T17:30:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T18:00:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T18:30:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T19:16:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T20:15:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T21:15:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T22:15:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-13T23:15:41+0100"
+        },
+        {
+            "destination": "Lancy-Hubert",
+            "ligne": "L",
+            "timestamp": "2016-02-14T00:15:41+0100"
         }
     ]
 }

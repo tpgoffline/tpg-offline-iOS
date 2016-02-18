@@ -11,6 +11,8 @@ import SwiftyJSON
 import FontAwesomeKit
 import BGTableViewRowActionWithImage
 import SCLAlertView
+import ChameleonFramework
+import DGElasticPullToRefresh
 
 class DepartsArretTableViewController: UITableViewController {
     var arret: Arret!
@@ -19,13 +21,22 @@ class DepartsArretTableViewController: UITableViewController {
     var listeColor = [String:UIColor]()
     let defaults = NSUserDefaults.standardUserDefaults()
     var offline = false
-    var timer: NSTimer! = nil
+    var serviceTermine = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.tintColor = UIColor.whiteColor()
-        self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl!)
+		
+		let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+		loadingView.tintColor = AppValues.textColor
+		
+		tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+			
+			self!.refresh(loadingView)
+			self?.tableView.dg_stopLoading()
+			
+			}, loadingView: loadingView)
+		
+		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
         let couleurs = JSON(data: dataCouleurs!)
@@ -33,49 +44,80 @@ class DepartsArretTableViewController: UITableViewController {
             listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
             listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
         }
+        
         title = arret?.nomComplet
         
         refreshDeparts()
-        
+		
+		var barButtonsItems: [UIBarButtonItem] = []
+		
         if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
-            if offline {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
-            }
-            else {
-                self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"), UIBarButtonItem(image: FAKFontAwesome.mapSignsIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:")]
-            }
-        }
-        else {
-            if offline {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
-            }
-            else {
-                self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"), UIBarButtonItem(image: FAKFontAwesome.mapSignsIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:")]
-            }
-        }
-        timer = NSTimer(timeInterval: 10, target: self, selector: "repeat:", userInfo: nil, repeats: true)
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		else {
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		if !offline {
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.mapSignsIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
+		}
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
+
+		self.navigationItem.rightBarButtonItems = barButtonsItems
+		
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        tableView.backgroundColor = AppValues.primaryColor
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+		
+		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+		
+        tableView.backgroundColor = AppValues.primaryColor
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
-    
+	
+	deinit {
+		tableView.dg_removePullToRefresh()
+	}
+	
     func calculerTempsRestant(timestamp: String!) -> String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
         let time = dateFormatter.dateFromString(timestamp)
-        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: time!)
-        let nows: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: NSDate())
-        if now.hour == nows.hour && now.minute >= nows.minute {
-            return String(now.minute - nows.minute)
+        let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
+        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: NSDate())
+		if tempsTimestamp.hour == 17 {
+			print("a")
+		}
+        if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
+            return String(tempsTimestamp.minute - now.minute)
         }
-        /*else if now.hour == nows.hour + 1 && now.minute < nows.minute {
-            return String((60 - nows.minute) + now.minute)
-        }*/
-        else if now.hour > nows.hour {
-            return String(((nows.hour - now.hour) * 60) + now.minute)
+		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour + 1 == now.hour && tempsTimestamp.minute < now.hour {
+			return String((60 - now.minute) + tempsTimestamp.minute)
+		}
+        else if tempsTimestamp.hour > now.hour {
+            return String(((tempsTimestamp.hour - now.hour) * 60) + tempsTimestamp.minute)
         }
+        else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute == now.minute && tempsTimestamp.second >= now.second {
+            return "0"
+        }
+		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute - 1 == now.minute && tempsTimestamp.second <= now.second {
+			return "0"
+		}
         else {
             return "-1"
         }
@@ -98,22 +140,30 @@ class DepartsArretTableViewController: UITableViewController {
             
             let encodedData = NSKeyedArchiver.archivedDataWithRootObject(array)
             defaults.setObject(encodedData, forKey: "arretsFavoris")
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
         }
         else {
             if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
                 AppValues.arretsFavoris.removeValueForKey(arret.nomComplet)
                 AppValues.nomCompletsFavoris.removeAtIndex(AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)!)
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
             }
             else {
                 AppValues.arretsFavoris![arret.nomComplet] = arret
                 AppValues.nomCompletsFavoris.append(arret.nomComplet)
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:")
             }
             let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.arretsFavoris!)
             defaults.setObject(encodedData, forKey: "arretsFavoris")
         }
+		var barButtonsItems: [UIBarButtonItem] = []
+		
+		if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		if !offline {
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.mapSignsIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
+		}
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
+		
+		self.navigationItem.rightBarButtonItems = barButtonsItems
     }
     
     func showItinerary(sender: AnyObject!) {
@@ -125,9 +175,14 @@ class DepartsArretTableViewController: UITableViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
         let time = dateFormatter.dateFromString(hour)
         let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
-        
+		
+		if now.minute - before < 0 {
+			now.minute += 60
+			now.hour -= 1
+		}
+		
         let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: time!, options: NSCalendarOptions())
+        let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: NSDate(), options: NSCalendarOptions())
         let reminder = UILocalNotification()
         reminder.fireDate = date
         if before == 0 {
@@ -151,7 +206,7 @@ class DepartsArretTableViewController: UITableViewController {
         }
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showItinerary" {
             let routeViewController:RouteViewController = (segue.destinationViewController) as! RouteViewController
@@ -167,47 +222,36 @@ class DepartsArretTableViewController: UITableViewController {
     {
         refreshDeparts()
         tableView.reloadData()
-        self.refreshControl!.endRefreshing()
     }
     func refreshDeparts() {
         listeDeparts = []
         if let dataDeparts = NSData(contentsOfURL: NSURL(string: "http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode=" + (arret!.stopCode))!) {
             let departs = JSON(data: dataDeparts)
             
-            for x in 0...departs["departures"].count-1 {
-                if departs["departures"][x]["waitingTime"].string! == "no more" {
+            for (_, subjson) in departs["departures"] {
+                if subjson["waitingTime"].string! == "no more" {
                     listeDeparts.append(Departs(
-                        ligne: departs["departures"][x]["line"]["lineCode"].string!,
-                        direction: departs["departures"][x]["line"]["destinationName"].string!,
-                        couleur: listeColor[departs["departures"][x]["line"]["lineCode"].string!]!,
-                        couleurArrierePlan: listeBackgroundColor[departs["departures"][x]["line"]["lineCode"].string!]!,
+                        ligne: subjson["line"]["lineCode"].string!,
+                        direction: subjson["line"]["destinationName"].string!,
+                        couleur: listeColor[subjson["line"]["lineCode"].string!]!,
+                        couleurArrierePlan: listeBackgroundColor[subjson["line"]["lineCode"].string!]!,
                         code: nil,
-                        tempsRestant: departs["departures"][x]["waitingTime"].string!,
+                        tempsRestant: subjson["waitingTime"].string!,
                         timestamp: ""
                         ))
                 }
                 else {
                     listeDeparts.append(Departs(
-                        ligne: departs["departures"][x]["line"]["lineCode"].string!,
-                        direction: departs["departures"][x]["line"]["destinationName"].string!,
-                        couleur: listeColor[departs["departures"][x]["line"]["lineCode"].string!]!,
-                        couleurArrierePlan: listeBackgroundColor[departs["departures"][x]["line"]["lineCode"].string!]!,
+                        ligne: subjson["line"]["lineCode"].string!,
+                        direction: subjson["line"]["destinationName"].string!,
+                        couleur: listeColor[subjson["line"]["lineCode"].string!]!,
+                        couleurArrierePlan: listeBackgroundColor[subjson["line"]["lineCode"].string!]!,
                         
-                        code: String(departs["departures"][x]["departureCode"].int!),
-                        tempsRestant: departs["departures"][x]["waitingTime"].string!,
-                        timestamp: departs["departures"][x]["timestamp"].string!
+                        code: String(subjson["departureCode"].int!),
+                        tempsRestant: subjson["waitingTime"].string!,
+                        timestamp: subjson["timestamp"].string!
                         ))
                 }
-                /*listeDeparts.append(Departs(
-                 ligne: departs["departures"][x]["line"]["lineCode"].string!,
-                 direction: departs["departures"][x]["line"]["destinationName"].string!,
-                 couleur: listeColor[departs["departures"][x]["line"]["lineCode"].string!]!,
-                 couleurArrierePlan: listeBackgroundColor[departs["departures"][x]["line"]["lineCode"].string!]!,
-                 
-                 code: String(departs["departures"][x]["departureCode"].int!),
-                 tempsRestant: departs["departures"][x]["waitingTime"].string!,
-                 timestamp: departs["departures"][x]["timestamp"].string!
-                 ))*/
             }
             offline = false
         }
@@ -217,53 +261,53 @@ class DepartsArretTableViewController: UITableViewController {
             switch day.weekday {
             case 7:
                 for (_, subJson) in departs["SAM"] {
-                    if calculerTempsRestant(subJson["timestamp"].string!) != "-1" {
-                        listeDeparts.append(Departs(
-                            ligne: subJson["ligne"].string!,
-                            direction: subJson["destination"].string!,
-                            couleur: listeColor[subJson["ligne"].string!]!,
-                            couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                            code: nil,
-                            tempsRestant: "0",
-                            timestamp: subJson["timestamp"].string!
-                            ))
-                        listeDeparts.last?.calculerTempsRestant()
-                    }
+                    listeDeparts.append(Departs(
+                        ligne: subJson["ligne"].string!,
+                        direction: subJson["destination"].string!,
+                        couleur: listeColor[subJson["ligne"].string!]!,
+                        couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+                        code: nil,
+                        tempsRestant: "0",
+                        timestamp: subJson["timestamp"].string!
+                        ))
+                    listeDeparts.last?.calculerTempsRestant()
                 }
                 break
             case 1:
                 for (_, subJson) in departs["DIM"] {
-                    if calculerTempsRestant(subJson["timestamp"].string!) != "-1" {
-                        listeDeparts.append(Departs(
-                            ligne: subJson["ligne"].string!,
-                            direction: subJson["destination"].string!,
-                            couleur: listeColor[subJson["ligne"].string!]!,
-                            couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                            code: nil,
-                            tempsRestant: "0",
-                            timestamp: subJson["timestamp"].string!
-                            ))
-                        listeDeparts.last?.calculerTempsRestant()
-                    }
+                    listeDeparts.append(Departs(
+                        ligne: subJson["ligne"].string!,
+                        direction: subJson["destination"].string!,
+                        couleur: listeColor[subJson["ligne"].string!]!,
+                        couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+                        code: nil,
+                        tempsRestant: "0",
+                        timestamp: subJson["timestamp"].string!
+                        ))
+                    listeDeparts.last?.calculerTempsRestant()
                 }
                 break
             default:
                 for (_, subJson) in departs["LUN"] {
-                    if calculerTempsRestant(subJson["timestamp"].string!) != "-1" {
-                        listeDeparts.append(Departs(
-                            ligne: subJson["ligne"].string!,
-                            direction: subJson["destination"].string!,
-                            couleur: listeColor[subJson["ligne"].string!]!,
-                            couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                            code: nil,
-                            tempsRestant: "0",
-                            timestamp: subJson["timestamp"].string!
-                            ))
-                        listeDeparts.last?.calculerTempsRestant()
-                    }
+                    listeDeparts.append(Departs(
+                        ligne: subJson["ligne"].string!,
+                        direction: subJson["destination"].string!,
+                        couleur: listeColor[subJson["ligne"].string!]!,
+                        couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+                        code: nil,
+                        tempsRestant: "0",
+                        timestamp: subJson["timestamp"].string!
+                        ))
+                    listeDeparts.last?.calculerTempsRestant()
                 }
             }
             
+            listeDeparts = listeDeparts.filter({ (depart) -> Bool in
+                if calculerTempsRestant(depart.timestamp) != "-1" {
+                    return true
+                }
+                return false
+            })
             
             listeDeparts.sortInPlace({ (depart1, depart2) -> Bool in
                 if Int(depart1.tempsRestant) < Int(depart2.tempsRestant) {
@@ -273,7 +317,12 @@ class DepartsArretTableViewController: UITableViewController {
             })
             
             offline = true
-            
+        }
+        if listeDeparts.count == 0 {
+            serviceTermine = true
+        }
+        else {
+            serviceTermine = false
         }
     }
 }
@@ -282,7 +331,7 @@ extension DepartsArretTableViewController {
     // MARK: tableView
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         if offline {
             return 2
         }
@@ -290,20 +339,34 @@ extension DepartsArretTableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if offline && section == 0{
+        
+        if offline && section == 0 {
             return 1
         }
-        return listeDeparts.count
+        else if offline && section == 1 && serviceTermine {
+            return 1
+        }
+        else if !offline && section == 0 && serviceTermine {
+            return 1
+        }
+        else {
+            return listeDeparts.count
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if offline && indexPath.section == 0 {
             return 60
         }
+        else if offline && indexPath.section == 1 && serviceTermine {
+            return 60
+        }
+        else if !offline && indexPath.section == 0 && serviceTermine {
+            return 60
+        }
         return 44
     }
-
+    
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let timerAction = BGTableViewRowActionWithImage.rowActionWithStyle(UITableViewRowActionStyle.Default, title: "Rappeler", titleColor: UIColor.blackColor(), backgroundColor: UIColor.flatYellowColor(), image: FAKIonIcons.iosTimeOutlineIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), forCellHeight: 44) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             let icone = FAKIonIcons.iosClockIconWithSize(20)
@@ -358,8 +421,13 @@ extension DepartsArretTableViewController {
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         if offline && indexPath.section == 0 {
+            return false
+        }
+        else if offline && indexPath.section == 1 && serviceTermine {
+            return false
+        }
+        else if !offline && indexPath.section == 0 && serviceTermine {
             return false
         }
         else if listeDeparts[indexPath.row].tempsRestant == "no more" {
@@ -378,6 +446,30 @@ extension DepartsArretTableViewController {
             cell.detailTextLabel?.textColor = UIColor.blackColor()
             cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification"
             cell.imageView?.image = FAKFontAwesome.globeIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
+            cell.accessoryView = nil
+            return cell
+        }
+        else if offline && indexPath.section == 1 && serviceTermine {
+            let cell = tableView.dequeueReusableCellWithIdentifier("departArretCell", forIndexPath: indexPath)
+            
+            cell.backgroundColor = UIColor.flatYellowColor()
+            cell.textLabel?.textColor = UIColor.blackColor()
+            cell.textLabel?.text = "Service terminé"
+            cell.detailTextLabel?.textColor = UIColor.blackColor()
+            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret."
+            cell.imageView?.image = FAKFontAwesome.busIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
+            cell.accessoryView = nil
+            return cell
+        }
+        else if !offline && indexPath.section == 0 && serviceTermine {
+            let cell = tableView.dequeueReusableCellWithIdentifier("departArretCell", forIndexPath: indexPath)
+            
+            cell.backgroundColor = UIColor.flatRedColor()
+            cell.textLabel?.textColor = UIColor.blackColor()
+            cell.textLabel?.text = "Service terminé"
+            cell.detailTextLabel?.textColor = UIColor.blackColor()
+            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret."
+            cell.imageView?.image = FAKFontAwesome.busIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
         }

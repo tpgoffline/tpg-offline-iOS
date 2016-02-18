@@ -1,34 +1,32 @@
 {
+    "DIM": [
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-14T21:34:34+0100"
+        },
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-14T22:34:34+0100"
+        },
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-14T23:34:34+0100"
+        },
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-15T00:34:34+0100"
+        }
+    ],
     "LUN": [
         {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T21:04:36+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T21:34:36+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T22:04:36+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T22:34:36+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T23:34:36+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-04T00:34:36+0100"
+            "destination": "Gland-Gare",
+            "ligne": "ND",
+            "timestamp": "2016-02-13T02:35:27+0100"
         }
-    ]
+    ],
+    "SAM": []
 }

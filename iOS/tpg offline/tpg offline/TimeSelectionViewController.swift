@@ -20,30 +20,22 @@ class TimeSelectionViewController: UIViewController {
         super.viewDidLoad()
         
         hourSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 130, y: (view.bounds.height / 2) - 87, width: 260, height: 260))
-        hourSlider.unfilledColor = UIColor.flatLimeColorDark()
-        hourSlider.filledColor = UIColor.flatLimeColor()
         hourSlider.innerMarkingLabels = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"])
         hourSlider.labelFont = UIFont.systemFontOfSize(14)
         hourSlider.lineWidth = 8
         hourSlider.minimumValue = 0
         hourSlider.maximumValue = 24
-        hourSlider.labelColor = UIColor.whiteColor()
-        hourSlider.handleColor = hourSlider.filledColor
         hourSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(hourSlider)
         hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
         
         minuteSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 80, y: (view.bounds.height / 2) - 37, width: 160, height: 160))
-        minuteSlider.unfilledColor = UIColor.flatMintColorDark()
-        minuteSlider.filledColor = UIColor.flatMintColor()
         minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"])
         minuteSlider.labelFont = UIFont.systemFontOfSize(12)
         minuteSlider.lineWidth = 8
         minuteSlider.minimumValue = 0
         minuteSlider.maximumValue = 60
         minuteSlider.snapToLabels = false
-        minuteSlider.labelColor = UIColor.whiteColor()
-        minuteSlider.handleColor = minuteSlider.filledColor
         minuteSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(minuteSlider)
         minuteSlider.addTarget(self, action: "minuteChanged:", forControlEvents: .ValueChanged)
@@ -58,24 +50,41 @@ class TimeSelectionViewController: UIViewController {
                 labelHeure.text = String(Int(hourSlider.currentValue)) + ":" + String(Int(minuteSlider.currentValue))
             }
         }
-        // Do any additional setup after loading the view.
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
+        minuteSlider.filledColor = AppValues.primaryColor.lightenByPercentage(0.2)
+        hourSlider.unfilledColor = AppValues.primaryColor.lightenByPercentage(0.1)
+        hourSlider.filledColor = AppValues.primaryColor.darkenByPercentage(0.2)
+        hourSlider.labelColor = AppValues.textColor
+        minuteSlider.labelColor = AppValues.textColor
+        view.backgroundColor = AppValues.primaryColor
+        labelHeure.textColor = AppValues.textColor
+        minuteSlider.handleColor = minuteSlider.filledColor
+        hourSlider.handleColor = hourSlider.filledColor
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
+        minuteSlider.filledColor = AppValues.primaryColor.lightenByPercentage(0.2)
+        hourSlider.unfilledColor = AppValues.primaryColor.lightenByPercentage(0.1)
+        hourSlider.filledColor = AppValues.primaryColor.darkenByPercentage(0.2)
+        hourSlider.labelColor = AppValues.textColor
+        minuteSlider.labelColor = AppValues.textColor
+        view.backgroundColor = AppValues.primaryColor
+        labelHeure.textColor = AppValues.textColor
+        minuteSlider.handleColor = minuteSlider.filledColor
+        hourSlider.handleColor = hourSlider.filledColor
     }
-    */
+   
     func minuteChanged(sender: AnyObject!) {
         if minuteSlider.currentValue < 10 {
             labelHeure.text = String(Int(hourSlider.currentValue)) + ":0" + String(Int(minuteSlider.currentValue))

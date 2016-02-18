@@ -1,59 +1,58 @@
 {
+    "DIM": [
+        {
+            "destination": "Coppet",
+            "ligne": "15",
+            "timestamp": "2016-02-14T21:41:14+0100"
+        },
+        {
+            "destination": "Coppet",
+            "ligne": "15",
+            "timestamp": "2016-02-14T22:41:14+0100"
+        },
+        {
+            "destination": "Coppet",
+            "ligne": "15",
+            "timestamp": "2016-02-14T23:41:14+0100"
+        },
+        {
+            "destination": "Coppet",
+            "ligne": "15",
+            "timestamp": "2016-02-15T00:38:14+0100"
+        },
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-14T21:39:14+0100"
+        },
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-14T22:39:14+0100"
+        },
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-14T23:39:14+0100"
+        },
+        {
+            "destination": "Geneve-cornavin",
+            "ligne": "15",
+            "timestamp": "2016-02-15T00:39:14+0100"
+        }
+    ],
     "LUN": [
         {
-            "destination": "Coppet",
-            "ligne": "15",
-            "timestamp": "2016-02-03T21:41:24+0100"
-        },
+            "destination": "Gland-Gare",
+            "ligne": "ND",
+            "timestamp": "2016-02-13T02:31:59+0100"
+        }
+    ],
+    "SAM": [
         {
-            "destination": "Coppet",
-            "ligne": "15",
-            "timestamp": "2016-02-03T22:11:24+0100"
-        },
-        {
-            "destination": "Coppet",
-            "ligne": "15",
-            "timestamp": "2016-02-03T22:41:24+0100"
-        },
-        {
-            "destination": "Coppet",
-            "ligne": "15",
-            "timestamp": "2016-02-03T23:41:24+0100"
-        },
-        {
-            "destination": "Coppet",
-            "ligne": "15",
-            "timestamp": "2016-02-04T00:38:24+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T21:09:24+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T21:39:24+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T22:09:24+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T22:39:24+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-03T23:39:24+0100"
-        },
-        {
-            "destination": "Geneve-cornavin",
-            "ligne": "15",
-            "timestamp": "2016-02-04T00:39:24+0100"
+            "destination": "Gland-Gare",
+            "ligne": "ND",
+            "timestamp": "2016-02-14T12:58:24+0100"
         }
     ]
 }

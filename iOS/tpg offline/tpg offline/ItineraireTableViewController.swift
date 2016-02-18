@@ -16,6 +16,7 @@ import SCLAlertView
 struct ItineraireEnCours {
     static var itineraire: Itineraire!
     static var json: JSON!
+	static var canFavorite: Bool!
 }
 
 class ItineraireTableViewController: UITableViewController {
@@ -24,40 +25,66 @@ class ItineraireTableViewController: UITableViewController {
         super.viewDidLoad()
         ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
         
-        // Do any additional setup after loading the view.
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print(ItineraireEnCours.itineraire.date)
+		
+		ItineraireEnCours.canFavorite = true
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        tableView.backgroundColor = AppValues.primaryColor
+        
         tableView.reloadData()
+		
+		ItineraireEnCours.itineraire.id = NSUUID()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+		if section == 0 {
+			return 1
+		}
         return row.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		if indexPath.section == 0 {
+			let cell = tableView.dequeueReusableCellWithIdentifier("itineraryCell", forIndexPath: indexPath)
+			cell.textLabel?.text = "Favoris"
+			cell.detailTextLabel?.text = ""
+			let image = FAKFontAwesome.starIconWithSize(20)
+			image.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+			cell.imageView?.image = image.imageWithSize(CGSize(width: 20, height: 20))
+			cell.textLabel?.textColor = AppValues.textColor
+			cell.detailTextLabel?.textColor = AppValues.textColor
+			cell.backgroundColor = AppValues.primaryColor
+			
+			let view = UIView()
+			view.backgroundColor = AppValues.secondaryColor
+			cell.selectedBackgroundView = view
+			return cell
+		}
         if (row[indexPath.row][0] as! String) == "itineraryCell" {
             let cell = tableView.dequeueReusableCellWithIdentifier("itineraryCell", forIndexPath: indexPath)
             cell.textLabel?.text = (row[indexPath.row][2] as! String)
             let image = row[indexPath.row][1] as! FAKIonIcons
-            image.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+            image.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.imageView?.image = image.imageWithSize(CGSize(width: 20, height: 20))
             
             let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
-            iconCheveron.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+            iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
             
             if (row[indexPath.row][2] as! String) == "Départ" {
@@ -82,53 +109,46 @@ class ItineraireTableViewController: UITableViewController {
             else {
                 cell.detailTextLabel?.text = ""
             }
+            cell.textLabel?.textColor = AppValues.textColor
+            cell.detailTextLabel?.textColor = AppValues.textColor
+            cell.backgroundColor = AppValues.primaryColor
+            
+            let view = UIView()
+            view.backgroundColor = AppValues.secondaryColor
+            cell.selectedBackgroundView = view
             return cell
         }
         else if (row[indexPath.row][0] as! String) == "switchCell" {
             let cell = tableView.dequeueReusableCellWithIdentifier("switchCell", forIndexPath: indexPath) as! SwitchTableViewCell
             cell.switchObject.leftTitle = row[indexPath.row][1] as! String
             cell.switchObject.rightTitle = row[indexPath.row][2] as! String
-            cell.switchObject.backgroundColor = UIColor.flatOrangeColor()
-            cell.switchObject.selectedBackgroundColor = UIColor.flatOrangeColorDark()
-            cell.switchObject.titleColor = UIColor.whiteColor()
-            cell.switchObject.selectedTitleColor = UIColor.whiteColor()
+            cell.switchObject.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
+            cell.switchObject.selectedBackgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+            cell.switchObject.titleColor = AppValues.textColor
+            cell.switchObject.selectedTitleColor = AppValues.textColor
             if ItineraireEnCours.itineraire.dateArrivee == true {
                 cell.switchObject.setSelectedIndex(1, animated: true)
             }
             cell.switchObject.addTarget(self, action: "dateArriveeChange:", forControlEvents: .ValueChanged)
+            cell.backgroundColor = AppValues.primaryColor
+            let view = UIView()
+            view.backgroundColor = AppValues.secondaryColor
+            cell.selectedBackgroundView = view
             return cell
-            
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("buttonCell", forIndexPath: indexPath) as! ButtonTableViewCell
             cell.button.setTitle((row[indexPath.row][1] as! String), forState: .Normal)
-            cell.button.backgroundColor = UIColor.flatGreenColorDark()
-            cell.button.tintColor = UIColor.whiteColor()
+            cell.button.backgroundColor = AppValues.secondaryColor
+            cell.button.tintColor = AppValues.textColor
             cell.button.addTarget(self, action: "rechercher:", forControlEvents: .TouchUpInside)
+            let view = UIView()
+            view.backgroundColor = AppValues.secondaryColor
+            cell.selectedBackgroundView = view
             return cell
         }
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
+   
     func rechercher(sender: AnyObject) {
         if ItineraireEnCours.itineraire.depart != nil && ItineraireEnCours.itineraire.arrivee != nil && ItineraireEnCours.itineraire.date != nil {
             performSegueWithIdentifier("rechercherItineraire", sender: self)
@@ -141,28 +161,16 @@ class ItineraireTableViewController: UITableViewController {
     func dateArriveeChange(sender: AnyObject) {
         ItineraireEnCours.itineraire.dateArrivee = !ItineraireEnCours.itineraire.dateArrivee
     }
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(row[indexPath.row][3] as! String, sender: self)
-    }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if indexPath.section == 0 {
+			performSegueWithIdentifier("showFavorisItineraire", sender: self)
+		}
+		else {
+			performSegueWithIdentifier(row[indexPath.row][3] as! String, sender: self)
+		}
+    }
+	
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voirArretsItineraire" {
             let destinationViewController: tpgArretSelectionTableViewController = (segue.destinationViewController) as! tpgArretSelectionTableViewController

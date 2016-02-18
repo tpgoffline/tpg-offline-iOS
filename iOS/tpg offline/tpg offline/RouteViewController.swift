@@ -12,7 +12,7 @@ import MapKit
 import SwiftyJSON
 import FontAwesomeKit
 import SCLAlertView
-import SwiftLocation
+import ChameleonFramework
 
 class RouteViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
@@ -32,37 +32,39 @@ class RouteViewController: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: (self.arret.location.coordinate), span: span)
         map.setRegion(region, animated: true)
-
-        // Do any additional setup after loading the view.
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        
     }
     
-    // Do any additional setup after loading the view.
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        view.backgroundColor = AppValues.primaryColor
+        label.textColor = AppValues.textColor
+        labelPieton.textColor = AppValues.textColor
     }
-    */
-    
 }
 
 extension RouteViewController : MKMapViewDelegate {
+    
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: directionsRoute.polyline)
         
         renderer.lineWidth = 4
-        renderer.strokeColor = UIColor.flatOrangeColor()
+        renderer.strokeColor = AppValues.primaryColor
         return renderer
     }
+    
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         let request = MKDirectionsRequest()
         request.source = MKMapItem.mapItemForCurrentLocation()

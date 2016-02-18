@@ -86,22 +86,24 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-tpg offline/BGTableViewRowActionWithImage.framework"
   install_framework "Pods-tpg offline/ChameleonFramework.framework"
+  install_framework "Pods-tpg offline/DGElasticPullToRefresh.framework"
   install_framework "Pods-tpg offline/DGRunkeeperSwitch.framework"
   install_framework "Pods-tpg offline/EFCircularSlider.framework"
   install_framework "Pods-tpg offline/FSCalendar.framework"
   install_framework "Pods-tpg offline/FontAwesomeKit.framework"
+  install_framework "Pods-tpg offline/PermissionScope.framework"
   install_framework "Pods-tpg offline/SCLAlertView.framework"
-  install_framework "Pods-tpg offline/SwiftLocation.framework"
   install_framework "Pods-tpg offline/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-tpg offline/BGTableViewRowActionWithImage.framework"
   install_framework "Pods-tpg offline/ChameleonFramework.framework"
+  install_framework "Pods-tpg offline/DGElasticPullToRefresh.framework"
   install_framework "Pods-tpg offline/DGRunkeeperSwitch.framework"
   install_framework "Pods-tpg offline/EFCircularSlider.framework"
   install_framework "Pods-tpg offline/FSCalendar.framework"
   install_framework "Pods-tpg offline/FontAwesomeKit.framework"
+  install_framework "Pods-tpg offline/PermissionScope.framework"
   install_framework "Pods-tpg offline/SCLAlertView.framework"
-  install_framework "Pods-tpg offline/SwiftLocation.framework"
   install_framework "Pods-tpg offline/SwiftyJSON.framework"
 fi

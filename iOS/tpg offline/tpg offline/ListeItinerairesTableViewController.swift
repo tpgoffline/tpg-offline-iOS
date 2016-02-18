@@ -14,6 +14,8 @@ import SCLAlertView
 
 class ListeItinerairesTableViewController: UITableViewController {
 
+	let defaults = NSUserDefaults.standardUserDefaults()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,27 +36,42 @@ class ListeItinerairesTableViewController: UITableViewController {
             })
         }
 
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        tableView.backgroundColor = AppValues.primaryColor
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        tableView.backgroundColor = AppValues.primaryColor
+		
+		var listeItems: [UIBarButtonItem] = []
+		if AppValues.favorisItineraires.indexForKey(ItineraireEnCours.itineraire.id.UUIDString) != nil {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		else {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		self.navigationItem.rightBarButtonItems = listeItems
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if ItineraireEnCours.json["connections"].count == 0 {
+			return 1
+		}
         return ItineraireEnCours.json["connections"].count
     }
 
@@ -62,91 +79,102 @@ class ListeItinerairesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! ListeItinerairesTableViewCell
 
+		if ItineraireEnCours.json["connections"].count == 0 {
+			cell.textLabel?.text = "Itinéraires non trouvées"
+			cell.detailTextLabel?.text = "Essayez de faire une nouvelle recherche avec différents paramètres."
+			cell.textLabel?.textColor = UIColor.whiteColor()
+			cell.detailTextLabel?.textColor = UIColor.whiteColor()
+			cell.backgroundColor = UIColor.flatRedColorDark()
+			let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
+			iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+			return cell
+		}
+		
         var icone = FAKIonIcons.logOutIconWithSize(21)
-        icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
 
         var attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
         attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][indexPath.row]["from"]["station"]["name"].stringValue))
         cell.labelDepart.attributedText = attributedString
+        cell.labelDepart.textColor = AppValues.textColor
 
         icone = FAKIonIcons.logInIconWithSize(21)
-        icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         
         attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
         attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][indexPath.row]["to"]["station"]["name"].stringValue))
         cell.labelArrivee.attributedText = attributedString
+        cell.labelArrivee.textColor = AppValues.textColor
         
         icone = FAKIonIcons.clockIconWithSize(21)
-        icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         
         attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
         attributedString.appendAttributedString(NSAttributedString(string: " " + String(ItineraireEnCours.json["connections"][indexPath.row]["duration"].stringValue.characters.dropFirst().dropFirst().dropFirst())))
         cell.labelDuree.attributedText = attributedString
+        cell.labelDuree.textColor = AppValues.textColor
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         var timestamp = ItineraireEnCours.json["connections"][indexPath.row]["from"]["departureTimestamp"].intValue
         cell.labelHeureDepart.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
+        cell.labelHeureDepart.textColor = AppValues.textColor
         
         timestamp = ItineraireEnCours.json["connections"][indexPath.row]["to"]["arrivalTimestamp"].intValue
         cell.labelHeureArrivee.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
+        cell.labelHeureArrivee.textColor = AppValues.textColor
+        
+        cell.backgroundColor = AppValues.primaryColor
+        
+        let view = UIView()
+        view.backgroundColor = AppValues.secondaryColor
+        cell.selectedBackgroundView = view
         
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voirItineraire" {
             let destinationViewController: VueItineraireTableViewController = (segue.destinationViewController) as! VueItineraireTableViewController
             destinationViewController.compteur = (tableView.indexPathForSelectedRow?.row)!
             var listeHoraires = [NSDate]()
             for (_, subJson) in ItineraireEnCours.json["connections"][(tableView.indexPathForSelectedRow?.row)!]["sections"] {
-                listeHoraires.append(NSDate(timeIntervalSince1970: Double(subJson["arrival"]["arrivalTimestamp"].intValue)))
+                listeHoraires.append(NSDate(timeIntervalSince1970: Double(subJson["departure"]["departureTimestamp"].intValue)))
             }
             destinationViewController.listeHeures = listeHoraires
             
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    
+	func toggleFavorite(sender: AnyObject!) {
+		if AppValues.favorisItineraires.isEmpty {
+			let itineraire = Itineraire(depart: ItineraireEnCours.itineraire.depart, arrivee: ItineraireEnCours.itineraire.arrivee)
+			itineraire.id = ItineraireEnCours.itineraire.id
+			let array: [String:Itineraire] = [ItineraireEnCours.itineraire.id.UUIDString : itineraire]
+			AppValues.favorisItineraires = array
+			
+			let encodedData = NSKeyedArchiver.archivedDataWithRootObject(array)
+			defaults.setObject(encodedData, forKey: "itinerairesFavoris")
+		}
+		else {
+			if AppValues.favorisItineraires.indexForKey(ItineraireEnCours.itineraire.id.UUIDString) != nil {
+				AppValues.favorisItineraires.removeValueForKey(ItineraireEnCours.itineraire!.id.UUIDString)
+			}
+			else {
+				AppValues.favorisItineraires[ItineraireEnCours.itineraire.id.UUIDString] = Itineraire(depart: ItineraireEnCours.itineraire.depart, arrivee: ItineraireEnCours.itineraire.arrivee)
+				AppValues.favorisItineraires[ItineraireEnCours.itineraire.id.UUIDString]!.id = ItineraireEnCours.itineraire.id
+			}
+			let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.arretsFavoris!)
+			defaults.setObject(encodedData, forKey: "arretsFavoris")
+		}
+		var listeItems: [UIBarButtonItem] = []
+		if AppValues.favorisItineraires.indexForKey(ItineraireEnCours.itineraire.id.UUIDString) != nil {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		else {
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		self.navigationItem.rightBarButtonItems = listeItems
+	}
 
 }

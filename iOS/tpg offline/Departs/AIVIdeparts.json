@@ -1,234 +1,588 @@
 {
+    "DIM": [
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T13:47:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T14:47:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T15:47:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T16:47:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T17:47:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T18:47:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T19:47:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T20:49:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T21:50:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T22:50:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T23:49:34+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-15T00:59:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T14:07:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T15:07:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T16:07:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T17:07:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T18:07:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T19:07:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T20:07:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T21:11:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T22:11:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T23:11:34+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-15T00:11:34+0100"
+        }
+    ],
     "LUN": [
         {
-            "destination": "Satigny-Gare",
-            "ligne": "S",
-            "timestamp": "2016-02-03T14:49:46+0100"
+            "destination": "Chancy-Douane",
+            "ligne": "NJ",
+            "timestamp": "2016-02-13T01:55:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T15:17:46+0100"
+            "timestamp": "2016-02-12T12:34:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T15:48:46+0100"
+            "timestamp": "2016-02-12T12:50:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T16:24:46+0100"
+            "timestamp": "2016-02-12T13:05:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T16:36:46+0100"
+            "timestamp": "2016-02-12T13:35:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T16:49:46+0100"
+            "timestamp": "2016-02-12T13:49:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:05:46+0100"
+            "timestamp": "2016-02-12T14:17:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:20:46+0100"
+            "timestamp": "2016-02-12T14:48:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:34:46+0100"
+            "timestamp": "2016-02-12T15:17:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:48:46+0100"
+            "timestamp": "2016-02-12T15:48:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:03:46+0100"
+            "timestamp": "2016-02-12T16:24:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:18:46+0100"
+            "timestamp": "2016-02-12T16:36:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:32:46+0100"
+            "timestamp": "2016-02-12T16:49:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:47:46+0100"
+            "timestamp": "2016-02-12T17:05:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T19:02:46+0100"
+            "timestamp": "2016-02-12T17:20:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T19:17:46+0100"
+            "timestamp": "2016-02-12T17:34:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T19:48:46+0100"
+            "timestamp": "2016-02-12T17:48:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T20:18:46+0100"
+            "timestamp": "2016-02-12T18:03:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T20:49:46+0100"
+            "timestamp": "2016-02-12T18:18:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T21:51:46+0100"
+            "timestamp": "2016-02-12T18:32:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T22:51:46+0100"
+            "timestamp": "2016-02-12T18:47:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-03T23:50:46+0100"
+            "timestamp": "2016-02-12T19:02:45+0100"
         },
         {
             "destination": "Satigny-Gare",
             "ligne": "S",
-            "timestamp": "2016-02-04T00:56:46+0100"
+            "timestamp": "2016-02-12T19:17:45+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-12T19:48:45+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-12T20:18:45+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-12T20:49:45+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-12T21:51:45+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-12T22:51:45+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-12T23:50:45+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T00:56:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T14:38:46+0100"
+            "timestamp": "2016-02-12T12:22:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T15:07:46+0100"
+            "timestamp": "2016-02-12T12:51:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T15:37:46+0100"
+            "timestamp": "2016-02-12T13:06:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T16:07:46+0100"
+            "timestamp": "2016-02-12T13:22:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T16:23:46+0100"
+            "timestamp": "2016-02-12T13:51:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T16:41:46+0100"
+            "timestamp": "2016-02-12T14:07:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T16:53:46+0100"
+            "timestamp": "2016-02-12T14:37:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:08:46+0100"
+            "timestamp": "2016-02-12T15:07:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:23:46+0100"
+            "timestamp": "2016-02-12T15:37:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:38:46+0100"
+            "timestamp": "2016-02-12T16:07:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T17:53:46+0100"
+            "timestamp": "2016-02-12T16:23:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:08:46+0100"
+            "timestamp": "2016-02-12T16:41:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:23:46+0100"
+            "timestamp": "2016-02-12T16:53:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:38:46+0100"
+            "timestamp": "2016-02-12T17:08:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T18:53:46+0100"
+            "timestamp": "2016-02-12T17:23:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T19:08:46+0100"
+            "timestamp": "2016-02-12T17:38:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T19:37:46+0100"
+            "timestamp": "2016-02-12T17:53:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T20:08:46+0100"
+            "timestamp": "2016-02-12T18:08:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T20:37:46+0100"
+            "timestamp": "2016-02-12T18:23:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T21:11:46+0100"
+            "timestamp": "2016-02-12T18:38:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T22:11:46+0100"
+            "timestamp": "2016-02-12T18:53:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-03T23:11:46+0100"
+            "timestamp": "2016-02-12T19:08:45+0100"
         },
         {
             "destination": "Sézenove",
             "ligne": "S",
-            "timestamp": "2016-02-04T00:11:46+0100"
+            "timestamp": "2016-02-12T19:37:45+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-12T20:08:45+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-12T20:37:45+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-12T21:11:45+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-12T22:11:45+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-12T23:11:45+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T00:11:45+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "Chancy-Douane",
+            "ligne": "NJ",
+            "timestamp": "2016-02-14T01:55:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T14:18:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T14:48:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T15:18:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T15:48:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T16:18:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T16:48:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T17:18:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T17:48:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T18:18:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T18:48:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T19:18:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T19:48:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T20:49:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T21:50:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T22:50:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-13T23:50:42+0100"
+        },
+        {
+            "destination": "Satigny-Gare",
+            "ligne": "S",
+            "timestamp": "2016-02-14T01:00:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T14:07:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T14:37:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T15:07:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T15:37:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T16:07:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T16:37:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T17:07:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T17:37:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T18:07:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T18:37:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T19:07:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T20:09:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T21:11:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T22:11:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-13T23:11:42+0100"
+        },
+        {
+            "destination": "Sézenove",
+            "ligne": "S",
+            "timestamp": "2016-02-14T00:11:42+0100"
         }
     ]
 }

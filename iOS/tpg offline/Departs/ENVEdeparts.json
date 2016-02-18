@@ -1,209 +1,603 @@
 {
+    "DIM": [
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T13:49:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T14:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T14:49:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T15:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T15:49:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T16:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T16:49:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T17:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T17:49:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T18:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T18:49:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T19:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T19:49:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T20:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T21:19:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T22:17:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T23:17:56+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-15T00:17:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T14:46:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T15:46:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T16:46:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T17:46:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T18:46:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T19:45:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T20:44:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T21:44:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T22:44:56+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-14T23:44:56+0100"
+        }
+    ],
     "LUN": [
         {
-            "destination": "CS La Bécassière",
-            "ligne": "V",
-            "timestamp": "2016-02-03T14:35:25+0100"
+            "destination": "Bus scolaire",
+            "ligne": "82",
+            "timestamp": "2016-02-12T13:10:08+0100"
+        },
+        {
+            "destination": "Bus scolaire",
+            "ligne": "82",
+            "timestamp": "2016-02-12T16:11:08+0100"
+        },
+        {
+            "destination": "Gland-Gare",
+            "ligne": "ND",
+            "timestamp": "2016-02-13T02:20:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T15:04:25+0100"
+            "timestamp": "2016-02-12T12:20:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T15:33:25+0100"
+            "timestamp": "2016-02-12T12:34:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T16:06:25+0100"
+            "timestamp": "2016-02-12T12:49:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T16:31:25+0100"
+            "timestamp": "2016-02-12T13:12:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T16:48:25+0100"
+            "timestamp": "2016-02-12T13:23:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:04:25+0100"
+            "timestamp": "2016-02-12T13:33:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:23:25+0100"
+            "timestamp": "2016-02-12T13:50:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:34:25+0100"
+            "timestamp": "2016-02-12T14:03:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:54:25+0100"
+            "timestamp": "2016-02-12T14:33:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:04:25+0100"
+            "timestamp": "2016-02-12T15:03:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:28:25+0100"
+            "timestamp": "2016-02-12T15:33:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:35:25+0100"
+            "timestamp": "2016-02-12T16:06:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:58:25+0100"
+            "timestamp": "2016-02-12T16:31:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T19:07:25+0100"
+            "timestamp": "2016-02-12T16:48:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T19:48:25+0100"
+            "timestamp": "2016-02-12T17:04:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T20:30:25+0100"
+            "timestamp": "2016-02-12T17:23:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T21:20:25+0100"
+            "timestamp": "2016-02-12T17:34:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T22:19:25+0100"
+            "timestamp": "2016-02-12T17:54:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-03T23:19:25+0100"
+            "timestamp": "2016-02-12T18:04:08+0100"
         },
         {
             "destination": "CS La Bécassière",
             "ligne": "V",
-            "timestamp": "2016-02-04T00:18:25+0100"
+            "timestamp": "2016-02-12T18:28:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T18:35:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T18:58:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T19:07:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T19:48:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T20:30:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T21:20:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T22:19:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-12T23:19:08+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T00:18:08+0100"
         },
         {
             "destination": "Colovrex",
             "ligne": "V",
-            "timestamp": "2016-02-03T16:13:25+0100"
+            "timestamp": "2016-02-12T12:15:08+0100"
         },
         {
             "destination": "Colovrex",
             "ligne": "V",
-            "timestamp": "2016-02-03T16:48:25+0100"
+            "timestamp": "2016-02-12T12:50:08+0100"
         },
         {
             "destination": "Colovrex",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:20:25+0100"
+            "timestamp": "2016-02-12T13:17:08+0100"
         },
         {
             "destination": "Colovrex",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:54:25+0100"
+            "timestamp": "2016-02-12T13:52:08+0100"
         },
         {
             "destination": "Colovrex",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:24:25+0100"
+            "timestamp": "2016-02-12T16:13:08+0100"
         },
         {
             "destination": "Colovrex",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:59:25+0100"
+            "timestamp": "2016-02-12T16:48:08+0100"
+        },
+        {
+            "destination": "Colovrex",
+            "ligne": "V",
+            "timestamp": "2016-02-12T17:20:08+0100"
+        },
+        {
+            "destination": "Colovrex",
+            "ligne": "V",
+            "timestamp": "2016-02-12T17:54:08+0100"
+        },
+        {
+            "destination": "Colovrex",
+            "ligne": "V",
+            "timestamp": "2016-02-12T18:24:08+0100"
+        },
+        {
+            "destination": "Colovrex",
+            "ligne": "V",
+            "timestamp": "2016-02-12T18:59:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T14:36:26+0100"
+            "timestamp": "2016-02-12T12:37:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T15:06:26+0100"
+            "timestamp": "2016-02-12T13:07:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T15:36:26+0100"
+            "timestamp": "2016-02-12T13:40:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T16:39:26+0100"
+            "timestamp": "2016-02-12T14:09:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:08:26+0100"
+            "timestamp": "2016-02-12T14:36:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T17:38:26+0100"
+            "timestamp": "2016-02-12T15:06:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:13:26+0100"
+            "timestamp": "2016-02-12T15:36:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T18:47:26+0100"
+            "timestamp": "2016-02-12T16:39:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T19:24:26+0100"
+            "timestamp": "2016-02-12T17:08:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T19:55:26+0100"
+            "timestamp": "2016-02-12T17:38:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T20:46:26+0100"
+            "timestamp": "2016-02-12T18:13:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T21:46:26+0100"
+            "timestamp": "2016-02-12T18:47:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T22:45:26+0100"
+            "timestamp": "2016-02-12T19:24:08+0100"
         },
         {
             "destination": "Gare Cornavin",
             "ligne": "V",
-            "timestamp": "2016-02-03T23:45:26+0100"
+            "timestamp": "2016-02-12T19:55:08+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-12T20:46:08+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-12T21:46:08+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-12T22:45:08+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-12T23:45:08+0100"
+        }
+    ],
+    "SAM": [
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T14:14:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T14:45:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T15:15:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T15:45:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T16:15:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T16:45:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T17:15:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T17:45:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T18:15:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T18:45:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T19:18:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T20:19:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T21:19:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T22:18:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-13T23:18:27+0100"
+        },
+        {
+            "destination": "CS La Bécassière",
+            "ligne": "V",
+            "timestamp": "2016-02-14T00:18:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T14:25:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T14:55:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T15:24:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T15:54:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T16:24:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T16:54:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T17:24:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T17:54:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T18:24:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T18:53:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T19:46:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T20:45:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T21:45:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T22:45:27+0100"
+        },
+        {
+            "destination": "Gare Cornavin",
+            "ligne": "V",
+            "timestamp": "2016-02-13T23:45:27+0100"
         }
     ]
 }
