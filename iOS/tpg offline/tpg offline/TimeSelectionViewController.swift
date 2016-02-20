@@ -2,7 +2,7 @@
 //  TimeSelectionViewController.swift
 //  tpg offline
 //
-//  Created by Alice on 16/01/2016.
+//  Created by Rémy Da Costa Faro on 16/01/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 
@@ -15,11 +15,12 @@ import EFCircularSlider
 class TimeSelectionViewController: UIViewController {
     var hourSlider: EFCircularSlider!
     var minuteSlider: EFCircularSlider!
+	var boutonValider: UIButton!
     @IBOutlet weak var labelHeure: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hourSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 130, y: (view.bounds.height / 2) - 87, width: 260, height: 260))
+        hourSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 130, y: (view.bounds.height / 2) - 117, width: 260, height: 260))
         hourSlider.innerMarkingLabels = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"])
         hourSlider.labelFont = UIFont.systemFontOfSize(14)
         hourSlider.lineWidth = 8
@@ -29,7 +30,7 @@ class TimeSelectionViewController: UIViewController {
         view.addSubview(hourSlider)
         hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
         
-        minuteSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 80, y: (view.bounds.height / 2) - 37, width: 160, height: 160))
+        minuteSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 80, y: (view.bounds.height / 2) - 67, width: 160, height: 160))
         minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"])
         minuteSlider.labelFont = UIFont.systemFontOfSize(12)
         minuteSlider.lineWidth = 8
@@ -61,6 +62,13 @@ class TimeSelectionViewController: UIViewController {
         labelHeure.textColor = AppValues.textColor
         minuteSlider.handleColor = minuteSlider.filledColor
         hourSlider.handleColor = hourSlider.filledColor
+		
+		boutonValider = UIButton(frame: CGRect(x: 0, y: UIScreen.mainScreen().bounds.height - (tabBarController?.tabBar.bounds.height)! - 50, width: UIScreen.mainScreen().bounds.width, height: 50))
+		boutonValider.backgroundColor = AppValues.secondaryColor
+		boutonValider.setTitle("Valider", forState: .Normal)
+		boutonValider.setTitleColor(AppValues.textColor, forState: .Normal)
+		boutonValider.addTarget(self, action: "boutonValiderPressed:", forControlEvents: .TouchUpInside)
+		view.addSubview(boutonValider)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,4 +119,8 @@ class TimeSelectionViewController: UIViewController {
         }
         ItineraireEnCours.itineraire.date!.hour = Int(hourSlider.currentValue)
     }
+	
+	func boutonValiderPressed(sender: AnyObject!) {
+		navigationController?.popViewControllerAnimated(true)
+	}
 }

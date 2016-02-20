@@ -2,7 +2,7 @@
 //  ThemesCollectionViewController.swift
 //  tpg offline
 //
-//  Created by Alice on 12/02/2016.
+//  Created by Rémy Da Costa Faro on 12/02/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 
@@ -32,9 +32,7 @@ class ThemesCollectionViewController: UICollectionViewController {
             return false
         })
         collectionView!.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.2)
-        
-        title = "Thèmes"
-    }
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

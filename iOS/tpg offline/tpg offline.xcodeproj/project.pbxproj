@@ -53,7 +53,7 @@
 		00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* PlansTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
-		ADB747A01C72FEA300519167 /* FavorisItineraireCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB7479F1C72FEA300519167 /* FavorisItineraireCollectionViewController.swift */; };
+		AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */; };
 		ADB747A21C73003700519167 /* FavorisItineraireCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB747A11C73003700519167 /* FavorisItineraireCollectionViewCell.swift */; };
 		ADF8B3741C592532003CE1EA /* Departs in Resources */ = {isa = PBXBuildFile; fileRef = ADF8B3731C592532003CE1EA /* Departs */; };
 /* End PBXBuildFile section */
@@ -112,7 +112,7 @@
 		43D3491A7E1B71A24C25DCFF /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 		9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADB7479F1C72FEA300519167 /* FavorisItineraireCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisItineraireCollectionViewController.swift; sourceTree = "<group>"; };
+		AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisTableViewCell.swift; sourceTree = "<group>"; };
 		ADB747A11C73003700519167 /* FavorisItineraireCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisItineraireCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF8B3731C592532003CE1EA /* Departs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Departs; sourceTree = "<group>"; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +208,7 @@
 				007D924C1C4A98A80036BEE6 /* ButtonTableViewCell.swift */,
 				00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */,
 				00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */,
+				AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -222,7 +223,6 @@
 				00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */,
 				00CA21D01C4EA43200CCB994 /* ListeItinerairesTableViewController.swift */,
 				007D924E1C4AA27E0036BEE6 /* VueItineraireTableViewController.swift */,
-				ADB7479F1C72FEA300519167 /* FavorisItineraireCollectionViewController.swift */,
 			);
 			name = "Itinéraires";
 			sourceTree = "<group>";
@@ -462,11 +462,11 @@
 				00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */,
 				002B47F71C01FA87000BF3E8 /* DepartsTableViewCell.swift in Sources */,
 				004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */,
+				AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */,
 				00500AF41C1B396F00341F7A /* Arret.swift in Sources */,
 				007D924B1C4A989F0036BEE6 /* SwitchTableViewCell.swift in Sources */,
 				002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */,
 				00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */,
-				ADB747A01C72FEA300519167 /* FavorisItineraireCollectionViewController.swift in Sources */,
 				00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */,
 				004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */,
 				005DF8111C0DF74E00377031 /* ArretsImageTableViewCell.swift in Sources */,

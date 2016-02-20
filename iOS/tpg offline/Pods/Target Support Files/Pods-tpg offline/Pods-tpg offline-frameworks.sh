@@ -91,9 +91,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-tpg offline/EFCircularSlider.framework"
   install_framework "Pods-tpg offline/FSCalendar.framework"
   install_framework "Pods-tpg offline/FontAwesomeKit.framework"
+  install_framework "Pods-tpg offline/INTULocationManager.framework"
+  install_framework "Pods-tpg offline/MRProgress.framework"
   install_framework "Pods-tpg offline/PermissionScope.framework"
   install_framework "Pods-tpg offline/SCLAlertView.framework"
   install_framework "Pods-tpg offline/SwiftyJSON.framework"
+  install_framework "Pods-tpg offline/SwiftyStoreKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-tpg offline/BGTableViewRowActionWithImage.framework"
@@ -103,7 +106,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-tpg offline/EFCircularSlider.framework"
   install_framework "Pods-tpg offline/FSCalendar.framework"
   install_framework "Pods-tpg offline/FontAwesomeKit.framework"
+  install_framework "Pods-tpg offline/INTULocationManager.framework"
+  install_framework "Pods-tpg offline/MRProgress.framework"
   install_framework "Pods-tpg offline/PermissionScope.framework"
   install_framework "Pods-tpg offline/SCLAlertView.framework"
   install_framework "Pods-tpg offline/SwiftyJSON.framework"
+  install_framework "Pods-tpg offline/SwiftyStoreKit.framework"
 fi

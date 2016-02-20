@@ -2,7 +2,7 @@
 //  Departs.swift
 //  tpg offline
 //
-//  Created by Alice on 22/12/2015.
+//  Created by Rémy Da Costa Faro on 22/12/2015.
 //  Copyright © 2015 dacostafaro. All rights reserved.
 //
 
@@ -36,7 +36,7 @@ class Departs {
 		if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
 			self.tempsRestant = String(tempsTimestamp.minute - now.minute)
 		}
-		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour + 1 == now.hour && tempsTimestamp.minute < now.hour {
+		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour == now.hour + 1 && tempsTimestamp.minute < now.minute {
 			self.tempsRestant = String((60 - now.minute) + tempsTimestamp.minute)
 		}
 		else if tempsTimestamp.hour > now.hour {

@@ -13,4 +13,7 @@ target 'tpg offline' do
 	pod 'DGRunkeeperSwitch', git: "https://github.com/gontovnik/DGRunkeeperSwitch.git"
 	pod 'PermissionScope', git:"https://github.com/nickoneill/PermissionScope.git"
 	pod 'DGElasticPullToRefresh', git:"https://github.com/gontovnik/DGElasticPullToRefresh.git"
+	pod 'MRProgress', git:"https://github.com/mrackwitz/MRProgress.git"
+	pod 'INTULocationManager', git:"https://github.com/intuit/LocationManager.git"
+	pod 'SwiftyStoreKit', git: "https://github.com/bizz84/SwiftyStoreKit.git"
 end

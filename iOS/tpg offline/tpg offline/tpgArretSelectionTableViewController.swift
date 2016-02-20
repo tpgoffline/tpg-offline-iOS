@@ -2,7 +2,7 @@
 //  tpgArretSelectionTableViewController.swift
 //  tpg offline
 //
-//  Created by Alice on 14/01/2016.
+//  Created by Rémy Da Costa Faro on 14/01/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 
@@ -52,7 +52,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
             }
             return false
         })
-        
+		
 		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
 		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
 		navigationController?.navigationBar.tintColor = AppValues.textColor
@@ -62,19 +62,19 @@ class tpgArretSelectionTableViewController: UITableViewController {
 		tableView.tableHeaderView = self.searchController.searchBar
 		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 		
-        locationManager.delegate = self
-        var accurency = kCLLocationAccuracyHundredMeters
-        if self.defaults.integerForKey("locationAccurency") == 1 {
-            accurency = kCLLocationAccuracyNearestTenMeters
-        }
-        else if self.defaults.integerForKey("locationAccurency") == 2 {
-            accurency = kCLLocationAccuracyBest
-        }
-        locationManager.desiredAccuracy = accurency
-        
-        requestLocation()
+		locationManager.delegate = self
+		var accurency = kCLLocationAccuracyHundredMeters
+		if self.defaults.integerForKey("locationAccurency") == 1 {
+			accurency = kCLLocationAccuracyNearestTenMeters
+		}
+		else if self.defaults.integerForKey("locationAccurency") == 2 {
+			accurency = kCLLocationAccuracyBest
+		}
+		locationManager.desiredAccuracy = accurency
+		
+		requestLocation()
     }
-    
+	
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 		
@@ -88,8 +88,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
         tableView.backgroundColor = AppValues.primaryColor
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
-        tableView.tableHeaderView = self.searchController.searchBar
-		
+
         tableView.reloadData()
     }
 	

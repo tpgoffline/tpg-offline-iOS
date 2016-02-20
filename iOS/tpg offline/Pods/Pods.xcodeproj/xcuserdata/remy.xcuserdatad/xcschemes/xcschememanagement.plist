@@ -6,66 +6,92 @@
 	<dict>
 		<key>BGTableViewRowActionWithImage.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
 		<key>DGElasticPullToRefresh.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
 		<key>DGRunkeeperSwitch.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
 		<key>EFCircularSlider.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
 		<key>FSCalendar.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
 		<key>FontAwesomeKit.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>MRProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>PermissionScope.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
 		<key>Pods-tpg offline.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
 		<key>SwiftLocation-SwiftLocation.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>SwiftLocation.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
@@ -88,6 +114,21 @@
 			<true/>
 		</dict>
 		<key>190D63557CBC9A591589F57F4E4140A4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1BFB01D2451A3E9641C0C5F7FF84E90C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>225F3611C5DCF7418B4109B61D1FDED4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>310583A73B30F36A2E183B4D844ACB85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,6 +173,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8CDBB73837EFEB524C4E957B6DCF894A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8F17DD5BDDF65F3AB77F350BE14632BE</key>
 		<dict>
 			<key>primary</key>
@@ -147,7 +193,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9CAAB2A1855182D992E2945796B03B4D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9E01962C39D8FED02CA6D70F7373F1CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9E79DE93AE246B58947867D6B4737867</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5A09AAE1FEE424BC33CA0B6382C0C0D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0FE1CF55DD4F78BEE237C1243C98367</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -178,6 +244,11 @@
 			<true/>
 		</dict>
 		<key>EFA7D779582D4041AE49A28E95F34733</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE55372367B331223C85459AF6D7800B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

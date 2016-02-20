@@ -28,9 +28,39 @@ PODS:
   - FontAwesomeKit/Zocial (2.2.1):
     - FontAwesomeKit/Core
   - FSCalendar (1.8.1)
+  - INTULocationManager (4.1.1)
+  - MRProgress (0.8.3):
+    - MRProgress/ActivityIndicator (= 0.8.3)
+    - MRProgress/Blur (= 0.8.3)
+    - MRProgress/Circular (= 0.8.3)
+    - MRProgress/Icons (= 0.8.3)
+    - MRProgress/NavigationBarProgress (= 0.8.3)
+    - MRProgress/Overlay (= 0.8.3)
+  - MRProgress/ActivityIndicator (0.8.3):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.3):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.3):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.3)
+  - MRProgress/Icons (0.8.3)
+  - MRProgress/NavigationBarProgress (0.8.3):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.3):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.3)
+  - MRProgress/Stopable (0.8.3):
+    - MRProgress/Helper
   - PermissionScope (1.0.2)
   - SCLAlertView (0.5.1)
   - SwiftyJSON (2.3.2)
+  - SwiftyStoreKit (0.2.3)
 
 DEPENDENCIES:
   - BGTableViewRowActionWithImage (from `https://github.com/benguild/BGTableViewRowActionWithImage.git`)
@@ -40,9 +70,12 @@ DEPENDENCIES:
   - EFCircularSlider (from `https://github.com/RemyDCF/EFCircularSlider.git`)
   - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
   - FSCalendar (from `https://github.com/WenchaoIOS/FSCalendar.git`)
+  - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
+  - MRProgress (from `https://github.com/mrackwitz/MRProgress.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/Pevika/SCLAlertView-Swift.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
 
 EXTERNAL SOURCES:
   BGTableViewRowActionWithImage:
@@ -59,12 +92,18 @@ EXTERNAL SOURCES:
     :git: https://github.com/PrideChung/FontAwesomeKit.git
   FSCalendar:
     :git: https://github.com/WenchaoIOS/FSCalendar.git
+  INTULocationManager:
+    :git: https://github.com/intuit/LocationManager.git
+  MRProgress:
+    :git: https://github.com/mrackwitz/MRProgress.git
   PermissionScope:
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
     :git: https://github.com/Pevika/SCLAlertView-Swift.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+  SwiftyStoreKit:
+    :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 CHECKOUT OPTIONS:
   BGTableViewRowActionWithImage:
@@ -88,6 +127,12 @@ CHECKOUT OPTIONS:
   FSCalendar:
     :commit: 6ee457847894e5f3a9ec7bcf65993c4e8febfaea
     :git: https://github.com/WenchaoIOS/FSCalendar.git
+  INTULocationManager:
+    :commit: 46b0d0110dfbb68021948b9b70dbf2d02ac0c1a7
+    :git: https://github.com/intuit/LocationManager.git
+  MRProgress:
+    :commit: 973569c82738e4720f4226ad9afbcc723efa4a90
+    :git: https://github.com/mrackwitz/MRProgress.git
   PermissionScope:
     :commit: e5e762b3c86d5ce5a3b6a499e0801ca097b0169c
     :git: https://github.com/nickoneill/PermissionScope.git
@@ -97,6 +142,9 @@ CHECKOUT OPTIONS:
   SwiftyJSON:
     :commit: 42bdb102d2624b143c07850ebdc1537d5b6579b6
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+  SwiftyStoreKit:
+    :commit: 844702d4b77a548ac4c18bc342391b51c24aa094
+    :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 SPEC CHECKSUMS:
   BGTableViewRowActionWithImage: 687380a0a13f72af2c93c7e41f054a4c03e78188
@@ -106,10 +154,13 @@ SPEC CHECKSUMS:
   EFCircularSlider: 8c9e901891fb813e89c4158508eefa8e35903454
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   FSCalendar: 8ffbacc9186241f2d33a04053dd8c68ca2f38771
+  INTULocationManager: 83c7373048d583cda57e25eefb9bb8a3675acf16
+  MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyStoreKit: b61ef56bddfb49aade6dffd59a22dcff305ed7ec
 
-PODFILE CHECKSUM: 5ae4b22d634bd7de720d04dcd77cee257fd50520
+PODFILE CHECKSUM: 0b0353e8c6a858fe81bf2d6b50878d4c21b63eeb
 
 COCOAPODS: 1.0.0.beta.3

@@ -2,7 +2,7 @@
 //  DepartsArretTableViewController.swift
 //  tpg offline
 //
-//  Created by Alice on 16/11/2015.
+//  Created by Rémy Da Costa Faro on 16/11/2015.
 //  Copyright © 2015 dacostafaro. All rights reserved.
 //
 
@@ -13,6 +13,7 @@ import BGTableViewRowActionWithImage
 import SCLAlertView
 import ChameleonFramework
 import DGElasticPullToRefresh
+import MRProgress
 
 class DepartsArretTableViewController: UITableViewController {
     var arret: Arret!
@@ -46,8 +47,6 @@ class DepartsArretTableViewController: UITableViewController {
         }
         
         title = arret?.nomComplet
-        
-        refreshDeparts()
 		
 		var barButtonsItems: [UIBarButtonItem] = []
 		
@@ -58,7 +57,7 @@ class DepartsArretTableViewController: UITableViewController {
 			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
 		if !offline {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.mapSignsIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
+			barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
 		}
 		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
 
@@ -84,6 +83,8 @@ class DepartsArretTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
         self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+		
+		refresh(self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -100,13 +101,10 @@ class DepartsArretTableViewController: UITableViewController {
         let time = dateFormatter.dateFromString(timestamp)
         let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
         let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: NSDate())
-		if tempsTimestamp.hour == 17 {
-			print("a")
-		}
         if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
             return String(tempsTimestamp.minute - now.minute)
         }
-		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour + 1 == now.hour && tempsTimestamp.minute < now.hour {
+		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour == now.hour + 1 && tempsTimestamp.minute < now.minute {
 			return String((60 - now.minute) + tempsTimestamp.minute)
 		}
         else if tempsTimestamp.hour > now.hour {
@@ -220,8 +218,19 @@ class DepartsArretTableViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
-        refreshDeparts()
-        tableView.reloadData()
+		CATransaction.begin()
+		
+		let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Chargement", mode: .Indeterminate, animated: true)
+		progressBar.tintColor = AppValues.secondaryColor
+		progressBar.titleLabel.textColor = AppValues.secondaryColor
+		
+		CATransaction.setCompletionBlock({
+			self.refreshDeparts()
+			self.tableView.reloadData()
+			progressBar.dismiss(true)
+		})
+		
+		CATransaction.commit()
     }
     func refreshDeparts() {
         listeDeparts = []

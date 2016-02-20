@@ -2,7 +2,7 @@
 //  ListeItinerairesTableViewCell.swift
 //  tpg offline
 //
-//  Created by Alice on 19/01/2016.
+//  Created by Rémy Da Costa Faro on 19/01/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 
@@ -17,7 +17,6 @@ class ListeItinerairesTableViewCell: UITableViewCell {
     @IBOutlet weak var labelHeureArrivee: UILabel!
     
     @IBOutlet weak var labelDuree: UILabel!
-    @IBOutlet weak var labelTempsDuree: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

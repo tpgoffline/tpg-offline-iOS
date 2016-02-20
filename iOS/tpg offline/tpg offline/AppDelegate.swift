@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  tpg offline
 //
-//  Created by Alice on 22/11/2015.
+//  Created by Rémy Da Costa Faro on 22/11/2015.
 //  Copyright © 2015 dacostafaro. All rights reserved.
 //
 
@@ -43,9 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		var decoded = defaults.objectForKey("itinerairesFavoris")
 		if decoded == nil {
 			decoded = []
+			let encodedData = NSKeyedArchiver.archivedDataWithRootObject([])
+			defaults.setObject(encodedData, forKey: "itinerairesFavoris")
 		}
 		else {
-			AppValues.favorisItineraires = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as! [String:Itineraire]
+			AppValues.favorisItineraires = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [[Arret]]
+			if AppValues.favorisItineraires == nil {
+				AppValues.favorisItineraires = []
+				let encodedData = NSKeyedArchiver.archivedDataWithRootObject([])
+				defaults.setObject(encodedData, forKey: "itinerairesFavoris")
+			}
 		}
 		
         

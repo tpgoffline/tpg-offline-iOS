@@ -2,7 +2,7 @@
 //  Arret.swift
 //  tpg offline
 //
-//  Created by Alice on 11/12/2015.
+//  Created by Rémy Da Costa Faro on 11/12/2015.
 //  Copyright © 2015 dacostafaro. All rights reserved.
 //
 
