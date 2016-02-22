@@ -79,7 +79,7 @@ class ListeItinerairesTableViewController: UITableViewController {
 		
 		let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Chargement", mode: .Indeterminate, animated: true)
 		progressBar.tintColor = AppValues.secondaryColor
-		progressBar.titleLabel.textColor = AppValues.secondaryColor
+		progressBar.titleLabel!.textColor = AppValues.secondaryColor
 		
 		CATransaction.setCompletionBlock({
 			var url = "http://transport.opendata.ch/v1/connections?"

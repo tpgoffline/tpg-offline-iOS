@@ -225,7 +225,7 @@ class DepartsArretTableViewController: UITableViewController {
 		
 		let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Chargement", mode: .Indeterminate, animated: true)
 		progressBar.tintColor = AppValues.secondaryColor
-		progressBar.titleLabel.textColor = AppValues.secondaryColor
+		progressBar.titleLabel!.textColor = AppValues.secondaryColor
 		
 		CATransaction.setCompletionBlock({
 			self.refreshDeparts()
@@ -540,7 +540,7 @@ extension DepartsArretTableViewController {
                 else if (listeDeparts[indexPath.row].tempsRestant == "&gt;1h") {
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-                    let time = NSDateFormatter.dateFromString(self.listeDeparts[indexPath.row].timestamp)
+                    let time = dateFormatter.dateFromString(self.listeDeparts[indexPath.row].timestamp)
                     labelAccesory.text = NSDateFormatter.localizedStringFromDate(time!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
                 }
                 else if (listeDeparts[indexPath.row].tempsRestant == "0") {
