@@ -108,7 +108,7 @@ class ListeItinerairesTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! ListeItinerairesTableViewCell
 		
 		if pasReseau {
-			cell.textLabel?.text = "Pas de réseau"
+			cell.textLabel?.text = "Pas de réseau".localized()
 			cell.textLabel?.textColor = UIColor.whiteColor()
 			cell.detailTextLabel?.textColor = UIColor.whiteColor()
 			cell.backgroundColor = UIColor.flatRedColorDark()
@@ -119,7 +119,7 @@ class ListeItinerairesTableViewController: UITableViewController {
 		}
 			
 		else if ItineraireEnCours.json["connections"].count == 0 {
-			cell.textLabel?.text = "Itinéraires non trouvées"
+			cell.textLabel?.text = "Itinéraires non trouvées".localized()
 			cell.textLabel?.textColor = UIColor.whiteColor()
 			cell.detailTextLabel?.textColor = UIColor.whiteColor()
 			cell.backgroundColor = UIColor.flatRedColorDark()
@@ -156,14 +156,12 @@ class ListeItinerairesTableViewController: UITableViewController {
 			cell.labelDuree.attributedText = attributedString
 			cell.labelDuree.textColor = AppValues.textColor
 			
-			let dateFormatter = NSDateFormatter()
-			dateFormatter.dateFormat = "HH:mm"
 			var timestamp = ItineraireEnCours.json["connections"][indexPath.row]["from"]["departureTimestamp"].intValue
-			cell.labelHeureDepart.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
+			cell.labelHeureDepart.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
 			cell.labelHeureDepart.textColor = AppValues.textColor
 			
 			timestamp = ItineraireEnCours.json["connections"][indexPath.row]["to"]["arrivalTimestamp"].intValue
-			cell.labelHeureArrivee.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
+			cell.labelHeureArrivee.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
 			cell.labelHeureArrivee.textColor = AppValues.textColor
 			
 			cell.backgroundColor = AppValues.primaryColor

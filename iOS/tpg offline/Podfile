@@ -16,4 +16,5 @@ target 'tpg offline' do
 	pod 'MRProgress', git:"https://github.com/mrackwitz/MRProgress.git"
 	pod 'INTULocationManager', git:"https://github.com/intuit/LocationManager.git"
 	pod 'SwiftyStoreKit', git: "https://github.com/bizz84/SwiftyStoreKit.git"
+	pod 'Localize-Swift', git: "https://github.com/marmelroy/Localize-Swift.git"
 end

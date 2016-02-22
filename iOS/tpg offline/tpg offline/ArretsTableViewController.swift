@@ -16,6 +16,7 @@ import ChameleonFramework
 import PermissionScope
 import DGElasticPullToRefresh
 import INTULocationManager
+import Localize_Swift
 
 class ArretsTableViewController: UITableViewController {
 	var arretsLocalisation = [Arret]()
@@ -45,11 +46,13 @@ class ArretsTableViewController: UITableViewController {
 		searchController.searchResultsUpdater = self
 		searchController.dimsBackgroundDuringPresentation = false
 		definesPresentationContext = true
-		searchController.searchBar.placeholder = "Rechercher parmi les arrets"
+		searchController.searchBar.placeholder = "Rechercher parmi les arrets".localized()
 		
 		arretsKeys = [String](AppValues.arrets.keys)
 		arretsKeys.sortInPlace({ (string1, string2) -> Bool in
-			if string1.lowercaseString < string2.lowercaseString {
+			let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
+			let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
+			if stringA.lowercaseString < stringB.lowercaseString {
 				return true
 			}
 			return false
@@ -72,7 +75,7 @@ class ArretsTableViewController: UITableViewController {
 		switch PermissionScope().statusNotifications() {
 		case .Unknown:
 			// ask
-			pscope.addPermission(NotificationsPermission(), message: "tpg offline a besoin des notifications pour vous envoyer des rappels.")
+			pscope.addPermission(NotificationsPermission(), message: "tpg offline a besoin des notifications pour vous envoyer des rappels.".localized())
 		case .Unauthorized, .Disabled:
 			// bummer
 			return
@@ -83,7 +86,7 @@ class ArretsTableViewController: UITableViewController {
 		switch PermissionScope().statusLocationInUse() {
 		case .Unknown:
 			// ask
-			pscope.addPermission(LocationWhileInUsePermission(), message: "tpg offline a de savoir où vous vous trouvez pour indiquer les arrets les plus proches.")
+			pscope.addPermission(LocationWhileInUsePermission(), message: "tpg offline a de savoir où vous vous trouvez pour indiquer les arrets les plus proches.".localized())
 		case .Unauthorized, .Disabled:
 			// bummer
 			return
@@ -97,8 +100,6 @@ class ArretsTableViewController: UITableViewController {
 			}, cancelled: { (results) -> Void in
 				print("thing was cancelled")
 		})
-		
-		
 		
 		requestLocation()
 	}
@@ -287,12 +288,12 @@ class ArretsTableViewController: UITableViewController {
 			return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
 		}
 		filtredResults.sortInPlace { (arret1, arret2) -> Bool in
-			if arret1.nomComplet.lowercaseString < arret2.nomComplet.lowercaseString {
+			let stringA = String(arret1.titre + arret1.sousTitre)
+			let stringB = String(arret2.titre + arret2.sousTitre)
+			if stringA.lowercaseString < stringB.lowercaseString {
 				return true
 			}
-			else {
-				return false
-			}
+			return false
 		}
 		
 		tableView.reloadData()

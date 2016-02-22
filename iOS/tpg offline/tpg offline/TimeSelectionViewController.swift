@@ -20,7 +20,7 @@ class TimeSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hourSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 130, y: (view.bounds.height / 2) - 117, width: 260, height: 260))
+        hourSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 130, y: (view.bounds.height / 2) - 127, width: 260, height: 260))
         hourSlider.innerMarkingLabels = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"])
         hourSlider.labelFont = UIFont.systemFontOfSize(14)
         hourSlider.lineWidth = 8
@@ -30,7 +30,7 @@ class TimeSelectionViewController: UIViewController {
         view.addSubview(hourSlider)
         hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
         
-        minuteSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 80, y: (view.bounds.height / 2) - 67, width: 160, height: 160))
+        minuteSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 80, y: (view.bounds.height / 2) - 77, width: 160, height: 160))
         minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"])
         minuteSlider.labelFont = UIFont.systemFontOfSize(12)
         minuteSlider.lineWidth = 8
@@ -44,12 +44,7 @@ class TimeSelectionViewController: UIViewController {
         if ItineraireEnCours.itineraire.date != nil {
             hourSlider.currentValue = Float(ItineraireEnCours.itineraire.date!.hour)
             minuteSlider.currentValue = Float(ItineraireEnCours.itineraire.date!.minute)
-            if minuteSlider.currentValue < 10 {
-                labelHeure.text = String(Int(hourSlider.currentValue)) + ":0" + String(Int(minuteSlider.currentValue))
-            }
-            else {
-                labelHeure.text = String(Int(hourSlider.currentValue)) + ":" + String(Int(minuteSlider.currentValue))
-            }
+			labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         }
         self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
         minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
@@ -94,12 +89,7 @@ class TimeSelectionViewController: UIViewController {
     }
    
     func minuteChanged(sender: AnyObject!) {
-        if minuteSlider.currentValue < 10 {
-            labelHeure.text = String(Int(hourSlider.currentValue)) + ":0" + String(Int(minuteSlider.currentValue))
-        }
-        else {
-            labelHeure.text = String(Int(hourSlider.currentValue)) + ":" + String(Int(minuteSlider.currentValue))
-        }
+        labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         if ItineraireEnCours.itineraire.date == nil {
             ItineraireEnCours.itineraire.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate())
             ItineraireEnCours.itineraire.date!.hour = 0
@@ -107,12 +97,7 @@ class TimeSelectionViewController: UIViewController {
         ItineraireEnCours.itineraire.date!.minute = Int(minuteSlider.currentValue)
     }
     func hourChanged(sender: AnyObject!) {
-        if minuteSlider.currentValue < 10 {
-            labelHeure.text = String(Int(hourSlider.currentValue)) + ":0" + String(Int(minuteSlider.currentValue))
-        }
-        else {
-            labelHeure.text = String(Int(hourSlider.currentValue)) + ":" + String(Int(minuteSlider.currentValue))
-        }
+        labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         if ItineraireEnCours.itineraire.date == nil {
             ItineraireEnCours.itineraire.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate())
             ItineraireEnCours.itineraire.date!.minute = 0

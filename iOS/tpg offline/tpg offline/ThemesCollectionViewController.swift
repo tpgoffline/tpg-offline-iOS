@@ -14,9 +14,9 @@ private let reuseIdentifier = "ThemesCell"
 
 class ThemesCollectionViewController: UICollectionViewController {
     let themes = [
-        "Default" : [UIColor.flatOrangeColor(), UIColor.flatOrangeColorDark(), UIColor.whiteColor()],
-        "Inverse" : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatOrangeColorDark()],
-        "Nuit" : [UIColor.flatNavyBlueColor(), UIColor.flatNavyBlueColorDark(), UIColor.flatOrangeColor()]
+        "Défaut".localized() : [UIColor.flatOrangeColor(), UIColor.flatOrangeColorDark(), UIColor.whiteColor()],
+        "Inverse".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatOrangeColorDark()],
+        "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatNavyBlueColorDark(), UIColor.flatOrangeColor()]
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()

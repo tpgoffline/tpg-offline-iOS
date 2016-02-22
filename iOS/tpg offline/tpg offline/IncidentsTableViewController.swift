@@ -150,22 +150,22 @@ class IncidentsTableViewController: UITableViewController {
             let iconeSmile = FAKFontAwesome.smileOIconWithSize(20)
             iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor())
             cell.imageView?.image = iconeSmile.imageWithSize(CGSize(width: 25, height: 25))
-            cell.textLabel?.text = "Aucun incident"
+            cell.textLabel?.text = "Aucun incident".localized()
             cell.textLabel?.textColor = UIColor.blackColor()
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "HH"
             let heure = Int(dateFormatter.stringFromDate(NSDate()))
             if heure < 6 {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !"
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized()
             }
             else if heure < 18 {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne journée !"
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne journée !".localized()
             }
             else if heure < 22 {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne soirée !"
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne soirée !".localized()
             }
             else {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !"
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized()
             }
             cell.detailTextLabel?.textColor = UIColor.blackColor()
         }
@@ -174,9 +174,9 @@ class IncidentsTableViewController: UITableViewController {
             let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
             iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
             cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
-            cell.textLabel?.text = "Pas de réseau !"
+            cell.textLabel?.text = "Pas de réseau !".localized()
             cell.textLabel?.textColor = UIColor.whiteColor()
-            cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau."
+            cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.".localized()
             cell.detailTextLabel?.textColor = UIColor.whiteColor()
         }
         else {

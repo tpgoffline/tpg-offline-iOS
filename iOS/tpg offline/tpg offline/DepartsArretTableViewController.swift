@@ -48,21 +48,6 @@ class DepartsArretTableViewController: UITableViewController {
         
         title = arret?.nomComplet
 		
-		var barButtonsItems: [UIBarButtonItem] = []
-		
-        if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
-		}
-		else {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
-		}
-		if !offline {
-			barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
-		}
-		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
-
-		self.navigationItem.rightBarButtonItems = barButtonsItems
-		
         self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
         tableView.backgroundColor = AppValues.primaryColor
     }
@@ -85,6 +70,21 @@ class DepartsArretTableViewController: UITableViewController {
         self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 		
 		refresh(self)
+		
+		var barButtonsItems: [UIBarButtonItem] = []
+		
+		if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		else {
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
+		if !offline {
+			barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
+		}
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
+		
+		self.navigationItem.rightBarButtonItems = barButtonsItems
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -156,8 +156,11 @@ class DepartsArretTableViewController: UITableViewController {
 		if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
 			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
+		else {
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+		}
 		if !offline {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.mapSignsIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
+			barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
 		}
 		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
 		
@@ -184,10 +187,10 @@ class DepartsArretTableViewController: UITableViewController {
         let reminder = UILocalNotification()
         reminder.fireDate = date
         if before == 0 {
-            reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va immédiatement"
+            reminder.alertBody = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir immédiatement".localized()
         }
         else {
-            reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va partir dans " + String(before) + " minutes"
+            reminder.alertBody = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes".localized()
         }
         reminder.soundName = "Sound.aif"
         
@@ -197,10 +200,10 @@ class DepartsArretTableViewController: UITableViewController {
         
         let okView = SCLAlertView()
         if before == 0 {
-            okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.", closeButtonTitle: "OK", duration: 10)
+            okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK", duration: 10)
         }
         else {
-            okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
+            okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.".localized(), closeButtonTitle: "OK", duration: 10)
         }
     }
     
@@ -264,70 +267,78 @@ class DepartsArretTableViewController: UITableViewController {
             }
             offline = false
         }
-        else if let dataDeparts = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(arret.stopCode + "departs", ofType: "json", inDirectory: "Departs")!) {
-            let departs = JSON(data: dataDeparts)
-            let day = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate())
-            switch day.weekday {
-            case 7:
-                for (_, subJson) in departs["SAM"] {
-                    listeDeparts.append(Departs(
-                        ligne: subJson["ligne"].string!,
-                        direction: subJson["destination"].string!,
-                        couleur: listeColor[subJson["ligne"].string!]!,
-                        couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                        code: nil,
-                        tempsRestant: "0",
-                        timestamp: subJson["timestamp"].string!
-                        ))
-                    listeDeparts.last?.calculerTempsRestant()
-                }
-                break
-            case 1:
-                for (_, subJson) in departs["DIM"] {
-                    listeDeparts.append(Departs(
-                        ligne: subJson["ligne"].string!,
-                        direction: subJson["destination"].string!,
-                        couleur: listeColor[subJson["ligne"].string!]!,
-                        couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                        code: nil,
-                        tempsRestant: "0",
-                        timestamp: subJson["timestamp"].string!
-                        ))
-                    listeDeparts.last?.calculerTempsRestant()
-                }
-                break
-            default:
-                for (_, subJson) in departs["LUN"] {
-                    listeDeparts.append(Departs(
-                        ligne: subJson["ligne"].string!,
-                        direction: subJson["destination"].string!,
-                        couleur: listeColor[subJson["ligne"].string!]!,
-                        couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                        code: nil,
-                        tempsRestant: "0",
-                        timestamp: subJson["timestamp"].string!
-                        ))
-                    listeDeparts.last?.calculerTempsRestant()
-                }
-            }
-            
-            listeDeparts = listeDeparts.filter({ (depart) -> Bool in
-                if calculerTempsRestant(depart.timestamp) != "-1" {
-                    return true
-                }
-                return false
-            })
-            
-            listeDeparts.sortInPlace({ (depart1, depart2) -> Bool in
-                if Int(depart1.tempsRestant) < Int(depart2.tempsRestant) {
-                    return true
-                }
-                return false
-            })
-            
-            offline = true
-        }
-        if listeDeparts.count == 0 {
+		else {
+			let day = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate())
+			switch day.weekday {
+			case 7:
+				if let dataDeparts = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(arret.stopCode + "departsSAM", ofType: "json", inDirectory: "Departs")!) {
+					let departs = JSON(data: dataDeparts)
+					for (_, subJson) in departs {
+						listeDeparts.append(Departs(
+							ligne: subJson["ligne"].string!,
+							direction: subJson["destination"].string!,
+							couleur: listeColor[subJson["ligne"].string!]!,
+							couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+							code: nil,
+							tempsRestant: "0",
+							timestamp: subJson["timestamp"].string!
+							))
+						listeDeparts.last?.calculerTempsRestant()
+					}
+				}
+				break
+			case 1:
+				if let dataDeparts = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(arret.stopCode + "departsDIM", ofType: "json", inDirectory: "Departs")!) {
+					let departs = JSON(data: dataDeparts)
+					for (_, subJson) in departs {
+						listeDeparts.append(Departs(
+							ligne: subJson["ligne"].string!,
+							direction: subJson["destination"].string!,
+							couleur: listeColor[subJson["ligne"].string!]!,
+							couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+							code: nil,
+							tempsRestant: "0",
+							timestamp: subJson["timestamp"].string!
+							))
+						listeDeparts.last?.calculerTempsRestant()
+					}
+				}
+				break
+			default:
+				if let dataDeparts = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(arret.stopCode + "departsLUN", ofType: "json", inDirectory: "Departs")!) {
+					let departs = JSON(data: dataDeparts)
+					for (_, subJson) in departs {
+						listeDeparts.append(Departs(
+							ligne: subJson["ligne"].string!,
+							direction: subJson["destination"].string!,
+							couleur: listeColor[subJson["ligne"].string!]!,
+							couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+							code: nil,
+							tempsRestant: "0",
+							timestamp: subJson["timestamp"].string!
+							))
+						listeDeparts.last?.calculerTempsRestant()
+					}
+				}
+			}
+			
+			listeDeparts = listeDeparts.filter({ (depart) -> Bool in
+				if calculerTempsRestant(depart.timestamp) != "-1" {
+					return true
+				}
+				return false
+			})
+			
+			listeDeparts.sortInPlace({ (depart1, depart2) -> Bool in
+				if Int(depart1.tempsRestant) < Int(depart2.tempsRestant) {
+					return true
+				}
+				return false
+			})
+			
+			offline = true
+		}
+		if listeDeparts.count == 0 {
             serviceTermine = true
         }
         else {
@@ -383,33 +394,33 @@ extension DepartsArretTableViewController {
             icone.imageWithSize(CGSize(width: 20, height: 20))
             let alertView = SCLAlertView()
             if self.listeDeparts[indexPath.row].tempsRestant == "0" {
-                alertView.showWarning("Le bus arrive", subTitle: "Dépêchez vous, vous allez le rater !", closeButtonTitle: "OK", duration: 10)
+                alertView.showWarning("Le bus arrive".localized(), subTitle: "Dépêchez vous, vous allez le rater !".localized(), closeButtonTitle: "OK".localized(), duration: 10)
             }
             else {
-                alertView.addButton("A l'heure du départ", action: { () -> Void in
+                alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
                     self.scheduleNotification(self.listeDeparts[indexPath.row].timestamp, before: 0, ligne: self.listeDeparts[indexPath.row].ligne, direction: self.listeDeparts[indexPath.row].direction)
                     
                 })
                 if Int(self.listeDeparts[indexPath.row].tempsRestant)! > 5 {
-                    alertView.addButton("5 min avant le départ", action: { () -> Void in
+                    alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
                         self.scheduleNotification(self.listeDeparts[indexPath.row].timestamp, before: 5, ligne: self.listeDeparts[indexPath.row].ligne, direction: self.listeDeparts[indexPath.row].direction)
                     })
                 }
                 if Int(self.listeDeparts[indexPath.row].tempsRestant)! > 10 {
-                    alertView.addButton("10 min avant le départ", action: { () -> Void in
+                    alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
                         self.scheduleNotification(self.listeDeparts[indexPath.row].timestamp, before: 10, ligne: self.listeDeparts[indexPath.row].ligne, direction: self.listeDeparts[indexPath.row].direction)
                     })
                 }
-                alertView.addButton("Autre", action: { () -> Void in
+                alertView.addButton("Autre".localized(), action: { () -> Void in
                     alertView.hideView()
                     let customValueAlert = SCLAlertView()
-                    let txt = customValueAlert.addTextField("Nombre de minutes")
+                    let txt = customValueAlert.addTextField("Nombre de minutes".localized())
                     txt.keyboardType = .NumberPad
                     txt.becomeFirstResponder()
-                    customValueAlert.addButton("Rappeler", action: { () -> Void in
+                    customValueAlert.addButton("Rappeler".localized(), action: { () -> Void in
                         if Int(self.listeDeparts[indexPath.row].tempsRestant)! < Int(txt.text!)! {
                             customValueAlert.hideView()
-                            SCLAlertView().showError("Il y a un problème", subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.", closeButtonTitle: "OK", duration: 10)
+                            SCLAlertView().showError("Il y a un problème".localized(), subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
                             
                         }
                         else {
@@ -417,9 +428,9 @@ extension DepartsArretTableViewController {
                             customValueAlert.hideView()
                         }
                     })
-                    customValueAlert.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié(e) ?", closeButtonTitle: "Annuler", circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
+                    customValueAlert.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
                 })
-                alertView.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié(e) ?", closeButtonTitle: "Annuler", circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
+                alertView.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
                 tableView.setEditing(false, animated: true)
             }
         }
@@ -451,9 +462,9 @@ extension DepartsArretTableViewController {
             
             cell.backgroundColor = UIColor.flatYellowColor()
             cell.textLabel?.textColor = UIColor.blackColor()
-            cell.textLabel?.text = "Mode offline"
+            cell.textLabel?.text = "Mode offline".localized()
             cell.detailTextLabel?.textColor = UIColor.blackColor()
-            cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification"
+            cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification".localized()
             cell.imageView?.image = FAKFontAwesome.globeIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
@@ -463,9 +474,9 @@ extension DepartsArretTableViewController {
             
             cell.backgroundColor = UIColor.flatYellowColor()
             cell.textLabel?.textColor = UIColor.blackColor()
-            cell.textLabel?.text = "Service terminé"
+            cell.textLabel?.text = "Service terminé".localized()
             cell.detailTextLabel?.textColor = UIColor.blackColor()
-            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret."
+            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret.".localized()
             cell.imageView?.image = FAKFontAwesome.busIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
@@ -477,7 +488,7 @@ extension DepartsArretTableViewController {
             cell.textLabel?.textColor = UIColor.blackColor()
             cell.textLabel?.text = "Service terminé"
             cell.detailTextLabel?.textColor = UIColor.blackColor()
-            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret."
+            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret.".localized()
             cell.imageView?.image = FAKFontAwesome.busIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
@@ -508,13 +519,8 @@ extension DepartsArretTableViewController {
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     let time = dateFormatter.dateFromString(self.listeDeparts[indexPath.row].timestamp)
-                    let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: time!)
-                    if now.minute < 10 {
-                        labelAccesory.text = String(now.hour) + ":0" + String(now.minute)
-                    }
-                    else {
-                        labelAccesory.text = String(now.hour) + ":" + String(now.minute)
-                    }
+					
+                    labelAccesory.text = NSDateFormatter.localizedStringFromDate(time!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
                 }
                 else if (listeDeparts[indexPath.row].tempsRestant == "0") {
                     let iconeBus = FAKFontAwesome.busIconWithSize(20)
@@ -534,15 +540,8 @@ extension DepartsArretTableViewController {
                 else if (listeDeparts[indexPath.row].tempsRestant == "&gt;1h") {
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-                    let time = dateFormatter.dateFromString(self.listeDeparts[indexPath.row].timestamp)
-                    let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: time!)
-                    
-                    if now.minute < 10 {
-                        labelAccesory.text = String(now.hour) + ":0" + String(now.minute)
-                    }
-                    else {
-                        labelAccesory.text = String(now.hour) + ":" + String(now.minute)
-                    }
+                    let time = NSDateFormatter.dateFromString(self.listeDeparts[indexPath.row].timestamp)
+                    labelAccesory.text = NSDateFormatter.localizedStringFromDate(time!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
                 }
                 else if (listeDeparts[indexPath.row].tempsRestant == "0") {
                     let iconeBus = FAKFontAwesome.busIconWithSize(20)

@@ -148,8 +148,8 @@ class VueItineraireTableViewController: UITableViewController {
 			let icone = FAKIonIcons.androidWalkIconWithSize(42)
 			icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
 			cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 42, height: 42))
-			cell.ligneLabel.text = "Marche"
-			cell.directionLabel.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)"
+			cell.ligneLabel.text = "Marche".localized()
+			cell.directionLabel.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)".localized()
 			cell.ligneLabel.textColor = AppValues.textColor
 			cell.directionLabel.textColor = AppValues.textColor
 		}
@@ -160,13 +160,11 @@ class VueItineraireTableViewController: UITableViewController {
 		attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["station"]["name"].stringValue))
 		cell.departLabel.attributedText = attributedString
 		
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "HH:mm"
 		var timestamp = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["departureTimestamp"].intValue
-		cell.heureDepartLabel.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
+		cell.heureDepartLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
 		
 		timestamp = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["arrival"]["arrivalTimestamp"].intValue
-		cell.heureArriveeLabel.text = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)))
+		cell.heureArriveeLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
 		
 		icone = FAKIonIcons.logInIconWithSize(21)
 		icone.addAttribute(NSForegroundColorAttributeName, value: couleurTexte)
@@ -177,27 +175,7 @@ class VueItineraireTableViewController: UITableViewController {
 		
 		return cell
 	}
-	func rappel(sender: AnyObject!) {
-		let alerte = SCLAlertView()
-		alerte.addButton("5 min avant le premier départ") {
-			self.scheduleNotification(self.listeHeures[0], ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][0]["journey"]["to"].stringValue)
-			alerte.hideView()
-			SCLAlertView().showSuccess("Vous serez notifié", subTitle: "Vous recevrez une notification 5 minutes avant le premier départ", closeButtonTitle: "OK", duration: 10)
-		}
-		alerte.addButton("5 min avant tout les départs") {
-			for (_, subJson) in ItineraireEnCours.json["connections"][self.compteur]["sections"] {
-				if subJson["walk"].type == .Null {
-					self.scheduleNotification(NSDate(timeIntervalSince1970: Double(subJson["departure"]["departureTimestamp"].intValue)), ligne: subJson["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: subJson["journey"]["to"].stringValue)
-				}
-			}
-			alerte.hideView()
-			SCLAlertView().showSuccess("Vous serez notifié", subTitle: "Vous recevrez une notification 5 minutes avant tout les départs", closeButtonTitle: "OK", duration: 10)
-		}
-		let icone = FAKIonIcons.iosClockIconWithSize(20)
-		icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-		
-		alerte.showNotice("Rappel", subTitle: "Combien de temps avant le départ du premier / de tout des départ(s) voulez vous être rappelé ?", closeButtonTitle: "Annuler", circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
-	}
+	
 	func toggleFavorite(sender: AnyObject!) {
 		if AppValues.favorisItineraires.isEmpty {
 			AppValues.favorisItineraires = [[ItineraireEnCours.itineraire.depart!, ItineraireEnCours.itineraire.arrivee!]]
@@ -251,7 +229,7 @@ class VueItineraireTableViewController: UITableViewController {
 		let reminder = UILocalNotification()
 		reminder.fireDate = date
 		
-		reminder.alertBody = "Le tpg de la ligne " + ligne + " en direction de " + direction + " va partir dans \(before) minutes"
+		reminder.alertBody = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes".localized()
 		reminder.soundName = "Sound.aif"
 		
 		UIApplication.sharedApplication().scheduleLocalNotification(reminder)
@@ -260,49 +238,49 @@ class VueItineraireTableViewController: UITableViewController {
 		
 		let okView = SCLAlertView()
 		if before == 0 {
-			okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.", closeButtonTitle: "OK", duration: 10)
+			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
 		}
 		else {
-			okView.showSuccess("Vous serez notifié", subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.", closeButtonTitle: "OK", duration: 10)
+			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
 		}
 	}
 	
 	override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
 		let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["departureTimestamp"].intValue)).timeIntervalSinceDate(NSDate())
 		print(NSDate(timeIntervalSinceNow: time))
-		let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler") { (action, indexPath) in
+		let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler".localized()) { (action, indexPath) in
 			let icone = FAKIonIcons.iosClockIconWithSize(20)
 			icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
 			icone.imageWithSize(CGSize(width: 20, height: 20))
 			let alertView = SCLAlertView()
 			if time < 60 {
-				alertView.showWarning("Le bus arrive", subTitle: "Dépêchez vous, vous allez le rater !", closeButtonTitle: "OK", duration: 10)
+				alertView.showWarning("Le bus arrive".localized(), subTitle: "Dépêchez vous, vous allez le rater !".localized(), closeButtonTitle: "OK".localized(), duration: 10)
 			}
 			else {
-				alertView.addButton("A l'heure du départ", action: { () -> Void in
+				alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
 					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
 					
 				})
 				if time > 60 * 5 {
-					alertView.addButton("5 min avant le départ", action: { () -> Void in
+					alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
 						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
 					})
 				}
 				if time > 60 * 10 {
-					alertView.addButton("10 min avant le départ", action: { () -> Void in
+					alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
 						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
 					})
 				}
 				alertView.addButton("Autre", action: { () -> Void in
 					alertView.hideView()
 					let customValueAlert = SCLAlertView()
-					let txt = customValueAlert.addTextField("Nombre de minutes")
+					let txt = customValueAlert.addTextField("Nombre de minutes".localized())
 					txt.keyboardType = .NumberPad
 					txt.becomeFirstResponder()
-					customValueAlert.addButton("Rappeler", action: { () -> Void in
+					customValueAlert.addButton("Rappeler".localized(), action: { () -> Void in
 						if Int(time) < Int(txt.text!)! * 60 {
 							customValueAlert.hideView()
-							SCLAlertView().showError("Il y a un problème", subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.", closeButtonTitle: "OK", duration: 10)
+							SCLAlertView().showError("Il y a un problème".localized(), subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized(), closeButtonTitle: "OK", duration: 10)
 							
 						}
 						else {
@@ -310,9 +288,9 @@ class VueItineraireTableViewController: UITableViewController {
 							customValueAlert.hideView()
 						}
 					})
-					customValueAlert.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié(e) ?", closeButtonTitle: "Annuler", circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
+					customValueAlert.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
 				})
-				alertView.showNotice("Rappeler", subTitle: "Quand voulez-vous être notifié(e) ?", closeButtonTitle: "Annuler", circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
+				alertView.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
 				tableView.setEditing(false, animated: true)
 			}
 

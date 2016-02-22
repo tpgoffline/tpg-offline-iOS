@@ -14,10 +14,10 @@ import FontAwesomeKit
 class ParametresTableViewController: UITableViewController {
 
     let listeRows = [
-        [FAKFontAwesome.barsIconWithSize(20), "Choix du menu par défault", "showChoixDuMenuParDefault"],
-        [FAKFontAwesome.locationArrowIconWithSize(20), "Localisation", "showLocationMenu"],
-        [FAKFontAwesome.infoCircleIconWithSize(20), "Crédits", "showCredits"],
-        [FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes", "showThemesMenu"]
+        [FAKFontAwesome.barsIconWithSize(20), "Choix du menu par défaut".localized(), "showChoixDuMenuParDefault"],
+        [FAKFontAwesome.locationArrowIconWithSize(20), "Localisation".localized(), "showLocationMenu"],
+        [FAKFontAwesome.infoCircleIconWithSize(20), "Crédits".localized(), "showCredits"],
+        [FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes".localized(), "showThemesMenu"]
     ]
     
     override func viewDidLoad() {

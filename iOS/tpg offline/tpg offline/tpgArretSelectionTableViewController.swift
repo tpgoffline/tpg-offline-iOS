@@ -43,14 +43,16 @@ class tpgArretSelectionTableViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        searchController.searchBar.placeholder = "Rechercher parmi les arrets"
+        searchController.searchBar.placeholder = "Rechercher parmi les arrets".localized()
         
         arretsKeys = [String](AppValues.arrets.keys)
         arretsKeys.sortInPlace({ (string1, string2) -> Bool in
-            if string1.lowercaseString < string2.lowercaseString {
-                return true
-            }
-            return false
+			let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
+			let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
+			if stringA.lowercaseString < stringB.lowercaseString {
+				return true
+			}
+			return false
         })
 		
 		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
@@ -228,12 +230,12 @@ class tpgArretSelectionTableViewController: UITableViewController {
             return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
-            if arret1.nomComplet.lowercaseString < arret2.nomComplet.lowercaseString {
-                return true
-            }
-            else {
-                return false
-            }
+			let stringA = String(arret1.titre + arret1.sousTitre)
+			let stringB = String(arret2.titre + arret2.sousTitre)
+			if stringA.lowercaseString < stringB.lowercaseString {
+				return true
+			}
+			return false
         }
         
         tableView.reloadData()

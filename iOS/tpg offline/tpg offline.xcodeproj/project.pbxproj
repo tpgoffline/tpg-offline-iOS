@@ -54,7 +54,7 @@
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
 		AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */; };
-		ADB747A21C73003700519167 /* FavorisItineraireCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB747A11C73003700519167 /* FavorisItineraireCollectionViewCell.swift */; };
+		ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
 		ADF8B3741C592532003CE1EA /* Departs in Resources */ = {isa = PBXBuildFile; fileRef = ADF8B3731C592532003CE1EA /* Departs */; };
 /* End PBXBuildFile section */
 
@@ -113,7 +113,13 @@
 		7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 		9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisTableViewCell.swift; sourceTree = "<group>"; };
-		ADB747A11C73003700519167 /* FavorisItineraireCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisItineraireCollectionViewCell.swift; sourceTree = "<group>"; };
+		ADB2D6D31C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		ADB2D6D41C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		ADB2D6D51C7A1BEF0023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		ADB2D6D61C7A1BEF0023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADB2D6DC1C7A222F0023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADB2D6DD1C7A22300023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADF8B3731C592532003CE1EA /* Departs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Departs; sourceTree = "<group>"; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 				002B47E71C01FA6F000BF3E8 /* Assets.xcassets */,
 				002B47E91C01FA6F000BF3E8 /* LaunchScreen.storyboard */,
 				002B47EC1C01FA6F000BF3E8 /* Info.plist */,
+				ADB2D6D91C7A1BFD0023718F /* Localizable.strings */,
 			);
 			path = "tpg offline";
 			sourceTree = "<group>";
@@ -196,7 +203,6 @@
 				002B47F41C01FA87000BF3E8 /* DepartsTableViewCell.swift */,
 				005DF8101C0DF74E00377031 /* ArretsImageTableViewCell.swift */,
 				004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */,
-				ADB747A11C73003700519167 /* FavorisItineraireCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -353,8 +359,9 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				fr,
+				en,
 			);
 			mainGroup = 002B47D41C01FA6F000BF3E8;
 			productRefGroup = 002B47DE1C01FA6F000BF3E8 /* Products */;
@@ -376,6 +383,7 @@
 				003EBAC91C0B46E20024043B /* FontAwesome.otf in Resources */,
 				002B47EB1C01FA6F000BF3E8 /* LaunchScreen.storyboard in Resources */,
 				002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */,
+				ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
 				ADF8B3741C592532003CE1EA /* Departs in Resources */,
 				0019B2141C0F38BD00DD1A4D /* arrets.json in Resources */,
@@ -446,7 +454,6 @@
 				000ECABB1C468D4000E4FC92 /* LocationSettingsCellKey.swift in Sources */,
 				004E8BD61C6E23840055006B /* ThemesCollectionViewController.swift in Sources */,
 				002E5C781C1337DD0008623D /* NSUserDefaultsExtension.swift in Sources */,
-				ADB747A21C73003700519167 /* FavorisItineraireCollectionViewCell.swift in Sources */,
 				00D7C3D21C4BDCAE00D6864C /* ItineraireTableViewCell.swift in Sources */,
 				007266281C259191009EFEB5 /* PlanViewController.swift in Sources */,
 				002149151C5BDDC5009C0264 /* CreditsTableViewController.swift in Sources */,
@@ -485,6 +492,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				002B47E51C01FA6F000BF3E8 /* Base */,
+				ADB2D6D31C7A1BC30023718F /* fr */,
+				ADB2D6D51C7A1BEF0023718F /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -493,8 +502,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				002B47EA1C01FA6F000BF3E8 /* Base */,
+				ADB2D6D41C7A1BC30023718F /* fr */,
+				ADB2D6D61C7A1BEF0023718F /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		ADB2D6D91C7A1BFD0023718F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADB2D6D81C7A1BFD0023718F /* Base */,
+				ADB2D6DC1C7A222F0023718F /* fr */,
+				ADB2D6DD1C7A22300023718F /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -47,7 +47,7 @@ class PlansTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("plansCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = listePlans[indexPath.row]
+        cell.textLabel?.text = listePlans[indexPath.row].localized()
         cell.textLabel?.textColor = AppValues.textColor
         cell.backgroundColor = AppValues.primaryColor
 

@@ -12,17 +12,17 @@ import ChameleonFramework
 class CreditsTableViewController: UITableViewController {
 
     let listeCredits = [
-        ["Open data des Transports Publics Genevois", "Données fournis par la société des Transports Publics Genevois"],
-        ["Open data de Transport API", "Données fournis par Opendata.ch"],
-        ["SwiftyJSON", "Project maintenu sur GitHub par SwiftyJSON - Project en licence MIT"],
-        ["Chamelon", "Project maintenu sur GitHub par ViccAlexander - Project en licence MIT"],
-        ["FontAwesomeKit", "Project maintenu sur GitHub par PrideChung - Project en licence MIT"],
-        ["BGTableViewRowActionWithImage", "Project maintenu sur GitHub par benguild - Project en licence MIT"],
-        ["SCLAlertView-Swift", "Project maintenu sur GitHub par vikmeup - Project en licence MIT"],
-        ["FSCalendar", "Project maintenu sur GitHub par WenchaoIOS - Project en licence MIT"],
-        ["DGRunkeeperSwitch", "Project maintenu sur GitHub par gontovnik - Project en licence MIT"],
-		["EFCircularSlider", "Project maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Project en licence MIT"],
-		["PermissionScope", "Project maintenu sur GitHub par nickoneill - Project en licence MIT"]
+        ["Open data des Transports Publics Genevois".localized(), "Données fournis par la société des Transports Publics Genevois".localized()],
+        ["Open data de Transport API".localized(), "Données fournis par Opendata.ch".localized()],
+        ["SwiftyJSON", "Project maintenu sur GitHub par SwiftyJSON - Project en licence MIT".localized()],
+        ["Chamelon", "Project maintenu sur GitHub par ViccAlexander - Project en licence MIT".localized()],
+        ["FontAwesomeKit", "Project maintenu sur GitHub par PrideChung - Project en licence MIT".localized()],
+        ["BGTableViewRowActionWithImage", "Project maintenu sur GitHub par benguild - Project en licence MIT".localized()],
+        ["SCLAlertView-Swift", "Project maintenu sur GitHub par vikmeup - Project en licence MIT".localized()],
+        ["FSCalendar", "Project maintenu sur GitHub par WenchaoIOS - Project en licence MIT".localized()],
+        ["DGRunkeeperSwitch", "Project maintenu sur GitHub par gontovnik - Project en licence MIT".localized()],
+		["EFCircularSlider", "Project maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Project en licence MIT".localized()],
+		["PermissionScope", "Project maintenu sur GitHub par nickoneill - Project en licence MIT".localized()]
     ]
     override func viewDidLoad() {
         super.viewDidLoad()

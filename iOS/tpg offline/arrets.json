@@ -318,11 +318,11 @@
     {
       "locationY" : 6.120809,
       "stopCode" : "ATCH",
-      "subTitleName" : "",
+      "subTitleName" : "Technopôle",
       "idTransportAPI" : "008587380",
-      "titleName" : "Technopôle",
+      "titleName" : "Archamps",
       "locationX" : 46.139193,
-      "stopName" : "Technopôle"
+      "stopName" : "Archamps Technopôle"
     },
     {
       "locationY" : 6.004254,
@@ -525,9 +525,9 @@
     {
       "locationY" : 6.139147,
       "stopCode" : "BCOL",
-      "subTitleName" : "",
+      "subTitleName" : "Bas",
       "idTransportAPI" : "008595323",
-      "titleName" : "Bas Collonges",
+      "titleName" : "Collonges",
       "locationX" : 46.142043,
       "stopName" : "Bas Collonges"
     },
@@ -1398,9 +1398,9 @@
     {
       "locationY" : 6.103513,
       "stopCode" : "CHAB",
-      "subTitleName" : "",
+      "subTitleName" : "Chable",
       "idTransportAPI" : "008595555",
-      "titleName" : "Beaumont Chable",
+      "titleName" : "Beaumont",
       "locationX" : 46.098535,
       "stopName" : "Beaumont Chable"
     },
@@ -1587,9 +1587,9 @@
     {
       "locationY" : 6.065246,
       "stopCode" : "CING",
-      "subTitleName" : "",
+      "subTitleName" : "Camping",
       "idTransportAPI" : "008593093",
-      "titleName" : "Camping Bois de Bay",
+      "titleName" : "Bois de Bay",
       "locationX" : 46.200185,
       "stopName" : "Camping Bois de Bay"
     },
@@ -2424,9 +2424,9 @@
     {
       "locationY" : 6.168227,
       "stopCode" : "ENVE",
-      "subTitleName" : "",
+      "subTitleName" : "Entrée",
       "idTransportAPI" : "008593186",
-      "titleName" : "Entrée Versoix",
+      "titleName" : "Versoix",
       "locationX" : 46.274643,
       "stopName" : "Entrée Versoix"
     },
@@ -2847,9 +2847,9 @@
     {
       "locationY" : 6.153961,
       "stopCode" : "GEBE",
-      "subTitleName" : "",
+      "subTitleName" : "Bellevue",
       "idTransportAPI" : "008501021",
-      "titleName" : "Genthod Bellevue",
+      "titleName" : "Genthod",
       "locationX" : 46.256727,
       "stopName" : "Genthod Bellevue"
     },
@@ -3018,9 +3018,9 @@
     {
       "locationY" : 6.081714,
       "stopCode" : "GRVI",
-      "subTitleName" : "",
+      "subTitleName" : "Gravière",
       "idTransportAPI" : "008594961",
-      "titleName" : "Meyrin Gravière",
+      "titleName" : "Meyrin",
       "locationX" : 46.236439,
       "stopName" : "Meyrin Gravière"
     },
@@ -3963,9 +3963,9 @@
     {
       "locationY" : 6.226459,
       "stopCode" : "MEPR",
-      "subTitleName" : "",
+      "subTitleName" : "Pralys",
       "idTransportAPI" : "008593004",
-      "titleName" : "Meinier Pralys",
+      "titleName" : "Meinier",
       "locationX" : 46.243639,
       "stopName" : "Meinier Pralys"
     },
@@ -4368,9 +4368,9 @@
     {
       "locationY" : 6.231601,
       "stopCode" : "MTOU",
-      "subTitleName" : "",
+      "subTitleName" : "Tour",
       "idTransportAPI" : "008587077",
-      "titleName" : "Meinier Tour",
+      "titleName" : "Meinier",
       "locationX" : 46.245734,
       "stopName" : "Meinier Tour"
     },
@@ -5403,9 +5403,9 @@
     {
       "locationY" : 6.232077,
       "stopCode" : "PUMA",
-      "subTitleName" : "",
+      "subTitleName" : "Mairie",
       "idTransportAPI" : "008587086",
-      "titleName" : "Puplinge Mairie",
+      "titleName" : "Puplinge",
       "locationX" : 46.210918,
       "stopName" : "Puplinge Mairie"
     },
@@ -6240,9 +6240,9 @@
     {
       "locationY" : 6.179697,
       "stopCode" : "SVEY",
-      "subTitleName" : "",
+      "subTitleName" : "Stand",
       "idTransportAPI" : "008593213",
-      "titleName" : "Stand de Veyrier",
+      "titleName" : "Veyrier",
       "locationX" : 46.177056,
       "stopName" : "Stand de Veyrier"
     },
@@ -6789,9 +6789,9 @@
     {
       "locationY" : 6.09572,
       "stopCode" : "VIPA",
-      "subTitleName" : "",
+      "subTitleName" : "Vitam",
       "idTransportAPI" : "008594960",
-      "titleName" : "Neydens Vitam",
+      "titleName" : "Neydens",
       "locationX" : 46.122743,
       "stopName" : "Neydens Vitam"
     },
@@ -6870,9 +6870,9 @@
     {
       "locationY" : 6.177971,
       "stopCode" : "VRAS",
-      "subTitleName" : "",
+      "subTitleName" : "Rasses",
       "idTransportAPI" : "008593211",
-      "titleName" : "Veyrier Rasses",
+      "titleName" : "Veyrier",
       "locationX" : 46.166323,
       "stopName" : "Veyrier Rasses"
     },
@@ -7203,7 +7203,7 @@
     {
       "locationY" : 6.154248,
       "stopCode" : "STLO",
-      "subTitleName" : "Saint Loup",
+      "subTitleName" : "",
       "idTransportAPI" : "008595666",
       "titleName" : "Saint Loup",
       "locationX" : 46.282625,

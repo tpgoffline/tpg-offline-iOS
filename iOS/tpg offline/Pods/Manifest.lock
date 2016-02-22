@@ -29,6 +29,7 @@ PODS:
     - FontAwesomeKit/Core
   - FSCalendar (1.8.1)
   - INTULocationManager (4.1.1)
+  - Localize-Swift (1.1)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
   - FSCalendar (from `https://github.com/WenchaoIOS/FSCalendar.git`)
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
+  - Localize-Swift (from `https://github.com/marmelroy/Localize-Swift.git`)
   - MRProgress (from `https://github.com/mrackwitz/MRProgress.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/Pevika/SCLAlertView-Swift.git`)
@@ -94,6 +96,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/WenchaoIOS/FSCalendar.git
   INTULocationManager:
     :git: https://github.com/intuit/LocationManager.git
+  Localize-Swift:
+    :git: https://github.com/marmelroy/Localize-Swift.git
   MRProgress:
     :git: https://github.com/mrackwitz/MRProgress.git
   PermissionScope:
@@ -130,6 +134,9 @@ CHECKOUT OPTIONS:
   INTULocationManager:
     :commit: 46b0d0110dfbb68021948b9b70dbf2d02ac0c1a7
     :git: https://github.com/intuit/LocationManager.git
+  Localize-Swift:
+    :commit: cac9f41c3fd0b518776b8d5faabe0279449c347d
+    :git: https://github.com/marmelroy/Localize-Swift.git
   MRProgress:
     :commit: 973569c82738e4720f4226ad9afbcc723efa4a90
     :git: https://github.com/mrackwitz/MRProgress.git
@@ -155,12 +162,13 @@ SPEC CHECKSUMS:
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   FSCalendar: 8ffbacc9186241f2d33a04053dd8c68ca2f38771
   INTULocationManager: 83c7373048d583cda57e25eefb9bb8a3675acf16
+  Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyStoreKit: b61ef56bddfb49aade6dffd59a22dcff305ed7ec
 
-PODFILE CHECKSUM: 0b0353e8c6a858fe81bf2d6b50878d4c21b63eeb
+PODFILE CHECKSUM: e7711a2a64dcef7449ef85cfaa9068c3cef2e19f
 
 COCOAPODS: 1.0.0.beta.3

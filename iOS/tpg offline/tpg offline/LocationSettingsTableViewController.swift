@@ -14,8 +14,8 @@ import FontAwesomeKit
 class LocationSettingsTableViewController: UITableViewController {
 
     let defaults = NSUserDefaults.standardUserDefaults()
-    let headers = ["Précision", "Distance de proximité d'arrets"]
-    let choices = [["Normale", "Précise", "Très précise"], ["100m", "200m", "500m", "750m", "1km"]]
+    let headers = ["Précision".localized(), "Distance de proximité d'arrets".localized()]
+    let choices = [["Normale".localized(), "Précise".localized(), "Très précise".localized()], ["100m".localized(), "200m".localized(), "500m".localized(), "750m".localized(), "1km".localized()]]
     let values = [[0, 1, 2], [100, 200, 500, 750, 1000]]
     var rowSelected = [0,0]
     override func viewDidLoad() {

@@ -1,0 +1,224 @@
+/*
+ * ./tpg offline/RouteViewController.swift
+ */
+
+"\(Int(temps * 100)) Minutes" = "\(Int(temps * 100)) Minutes";
+
+/*
+ * ./tpg offline/CreditsTableViewController.swift
+ */
+
+"Open data des Transports Publics Genevois" = "Open data of Geneva Public Transport";
+
+"Données fournis par la société des Transports Publics Genevois" = "Data provided by Geneva Public Transport";
+
+"Open data de Transport API" = "Open data of Transport API";
+
+"Données fournis par Opendata.ch" = "Data provided by Opendata.ch";
+
+"Project maintenu sur GitHub par SwiftyJSON - Project en licence MIT" = "Project on GitHub maintained by SwiftyJSON - Project in MIT licence";
+
+"Project maintenu sur GitHub par ViccAlexander - Project en licence MIT" = "Project on GitHub maintained by ViccAlexander - Project in MIT licence";
+
+"Project maintenu sur GitHub par PrideChung - Project en licence MIT" = "Project on GitHub maintained by PrideChung - Project in MIT licence";
+
+"Project maintenu sur GitHub par benguild - Project en licence MIT" = "Project on GitHub maintained by benguild - Project in MIT licence";
+
+"Project maintenu sur GitHub par vikmeup - Project en licence MIT" = "Project on GitHub maintained by vikmeup - Project in MIT licence";
+
+"Project maintenu sur GitHub par WenchaoIOS - Project en licence MIT" = "Project on GitHub maintained by WenchaoIOS - Project in MIT licence";
+
+"Project maintenu sur GitHub par gontovnik - Project en licence MIT" = "Project on GitHub maintained by gontovnik - Project in MIT licence";
+
+"Project maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Project en licence MIT" = "Project on GitHub maintained by eliotfowler and modified par RemyDCF - Project in MIT licence";
+
+"Project maintenu sur GitHub par nickoneill - Project en licence MIT" = "Project on GitHub maintained by nickoneill - Project in MIT licence";
+
+/*
+ * ./tpg offline/ItineraireTableViewController.swift
+ */
+
+"Départ" = "Departures";
+
+"Arrivée" = "Arrival";
+
+"Date" = "Date";
+
+"Heure" = "Hour";
+
+"Heure de départ" = "Departure hour";
+
+"Heure d'arrivée" = "Arrival hour";
+
+"Rechercher" = "Search";
+
+"Recherche" = "Search";
+
+"Favoris" = "Favorite";
+
+"Information manquante" = "Missing information";
+
+"Il manque une information pour rechercher un itinéraire" = "An information was missing to seach an itinerary";
+
+/*
+ * ./tpg offline/ThemesCollectionViewController.swift
+ */
+
+"Défaut" = "Default";
+
+"Inverse" = "Inverse";
+
+"Nuit" = "Night";
+
+/*
+ * ./tpg offline/ListeItinerairesTableViewController.swift
+ */
+
+"Pas de réseau" = "No network";
+
+"Itinéraires non trouvées" = "Itinerary not found";
+
+/*
+ * ./tpg offline/VueItineraireTableViewController.swift
+ */
+
+"Marche" = "Marche";
+
+" minute(s)" = " minute(s)";
+
+/*
+ * ./tpg offline/LocationSettingsTableViewController.swift
+ */
+
+"Précision" = "Precision";
+
+"Distance de proximité d'arrets" = "Distance from nearby stops";
+
+"Normale" = "Normal";
+
+"Précise" = "Precise";
+
+"Très précise" = "Very precise";
+
+"100m" = "100m";
+
+"200m" = "200m";
+
+"500m" = "500m";
+
+"750m" = "750m";
+
+"1km" = "1km";
+
+/*
+ * ./tpg offline/PlansTableViewController.swift
+ */
+
+"Plan urbain" = "Urban map";
+
+"Plan périurbain" = "Suburban map";
+
+"Plan noctambus urbain" = "Noctambus urban map";
+
+"Plan noctambus régional" = "Noctambus suburban map";
+
+/*
+ * ./tpg offline/ParametresTableViewController.swift
+ */
+
+"Choix du menu par défaut" = "Default menu choice";
+
+"Localisation" = "Location";
+
+"Crédits" = "Credit";
+
+"Thèmes" = "Themes";
+
+/*
+ * ./tpg offline/DepartsArretTableViewController.swift
+ */
+
+"Le tpg de la ligne \(ligne) en direction de \(direction) va partir immédiatement" = "The tpg line \(ligne) direction \(direction) will leave immediately";
+
+"Vous serez notifié" = "You will be notified";
+
+"OK" = "OK";
+
+"Autre" = "Other";
+
+"Rappeler" = "Remind";
+
+"Quand voulez-vous être notifié(e) ?" = "When do you want to be notified ?";
+
+"Annuler" = "Cancel";
+
+"Mode offline" = "Offline mode";
+
+"Les horaires peuvent être sujets à modification" = "Departures may be subject to change";
+
+"Service terminé" = "Service completed";
+
+"Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret." = "No more departure is planned for all the priests that judgment lines.";
+
+/*
+ * ./tpg offline/ArretsTableViewController.swift
+ */
+
+"tpg offline a besoin des notifications pour vous envoyer des rappels." = "tpg offline need notifications to send you reminders";
+
+"tpg offline a de savoir où vous vous trouvez pour indiquer les arrets les plus proches." = "tpg offline need to know where you are to indicate the nearest stops.";
+
+/*
+ * ./tpg offline/IncidentsTableViewController.swift
+ */
+
+"Aucun incident" = "No incidents";
+
+"Tout va bien sur tout le réseau. Bonne nuit !" = "All is well on the whole network. Good night !";
+
+"Tout va bien sur tout le réseau. Bonne journée !" = "All is well on the whole network. Have a good day !";
+
+"Tout va bien sur tout le réseau. Bonne soirée !" = "All is well on the whole network. Good night !";
+
+"Pas de réseau !" = "No network !";
+
+"tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau." = "tpg offline is not connected to the network. It is impossible to load the disruptions on the tpg network without  network.";
+
+/*
+ * SHARED STRINGS
+ */
+
+"Rechercher parmi les arrets" = "Search all stops";
+
+"Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes" = "The tpg line \(ligne) direction \(direction) will leave in \(before) minutes";
+
+"La notification à été enregistrée et sera affichée à l'heure du départ." = "The notification was recorded and will be posted at the time of departure.";
+
+"La notification à été enregistrée et sera affichée \(before) minutes avant le départ." = "The notification was recorded and posted \(before) minutes before departure.";
+
+"Le bus arrive" = "The bus arrives";
+
+"Dépêchez vous, vous allez le rater !" = "Hurry up, you'll miss it!";
+
+"A l'heure du départ" = "At the time of departure";
+
+"5 min avant le départ" = "5 mins before departure";
+
+"10 min avant le départ" = "10 mins before departure";
+
+"Nombre de minutes" = "Number of minutes";
+
+"Il y a un problème" = "There is a problem";
+
+"Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg." = "Thank you to type a number less than the remaining time before the arrival of tpg.";
+
+"OK" = "OK";
+
+"Vous serez notifié" = "You will be notified";
+
+"Rappeler" = "Remind";
+
+"Quand voulez-vous être notifié(e) ?" = "When do you want to be notified ?";
+
+"Annuler" = "Cancel";
+

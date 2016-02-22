@@ -21,14 +21,13 @@ struct ItineraireEnCours {
 
 class ItineraireTableViewController: UITableViewController {
 	
-	let row = [["itineraryCell", FAKIonIcons.logOutIconWithSize(20), "Départ", "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.logInIconWithSize(20), "Arrivée", "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.calendarIconWithSize(20), "Date", "selectDate"], ["itineraryCell", FAKIonIcons.clockIconWithSize(20), "Heure", "selectHour"], ["switchCell", "Heure de départ", "Heure d'arrivée"], ["buttonCell", "Rechercher"]]
+	let row = [["itineraryCell", FAKIonIcons.logOutIconWithSize(20), "Départ".localized(), "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.logInIconWithSize(20), "Arrivée".localized(), "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.calendarIconWithSize(20), "Date".localized(), "selectDate"], ["itineraryCell", FAKIonIcons.clockIconWithSize(20), "Heure".localized(), "selectHour"], ["switchCell", "Heure de départ".localized(), "Heure d'arrivée".localized()], ["buttonCell", "Rechercher".localized()]]
 	
-	let headers = ["Recherche", "Favoris"]
+	let headers = ["Recherche".localized(), "Favoris".localized()]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
-		
 		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 	}
 	override func viewDidAppear(animated: Bool) {
@@ -79,24 +78,17 @@ class ItineraireTableViewController: UITableViewController {
 				iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
 				cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
 				
-				if (row[indexPath.row][2] as! String) == "Départ" {
+				if (row[indexPath.row][2] as! String) == "Départ".localized() {
 					cell.detailTextLabel?.text = ItineraireEnCours.itineraire.depart?.nomComplet
 				}
-				else if (row[indexPath.row][2] as! String) == "Arrivée" {
+				else if (row[indexPath.row][2] as! String) == "Arrivée".localized() {
 					cell.detailTextLabel?.text = ItineraireEnCours.itineraire.arrivee?.nomComplet
 				}
-				else if (row[indexPath.row][2] as! String) == "Date" && ItineraireEnCours.itineraire.date != nil {
-					cell.detailTextLabel?.text = String(ItineraireEnCours.itineraire.date!.day) + "/" + String(ItineraireEnCours.itineraire.date!.month) + "/" + String(ItineraireEnCours.itineraire.date!.year)
+				else if (row[indexPath.row][2] as! String) == "Date".localized() && ItineraireEnCours.itineraire.date != nil {
+					cell.detailTextLabel?.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
 				}
-				else if (row[indexPath.row][2] as! String) == "Heure" && ItineraireEnCours.itineraire.date != nil {
-					if ItineraireEnCours.itineraire.date!.minute < 10 {
-						cell.detailTextLabel?.text = String(ItineraireEnCours.itineraire.date!.hour) + ":0" +
-							String(ItineraireEnCours.itineraire.date!.minute)
-					}
-					else {
-						cell.detailTextLabel?.text = String(ItineraireEnCours.itineraire.date!.hour) + ":" + String(ItineraireEnCours.itineraire.date!.minute)
-					}
-					
+				else if (row[indexPath.row][2] as! String) == "Heure".localized() && ItineraireEnCours.itineraire.date != nil {
+					cell.detailTextLabel?.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
 				}
 				else {
 					cell.detailTextLabel?.text = ""
@@ -168,6 +160,8 @@ class ItineraireTableViewController: UITableViewController {
 			cell.labelArrivee.textColor = AppValues.textColor
 			cell.labelArrivee.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
 			
+			cell.selectionStyle = .None
+			
 			return cell
 		}
 	}
@@ -178,7 +172,7 @@ class ItineraireTableViewController: UITableViewController {
 		}
 		else {
 			let alerte = SCLAlertView()
-			alerte.showWarning("Information manquante", subTitle: "Il manque une information pour rechercher un itinéraire", closeButtonTitle: "OK", duration: 10)
+			alerte.showWarning("Information manquante".localized(), subTitle: "Il manque une information pour rechercher un itinéraire".localized(), closeButtonTitle: "OK".localized(), duration: 10)
 		}
 	}
 	func dateArriveeChange(sender: AnyObject) {
@@ -190,14 +184,14 @@ class ItineraireTableViewController: UITableViewController {
 			performSegueWithIdentifier(row[indexPath.row][3] as! String, sender: self)
 		}
 		else {
-			ItineraireEnCours.itineraire = Itineraire(depart: AppValues.favorisItineraires[(tableView.indexPathForSelectedRow?.row)!][0], arrivee: AppValues.favorisItineraires[(tableView.indexPathForSelectedRow?.row)!][1])
+			ItineraireEnCours.itineraire = Itineraire(depart: AppValues.favorisItineraires[indexPath.row][0], arrivee: AppValues.favorisItineraires[indexPath.row][1])
 			performSegueWithIdentifier("rechercherItineraire", sender: self)
 		}
 	}
 	
 	override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let returnedView = UIView()
-		returnedView.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.2)
+		returnedView.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
 		
 		let label = UILabel(frame: CGRect(x: 20, y: 5, width: 500, height: 30))
 		label.text = headers[section]
@@ -214,7 +208,7 @@ class ItineraireTableViewController: UITableViewController {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "voirArretsItineraire" {
 			let destinationViewController: tpgArretSelectionTableViewController = (segue.destinationViewController) as! tpgArretSelectionTableViewController
-			if (tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!)?.textLabel?.text == "Départ" ) {
+			if (tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!)?.textLabel?.text == "Départ".localized() ) {
 				destinationViewController.depart = true
 			}
 			else {
