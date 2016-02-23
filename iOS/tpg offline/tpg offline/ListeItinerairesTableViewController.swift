@@ -46,10 +46,10 @@ class ListeItinerairesTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
 	}
@@ -218,12 +218,99 @@ class ListeItinerairesTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
 	}
+	func scheduleNotification(time: NSDate, before: Int = 5, ligne: String, direction: String) {
+		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time)
+		
+		let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+		if now.minute - before < 0 {
+			now.minute += 60
+			now.hour -= 1
+		}
+		
+		let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: time, options: NSCalendarOptions())
+		let reminder = UILocalNotification()
+		reminder.fireDate = date
+		
+		reminder.alertBody = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes".localized()
+		reminder.soundName = "Sound.aif"
+		
+		UIApplication.sharedApplication().scheduleLocalNotification(reminder)
+		
+		print("Firing at \(now.hour):\(now.minute - before):\(now.second)")
+		
+		let okView = SCLAlertView()
+		if before == 0 {
+			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+		}
+		else {
+			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+		}
+	}
 	
+	override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+		let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["departure"]["departureTimestamp"].intValue)).timeIntervalSinceDate(NSDate())
+		let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler".localized()) { (action, indexPath) in
+			let icone = FAKIonIcons.iosClockIconWithSize(20)
+			icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			icone.imageWithSize(CGSize(width: 20, height: 20))
+			let alertView = SCLAlertView()
+			if time < 60 {
+				alertView.showWarning("Le bus arrive".localized(), subTitle: "Dépêchez vous, vous allez le rater !".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+			}
+			else {
+				alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
+					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+					
+				})
+				if time > 60 * 5 {
+					alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+					})
+				}
+				if time > 60 * 10 {
+					alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+					})
+				}
+				alertView.addButton("Autre", action: { () -> Void in
+					alertView.hideView()
+					let customValueAlert = SCLAlertView()
+					let txt = customValueAlert.addTextField("Nombre de minutes".localized())
+					txt.keyboardType = .NumberPad
+					txt.becomeFirstResponder()
+					customValueAlert.addButton("Rappeler".localized(), action: { () -> Void in
+						if Int(time) < Int(txt.text!)! * 60 {
+							customValueAlert.hideView()
+							SCLAlertView().showError("Il y a un problème".localized(), subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized(), closeButtonTitle: "OK", duration: 10)
+							
+						}
+						else {
+							self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+							customValueAlert.hideView()
+						}
+					})
+					customValueAlert.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
+				})
+				alertView.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.imageWithSize(CGSize(width: 20, height: 20)))
+				tableView.setEditing(false, animated: true)
+			}
+			
+		}
+		timerAction.backgroundColor = UIColor.flatBlueColor()
+		return [timerAction]
+	}
+	
+	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+	}
+	
+	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		return true
+	}
 }

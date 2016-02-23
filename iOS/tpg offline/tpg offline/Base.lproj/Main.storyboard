@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Departs-->
+        <!--Départs-->
         <scene sceneID="ak0-v8-lWF">
             <objects>
                 <tableViewController id="M4P-bf-gmF" customClass="ArretsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,7 +51,7 @@
                             <outlet property="delegate" destination="M4P-bf-gmF" id="yQh-Tb-EON"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Departs" id="x8v-47-Hbo"/>
+                    <navigationItem key="navigationItem" title="Départs" id="x8v-47-Hbo"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5a-WC-fak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,15 +14,15 @@ class CreditsTableViewController: UITableViewController {
     let listeCredits = [
         ["Open data des Transports Publics Genevois".localized(), "Données fournis par la société des Transports Publics Genevois".localized()],
         ["Open data de Transport API".localized(), "Données fournis par Opendata.ch".localized()],
-        ["SwiftyJSON", "Project maintenu sur GitHub par SwiftyJSON - Project en licence MIT".localized()],
-        ["Chamelon", "Project maintenu sur GitHub par ViccAlexander - Project en licence MIT".localized()],
-        ["FontAwesomeKit", "Project maintenu sur GitHub par PrideChung - Project en licence MIT".localized()],
-        ["BGTableViewRowActionWithImage", "Project maintenu sur GitHub par benguild - Project en licence MIT".localized()],
-        ["SCLAlertView-Swift", "Project maintenu sur GitHub par vikmeup - Project en licence MIT".localized()],
-        ["FSCalendar", "Project maintenu sur GitHub par WenchaoIOS - Project en licence MIT".localized()],
-        ["DGRunkeeperSwitch", "Project maintenu sur GitHub par gontovnik - Project en licence MIT".localized()],
-		["EFCircularSlider", "Project maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Project en licence MIT".localized()],
-		["PermissionScope", "Project maintenu sur GitHub par nickoneill - Project en licence MIT".localized()]
+        ["SwiftyJSON", "Projet maintenu sur GitHub par SwiftyJSON - Projet en licence MIT".localized()],
+        ["Chamelon", "Projet maintenu sur GitHub par ViccAlexander - Projet en licence MIT".localized()],
+        ["FontAwesomeKit", "Projet maintenu sur GitHub par PrideChung - Projet en licence MIT".localized()],
+        ["BGTableViewRowActionWithImage", "Projet maintenu sur GitHub par benguild - Projet en licence MIT".localized()],
+        ["SCLAlertView-Swift", "Projet maintenu sur GitHub par vikmeup - Projet en licence MIT".localized()],
+        ["FSCalendar", "Projet maintenu sur GitHub par WenchaoIOS - Projet en licence MIT".localized()],
+        ["DGRunkeeperSwitch", "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT".localized()],
+		["EFCircularSlider", "Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT".localized()],
+		["PermissionScope", "Projet maintenu sur GitHub par nickoneill - Projet en licence MIT".localized()]
     ]
     override func viewDidLoad() {
         super.viewDidLoad()

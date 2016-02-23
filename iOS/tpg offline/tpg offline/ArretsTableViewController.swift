@@ -46,7 +46,7 @@ class ArretsTableViewController: UITableViewController {
 		searchController.searchResultsUpdater = self
 		searchController.dimsBackgroundDuringPresentation = false
 		definesPresentationContext = true
-		searchController.searchBar.placeholder = "Rechercher parmi les arrets".localized()
+		searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
 		
 		arretsKeys = [String](AppValues.arrets.keys)
 		arretsKeys.sortInPlace({ (string1, string2) -> Bool in

@@ -43,10 +43,10 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
 		tableView.backgroundColor = AppValues.primaryColor
@@ -208,10 +208,10 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
 	}
@@ -247,7 +247,6 @@ class VueItineraireTableViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
 		let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["departureTimestamp"].intValue)).timeIntervalSinceDate(NSDate())
-		print(NSDate(timeIntervalSinceNow: time))
 		let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler".localized()) { (action, indexPath) in
 			let icone = FAKIonIcons.iosClockIconWithSize(20)
 			icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())

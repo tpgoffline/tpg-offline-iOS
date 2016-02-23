@@ -92,7 +92,7 @@
 
 "Précision" = "Precision";
 
-"Distance de proximité d'arrets" = "Distance from nearby stops";
+"Distance de proximité des arrêts" = "Distance from nearby stops";
 
 "Normale" = "Normal";
 
@@ -166,7 +166,7 @@
 
 "tpg offline a besoin des notifications pour vous envoyer des rappels." = "tpg offline need notifications to send you reminders";
 
-"tpg offline a de savoir où vous vous trouvez pour indiquer les arrets les plus proches." = "tpg offline need to know where you are to indicate the nearest stops.";
+"tpg offline a de savoir où vous vous trouvez pour indiquer les arrêts les plus proches." = "tpg offline need to know where you are to indicate the nearest stops.";
 
 /*
  * ./tpg offline/IncidentsTableViewController.swift
@@ -188,7 +188,7 @@
  * SHARED STRINGS
  */
 
-"Rechercher parmi les arrets" = "Search all stops";
+"Rechercher parmi les arrêts" = "Search all stops";
 
 "Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes" = "The tpg line \(ligne) direction \(direction) will leave in \(before) minutes";
 
