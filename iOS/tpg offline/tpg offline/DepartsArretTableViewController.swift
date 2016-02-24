@@ -450,6 +450,7 @@ extension DepartsArretTableViewController {
 				tableView.setEditing(false, animated: true)
 			}
 		}
+		timerAction.backgroundColor = UIColor.flatBlueColor()
 		return [timerAction]
 	}
 	
