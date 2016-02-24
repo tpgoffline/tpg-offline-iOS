@@ -26,6 +26,7 @@ class ChoixMenuTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
         self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
         tableView.backgroundColor = AppValues.primaryColor
         tableView.reloadData()

@@ -53,7 +53,11 @@
 		00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* PlansTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
+		AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */; };
 		AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */; };
+		AD3F41E21C7DB011009113F0 /* TtitrePremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */; };
+		AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */; };
+		AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */; };
 		ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
 		ADF8B3741C592532003CE1EA /* Departs in Resources */ = {isa = PBXBuildFile; fileRef = ADF8B3731C592532003CE1EA /* Departs */; };
 /* End PBXBuildFile section */
@@ -112,7 +116,11 @@
 		43D3491A7E1B71A24C25DCFF /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 		9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
 		AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisTableViewCell.swift; sourceTree = "<group>"; };
+		AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TtitrePremiumTableViewCell.swift; sourceTree = "<group>"; };
+		AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcheterPremiumTableViewCell.swift; sourceTree = "<group>"; };
+		AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ADB2D6D31C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		ADB2D6D41C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ADB2D6D51C7A1BEF0023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -133,6 +141,7 @@
 				00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */,
 				002E5C761C132A680008623D /* MapKit.framework in Frameworks */,
 				962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */,
+				AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +202,7 @@
 				00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */,
 				002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */,
 				004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */,
+				AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */,
 			);
 			name = "Paramètres";
 			sourceTree = "<group>";
@@ -203,6 +213,8 @@
 				002B47F41C01FA87000BF3E8 /* DepartsTableViewCell.swift */,
 				005DF8101C0DF74E00377031 /* ArretsImageTableViewCell.swift */,
 				004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */,
+				AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */,
+				AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -298,6 +310,7 @@
 		A65315FEF759993751E0088F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */,
 				002E5C751C132A680008623D /* MapKit.framework */,
 				00D0355B1C0E25D600B3697D /* CoreLocation.framework */,
 				253CE6CB67EE399CF499A811 /* Pods.framework */,
@@ -345,6 +358,9 @@
 						DevelopmentTeam = 767R4Y4A3U;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
@@ -460,11 +476,13 @@
 				007D924F1C4AA27E0036BEE6 /* VueItineraireTableViewController.swift in Sources */,
 				00391C491C271DA6005250D4 /* ChoixMenuTableViewController.swift in Sources */,
 				008F53191C18744500127BDA /* AppValues.swift in Sources */,
+				AD3F41E21C7DB011009113F0 /* TtitrePremiumTableViewCell.swift in Sources */,
 				00CA21D11C4EA43200CCB994 /* ListeItinerairesTableViewController.swift in Sources */,
 				007CF3581C497D48006C1898 /* CalendarSelectionViewController.swift in Sources */,
 				00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */,
 				00391C471C271D1E005250D4 /* ParametresTableViewController.swift in Sources */,
 				00ABBE151C29C81B00479FF4 /* Departs.swift in Sources */,
+				AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */,
 				002B47F51C01FA87000BF3E8 /* ArretsTableViewController.swift in Sources */,
 				00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */,
 				002B47F71C01FA87000BF3E8 /* DepartsTableViewCell.swift in Sources */,
@@ -472,6 +490,7 @@
 				AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */,
 				00500AF41C1B396F00341F7A /* Arret.swift in Sources */,
 				007D924B1C4A989F0036BEE6 /* SwitchTableViewCell.swift in Sources */,
+				AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */,
 				002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */,
 				00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */,
 				00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */,
@@ -621,6 +640,7 @@
 				INFOPLIST_FILE = "tpg offline/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -646,6 +666,7 @@
 				INFOPLIST_FILE = "tpg offline/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

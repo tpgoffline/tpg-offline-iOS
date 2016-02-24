@@ -75,6 +75,7 @@ class IncidentsTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
         tableView.backgroundColor = AppValues.primaryColor
 		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
 		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)

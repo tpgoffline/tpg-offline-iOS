@@ -12,6 +12,7 @@ import ChameleonFramework
 import FontAwesomeKit
 import DGRunkeeperSwitch
 import SCLAlertView
+import SAHistoryNavigationViewController
 
 struct ItineraireEnCours {
 	static var itineraire: Itineraire!
@@ -38,6 +39,7 @@ class ItineraireTableViewController: UITableViewController {
 		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
 		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
 		navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
 		tableView.backgroundColor = AppValues.primaryColor
 		
 		tableView.reloadData()

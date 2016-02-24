@@ -5,6 +5,44 @@
 "\(Int(temps * 100)) Minutes" = "\(Int(temps * 100)) Minutes";
 
 /*
+ * ./tpg offline/PremiumTableViewController.swift
+ */
+
+"Mode offline des départs" = "Departures offline mode";
+
+"Pas de réseau ? Pas de problème avec le mode offline, vous pouvez accéder aux horaires hors ligne. Attetion : Les horaires du mode offline ne peuvent pas prévoir les évantuels retards, avances, perturbation en cours sur le réseau tpg." = "No network? No problem with the offline mode, you can access the schedules offline. Attetion: the offline mode schedules can not predict evantuels delays, advances, current tpg disturbance on the network.";
+
+"Avec le premium, vous pouvez accéder à une multitude de thèmes pour personnaliser votre application." = "With the premium, you can access a multitude of themes to customize your application.";
+
+"Favoris des itinéraires" = "Favorites itineraries";
+
+"Avec les favoris des itinéraires, vous pouvez en un seul appui voir les prochains itinéraires de un point à un autre." = "With favorites itineraries, you can see a single press of the next itineraries one point to another.";
+
+"Fonctionnalités futures" = "Future features";
+
+"Un seul achat et vous aurez toutes les merveilles à venir. Pour toujours !" = "One purchase and you will all come to Wonderland. Forever !";
+
+"Acheter" = "Buy";
+
+"Restaurer les achats" = "Restore purchases";
+
+"L'achat a réussi" = "The purchase was successful";
+
+"Toutes les fonctions premium sont débloquées. Merci beaucoup !" = "All premium features are enabled. Thank you very much !";
+
+"Fermer" = "Close";
+
+"Échec" = "Failure";
+
+"L'achat n'a pas pu être finalisé." = "The purchase has not been finalized.";
+
+"La restauration à réussi" = "Restoring successful";
+
+"Le mode premium n'a pas été acheté. Nous ne pouvons donc pas restaurer d'achat." = "The premium mode has not been purchased. So we can not restore purchasing.";
+
+"La restauration n'a pas pu être finalisé." = "The restoration has not been finalized.";
+
+/*
  * ./tpg offline/CreditsTableViewController.swift
  */
 
@@ -34,6 +72,17 @@
 
 "Project maintenu sur GitHub par nickoneill - Project en licence MIT" = "Project on GitHub maintained by nickoneill - Project in MIT licence";
 
+"Projet maintenu sur GitHub par mrackwitz - Projet en licence MIT" = "Project on GitHub maintained by mrackwitz - Project in MIT licence";
+
+"Projet maintenu sur GitHub par intuit - Projet en licence MIT" = "Project on GitHub maintained by intuit - Project in MIT licence";
+
+"Projet maintenu sur GitHub par bizz84 - Projet en licence MIT" = "Project on GitHub maintained by bizz84 - Project in MIT licence";
+
+"Projet maintenu sur GitHub par marmelroy - Projet en licence MIT" = "Project on GitHub maintained by marmelroy - Project in MIT licence";
+
+"Projet maintenu sur GitHub par mamaral - Projet en licence MIT" = "Project on GitHub maintained by mamaral - Project in MIT licence";
+
+"Projet maintenu sur GitHub par szk-atmosphere - Projet en licence MIT" = "Project on GitHub maintained by szk-atmosphere - Project in MIT licence";
 /*
  * ./tpg offline/ItineraireTableViewController.swift
  */
@@ -134,6 +183,10 @@
 
 "Thèmes" = "Themes";
 
+"Premium" = "Premium";
+
+"Page GitHub du project" = "GitHub project page";
+
 /*
  * ./tpg offline/DepartsArretTableViewController.swift
  */
@@ -167,6 +220,52 @@
 "tpg offline a besoin des notifications pour vous envoyer des rappels." = "tpg offline need notifications to send you reminders";
 
 "tpg offline a de savoir où vous vous trouvez pour indiquer les arrêts les plus proches." = "tpg offline need to know where you are to indicate the nearest stops.";
+
+"Bienvenue dans tpg offline" = "Welcome in tpg offline";
+
+"tpg offline est une application qui permet de faciliter vos voyages avec les tpg" = "tpg offline is an application to facilitate your travels with tpg";
+
+"Continuer" = "Next";
+
+"Départs" = "Departures";
+
+"Le menu Départs vous permet de voir quels sont les prochains bus pour un arret" = "The Departures menu to see what the next bus to a stop";
+
+"Dans les départs, si vous n'avez pas de réseau, tpg offline vous permet de savoir quand appoximativement votre transport part." = "For starts, if you do not have a network, tpg offline lets you know when your appoximativement transportation part.";
+
+"Avertissement" = "Warning";
+
+"En mode hors ligne, tpg offline ne vous permet pas d'avoir des horaires précis. tpg offline n'est en aucun cas responsable en cas de retard, d'avance, de perturbation des transports." = "In offline mode, tpg offline does not allow you to have precise schedules. tpg offline is in no way responsible for delay, in advance, disruption of transport.";
+
+"J'ai compris, continuer" = "I understand, continue";
+
+"Itinéraires" = "Itinerary";
+
+"L'application propose un menu itinéraire. Vous pouvez vous déplacer avec une facilité incroyable grâce à cette fonction." = "The application offers an itinerary menu. You can move with incredible ease by using this feature.";
+
+"Plan" = "Plan";
+
+"Tous les plans des tpg sont disponibles dans le menu plan" = "All plans are available in tpg plan menu";
+
+"Incidents" = "Incidents";
+
+"Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents." = "Be warned in case of disturbances on the network through the tpg Incidents menu.";
+
+"Rappels" = "Reminders";
+
+"Dans les départs et itinéraires, en glissant votre doigt de gauche à droite, découvrez comment les rappels peuvent vous éviter de voir le bus partir sans vous..." = "In departures and itineraries, by sliding your finger from left to right, learn how you can avoid reminders to see the bus leave without you ...";
+
+"tpg offline est open source. Tout le monde peut modifier et améliorer l'application. Si vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre project sur GitHub. (https://github.com/RemyDCF/tpg-offline)" = "tpg offline is open source. Anyone can modify and improve the application. If you have ideas or you find a bug, please visit our project on GitHub. (https://github.com/RemyDCF/tpg-offline)";
+
+"Et beaucoup d'autre chose" = "Et beaucoup d'autre chose";
+
+"D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !" = "Other surprises await you in the application. So go on an adventure and good travel !";
+
+"Terminer" = "Finish";
+
+"Passer" = "Skip";
+
+"Et beaucoup d'autre chose" = "And many other things";
 
 /*
  * ./tpg offline/IncidentsTableViewController.swift

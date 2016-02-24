@@ -30,6 +30,7 @@ PODS:
   - FSCalendar (1.8.1)
   - INTULocationManager (4.1.1)
   - Localize-Swift (1.1)
+  - MisterFusion (0.8.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -58,7 +59,10 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
+  - Onboard (2.1.7)
   - PermissionScope (1.0.2)
+  - SAHistoryNavigationViewController (2.3.0):
+    - MisterFusion
   - SCLAlertView (0.5.1)
   - SwiftyJSON (2.3.2)
   - SwiftyStoreKit (0.2.3)
@@ -74,7 +78,9 @@ DEPENDENCIES:
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
   - Localize-Swift (from `https://github.com/marmelroy/Localize-Swift.git`)
   - MRProgress (from `https://github.com/mrackwitz/MRProgress.git`)
+  - Onboard (from `https://github.com/mamaral/Onboard.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
+  - SAHistoryNavigationViewController (from `https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git`)
   - SCLAlertView (from `https://github.com/Pevika/SCLAlertView-Swift.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
@@ -100,8 +106,12 @@ EXTERNAL SOURCES:
     :git: https://github.com/marmelroy/Localize-Swift.git
   MRProgress:
     :git: https://github.com/mrackwitz/MRProgress.git
+  Onboard:
+    :git: https://github.com/mamaral/Onboard.git
   PermissionScope:
     :git: https://github.com/nickoneill/PermissionScope.git
+  SAHistoryNavigationViewController:
+    :git: https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git
   SCLAlertView:
     :git: https://github.com/Pevika/SCLAlertView-Swift.git
   SwiftyJSON:
@@ -140,9 +150,15 @@ CHECKOUT OPTIONS:
   MRProgress:
     :commit: 973569c82738e4720f4226ad9afbcc723efa4a90
     :git: https://github.com/mrackwitz/MRProgress.git
+  Onboard:
+    :commit: c1a4afaea8307a56466560c033d098883c240f2d
+    :git: https://github.com/mamaral/Onboard.git
   PermissionScope:
     :commit: e5e762b3c86d5ce5a3b6a499e0801ca097b0169c
     :git: https://github.com/nickoneill/PermissionScope.git
+  SAHistoryNavigationViewController:
+    :commit: bec75e030f8fb8a13210f3740cd0b6bd8cca04e6
+    :git: https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git
   SCLAlertView:
     :commit: 80ad641a4fd3422ba80666d9865c6043a288f19c
     :git: https://github.com/Pevika/SCLAlertView-Swift.git
@@ -163,12 +179,15 @@ SPEC CHECKSUMS:
   FSCalendar: 8ffbacc9186241f2d33a04053dd8c68ca2f38771
   INTULocationManager: 83c7373048d583cda57e25eefb9bb8a3675acf16
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
+  MisterFusion: 3b20851bc79eeaba59070922102f1bd2866dfe02
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
+  Onboard: 87648089e1b76d13b4f5bf8f7a1cdb144092f0af
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
+  SAHistoryNavigationViewController: 5ec66cabdd65fa1667cc7b8af182d78e3e24080e
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyStoreKit: b61ef56bddfb49aade6dffd59a22dcff305ed7ec
 
-PODFILE CHECKSUM: e7711a2a64dcef7449ef85cfaa9068c3cef2e19f
+PODFILE CHECKSUM: 6af38464b4c6fcabcd09c554dcdf073a80db6725
 
 COCOAPODS: 1.0.0.beta.3

@@ -69,6 +69,7 @@ class DepartsArretTableViewController: UITableViewController {
 		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
 		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
 		navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
 		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 		
 		refresh(self)
@@ -268,8 +269,15 @@ class DepartsArretTableViewController: UITableViewController {
 				}
 			}
 			offline = false
+			
+			if listeDeparts.count == 0 {
+				serviceTermine = true
+			}
+			else {
+				serviceTermine = false
+			}
 		}
-		else {
+		else if AppValues.premium == true {
 			let day = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate())
 			switch day.weekday {
 			case 7:
@@ -339,11 +347,17 @@ class DepartsArretTableViewController: UITableViewController {
 			})
 			
 			offline = true
-		}
-		if listeDeparts.count == 0 {
-			serviceTermine = true
+			
+			if listeDeparts.count == 0 {
+				serviceTermine = true
+			}
+			else {
+				serviceTermine = false
+			}
 		}
 		else {
+			offline = true
+			listeDeparts = []
 			serviceTermine = false
 		}
 	}

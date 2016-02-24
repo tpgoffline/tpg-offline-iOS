@@ -34,22 +34,25 @@ class ListeItinerairesTableViewController: UITableViewController {
 		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
 		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
 		navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
 		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 		tableView.backgroundColor = AppValues.primaryColor
 		
 		var listeItems: [UIBarButtonItem] = []
 		
-		for x in AppValues.favorisItineraires {
-			if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
-				favoris = true
-				break
+		if (AppValues.premium == true) {
+			for x in AppValues.favorisItineraires {
+				if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
+					favoris = true
+					break
+				}
 			}
-		}
-		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
-		}
-		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
+			if favoris {
+				listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
+			}
+			else {
+				listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
+			}
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
 	}
@@ -210,7 +213,9 @@ class ListeItinerairesTableViewController: UITableViewController {
 		defaults.setObject(encodedData, forKey: "itinerairesFavoris")
 		
 		var listeItems: [UIBarButtonItem] = []
+		
 		var favoris = false
+		
 		for x in AppValues.favorisItineraires {
 			if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
 				favoris = true

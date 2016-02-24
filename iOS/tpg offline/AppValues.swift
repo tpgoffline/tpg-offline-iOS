@@ -17,4 +17,5 @@ struct AppValues {
     static var primaryColor: UIColor! = UIColor.flatOrangeColor()
     static var secondaryColor: UIColor! = UIColor.flatOrangeColorDark()
     static var textColor: UIColor! = UIColor.whiteColor()
+	static var premium: Bool! = false
 }

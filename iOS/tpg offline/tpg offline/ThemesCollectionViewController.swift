@@ -116,5 +116,7 @@ class ThemesCollectionViewController: UICollectionViewController {
         defaults.setColor(AppValues.textColor, forKey: "textColor")
         
         self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+		
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
     }
 }

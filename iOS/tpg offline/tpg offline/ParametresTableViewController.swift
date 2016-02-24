@@ -13,13 +13,21 @@ import FontAwesomeKit
 
 class ParametresTableViewController: UITableViewController {
 
-    let listeRows = [
+    var listeRows = [
         [FAKFontAwesome.barsIconWithSize(20), "Choix du menu par défaut".localized(), "showChoixDuMenuParDefault"],
         [FAKFontAwesome.locationArrowIconWithSize(20), "Localisation".localized(), "showLocationMenu"],
         [FAKFontAwesome.infoCircleIconWithSize(20), "Crédits".localized(), "showCredits"],
-        [FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes".localized(), "showThemesMenu"]
+        [FAKFontAwesome.githubIconWithSize(20), "Page GitHub du project".localized(), "showGitHub"]
     ]
-    
+	
+	let listeRowPremium = [
+		[FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes".localized(), "showThemesMenu"]
+	]
+	
+	let listeRowNonPremium = [
+		[FAKFontAwesome.starIconWithSize(20), "Premium".localized(), "showPremium"]
+	]
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
@@ -27,6 +35,12 @@ class ParametresTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
         tableView.backgroundColor = AppValues.primaryColor
+		if (AppValues.premium == true) {
+			listeRows += listeRowPremium
+		}
+		else {
+			listeRows += listeRowNonPremium
+		}
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -36,6 +50,7 @@ class ParametresTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
         tableView.backgroundColor = AppValues.primaryColor
         
         tableView.reloadData()
@@ -76,6 +91,11 @@ class ParametresTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(listeRows[indexPath.row][2] as! String, sender: self)
+		if listeRows[indexPath.row][2] as! String == "showGitHub" {
+			UIApplication.sharedApplication().openURL(NSURL(string: "https://github.com/RemyDCF/tpg-offline")!)
+		}
+		else {
+			performSegueWithIdentifier(listeRows[indexPath.row][2] as! String, sender: self)
+		}
     }
 }

@@ -36,6 +36,7 @@ class VueItineraireTableViewController: UITableViewController {
 		
 		var listeItems: [UIBarButtonItem] = []
 		
+		if AppValues.premium == true {
 		for x in AppValues.favorisItineraires {
 			if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
 				favoris = true
@@ -47,6 +48,7 @@ class VueItineraireTableViewController: UITableViewController {
 		}
 		else {
 			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+		}
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
 		tableView.backgroundColor = AppValues.primaryColor
@@ -62,6 +64,7 @@ class VueItineraireTableViewController: UITableViewController {
 		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
 		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
 		navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
 		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 		tableView.backgroundColor = AppValues.primaryColor
 		tableView.reloadData()
