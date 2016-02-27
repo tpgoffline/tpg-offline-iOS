@@ -11,7 +11,6 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import SCLAlertView
-import BGTableViewRowActionWithImage
 
 class VueItineraireTableViewController: UITableViewController {
 	

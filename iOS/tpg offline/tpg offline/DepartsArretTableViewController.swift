@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import FontAwesomeKit
-import BGTableViewRowActionWithImage
 import SCLAlertView
 import ChameleonFramework
 import DGElasticPullToRefresh
