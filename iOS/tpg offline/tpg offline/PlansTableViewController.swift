@@ -8,59 +8,59 @@
 
 import UIKit
 import ChameleonFramework
+import Google
 
 class PlansTableViewController: UITableViewController {
-    let listePlans = ["Plan urbain", "Plan périurbain", "Plan noctambus urbain", "Plan noctambus régional"]
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        
-        tableView.backgroundColor = AppValues.primaryColor
-        
-        tableView.reloadData()
-    }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return listePlans.count
-    }
-
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("plansCell", forIndexPath: indexPath)
-
-        cell.textLabel?.text = listePlans[indexPath.row].localized()
-        cell.textLabel?.textColor = AppValues.textColor
-        cell.backgroundColor = AppValues.primaryColor
-
-        return cell
-    }
-        
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "afficherPlan" {
-            let planViewController: PlanViewController = (segue.destinationViewController) as! PlanViewController
-            planViewController.image = UIImage(named: listePlans[(tableView.indexPathForSelectedRow?.row)!])
-        }
-    }
-    
-
+	let listePlans = ["Plan urbain", "Plan périurbain", "Plan noctambus urbain", "Plan noctambus régional"]
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		actualiserTheme()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "PlansTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
+	}
+	
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		
+		return 1
+	}
+	
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
+		return listePlans.count
+	}
+	
+	
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("plansCell", forIndexPath: indexPath)
+		
+		cell.textLabel?.text = listePlans[indexPath.row].localized()
+		cell.textLabel?.textColor = AppValues.textColor
+		cell.backgroundColor = AppValues.primaryColor
+		
+		return cell
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "afficherPlan" {
+			let planViewController: PlanViewController = (segue.destinationViewController) as! PlanViewController
+			planViewController.image = UIImage(named: listePlans[(tableView.indexPathForSelectedRow?.row)!])
+			planViewController.titre = listePlans[(tableView.indexPathForSelectedRow?.row)!]
+		}
+	}
+	
+	
 }

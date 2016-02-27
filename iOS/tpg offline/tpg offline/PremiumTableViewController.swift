@@ -11,6 +11,7 @@ import FontAwesomeKit
 import ChameleonFramework
 import SwiftyStoreKit
 import SCLAlertView
+import Google
 
 class PremiumTableViewController: UITableViewController {
 	
@@ -30,11 +31,7 @@ class PremiumTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-		tableView.backgroundColor = AppValues.primaryColor
+		actualiserTheme()
 		
 		SwiftyStoreKit.retrieveProductInfo(productKey) { result in
 			switch result {
@@ -62,11 +59,13 @@ class PremiumTableViewController: UITableViewController {
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		tableView.backgroundColor = AppValues.primaryColor
-		tableView.reloadData()
+		actualiserTheme()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "PremiumTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -77,19 +76,17 @@ class PremiumTableViewController: UITableViewController {
 	// MARK: - Table view data source
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 4
+		return 3
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
-		case 1:
-			return 1
-		case 2:
-			return arguments.count
-		case 3:
-			return boutonsStoreKit.count
 		case 0:
 			return 1
+		case 1:
+			return arguments.count
+		case 2:
+			return boutonsStoreKit.count
 		default:
 			return 0
 		}
@@ -97,7 +94,7 @@ class PremiumTableViewController: UITableViewController {
 	
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if indexPath.section == 1 {
+		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCellWithIdentifier("titrePremiumCell", forIndexPath: indexPath) as! TitrePremiumTableViewCell
 			
 			let icone = FAKIonIcons.starIconWithSize(30)
@@ -114,7 +111,7 @@ class PremiumTableViewController: UITableViewController {
 			
 			return cell
 		}
-		else if indexPath.section == 2 {
+		else if indexPath.section == 1 {
 			let cell = tableView.dequeueReusableCellWithIdentifier("premiumCell", forIndexPath: indexPath)
 			
 			let icone = arguments[indexPath.row][0] as! FAKFontAwesome
@@ -134,7 +131,7 @@ class PremiumTableViewController: UITableViewController {
 			
 			return cell
 		}
-		else if indexPath.section == 3{
+		else {
 			let cell = tableView.dequeueReusableCellWithIdentifier("acheterPremiumCell", forIndexPath: indexPath) as! AcheterPremiumTableViewCell
 			
 			cell.boutonAcheter.setTitle(boutonsStoreKit[indexPath.row], forState: .Normal)
@@ -149,26 +146,6 @@ class PremiumTableViewController: UITableViewController {
 			else if indexPath.row == 1 {
 				cell.boutonAcheter.addTarget(self, action: #selector(PremiumTableViewController.restaurerAchat(_:)), forControlEvents: .TouchUpInside)
 			}
-			
-			return cell
-			
-			
-		}
-		else {
-			let cell = tableView.dequeueReusableCellWithIdentifier("premiumCell", forIndexPath: indexPath)
-			
-			cell.imageView?.image = UIImage(named: "TestFlight")
-			
-			cell.textLabel!.text = "Testeurs TestFlight"
-			cell.textLabel?.textColor = UIColor.whiteColor()
-			
-			cell.detailTextLabel?.text = "Les testeurs TestFlight peuvent acheter gratuitement l'achat intégré si le message [Environment: Sandbox] est présent sur le message d'achat."
-			cell.detailTextLabel?.textColor = UIColor.whiteColor()
-			
-			cell.backgroundColor = UIColor.flatSkyBlueColorDark()
-			let selectedView = UIView()
-			selectedView.backgroundColor = UIColor.flatSkyBlueColorDark()
-			cell.selectedBackgroundView = selectedView
 			
 			return cell
 		}
@@ -220,7 +197,7 @@ class PremiumTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		if indexPath.section == 3 {
+		if indexPath.section == 2 {
 			return 44
 		}
 		else {

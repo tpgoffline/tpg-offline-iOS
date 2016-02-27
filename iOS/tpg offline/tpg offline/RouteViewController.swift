@@ -13,6 +13,7 @@ import SwiftyJSON
 import FontAwesomeKit
 import SCLAlertView
 import ChameleonFramework
+import Google
 
 class RouteViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
@@ -32,8 +33,6 @@ class RouteViewController: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: (self.arret.location.coordinate), span: span)
         map.setRegion(region, animated: true)
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        
     }
     
     
@@ -45,14 +44,16 @@ class RouteViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        view.backgroundColor = AppValues.primaryColor
+        actualiserTheme()
+     
         label.textColor = AppValues.textColor
         labelPieton.textColor = AppValues.textColor
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "RouteViewController-\(arret.stopCode)")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
     }
 }
 

@@ -9,6 +9,7 @@
 import UIKit
 import FontAwesomeKit
 import ChameleonFramework
+import Google
 
 private let reuseIdentifier = "ThemesCell"
 
@@ -16,7 +17,11 @@ class ThemesCollectionViewController: UICollectionViewController {
     let themes = [
         "Défaut".localized() : [UIColor.flatOrangeColor(), UIColor.flatOrangeColorDark(), UIColor.whiteColor()],
         "Inverse".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatOrangeColorDark()],
-        "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatNavyBlueColorDark(), UIColor.flatOrangeColor()]
+        "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatNavyBlueColorDark(), UIColor.flatOrangeColor()],
+        "Mint".localized() : [UIColor.flatMintColor(), UIColor.flatMintColorDark(), UIColor.whiteColor()],
+        "Rouge".localized() : [UIColor.flatRedColor(), UIColor.flatRedColorDark(), UIColor.whiteColor()],
+        "Bleu".localized() : [UIColor.flatSkyBlueColor(), UIColor.flatSkyBlueColorDark(), UIColor.whiteColor()],
+        "Vert".localized() : [UIColor.flatGreenColor(), UIColor.flatGreenColorDark(), UIColor.blackColor()]
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -42,6 +47,15 @@ class ThemesCollectionViewController: UICollectionViewController {
         return 1
     }
 
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "ThemesCollectionViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
+	}
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return themes.count
@@ -68,55 +82,74 @@ class ThemesCollectionViewController: UICollectionViewController {
         AppValues.primaryColor = themes[keys[indexPath.row]]![0]
         AppValues.secondaryColor = themes[keys[indexPath.row]]![1]
         AppValues.textColor = themes[keys[indexPath.row]]![2]
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
+        actualiserTheme()
         collectionView.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.2)
-        
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Normal)
-        
-        tabBarController!.tabBar.barTintColor = AppValues.secondaryColor
-        tabBarController!.tabBar.tintColor = AppValues.textColor
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
-        view.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        tabBarController!.tabBar.selectionIndicatorImage = image
-        
-        let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
-        iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        tabBarController!.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        tabBarController!.tabBar.items![0].selectedImage = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
-        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        tabBarController!.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        tabBarController!.tabBar.items![1].selectedImage = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        let iconeItineraire = FAKFontAwesome.mapSignsIconWithSize(20)
-        iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        tabBarController!.tabBar.items![2].image = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        tabBarController!.tabBar.items![2].selectedImage = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        let iconePlan = FAKFontAwesome.mapIconWithSize(20)
-        iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        tabBarController!.tabBar.items![3].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        tabBarController!.tabBar.items![3].selectedImage = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        let iconeParametre = FAKFontAwesome.cogIconWithSize(20)
-        iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        tabBarController!.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        tabBarController!.tabBar.items![4].selectedImage = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
+		
         defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")
         defaults.setColor(AppValues.secondaryColor, forKey: "secondaryColor")
         defaults.setColor(AppValues.textColor, forKey: "textColor")
-        
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 		
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
+		setTabBar()
+		
+		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+			UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+		}
+		else {
+			UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: false)
+		}
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.send(GAIDictionaryBuilder.createEventWithCategory("Themes", action: "setTheme\(keys[indexPath.row])", label: nil, value: nil).build() as [NSObject : AnyObject]!)
+		}
     }
+	
+	func setTabBar() {
+		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Selected)
+		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Normal)
+		
+		tabBarController!.tabBar.barTintColor = AppValues.secondaryColor
+		tabBarController!.tabBar.tintColor = AppValues.textColor
+		let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
+		
+		if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
+			tabBarController!.tabBar.barTintColor = AppValues.secondaryColor
+			view.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+		}
+		else {
+			tabBarController!.tabBar.barTintColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+			view.backgroundColor = AppValues.secondaryColor
+		}
+		
+		UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
+		view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		tabBarController!.tabBar.selectionIndicatorImage = image
+		
+		let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
+		iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+		tabBarController!.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		tabBarController!.tabBar.items![0].selectedImage = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		
+		let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
+		iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+		tabBarController!.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		tabBarController!.tabBar.items![1].selectedImage = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		
+		let iconeItineraire = FAKFontAwesome.mapSignsIconWithSize(20)
+		iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+		tabBarController!.tabBar.items![2].image = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		tabBarController!.tabBar.items![2].selectedImage = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		
+		let iconePlan = FAKFontAwesome.mapIconWithSize(20)
+		iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+		tabBarController!.tabBar.items![3].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		tabBarController!.tabBar.items![3].selectedImage = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		
+		let iconeParametre = FAKFontAwesome.cogIconWithSize(20)
+		iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+		tabBarController!.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+		tabBarController!.tabBar.items![4].selectedImage = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+	}
 }

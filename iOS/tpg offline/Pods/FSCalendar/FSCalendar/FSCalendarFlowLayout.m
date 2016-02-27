@@ -10,6 +10,7 @@
 #import "FSCalendarDynamicHeader.h"
 #import "FSCalendar.h"
 #import "UIView+FSExtension.h"
+#import <objc/runtime.h>
 
 @interface FSCalendarFlowLayout ()
 
@@ -36,7 +37,7 @@
 {
     [super prepareLayout];
     
-    CGFloat rowHeight = self.calendar.preferedRowHeight;
+    CGFloat rowHeight = self.calendar.preferredRowHeight;
     
     if (!self.calendar.floatingMode) {
         
@@ -52,7 +53,7 @@
                                              );
                 self.itemSize = itemSize;
                 
-                CGFloat padding = self.calendar.preferedWeekdayHeight*0.1;
+                CGFloat padding = self.calendar.preferredWeekdayHeight*0.1;
                 self.sectionInset = UIEdgeInsetsMake(padding, 0, padding, 0);
                 break;
             }
@@ -61,7 +62,7 @@
                 CGSize itemSize = CGSizeMake(self.collectionView.fs_width/7, rowHeight);
                 self.itemSize = itemSize;
                 
-                CGFloat padding = self.calendar.preferedWeekdayHeight*0.1;
+                CGFloat padding = self.calendar.preferredWeekdayHeight*0.1;
                 self.sectionInset = UIEdgeInsetsMake(padding, 0, padding, 0);
                 
                 break;
@@ -71,7 +72,7 @@
         }
     } else {
         
-        CGFloat headerHeight = self.calendar.preferedWeekdayHeight*1.5+self.calendar.preferedHeaderHeight;
+        CGFloat headerHeight = self.calendar.preferredWeekdayHeight*1.5+self.calendar.preferredHeaderHeight;
         self.headerReferenceSize = CGSizeMake(self.collectionView.fs_width, headerHeight);
         
         CGSize itemSize = CGSizeMake(
@@ -162,7 +163,9 @@
             NSIndexPath *firstIndexPath = [NSIndexPath indexPathForItem:0 inSection:visibleSection];
             NSDate *firstDate = [self.calendar dateForIndexPath:firstIndexPath scope:FSCalendarScopeMonth];
             currentPage = [self.calendar dateByAddingDays:focusedRowNumber*7 toDate:firstDate];
-            [self.calendar _setCurrentPage:currentPage];
+
+            Ivar currentPageIvar = class_getInstanceVariable(FSCalendar.class, "_currentPage");
+            object_setIvar(self.calendar, currentPageIvar, currentPage);
             
             CGSize size = [self.calendar sizeThatFits:self.calendar.frame.size scope:FSCalendarScopeWeek];
             self.calendar.contentView.clipsToBounds = YES;
@@ -201,7 +204,7 @@
                     [UIView beginAnimations:@"delegateTranslation" context:"translation"];
                     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                     [UIView setAnimationDuration:0.3];
-                    self.collectionView.fs_top = -focusedRowNumber*self.calendar.preferedRowHeight;
+                    self.collectionView.fs_top = -focusedRowNumber*self.calendar.preferredRowHeight;
                     self.calendar.bottomBorder.frame = CGRectMake(0, size.height, self.calendar.fs_width, 1);
                     [self.calendar.delegate calendarCurrentScopeWillChange:self.calendar animated:animated];
                     [UIView commitAnimations];
@@ -270,14 +273,15 @@
             NSDate *firstDateOfPage = [self.calendar dateBySubstractingDays:numberOfPlaceholdersForPrev fromDate:firstDayOfMonth];
             for (int i = 0; i < 6; i++) {
                 NSDate *currentRow = [self.calendar dateByAddingWeeks:i toDate:firstDateOfPage];
-                if ([self.calendar date:currentRow sharesSameDayWithDate:currentPage]) {
+                if ([self.calendar isDate:currentRow equalToDate:currentPage toCalendarUnit:FSCalendarUnitDay]) {
                     focusedRowNumber = i;
                     currentPage = firstDayOfMonth;
                     break;
                 }
             }
             
-            [self.calendar _setCurrentPage:currentPage];
+            Ivar currentPageIvar = class_getInstanceVariable(FSCalendar.class, "_currentPage");
+            object_setIvar(self.calendar, currentPageIvar, currentPage);
             
             self.scrollDirection = (UICollectionViewScrollDirection)self.calendar.scrollDirection;
             self.calendar.header.scrollDirection = self.scrollDirection;
@@ -320,7 +324,7 @@
                 [CATransaction commit];
                 
                 if (self.calendar.delegate && [self.calendar.delegate respondsToSelector:@selector(calendarCurrentScopeWillChange:animated:)]) {
-                    self.collectionView.fs_top = -focusedRowNumber*self.calendar.preferedRowHeight;
+                    self.collectionView.fs_top = -focusedRowNumber*self.calendar.preferredRowHeight;
                     [UIView setAnimationsEnabled:YES];
                     [UIView beginAnimations:@"delegateTranslation" context:"translation"];
                     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];

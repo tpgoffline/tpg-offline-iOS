@@ -13,6 +13,7 @@ import FontAwesomeKit
 import DGRunkeeperSwitch
 import SCLAlertView
 import SAHistoryNavigationViewController
+import Google
 
 struct ItineraireEnCours {
 	static var itineraire: Itineraire!
@@ -29,20 +30,19 @@ class ItineraireTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+		
 	}
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
 		ItineraireEnCours.canFavorite = true
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-		tableView.backgroundColor = AppValues.primaryColor
+		actualiserTheme()
 		
-		tableView.reloadData()
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "ItineraireTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -108,8 +108,15 @@ class ItineraireTableViewController: UITableViewController {
 				let cell = tableView.dequeueReusableCellWithIdentifier("switchCell", forIndexPath: indexPath) as! SwitchTableViewCell
 				cell.switchObject.leftTitle = row[indexPath.row][1] as! String
 				cell.switchObject.rightTitle = row[indexPath.row][2] as! String
-				cell.switchObject.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
-				cell.switchObject.selectedBackgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+				if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+					cell.switchObject.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
+					cell.switchObject.selectedBackgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+				}
+				else {
+					cell.switchObject.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
+					cell.switchObject.selectedBackgroundColor = AppValues.secondaryColor.lightenByPercentage(0.1)
+				}
+				
 				cell.switchObject.titleColor = AppValues.textColor
 				cell.switchObject.selectedTitleColor = AppValues.textColor
 				if ItineraireEnCours.itineraire.dateArrivee == true {
@@ -170,6 +177,11 @@ class ItineraireTableViewController: UITableViewController {
 	
 	func rechercher(sender: AnyObject) {
 		if ItineraireEnCours.itineraire.depart != nil && ItineraireEnCours.itineraire.arrivee != nil && ItineraireEnCours.itineraire.date != nil {
+			if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+				let tracker = GAI.sharedInstance().defaultTracker
+				tracker.send(GAIDictionaryBuilder.createEventWithCategory("Itineraire", action: "rechercheItineraire", label: nil, value: nil).build() as [NSObject : AnyObject]!)
+			}
+
 			performSegueWithIdentifier("rechercherItineraire", sender: self)
 		}
 		else {

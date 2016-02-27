@@ -16,10 +16,8 @@ class CalendarSelectionViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        actualiserTheme()
+     
         calendar.selectionColor = AppValues.secondaryColor
         calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
         calendar.backgroundColor = AppValues.primaryColor
@@ -39,11 +37,8 @@ class CalendarSelectionViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        actualiserTheme()
+     
         calendar.selectionColor = AppValues.secondaryColor
         calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
         calendar.backgroundColor = AppValues.primaryColor

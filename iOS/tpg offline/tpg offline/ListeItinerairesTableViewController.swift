@@ -22,8 +22,6 @@ class ListeItinerairesTableViewController: UITableViewController {
 		super.viewDidLoad()
 		
 		ItineraireEnCours.json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
-		
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
 		tableView.backgroundColor = AppValues.primaryColor
 		
 		refresh()
@@ -31,11 +29,8 @@ class ListeItinerairesTableViewController: UITableViewController {
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+		actualiserTheme()
+		
 		tableView.backgroundColor = AppValues.primaryColor
 		
 		var listeItems: [UIBarButtonItem] = []
@@ -63,7 +58,6 @@ class ListeItinerairesTableViewController: UITableViewController {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		
 		return 1
 	}
 	
@@ -80,9 +74,15 @@ class ListeItinerairesTableViewController: UITableViewController {
 	func refresh() {
 		CATransaction.begin()
 		
-		let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Chargement", mode: .Indeterminate, animated: true)
-		progressBar.tintColor = AppValues.secondaryColor
-		progressBar.titleLabel!.textColor = AppValues.secondaryColor
+		let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view.window, title: "Chargement", mode: .Indeterminate, animated: true)
+		if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
+			progressBar.tintColor = AppValues.secondaryColor
+			progressBar.titleLabel!.textColor = AppValues.secondaryColor
+		}
+		else {
+			progressBar.tintColor = AppValues.textColor
+			progressBar.titleLabel!.textColor = AppValues.textColor
+		}
 		
 		CATransaction.setCompletionBlock({
 			var url = "http://transport.opendata.ch/v1/connections?"

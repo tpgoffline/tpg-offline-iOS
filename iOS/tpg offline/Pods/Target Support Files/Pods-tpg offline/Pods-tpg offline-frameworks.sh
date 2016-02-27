@@ -84,7 +84,6 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-tpg offline/BGTableViewRowActionWithImage.framework"
   install_framework "Pods-tpg offline/ChameleonFramework.framework"
   install_framework "Pods-tpg offline/DGElasticPullToRefresh.framework"
   install_framework "Pods-tpg offline/DGRunkeeperSwitch.framework"
@@ -103,7 +102,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-tpg offline/SwiftyStoreKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-tpg offline/BGTableViewRowActionWithImage.framework"
   install_framework "Pods-tpg offline/ChameleonFramework.framework"
   install_framework "Pods-tpg offline/DGElasticPullToRefresh.framework"
   install_framework "Pods-tpg offline/DGRunkeeperSwitch.framework"

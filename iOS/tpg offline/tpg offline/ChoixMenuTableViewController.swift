@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
+import Google
 
 class ChoixMenuTableViewController: UITableViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -18,18 +19,18 @@ class ChoixMenuTableViewController: UITableViewController {
         super.viewDidLoad()
         rowSelected = defaults.integerForKey("selectedTabBar")
         tableView.backgroundColor = AppValues.primaryColor
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+     
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        tableView.backgroundColor = AppValues.primaryColor
-        tableView.reloadData()
+        actualiserTheme()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "ChoixMenuTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
     }
     
     override func didReceiveMemoryWarning() {

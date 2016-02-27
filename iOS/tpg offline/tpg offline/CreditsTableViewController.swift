@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import Google
 
 class CreditsTableViewController: UITableViewController {
 
@@ -15,9 +16,8 @@ class CreditsTableViewController: UITableViewController {
         ["Open data des Transports Publics Genevois".localized(), "Données fournis par la société des Transports Publics Genevois".localized(), "http://www.tpg.ch/web/open-data/"],
         ["Open data de Transport API".localized(), "Données fournis par Opendata.ch".localized(), "https://transport.opendata.ch"],
         ["SwiftyJSON", "Projet maintenu sur GitHub par SwiftyJSON - Projet en licence MIT".localized(), "https://github.com/SwiftyJSON/SwiftyJSON.git"],
-        ["Chamelon", "Projet maintenu sur GitHub par ViccAlexander - Projet en licence MIT".localized(), "https://github.com/ViccAlexander/Chameleon.git"],
+        ["Chameleon", "Projet maintenu sur GitHub par ViccAlexander - Projet en licence MIT".localized(), "https://github.com/ViccAlexander/Chameleon.git"],
         ["FontAwesomeKit", "Projet maintenu sur GitHub par PrideChung - Projet en licence MIT".localized(), "https://github.com/benguild/BGTableViewRowActionWithImage.git"],
-        ["BGTableViewRowActionWithImage", "Projet maintenu sur GitHub par benguild - Projet en licence MIT".localized(), "https://github.com/benguild/BGTableViewRowActionWithImage.git"],
         ["SCLAlertView-Swift", "Projet maintenu sur GitHub par vikmeup - Projet en licence MIT".localized(), "https://github.com/Pevika/SCLAlertView-Swift.git"],
         ["FSCalendar", "Projet maintenu sur GitHub par WenchaoIOS - Projet en licence MIT".localized(), "https://github.com/WenchaoIOS/FSCalendar.git"],
         ["DGRunkeeperSwitch", "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT".localized(), "https://github.com/gontovnik/DGRunkeeperSwitch.git"],
@@ -32,20 +32,18 @@ class CreditsTableViewController: UITableViewController {
 		["SAHistoryNavigationViewController", "Projet maintenu sur GitHub par szk-atmosphere - Projet en licence MIT".localized(), "https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git"],
     ]
     override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.backgroundColor = AppValues.primaryColor
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        super.viewDidLoad()     
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        tableView.backgroundColor = AppValues.primaryColor
-        tableView.reloadData()
+        actualiserTheme()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "CreditsTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,6 +76,13 @@ class CreditsTableViewController: UITableViewController {
     }
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		UIApplication.sharedApplication().openURL(NSURL(string: listeCredits[indexPath.row][2])!)
+		performSegueWithIdentifier("showURL", sender: self)
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "showURL" {
+			let destinationViewController: WebViewController = (segue.destinationViewController) as! WebViewController
+			destinationViewController.url = listeCredits[tableView.indexPathForSelectedRow!.row][2]
+		}
 	}
 }

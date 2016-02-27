@@ -11,13 +11,12 @@ import UIKit
 import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
-import CoreLocation
-import ChameleonFramework
 import PermissionScope
 import DGElasticPullToRefresh
 import INTULocationManager
 import Localize_Swift
 import Onboard
+import Google
 
 class ArretsTableViewController: UITableViewController {
 	var arretsLocalisation = [Arret]()
@@ -35,7 +34,7 @@ class ArretsTableViewController: UITableViewController {
 		
 		tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
 			
-			self!.refresh(loadingView)
+			self!.requestLocation()
 			self?.tableView.dg_stopLoading()
 			
 			}, loadingView: loadingView)
@@ -65,83 +64,14 @@ class ArretsTableViewController: UITableViewController {
 			}
 		}
 		
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		tableView.backgroundColor = AppValues.primaryColor
+		actualiserTheme()
 		searchController.searchBar.barTintColor = AppValues.primaryColor
 		searchController.searchBar.tintColor = AppValues.textColor
 		tableView.tableHeaderView = self.searchController.searchBar
 		
 		requestLocation()
 		
-		if defaults.boolForKey("tutorial") == false {
-			
-			let rect = CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
-			UIGraphicsBeginImageContext(rect.size)
-			let context = UIGraphicsGetCurrentContext()
-			
-			CGContextSetFillColorWithColor(context, UIColor.flatOrangeColor().CGColor)
-			CGContextFillRect(context, rect)
-			
-			let image = UIGraphicsGetImageFromCurrentImageContext()
-			UIGraphicsEndImageContext()
-			
-			let page1 = OnboardingContentViewController (title: "Bienvenue dans tpg offline".localized(), body: "tpg offline est une application qui permet de faciliter vos voyages avec les tpg".localized(), image: nil, buttonText: "Continuer".localized(), actionBlock: nil)
-			
-			let iconeI = FAKIonIcons.iosClockIconWithSize(50)
-			iconeI.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page2 = OnboardingContentViewController (title: "Départs".localized(), body: "Le menu Départs vous permet de voir quels sont les prochains bus pour un arret".localized(), image: iconeI.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-			var iconeF = FAKFontAwesome.globeIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page3 = OnboardingContentViewController (title: "Mode offline".localized(), body: "Dans les départs, si vous n'avez pas de réseau, tpg offline vous permet de savoir quand appoximativement votre transport part.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-			iconeF = FAKFontAwesome.warningIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page4 = OnboardingContentViewController (title: "Avertissement".localized(), body: "En mode hors ligne, tpg offline ne vous permet pas d'avoir des horaires précis. tpg offline n'est en aucun cas responsable en cas de retard, d'avance, de perturbation des transports.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "J'ai compris, continuer".localized(), actionBlock: nil)
-			iconeF = FAKFontAwesome.mapSignsIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page5 = OnboardingContentViewController (title: "Itinéraires".localized(), body: "L'application propose un menu itinéraire. Vous pouvez vous déplacer avec une facilité incroyable grâce à cette fonction.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-			iconeF = FAKFontAwesome.mapIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page6 = OnboardingContentViewController (title: "Plan".localized(), body: "Tous les plans des tpg sont disponibles dans le menu plan".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-			iconeF = FAKFontAwesome.warningIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page7 = OnboardingContentViewController (title: "Incidents".localized(), body: "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-			iconeF = FAKFontAwesome.bellOIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page8 = OnboardingContentViewController (title: "Rappels".localized(), body: "Dans les départs et itinéraires, en glissant votre doigt de gauche à droite, découvrez comment les rappels peuvent vous éviter de voir le bus partir sans vous...".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-			iconeF = FAKFontAwesome.githubIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page9 = OnboardingContentViewController (title: "Open Source", body: "tpg offline est open source. Tout le monde peut modifier et améliorer l'application. Si vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre project sur GitHub. (https://github.com/RemyDCF/tpg-offline)".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-			iconeF = FAKFontAwesome.ellipsisHIconWithSize(50)
-			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			let page10 = OnboardingContentViewController (title: "Et beaucoup d'autre chose".localized(), body: "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Terminer".localized(), actionBlock: { (onboardingvc) in
-				self.dismissViewControllerAnimated(true, completion: nil)
-				self.defaults.setBool(true, forKey: "tutorial")
-			})
-
-			page1.movesToNextViewController = true
-			page2.movesToNextViewController = true
-			page3.movesToNextViewController = true
-			page4.movesToNextViewController = true
-			page5.movesToNextViewController = true
-			page6.movesToNextViewController = true
-			page7.movesToNextViewController = true
-			page8.movesToNextViewController = true
-			page9.movesToNextViewController = true
-
-			let onboardingVC = OnboardingViewController(backgroundImage: image, contents: [page1, page2, page3, page4, page5, page6, page7, page8, page9, page10])
-			onboardingVC.bodyFontSize = 20
-			onboardingVC.shouldMaskBackground = false
-			onboardingVC.shouldFadeTransitions = true
-			onboardingVC.allowSkipping = true
-			onboardingVC.skipButton.setTitle("Passer".localized(), forState: .Normal)
-			onboardingVC.skipHandler = {
-				self.dismissViewControllerAnimated(true, completion: nil)
-				self.defaults.setBool(true, forKey: "tutorial")
-			}
-			presentViewController(onboardingVC, animated: true, completion: nil)
-		}
+		afficherTutoriel()
 		
 		switch PermissionScope().statusNotifications() {
 		case .Unknown:
@@ -213,6 +143,9 @@ class ArretsTableViewController: UITableViewController {
 				})
 				self.tableView.reloadData()
 			}
+			else {
+				self.tableView.reloadData()
+			}
 		}
 
 	}
@@ -220,28 +153,93 @@ class ArretsTableViewController: UITableViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-		tableView.backgroundColor = AppValues.primaryColor
+		actualiserTheme()
 		searchController.searchBar.barTintColor = AppValues.primaryColor
 		searchController.searchBar.tintColor = AppValues.textColor
 		
 		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
 		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 		
-		refresh(self)
+		requestLocation()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "ArretsTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		
 	}
 	
-	func refresh(sender:AnyObject)
-	{
-		requestLocation()
-		tableView.reloadData()
+	func afficherTutoriel() {
+		if defaults.boolForKey("tutorial") == false {
+			let rect = CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+			UIGraphicsBeginImageContext(rect.size)
+			let context = UIGraphicsGetCurrentContext()
+			
+			CGContextSetFillColorWithColor(context, UIColor.flatOrangeColor().CGColor)
+			CGContextFillRect(context, rect)
+			
+			let image = UIGraphicsGetImageFromCurrentImageContext()
+			UIGraphicsEndImageContext()
+			
+			let page1 = OnboardingContentViewController (title: "Bienvenue dans tpg offline".localized(), body: "tpg offline est une application qui permet de faciliter vos voyages avec les transports publics genevois".localized(), image: nil, buttonText: "Continuer".localized(), actionBlock: nil)
+			
+			let iconeI = FAKIonIcons.iosClockIconWithSize(50)
+			iconeI.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page2 = OnboardingContentViewController (title: "Départs".localized(), body: "Le menu Départs vous permet de voir quels sont les prochains bus pour un arrêt".localized(), image: iconeI.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+			var iconeF = FAKFontAwesome.globeIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page3 = OnboardingContentViewController (title: "Mode offline".localized(), body: "Dans les départs, si vous n'avez pas de réseau, tpg offline vous permet de savoir quand appoximativement votre transport part.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+			iconeF = FAKFontAwesome.warningIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page4 = OnboardingContentViewController (title: "Avertissement".localized(), body: "En mode hors ligne, tpg offline ne vous permet pas d'avoir des horaires précis. tpg offline n'est en aucun cas responsable en cas de retard, d'avance, de perturbation des transports.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "J'ai compris, continuer".localized(), actionBlock: nil)
+			iconeF = FAKFontAwesome.mapSignsIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page5 = OnboardingContentViewController (title: "Itinéraires".localized(), body: "L'application propose un menu itinéraire. Vous pouvez vous déplacer avec une facilité incroyable grâce à cette fonction.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+			iconeF = FAKFontAwesome.mapIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page6 = OnboardingContentViewController (title: "Plan".localized(), body: "Tous les plans des tpg sont disponibles dans le menu plan".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+			iconeF = FAKFontAwesome.warningIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page7 = OnboardingContentViewController (title: "Incidents".localized(), body: "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+			iconeF = FAKFontAwesome.bellOIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page8 = OnboardingContentViewController (title: "Rappels".localized(), body: "Dans les départs et itinéraires, en glissant votre doigt de gauche à droite, découvrez comment les rappels peuvent vous éviter de voir le bus partir sans vous...".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+			iconeF = FAKFontAwesome.githubIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page9 = OnboardingContentViewController (title: "Open Source", body: "tpg offline est open source. Tout le monde peut modifier et améliorer l'application. Si vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+			iconeF = FAKFontAwesome.ellipsisHIconWithSize(50)
+			iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+			let page10 = OnboardingContentViewController (title: "Et beaucoup d'autre choses".localized(), body: "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Terminer".localized(), actionBlock: { (onboardingvc) in
+				self.dismissViewControllerAnimated(true, completion: nil)
+				self.defaults.setBool(true, forKey: "tutorial")
+			})
+			
+			page1.movesToNextViewController = true
+			page2.movesToNextViewController = true
+			page3.movesToNextViewController = true
+			page4.movesToNextViewController = true
+			page5.movesToNextViewController = true
+			page6.movesToNextViewController = true
+			page7.movesToNextViewController = true
+			page8.movesToNextViewController = true
+			page9.movesToNextViewController = true
+			
+			let onboardingVC = OnboardingViewController(backgroundImage: image, contents: [page1, page2, page3, page4, page5, page6, page7, page8, page9, page10])
+			onboardingVC.bodyFontSize = 20
+			onboardingVC.shouldMaskBackground = false
+			onboardingVC.shouldFadeTransitions = true
+			onboardingVC.allowSkipping = true
+			onboardingVC.skipButton.setTitle("Passer".localized(), forState: .Normal)
+			onboardingVC.skipHandler = {
+				self.dismissViewControllerAnimated(true, completion: nil)
+				self.defaults.setBool(true, forKey: "tutorial")
+			}
+			presentViewController(onboardingVC, animated: true, completion: nil)
+		}
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -7,3 +7,30 @@
 //
 
 import UIKit
+import ChameleonFramework
+
+extension UIViewController {
+	func actualiserTheme() {
+		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+		navigationController?.navigationBar.tintColor = AppValues.textColor
+		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
+		view.backgroundColor = AppValues.primaryColor
+		
+		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+			UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+		}
+		else {
+			UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+		}
+	}
+}
+
+extension UITableViewController {
+	override func actualiserTheme() {
+		super.actualiserTheme()
+		
+		tableView.backgroundColor = AppValues.primaryColor
+		tableView.reloadData()
+	}
+}

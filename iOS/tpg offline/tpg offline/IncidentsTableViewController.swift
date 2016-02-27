@@ -11,6 +11,7 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import DGElasticPullToRefresh
+import Google
 
 class IncidentsTableViewController: UITableViewController {
     
@@ -65,22 +66,22 @@ class IncidentsTableViewController: UITableViewController {
             listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
             listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
         }
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+     
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        tableView.backgroundColor = AppValues.primaryColor
+		
 		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
 		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 		
-        tableView.reloadData()
+        actualiserTheme()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "IncidentsTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

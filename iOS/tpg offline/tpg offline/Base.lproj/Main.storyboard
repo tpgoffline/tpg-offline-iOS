@@ -376,6 +376,7 @@
                         <segue destination="Ytq-I7-VNz" kind="show" identifier="showCredits" id="BVF-CQ-0S4"/>
                         <segue destination="v5i-fc-1YS" kind="show" identifier="showThemesMenu" id="wU8-15-fXu"/>
                         <segue destination="3t6-0a-0C4" kind="show" identifier="showPremium" id="tvK-1a-NSg"/>
+                        <segue destination="CSp-Kb-lVN" kind="show" identifier="showGitHub" id="5h4-1H-jes"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fq-RQ-WLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,6 +463,9 @@
                             <outlet property="delegate" destination="Ytq-I7-VNz" id="wMi-fW-rrW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="CSp-Kb-lVN" kind="show" identifier="showURL" id="ZI5-bs-JyD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7JD-Rk-oRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -640,6 +644,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hc2-8V-0Zl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3204" y="3334"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="Gau-40-wLU">
+            <objects>
+                <viewController id="CSp-Kb-lVN" customClass="WebViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f6S-sA-c1L"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xs7-h3-crg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pOf-rW-uRO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EnS-4G-9Uf">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EnS-4G-9Uf" firstAttribute="leading" secondItem="pOf-rW-uRO" secondAttribute="leadingMargin" constant="-20" id="4Dp-Pd-Up3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EnS-4G-9Uf" secondAttribute="trailing" constant="-20" id="PzG-Rs-S96"/>
+                            <constraint firstItem="EnS-4G-9Uf" firstAttribute="top" secondItem="f6S-sA-c1L" secondAttribute="bottom" id="a1K-Q0-UzJ"/>
+                            <constraint firstItem="Xs7-h3-crg" firstAttribute="top" secondItem="EnS-4G-9Uf" secondAttribute="bottom" id="biZ-zU-NDL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="EnS-4G-9Uf" id="HNi-Mb-BX6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TMa-63-irM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3843" y="3334"/>
         </scene>
         <!--Plan View Controller-->
         <scene sceneID="6Te-cg-Wv9">
@@ -1336,5 +1374,8 @@
             <point key="canvasLocation" x="2560" y="3334"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZI5-bs-JyD"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

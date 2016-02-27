@@ -62,7 +62,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
 		searchController.searchBar.barTintColor = AppValues.primaryColor
 		searchController.searchBar.tintColor = AppValues.textColor
 		tableView.tableHeaderView = self.searchController.searchBar
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+		
 		
 		locationManager.delegate = self
 		var accurency = kCLLocationAccuracyHundredMeters
@@ -83,16 +83,10 @@ class tpgArretSelectionTableViewController: UITableViewController {
 		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
 		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 		
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        tableView.backgroundColor = AppValues.primaryColor
+     
+        actualiserTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
-
-        tableView.reloadData()
     }
 	
 	deinit {

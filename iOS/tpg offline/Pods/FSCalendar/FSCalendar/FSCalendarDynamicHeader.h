@@ -26,9 +26,9 @@
 @property (readonly, nonatomic) BOOL ibEditing;
 @property (readonly, nonatomic) BOOL floatingMode;
 @property (readonly, nonatomic) NSArray *visibleStickyHeaders;
-@property (readonly, nonatomic) CGFloat preferedHeaderHeight;
-@property (readonly, nonatomic) CGFloat preferedWeekdayHeight;
-@property (readonly, nonatomic) CGFloat preferedRowHeight;
+@property (readonly, nonatomic) CGFloat preferredHeaderHeight;
+@property (readonly, nonatomic) CGFloat preferredWeekdayHeight;
+@property (readonly, nonatomic) CGFloat preferredRowHeight;
 @property (readonly, nonatomic) UIView *bottomBorder;
 
 @property (readonly, nonatomic) NSCalendar *calendar;
@@ -55,7 +55,6 @@
 
 - (CGSize)sizeThatFits:(CGSize)size scope:(FSCalendarScope)scope;
 
-- (void)_setCurrentPage:(NSDate *)currentPage;
 - (NSDate *)findMonthForWeek:(NSDate *)week withRow:(NSInteger *)row;
 
 @end

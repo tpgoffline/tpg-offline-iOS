@@ -14,6 +14,7 @@ import SCLAlertView
 import ChameleonFramework
 import DGElasticPullToRefresh
 import MRProgress
+import Google
 
 class DepartsArretTableViewController: UITableViewController {
 	var arret: Arret!
@@ -50,30 +51,6 @@ class DepartsArretTableViewController: UITableViewController {
 		
 		title = arret?.nomComplet
 		
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-		tableView.backgroundColor = AppValues.primaryColor
-	}
-	
-	override func viewDidDisappear(animated: Bool) {
-		super.viewDidDisappear(animated)
-	}
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-		
-		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
-		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-		
-		tableView.backgroundColor = AppValues.primaryColor
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-		self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-		
-		refresh(self)
-		
 		var barButtonsItems: [UIBarButtonItem] = []
 		
 		if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
@@ -82,12 +59,32 @@ class DepartsArretTableViewController: UITableViewController {
 		else {
 			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
 		}
-		if !offline {
-			barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
-		}
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
 		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
 		
 		self.navigationItem.rightBarButtonItems = barButtonsItems
+		
+		tableView.backgroundColor = AppValues.primaryColor
+	}
+	
+	override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+	}
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+
+		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+		
+		actualiserTheme()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "DepartsArretTableViewController-\(arret.stopCode)")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
+		
+		refresh(self)
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -104,7 +101,13 @@ class DepartsArretTableViewController: UITableViewController {
 		let time = dateFormatter.dateFromString(timestamp)
 		let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
 		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: NSDate())
-		if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
+		if tempsTimestamp.hour == now.hour && tempsTimestamp.minute == now.minute && tempsTimestamp.second >= now.second {
+			return "0"
+		}
+		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute - 1 == now.minute && tempsTimestamp.second <= now.second {
+			return "0"
+		}
+		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
 			return String(tempsTimestamp.minute - now.minute)
 		}
 		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour == now.hour + 1 && tempsTimestamp.minute < now.minute {
@@ -112,12 +115,6 @@ class DepartsArretTableViewController: UITableViewController {
 		}
 		else if tempsTimestamp.hour > now.hour {
 			return String(((tempsTimestamp.hour - now.hour) * 60) + tempsTimestamp.minute)
-		}
-		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute == now.minute && tempsTimestamp.second >= now.second {
-			return "0"
-		}
-		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute - 1 == now.minute && tempsTimestamp.second <= now.second {
-			return "0"
 		}
 		else {
 			return "-1"
@@ -162,9 +159,7 @@ class DepartsArretTableViewController: UITableViewController {
 		else {
 			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
 		}
-		if !offline {
-			barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
-		}
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
 		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
 		
 		self.navigationItem.rightBarButtonItems = barButtonsItems
@@ -226,9 +221,15 @@ class DepartsArretTableViewController: UITableViewController {
 	{
 		CATransaction.begin()
 		
-		let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Chargement", mode: .Indeterminate, animated: true)
-		progressBar.tintColor = AppValues.secondaryColor
-		progressBar.titleLabel!.textColor = AppValues.secondaryColor
+		let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view.window, title: "Chargement", mode: .Indeterminate, animated: true)
+		if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
+			progressBar.tintColor = AppValues.secondaryColor
+			progressBar.titleLabel!.textColor = AppValues.secondaryColor
+		}
+		else {
+			progressBar.tintColor = AppValues.textColor
+			progressBar.titleLabel!.textColor = AppValues.textColor
+		}
 		
 		CATransaction.setCompletionBlock({
 			self.refreshDeparts()
@@ -477,24 +478,28 @@ extension DepartsArretTableViewController {
 		if indexPath.section == 0 && offline {
 			let cell = tableView.dequeueReusableCellWithIdentifier("departArretCell", forIndexPath: indexPath)
 			
-			cell.backgroundColor = UIColor.flatYellowColor()
-			cell.textLabel?.textColor = UIColor.blackColor()
+			cell.backgroundColor = AppValues.secondaryColor
+			cell.textLabel?.textColor = AppValues.textColor
 			cell.textLabel?.text = "Mode offline".localized()
-			cell.detailTextLabel?.textColor = UIColor.blackColor()
+			cell.detailTextLabel?.textColor = AppValues.textColor
 			cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification".localized()
-			cell.imageView?.image = FAKFontAwesome.globeIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
+			let icone = FAKFontAwesome.globeIconWithSize(50)
+			icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+			cell.imageView?.image = icone.imageWithSize(CGSize(width: 50, height: 50))
 			cell.accessoryView = nil
 			return cell
 		}
 		else if offline && indexPath.section == 1 && serviceTermine {
 			let cell = tableView.dequeueReusableCellWithIdentifier("departArretCell", forIndexPath: indexPath)
 			
-			cell.backgroundColor = UIColor.flatYellowColor()
-			cell.textLabel?.textColor = UIColor.blackColor()
+			cell.backgroundColor = AppValues.secondaryColor
+			cell.textLabel?.textColor = AppValues.textColor
 			cell.textLabel?.text = "Service terminé".localized()
-			cell.detailTextLabel?.textColor = UIColor.blackColor()
-			cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret.".localized()
-			cell.imageView?.image = FAKFontAwesome.busIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
+			cell.detailTextLabel?.textColor = AppValues.textColor
+			cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized()
+			let icone = FAKFontAwesome.busIconWithSize(50)
+			icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+			cell.imageView?.image = icone.imageWithSize(CGSize(width: 50, height: 50))
 			cell.accessoryView = nil
 			return cell
 		}
@@ -505,7 +510,7 @@ extension DepartsArretTableViewController {
 			cell.textLabel?.textColor = UIColor.blackColor()
 			cell.textLabel?.text = "Service terminé"
 			cell.detailTextLabel?.textColor = UIColor.blackColor()
-			cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arret.".localized()
+			cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized()
 			cell.imageView?.image = FAKFontAwesome.busIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
 			cell.accessoryView = nil
 			return cell

@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
+import Google
 
 class LocationSettingsTableViewController: UITableViewController {
 
@@ -26,18 +27,18 @@ class LocationSettingsTableViewController: UITableViewController {
         }
         rowSelected[1] = values[1].indexOf(defaults.integerForKey("proximityDistance"))!
         tableView.backgroundColor = AppValues.primaryColor
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+     
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
-        tableView.backgroundColor = AppValues.primaryColor
-        tableView.reloadData()
+        actualiserTheme()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "LocationSettingsTableViewController")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
     }
     
     override func didReceiveMemoryWarning() {

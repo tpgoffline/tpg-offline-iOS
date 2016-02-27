@@ -9,14 +9,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>4</integer>
 		</dict>
 		<key>DGElasticPullToRefresh.xcscheme</key>
 		<dict>
@@ -30,28 +30,28 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>5</integer>
 		</dict>
 		<key>EFCircularSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>6</integer>
 		</dict>
 		<key>FSCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>8</integer>
 		</dict>
 		<key>FontAwesomeKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>7</integer>
 		</dict>
 		<key>MRProgress.xcscheme</key>
 		<dict>
@@ -70,16 +70,16 @@
 		<key>Pods-tpg offline.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>2</integer>
 		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
 		</dict>
 		<key>SwiftLocation-SwiftLocation.xcscheme</key>
 		<dict>
@@ -98,6 +98,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>058D16F6AE006B598CA4F7B993205ADA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>086B93AB44C79F39C3CAB03EC413C51F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>115824B7CB2E76E5ACB836A251E79404</key>
 		<dict>
 			<key>primary</key>
@@ -123,7 +133,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1FA5308E02A479216D30C368F27E0BE7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>205BBB688511BBC5F917305549AFA0F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>225F3611C5DCF7418B4109B61D1FDED4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>23063399E230EE11E7E55EB62994F1DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3019B845EEC984361B9FDA97892E4255</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -139,6 +169,11 @@
 			<true/>
 		</dict>
 		<key>32EFB806D8DCEC5D9A09C1041628C127</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>33BD1B8A1E2A26C6CBE2FA96519CED31</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -208,7 +243,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6FB2EF83851EC4BEC0645A40745A50BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>761BC9A6E274304CD1ED5FFAFA67BF77</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>848295B8065494C2ADBFFBF8DEE2BAFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -288,6 +333,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D5AE3F49FD5053A186A27409E04366FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D7FF48F3092783E4E42B336F0DEF2D1A</key>
 		<dict>
 			<key>primary</key>
@@ -319,6 +369,11 @@
 			<true/>
 		</dict>
 		<key>EFA7D779582D4041AE49A28E95F34733</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F80056DB489801825E56CF09FF10295E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

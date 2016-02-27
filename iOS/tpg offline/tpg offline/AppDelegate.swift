@@ -11,6 +11,7 @@ import SwiftyJSON
 import FontAwesomeKit
 import CoreLocation
 import ChameleonFramework
+import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				}
 			})
 		}
+		
 		var decoded = defaults.objectForKey("itinerairesFavoris")
 		if decoded == nil {
 			decoded = []
@@ -53,6 +55,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				let encodedData = NSKeyedArchiver.archivedDataWithRootObject([])
 				defaults.setObject(encodedData, forKey: "itinerairesFavoris")
 			}
+		}
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			
+			var configureError:NSError?
+			GGLContext.sharedInstance().configureWithError(&configureError)
+			assert(configureError == nil, "Error configuring Google services: \(configureError)")
+			
+			let gai = GAI.sharedInstance()
+			gai.trackUncaughtExceptions = true  // report uncaught exceptions
 		}
 		
 		AppValues.premium = defaults.boolForKey("premium")
@@ -82,10 +94,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Selected)
 		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Normal)
 		let tabBarController = window?.rootViewController as! UITabBarController
-		tabBarController.tabBar.barTintColor = AppValues.secondaryColor
+		
 		tabBarController.tabBar.tintColor = AppValues.textColor
 		let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
-		view.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+		
+		if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
+			tabBarController.tabBar.barTintColor = AppValues.secondaryColor
+			view.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+		}
+		else {
+			tabBarController.tabBar.barTintColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+			view.backgroundColor = AppValues.secondaryColor
+		}
 		UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
 		view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
 		let image = UIGraphicsGetImageFromCurrentImageContext()

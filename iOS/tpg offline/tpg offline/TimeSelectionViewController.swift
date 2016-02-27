@@ -46,7 +46,7 @@ class TimeSelectionViewController: UIViewController {
             minuteSlider.currentValue = Float(ItineraireEnCours.itineraire.date!.minute)
 			labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         }
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+     
         minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
         minuteSlider.filledColor = AppValues.primaryColor.lightenByPercentage(0.2)
         hourSlider.unfilledColor = AppValues.primaryColor.lightenByPercentage(0.1)
@@ -72,11 +72,8 @@ class TimeSelectionViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
-        self.setThemeUsingPrimaryColor(AppValues.primaryColor, withSecondaryColor: AppValues.secondaryColor, andContentStyle: UIContentStyle.Contrast)
+        actualiserTheme()
+     
         minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
         minuteSlider.filledColor = AppValues.primaryColor.lightenByPercentage(0.2)
         hourSlider.unfilledColor = AppValues.primaryColor.lightenByPercentage(0.1)

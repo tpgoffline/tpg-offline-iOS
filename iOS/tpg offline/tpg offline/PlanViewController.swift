@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Google
 
 class PlanViewController: UIViewController {
     var image: UIImage!
     var scrollView: UIScrollView!
     var imageView: UIImageView!
+	var titre: String! = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView = UIImageView(image: image)
@@ -25,7 +27,6 @@ class PlanViewController: UIViewController {
         
         scrollView.addSubview(imageView)
         view.addSubview(scrollView)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,10 +36,14 @@ class PlanViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-        navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
+        actualiserTheme()
+		view.backgroundColor = UIColor.whiteColor()
+		
+		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
+			let tracker = GAI.sharedInstance().defaultTracker
+			tracker.set(kGAIScreenName, value: "PlanViewController-\(titre)")
+			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
+		}
     }
 }
 

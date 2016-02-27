@@ -54,19 +54,21 @@
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
 		AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */; };
+		AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0148121C7F6CDE0057E884 /* WebViewController.swift */; };
 		AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */; };
 		AD3F41E21C7DB011009113F0 /* TtitrePremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */; };
 		AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */; };
 		AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */; };
 		ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
 		ADF8B3741C592532003CE1EA /* Departs in Resources */ = {isa = PBXBuildFile; fileRef = ADF8B3731C592532003CE1EA /* Departs */; };
+		ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		000ECABA1C468D4000E4FC92 /* LocationSettingsCellKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsCellKey.swift; sourceTree = "<group>"; };
 		000ECABC1C469A3500E4FC92 /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RouteViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0019B2131C0F38BD00DD1A4D /* arrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrets.json; sourceTree = "<group>"; };
-		002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
+		002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CreditsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002B47DD1C01FA6F000BF3E8 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002B47E51C01FA6F000BF3E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,12 +81,12 @@
 		002E5C751C132A680008623D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsExtension.swift; sourceTree = "<group>"; };
 		00391C461C271D1E005250D4 /* ParametresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ParametresTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoixMenuTableViewController.swift; sourceTree = "<group>"; };
+		00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ChoixMenuTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		003D10ED1C21A46800F9857E /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
 		003EBAC81C0B46CF0024043B /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		004D812A1C24737800C6AD55 /* Perturbations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perturbations.swift; sourceTree = "<group>"; };
 		004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
-		004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; };
+		004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		00500AF31C1B396F00341F7A /* Arret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Arret.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		005DF8101C0DF74E00377031 /* ArretsImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ArretsImageTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -93,7 +95,7 @@
 		007D924A1C4A989F0036BEE6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		007D924C1C4A98A80036BEE6 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		007D924E1C4AA27E0036BEE6 /* VueItineraireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VueItineraireTableViewController.swift; sourceTree = "<group>"; };
-		008B84431C232D84007BE1B3 /* IncidentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncidentsTableViewController.swift; sourceTree = "<group>"; };
+		008B84431C232D84007BE1B3 /* IncidentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = IncidentsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		008F53181C18744500127BDA /* AppValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = AppValues.swift; path = ../AppValues.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00ABBE141C29C81B00479FF4 /* Departs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Departs.swift; sourceTree = "<group>"; };
 		00B39B8A1C131C05006FC8A3 /* tpgURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURL.swift; sourceTree = "<group>"; };
@@ -110,13 +112,14 @@
 		00DCD9581C285EBB0094C0EB /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		00DCD95A1C2865E40094C0EB /* Sound.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.aif; sourceTree = "<group>"; };
 		00DDC0B11C255CED002B288E /* PlansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlansTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; };
+		00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EAD0B938A89BC4A90E7F807 /* Pods-tpg offline Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		43D3491A7E1B71A24C25DCFF /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 		9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
+		AD0148121C7F6CDE0057E884 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TtitrePremiumTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcheterPremiumTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		ADB2D6DC1C7A222F0023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADB2D6DD1C7A22300023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADF8B3731C592532003CE1EA /* Departs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Departs; sourceTree = "<group>"; };
+		ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +193,7 @@
 				002B47E71C01FA6F000BF3E8 /* Assets.xcassets */,
 				002B47E91C01FA6F000BF3E8 /* LaunchScreen.storyboard */,
 				002B47EC1C01FA6F000BF3E8 /* Info.plist */,
+				ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */,
 				ADB2D6D91C7A1BFD0023718F /* Localizable.strings */,
 			);
 			path = "tpg offline";
@@ -203,6 +208,7 @@
 				002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */,
 				004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */,
 				AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */,
+				AD0148121C7F6CDE0057E884 /* WebViewController.swift */,
 			);
 			name = "Paramètres";
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
 				ADF8B3741C592532003CE1EA /* Departs in Resources */,
+				ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */,
 				0019B2141C0F38BD00DD1A4D /* arrets.json in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
 			);
@@ -485,6 +492,7 @@
 				AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */,
 				002B47F51C01FA87000BF3E8 /* ArretsTableViewController.swift in Sources */,
 				00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */,
+				AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */,
 				002B47F71C01FA87000BF3E8 /* DepartsTableViewCell.swift in Sources */,
 				004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */,
 				AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */,
@@ -632,6 +640,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -658,6 +667,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
