@@ -71,7 +71,7 @@ class DepartsArretTableViewController: UITableViewController {
 	}
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-
+		
 		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
 		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 		
@@ -281,8 +281,10 @@ class DepartsArretTableViewController: UITableViewController {
 			let day = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate())
 			switch day.weekday {
 			case 7:
-				if let dataDeparts = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(arret.stopCode + "departsSAM", ofType: "json", inDirectory: "Departs")!) {
-					let departs = JSON(data: dataDeparts)
+				let file = NSBundle.mainBundle().pathForResource(arret.stopCode + "departsSAM", ofType: "json", inDirectory: "Departs")
+				if NSFileManager.defaultManager().fileExistsAtPath(file!) {
+					let dataDeparts = NSData(contentsOfFile: file!)
+					let departs = JSON(data: dataDeparts!)
 					for (_, subJson) in departs {
 						listeDeparts.append(Departs(
 							ligne: subJson["ligne"].string!,
@@ -298,8 +300,10 @@ class DepartsArretTableViewController: UITableViewController {
 				}
 				break
 			case 1:
-				if let dataDeparts = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(arret.stopCode + "departsDIM", ofType: "json", inDirectory: "Departs")!) {
-					let departs = JSON(data: dataDeparts)
+				let file = NSBundle.mainBundle().pathForResource(arret.stopCode + "departsDIM", ofType: "json", inDirectory: "Departs")
+				if NSFileManager.defaultManager().fileExistsAtPath(file!) {
+					let dataDeparts = NSData(contentsOfFile: file!)
+					let departs = JSON(data: dataDeparts!)
 					for (_, subJson) in departs {
 						listeDeparts.append(Departs(
 							ligne: subJson["ligne"].string!,
@@ -315,8 +319,10 @@ class DepartsArretTableViewController: UITableViewController {
 				}
 				break
 			default:
-				if let dataDeparts = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(arret.stopCode + "departsLUN", ofType: "json", inDirectory: "Departs")!) {
-					let departs = JSON(data: dataDeparts)
+				let file = NSBundle.mainBundle().pathForResource(arret.stopCode + "departsLUN", ofType: "json", inDirectory: "Departs")
+				if NSFileManager.defaultManager().fileExistsAtPath(file!) {
+					let dataDeparts = NSData(contentsOfFile: file!)
+					let departs = JSON(data: dataDeparts!)
 					for (_, subJson) in departs {
 						listeDeparts.append(Departs(
 							ligne: subJson["ligne"].string!,
@@ -330,6 +336,7 @@ class DepartsArretTableViewController: UITableViewController {
 						listeDeparts.last?.calculerTempsRestant()
 					}
 				}
+				break
 			}
 			
 			listeDeparts = listeDeparts.filter({ (depart) -> Bool in
@@ -505,12 +512,14 @@ extension DepartsArretTableViewController {
 		else if !offline && indexPath.section == 0 && serviceTermine {
 			let cell = tableView.dequeueReusableCellWithIdentifier("departArretCell", forIndexPath: indexPath)
 			
-			cell.backgroundColor = UIColor.flatRedColor()
-			cell.textLabel?.textColor = UIColor.blackColor()
-			cell.textLabel?.text = "Service terminé"
-			cell.detailTextLabel?.textColor = UIColor.blackColor()
+			cell.backgroundColor = AppValues.secondaryColor
+			cell.textLabel?.textColor = AppValues.textColor
+			cell.textLabel?.text = "Service terminé".localized()
+			cell.detailTextLabel?.textColor = AppValues.textColor
 			cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized()
-			cell.imageView?.image = FAKFontAwesome.busIconWithSize(50).imageWithSize(CGSize(width: 50, height: 50))
+			let icone = FAKFontAwesome.busIconWithSize(50)
+			icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+			cell.imageView?.image = icone.imageWithSize(CGSize(width: 50, height: 50))
 			cell.accessoryView = nil
 			return cell
 		}
