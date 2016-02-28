@@ -23,11 +23,13 @@ class RouteViewController: UIViewController {
     var directionsRoute: MKRoute!
     override func viewDidLoad() {
         super.viewDidLoad()
+		
         labelPieton.attributedText = FAKIonIcons.androidWalkIconWithSize(label.bounds.height).attributedString()
         
         let pin = MKPointAnnotation()
         pin.coordinate = self.arret.location.coordinate
         pin.title = self.arret.nomComplet
+		
         map.addAnnotation(pin)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -63,7 +65,14 @@ extension RouteViewController : MKMapViewDelegate {
         let renderer = MKPolylineRenderer(polyline: directionsRoute.polyline)
         
         renderer.lineWidth = 4
-        renderer.strokeColor = AppValues.primaryColor
+		
+		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+			renderer.strokeColor = AppValues.primaryColor
+		}
+		else {
+			renderer.strokeColor = AppValues.textColor
+		}
+		
         return renderer
     }
     
