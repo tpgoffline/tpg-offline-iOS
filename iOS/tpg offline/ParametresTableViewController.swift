@@ -109,15 +109,16 @@ class ParametresTableViewController: UITableViewController {
 		let image = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 		
-		let page1 = OnboardingContentViewController (title: "Bienvenue dans tpg offline".localized(), body: "tpg offline est une application qui permet de faciliter vos voyages avec les transports publics genevois".localized(), image: nil, buttonText: "Continuer".localized(), actionBlock: nil)
+		let page1 = OnboardingContentViewController (title: "Bienvenue dans tpg offline".localized(), body: "tpg offline est une application qui permet de faciliter vos voyages avec les transports publics genevois, même sans réseau.".localized(), image: nil, buttonText: "Continuer".localized(), actionBlock: nil)
 		
 		let iconeI = FAKIonIcons.iosClockIconWithSize(50)
 		iconeI.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-		let page2 = OnboardingContentViewController (title: "Départs".localized(), body: "Le menu Départs vous permet de voir quels sont les prochains bus pour un arrêt".localized(), image: iconeI.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+		let page2 = OnboardingContentViewController (title: "Départs".localized(), body: "Le menu Départs vous permet de voir quels sont les prochains transports pour un arrêt".localized(), image: iconeI.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
 		var iconeF = FAKFontAwesome.globeIconWithSize(50)
 		iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-		let page3 = OnboardingContentViewController (title: "Mode offline".localized(), body: "Dans les départs, si vous n'avez pas de réseau, tpg offline vous permet de savoir quand appoximativement votre transport part.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+		let page3 = OnboardingContentViewController (title: "Mode offline".localized(), body: "Dans les départs, si vous n'avez pas de réseau, tpg offline vous affiche quand votre transport part.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
 		iconeF = FAKFontAwesome.warningIconWithSize(50)
+		
 		iconeF.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
 		let page4 = OnboardingContentViewController (title: "Avertissement".localized(), body: "En mode hors ligne, tpg offline ne vous permet pas d'avoir des horaires précis. tpg offline n'est en aucun cas responsable en cas de retard, d'avance, de perturbation des transports.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "J'ai compris, continuer".localized(), actionBlock: nil)
 		iconeF = FAKFontAwesome.mapSignsIconWithSize(50)

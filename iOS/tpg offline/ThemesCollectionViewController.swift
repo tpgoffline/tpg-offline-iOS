@@ -17,11 +17,11 @@ class ThemesCollectionViewController: UICollectionViewController {
     let themes = [
         "Défaut".localized() : [UIColor.flatOrangeColor(), UIColor.flatOrangeColorDark(), UIColor.whiteColor()],
         "Inverse".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatOrangeColorDark()],
-        "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatNavyBlueColorDark(), UIColor.flatOrangeColor()],
-        "Mint".localized() : [UIColor.flatMintColor(), UIColor.flatMintColorDark(), UIColor.whiteColor()],
-        "Rouge".localized() : [UIColor.flatRedColor(), UIColor.flatRedColorDark(), UIColor.whiteColor()],
-        "Bleu".localized() : [UIColor.flatSkyBlueColor(), UIColor.flatSkyBlueColorDark(), UIColor.whiteColor()],
-        "Vert".localized() : [UIColor.flatGreenColor(), UIColor.flatGreenColorDark(), UIColor.blackColor()]
+        "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatNavyBlueColorDark(), UIColor.flatWhiteColor()],
+        "Mint".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatMintColor()],
+        "Rouge".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatRedColor()],
+        "Bleu".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatSkyBlueColor()],
+        "Vert".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatGreenColor()]
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()
