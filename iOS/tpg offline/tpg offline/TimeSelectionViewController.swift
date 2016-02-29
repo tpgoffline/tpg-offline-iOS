@@ -28,7 +28,7 @@ class TimeSelectionViewController: UIViewController {
         hourSlider.maximumValue = 24
         hourSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(hourSlider)
-        hourSlider.addTarget(self, action: #selector(TimeSelectionViewController.hourChanged(_:)), forControlEvents: .ValueChanged)
+		hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
         
         minuteSlider = EFCircularSlider.init(frame: CGRect(x: (view.bounds.width / 2) - 80, y: (view.bounds.height / 2) - 77, width: 160, height: 160))
         minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"])
@@ -39,7 +39,7 @@ class TimeSelectionViewController: UIViewController {
         minuteSlider.snapToLabels = false
         minuteSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(minuteSlider)
-        minuteSlider.addTarget(self, action: #selector(TimeSelectionViewController.minuteChanged(_:)), forControlEvents: .ValueChanged)
+        minuteSlider.addTarget(self, action: "minuteChanged:", forControlEvents: .ValueChanged)
         
         if ItineraireEnCours.itineraire.date != nil {
             hourSlider.currentValue = Float(ItineraireEnCours.itineraire.date!.hour)
@@ -62,7 +62,7 @@ class TimeSelectionViewController: UIViewController {
 		boutonValider.backgroundColor = AppValues.secondaryColor
 		boutonValider.setTitle("Valider", forState: .Normal)
 		boutonValider.setTitleColor(AppValues.textColor, forState: .Normal)
-		boutonValider.addTarget(self, action: #selector(TimeSelectionViewController.boutonValiderPressed(_:)), forControlEvents: .TouchUpInside)
+		boutonValider.addTarget(self, action: "boutonValiderPressed:", forControlEvents: .TouchUpInside)
 		view.addSubview(boutonValider)
     }
 

@@ -69,7 +69,7 @@ class ArretsTableViewController: UITableViewController {
 		searchController.searchBar.tintColor = AppValues.textColor
 		tableView.tableHeaderView = self.searchController.searchBar
 		
-		requestLocation()
+		/*requestLocation()
 		
 		afficherTutoriel()
 		
@@ -100,7 +100,7 @@ class ArretsTableViewController: UITableViewController {
 			print("got results \(results)")
 			}, cancelled: { (results) -> Void in
 				print("thing was cancelled")
-		})
+		})*/
 	}
 	
 	func requestLocation() {

@@ -43,10 +43,10 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
@@ -207,10 +207,10 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:"toggleFavorite:"))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
 	}

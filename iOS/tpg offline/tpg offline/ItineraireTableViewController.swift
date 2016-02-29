@@ -122,7 +122,7 @@ class ItineraireTableViewController: UITableViewController {
 				if ItineraireEnCours.itineraire.dateArrivee == true {
 					cell.switchObject.setSelectedIndex(1, animated: true)
 				}
-				cell.switchObject.addTarget(self, action: #selector(ItineraireTableViewController.dateArriveeChange(_:)), forControlEvents: .ValueChanged)
+				cell.switchObject.addTarget(self, action:"dateArriveeChange:", forControlEvents: .ValueChanged)
 				cell.backgroundColor = AppValues.primaryColor
 				let view = UIView()
 				view.backgroundColor = AppValues.secondaryColor
@@ -134,7 +134,7 @@ class ItineraireTableViewController: UITableViewController {
 				cell.button.setTitle((row[indexPath.row][1] as! String), forState: .Normal)
 				cell.button.backgroundColor = AppValues.secondaryColor
 				cell.button.tintColor = AppValues.textColor
-				cell.button.addTarget(self, action: #selector(ItineraireTableViewController.rechercher(_:)), forControlEvents: .TouchUpInside)
+				cell.button.addTarget(self, action: "rechercher:", forControlEvents: .TouchUpInside)
 				let view = UIView()
 				view.backgroundColor = AppValues.secondaryColor
 				cell.selectedBackgroundView = view

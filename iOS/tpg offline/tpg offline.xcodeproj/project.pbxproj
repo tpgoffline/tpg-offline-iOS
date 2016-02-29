@@ -55,6 +55,8 @@
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
 		AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */; };
 		AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0148121C7F6CDE0057E884 /* WebViewController.swift */; };
+		AD11CD861C8336AA00DFF4AA /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */; };
+		AD11CD8E1C83373300DFF4AA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */; };
 		AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */; };
 		AD3F41E21C7DB011009113F0 /* TtitrePremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */; };
 		AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */; };
@@ -63,6 +65,16 @@
 		ADF8B3741C592532003CE1EA /* Departs in Resources */ = {isa = PBXBuildFile; fileRef = ADF8B3731C592532003CE1EA /* Departs */; };
 		ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD11CD881C8336AA00DFF4AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 002B47D51C01FA6F000BF3E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 002B47DC1C01FA6F000BF3E8;
+			remoteInfo = "tpg offline";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		000ECABA1C468D4000E4FC92 /* LocationSettingsCellKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsCellKey.swift; sourceTree = "<group>"; };
@@ -120,6 +132,10 @@
 		9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
 		AD0148121C7F6CDE0057E884 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UITests.swift; sourceTree = "<group>"; };
+		AD11CD871C8336AA00DFF4AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		AD13B1051C78A09500ECCDFD /* FavorisTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TtitrePremiumTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcheterPremiumTableViewCell.swift; sourceTree = "<group>"; };
@@ -149,6 +165,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD11CD801C8336AA00DFF4AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -162,6 +185,7 @@
 				003EBAC81C0B46CF0024043B /* FontAwesome.otf */,
 				0019B2131C0F38BD00DD1A4D /* arrets.json */,
 				002B47DF1C01FA6F000BF3E8 /* tpg offline */,
+				AD11CD841C8336AA00DFF4AA /* tpg offline UITests */,
 				002B47DE1C01FA6F000BF3E8 /* Products */,
 				A65315FEF759993751E0088F /* Frameworks */,
 				90973F03D73F43F58C8AD679 /* Pods */,
@@ -173,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				002B47DD1C01FA6F000BF3E8 /* tpg offline.app */,
+				AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -326,6 +351,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD11CD841C8336AA00DFF4AA /* tpg offline UITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */,
+				AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */,
+				AD11CD871C8336AA00DFF4AA /* Info.plist */,
+			);
+			path = "tpg offline UITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -348,6 +383,24 @@
 			productName = "tpg offline";
 			productReference = 002B47DD1C01FA6F000BF3E8 /* tpg offline.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AD11CD821C8336AA00DFF4AA /* tpg offline UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD11CD8C1C8336AA00DFF4AA /* Build configuration list for PBXNativeTarget "tpg offline UITests" */;
+			buildPhases = (
+				AD11CD7F1C8336AA00DFF4AA /* Sources */,
+				AD11CD801C8336AA00DFF4AA /* Frameworks */,
+				AD11CD811C8336AA00DFF4AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD11CD891C8336AA00DFF4AA /* PBXTargetDependency */,
+			);
+			name = "tpg offline UITests";
+			productName = "tpg offline UITests";
+			productReference = AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -374,6 +427,10 @@
 							};
 						};
 					};
+					AD11CD821C8336AA00DFF4AA = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 002B47DC1C01FA6F000BF3E8;
+					};
 				};
 			};
 			buildConfigurationList = 002B47D81C01FA6F000BF3E8 /* Build configuration list for PBXProject "tpg offline" */;
@@ -391,6 +448,7 @@
 			projectRoot = "";
 			targets = (
 				002B47DC1C01FA6F000BF3E8 /* tpg offline */,
+				AD11CD821C8336AA00DFF4AA /* tpg offline UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -411,6 +469,13 @@
 				ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */,
 				0019B2141C0F38BD00DD1A4D /* arrets.json in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD11CD811C8336AA00DFF4AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +577,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD11CD7F1C8336AA00DFF4AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD11CD861C8336AA00DFF4AA /* tpg_offline_UITests.swift in Sources */,
+				AD11CD8E1C83373300DFF4AA /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD11CD891C8336AA00DFF4AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 002B47DC1C01FA6F000BF3E8 /* tpg offline */;
+			targetProxy = AD11CD881C8336AA00DFF4AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		002B47E41C01FA6F000BF3E8 /* Main.storyboard */ = {
@@ -684,6 +766,32 @@
 			};
 			name = Release;
 		};
+		AD11CD8A1C8336AA00DFF4AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "tpg offline";
+			};
+			name = Debug;
+		};
+		AD11CD8B1C8336AA00DFF4AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "tpg offline";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -701,6 +809,15 @@
 			buildConfigurations = (
 				002B47F01C01FA6F000BF3E8 /* Debug */,
 				002B47F11C01FA6F000BF3E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD11CD8C1C8336AA00DFF4AA /* Build configuration list for PBXNativeTarget "tpg offline UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD11CD8A1C8336AA00DFF4AA /* Debug */,
+				AD11CD8B1C8336AA00DFF4AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

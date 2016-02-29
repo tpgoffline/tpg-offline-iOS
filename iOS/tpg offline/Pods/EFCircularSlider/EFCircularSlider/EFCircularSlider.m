@@ -528,9 +528,9 @@ static const CGFloat kFitFrameRadius = -1.0;
         {
             CGFloat percentageAlongCircle = i/(float)labelsCount;
             CGFloat degreesForLabel       = percentageAlongCircle * 360;
-            if(abs(self.angleFromNorth - degreesForLabel) < minDist)
+            if(fabs(self.angleFromNorth - degreesForLabel) < minDist)
             {
-                minDist = abs(self.angleFromNorth - degreesForLabel);
+                minDist = fabs(self.angleFromNorth - degreesForLabel);
                 bestGuessPoint = [self pointOnCircleAtAngleFromNorth:degreesForLabel];
             }
         }

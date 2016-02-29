@@ -138,13 +138,13 @@ class PremiumTableViewController: UITableViewController {
 			cell.boutonAcheter.backgroundColor = UIColor.flatGreenColor()
 			
 			if indexPath.row == 0 {
-				cell.boutonAcheter.addTarget(self, action: #selector(PremiumTableViewController.acheter(_:)), forControlEvents: .TouchUpInside)
+				cell.boutonAcheter.addTarget(self, action: "acheter:", forControlEvents: .TouchUpInside)
 				if price != "" {
 					cell.boutonAcheter.setTitle("\(boutonsStoreKit[indexPath.row]) (\(price))", forState: .Normal)
 				}
 			}
 			else if indexPath.row == 1 {
-				cell.boutonAcheter.addTarget(self, action: #selector(PremiumTableViewController.restaurerAchat(_:)), forControlEvents: .TouchUpInside)
+				cell.boutonAcheter.addTarget(self, action: "restaurerAchat:", forControlEvents: .TouchUpInside)
 			}
 			
 			return cell

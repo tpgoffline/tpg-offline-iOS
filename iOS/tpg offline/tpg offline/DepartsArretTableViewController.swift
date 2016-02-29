@@ -53,13 +53,13 @@ class DepartsArretTableViewController: UITableViewController {
 		var barButtonsItems: [UIBarButtonItem] = []
 		
 		if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
 		else {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:"toggleFavorite:"))
 		}
-		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
-		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
 		
 		self.navigationItem.rightBarButtonItems = barButtonsItems
 		
@@ -153,13 +153,13 @@ class DepartsArretTableViewController: UITableViewController {
 		var barButtonsItems: [UIBarButtonItem] = []
 		
 		if ((AppValues.nomCompletsFavoris.indexOf(arret.nomComplet)) != nil) {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
 		else {
-			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
+			barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
-		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
-		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
+		barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
 		
 		self.navigationItem.rightBarButtonItems = barButtonsItems
 	}
