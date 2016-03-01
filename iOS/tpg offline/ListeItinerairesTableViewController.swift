@@ -23,8 +23,6 @@ class ListeItinerairesTableViewController: UITableViewController {
 		
 		ItineraireEnCours.json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
 		tableView.backgroundColor = AppValues.primaryColor
-		
-		refresh()
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -32,6 +30,8 @@ class ListeItinerairesTableViewController: UITableViewController {
 		actualiserTheme()
 		
 		tableView.backgroundColor = AppValues.primaryColor
+		
+		refresh()
 		
 		var listeItems: [UIBarButtonItem] = []
 		

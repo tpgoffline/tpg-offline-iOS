@@ -194,15 +194,18 @@ class ItineraireTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if indexPath.section == 0 {
+		if (row[indexPath.row][0] as! String) == "itineraryCell" {
 			performSegueWithIdentifier(row[indexPath.row][3] as! String, sender: self)
 		}
-		else {
+		else if (row[indexPath.row][0] as! String) != "switchCell" {
 			ItineraireEnCours.itineraire = Itineraire(depart: AppValues.favorisItineraires[indexPath.row][0], arrivee: AppValues.favorisItineraires[indexPath.row][1])
 			performSegueWithIdentifier("rechercherItineraire", sender: self)
 		}
+		else {
+			tableView.deselectRowAtIndexPath(indexPath, animated: false)
+		}
 	}
-	
+		
 	override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let returnedView = UIView()
 		returnedView.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)

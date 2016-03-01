@@ -47,6 +47,13 @@ class RouteViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         actualiserTheme()
+		
+		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+			map.tintColor = AppValues.primaryColor
+		}
+		else {
+			map.tintColor = AppValues.textColor
+		}
      
         label.textColor = AppValues.textColor
         labelPieton.textColor = AppValues.textColor

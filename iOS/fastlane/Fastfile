@@ -22,9 +22,7 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    cocoapods
-    
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."    
   end
 
   desc "Runs all the tests"
@@ -35,22 +33,34 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :testflight do
+    cocoapods
+    verify_xcode
     increment_build_number
-    # match(type: "appstore") # more information: https://codesigning.guide
-    gym(scheme: "tpg offline") # Build your app - more options available
+    snapshot(
+    	launch_arguments: "-donotask"
+    )
+	gym(
+    	scheme: "tpg offline",
+    	clean: true
+    )    
     pilot
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here (run `fastlane actions`)
   end
 
   desc "Deploy a new version to the App Store"
   lane :appstore do
     # match(type: "appstore")
-    snapshot
-    gym(scheme: "tpg offline") # Build your app - more options available
+    cocoapods
+    verify_xcode
+    increment_build_number
+    snapshot(
+    	launch_arguments: "-donotask"
+    )
+
+    gym(
+    	scheme: "tpg offline",
+    	clean: true
+    )
     deliver(force: true)
-    # frameit
   end
 
   # You can define as many lanes as you want

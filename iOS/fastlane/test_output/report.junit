@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites tests='1' failures='1'>
+  <testsuite name='tpg_offline_UITests.tpg_offline_UITests' tests='1' failures='1'>
+    <testcase classname='tpg_offline_UITests.tpg_offline_UITests' name='testExample'>
+      <failure message='UI Testing Failure - App accessibility isn&apos;t loaded'>tpg offline UITests/tpg_offline_UITests.swift:23</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

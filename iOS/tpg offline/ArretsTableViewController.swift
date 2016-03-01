@@ -69,42 +69,50 @@ class ArretsTableViewController: UITableViewController {
 		searchController.searchBar.tintColor = AppValues.textColor
 		tableView.tableHeaderView = self.searchController.searchBar
 		
-		/*requestLocation()
-		
-		afficherTutoriel()
-		
-		switch PermissionScope().statusNotifications() {
-		case .Unknown:
-			// ask
-			pscope.addPermission(NotificationsPermission(), message: "tpg offline a besoin des notifications pour vous envoyer des rappels.".localized())
-		case .Unauthorized, .Disabled:
-			// bummer
-			return
-		case .Authorized:
-			// thanks!
-			return
+		if !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
+			
+			if defaults.boolForKey("tutorial") == false {
+				afficherTutoriel()
+			}
+			
+			switch PermissionScope().statusNotifications() {
+			case .Unknown:
+				// ask
+				pscope.addPermission(NotificationsPermission(), message: "tpg offline a besoin des notifications pour vous envoyer des rappels.".localized())
+			case .Unauthorized, .Disabled:
+				// bummer
+				return
+			case .Authorized:
+				// thanks!
+				return
+			}
+			switch PermissionScope().statusLocationAlways() {
+			case .Unknown:
+				// ask
+				pscope.addPermission(LocationAlwaysPermission(), message: "tpg offline a de savoir où vous vous trouvez pour indiquer les arrets les plus proches.".localized())
+			case .Unauthorized, .Disabled:
+				// bummer
+				return
+			case .Authorized:
+				requestLocation()
+				return
+			}
+			
+			pscope.show({ finished, results in
+				print("got results \(results)")
+				for x in results {
+					if x.type == PermissionType.LocationInUse {
+						self.requestLocation()
+					}
+				}
+				}, cancelled: { (results) -> Void in
+					print("thing was cancelled")
+			})
+			
 		}
-		switch PermissionScope().statusLocationInUse() {
-		case .Unknown:
-			// ask
-			pscope.addPermission(LocationWhileInUsePermission(), message: "tpg offline a de savoir où vous vous trouvez pour indiquer les arrets les plus proches.".localized())
-		case .Unauthorized, .Disabled:
-			// bummer
-			return
-		case .Authorized:
-			// thanks!
-			return
-		}
-
-		pscope.show({ finished, results in
-			print("got results \(results)")
-			}, cancelled: { (results) -> Void in
-				print("thing was cancelled")
-		})*/
 	}
 	
 	func requestLocation() {
-		
 		var accurency = INTULocationAccuracy.Block
 		if self.defaults.integerForKey("locationAccurency") == 1 {
 			accurency = INTULocationAccuracy.House
@@ -147,7 +155,7 @@ class ArretsTableViewController: UITableViewController {
 				self.tableView.reloadData()
 			}
 		}
-
+		
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -160,7 +168,16 @@ class ArretsTableViewController: UITableViewController {
 		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
 		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 		
-		requestLocation()
+		if !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
+			switch PermissionScope().statusLocationAlways() {
+			case .Unauthorized, .Disabled, .Unknown:
+				// bummer
+				return
+			case .Authorized:
+				requestLocation()
+				return
+			}
+		}
 		
 		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
 			let tracker = GAI.sharedInstance().defaultTracker

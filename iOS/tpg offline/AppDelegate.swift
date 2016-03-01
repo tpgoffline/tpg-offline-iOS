@@ -67,7 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			gai.trackUncaughtExceptions = true  // report uncaught exceptions
 		}
 		
-		AppValues.premium = defaults.boolForKey("premium")
+		if (NSProcessInfo.processInfo().arguments.contains("-premium")) {
+			AppValues.premium = true
+		}
+		else {
+			AppValues.premium = defaults.boolForKey("premium")
+		}
+		
 		
 		if defaults.colorForKey("primaryColor") == nil {
 			defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")
