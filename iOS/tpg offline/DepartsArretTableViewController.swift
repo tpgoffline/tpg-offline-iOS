@@ -184,10 +184,17 @@ class DepartsArretTableViewController: UITableViewController {
 		let reminder = UILocalNotification()
 		reminder.fireDate = date
 		if before == 0 {
-			reminder.alertBody = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir immédiatement".localized()
+			reminder.alertBody = "Le tpg de la ligne ".localized() + ligne + " en direction de ".localized() + direction + " va partir immédiatement".localized()
 		}
 		else {
-			reminder.alertBody = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes".localized()
+			var texte =  "Le tpg de la ligne ".localized()
+			texte += ligne
+			texte += " en direction de ".localized()
+			texte += direction
+			texte += " va partir dans ".localized()
+			texte += String(before)
+			texte += " minutes".localized()
+			reminder.alertBody = texte
 		}
 		reminder.soundName = "Sound.aif"
 		
@@ -200,7 +207,10 @@ class DepartsArretTableViewController: UITableViewController {
 			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK", duration: 10)
 		}
 		else {
-			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.".localized(), closeButtonTitle: "OK", duration: 10)
+			var texte =  "La notification à été enregistrée et sera affichée ".localized()
+			texte += String(before)
+			texte += " minutes avant le départ.".localized()
+			okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK", duration: 10)
 		}
 	}
 	

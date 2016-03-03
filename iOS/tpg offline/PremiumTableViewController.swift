@@ -156,6 +156,7 @@ class PremiumTableViewController: UITableViewController {
 			switch result {
 			case .Success(let productId):
 				print("Purchase Success: \(productId)")
+				AppValues.premium = true
 				self.defaults.setBool(true, forKey: "premium")
 				let alerte = SCLAlertView()
 				alerte.showSuccess("L'achat a réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup !".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
@@ -176,6 +177,7 @@ class PremiumTableViewController: UITableViewController {
 			switch result {
 			case .Success(let productId):
 				print("Restore Success: \(productId)")
+				AppValues.premium = true
 				self.defaults.setBool(true, forKey: "premium")
 				let alerte = SCLAlertView()
 				alerte.showSuccess("La restauration à réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup !".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({

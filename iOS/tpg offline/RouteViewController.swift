@@ -107,6 +107,6 @@ extension RouteViewController : MKMapViewDelegate {
 
         var temps = userLocation.location!.distanceFromLocation(self.arret.location) / 1000
         temps /= 5
-        self.label.text = "\(Int(temps * 100)) Minutes".localized()
+        self.label.text = String(Int(temps * 100)) + " Minutes".localized()
     }
 }

@@ -1,8 +1,24 @@
-/*
- * ./tpg offline/RouteViewController.swift
- */
 
-"\(Int(temps * 100)) Minutes" = "\(Int(temps * 100)) Minutes";
+"Allowed Location" = "Localisation autorisée";
+"Please enable access to LocationAlways in the Settings app" = "Merci de activer LocationAlways dans les réglages";
+"Show me" = "Montrez moi";
+"Enable Location" = "Activer la Localisation";
+"Please enable access to Notifications in the Settings app" = "Merci de activer les Notifications dans les réglages";
+"LocationAlways" = "localisation";
+"Permission for Notifications was denied." = "Les notifications sont refusées";
+"Close" = "Fermer";
+"Permission for LocationAlways was denied." = "La localisation est refusée";
+"Permission for Location was denied." = "La localisation est refusée";
+"Allow Notifications" = "Autoriser notifications";
+"Location Disabled" = "Localisation désactivée";
+"Notifications Disabled" = "Notifications désactivées";
+"Denied Notifications" = "Notifications refusées";
+"Allowed Notifications" = "Notifications autorisées";
+"Please enable access to Location in Settings" = "Merci de activer la localisation dans les réglages";
+"Denied Location" = "Localisation refusée";
+"Notifications is currently disabled." = "Les notifications sont actuellement refusées";
+"LocationAlways is currently disabled." = "La LocationAlways est actuellement refusée.";
+"Notifications" = "Notifications";
 
 /*
  * ./tpg offline/PremiumTableViewController.swift
@@ -42,6 +58,24 @@
 
 "La restauration n'a pas pu être finalisé." = "La restauration n'a pas pu être finalisé.";
 
+
+
+
+
+
+
+/*
+ * ./tpg offline/RouteViewController.swift
+ */
+
+" Minutes" = " Minutes";
+
+
+
+
+
+
+
 /*
  * ./tpg offline/CreditsTableViewController.swift
  */
@@ -54,23 +88,21 @@
 
 "Données fournis par Opendata.ch" = "Données fournis par Opendata.ch";
 
-"projet maintenu sur GitHub par SwiftyJSON - projet en licence MIT" = "projet maintenu sur GitHub par SwiftyJSON - projet en licence MIT";
+"Projet maintenu sur GitHub par SwiftyJSON - Projet en licence MIT" = "Projet maintenu sur GitHub par SwiftyJSON - Projet en licence MIT";
 
-"projet maintenu sur GitHub par ViccAlexander - projet en licence MIT" = "projet maintenu sur GitHub par ViccAlexander - projet en licence MIT";
+"Projet maintenu sur GitHub par ViccAlexander - Projet en licence MIT" = "Projet maintenu sur GitHub par ViccAlexander - Projet en licence MIT";
 
-"projet maintenu sur GitHub par PrideChung - projet en licence MIT" = "projet maintenu sur GitHub par PrideChung - projet en licence MIT";
+"Projet maintenu sur GitHub par PrideChung - Projet en licence MIT" = "Projet maintenu sur GitHub par PrideChung - Projet en licence MIT";
 
-"projet maintenu sur GitHub par benguild - projet en licence MIT" = "projet maintenu sur GitHub par benguild - projet en licence MIT";
+"Projet maintenu sur GitHub par vikmeup - Projet en licence MIT" = "Projet maintenu sur GitHub par vikmeup - Projet en licence MIT";
 
-"projet maintenu sur GitHub par vikmeup - projet en licence MIT" = "projet maintenu sur GitHub par vikmeup - projet en licence MIT";
+"Projet maintenu sur GitHub par WenchaoIOS - Projet en licence MIT" = "Projet maintenu sur GitHub par WenchaoIOS - Projet en licence MIT";
 
-"projet maintenu sur GitHub par WenchaoIOS - projet en licence MIT" = "projet maintenu sur GitHub par WenchaoIOS - projet en licence MIT";
+"Projet maintenu sur GitHub par gontovnik - Projet en licence MIT" = "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT";
 
-"projet maintenu sur GitHub par gontovnik - projet en licence MIT" = "projet maintenu sur GitHub par gontovnik - projet en licence MIT";
+"Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT" = "Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT";
 
-"projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - projet en licence MIT" = "projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - projet en licence MIT";
-
-"projet maintenu sur GitHub par nickoneill - projet en licence MIT" = "projet maintenu sur GitHub par nickoneill - projet en licence MIT";
+"Projet maintenu sur GitHub par nickoneill - Projet en licence MIT" = "Projet maintenu sur GitHub par nickoneill - Projet en licence MIT";
 
 "Projet maintenu sur GitHub par mrackwitz - Projet en licence MIT" = "Projet maintenu sur GitHub par mrackwitz - Projet en licence MIT";
 
@@ -83,6 +115,12 @@
 "Projet maintenu sur GitHub par mamaral - Projet en licence MIT" = "Projet maintenu sur GitHub par mamaral - Projet en licence MIT";
 
 "Projet maintenu sur GitHub par szk-atmosphere - Projet en licence MIT" = "Projet maintenu sur GitHub par szk-atmosphere - Projet en licence MIT";
+
+
+
+
+
+
 
 /*
  * ./tpg offline/ItineraireTableViewController.swift
@@ -110,15 +148,33 @@
 
 "Il manque une information pour rechercher un itinéraire" = "Il manque une information pour rechercher un itinéraire";
 
+
+
+
+
+
+
 /*
  * ./tpg offline/ThemesCollectionViewController.swift
  */
 
-"Défaut" = "Default";
+"Défaut" = "Défaut";
 
-"Inverse" = "Inverse";
+"Inversé" = "Inversé";
 
 "Nuit" = "Nuit";
+
+"Menthe" = "Menthe";
+
+"Bleu" = "Bleu";
+
+"Vert" = "Vert";
+
+
+
+
+
+
 
 /*
  * ./tpg offline/ListeItinerairesTableViewController.swift
@@ -126,7 +182,13 @@
 
 "Pas de réseau" = "Pas de réseau";
 
-"Itinéraires non trouvées" = "Itinéraires non trouvées";
+"Itinéraires non trouvés" = "Itinéraires non trouvés";
+
+
+
+
+
+
 
 /*
  * ./tpg offline/VueItineraireTableViewController.swift
@@ -135,6 +197,12 @@
 "Marche" = "Marche";
 
 " minute(s)" = " minute(s)";
+
+
+
+
+
+
 
 /*
  * ./tpg offline/LocationSettingsTableViewController.swift
@@ -160,53 +228,57 @@
 
 "1km" = "1km";
 
-/*
- * ./tpg offline/PlansTableViewController.swift
- */
 
-"Plan urbain" = "Plan urbain";
 
-"Plan périurbain" = "Plan périurbain";
 
-"Plan noctambus urbain" = "Plan noctambus urbain";
 
-"Plan noctambus régional" = "Plan noctambus régional";
+
 
 /*
  * ./tpg offline/ParametresTableViewController.swift
  */
 
-"Choix du menu par défaut" = "Choix du menu par défault";
+"Choix du menu par défaut" = "Choix du menu par défaut";
 
 "Localisation" = "Localisation";
 
 "Crédits" = "Crédits";
 
-"Thèmes" = "Thèmes";
+"Page GitHub du projet" = "Page GitHub du projet";
+
+"Revoir le tutoriel" = "Revoir le tutoriel";
 
 "Premium" = "Premium";
 
-"Page GitHub du projet" = "Page GitHub du projet";
+"l’application propose un menu Itinéraires (majuscule à Itinéraires, et au pluriel, tu fais référence à un titre). Vous pouvez vous déplacer très facilement grâce à cette fonction." = "l’application propose un menu Itinéraires (majuscule à Itinéraires, et au pluriel, tu fais référence à un titre). Vous pouvez vous déplacer très facilement grâce à cette fonction.";
+
+
+
+
+
+
 
 /*
  * ./tpg offline/DepartsArretTableViewController.swift
  */
 
-"Le tpg de la ligne \(ligne) en direction de \(direction) va partir immédiatement" = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir immédiatement";
+"Le tpg de la ligne " = "Le tpg de la ligne ";
+
+" en direction de " = " en direction de ";
+
+" va partir immédiatement" = " va partir immédiatement";
 
 "Vous serez notifié" = "Vous serez notifié";
+
+"Rappeler" = "Rappeler";
 
 "OK" = "OK";
 
 "Autre" = "Autre";
 
-"Rappeler" = "Rappeler";
-
 "Quand voulez-vous être notifié(e) ?" = "Quand voulez-vous être notifié(e) ?";
 
 "Annuler" = "Annuler";
-
-"Mode offline" = "Mode offline";
 
 "Les horaires peuvent être sujets à modification" = "Les horaires peuvent être sujets à modification";
 
@@ -214,59 +286,33 @@
 
 "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt." = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.";
 
+
+
+
+
+
+
 /*
  * ./tpg offline/ArretsTableViewController.swift
  */
 
-"tpg offline a besoin des notifications pour vous envoyer des rappels." = "tpg offline a besoin des notifications pour vous envoyer des rappels.";
+"Cette autorisation sert à envoyer des rappels." = "Cette autorisation sert à envoyer des rappels.";
 
-"tpg offline a de savoir où vous vous trouvez pour indiquer les arrêts les plus proches." = "tpg offline a de savoir où vous vous trouvez pour indiquer les arrêts les plus proches.";
+"Cette autorisation sert à indiquer les arrets les plus proches." = "Cette autorisation sert à indiquer les arrets les plus proches.";
 
-"Bienvenue dans tpg offline" = "Bienvenue dans tpg offline";
+"Bonjour" = "Bonjour";
 
-"tpg offline est une application qui permet de faciliter vos voyages avec les transports publics genevois" = "tpg offline est une application qui permet de faciliter vos voyages avec les transports publics genevois";
+"Nous avons besoin de quelques autorisations" = "Nous avons besoin de quelques autorisations";
 
 "Continuer" = "Continuer";
 
-"Départs" = "Départs";
+"l’application propose un menu Itinéraires. Vous pouvez vous déplacer très facilement grâce à cette fonction." = "l’application propose un menu Itinéraires. Vous pouvez vous déplacer très facilement grâce à cette fonction.";
 
-"Le menu Départs vous permet de voir quels sont les prochains bus pour un arrêt" = "Le menu Départs vous permet de voir quels sont les prochains bus pour un arrêt";
 
-"Dans les départs, si vous n'avez pas de réseau, tpg offline vous permet de savoir quand appoximativement votre transport part." = "Dans les départs, si vous n'avez pas de réseau, tpg offline vous permet de savoir quand appoximativement votre transport part.";
 
-"Avertissement" = "Avertissement";
 
-"En mode hors ligne, tpg offline ne vous permet pas d'avoir des horaires précis. tpg offline n'est en aucun cas responsable en cas de retard, d'avance, de perturbation des transports." = "En mode hors ligne, tpg offline ne vous permet pas d'avoir des horaires précis. tpg offline n'est en aucun cas responsable en cas de retard, d'avance, de perturbation des transports.";
 
-"J'ai compris, continuer" = "J'ai compris, continuer";
 
-"Itinéraires" = "Itinéraires";
-
-"L'application propose un menu itinéraire. Vous pouvez vous déplacer avec une facilité incroyable grâce à cette fonction." = "L'application propose un menu itinéraire. Vous pouvez vous déplacer, grâe à cette fonction, avec une facilité incroyable.";
-
-"Plan" = "Plan";
-
-"Tous les plans des tpg sont disponibles dans le menu plan" = "Tous les plans des tpg sont disponibles dans le menu plan";
-
-"Incidents" = "Incidents";
-
-"Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents." = "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.";
-
-"Rappels" = "Rappels";
-
-"Dans les départs et itinéraires, en glissant votre doigt de gauche à droite, découvrez comment les rappels peuvent vous éviter de voir le bus partir sans vous..." = "Dans les départs et itinéraires, en glissant votre doigt de droite à gauche, découvrez comment les rappels peuvent vous éviter de voir le bus partir sans vous...";
-
-"tpg offline est open source. Tout le monde peut modifier et améliorer l'application. Si vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)" = "tpg offline est open source. Tout le monde peut modifier et améliorer l'application. Si vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)";
-
-"Et beaucoup d'autre choses" = "Et beaucoup d'autre choses";
-
-"D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !" = "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !";
-
-"Terminer" = "Terminer";
-
-"Passer" = "Passer";
-
-"Et beaucoup d'autre choses" = "Et beaucoup d'autre choses";
 
 /*
  * ./tpg offline/IncidentsTableViewController.swift
@@ -284,17 +330,75 @@
 
 "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau." = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.";
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * SHARED STRINGS
  */
 
 "Rechercher parmi les arrêts" = "Rechercher parmi les arrêts";
 
-"Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes" = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes";
+"Bienvenue dans tpg offline" = "Bienvenue dans tpg offline";
+
+"tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau." = "tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau.";
+
+"Départs" = "Départs";
+
+"Le menu Départs vous informe des prochains départs pour un arrêt." = "Le menu Départs vous informe des prochains départs pour un arrêt.";
+
+"Mode offline" = "Mode offline";
+
+"Le Mode offline vous permet de connaitre les horaires à un arrêt même si vous n’avez pas de réseau." = "Le Mode offline vous permet de connaitre les horaires à un arrêt même si vous n’avez pas de réseau.";
+
+"Avertissement" = "Avertissement";
+
+"Sans réseau, tpg offline ne permet pas d’avoir des horaires garantis ni de connaitre les possibles perturbations du réseau. \rtpg offline ne peut aucunement être tenu pour responsable en cas de retard, d’avance, ni de connection manquée." = "Sans réseau, tpg offline ne permet pas d’avoir des horaires garantis ni de connaitre les possibles perturbations du réseau. \rtpg offline ne peut aucunement être tenu pour responsable en cas de retard, d’avance, ni de connection manquée.";
+
+"J'ai compris, continuer" = "J'ai compris, continuer";
+
+"Itinéraires" = "Itinéraires";
+
+"Plans" = "Plans";
+
+"Tous les plans des tpg sont disponibles dans le menu Plans." = "Tous les plans des tpg sont disponibles dans le menu Plans.";
+
+"Incidents" = "Incidents";
+
+"Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents." = "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.";
+
+"Rappels" = "Rappels";
+
+"Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection." = "Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection.";
+
+"tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)" = "tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)";
+
+"Et beaucoup d'autres choses" = "Et beaucoup d'autres choses";
+
+"D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !" = "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !";
+
+"Terminer" = "Terminer";
+
+"Passer" = "Passer";
+
+" va partir dans " = " va partir dans ";
+
+" minutes" = " minutes";
 
 "La notification à été enregistrée et sera affichée à l'heure du départ." = "La notification à été enregistrée et sera affichée à l'heure du départ.";
 
-"La notification à été enregistrée et sera affichée \(before) minutes avant le départ." = "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.";
+"La notification à été enregistrée et sera affichée " = "La notification à été enregistrée et sera affichée ";
+
+" minutes avant le départ." = " minutes avant le départ.";
 
 "Le bus arrive" = "Le bus arrive";
 
@@ -314,6 +418,10 @@
 
 "OK" = "OK";
 
+"Le tpg de la ligne " = "Le tpg de la ligne ";
+
+" en direction de " = " en direction de ";
+
 "Vous serez notifié" = "Vous serez notifié";
 
 "Rappeler" = "Rappeler";
@@ -321,4 +429,8 @@
 "Quand voulez-vous être notifié(e) ?" = "Quand voulez-vous être notifié(e) ?";
 
 "Annuler" = "Annuler";
+
+"Thèmes" = "Thèmes";
+
+"Continuer" = "Continuer";
 
