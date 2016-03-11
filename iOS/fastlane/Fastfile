@@ -30,15 +30,30 @@ platform :ios do
     scan
   end
 
+  lane :snapshot do
+  	snapshot(
+    	clear_previous_screenshots: true,
+     	languages: ["fr-FR"],
+     	devices: [
+  			"iPhone 6",
+  			"iPhone 6 Plus",
+  			"iPhone 5",
+  			"iPhone 4s",
+  			"iPad Retina",
+  			"iPad Pro"
+		]
+    )
+  end
+
+  lane :frameit do
+    frameit
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :testflight do
     cocoapods
-    verify_xcode
     increment_build_number
-    snapshot(
-    	launch_arguments: "-donotask"
-    )
 	gym(
     	scheme: "tpg offline",
     	clean: true
@@ -53,7 +68,7 @@ platform :ios do
     verify_xcode
     increment_build_number
     snapshot(
-    	launch_arguments: "-donotask"
+    	clear_previous_screenshots: true
     )
 
     gym(
@@ -62,6 +77,7 @@ platform :ios do
     )
     deliver(force: true)
   end
+
 
   # You can define as many lanes as you want
 

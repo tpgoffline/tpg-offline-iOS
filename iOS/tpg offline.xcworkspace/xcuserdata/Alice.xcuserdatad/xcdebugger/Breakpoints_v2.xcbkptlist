@@ -187,13 +187,13 @@
                   symbolName = "+[UIImage(FAKAddon) imageWithStackedIcons:imageSize:]"
                   moduleName = "FontAwesomeKit"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Macintosh%20HD2/remy/tpg-offline/iOS/tpg%20offline/Pods/FontAwesomeKit/FontAwesomeKit/FAKIcon.m"
-                  timestampString = "477156424.167122"
+                  urlString = "file:///Volumes/Macintosh%20HD2/remy/tpg-offline/iOS/Pods/FontAwesomeKit/FontAwesomeKit/FAKIcon.m"
+                  timestampString = "479325304.322405"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
                   endingLineNumber = "186"
-                  offsetFromSymbolStart = "250">
+                  offsetFromSymbolStart = "379">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -202,13 +202,13 @@
                   symbolName = "+[UIImage(FAKAddon) imageWithStackedIcons:imageSize:]"
                   moduleName = "FontAwesomeKit"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Macintosh%20HD2/remy/tpg-offline/iOS/tpg%20offline/Pods/FontAwesomeKit/FontAwesomeKit/FAKIcon.m"
-                  timestampString = "477156424.167287"
+                  urlString = "file:///Volumes/Macintosh%20HD2/remy/tpg-offline/iOS/Pods/FontAwesomeKit/FontAwesomeKit/FAKIcon.m"
+                  timestampString = "479325304.322682"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
                   endingLineNumber = "186"
-                  offsetFromSymbolStart = "356">
+                  offsetFromSymbolStart = "455">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -242,6 +242,38 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "envoyer(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tpg offline/DepartsArretTableViewController.swift"
+            timestampString = "479325438.494733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tpg offline/DepartsArretTableViewController.swift"
+            timestampString = "479325438.494733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

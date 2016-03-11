@@ -41,14 +41,18 @@ class IncidentsTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
+        let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
+        let couleurs = JSON(data: dataCouleurs!)
+        for i in 0 ..< couleurs["colors"].count {
+            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
+            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
+        }
+        
         if let dataArrets = tpgUrl.getDisruptions() {
             let json = JSON(data: dataArrets)
             if json["disruptions"].count != 0 {
                 for x in 0...json["disruptions"].count - 1 {
-                    if json["disruptions"][x]["lineCode"].string?.characters.count != 1 && json["disruptions"][x]["lineCode"].string?.characters.first == "T" {
-                        
-                    }
-                    else {
+                    if listeColor[json["disruptions"][x]["lineCode"].string!] != nil {
                         distrubtions.append(Perturbations(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
                     }
                 }
@@ -59,12 +63,6 @@ class IncidentsTableViewController: UITableViewController {
         }
         else {
             erreur = true
-        }
-        let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
-        let couleurs = JSON(data: dataCouleurs!)
-        for i in 0 ..< couleurs["colors"].count {
-            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
-            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
         }
      
     }
@@ -97,10 +95,7 @@ class IncidentsTableViewController: UITableViewController {
             let json = JSON(data: dataArrets)
             if json["disruptions"].count != 0 {
                 for x in 0...json["disruptions"].count - 1 {
-                    if json["disruptions"][x]["lineCode"].string?.characters.count != 1 && json["disruptions"][x]["lineCode"].string?.characters.first == "T" {
-                        
-                    }
-                    else {
+                    if listeColor[json["disruptions"][x]["lineCode"].string!] != nil {
                         distrubtions.append(Perturbations(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
                     }
                 }

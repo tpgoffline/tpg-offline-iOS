@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>tpg offline (location home.gpx).xcscheme</key>
+		<key>tpg offline (Tests).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>tpg offline (location home.gpx).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>tpg offline.xcscheme</key>
 		<dict>
@@ -38,6 +43,11 @@
 			<true/>
 		</dict>
 		<key>00CF1F171C5690EA002332B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AD11CD821C8336AA00DFF4AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

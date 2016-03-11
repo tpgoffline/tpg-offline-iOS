@@ -156,6 +156,7 @@ class PremiumTableViewController: UITableViewController {
 			switch result {
 			case .Success(let productId):
 				print("Purchase Success: \(productId)")
+				AppValues.premium = true
 				self.defaults.setBool(true, forKey: "premium")
 				let alerte = SCLAlertView()
 				alerte.showSuccess("L'achat a réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup !".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
@@ -165,7 +166,7 @@ class PremiumTableViewController: UITableViewController {
 			case .Error(let error):
 				print("Purchase Failed: \(error)")
 				let alerte = SCLAlertView()
-				alerte.showError("Échec".localized(), subTitle: "L'achat n'a pas pu être finalisé.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
+				alerte.showError("Échec".localized(), subTitle: "L'achat n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
 				break
 			}
 		}
@@ -176,6 +177,7 @@ class PremiumTableViewController: UITableViewController {
 			switch result {
 			case .Success(let productId):
 				print("Restore Success: \(productId)")
+				AppValues.premium = true
 				self.defaults.setBool(true, forKey: "premium")
 				let alerte = SCLAlertView()
 				alerte.showSuccess("La restauration à réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup !".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
@@ -190,7 +192,7 @@ class PremiumTableViewController: UITableViewController {
 			case .Error(let error):
 				print("Restore Failed: \(error)")
 				let alerte = SCLAlertView()
-				alerte.showError("Échec", subTitle: "La restauration n'a pas pu être finalisé.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
+				alerte.showError("Échec", subTitle: "La restauration n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
 				break
 			}
 		}

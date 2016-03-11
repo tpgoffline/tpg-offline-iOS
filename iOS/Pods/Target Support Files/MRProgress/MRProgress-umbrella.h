@@ -5,7 +5,6 @@
 #import "MRBlurView.h"
 #import "UIImage+MRImageEffects.h"
 #import "MRCircularProgressView.h"
-#import "MRProgressHelper.h"
 #import "MRIconView.h"
 #import "MRNavigationBarProgressView.h"
 #import "MRProgressOverlayView.h"

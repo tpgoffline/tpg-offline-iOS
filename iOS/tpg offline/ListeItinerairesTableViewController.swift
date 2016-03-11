@@ -122,7 +122,7 @@ class ListeItinerairesTableViewController: UITableViewController {
 		}
 			
 		else if ItineraireEnCours.json["connections"].count == 0 {
-			cell.textLabel?.text = "Itinéraires non trouvées".localized()
+			cell.textLabel?.text = "Itinéraires non trouvés".localized()
 			cell.textLabel?.textColor = UIColor.whiteColor()
 			cell.detailTextLabel?.textColor = UIColor.whiteColor()
 			cell.backgroundColor = UIColor.flatRedColorDark()
@@ -243,7 +243,14 @@ class ListeItinerairesTableViewController: UITableViewController {
 		let reminder = UILocalNotification()
 		reminder.fireDate = date
 		
-		reminder.alertBody = "Le tpg de la ligne \(ligne) en direction de \(direction) va partir dans \(before) minutes".localized()
+		var texte =  "Le tpg de la ligne ".localized()
+		texte += ligne
+		texte += " en direction de ".localized()
+		texte += direction
+		texte += " va partir dans ".localized()
+		texte += String(before)
+		texte += " minutes".localized()
+		reminder.alertBody = texte
 		reminder.soundName = "Sound.aif"
 		
 		UIApplication.sharedApplication().scheduleLocalNotification(reminder)
@@ -255,7 +262,10 @@ class ListeItinerairesTableViewController: UITableViewController {
 			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
 		}
 		else {
-			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée \(before) minutes avant le départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+			var texte = "La notification à été enregistrée et sera affichée ".localized()
+			texte += String(before)
+			texte += " minutes avant le départ.".localized()
+			okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK".localized(), duration: 10)
 		}
 	}
 	
