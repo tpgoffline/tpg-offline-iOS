@@ -690,7 +690,6 @@ extension DepartsArretTableViewController {
                     else {
                         iconeBus.addAttribute(NSForegroundColorAttributeName, value: listeDeparts[indexPath.row].couleurArrierePlan)
                     }
-                    iconeBus.addAttribute(NSForegroundColorAttributeName, value: listeDeparts[indexPath.row].couleur)
                     labelAccesory.attributedText = iconeBus.attributedString()
                 }
                 else {
