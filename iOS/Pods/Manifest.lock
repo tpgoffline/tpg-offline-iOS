@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (3.2.1)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -83,6 +84,7 @@ PODS:
   - SwiftyStoreKit (0.2.3)
 
 DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DGElasticPullToRefresh (from `https://github.com/gontovnik/DGElasticPullToRefresh.git`)
   - DGRunkeeperSwitch (from `https://github.com/gontovnik/DGRunkeeperSwitch.git`)
@@ -101,6 +103,8 @@ DEPENDENCIES:
   - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
 
 EXTERNAL SOURCES:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
   DGElasticPullToRefresh:
@@ -133,6 +137,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 5b6155ca2d3b584b5f0360068a02f978950dd18c
+    :git: https://github.com/Alamofire/Alamofire.git
   ChameleonFramework:
     :commit: ff961af316451a326377f318e9c49d07a6062513
     :git: https://github.com/ViccAlexander/Chameleon.git
@@ -180,6 +187,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 SPEC CHECKSUMS:
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
@@ -203,6 +211,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 72847946cd1e252b28ff1c2d06ae95eea22a24c6
   SwiftyStoreKit: b61ef56bddfb49aade6dffd59a22dcff305ed7ec
 
-PODFILE CHECKSUM: 8fca7a5b7570e90b4d17c54fa93b4e66b9d9a7cf
+PODFILE CHECKSUM: 2e889b9664d04a3aeddd14ffc4455cdfd9c038f7
 
 COCOAPODS: 1.0.0.beta.3

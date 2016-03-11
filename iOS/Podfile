@@ -19,4 +19,5 @@ target 'tpg offline' do
 	pod 'Onboard', git: "https://github.com/mamaral/Onboard.git"
 	pod 'SAHistoryNavigationViewController', git: "https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git"
 	pod 'Google/Analytics'
+	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'
 end

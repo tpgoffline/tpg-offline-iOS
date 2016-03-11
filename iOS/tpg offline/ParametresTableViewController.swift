@@ -12,6 +12,9 @@ import ChameleonFramework
 import FontAwesomeKit
 import Onboard
 import Google
+import Alamofire
+import MRProgress
+import SCLAlertView
 
 class ParametresTableViewController: UITableViewController {
 	
@@ -24,7 +27,8 @@ class ParametresTableViewController: UITableViewController {
 	]
 	
 	let listeRowPremium = [
-		[FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes".localized(), "showThemesMenu"]
+		[FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes".localized(), "showThemesMenu"],
+		[FAKFontAwesome.refreshIconWithSize(20), "Actualiser les départs".localized(), "actualiserDeparts"]
 	]
 	
 	let listeRowNonPremium = [
@@ -93,11 +97,64 @@ class ParametresTableViewController: UITableViewController {
 		if listeRows[indexPath.row][2] as! String == "showTutoriel" {
 			afficherTutoriel()
 		}
+        else if listeRows[indexPath.row][2] as! String == "actualiserDeparts" {
+            actualiserDeparts()
+        }
 		else {
 			performSegueWithIdentifier(listeRows[indexPath.row][2] as! String, sender: self)
 		}
 	}
 	
+    func actualiserDeparts() {
+        CATransaction.begin()
+        
+        let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view.window, title: "Chargement", mode: .DeterminateCircular, animated: true)
+        if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
+            progressBar.tintColor = AppValues.secondaryColor
+            progressBar.titleLabel!.textColor = AppValues.secondaryColor
+        }
+        else {
+            progressBar.tintColor = AppValues.textColor
+            progressBar.titleLabel!.textColor = AppValues.textColor
+        }
+        
+        CATransaction.setCompletionBlock({
+            Alamofire.request(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/listeDeparts.json").validate().responseJSON { response in
+                switch response.result {
+                case .Success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        for (index, subJson) in json {
+                            progressBar.setProgress(Float((Int(index)! * 100) / json.count) / 100, animated: true)
+                            Alamofire.request(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/" + subJson.stringValue).validate().responseJSON { response in
+                                switch response.result {
+                                case .Success:
+                                    if let value2 = response.result.value {
+                                        let json2 = JSON(value2)
+                                        let file = NSBundle.mainBundle().pathForResource(subJson.stringValue, ofType: "", inDirectory: "Departs")
+                                        do {
+                                            try json2.rawString()!.writeToFile(file!, atomically: false, encoding: NSUTF8StringEncoding)
+                                            print(json2)
+                                        }
+                                        catch {}
+                                    }
+                                case .Failure(let error):
+                                    print(error)
+                                }
+                            }
+                        }
+                    }
+                    progressBar.dismiss(true)
+                case .Failure(let error):
+                    print(error)
+                    progressBar.dismiss(true)
+                }
+            }
+        })
+        
+        CATransaction.commit()
+    }
+    
 	func afficherTutoriel() {
 		let rect = CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
 		UIGraphicsBeginImageContext(rect.size)
