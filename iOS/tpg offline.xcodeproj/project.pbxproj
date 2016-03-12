@@ -40,6 +40,7 @@
 		00ABBE151C29C81B00479FF4 /* Departs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ABBE141C29C81B00479FF4 /* Departs.swift */; };
 		00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B39B8A1C131C05006FC8A3 /* tpgURL.swift */; };
 		00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */; };
+		00C0F9D81C9458E4000CA903 /* DVSCircularTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C0F9D71C9458E4000CA903 /* DVSCircularTimeSlider.swift */; };
 		00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C8DD551C0CCACC004743A5 /* couleursLignes.json */; };
 		00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */; };
 		00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C491C4810E1008E8B2A /* Itineraire.swift */; };
@@ -62,7 +63,6 @@
 		AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */; };
 		AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */; };
 		ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
-		ADF8B3741C592532003CE1EA /* Departs in Resources */ = {isa = PBXBuildFile; fileRef = ADF8B3731C592532003CE1EA /* Departs */; };
 		ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +113,7 @@
 		00B39B8A1C131C05006FC8A3 /* tpgURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURL.swift; sourceTree = "<group>"; };
 		00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tpg offline-Bridging-Header.h"; sourceTree = "<group>"; };
 		00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TimeSelectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00C0F9D71C9458E4000CA903 /* DVSCircularTimeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVSCircularTimeSlider.swift; sourceTree = "<group>"; };
 		00C8DD551C0CCACC004743A5 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
 		00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = tpgArretSelectionTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00C98C491C4810E1008E8B2A /* Itineraire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itineraire.swift; sourceTree = "<group>"; };
@@ -147,7 +148,6 @@
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADB2D6DC1C7A222F0023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADB2D6DD1C7A22300023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ADF8B3731C592532003CE1EA /* Departs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Departs; sourceTree = "<group>"; };
 		ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,7 +180,6 @@
 			children = (
 				00DCD95A1C2865E40094C0EB /* Sound.aif */,
 				00C8DD551C0CCACC004743A5 /* couleursLignes.json */,
-				ADF8B3731C592532003CE1EA /* Departs */,
 				003D10ED1C21A46800F9857E /* ionicons.ttf */,
 				003EBAC81C0B46CF0024043B /* FontAwesome.otf */,
 				0019B2131C0F38BD00DD1A4D /* arrets.json */,
@@ -312,6 +311,7 @@
 		00DDC0AF1C254FED002B288E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				00C0F9D71C9458E4000CA903 /* DVSCircularTimeSlider.swift */,
 				002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */,
 				004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */,
 			);
@@ -465,7 +465,6 @@
 				002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */,
 				ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
-				ADF8B3741C592532003CE1EA /* Departs in Resources */,
 				ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */,
 				0019B2141C0F38BD00DD1A4D /* arrets.json in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
@@ -534,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C0F9D81C9458E4000CA903 /* DVSCircularTimeSlider.swift in Sources */,
 				002B47F61C01FA87000BF3E8 /* DepartsArretTableViewController.swift in Sources */,
 				00CA21D31C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift in Sources */,
 				00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */,

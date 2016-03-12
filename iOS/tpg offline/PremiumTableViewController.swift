@@ -159,7 +159,7 @@ class PremiumTableViewController: UITableViewController {
 				AppValues.premium = true
 				self.defaults.setBool(true, forKey: "premium")
 				let alerte = SCLAlertView()
-				alerte.showSuccess("L'achat a réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup !".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
+				alerte.showSuccess("L'achat a réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 30).setDismissBlock({
 					self.navigationController?.popViewControllerAnimated(true)
 				})
 				break
@@ -180,7 +180,7 @@ class PremiumTableViewController: UITableViewController {
 				AppValues.premium = true
 				self.defaults.setBool(true, forKey: "premium")
 				let alerte = SCLAlertView()
-				alerte.showSuccess("La restauration à réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup !".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
+				alerte.showSuccess("La restauration à réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
 					self.navigationController?.popViewControllerAnimated(true)
 				})
 				break

@@ -18,7 +18,7 @@ import Localize_Swift
 import Onboard
 import Google
 
-class ArretsTableViewController: UITableViewController {
+class ArretsTableViewController: UITableViewController, UISplitViewControllerDelegate {
 	var arretsLocalisation = [Arret]()
 	var filtredResults = [Arret]()
 	let searchController = UISearchController(searchResultsController: nil)
@@ -29,6 +29,9 @@ class ArretsTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+        self.splitViewController?.delegate = self
+        self.splitViewController?.preferredDisplayMode = .AllVisible
+        
 		let loadingView = DGElasticPullToRefreshLoadingViewCircle()
 		loadingView.tintColor = AppValues.textColor
 		
@@ -355,7 +358,8 @@ class ArretsTableViewController: UITableViewController {
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if (segue.identifier == "afficherProchainsDeparts") {
-			let departsArretsViewController:DepartsArretTableViewController = (segue.destinationViewController) as! DepartsArretTableViewController
+            let nav = segue.destinationViewController as! UINavigationController
+			let departsArretsViewController = nav.viewControllers[0] as! DepartsArretTableViewController
 			if searchController.active {
 				departsArretsViewController.arret = filtredResults[(tableView.indexPathForSelectedRow?.row)!]
 			}
@@ -392,6 +396,9 @@ class ArretsTableViewController: UITableViewController {
 		
 		tableView.reloadData()
 	}
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+        return true
+    }
 }
 
 extension ArretsTableViewController: UISearchResultsUpdating {

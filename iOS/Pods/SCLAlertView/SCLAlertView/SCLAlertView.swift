@@ -360,7 +360,7 @@ public class SCLAlertView: UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         keyboardHasBeenShown = true
         if let userInfo = notification.userInfo {
-            if let _ = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue.origin.y {
+            if let beginKeyBoardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue.origin.y {
                 if let endKeyBoardFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.origin.y {
                     if skeyBoard == 0 { // SAVE INITIAL POSITION OF THE ALERT FIRST TIME
                         tmpContentViewFrameOrigin = self.contentView.frame.origin

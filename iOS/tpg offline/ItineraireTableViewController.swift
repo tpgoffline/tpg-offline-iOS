@@ -29,6 +29,10 @@ class ItineraireTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        self.splitViewController?.delegate = self
+        self.splitViewController?.preferredDisplayMode = .AllVisible
+        
 		ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
 		
 	}
@@ -224,7 +228,7 @@ class ItineraireTableViewController: UITableViewController {
 	}
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "voirArretsItineraire" {
-			let destinationViewController: tpgArretSelectionTableViewController = (segue.destinationViewController) as! tpgArretSelectionTableViewController
+			let destinationViewController = segue.destinationViewController as! tpgArretSelectionTableViewController
 			if (tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!)?.textLabel?.text == "Départ".localized() ) {
 				destinationViewController.depart = true
 			}
@@ -243,4 +247,11 @@ class ItineraireTableViewController: UITableViewController {
 		}
 	}
 	
+}
+
+extension ItineraireTableViewController : UISplitViewControllerDelegate {
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+    
 }

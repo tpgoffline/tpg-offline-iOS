@@ -30,26 +30,28 @@ class ListeItinerairesTableViewController: UITableViewController {
 		actualiserTheme()
 		
 		tableView.backgroundColor = AppValues.primaryColor
-		
-		refresh()
-		
-		var listeItems: [UIBarButtonItem] = []
-		
-		if (AppValues.premium == true) {
-			for x in AppValues.favorisItineraires {
-				if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
-					favoris = true
-					break
-				}
-			}
-			if favoris {
-				listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
-			}
-			else {
-				listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
-			}
-		}
-		self.navigationItem.rightBarButtonItems = listeItems
+        
+        if ItineraireEnCours.itineraire.depart != nil && ItineraireEnCours.itineraire.arrivee != nil && ItineraireEnCours.itineraire.date != nil {
+            refresh()
+            
+            var listeItems: [UIBarButtonItem] = []
+            
+            if (AppValues.premium == true) {
+                for x in AppValues.favorisItineraires {
+                    if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
+                        favoris = true
+                        break
+                    }
+                }
+                if favoris {
+                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+                }
+                else {
+                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+                }
+            }
+            self.navigationItem.rightBarButtonItems = listeItems
+        }
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -62,7 +64,10 @@ class ListeItinerairesTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if pasReseau {
+        if ItineraireEnCours.itineraire.depart == nil || ItineraireEnCours.itineraire.arrivee == nil || ItineraireEnCours.itineraire.date == nil {
+            return 0
+        }
+		else if pasReseau {
 			return 1
 		}
 		else if ItineraireEnCours.json["connections"].count == 0 {

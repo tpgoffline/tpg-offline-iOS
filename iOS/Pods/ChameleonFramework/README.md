@@ -148,13 +148,13 @@ All methods, properties, and types available in Chameleon are documented below.
 
 #####Documentation Table of Contents  
 [● Installation](https://github.com/ViccAlexander/Chameleon#installation)  
-[● Storyboard-Add On](https://github.com/ViccAlexander/Chameleon#storyboard-add-on-)  
+[● Storyboard-Add On](https://github.com/ViccAlexander/Chameleon#storyboard-add-on)  
 [● Usage](https://github.com/ViccAlexander/Chameleon#usage)  
 [● UIColor Methods](https://github.com/ViccAlexander/Chameleon#uicolor-methods)  
-[● Colors From Images](https://github.com/ViccAlexander/Chameleon#colors-from-images--1)  
+[● Colors From Images](https://github.com/ViccAlexander/Chameleon#colors-from-images)  
 [● UIStatusBarStyle Methods](https://github.com/ViccAlexander/Chameleon#uistatusbarstyle-methods)  
 [● Color Scheme Methods](https://github.com/ViccAlexander/Chameleon#color-schemes-methods)  
-[● Theme Methods](https://github.com/ViccAlexander/Chameleon#theme-methods-)  
+[● Theme Methods](https://github.com/ViccAlexander/Chameleon#theme-methods)  
 
 ###Installation
 ####CocoaPods Installation
@@ -739,6 +739,11 @@ As of `2.0.3` the navigation bar hairline view is no longer hidden by default. H
 
 self.navigationController.hidesNavigationBarHairline = YES;
 ```
+
+######Swift
+```swift
+self.navigationController?.hidesNavigationBarHairline = true
+``` 
 
 ## 👑 Author
 Chameleon was developed by **Vicc Alexander** [(@ViccsMind)](https://twitter.com/viccsmind) in 2014. Currently, it is being maintained by [@ViccAlexander](https://github.com/ViccAlexander) and [@Bre7](https://github.com/bre7).

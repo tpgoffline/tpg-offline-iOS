@@ -54,7 +54,7 @@ platform :ios do
   lane :testflight do
     cocoapods
     increment_build_number
-	gym(
+	  gym(
     	scheme: "tpg offline",
     	clean: true
     )    

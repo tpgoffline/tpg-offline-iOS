@@ -14,7 +14,6 @@ extension UIViewController {
 		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
 		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
 		navigationController?.navigationBar.tintColor = AppValues.textColor
-		navigationController?.setHistoryBackgroundColor(AppValues.secondaryColor.darkenByPercentage(0.3))
 		view.backgroundColor = AppValues.primaryColor
 		
 		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {

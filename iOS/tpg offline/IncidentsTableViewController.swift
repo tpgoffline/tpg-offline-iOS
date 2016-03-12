@@ -143,12 +143,8 @@ class IncidentsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("incidentsCell", forIndexPath: indexPath)
         
         if aucunProbleme {
-            cell.backgroundColor = UIColor.flatYellowColor()
-            let iconeSmile = FAKFontAwesome.smileOIconWithSize(20)
-            iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor())
-            cell.imageView?.image = iconeSmile.imageWithSize(CGSize(width: 25, height: 25))
             cell.textLabel?.text = "Aucun incident".localized()
-            cell.textLabel?.textColor = UIColor.blackColor()
+            
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "HH"
             let heure = Int(dateFormatter.stringFromDate(NSDate()))
@@ -164,37 +160,90 @@ class IncidentsTableViewController: UITableViewController {
             else {
                 cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized()
             }
-            cell.detailTextLabel?.textColor = UIColor.blackColor()
+            
+            
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                cell.textLabel?.textColor = UIColor.blackColor()
+                cell.detailTextLabel?.textColor = UIColor.blackColor()
+                cell.backgroundColor = UIColor.flatYellowColor()
+                
+                let iconeSmile = FAKFontAwesome.smileOIconWithSize(20)
+                iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor())
+                cell.imageView?.image = iconeSmile.imageWithSize(CGSize(width: 25, height: 25))
+            }
+            else {
+                cell.textLabel?.textColor = UIColor.flatYellowColorDark()
+                cell.detailTextLabel?.textColor = UIColor.flatYellowColorDark()
+                cell.backgroundColor = UIColor.flatWhiteColor()
+                
+                let iconeSmile = FAKFontAwesome.smileOIconWithSize(20)
+                iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatYellowColorDark())
+                cell.imageView?.image = iconeSmile.imageWithSize(CGSize(width: 25, height: 25))
+            }
         }
         else if erreur {
-            cell.backgroundColor = UIColor.flatRedColorDark()
-            let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
-            iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-            cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
             cell.textLabel?.text = "Pas de réseau !".localized()
-            cell.textLabel?.textColor = UIColor.whiteColor()
+            
             cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.".localized()
-            cell.detailTextLabel?.textColor = UIColor.whiteColor()
+            
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                cell.textLabel?.textColor = UIColor.whiteColor()
+                cell.detailTextLabel?.textColor = UIColor.whiteColor()
+                cell.backgroundColor = UIColor.flatRedColorDark()
+                
+                let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+                cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+            }
+            else {
+                cell.textLabel?.textColor = UIColor.flatRedColorDark()
+                cell.detailTextLabel?.textColor = UIColor.flatRedColorDark()
+                cell.backgroundColor = UIColor.flatWhiteColor()
+                
+                let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedColorDark())
+                cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+            }
         }
         else {
-            cell.backgroundColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
+            
             cell.textLabel?.text = distrubtions[indexPath.row].title
-            cell.textLabel?.textColor = listeColor[distrubtions[indexPath.row].lineCode]
             cell.detailTextLabel!.text = distrubtions[indexPath.row].subTitle
-            cell.detailTextLabel?.textColor = listeColor[distrubtions[indexPath.row].lineCode]
             
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
             labelPictoLigne.text = distrubtions[indexPath.row].lineCode
             labelPictoLigne.textAlignment = .Center
-            labelPictoLigne.textColor = listeColor[distrubtions[indexPath.row].lineCode]
+            
             labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-            labelPictoLigne.layer.borderColor = listeColor[distrubtions[indexPath.row].lineCode]?.CGColor
             labelPictoLigne.layer.borderWidth = 1
+            
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                cell.backgroundColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
+                cell.textLabel?.textColor = listeColor[distrubtions[indexPath.row].lineCode]
+                cell.detailTextLabel?.textColor = listeColor[distrubtions[indexPath.row].lineCode]
+                labelPictoLigne.textColor = listeColor[distrubtions[indexPath.row].lineCode]
+                labelPictoLigne.layer.borderColor = listeColor[distrubtions[indexPath.row].lineCode]?.CGColor
+            }
+            else {
+                if ContrastColorOf(listeBackgroundColor[distrubtions[indexPath.row].lineCode]!, returnFlat: true) == FlatWhite() {
+                    cell.backgroundColor = UIColor.flatWhiteColor()
+                    cell.textLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    cell.detailTextLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    labelPictoLigne.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    labelPictoLigne.layer.borderColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]?.CGColor
+                }
+                else {
+                    cell.backgroundColor = UIColor.flatWhiteColor()
+                    cell.textLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
+                    cell.detailTextLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
+                    labelPictoLigne.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
+                    labelPictoLigne.layer.borderColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]?.darkenByPercentage(0.2).CGColor
+                }
+                
+            }
+            
             let image = labelToImage(labelPictoLigne)
             cell.imageView?.image = image
-            let backgroundView = UIView()
-            backgroundView.backgroundColor = UIColor.flatOrangeColorDark()
-            cell.selectedBackgroundView = backgroundView
         }
         return cell
         
