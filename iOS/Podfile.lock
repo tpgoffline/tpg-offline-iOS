@@ -46,7 +46,6 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0.0)
   - INTULocationManager (4.1.1)
   - Localize-Swift (1.1)
-  - MisterFusion (1.0.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -77,8 +76,6 @@ PODS:
     - MRProgress/Helper
   - Onboard (2.1.7)
   - PermissionScope (1.0.2)
-  - SAHistoryNavigationViewController (2.3.0):
-    - MisterFusion
   - SCLAlertView (0.5.1)
   - SwiftyJSON (2.3.2)
   - SwiftyStoreKit (0.2.3)
@@ -97,7 +94,6 @@ DEPENDENCIES:
   - MRProgress (from `https://github.com/mrackwitz/MRProgress.git`)
   - Onboard (from `https://github.com/mamaral/Onboard.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
-  - SAHistoryNavigationViewController (from `https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git`)
   - SCLAlertView (from `https://github.com/Pevika/SCLAlertView-Swift.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
@@ -127,8 +123,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/mamaral/Onboard.git
   PermissionScope:
     :git: https://github.com/nickoneill/PermissionScope.git
-  SAHistoryNavigationViewController:
-    :git: https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git
   SCLAlertView:
     :git: https://github.com/Pevika/SCLAlertView-Swift.git
   SwiftyJSON:
@@ -173,9 +167,6 @@ CHECKOUT OPTIONS:
   PermissionScope:
     :commit: f37fbf61ccdd56e40ff58ad5a69472f2500974ae
     :git: https://github.com/nickoneill/PermissionScope.git
-  SAHistoryNavigationViewController:
-    :commit: bec75e030f8fb8a13210f3740cd0b6bd8cca04e6
-    :git: https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git
   SCLAlertView:
     :commit: 80ad641a4fd3422ba80666d9865c6043a288f19c
     :git: https://github.com/Pevika/SCLAlertView-Swift.git
@@ -202,15 +193,13 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   INTULocationManager: 83c7373048d583cda57e25eefb9bb8a3675acf16
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
-  MisterFusion: 8bed489f6c4cfb3572efaa660a353019a5b4dd61
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
   Onboard: 87648089e1b76d13b4f5bf8f7a1cdb144092f0af
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
-  SAHistoryNavigationViewController: 5ec66cabdd65fa1667cc7b8af182d78e3e24080e
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyStoreKit: b61ef56bddfb49aade6dffd59a22dcff305ed7ec
 
-PODFILE CHECKSUM: 2e889b9664d04a3aeddd14ffc4455cdfd9c038f7
+PODFILE CHECKSUM: b3ab17d87e07bf58d4dc554e8ebfab9b978788e0
 
 COCOAPODS: 1.0.0.beta.3

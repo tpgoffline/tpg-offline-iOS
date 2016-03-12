@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -11,11 +11,10 @@
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
-            buildForAnalyzing = "YES"
-            hideIssues = "NO">
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "059467600C65C9E3FF4309A2EAB62C16"
+               BlueprintIdentifier = "7D15C91082824736905C5499A826CC9D"
                BuildableName = "Pods_tpg_offline.framework"
                BlueprintName = "Pods-tpg offline"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -46,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "059467600C65C9E3FF4309A2EAB62C16"
+            BlueprintIdentifier = "7D15C91082824736905C5499A826CC9D"
             BuildableName = "Pods_tpg_offline.framework"
             BlueprintName = "Pods-tpg offline"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -61,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "059467600C65C9E3FF4309A2EAB62C16"
-            BuildableName = "Pods_tpg_offline.framework"
-            BlueprintName = "Pods-tpg offline"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

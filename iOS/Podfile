@@ -17,7 +17,6 @@ target 'tpg offline' do
 	pod 'SwiftyStoreKit', git: "https://github.com/bizz84/SwiftyStoreKit.git"
 	pod 'Localize-Swift', git: "https://github.com/marmelroy/Localize-Swift.git"
 	pod 'Onboard', git: "https://github.com/mamaral/Onboard.git"
-	pod 'SAHistoryNavigationViewController', git: "https://github.com/szk-atmosphere/SAHistoryNavigationViewController.git"
 	pod 'Google/Analytics'
 	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'
 end

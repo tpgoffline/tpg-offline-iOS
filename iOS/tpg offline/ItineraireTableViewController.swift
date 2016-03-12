@@ -12,7 +12,6 @@ import ChameleonFramework
 import FontAwesomeKit
 import DGRunkeeperSwitch
 import SCLAlertView
-import SAHistoryNavigationViewController
 import Google
 
 struct ItineraireEnCours {

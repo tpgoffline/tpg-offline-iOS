@@ -71,7 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			AppValues.premium = true
 		}
 		else {
-            defaults.setBool(true, forKey: "premium")
 			AppValues.premium = defaults.boolForKey("premium")
 		}
 		

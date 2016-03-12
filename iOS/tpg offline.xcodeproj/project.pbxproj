@@ -368,12 +368,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 002B47EF1C01FA6F000BF3E8 /* Build configuration list for PBXNativeTarget "tpg offline" */;
 			buildPhases = (
-				9F108A1961182CB869DA2797 /* Check Pods Manifest.lock */,
+				6143AEEEAFF3CE4718EC2B54 /* Check Pods Manifest.lock */,
+				9F108A1961182CB869DA2797 /* 📦 Check Pods Manifest.lock */,
 				002B47D91C01FA6F000BF3E8 /* Sources */,
 				002B47DA1C01FA6F000BF3E8 /* Frameworks */,
 				002B47DB1C01FA6F000BF3E8 /* Resources */,
-				A8BC474FB226BE6B046FAD9C /* Embed Pods Frameworks */,
-				8670B5EE69019AA352C1D32E /* Copy Pods Resources */,
+				A8BC474FB226BE6B046FAD9C /* 📦 Embed Pods Frameworks */,
+				8670B5EE69019AA352C1D32E /* 📦 Copy Pods Resources */,
+				845990977AE71E0535DAEB9F /* Embed Pods Frameworks */,
+				2301A5AEC6CCA5861B00B525 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -481,7 +484,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8670B5EE69019AA352C1D32E /* Copy Pods Resources */ = {
+		2301A5AEC6CCA5861B00B525 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -496,7 +499,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F108A1961182CB869DA2797 /* Check Pods Manifest.lock */ = {
+		6143AEEEAFF3CE4718EC2B54 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -511,7 +514,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A8BC474FB226BE6B046FAD9C /* Embed Pods Frameworks */ = {
+		845990977AE71E0535DAEB9F /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -519,6 +522,51 @@
 			inputPaths = (
 			);
 			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8670B5EE69019AA352C1D32E /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F108A1961182CB869DA2797 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A8BC474FB226BE6B046FAD9C /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,7 +769,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -750,7 +798,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
