@@ -632,7 +632,7 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             notificationTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("finishedShowingNotificationPermission"), userInfo: nil, repeats: false)
             
             UIApplication.sharedApplication().registerUserNotificationSettings(
-                UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge],
+                UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge],
                 categories: notificationsPermissionSet)
             )
         case .Unauthorized:

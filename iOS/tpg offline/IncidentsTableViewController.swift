@@ -47,24 +47,7 @@ class IncidentsTableViewController: UITableViewController {
             listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
             listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
         }
-        
-        if let dataArrets = tpgUrl.getDisruptions() {
-            let json = JSON(data: dataArrets)
-            if json["disruptions"].count != 0 {
-                for x in 0...json["disruptions"].count - 1 {
-                    if listeColor[json["disruptions"][x]["lineCode"].string!] != nil {
-                        distrubtions.append(Perturbations(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
-                    }
-                }
-            }
-            else {
-                aucunProbleme = true
-            }
-        }
-        else {
-            erreur = true
-        }
-     
+        refresh(self)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -91,8 +74,7 @@ class IncidentsTableViewController: UITableViewController {
         aucunProbleme = false
         erreur = false
         distrubtions = []
-        if let dataArrets = tpgUrl.getDisruptions() {
-            let json = JSON(data: dataArrets)
+        if let json = tpgUrl.getDisruptions() {
             if json["disruptions"].count != 0 {
                 for x in 0...json["disruptions"].count - 1 {
                     if listeColor[json["disruptions"][x]["lineCode"].string!] != nil {

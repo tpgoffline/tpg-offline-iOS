@@ -19,4 +19,5 @@ target 'tpg offline' do
 	pod 'Onboard', git: "https://github.com/mamaral/Onboard.git"
 	pod 'Google/Analytics'
 	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'
+	pod "SwiftDate", git: 'https://github.com/malcommac/SwiftDate.git'
 end

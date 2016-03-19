@@ -58,7 +58,7 @@ platform :ios do
     	scheme: "tpg offline",
     	clean: true
     )    
-    pilot
+    testflight
   end
 
   desc "Deploy a new version to the App Store"

@@ -72,17 +72,12 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
             }
         }
         
-        print("Tutoriel \(defaults.boolForKey("tutorial"))")
-        if defaults.boolForKey("tutorial") == false {
-            afficherTutoriel()
-        }
-        
         if !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
             
             switch PermissionScope().statusNotifications() {
             case .Unknown:
                 // ask
-                pscope.addPermission(NotificationsPermission(), message: "Cette autorisation sert à envoyer des rappels.".localized())
+                pscope.addPermission(NotificationsPermission(notificationCategories: nil), message: "Cette autorisation sert à envoyer des rappels.".localized())
             case .Unauthorized, .Disabled:
                 // bummer
                 return

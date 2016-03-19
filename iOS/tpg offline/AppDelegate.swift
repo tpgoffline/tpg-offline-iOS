@@ -146,9 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		tabBarController.selectedIndex = defaults.integerForKey("selectedTabBar")
 		
 		
-		if let dataArrets = tpgUrl.getAllStops() {
-			let arrets = JSON(data: dataArrets)
-			
+		if let arrets = tpgUrl.getAllStops() {			
 			
 			for (_, subJson) in arrets["stops"] {
 				AppValues.arrets[subJson["stopName"].string!] = Arret(
@@ -165,6 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 		
+        
 		return true
 	}
 	

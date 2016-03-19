@@ -111,7 +111,7 @@ class ParametresTableViewController: UITableViewController {
         alerte.addButton("OK, démarrer") { 
             CATransaction.begin()
             
-            let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view.window, title: "Chargement", mode: .Indeterminate, animated: true)
+            let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view.window, title: "Chargement", mode: .DeterminateCircular, animated: true)
             if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
                 progressBar.tintColor = AppValues.secondaryColor
                 progressBar.titleLabel!.textColor = AppValues.secondaryColor
@@ -146,7 +146,9 @@ class ParametresTableViewController: UITableViewController {
                                 else {
                                     compteur += 1
                                 }
-                                print((Int(index)! * 100) / json.count)
+                                progressBar.setProgress(Float(Int(index)! * 100) / Float(json.count) / 100, animated: true)
+
+                                CATransaction.flush()
                             }
                             print(compteur)
                             progressBar.dismiss(true)

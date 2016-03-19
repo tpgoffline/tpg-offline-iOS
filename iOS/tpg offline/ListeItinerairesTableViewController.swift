@@ -64,6 +64,9 @@ class ListeItinerairesTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ItineraireEnCours.itineraire == nil {
+            return 0
+        }
         if ItineraireEnCours.itineraire.depart == nil || ItineraireEnCours.itineraire.arrivee == nil || ItineraireEnCours.itineraire.date == nil {
             return 0
         }
@@ -116,24 +119,52 @@ class ListeItinerairesTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! ListeItinerairesTableViewCell
 		
 		if pasReseau {
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                cell.textLabel?.textColor = UIColor.whiteColor()
+                cell.detailTextLabel?.textColor = UIColor.whiteColor()
+                cell.backgroundColor = UIColor.flatRedColorDark()
+                
+                let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+                cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+            }
+            else {
+                cell.textLabel?.textColor = UIColor.flatRedColorDark()
+                cell.detailTextLabel?.textColor = UIColor.flatRedColorDark()
+                cell.backgroundColor = UIColor.flatWhiteColor()
+                
+                let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedColorDark())
+                cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+            }
+
 			cell.textLabel?.text = "Pas de réseau".localized()
-			cell.textLabel?.textColor = UIColor.whiteColor()
-			cell.detailTextLabel?.textColor = UIColor.whiteColor()
-			cell.backgroundColor = UIColor.flatRedColorDark()
-			let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
-			iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+
 			return cell
 		}
 			
 		else if ItineraireEnCours.json["connections"].count == 0 {
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                cell.textLabel?.textColor = UIColor.whiteColor()
+                cell.detailTextLabel?.textColor = UIColor.whiteColor()
+                cell.backgroundColor = UIColor.flatRedColorDark()
+                
+                let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+                cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+            }
+            else {
+                cell.textLabel?.textColor = UIColor.flatRedColorDark()
+                cell.detailTextLabel?.textColor = UIColor.flatRedColorDark()
+                cell.backgroundColor = UIColor.flatWhiteColor()
+                
+                let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedColorDark())
+                cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+            }
+            
 			cell.textLabel?.text = "Itinéraires non trouvés".localized()
-			cell.textLabel?.textColor = UIColor.whiteColor()
-			cell.detailTextLabel?.textColor = UIColor.whiteColor()
-			cell.backgroundColor = UIColor.flatRedColorDark()
-			let iconeError = FAKFontAwesome.timesCircleIconWithSize(20)
-			iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-			cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
+            
 			return cell
 		}
 			
@@ -234,6 +265,11 @@ class ListeItinerairesTableViewController: UITableViewController {
 			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
+        let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
+        if (navController.viewControllers[0].isKindOfClass(ItineraireTableViewController)) {
+            let itineraireTableViewController = navController.viewControllers[0] as! ItineraireTableViewController
+            itineraireTableViewController.tableView.reloadData()
+        }
 	}
 	func scheduleNotification(time: NSDate, before: Int = 5, ligne: String, direction: String) {
 		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time)
@@ -256,7 +292,7 @@ class ListeItinerairesTableViewController: UITableViewController {
 		texte += String(before)
 		texte += " minutes".localized()
 		reminder.alertBody = texte
-		reminder.soundName = "Sound.aif"
+        reminder.soundName = UILocalNotificationDefaultSoundName
 		
 		UIApplication.sharedApplication().scheduleLocalNotification(reminder)
 		
@@ -331,6 +367,11 @@ class ListeItinerairesTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		return true
+        if pasReseau || ItineraireEnCours.json["connections"].count == 0 {
+            return false
+        }
+        else {
+            return true
+        }
 	}
 }

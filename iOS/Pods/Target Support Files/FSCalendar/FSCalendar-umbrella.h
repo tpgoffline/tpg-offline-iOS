@@ -3,6 +3,7 @@
 #import "CALayer+FSExtension.h"
 #import "FSCalendar+IBExtension.h"
 #import "FSCalendar.h"
+#import "FSCalendarAnimator.h"
 #import "FSCalendarAppearance.h"
 #import "FSCalendarCell.h"
 #import "FSCalendarCollectionView.h"

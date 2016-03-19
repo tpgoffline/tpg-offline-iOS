@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 struct AppValues {
     static var arrets: [String: Arret] = [:]

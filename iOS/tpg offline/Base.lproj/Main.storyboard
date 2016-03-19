@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15E56a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rhD-oN-Bk9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rhD-oN-Bk9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
@@ -1019,10 +1019,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-0W-z82" customClass="DVSCircularTimeSlider" customModule="tpg_offline" customModuleProvider="target">
-                                <rect key="frame" x="20" y="122" width="560" height="369"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrW-kS-VIs">
                                 <rect key="frame" x="0.0" y="499" width="600" height="50"/>
                                 <constraints>
@@ -1032,28 +1028,71 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="boutonValiderPressed:" destination="x1B-B3-nPQ" eventType="touchUpInside" id="6zL-yY-GVC"/>
+                                    <action selector="boutonValiderPressed:" destination="x1B-B3-nPQ" eventType="touchUpInside" id="7JJ-G8-0Bx"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjL-cP-y3v" customClass="EFCircularSlider">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="6oe-e3-R4v"/>
+                                    <constraint firstAttribute="width" constant="200" id="ggR-la-5de"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEi-ha-Gj1" customClass="EFCircularSlider">
+                                <rect key="frame" x="250" y="250" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="VaH-SE-CZG"/>
+                                    <constraint firstAttribute="height" constant="100" id="bSi-Dc-DMS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="currentValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="snapToLabels" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="cjL-cP-y3v" firstAttribute="centerY" secondItem="e7L-cr-bCZ" secondAttribute="centerY" id="FAj-02-m0V"/>
+                            <constraint firstItem="cjL-cP-y3v" firstAttribute="centerX" secondItem="e7L-cr-bCZ" secondAttribute="centerX" id="Fk3-fd-8uT"/>
                             <constraint firstItem="X42-rG-Aql" firstAttribute="top" secondItem="e7H-BL-kEv" secondAttribute="bottom" id="GOF-Kn-0Sq"/>
-                            <constraint firstItem="66s-NU-fQX" firstAttribute="top" secondItem="Ssz-0W-z82" secondAttribute="bottom" constant="60" id="Hjs-ve-ds2"/>
                             <constraint firstItem="X42-rG-Aql" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leadingMargin" id="P2W-p0-MWO"/>
                             <constraint firstItem="X42-rG-Aql" firstAttribute="trailing" secondItem="e7L-cr-bCZ" secondAttribute="trailingMargin" id="Phs-4X-Rbv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OrW-kS-VIs" secondAttribute="trailing" constant="-20" id="YTJ-PN-y6A"/>
-                            <constraint firstItem="Ssz-0W-z82" firstAttribute="trailing" secondItem="e7L-cr-bCZ" secondAttribute="trailingMargin" id="ecm-pq-yI3"/>
-                            <constraint firstItem="Ssz-0W-z82" firstAttribute="top" secondItem="X42-rG-Aql" secondAttribute="bottom" constant="8" id="hmK-EP-mF6"/>
+                            <constraint firstItem="aEi-ha-Gj1" firstAttribute="centerY" secondItem="e7L-cr-bCZ" secondAttribute="centerY" id="gR0-MK-UGp"/>
                             <constraint firstItem="66s-NU-fQX" firstAttribute="top" secondItem="OrW-kS-VIs" secondAttribute="bottom" constant="2" id="m8d-q5-zcT"/>
                             <constraint firstItem="OrW-kS-VIs" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leadingMargin" constant="-20" id="qji-77-dH0"/>
-                            <constraint firstItem="Ssz-0W-z82" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leadingMargin" id="v0p-0i-vNs"/>
+                            <constraint firstItem="aEi-ha-Gj1" firstAttribute="centerX" secondItem="e7L-cr-bCZ" secondAttribute="centerX" id="y0R-Ed-BdG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="boutonValider" destination="OrW-kS-VIs" id="BaI-bz-LDD"/>
+                        <outlet property="boutonValider" destination="OrW-kS-VIs" id="6e3-BK-eRC"/>
+                        <outlet property="hourSlider" destination="cjL-cP-y3v" id="T02-Ii-DGA"/>
                         <outlet property="labelHeure" destination="X42-rG-Aql" id="tKm-1Z-u7m"/>
-                        <outlet property="timeSlider" destination="Ssz-0W-z82" id="iSz-od-Dbi"/>
+                        <outlet property="minuteSlider" destination="aEi-ha-Gj1" id="koa-vW-BgX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ7-CA-i0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1499,9 +1538,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QU0-Nc-zyX"/>
         <segue reference="DTk-vf-Mbr"/>
-        <segue reference="ZI5-bs-JyD"/>
+        <segue reference="5h4-1H-jes"/>
+        <segue reference="QU0-Nc-zyX"/>
         <segue reference="hgu-ac-qJp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

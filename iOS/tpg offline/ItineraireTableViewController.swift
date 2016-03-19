@@ -138,6 +138,7 @@ class ItineraireTableViewController: UITableViewController {
 				cell.button.backgroundColor = AppValues.secondaryColor
 				cell.button.tintColor = AppValues.textColor
 				cell.button.addTarget(self, action: "rechercher:", forControlEvents: .TouchUpInside)
+                cell.backgroundColor = AppValues.secondaryColor
 				let view = UIView()
 				view.backgroundColor = AppValues.secondaryColor
 				cell.selectedBackgroundView = view

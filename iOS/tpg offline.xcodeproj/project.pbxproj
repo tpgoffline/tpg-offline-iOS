@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000ECABB1C468D4000E4FC92 /* LocationSettingsCellKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000ECABA1C468D4000E4FC92 /* LocationSettingsCellKey.swift */; };
 		000ECABD1C469A3500E4FC92 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000ECABC1C469A3500E4FC92 /* RouteViewController.swift */; };
-		0019B2141C0F38BD00DD1A4D /* arrets.json in Resources */ = {isa = PBXBuildFile; fileRef = 0019B2131C0F38BD00DD1A4D /* arrets.json */; };
 		002149151C5BDDC5009C0264 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */; };
 		002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */; };
 		002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 002B47E41C01FA6F000BF3E8 /* Main.storyboard */; };
@@ -22,8 +20,13 @@
 		002E5C781C1337DD0008623D /* NSUserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */; };
 		00391C471C271D1E005250D4 /* ParametresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00391C461C271D1E005250D4 /* ParametresTableViewController.swift */; };
 		00391C491C271DA6005250D4 /* ChoixMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */; };
-		003D10EE1C21A47400F9857E /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 003D10ED1C21A46800F9857E /* ionicons.ttf */; };
-		003EBAC91C0B46E20024043B /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 003EBAC81C0B46CF0024043B /* FontAwesome.otf */; };
+		003D10EE1C21A47400F9857E /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 003D10ED1C21A46800F9857E /* Ionicons.ttf */; };
+		00430B541C9B1EAD00C71A06 /* arrets.json in Resources */ = {isa = PBXBuildFile; fileRef = 00430B531C9B1EAD00C71A06 /* arrets.json */; };
+		00430B611C9B23C700C71A06 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5B1C9B23C700C71A06 /* FontAwesome.otf */; };
+		00430B621C9B23C700C71A06 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */; };
+		00430B641C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */; };
+		00430B651C9B23C700C71A06 /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5F1C9B23C700C71A06 /* octicons.ttf */; };
+		00430B661C9B23C700C71A06 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */; };
 		004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D812A1C24737800C6AD55 /* Perturbations.swift */; };
 		004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */; };
 		004E8BD61C6E23840055006B /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */; };
@@ -40,7 +43,6 @@
 		00ABBE151C29C81B00479FF4 /* Departs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ABBE141C29C81B00479FF4 /* Departs.swift */; };
 		00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B39B8A1C131C05006FC8A3 /* tpgURL.swift */; };
 		00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */; };
-		00C0F9D81C9458E4000CA903 /* DVSCircularTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C0F9D71C9458E4000CA903 /* DVSCircularTimeSlider.swift */; };
 		00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C8DD551C0CCACC004743A5 /* couleursLignes.json */; };
 		00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */; };
 		00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C491C4810E1008E8B2A /* Itineraire.swift */; };
@@ -53,6 +55,7 @@
 		00DCD95B1C2865E40094C0EB /* Sound.aif in Resources */ = {isa = PBXBuildFile; fileRef = 00DCD95A1C2865E40094C0EB /* Sound.aif */; };
 		00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* PlansTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
+		00FFA8761C9D524D00B57A47 /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFA8751C9D524D00B57A47 /* Performance.swift */; };
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
 		AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */; };
 		AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0148121C7F6CDE0057E884 /* WebViewController.swift */; };
@@ -77,9 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000ECABA1C468D4000E4FC92 /* LocationSettingsCellKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsCellKey.swift; sourceTree = "<group>"; };
 		000ECABC1C469A3500E4FC92 /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RouteViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		0019B2131C0F38BD00DD1A4D /* arrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrets.json; sourceTree = "<group>"; };
 		002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CreditsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002B47DD1C01FA6F000BF3E8 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -94,8 +95,15 @@
 		002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsExtension.swift; sourceTree = "<group>"; };
 		00391C461C271D1E005250D4 /* ParametresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ParametresTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ChoixMenuTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		003D10ED1C21A46800F9857E /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
-		003EBAC81C0B46CF0024043B /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		003D10ED1C21A46800F9857E /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		00430B491C9B1D4E00C71A06 /* tpg_offline_UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UnitTests.swift; sourceTree = "<group>"; };
+		00430B4B1C9B1D4E00C71A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00430B531C9B1EAD00C71A06 /* arrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrets.json; sourceTree = "<group>"; };
+		00430B5B1C9B23C700C71A06 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Pods/FontAwesomeKit/FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
+		00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
+		00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Material-Design-Iconic-Font.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
+		00430B5F1C9B23C700C71A06 /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = octicons.ttf; path = Pods/FontAwesomeKit/FontAwesomeKit/octicons.ttf; sourceTree = "<group>"; };
+		00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
 		004D812A1C24737800C6AD55 /* Perturbations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perturbations.swift; sourceTree = "<group>"; };
 		004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -113,7 +121,6 @@
 		00B39B8A1C131C05006FC8A3 /* tpgURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURL.swift; sourceTree = "<group>"; };
 		00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tpg offline-Bridging-Header.h"; sourceTree = "<group>"; };
 		00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TimeSelectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		00C0F9D71C9458E4000CA903 /* DVSCircularTimeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVSCircularTimeSlider.swift; sourceTree = "<group>"; };
 		00C8DD551C0CCACC004743A5 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
 		00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = tpgArretSelectionTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00C98C491C4810E1008E8B2A /* Itineraire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itineraire.swift; sourceTree = "<group>"; };
@@ -126,10 +133,14 @@
 		00DCD95A1C2865E40094C0EB /* Sound.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.aif; sourceTree = "<group>"; };
 		00DDC0B11C255CED002B288E /* PlansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlansTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00FFA8751C9D524D00B57A47 /* Performance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EAD0B938A89BC4A90E7F807 /* Pods-tpg offline Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		43D3491A7E1B71A24C25DCFF /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
+		69DE50635AF86CF27D8967D8 /* Pods-tpg offline UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline UnitTests/Pods-tpg offline UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
+		8264D7D3E4E5B7CCC11E97AF /* Pods-tpg offline UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline UnitTests/Pods-tpg offline UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		846FA2F488A2367C92180682 /* Pods_tpg_offline_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
 		AD0148121C7F6CDE0057E884 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -180,11 +191,16 @@
 			children = (
 				00DCD95A1C2865E40094C0EB /* Sound.aif */,
 				00C8DD551C0CCACC004743A5 /* couleursLignes.json */,
-				003D10ED1C21A46800F9857E /* ionicons.ttf */,
-				003EBAC81C0B46CF0024043B /* FontAwesome.otf */,
-				0019B2131C0F38BD00DD1A4D /* arrets.json */,
+				003D10ED1C21A46800F9857E /* Ionicons.ttf */,
+				00430B5B1C9B23C700C71A06 /* FontAwesome.otf */,
+				00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */,
+				00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */,
+				00430B5F1C9B23C700C71A06 /* octicons.ttf */,
+				00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */,
+				00430B531C9B1EAD00C71A06 /* arrets.json */,
 				002B47DF1C01FA6F000BF3E8 /* tpg offline */,
 				AD11CD841C8336AA00DFF4AA /* tpg offline UITests */,
+				00430B481C9B1D4E00C71A06 /* tpg offline UnitTests */,
 				002B47DE1C01FA6F000BF3E8 /* Products */,
 				A65315FEF759993751E0088F /* Frameworks */,
 				90973F03D73F43F58C8AD679 /* Pods */,
@@ -235,6 +251,15 @@
 				AD0148121C7F6CDE0057E884 /* WebViewController.swift */,
 			);
 			name = "Paramètres";
+			sourceTree = "<group>";
+		};
+		00430B481C9B1D4E00C71A06 /* tpg offline UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				00430B491C9B1D4E00C71A06 /* tpg_offline_UnitTests.swift */,
+				00430B4B1C9B1D4E00C71A06 /* Info.plist */,
+			);
+			path = "tpg offline UnitTests";
 			sourceTree = "<group>";
 		};
 		005DF8121C0DF75300377031 /* Cells */ = {
@@ -301,8 +326,8 @@
 				00500AF31C1B396F00341F7A /* Arret.swift */,
 				00B39B8A1C131C05006FC8A3 /* tpgURL.swift */,
 				00DCD9581C285EBB0094C0EB /* Ticket.swift */,
+				00FFA8751C9D524D00B57A47 /* Performance.swift */,
 				00ABBE141C29C81B00479FF4 /* Departs.swift */,
-				000ECABA1C468D4000E4FC92 /* LocationSettingsCellKey.swift */,
 				00C98C491C4810E1008E8B2A /* Itineraire.swift */,
 			);
 			name = "Général";
@@ -311,7 +336,6 @@
 		00DDC0AF1C254FED002B288E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				00C0F9D71C9458E4000CA903 /* DVSCircularTimeSlider.swift */,
 				002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */,
 				004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */,
 			);
@@ -334,6 +358,8 @@
 				7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */,
 				3EAD0B938A89BC4A90E7F807 /* Pods-tpg offline Dev.debug.xcconfig */,
 				E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */,
+				8264D7D3E4E5B7CCC11E97AF /* Pods-tpg offline UnitTests.debug.xcconfig */,
+				69DE50635AF86CF27D8967D8 /* Pods-tpg offline UnitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -347,6 +373,7 @@
 				253CE6CB67EE399CF499A811 /* Pods.framework */,
 				DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */,
 				9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */,
+				846FA2F488A2367C92180682 /* Pods_tpg_offline_UnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -368,15 +395,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 002B47EF1C01FA6F000BF3E8 /* Build configuration list for PBXNativeTarget "tpg offline" */;
 			buildPhases = (
-				6143AEEEAFF3CE4718EC2B54 /* Check Pods Manifest.lock */,
 				9F108A1961182CB869DA2797 /* 📦 Check Pods Manifest.lock */,
 				002B47D91C01FA6F000BF3E8 /* Sources */,
 				002B47DA1C01FA6F000BF3E8 /* Frameworks */,
 				002B47DB1C01FA6F000BF3E8 /* Resources */,
 				A8BC474FB226BE6B046FAD9C /* 📦 Embed Pods Frameworks */,
 				8670B5EE69019AA352C1D32E /* 📦 Copy Pods Resources */,
-				845990977AE71E0535DAEB9F /* Embed Pods Frameworks */,
-				2301A5AEC6CCA5861B00B525 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -462,14 +486,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				00DCD95B1C2865E40094C0EB /* Sound.aif in Resources */,
-				003D10EE1C21A47400F9857E /* ionicons.ttf in Resources */,
-				003EBAC91C0B46E20024043B /* FontAwesome.otf in Resources */,
+				003D10EE1C21A47400F9857E /* Ionicons.ttf in Resources */,
+				00430B611C9B23C700C71A06 /* FontAwesome.otf in Resources */,
+				00430B661C9B23C700C71A06 /* zocial-regular-webfont.ttf in Resources */,
+				00430B641C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf in Resources */,
+				00430B621C9B23C700C71A06 /* foundation-icons.ttf in Resources */,
 				002B47EB1C01FA6F000BF3E8 /* LaunchScreen.storyboard in Resources */,
 				002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */,
 				ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */,
+				00430B651C9B23C700C71A06 /* octicons.ttf in Resources */,
+				00430B541C9B1EAD00C71A06 /* arrets.json in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
 				ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */,
-				0019B2141C0F38BD00DD1A4D /* arrets.json in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,51 +512,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2301A5AEC6CCA5861B00B525 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6143AEEEAFF3CE4718EC2B54 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		845990977AE71E0535DAEB9F /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8670B5EE69019AA352C1D32E /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -581,13 +564,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00C0F9D81C9458E4000CA903 /* DVSCircularTimeSlider.swift in Sources */,
 				002B47F61C01FA87000BF3E8 /* DepartsArretTableViewController.swift in Sources */,
 				00CA21D31C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift in Sources */,
 				00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */,
 				000ECABD1C469A3500E4FC92 /* RouteViewController.swift in Sources */,
 				00C98C4C1C481573008E8B2A /* ItineraireTableViewController.swift in Sources */,
-				000ECABB1C468D4000E4FC92 /* LocationSettingsCellKey.swift in Sources */,
 				004E8BD61C6E23840055006B /* ThemesCollectionViewController.swift in Sources */,
 				002E5C781C1337DD0008623D /* NSUserDefaultsExtension.swift in Sources */,
 				00D7C3D21C4BDCAE00D6864C /* ItineraireTableViewCell.swift in Sources */,
@@ -619,6 +600,7 @@
 				005DF8111C0DF74E00377031 /* ArretsImageTableViewCell.swift in Sources */,
 				008B84441C232D84007BE1B3 /* IncidentsTableViewController.swift in Sources */,
 				007D924D1C4A98A80036BEE6 /* ButtonTableViewCell.swift in Sources */,
+				00FFA8761C9D524D00B57A47 /* Performance.swift in Sources */,
 				00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */,
 				004E8BD81C6E24870055006B /* ThemeCollectionViewCell.swift in Sources */,
 				00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */,

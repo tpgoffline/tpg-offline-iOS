@@ -28,28 +28,21 @@ class Departs {
     }
     
     func calculerTempsRestant() {
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-		let time = dateFormatter.dateFromString(timestamp)
-		let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
-		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: NSDate())
-		if tempsTimestamp.hour == now.hour && tempsTimestamp.minute == now.minute && tempsTimestamp.second >= now.second {
-			self.tempsRestant =  "0"
-		}
-		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute - 1 == now.minute && tempsTimestamp.second <= now.second {
-			self.tempsRestant =  "0"
-		}
-		else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
-			self.tempsRestant = String(tempsTimestamp.minute - now.minute)
-		}
-		else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour == now.hour + 1 && tempsTimestamp.minute < now.minute {
-			self.tempsRestant = String((60 - now.minute) + tempsTimestamp.minute)
-		}
-		else if tempsTimestamp.hour > now.hour {
-			self.tempsRestant = String(((tempsTimestamp.hour - now.hour) * 60) + tempsTimestamp.minute)
-		}
-		else {
-			self.tempsRestant =  "-1"
-		}
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+        let time = dateFormatter.dateFromString(timestamp)
+        let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: time!)
+        
+        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: NSDate())
+        tempsTimestamp.year = now.year
+        tempsTimestamp.month = now.month
+        tempsTimestamp.day = now.day
+        
+        if NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.compare(NSDate()) == .OrderedAscending {
+            self.tempsRestant = "-1"
+        }
+        else {
+            self.tempsRestant = String(Int(NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.timeIntervalSinceNow / 60))
+        }
     }
 }

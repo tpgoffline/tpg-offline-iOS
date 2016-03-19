@@ -14,6 +14,7 @@ import ChameleonFramework
 import DGElasticPullToRefresh
 import MRProgress
 import Google
+import SwiftDate
 
 class DepartsArretTableViewController: UITableViewController {
     var arret: Arret? = nil
@@ -70,10 +71,6 @@ class DepartsArretTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        /*if arret == nil {
-            arret = AppValues.arrets[arretsKeys[0]]
-        }*/
-        
         tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
@@ -115,26 +112,20 @@ class DepartsArretTableViewController: UITableViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
         let time = dateFormatter.dateFromString(timestamp)
-        let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
-        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: NSDate())
-        if tempsTimestamp.hour == now.hour && tempsTimestamp.minute == now.minute && tempsTimestamp.second >= now.second {
-            return "0"
-        }
-        else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute - 1 == now.minute && tempsTimestamp.second <= now.second {
-            return "0"
-        }
-        else if tempsTimestamp.hour == now.hour && tempsTimestamp.minute > now.minute {
-            return String(tempsTimestamp.minute - now.minute)
-        }
-        else if tempsTimestamp.hour > now.hour && tempsTimestamp.hour == now.hour + 1 && tempsTimestamp.minute < now.minute {
-            return String((60 - now.minute) + tempsTimestamp.minute)
-        }
-        else if tempsTimestamp.hour > now.hour {
-            return String(((tempsTimestamp.hour - now.hour) * 60) + tempsTimestamp.minute)
-        }
-        else {
+        let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: time!)
+        
+        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: NSDate())
+        tempsTimestamp.year = now.year
+        tempsTimestamp.month = now.month
+        tempsTimestamp.day = now.day
+        
+        if NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.compare(NSDate()) == .OrderedAscending {
             return "-1"
         }
+        else {
+            return String(Int(NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.timeIntervalSinceNow / 60))
+        }
+        
     }
     
     func labelToImage(label: UILabel!) -> UIImage {
@@ -179,6 +170,11 @@ class DepartsArretTableViewController: UITableViewController {
         barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
         
         self.navigationItem.rightBarButtonItems = barButtonsItems
+        let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
+        if (navController.viewControllers[0].isKindOfClass(ArretsTableViewController)) {
+            let itineraireTableViewController = navController.viewControllers[0] as! ItineraireTableViewController
+            itineraireTableViewController.tableView.reloadData()
+        }
     }
     
     func showItinerary(sender: AnyObject!) {
@@ -188,18 +184,15 @@ class DepartsArretTableViewController: UITableViewController {
     func scheduleNotification(hour: String, before: Int, ligne: String, direction: String) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-        let time = dateFormatter.dateFromString(hour)
+        var time = dateFormatter.dateFromString(hour)
+        time = time! - before.minutes
         let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time!)
         
-        if now.minute - before < 0 {
-            now.minute += 60
-            now.hour -= 1
-        }
-        
         let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: NSDate(), options: NSCalendarOptions())
+        let date = cal.dateBySettingHour(now.hour, minute: now.minute, second: now.second, ofDate: NSDate(), options: NSCalendarOptions())
         let reminder = UILocalNotification()
         reminder.fireDate = date
+        reminder.soundName = UILocalNotificationDefaultSoundName
         if before == 0 {
             reminder.alertBody = "Le tpg de la ligne ".localized() + ligne + " en direction de ".localized() + direction + " va partir immédiatement".localized()
         }
@@ -213,7 +206,6 @@ class DepartsArretTableViewController: UITableViewController {
             texte += " minutes".localized()
             reminder.alertBody = texte
         }
-        reminder.soundName = "Sound.aif"
         
         UIApplication.sharedApplication().scheduleLocalNotification(reminder)
         
@@ -258,8 +250,11 @@ class DepartsArretTableViewController: UITableViewController {
         }
         
         CATransaction.setCompletionBlock({
-            self.refreshDeparts()
+            let a = measure("refreshDeparts") {
+                self.refreshDeparts()
+            }
             self.tableView.reloadData()
+            
             progressBar.dismiss(true)
         })
         
@@ -336,21 +331,34 @@ class DepartsArretTableViewController: UITableViewController {
             switch day.weekday {
             case 7:
                 if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
-                    let path = dir.stringByAppendingPathComponent(arret!.stopCode + "departsDIM.json");
+                    let path = dir.stringByAppendingPathComponent(arret!.stopCode + "departsSAM.json");
                     
                     if NSFileManager.defaultManager().fileExistsAtPath(path) {
                         let dataDeparts = NSData(contentsOfFile: path)
                         let departs = JSON(data: dataDeparts!)
                         for (_, subJson) in departs {
-                            listeDeparts.append(Departs(
-                                ligne: subJson["ligne"].string!,
-                                direction: subJson["destination"].string!,
-                                couleur: listeColor[subJson["ligne"].string!]!,
-                                couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                                code: nil,
-                                tempsRestant: "0",
-                                timestamp: subJson["timestamp"].string!
-                                ))
+                            if listeColor[subJson["ligne"].string!] != nil {
+                                listeDeparts.append(Departs(
+                                    ligne: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    couleur: listeColor[subJson["ligne"].string!]!,
+                                    couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+                                    code: nil,
+                                    tempsRestant: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
+                            }
+                            else {
+                                listeDeparts.append(Departs(
+                                    ligne: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    couleur: UIColor.whiteColor(),
+                                    couleurArrierePlan: UIColor.flatGrayColorDark(),
+                                    code: nil,
+                                    tempsRestant: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
+                            }
                             listeDeparts.last?.calculerTempsRestant()
                         }
                     }
@@ -364,15 +372,28 @@ class DepartsArretTableViewController: UITableViewController {
                         let dataDeparts = NSData(contentsOfFile: path)
                         let departs = JSON(data: dataDeparts!)
                         for (_, subJson) in departs {
-                            listeDeparts.append(Departs(
-                                ligne: subJson["ligne"].string!,
-                                direction: subJson["destination"].string!,
-                                couleur: listeColor[subJson["ligne"].string!]!,
-                                couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                                code: nil,
-                                tempsRestant: "0",
-                                timestamp: subJson["timestamp"].string!
-                                ))
+                            if listeColor[subJson["ligne"].string!] != nil {
+                                listeDeparts.append(Departs(
+                                    ligne: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    couleur: listeColor[subJson["ligne"].string!]!,
+                                    couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+                                    code: nil,
+                                    tempsRestant: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
+                            }
+                            else {
+                                listeDeparts.append(Departs(
+                                    ligne: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    couleur: UIColor.whiteColor(),
+                                    couleurArrierePlan: UIColor.flatGrayColorDark(),
+                                    code: nil,
+                                    tempsRestant: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
+                            }
                             listeDeparts.last?.calculerTempsRestant()
                         }
                     }
@@ -386,15 +407,28 @@ class DepartsArretTableViewController: UITableViewController {
                         let dataDeparts = NSData(contentsOfFile: path)
                         let departs = JSON(data: dataDeparts!)
                         for (_, subJson) in departs {
-                            listeDeparts.append(Departs(
-                                ligne: subJson["ligne"].string!,
-                                direction: subJson["destination"].string!,
-                                couleur: listeColor[subJson["ligne"].string!]!,
-                                couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
-                                code: nil,
-                                tempsRestant: "0",
-                                timestamp: subJson["timestamp"].string!
-                                ))
+                            if listeColor[subJson["ligne"].string!] != nil {
+                                listeDeparts.append(Departs(
+                                    ligne: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    couleur: listeColor[subJson["ligne"].string!]!,
+                                    couleurArrierePlan: listeBackgroundColor[subJson["ligne"].string!]!,
+                                    code: nil,
+                                    tempsRestant: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
+                            }
+                            else {
+                                listeDeparts.append(Departs(
+                                    ligne: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    couleur: UIColor.whiteColor(),
+                                    couleurArrierePlan: UIColor.flatGrayColorDark(),
+                                    code: nil,
+                                    tempsRestant: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
+                            }
                             listeDeparts.last?.calculerTempsRestant()
                         }
                     }
@@ -403,7 +437,7 @@ class DepartsArretTableViewController: UITableViewController {
             }
             
             listeDeparts = listeDeparts.filter({ (depart) -> Bool in
-                if calculerTempsRestant(depart.timestamp) != "-1" {
+                if depart.tempsRestant != "-1" {
                     return true
                 }
                 return false
