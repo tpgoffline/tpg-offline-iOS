@@ -49,6 +49,7 @@ class ThemesCollectionViewController: UICollectionViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
+        collectionView?.reloadData()
 		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
 			let tracker = GAI.sharedInstance().defaultTracker
 			tracker.set(kGAIScreenName, value: "ThemesCollectionViewController")

@@ -51,6 +51,7 @@ class ParametresTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         actualiserTheme()
+        tableView.reloadData()
         
         if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
             let tracker = GAI.sharedInstance().defaultTracker
@@ -108,7 +109,7 @@ class ParametresTableViewController: UITableViewController {
     func actualiserDeparts() {
         tableView.deselectRowAtIndexPath(tableView.indexPathForSelectedRow!, animated: true)
         let alerte = SCLAlertView()
-        alerte.addButton("OK, démarrer") { 
+        alerte.addButton("OK, démarrer") {
             CATransaction.begin()
             
             let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view.window, title: "Chargement", mode: .DeterminateCircular, animated: true)
@@ -130,16 +131,11 @@ class ParametresTableViewController: UITableViewController {
                             let json = JSON(value)
                             for (index, subJson) in json {
                                 if let data = NSData(contentsOfURL: NSURL(string: "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/" + subJson.stringValue)!) {
-                                    let json2 = JSON(data: data)
                                     let file = subJson.stringValue
                                     if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
                                         let path = dir.stringByAppendingPathComponent(file);
-                                        
-                                        do {
-                                            try json2.rawString()!.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding)
-                                        }
-                                        catch (let erreur){
-                                            print(erreur)
+                                        if !(data.writeToFile(path, atomically: true)) {
+                                            compteur += 1
                                         }
                                     }
                                 }
@@ -147,7 +143,7 @@ class ParametresTableViewController: UITableViewController {
                                     compteur += 1
                                 }
                                 progressBar.setProgress(Float(Int(index)! * 100) / Float(json.count) / 100, animated: true)
-
+                                
                                 CATransaction.flush()
                             }
                             print(compteur)
@@ -170,7 +166,7 @@ class ParametresTableViewController: UITableViewController {
             
             CATransaction.commit()
         }
-        alerte.showInfo("Actualisation", subTitle: "Vous allez actualiser les départs. Attention : Nous vous recommendons de utiliser le wifi pour cette opération. Cette opération peut durer plusieurs minutes et n'est pas annulable.", closeButtonTitle: "Annuler")
+        alerte.showInfo("Actualisation", subTitle: "Vous allez actualiser les départs. Attention : Nous vous recommandons d'utiliser le wifi pour éviter d'utiliser votre forfait data (50 Mo). Cette opération peut prendre plusieurs minutes et n'est pas annulable. Veuillez également laisser l'application au premier plan pour ne pas interrompre le téléchargement.", closeButtonTitle: "Annuler")
     }
     
     func afficherTutoriel() {

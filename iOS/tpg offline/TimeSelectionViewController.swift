@@ -20,14 +20,14 @@ class TimeSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hourSlider.innerMarkingLabels = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"])
+        hourSlider.innerMarkingLabels = (["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "0"])
         hourSlider.labelFont = UIFont.systemFontOfSize(12)
         hourSlider.handleType = CircularSliderHandleTypeBigCircle
         
         view.addSubview(hourSlider)
         hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
         
-        minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"])
+        minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "0"])
         minuteSlider.labelFont = UIFont.systemFontOfSize(10)
         minuteSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(minuteSlider)
@@ -64,6 +64,8 @@ class TimeSelectionViewController: UIViewController {
         super.viewDidAppear(animated)
         actualiserTheme()
         
+        boutonValider.backgroundColor = AppValues.secondaryColor
+        boutonValider.setTitleColor(AppValues.textColor, forState: .Normal)
         minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
         minuteSlider.filledColor = AppValues.primaryColor.lightenByPercentage(0.2)
         hourSlider.unfilledColor = AppValues.primaryColor.lightenByPercentage(0.1)
@@ -90,6 +92,12 @@ class TimeSelectionViewController: UIViewController {
             ItineraireEnCours.itineraire.date!.minute = 0
         }
         ItineraireEnCours.itineraire.date!.hour = Int(hourSlider.currentValue)
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        hourSlider.setNeedsLayout()
+        minuteSlider.setNeedsLayout()
     }
     
     @IBAction func boutonValiderPressed(sender: AnyObject!) {

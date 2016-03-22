@@ -16,7 +16,7 @@ import DGElasticPullToRefresh
 import INTULocationManager
 import Localize_Swift
 import Onboard
-import Google
+import Google 
 
 class ArretsTableViewController: UITableViewController, UISplitViewControllerDelegate {
     var arretsLocalisation = [Arret]()

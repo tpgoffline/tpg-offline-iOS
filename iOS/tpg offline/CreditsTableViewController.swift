@@ -21,7 +21,6 @@ class CreditsTableViewController: UITableViewController {
         ["SCLAlertView-Swift", "Projet maintenu sur GitHub par vikmeup - Projet en licence MIT".localized(), "https://github.com/Pevika/SCLAlertView-Swift.git"],
         ["FSCalendar", "Projet maintenu sur GitHub par WenchaoIOS - Projet en licence MIT".localized(), "https://github.com/WenchaoIOS/FSCalendar.git"],
         ["DGRunkeeperSwitch", "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT".localized(), "https://github.com/gontovnik/DGRunkeeperSwitch.git"],
-		["DVSCircularTimeSlider", "Projet maintenu sur GitHub par DriesVS et modifié par RemyDCF - Projet en licence MIT".localized(), "https://github.com/RemyDCF/DVSCircularTimeSlider.git"],
 		["PermissionScope", "Projet maintenu sur GitHub par nickoneill - Projet en licence MIT".localized(), "https://github.com/nickoneill/PermissionScope.git"],
 		["DGElasticPullToRefresh", "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT".localized(), "https://github.com/gontovnik/DGElasticPullToRefresh.git"],
 		["MRProgress", "Projet maintenu sur GitHub par mrackwitz - Projet en licence MIT".localized(), "https://github.com/mrackwitz/MRProgress.git"],
@@ -30,7 +29,8 @@ class CreditsTableViewController: UITableViewController {
 		["Localize-Swift", "Projet maintenu sur GitHub par marmelroy - Projet en licence MIT".localized(), "https://github.com/marmelroy/Localize-Swift.git"],
 		["Onboard", "Projet maintenu sur GitHub par mamaral - Projet en licence MIT".localized(), "https://github.com/mamaral/Onboard.git"],
 		["Alamofire", "Projet maintenu sur GitHub par Alamofire - Projet en licence MIT".localized(), "https://github.com/Alamofire/Alamofire.git"],
-		["EFCircularSlider", "Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT".localized(), "https://github.com/RemyDCF/EFCircularSlider.git"]
+		["EFCircularSlider", "Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT".localized(), "https://github.com/RemyDCF/EFCircularSlider.git"],
+		["SwiftDate", "Projet maintenu sur GitHub par malcommac - Projet en licence MIT".localized(), "https://github.com/malcommac/SwiftDate"]
     ]
     override func viewDidLoad() {
         super.viewDidLoad()     

@@ -1013,7 +1013,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X42-rG-Aql">
                                 <rect key="frame" x="20" y="64" width="560" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="NGd-sO-RYw"/>
+                                    <constraint firstAttribute="height" constant="50" id="xqt-nQ-vCH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1022,7 +1022,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrW-kS-VIs">
                                 <rect key="frame" x="0.0" y="499" width="600" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="nWs-2A-B7Z"/>
+                                    <constraint firstAttribute="height" constant="50" id="pwm-g5-OWu"/>
                                 </constraints>
                                 <state key="normal" title="Valider">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1032,7 +1032,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjL-cP-y3v" customClass="EFCircularSlider">
-                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <rect key="frame" x="20" y="122" width="560" height="369"/>
                                 <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="6oe-e3-R4v"/>
@@ -1049,9 +1049,15 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6oe-e3-R4v"/>
+                                        <exclude reference="ggR-la-5de"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEi-ha-Gj1" customClass="EFCircularSlider">
-                                <rect key="frame" x="250" y="250" width="100" height="100"/>
+                                <rect key="frame" x="70" y="164" width="460" height="285"/>
                                 <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="VaH-SE-CZG"/>
@@ -1072,21 +1078,39 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="snapToLabels" value="NO"/>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VaH-SE-CZG"/>
+                                        <exclude reference="bSi-Dc-DMS"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="X42-rG-Aql" firstAttribute="top" secondItem="e7H-BL-kEv" secondAttribute="bottom" id="7fZ-0w-K4m"/>
                             <constraint firstItem="cjL-cP-y3v" firstAttribute="centerY" secondItem="e7L-cr-bCZ" secondAttribute="centerY" id="FAj-02-m0V"/>
+                            <constraint firstItem="OrW-kS-VIs" firstAttribute="top" secondItem="cjL-cP-y3v" secondAttribute="bottom" constant="8" symbolic="YES" id="FhQ-rM-o2T"/>
                             <constraint firstItem="cjL-cP-y3v" firstAttribute="centerX" secondItem="e7L-cr-bCZ" secondAttribute="centerX" id="Fk3-fd-8uT"/>
-                            <constraint firstItem="X42-rG-Aql" firstAttribute="top" secondItem="e7H-BL-kEv" secondAttribute="bottom" id="GOF-Kn-0Sq"/>
-                            <constraint firstItem="X42-rG-Aql" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leadingMargin" id="P2W-p0-MWO"/>
-                            <constraint firstItem="X42-rG-Aql" firstAttribute="trailing" secondItem="e7L-cr-bCZ" secondAttribute="trailingMargin" id="Phs-4X-Rbv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OrW-kS-VIs" secondAttribute="trailing" constant="-20" id="YTJ-PN-y6A"/>
-                            <constraint firstItem="aEi-ha-Gj1" firstAttribute="centerY" secondItem="e7L-cr-bCZ" secondAttribute="centerY" id="gR0-MK-UGp"/>
-                            <constraint firstItem="66s-NU-fQX" firstAttribute="top" secondItem="OrW-kS-VIs" secondAttribute="bottom" constant="2" id="m8d-q5-zcT"/>
-                            <constraint firstItem="OrW-kS-VIs" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leadingMargin" constant="-20" id="qji-77-dH0"/>
-                            <constraint firstItem="aEi-ha-Gj1" firstAttribute="centerX" secondItem="e7L-cr-bCZ" secondAttribute="centerX" id="y0R-Ed-BdG"/>
+                            <constraint firstItem="cjL-cP-y3v" firstAttribute="centerX" secondItem="OrW-kS-VIs" secondAttribute="centerX" id="GAH-cc-5En"/>
+                            <constraint firstItem="OrW-kS-VIs" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leading" id="U2j-82-WvU"/>
+                            <constraint firstItem="aEi-ha-Gj1" firstAttribute="top" secondItem="X42-rG-Aql" secondAttribute="bottom" constant="50" id="Xy8-Yu-fLk"/>
+                            <constraint firstItem="X42-rG-Aql" firstAttribute="leading" secondItem="cjL-cP-y3v" secondAttribute="leading" id="ZSh-gc-nRh"/>
+                            <constraint firstItem="X42-rG-Aql" firstAttribute="trailing" secondItem="cjL-cP-y3v" secondAttribute="trailing" id="Zmc-Fv-MmC"/>
+                            <constraint firstItem="cjL-cP-y3v" firstAttribute="top" secondItem="X42-rG-Aql" secondAttribute="bottom" constant="8" symbolic="YES" id="a8N-hQ-DlY"/>
+                            <constraint firstAttribute="trailing" secondItem="OrW-kS-VIs" secondAttribute="trailing" id="d3L-Yg-A9e"/>
+                            <constraint firstItem="66s-NU-fQX" firstAttribute="top" secondItem="OrW-kS-VIs" secondAttribute="bottom" constant="2" id="fp2-jG-ToK"/>
+                            <constraint firstItem="OrW-kS-VIs" firstAttribute="top" secondItem="aEi-ha-Gj1" secondAttribute="bottom" constant="50" id="iUS-pG-neF"/>
+                            <constraint firstItem="aEi-ha-Gj1" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leadingMargin" constant="50" id="ilQ-eV-Nvx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aEi-ha-Gj1" secondAttribute="trailing" constant="50" id="isw-Sv-VGZ"/>
+                            <constraint firstItem="X42-rG-Aql" firstAttribute="leading" secondItem="e7L-cr-bCZ" secondAttribute="leadingMargin" id="jhX-tZ-89x"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FAj-02-m0V"/>
+                                <exclude reference="Fk3-fd-8uT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="boutonValider" destination="OrW-kS-VIs" id="6e3-BK-eRC"/>

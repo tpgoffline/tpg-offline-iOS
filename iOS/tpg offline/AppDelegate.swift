@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 			let gai = GAI.sharedInstance()
 			gai.trackUncaughtExceptions = true  // report uncaught exceptions
-		}
+        }
 		
 		if (NSProcessInfo.processInfo().arguments.contains("-premium")) {
 			AppValues.premium = true

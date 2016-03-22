@@ -172,8 +172,8 @@ class DepartsArretTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItems = barButtonsItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
         if (navController.viewControllers[0].isKindOfClass(ArretsTableViewController)) {
-            let itineraireTableViewController = navController.viewControllers[0] as! ItineraireTableViewController
-            itineraireTableViewController.tableView.reloadData()
+            let arretTableViewController = navController.viewControllers[0] as! ArretsTableViewController
+            arretTableViewController.tableView.reloadData()
         }
     }
     
@@ -250,9 +250,7 @@ class DepartsArretTableViewController: UITableViewController {
         }
         
         CATransaction.setCompletionBlock({
-            let a = measure("refreshDeparts") {
                 self.refreshDeparts()
-            }
             self.tableView.reloadData()
             
             progressBar.dismiss(true)
