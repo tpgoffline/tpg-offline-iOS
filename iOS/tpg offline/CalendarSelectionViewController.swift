@@ -28,7 +28,7 @@ class CalendarSelectionViewController: UIViewController {
         calendar.titlePlaceholderColor = AppValues.textColor
         calendar.titleTodayColor = AppValues.textColor
         calendar.titleSelectionColor = AppValues.textColor
-        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!), scrollToDate: true)
+        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!)!, scrollToDate: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,16 +49,16 @@ class CalendarSelectionViewController: UIViewController {
         calendar.titlePlaceholderColor = AppValues.textColor
         calendar.titleTodayColor = AppValues.textColor
         calendar.titleSelectionColor = AppValues.textColor
-        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!), scrollToDate: true)
+        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!)!, scrollToDate: true)
     }
 }
 
 extension CalendarSelectionViewController : FSCalendarDataSource, FSCalendarDelegate {
-    func minimumDateForCalendar(calendar: FSCalendar!) -> NSDate! {
+    func minimumDateForCalendar(calendar: FSCalendar) -> NSDate {
         return NSDate()
     }
     
-    func calendar(calendar: FSCalendar!, didSelectDate date: NSDate!) {
+    func calendar(calendar: FSCalendar, didSelectDate date: NSDate) {
         if ItineraireEnCours.itineraire.date == nil {
             ItineraireEnCours.itineraire.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: date)
             ItineraireEnCours.itineraire.date!.hour = 0

@@ -79,12 +79,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>SwiftInAppPurchase-SwiftInAppPurchase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyStoreKit.xcscheme</key>
+		<key>SwiftInAppPurchase.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -93,6 +98,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>115824B7CB2E76E5ACB836A251E79404</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>192AB83A6AF31F9C34B8063738E14C69</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>333AF6C01215FC70F8EFEA31AE066621</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,7 +127,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>63EC34486B6A8A7305E2AFE70F298068</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7F9DE71BA8FE5EF6C54F3343D391A948</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,7 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB8802372D683DC541E4EBC41EAD5235</key>
+		<key>B9E5F089DBEFEADC3C7DD5981D33BEE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,32 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D795C764BBBBA58A0D9CE721FEFA09A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D7FF48F3092783E4E42B336F0DEF2D1A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9054844C32A9497062ABA430E8CC1B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E514EAC72FEE6E8C4CFB33B9313E25A9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E671517BE54647BACB735D6090DC9FC8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>EF89A4DA92CC0D0F76CF983AB2A6F4F1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F536E842450AEA631277226FF1025353</key>
 		<dict>
 			<key>primary</key>
 			<true/>

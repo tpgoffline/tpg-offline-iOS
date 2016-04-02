@@ -11,7 +11,6 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import DGElasticPullToRefresh
-import Google
 
 class IncidentsTableViewController: UITableViewController {
     
@@ -57,12 +56,6 @@ class IncidentsTableViewController: UITableViewController {
 		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 		
         actualiserTheme()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "IncidentsTableViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

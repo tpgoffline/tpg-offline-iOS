@@ -8,7 +8,6 @@
 
 import UIKit
 import ChameleonFramework
-import Google
 
 class PlansTableViewController: UITableViewController {
 	let listePlans = ["Plan urbain", "Plan périurbain", "Plan noctambus urbain", "Plan noctambus régional"]
@@ -27,12 +26,6 @@ class PlansTableViewController: UITableViewController {
 		super.viewDidAppear(animated)
 		
 		actualiserTheme()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "PlansTableViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -52,10 +52,8 @@
 		00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D0355B1C0E25D600B3697D /* CoreLocation.framework */; };
 		00D7C3D21C4BDCAE00D6864C /* ItineraireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */; };
 		00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCD9581C285EBB0094C0EB /* Ticket.swift */; };
-		00DCD95B1C2865E40094C0EB /* Sound.aif in Resources */ = {isa = PBXBuildFile; fileRef = 00DCD95A1C2865E40094C0EB /* Sound.aif */; };
 		00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* PlansTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
-		00FFA8761C9D524D00B57A47 /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFA8751C9D524D00B57A47 /* Performance.swift */; };
 		962E4206D634D32D003F6405 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */; };
 		AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */; };
 		AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0148121C7F6CDE0057E884 /* WebViewController.swift */; };
@@ -66,7 +64,6 @@
 		AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */; };
 		AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */; };
 		ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
-		ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +93,6 @@
 		00391C461C271D1E005250D4 /* ParametresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ParametresTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00391C481C271DA6005250D4 /* ChoixMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ChoixMenuTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		003D10ED1C21A46800F9857E /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
-		00430B491C9B1D4E00C71A06 /* tpg_offline_UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UnitTests.swift; sourceTree = "<group>"; };
-		00430B4B1C9B1D4E00C71A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00430B531C9B1EAD00C71A06 /* arrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrets.json; sourceTree = "<group>"; };
 		00430B5B1C9B23C700C71A06 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Pods/FontAwesomeKit/FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
 		00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
@@ -130,10 +125,8 @@
 		00D0355B1C0E25D600B3697D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraireTableViewCell.swift; sourceTree = "<group>"; };
 		00DCD9581C285EBB0094C0EB /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		00DCD95A1C2865E40094C0EB /* Sound.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.aif; sourceTree = "<group>"; };
 		00DDC0B11C255CED002B288E /* PlansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlansTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		00FFA8751C9D524D00B57A47 /* Performance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EAD0B938A89BC4A90E7F807 /* Pods-tpg offline Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		43D3491A7E1B71A24C25DCFF /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,7 +152,6 @@
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADB2D6DC1C7A222F0023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADB2D6DD1C7A22300023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,7 +181,6 @@
 		002B47D41C01FA6F000BF3E8 = {
 			isa = PBXGroup;
 			children = (
-				00DCD95A1C2865E40094C0EB /* Sound.aif */,
 				00C8DD551C0CCACC004743A5 /* couleursLignes.json */,
 				003D10ED1C21A46800F9857E /* Ionicons.ttf */,
 				00430B5B1C9B23C700C71A06 /* FontAwesome.otf */,
@@ -200,7 +191,6 @@
 				00430B531C9B1EAD00C71A06 /* arrets.json */,
 				002B47DF1C01FA6F000BF3E8 /* tpg offline */,
 				AD11CD841C8336AA00DFF4AA /* tpg offline UITests */,
-				00430B481C9B1D4E00C71A06 /* tpg offline UnitTests */,
 				002B47DE1C01FA6F000BF3E8 /* Products */,
 				A65315FEF759993751E0088F /* Frameworks */,
 				90973F03D73F43F58C8AD679 /* Pods */,
@@ -233,7 +223,6 @@
 				002B47E71C01FA6F000BF3E8 /* Assets.xcassets */,
 				002B47E91C01FA6F000BF3E8 /* LaunchScreen.storyboard */,
 				002B47EC1C01FA6F000BF3E8 /* Info.plist */,
-				ADFC45BE1C81D3F300FDAF0C /* GoogleService-Info.plist */,
 				ADB2D6D91C7A1BFD0023718F /* Localizable.strings */,
 			);
 			path = "tpg offline";
@@ -251,15 +240,6 @@
 				AD0148121C7F6CDE0057E884 /* WebViewController.swift */,
 			);
 			name = "Paramètres";
-			sourceTree = "<group>";
-		};
-		00430B481C9B1D4E00C71A06 /* tpg offline UnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				00430B491C9B1D4E00C71A06 /* tpg_offline_UnitTests.swift */,
-				00430B4B1C9B1D4E00C71A06 /* Info.plist */,
-			);
-			path = "tpg offline UnitTests";
 			sourceTree = "<group>";
 		};
 		005DF8121C0DF75300377031 /* Cells */ = {
@@ -326,7 +306,6 @@
 				00500AF31C1B396F00341F7A /* Arret.swift */,
 				00B39B8A1C131C05006FC8A3 /* tpgURL.swift */,
 				00DCD9581C285EBB0094C0EB /* Ticket.swift */,
-				00FFA8751C9D524D00B57A47 /* Performance.swift */,
 				00ABBE141C29C81B00479FF4 /* Departs.swift */,
 				00C98C491C4810E1008E8B2A /* Itineraire.swift */,
 			);
@@ -485,7 +464,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DCD95B1C2865E40094C0EB /* Sound.aif in Resources */,
 				003D10EE1C21A47400F9857E /* Ionicons.ttf in Resources */,
 				00430B611C9B23C700C71A06 /* FontAwesome.otf in Resources */,
 				00430B661C9B23C700C71A06 /* zocial-regular-webfont.ttf in Resources */,
@@ -497,7 +475,6 @@
 				00430B651C9B23C700C71A06 /* octicons.ttf in Resources */,
 				00430B541C9B1EAD00C71A06 /* arrets.json in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
-				ADFC45BF1C81D3F300FDAF0C /* GoogleService-Info.plist in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,7 +577,6 @@
 				005DF8111C0DF74E00377031 /* ArretsImageTableViewCell.swift in Sources */,
 				008B84441C232D84007BE1B3 /* IncidentsTableViewController.swift in Sources */,
 				007D924D1C4A98A80036BEE6 /* ButtonTableViewCell.swift in Sources */,
-				00FFA8761C9D524D00B57A47 /* Performance.swift in Sources */,
 				00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */,
 				004E8BD81C6E24870055006B /* ThemeCollectionViewCell.swift in Sources */,
 				00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */,

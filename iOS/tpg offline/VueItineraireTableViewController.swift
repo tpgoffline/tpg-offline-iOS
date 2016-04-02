@@ -11,6 +11,7 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import SCLAlertView
+import SwiftDate
 
 class VueItineraireTableViewController: UITableViewController {
 	
@@ -43,10 +44,10 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
@@ -276,10 +277,10 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:"toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:#selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
@@ -290,42 +291,39 @@ class VueItineraireTableViewController: UITableViewController {
 	}
 	
 	func scheduleNotification(time: NSDate, before: Int = 5, ligne: String, direction: String) {
-		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time)
-		
-		let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-		if now.minute - before < 0 {
-			now.minute += 60
-			now.hour -= 1
-		}
-		
-		let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: time, options: NSCalendarOptions())
-		let reminder = UILocalNotification()
-		reminder.fireDate = date
+        let time2 = time - before.minutes
+        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time2)
+        
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        
+        let date = cal.dateBySettingHour(now.hour, minute: now.minute, second: now.second, ofDate: time, options: NSCalendarOptions())
+        let reminder = UILocalNotification()
+        reminder.fireDate = date
+        
+        var texte =  "Le tpg de la ligne ".localized()
+        texte += ligne
+        texte += " en direction de ".localized()
+        texte += direction
+        texte += " va partir dans ".localized()
+        texte += String(before)
+        texte += " minutes".localized()
+        reminder.alertBody = texte
         reminder.soundName = UILocalNotificationDefaultSoundName
-		
-		var texte =  "Le tpg de la ligne ".localized()
-		texte += ligne
-		texte += " en direction de ".localized()
-		texte += direction
-		texte += " va partir dans ".localized()
-		texte += String(before)
-		texte += " minutes".localized()
-		reminder.alertBody = texte
-		
-		UIApplication.sharedApplication().scheduleLocalNotification(reminder)
-		
-		print("Firing at \(now.hour):\(now.minute - before):\(now.second)")
-		
-		let okView = SCLAlertView()
-		if before == 0 {
-			okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
-		}
-		else {
-			var texte = "La notification à été enregistrée et sera affichée ".localized()
-			texte += String(before)
-			texte += " minutes avant le départ.".localized()
-			okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK".localized(), duration: 10)
-		}
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(reminder)
+        
+        print("Firing at \(now.hour):\(now.minute - before):\(now.second)")
+        
+        let okView = SCLAlertView()
+        if before == 0 {
+            okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+        }
+        else {
+            var texte = "La notification à été enregistrée et sera affichée ".localized()
+            texte += String(before)
+            texte += " minutes avant le départ.".localized()
+            okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK".localized(), duration: 10)
+        }
 	}
 	
 	override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {

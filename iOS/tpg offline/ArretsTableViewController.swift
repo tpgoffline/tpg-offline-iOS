@@ -16,7 +16,6 @@ import DGElasticPullToRefresh
 import INTULocationManager
 import Localize_Swift
 import Onboard
-import Google 
 
 class ArretsTableViewController: UITableViewController, UISplitViewControllerDelegate {
     var arretsLocalisation = [Arret]()
@@ -180,12 +179,6 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                 return
             }
             
-        }
-        
-        if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-            let tracker = GAI.sharedInstance().defaultTracker
-            tracker.set(kGAIScreenName, value: "ArretsTableViewController")
-            tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
         }
     }
     override func didReceiveMemoryWarning() {

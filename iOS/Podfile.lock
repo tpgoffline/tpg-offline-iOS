@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.2.1)
+  - Alamofire (3.3.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -27,23 +27,7 @@ PODS:
     - FontAwesomeKit/Core
   - FontAwesomeKit/Zocial (2.2.1):
     - FontAwesomeKit/Core
-  - FSCalendar (2.0.0.beta)
-  - Google/Analytics (1.3.2):
-    - Google/Core
-    - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.3.2):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.1)
-  - GoogleAnalytics (3.14.0)
-  - GoogleInterchangeUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.0.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.0.3)
-  - GoogleUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0.0)
+  - FSCalendar (2.0.1)
   - INTULocationManager (4.2.0)
   - Localize-Swift (1.1)
   - MRProgress (0.8.3):
@@ -78,18 +62,17 @@ PODS:
   - PermissionScope (1.0.2)
   - SCLAlertView (0.5.1)
   - SwiftDate (3.0.8)
+  - SwiftInAppPurchase (1.0.0)
   - SwiftyJSON (2.3.2)
-  - SwiftyStoreKit (0.2.3)
 
 DEPENDENCIES:
-  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
+  - Alamofire
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DGElasticPullToRefresh (from `https://github.com/gontovnik/DGElasticPullToRefresh.git`)
   - DGRunkeeperSwitch (from `https://github.com/gontovnik/DGRunkeeperSwitch.git`)
   - EFCircularSlider (from `https://github.com/RemyDCF/EFCircularSlider.git`)
   - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
-  - FSCalendar (from `https://github.com/WenchaoIOS/FSCalendar.git`)
-  - Google/Analytics
+  - FSCalendar
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
   - Localize-Swift (from `https://github.com/marmelroy/Localize-Swift.git`)
   - MRProgress (from `https://github.com/mrackwitz/MRProgress.git`)
@@ -97,12 +80,10 @@ DEPENDENCIES:
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/Pevika/SCLAlertView-Swift.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
+  - SwiftInAppPurchase (from `https://github.com/rpzzzzzz/SwiftInAppPurchase.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
-  - SwiftyStoreKit (from `https://github.com/bizz84/SwiftyStoreKit.git`)
 
 EXTERNAL SOURCES:
-  Alamofire:
-    :git: https://github.com/Alamofire/Alamofire.git
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
   DGElasticPullToRefresh:
@@ -113,8 +94,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/RemyDCF/EFCircularSlider.git
   FontAwesomeKit:
     :git: https://github.com/PrideChung/FontAwesomeKit.git
-  FSCalendar:
-    :git: https://github.com/WenchaoIOS/FSCalendar.git
   INTULocationManager:
     :git: https://github.com/intuit/LocationManager.git
   Localize-Swift:
@@ -129,15 +108,12 @@ EXTERNAL SOURCES:
     :git: https://github.com/Pevika/SCLAlertView-Swift.git
   SwiftDate:
     :git: https://github.com/malcommac/SwiftDate.git
+  SwiftInAppPurchase:
+    :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
-  SwiftyStoreKit:
-    :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 CHECKOUT OPTIONS:
-  Alamofire:
-    :commit: 5b6155ca2d3b584b5f0360068a02f978950dd18c
-    :git: https://github.com/Alamofire/Alamofire.git
   ChameleonFramework:
     :commit: 5fc82fcf9b56ead9f70a8d73122a1985547bc4b8
     :git: https://github.com/ViccAlexander/Chameleon.git
@@ -153,9 +129,6 @@ CHECKOUT OPTIONS:
   FontAwesomeKit:
     :commit: eac30313fee77f6db1b6832b1d4b7d8f2007b381
     :git: https://github.com/PrideChung/FontAwesomeKit.git
-  FSCalendar:
-    :commit: 1ca1b8330ad0a2e0ed041465d11f3d307cbc3ef1
-    :git: https://github.com/WenchaoIOS/FSCalendar.git
   INTULocationManager:
     :commit: 8e8402e8b4486e4a59581ed77efc928a2f727481
     :git: https://github.com/intuit/LocationManager.git
@@ -177,27 +150,21 @@ CHECKOUT OPTIONS:
   SwiftDate:
     :commit: 947bf6adae948b3743f7b96ffb2d2ef460f51eda
     :git: https://github.com/malcommac/SwiftDate.git
+  SwiftInAppPurchase:
+    :commit: 1080c4821443c5b71dff445a8c6c5b79f4bed2e4
+    :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
   SwiftyJSON:
     :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
-  SwiftyStoreKit:
-    :commit: 844702d4b77a548ac4c18bc342391b51c24aa094
-    :git: https://github.com/bizz84/SwiftyStoreKit.git
 
 SPEC CHECKSUMS:
-  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
   EFCircularSlider: 8c9e901891fb813e89c4158508eefa8e35903454
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
-  FSCalendar: 23aad2accd484e7aab2dda4255579ddb1662a90a
-  Google: 97618e118111b998cce1d8dd1bd98b82301d72db
-  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
-  GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
-  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
-  GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
-  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+  FSCalendar: 18117308f5876a8f6f0fe572085d543580c2c5e5
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
@@ -205,9 +172,9 @@ SPEC CHECKSUMS:
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
   SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+  SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  SwiftyStoreKit: b61ef56bddfb49aade6dffd59a22dcff305ed7ec
 
-PODFILE CHECKSUM: c8adb775b51b2e8bd91cfb8f40d62f767a70d83f
+PODFILE CHECKSUM: c12f925074d5205d111f2d1bbc2a60a2561128b8
 
-COCOAPODS: 1.0.0.beta.5
+COCOAPODS: 1.0.0.beta.6

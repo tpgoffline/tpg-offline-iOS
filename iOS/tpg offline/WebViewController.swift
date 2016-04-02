@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Google
 
 class WebViewController: UIViewController {
 
@@ -24,12 +23,6 @@ class WebViewController: UIViewController {
 		super.viewDidAppear(animated)
 		self.actualiserTheme()
 		webView.backgroundColor = AppValues.primaryColor
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "WebViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
 	}
 
     override func didReceiveMemoryWarning() {

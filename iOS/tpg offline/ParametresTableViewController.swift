@@ -11,7 +11,6 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import Onboard
-import Google
 import Alamofire
 import MRProgress
 import SCLAlertView
@@ -52,12 +51,6 @@ class ParametresTableViewController: UITableViewController {
         
         actualiserTheme()
         tableView.reloadData()
-        
-        if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-            let tracker = GAI.sharedInstance().defaultTracker
-            tracker.set(kGAIScreenName, value: "ParamètresTableViewController")
-            tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -13,7 +13,6 @@ import SCLAlertView
 import ChameleonFramework
 import DGElasticPullToRefresh
 import MRProgress
-import Google
 import SwiftDate
 
 class DepartsArretTableViewController: UITableViewController {
@@ -80,21 +79,15 @@ class DepartsArretTableViewController: UITableViewController {
             var barButtonsItems: [UIBarButtonItem] = []
             
             if ((AppValues.nomCompletsFavoris.indexOf(arret!.nomComplet)) != nil) {
-                barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+                barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
             }
             else {
-                barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:"toggleFavorite:"))
+                barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:#selector(DepartsArretTableViewController.toggleFavorite(_:))))
             }
-            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
-            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
+            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
+            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
             
             self.navigationItem.rightBarButtonItems = barButtonsItems
-            
-            if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-                let tracker = GAI.sharedInstance().defaultTracker
-                tracker.set(kGAIScreenName, value: "DepartsArretTableViewController-\(arret!.stopCode)")
-                tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-            }
             
             refresh(self)
         }
@@ -106,26 +99,6 @@ class DepartsArretTableViewController: UITableViewController {
     
     deinit {
         tableView?.dg_removePullToRefresh()
-    }
-    
-    func calculerTempsRestant(timestamp: String!) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-        let time = dateFormatter.dateFromString(timestamp)
-        let tempsTimestamp: NSDateComponents = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: time!)
-        
-        let now: NSDateComponents = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: NSDate())
-        tempsTimestamp.year = now.year
-        tempsTimestamp.month = now.month
-        tempsTimestamp.day = now.day
-        
-        if NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.compare(NSDate()) == .OrderedAscending {
-            return "-1"
-        }
-        else {
-            return String(Int(NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.timeIntervalSinceNow / 60))
-        }
-        
     }
     
     func labelToImage(label: UILabel!) -> UIImage {
@@ -161,13 +134,13 @@ class DepartsArretTableViewController: UITableViewController {
         var barButtonsItems: [UIBarButtonItem] = []
         
         if ((AppValues.nomCompletsFavoris.indexOf(arret!.nomComplet)) != nil) {
-            barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+            barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
         }
         else {
-            barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+            barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
         }
-        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "showItinerary:"))
-        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "refresh:"))
+        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
+        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
         
         self.navigationItem.rightBarButtonItems = barButtonsItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController

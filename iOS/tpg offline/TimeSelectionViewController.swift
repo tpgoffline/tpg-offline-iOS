@@ -25,14 +25,14 @@ class TimeSelectionViewController: UIViewController {
         hourSlider.handleType = CircularSliderHandleTypeBigCircle
         
         view.addSubview(hourSlider)
-        hourSlider.addTarget(self, action: "hourChanged:", forControlEvents: .ValueChanged)
+        hourSlider.addTarget(self, action: #selector(TimeSelectionViewController.hourChanged(_:)), forControlEvents: .ValueChanged)
         
         minuteSlider.innerMarkingLabels = (["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "0"])
         minuteSlider.labelFont = UIFont.systemFontOfSize(10)
         minuteSlider.handleType = CircularSliderHandleTypeBigCircle
         view.addSubview(minuteSlider)
         
-        minuteSlider.addTarget(self, action: "minuteChanged:", forControlEvents: .ValueChanged)
+        minuteSlider.addTarget(self, action: #selector(TimeSelectionViewController.minuteChanged(_:)), forControlEvents: .ValueChanged)
         
         if ItineraireEnCours.itineraire.date != nil {
             hourSlider.currentValue = Float(ItineraireEnCours.itineraire.date!.hour)

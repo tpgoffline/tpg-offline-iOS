@@ -8,7 +8,6 @@
 
 import UIKit
 import ChameleonFramework
-import Google
 
 class CreditsTableViewController: UITableViewController {
 
@@ -39,12 +38,6 @@ class CreditsTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         actualiserTheme()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "CreditsTableViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
     }
     
     override func didReceiveMemoryWarning() {

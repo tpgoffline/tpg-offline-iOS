@@ -1,9 +1,9 @@
 //
-//  FScalendar.m
-//  Pods
+//  FSCalendar.m
+//  FSCalendar
 //
 //  Created by Wenchao Ding on 29/1/15.
-//
+//  Copyright © 2016 Wenchao Ding. All rights reserved.
 //
 
 #import "FSCalendar.h"
@@ -36,9 +36,9 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 - (UIColor *)preferredTitleSelectionColorForDate:(NSDate *)date;
 - (UIColor *)preferredSubtitleDefaultColorForDate:(NSDate *)date;
 - (UIColor *)preferredSubtitleSelectionColorForDate:(NSDate *)date;
-- (UIColor *)preferredEventColorForDate:(NSDate *)date;
 - (UIColor *)preferredBorderDefaultColorForDate:(NSDate *)date;
 - (UIColor *)preferredBorderSelectionColorForDate:(NSDate *)date;
+- (id)preferredEventColorForDate:(NSDate *)date;
 - (FSCalendarCellShape)preferredCellShapeForDate:(NSDate *)date;
 
 - (BOOL)shouldSelectDate:(NSDate *)date;
@@ -76,7 +76,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 @property (weak  , nonatomic) FSCalendarHeader           *header;
 @property (weak  , nonatomic) FSCalendarHeaderTouchDeliver *deliver;
 
-@property (assign, nonatomic) BOOL                       ibEditing;
 @property (assign, nonatomic) BOOL                       needsAdjustingMonthPosition;
 @property (assign, nonatomic) BOOL                       needsAdjustingViewFrame;
 @property (assign, nonatomic) BOOL                       needsAdjustingTextSize;
@@ -95,7 +94,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 @property (readonly, nonatomic) id<FSCalendarDelegateAppearance> delegateAppearance;
 
 - (void)orientationDidChange:(NSNotification *)notification;
-- (void)significantTimeDidChange:(NSNotification *)notification;
 
 - (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath;
 - (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath scope:(FSCalendarScope)scope;
@@ -254,7 +252,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     self.animator.collectionViewLayout = self.collectionViewLayout;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(significantTimeDidChange:) name:UIApplicationSignificantTimeChangeNotification object:nil];
+    
 }
 
 - (void)dealloc
@@ -263,7 +261,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     _collectionView.dataSource = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationSignificantTimeChangeNotification object:nil];
 }
 
 #pragma mark - Overriden methods
@@ -363,7 +360,10 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         if (_needsAdjustingMonthPosition) {
             _needsAdjustingMonthPosition = NO;
             _supressEvent = NO;
+            BOOL oldValue = [CATransaction disableActions];
+            [CATransaction setDisableActions:YES];
             [self scrollToPageForDate:_pagingEnabled?_currentPage:(_currentPage?:self.selectedDate) animated:NO];
+            [CATransaction setDisableActions:oldValue];
         }
     }
     
@@ -386,12 +386,13 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     }
 }
 
+#if TARGET_INTERFACE_BUILDER
 - (void)prepareForInterfaceBuilder
 {
-    self.ibEditing = YES;
     NSDate *date = [NSDate date];
     [self selectDate:[self dateWithYear:[self yearOfDate:date] month:[self monthOfDate:date] day:_appearance.fakedSelectedDay?:1]];
 }
+#endif
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
@@ -696,11 +697,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     self.orientation = self.currentCalendarOrientation;
 }
 
-- (void)significantTimeDidChange:(NSNotification *)notification
-{
-    self.today = [NSDate date];
-}
-
 #pragma mark - Properties
 
 - (void)setAppearance:(FSCalendarAppearance *)appearance
@@ -982,6 +978,9 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         CGFloat weekdayHeight = self.preferredWeekdayHeight;
         CGFloat contentHeight = self.fs_height-headerHeight-weekdayHeight;
         CGFloat padding = weekdayHeight*0.1;
+        if (self.collectionViewLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+            padding = FSCalendarFloor(padding);
+        }
         if (!self.floatingMode) {
             switch (_scope) {
                 case FSCalendarScopeMonth: {
@@ -1738,11 +1737,19 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     return nil;
 }
 
-- (UIColor *)preferredEventColorForDate:(NSDate *)date
+- (id)preferredEventColorForDate:(NSDate *)date
 {
+    if (self.delegateAppearance && [self.delegateAppearance respondsToSelector:@selector(calendar:appearance:eventColorsForDate:)]) {
+        NSArray *colors = [self.delegateAppearance calendar:self appearance:self.appearance eventColorsForDate:date];
+        if (colors) {
+            return colors;
+        }
+    }
     if (self.delegateAppearance && [self.delegateAppearance respondsToSelector:@selector(calendar:appearance:eventColorForDate:)]) {
         UIColor *color = [self.delegateAppearance calendar:self appearance:self.appearance eventColorForDate:date];
-        return color;
+        if (color) {
+            return color;
+        }
     }
     return nil;
 }
@@ -1799,10 +1806,14 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (NSString *)subtitleForDate:(NSDate *)date
 {
+#if !TARGET_INTERFACE_BUILDER
     if (_dataSource && [_dataSource respondsToSelector:@selector(calendar:subtitleForDate:)]) {
         return [_dataSource calendar:self subtitleForDate:date];
     }
-    return _ibEditing && _appearance.fakeSubtitles ? @"test" : nil;
+    return nil;
+#else
+    return _appearance.fakeSubtitles ? @"test" : nil;
+#endif
 }
 
 - (UIImage *)imageForDate:(NSDate *)date
@@ -1815,6 +1826,8 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (NSInteger)numberOfEventsForDate:(NSDate *)date
 {
+#if !TARGET_INTERFACE_BUILDER
+    
     if (_dataSource && [_dataSource respondsToSelector:@selector(calendar:numberOfEventsForDate:)]) {
         return [_dataSource calendar:self numberOfEventsForDate:date];
     }
@@ -1824,7 +1837,8 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         return [_dataSource calendar:self hasEventForDate:date];
     }
     #pragma GCC diagnostic pop
-    if (_ibEditing) {
+    
+#else
         if ([@[@3,@5] containsObject:@([self dayOfDate:date])]) {
             return 1;
         }
@@ -1834,8 +1848,9 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         if ([@[@20,@25] containsObject:@([self dayOfDate:date])]) {
             return 3;
         }
-    }
+#endif
     return 0;
+    
 }
 
 - (NSDate *)minimumDateForCalendar
@@ -2200,7 +2215,4 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 }
 
 @end
-
-
-
 

@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
-import Google
 
 class LocationSettingsTableViewController: UITableViewController {
 
@@ -33,12 +32,6 @@ class LocationSettingsTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         actualiserTheme()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "LocationSettingsTableViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
     }
     
     override func didReceiveMemoryWarning() {

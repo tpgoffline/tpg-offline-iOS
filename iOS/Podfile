@@ -7,17 +7,16 @@ target 'tpg offline' do
 	pod 'ChameleonFramework/Swift' , git: "https://github.com/ViccAlexander/Chameleon.git"
 	pod 'FontAwesomeKit', git: "https://github.com/PrideChung/FontAwesomeKit.git"
 	pod 'SCLAlertView', git:"https://github.com/Pevika/SCLAlertView-Swift.git" #git: "https://github.com/vikmeup/SCLAlertView-Swift.git"
-	pod 'FSCalendar', git: "https://github.com/WenchaoIOS/FSCalendar.git"
+	pod 'FSCalendar'
 	pod 'EFCircularSlider', git: "https://github.com/RemyDCF/EFCircularSlider.git"
 	pod 'DGRunkeeperSwitch', git: "https://github.com/gontovnik/DGRunkeeperSwitch.git"
 	pod 'PermissionScope', git:"https://github.com/nickoneill/PermissionScope.git"
 	pod 'DGElasticPullToRefresh', git:"https://github.com/gontovnik/DGElasticPullToRefresh.git"
 	pod 'MRProgress', git:"https://github.com/mrackwitz/MRProgress.git"
 	pod 'INTULocationManager', git:"https://github.com/intuit/LocationManager.git"
-	pod 'SwiftyStoreKit', git: "https://github.com/bizz84/SwiftyStoreKit.git"
+	pod 'SwiftInAppPurchase', git: "https://github.com/rpzzzzzz/SwiftInAppPurchase.git"
 	pod 'Localize-Swift', git: "https://github.com/marmelroy/Localize-Swift.git"
 	pod 'Onboard', git: "https://github.com/mamaral/Onboard.git"
-	pod 'Google/Analytics'
-	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'
+	pod 'Alamofire'
 	pod "SwiftDate", git: 'https://github.com/malcommac/SwiftDate.git'
 end

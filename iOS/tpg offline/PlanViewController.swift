@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Google
 
 class PlanViewController: UIViewController {
     var image: UIImage!
@@ -38,12 +37,6 @@ class PlanViewController: UIViewController {
         super.viewDidAppear(animated)
         actualiserTheme()
 		view.backgroundColor = UIColor.whiteColor()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "PlanViewController-\(titre)")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
     }
 }
 

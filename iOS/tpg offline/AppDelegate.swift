@@ -11,7 +11,6 @@ import SwiftyJSON
 import FontAwesomeKit
 import CoreLocation
 import ChameleonFramework
-import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let defaults = NSUserDefaults.standardUserDefaults()
 		let tpgUrl = tpgURL()
 		
+        
+        
 		if defaults.objectForKey("arretsFavoris") == nil {
 			AppValues.arretsFavoris = [:]
 		}
@@ -56,16 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				defaults.setObject(encodedData, forKey: "itinerairesFavoris")
 			}
 		}
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			
-			var configureError:NSError?
-			GGLContext.sharedInstance().configureWithError(&configureError)
-			assert(configureError == nil, "Error configuring Google services: \(configureError)")
-			
-			let gai = GAI.sharedInstance()
-			gai.trackUncaughtExceptions = true  // report uncaught exceptions
-        }
 		
 		if (NSProcessInfo.processInfo().arguments.contains("-premium")) {
 			AppValues.premium = true

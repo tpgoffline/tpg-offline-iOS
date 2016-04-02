@@ -1,14 +1,17 @@
 //
 //  FSCalendar+IBExtension.m
-//  Pods
+//  FSCalendar
 //
-//  Created by dingwenchao on 8/14/15.
-//
+//  Created by Wenchao Ding on 8/14/15.
+//  Copyright © 2016 Wenchao Ding. All rights reserved.
 //
 
 #import "FSCalendar+IBExtension.h"
 
 @implementation FSCalendar (IBExtension)
+#if !TARGET_INTERFACE_BUILDER
+@dynamic fakedSelectedDay,fakeSubtitles;
+#endif
 
 #pragma mark - adjustsFontSizeToFitContentSize
 
@@ -292,54 +295,39 @@
 #pragma GCC diagnostic pop
 }
 
+
 #pragma mark - fakeSubtitles
 
 - (void)setFakeSubtitles:(BOOL)fakeSubtitles
 {
+#if TARGET_INTERFACE_BUILDER
     self.appearance.fakeSubtitles = fakeSubtitles;
+#endif
 }
 
+#if TARGET_INTERFACE_BUILDER
 - (BOOL)fakeSubtitles
 {
     return self.appearance.fakeSubtitles;
 }
+#endif
 
 #pragma mark - fakedSelectedDay
 
 - (void)setFakedSelectedDay:(NSInteger)fakedSelectedDay
 {
+#if TARGET_INTERFACE_BUILDER
     self.appearance.fakedSelectedDay = fakedSelectedDay;
+#endif
 }
 
+
+#if TARGET_INTERFACE_BUILDER
 - (NSInteger)fakedSelectedDay
 {
     return self.appearance.fakedSelectedDay;
 }
-
-#pragma mark - cellStyle
-
-- (void)setCellStyle:(FSCalendarCellStyle)cellStyle
-{
-    self.appearance.cellShape = (FSCalendarCellShape)cellStyle;
-}
-
-- (FSCalendarCellStyle)cellStyle
-{
-    return (FSCalendarCellStyle)self.appearance.cellShape;
-}
-
-#pragma mark -  autoAdjustTitleSize
-
-- (void)setAutoAdjustTitleSize:(BOOL)autoAdjustTitleSize
-{
-    self.appearance.adjustsFontSizeToFitContentSize = autoAdjustTitleSize;
-}
-
-- (BOOL)autoAdjustTitleSize
-{
-    return self.appearance.adjustsFontSizeToFitContentSize;
-}
-
+#endif
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -388,7 +376,3 @@
 #pragma GCC diagnostic pop
 
 @end
-
-
-
-

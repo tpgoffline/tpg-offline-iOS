@@ -34,7 +34,6 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 @synthesize stopButton = _stopButton;
 
 + (void)load {
-
     [self.appearance setAnimationDuration:0.3];
     [self.appearance setBorderWidth:2.0];
     [self.appearance setLineWidth:2.0];
@@ -194,7 +193,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 }
 
 - (void)updateLabel:(float)progress {
-    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(self.progress)];
+    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(progress)];
     self.accessibilityValue = self.valueLabel.text;
 }
 
@@ -230,15 +229,13 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     [self.shapeLayer addAnimation:animation forKey:MRCircularProgressViewProgressAnimationKey];
     
     // Add timer to update valueLabel
-    
-    _valueLabelProgressPercentDifference = self.progress * 100;
-    [self updateLabel:self.progress * 100];
-    /*CFTimeInterval timerInterval =  self.animationDuration / ABS(_valueLabelProgressPercentDifference);
+    _valueLabelProgressPercentDifference = (progress - self.progress) * 100;
+    CFTimeInterval timerInterval =  self.animationDuration / ABS(_valueLabelProgressPercentDifference);
     self.valueLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval
                                                                   target:self
                                                                 selector:@selector(onValueLabelUpdateTimer:)
                                                                 userInfo:nil
-                                                                 repeats:YES];*/
+                                                                 repeats:YES];
     
     
     _progress = progress;

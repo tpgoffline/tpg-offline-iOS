@@ -2,8 +2,8 @@
 //  FSCalendarAnimator.m
 //  FSCalendar
 //
-//  Created by dingwenchao on 3/13/16.
-//  Copyright © 2016 wenchaoios. All rights reserved.
+//  Created by Wenchao Ding on 3/13/16.
+//  Copyright © 2016 Wenchao Ding. All rights reserved.
 //
 
 #import "FSCalendarAnimator.h"
@@ -258,13 +258,13 @@
             self.calendar.daysContainer.clipsToBounds = YES;
             
             if (animated) {
-                
-                CGFloat duration = 0.3;
                 // Perform alpha animation
+                CGFloat duration = 0.3;
                 CABasicAnimation *opacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
                 opacity.duration = duration;
                 opacity.fromValue = @0;
                 opacity.toValue = @1;
+                opacity.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
                 [self.collectionView.visibleCells enumerateObjectsUsingBlock:^(FSCalendarCell *cell, NSUInteger idx, BOOL *stop) {
                     if (CGRectContainsPoint(self.collectionView.bounds, cell.center)) {
                         BOOL shouldPerformAlpha = NO;
@@ -382,7 +382,7 @@
         CABasicAnimation *path = [CABasicAnimation animationWithKeyPath:@"path"];
         path.fromValue = (id)self.calendar.maskLayer.path;
         path.toValue = (id)[UIBezierPath bezierPathWithRect:bounds].CGPath;
-        path.duration = animationDuration;
+        path.duration = animationDuration*(currentRowCount>lastRowCount?1.25:0.75);
         path.removedOnCompletion = NO;
         path.fillMode = kCAFillModeForwards;
         [self.calendar.maskLayer addAnimation:path forKey:@"path"];

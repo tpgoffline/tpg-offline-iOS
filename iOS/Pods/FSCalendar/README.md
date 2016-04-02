@@ -1,5 +1,5 @@
-
 ![fscalendar](https://cloud.githubusercontent.com/assets/5186464/6655324/213a814a-cb36-11e4-9add-f80515a83291.png)<br/><br/>
+[![Travis](https://travis-ci.org/WenchaoD/FSCalendar.svg?branch=master)](https://travis-ci.org/WenchaoD/FSCalendar)
 [![Version](https://img.shields.io/cocoapods/v/FSCalendar.svg?style=flat)](http://cocoadocs.org/docsets/FSCalendar)
 [![Platform](https://img.shields.io/badge/platform-iOS%207%2B-blue.svg?style=flat)](http://cocoadocs.org/docsets/FSCalendar)
 [![Swift2 compatible](https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift/)
@@ -31,6 +31,11 @@ pod 'FSCalendar'
 * For iOS7+:
 ```ruby
 pod 'FSCalendar'
+```
+
+* Alternatively to give it a test run, run the command:
+```ruby
+pod try FSCalendar
 ```
 
 ## Carthage: 
@@ -120,6 +125,7 @@ self.calendar = calendar
 ## More Usage
 * To view more usage, download the zip file and read the example.
 * Or you could refer to [this document](https://github.com/WenchaoD/FSCalendar/blob/master/MOREUSAGE.md)
+* To view the full documentation, see [CocoaPods Documentation](http://cocoadocs.org/docsets/FSCalendar/2.0.1/)
 
 # If you like this repo
 * ***Star*** this repo.
@@ -131,9 +137,13 @@ self.calendar = calendar
 * [Have a nice dinner!](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z84P82H3V4Q26&lc=C2&item_name=Tonight%27s%20dinner%20is%20on%20me%21&item_number=Support%20FSCalendar%20%2d%20WenchaoIOS&amount=25%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted)
 * [Greate work! Keep the change!](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z84P82H3V4Q26&lc=C2&item_name=Great%20work%21%20Keep%20the%20change%21&item_number=Support%20FSCalendar%20%2d%20WenchaoIOS&amount=100%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted)
 
-# Contact
-* Email: `f33chobits@gmail.com`
-
 # License
 FSCalendar is available under the MIT license. See the LICENSE file for more info.
+
+# Contributions
+* Issues and pull requests are absolutely welcome.
+* For code contributions, please follow [Coding Guidelines for Cocoa](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)
+
+# Contact
+* Email: `f33chobits@gmail.com`
 

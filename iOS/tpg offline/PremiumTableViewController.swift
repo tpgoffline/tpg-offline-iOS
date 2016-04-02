@@ -9,15 +9,15 @@
 import UIKit
 import FontAwesomeKit
 import ChameleonFramework
-import SwiftyStoreKit
+import SwiftInAppPurchase
 import SCLAlertView
-import Google
 
 class PremiumTableViewController: UITableViewController {
 	
 	var price = ""
 	var productKey = "B17EDFEA961F4680B88A309704032DA7"
 	let defaults = NSUserDefaults.standardUserDefaults()
+    let iap = SwiftInAppPurchase.sharedInstance
 	
 	let arguments = [
 		[FAKFontAwesome.globeIconWithSize(20), "Mode offline des départs".localized(), "Pas de réseau ? Pas de problème avec le mode offline, vous pouvez accéder aux horaires hors ligne. Attetion : Les horaires du mode offline ne peuvent pas prévoir les évantuels retards, avances, perturbation en cours sur le réseau tpg.".localized()],
@@ -33,22 +33,25 @@ class PremiumTableViewController: UITableViewController {
 		
 		actualiserTheme()
 		
-		SwiftyStoreKit.retrieveProductInfo(productKey) { result in
-			switch result {
-			case .Success(let product):
-				let numberFormatter = NSNumberFormatter()
-				numberFormatter.formatterBehavior = .Behavior10_4
-				numberFormatter.numberStyle = .CurrencyStyle
-				numberFormatter.locale = product.priceLocale
-				let priceString = numberFormatter.stringFromNumber(product.price)
-				self.price = priceString!
-				self.tableView.reloadData()
-				break
-			case .Error(let error):
-				print("Error: \(error)")
-				break
-			}
-		}
+        iap.setProductionMode(false)
+        var productIden = Set<String>()
+        productIden.insert(productKey)
+        
+        self.iap.requestProducts(productIden) { (products, invalidIdentifiers, error) -> () in
+            if error == nil {
+                let product = products![0]
+                let numberFormatter = NSNumberFormatter()
+                numberFormatter.formatterBehavior = .Behavior10_4
+                numberFormatter.numberStyle = .CurrencyStyle
+                numberFormatter.locale = product.priceLocale
+                let priceString = numberFormatter.stringFromNumber(product.price)
+                self.price = priceString!
+                self.tableView.reloadData()
+            }
+            else {
+                print("Error: \(error)")
+            }
+        }
 		
 		// Uncomment the following line to preserve selection between presentations
 		// self.clearsSelectionOnViewWillAppear = false
@@ -60,12 +63,6 @@ class PremiumTableViewController: UITableViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		actualiserTheme()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "PremiumTableViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -138,13 +135,13 @@ class PremiumTableViewController: UITableViewController {
 			cell.boutonAcheter.backgroundColor = UIColor.flatGreenColor()
 			
 			if indexPath.row == 0 {
-				cell.boutonAcheter.addTarget(self, action: "acheter:", forControlEvents: .TouchUpInside)
+				cell.boutonAcheter.addTarget(self, action: #selector(PremiumTableViewController.acheter(_:)), forControlEvents: .TouchUpInside)
 				if price != "" {
 					cell.boutonAcheter.setTitle("\(boutonsStoreKit[indexPath.row]) (\(price))", forState: .Normal)
 				}
 			}
 			else if indexPath.row == 1 {
-				cell.boutonAcheter.addTarget(self, action: "restaurerAchat:", forControlEvents: .TouchUpInside)
+				cell.boutonAcheter.addTarget(self, action: #selector(PremiumTableViewController.restaurerAchat(_:)), forControlEvents: .TouchUpInside)
 			}
 			
 			return cell
@@ -152,50 +149,59 @@ class PremiumTableViewController: UITableViewController {
 	}
 	
 	func acheter(sender: AnyObject!) {
-		SwiftyStoreKit.purchaseProduct(productKey) { result in
-			switch result {
-			case .Success(let productId):
-				print("Purchase Success: \(productId)")
-				AppValues.premium = true
-				self.defaults.setBool(true, forKey: "premium")
-				let alerte = SCLAlertView()
-				alerte.showSuccess("L'achat a réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 30).setDismissBlock({
-					self.navigationController?.popViewControllerAnimated(true)
-				})
-				break
-			case .Error(let error):
-				print("Purchase Failed: \(error)")
-				let alerte = SCLAlertView()
-				alerte.showError("Échec".localized(), subTitle: "L'achat n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
-				break
-			}
-		}
+        self.iap.addPayment(productKey, userIdentifier: nil) { (result) -> () in
+            
+            switch result{
+            case .Purchased(let productId,let transaction,let paymentQueue):
+                paymentQueue.finishTransaction(transaction)
+                print("Purchase Success: \(productId)")
+                AppValues.premium = true
+                self.defaults.setBool(true, forKey: "premium")
+                let alerte = SCLAlertView()
+                alerte.showSuccess("L'achat a réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 30).setDismissBlock({
+                    if ((self.navigationController?.viewControllers[0].isKindOfClass(ParametresTableViewController)) == true) {
+                       (self.navigationController?.viewControllers[0] as! ParametresTableViewController).tableView.reloadData()
+                    }
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+                
+            case .Failed(let error):
+                print("Purchase Failed: \(error)")
+                let alerte = SCLAlertView()
+                alerte.showError("Échec".localized(), subTitle: "L'achat n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
+                
+            default:
+                break
+            }            
+        }
 	}
 	
 	func restaurerAchat(sender: AnyObject!) {
-		SwiftyStoreKit.restorePurchases() { result in
-			switch result {
-			case .Success(let productId):
-				print("Restore Success: \(productId)")
-				AppValues.premium = true
-				self.defaults.setBool(true, forKey: "premium")
-				let alerte = SCLAlertView()
-				alerte.showSuccess("La restauration à réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
-					self.navigationController?.popViewControllerAnimated(true)
-				})
-				break
-			case .NothingToRestore:
-				print("Nothing to Restore")
-				let alerte = SCLAlertView()
-				alerte.showWarning("Rien à restauré", subTitle: "Le mode premium n'a pas été acheté. Nous ne pouvons donc pas restaurer d'achat.".localized(), closeButtonTitle: "Fermer", duration: 20)
-				break
-			case .Error(let error):
-				print("Restore Failed: \(error)")
-				let alerte = SCLAlertView()
-				alerte.showError("Échec", subTitle: "La restauration n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
-				break
-			}
-		}
+        
+        self.iap.restoreTransaction(nil) { (result) -> () in
+            switch result{
+            case .Restored(let productId,let transaction,let paymentQueue) :
+                paymentQueue.finishTransaction(transaction)
+                print("Restore Success: \(productId)")
+                AppValues.premium = true
+                self.defaults.setBool(true, forKey: "premium")
+                let alerte = SCLAlertView()
+                alerte.showSuccess("La restauration à réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
+                    if ((self.navigationController?.viewControllers[0].isKindOfClass(ParametresTableViewController)) == true) {
+                        (self.navigationController?.viewControllers[0] as! ParametresTableViewController).tableView.reloadData()
+                    }
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+                
+            case .Failed(let error):
+                print("Restore Failed: \(error)")
+                let alerte = SCLAlertView()
+                alerte.showError("Échec", subTitle: "La restauration n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
+                
+            default:
+                break
+            }
+        }
 	}
 	
 	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

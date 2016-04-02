@@ -13,7 +13,6 @@ import SwiftyJSON
 import FontAwesomeKit
 import SCLAlertView
 import ChameleonFramework
-import Google
 
 class RouteViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
@@ -57,12 +56,6 @@ class RouteViewController: UIViewController {
      
         label.textColor = AppValues.textColor
         labelPieton.textColor = AppValues.textColor
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "RouteViewController-\(arret.stopCode)")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
     }
 }
 

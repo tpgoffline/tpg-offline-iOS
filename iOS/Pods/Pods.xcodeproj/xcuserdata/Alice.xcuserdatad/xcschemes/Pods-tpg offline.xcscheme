@@ -11,11 +11,10 @@
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
-            buildForAnalyzing = "YES"
-            hideIssues = "NO">
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BB8802372D683DC541E4EBC41EAD5235"
+               BlueprintIdentifier = "63EC34486B6A8A7305E2AFE70F298068"
                BuildableName = "Pods_tpg_offline.framework"
                BlueprintName = "Pods-tpg offline"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -46,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BB8802372D683DC541E4EBC41EAD5235"
+            BlueprintIdentifier = "63EC34486B6A8A7305E2AFE70F298068"
             BuildableName = "Pods_tpg_offline.framework"
             BlueprintName = "Pods-tpg offline"
             ReferencedContainer = "container:Pods.xcodeproj">

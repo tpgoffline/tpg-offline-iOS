@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
-import Google
 
 class ChoixMenuTableViewController: UITableViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -25,12 +24,6 @@ class ChoixMenuTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         actualiserTheme()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "ChoixMenuTableViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
     }
     
     override func didReceiveMemoryWarning() {

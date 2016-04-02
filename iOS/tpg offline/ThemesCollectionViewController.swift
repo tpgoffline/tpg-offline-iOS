@@ -9,7 +9,6 @@
 import UIKit
 import FontAwesomeKit
 import ChameleonFramework
-import Google
 
 private let reuseIdentifier = "ThemesCell"
 
@@ -50,11 +49,6 @@ class ThemesCollectionViewController: UICollectionViewController {
 		super.viewDidAppear(animated)
 		
         collectionView?.reloadData()
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "ThemesCollectionViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
 	}
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -96,11 +90,6 @@ class ThemesCollectionViewController: UICollectionViewController {
 		}
 		else {
 			UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: false)
-		}
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.send(GAIDictionaryBuilder.createEventWithCategory("Themes", action: "setTheme\(keys[indexPath.row])", label: nil, value: nil).build() as [NSObject : AnyObject]!)
 		}
     }
 	

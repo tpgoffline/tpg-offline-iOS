@@ -12,7 +12,6 @@ import ChameleonFramework
 import FontAwesomeKit
 import DGRunkeeperSwitch
 import SCLAlertView
-import Google
 
 struct ItineraireEnCours {
 	static var itineraire: Itineraire!
@@ -40,12 +39,6 @@ class ItineraireTableViewController: UITableViewController {
 		
 		ItineraireEnCours.canFavorite = true
 		actualiserTheme()
-		
-		if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-			let tracker = GAI.sharedInstance().defaultTracker
-			tracker.set(kGAIScreenName, value: "ItineraireTableViewController")
-			tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]!)
-		}
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -125,7 +118,7 @@ class ItineraireTableViewController: UITableViewController {
 				if ItineraireEnCours.itineraire.dateArrivee == true {
 					cell.switchObject.setSelectedIndex(1, animated: true)
 				}
-				cell.switchObject.addTarget(self, action:"dateArriveeChange:", forControlEvents: .ValueChanged)
+				cell.switchObject.addTarget(self, action:#selector(ItineraireTableViewController.dateArriveeChange(_:)), forControlEvents: .ValueChanged)
 				cell.backgroundColor = AppValues.primaryColor
 				let view = UIView()
 				view.backgroundColor = AppValues.secondaryColor
@@ -137,7 +130,7 @@ class ItineraireTableViewController: UITableViewController {
 				cell.button.setTitle((row[indexPath.row][1] as! String), forState: .Normal)
 				cell.button.backgroundColor = AppValues.secondaryColor
 				cell.button.tintColor = AppValues.textColor
-				cell.button.addTarget(self, action: "rechercher:", forControlEvents: .TouchUpInside)
+				cell.button.addTarget(self, action: #selector(ItineraireTableViewController.rechercher(_:)), forControlEvents: .TouchUpInside)
                 cell.backgroundColor = AppValues.secondaryColor
 				let view = UIView()
 				view.backgroundColor = AppValues.secondaryColor
@@ -181,10 +174,6 @@ class ItineraireTableViewController: UITableViewController {
 	
 	func rechercher(sender: AnyObject) {
 		if ItineraireEnCours.itineraire.depart != nil && ItineraireEnCours.itineraire.arrivee != nil && ItineraireEnCours.itineraire.date != nil {
-			if !(NSProcessInfo.processInfo().arguments.contains("-withoutAnalytics")) {
-				let tracker = GAI.sharedInstance().defaultTracker
-				tracker.send(GAIDictionaryBuilder.createEventWithCategory("Itineraire", action: "rechercheItineraire", label: nil, value: nil).build() as [NSObject : AnyObject]!)
-			}
 
 			performSegueWithIdentifier("rechercherItineraire", sender: self)
 		}

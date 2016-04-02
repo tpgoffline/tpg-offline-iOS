@@ -12,6 +12,7 @@ import ChameleonFramework
 import FontAwesomeKit
 import SCLAlertView
 import MRProgress
+import SwiftDate
 
 class ListeItinerairesTableViewController: UITableViewController {
 	
@@ -44,10 +45,10 @@ class ListeItinerairesTableViewController: UITableViewController {
                     }
                 }
                 if favoris {
-                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
                 }
                 else {
-                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
                 }
             }
             self.navigationItem.rightBarButtonItems = listeItems
@@ -259,10 +260,10 @@ class ListeItinerairesTableViewController: UITableViewController {
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: "toggleFavorite:"))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
@@ -272,15 +273,12 @@ class ListeItinerairesTableViewController: UITableViewController {
         }
 	}
 	func scheduleNotification(time: NSDate, before: Int = 5, ligne: String, direction: String) {
-		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time)
+        let time2 = time - before.minutes
+		let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time2)
 		
 		let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-		if now.minute - before < 0 {
-			now.minute += 60
-			now.hour -= 1
-		}
 		
-		let date = cal.dateBySettingHour(now.hour, minute: now.minute - before, second: now.second, ofDate: time, options: NSCalendarOptions())
+		let date = cal.dateBySettingHour(now.hour, minute: now.minute, second: now.second, ofDate: time, options: NSCalendarOptions())
 		let reminder = UILocalNotification()
 		reminder.fireDate = date
 		
