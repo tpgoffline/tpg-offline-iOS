@@ -25,6 +25,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     let defaults = NSUserDefaults.standardUserDefaults()
     var arretsKeys: [String] = []
     let pscope = PermissionScope()
+    var chargementLocalisation = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,6 +115,8 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     }
     
     func requestLocation() {
+        chargementLocalisation = true
+        tableView.reloadData()
         var accurency = INTULocationAccuracy.Block
         if self.defaults.integerForKey("locationAccurency") == 1 {
             accurency = INTULocationAccuracy.House
@@ -150,9 +153,11 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                         return false
                     }
                 })
+                self.chargementLocalisation = false
                 self.tableView.reloadData()
             }
             else {
+                self.chargementLocalisation = false
                 self.tableView.reloadData()
             }
         }
@@ -186,81 +191,6 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         
     }
     
-    func afficherTutoriel() {
-        let rect = CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        
-        CGContextSetFillColorWithColor(context, AppValues.primaryColor.CGColor)
-        
-        CGContextFillRect(context, rect)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        let page1 = OnboardingContentViewController (title: "Bienvenue dans tpg offline".localized(), body: "tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau.".localized(), image: nil, buttonText: "Continuer".localized(), actionBlock: nil)
-        
-        let iconeI = FAKIonIcons.iosClockIconWithSize(50)
-        iconeI.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page2 = OnboardingContentViewController (title: "Départs".localized(), body: "Le menu Départs vous informe des prochains départs pour un arrêt.".localized(), image: iconeI.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-        var iconeF = FAKFontAwesome.globeIconWithSize(50)
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page3 = OnboardingContentViewController (title: "Mode offline".localized(), body: "Le Mode offline vous permet de connaitre les horaires à un arrêt même si vous n’avez pas de réseau.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-        iconeF = FAKFontAwesome.warningIconWithSize(50)
-        
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page4 = OnboardingContentViewController (title: "Avertissement".localized(), body: "Sans réseau, tpg offline ne permet pas d’avoir des horaires garantis ni de connaitre les possibles perturbations du réseau. \rtpg offline ne peut aucunement être tenu pour responsable en cas de retard, d’avance, ni de connection manquée.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "J'ai compris, continuer".localized(), actionBlock: nil)
-        iconeF = FAKFontAwesome.mapSignsIconWithSize(50)
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page5 = OnboardingContentViewController (title: "Itinéraires".localized(), body: "l’application propose un menu Itinéraires. Vous pouvez vous déplacer très facilement grâce à cette fonction.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-        iconeF = FAKFontAwesome.mapIconWithSize(50)
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page6 = OnboardingContentViewController (title: "Plans".localized(), body: "Tous les plans des tpg sont disponibles dans le menu Plans.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-        iconeF = FAKFontAwesome.warningIconWithSize(50)
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page7 = OnboardingContentViewController (title: "Incidents".localized(), body: "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-        iconeF = FAKFontAwesome.bellOIconWithSize(50)
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page8 = OnboardingContentViewController (title: "Rappels".localized(), body: "Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-        iconeF = FAKFontAwesome.githubIconWithSize(50)
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page9 = OnboardingContentViewController (title: "Open Source", body: "tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
-        iconeF = FAKFontAwesome.ellipsisHIconWithSize(50)
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page10 = OnboardingContentViewController (title: "Et beaucoup d'autres choses".localized(), body: "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Terminer".localized(), actionBlock: { (onboardingvc) in
-            self.defaults.setBool(true, forKey: "tutorial")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        })
-        
-        page1.movesToNextViewController = true
-        page2.movesToNextViewController = true
-        page3.movesToNextViewController = true
-        page4.movesToNextViewController = true
-        page5.movesToNextViewController = true
-        page6.movesToNextViewController = true
-        page7.movesToNextViewController = true
-        page8.movesToNextViewController = true
-        page9.movesToNextViewController = true
-        
-        let onboardingVC = OnboardingViewController(backgroundImage: image, contents: [page1, page2, page3, page4, page5, page6, page7, page8, page9, page10])
-        onboardingVC.titleTextColor = AppValues.textColor
-        onboardingVC.bodyTextColor = AppValues.textColor
-        onboardingVC.buttonTextColor = AppValues.textColor
-        onboardingVC.pageControl.pageIndicatorTintColor = AppValues.secondaryColor
-        onboardingVC.pageControl.currentPageIndicatorTintColor = AppValues.textColor
-        onboardingVC.skipButton.setTitleColor(AppValues.textColor, forState: .Normal)
-        onboardingVC.bodyFontSize = 18
-        onboardingVC.shouldMaskBackground = false
-        onboardingVC.shouldFadeTransitions = true
-        onboardingVC.allowSkipping = true
-        onboardingVC.skipButton.setTitle("Passer".localized(), forState: .Normal)
-        onboardingVC.skipHandler = {
-            self.defaults.setBool(true, forKey: "tutorial")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        self.presentViewController(onboardingVC, animated: true, completion: nil)
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         if searchController.active {
@@ -278,7 +208,12 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         }
         else {
             if section == 0 {
-                return arretsLocalisation.count
+                if chargementLocalisation {
+                    return 1
+                }
+                else {
+                    return arretsLocalisation.count
+                }
             }
             else if section == 1 {
                 if (AppValues.arretsFavoris == nil) {
@@ -297,11 +232,22 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         if !searchController.active {
             let cell = tableView.dequeueReusableCellWithIdentifier("arretsCell", forIndexPath: indexPath)
             if indexPath.section == 0 {
-                let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
-                iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = arretsLocalisation[indexPath.row].nomComplet
-                cell.detailTextLabel!.text = "~" + String(Int(arretsLocalisation[indexPath.row].distance!)) + "m"
+                if chargementLocalisation {
+                    let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
+                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+                    cell.imageView?.image = iconLocation.imageWithSize(CGSize(width: 20, height: 20))
+                    cell.textLabel?.text = "Recherche des arrets..."
+                    cell.detailTextLabel?.text = ""
+                    cell.accessoryView = nil
+                }
+                else {
+                    let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
+                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+                    cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
+                    cell.textLabel?.text = arretsLocalisation[indexPath.row].nomComplet
+                    cell.detailTextLabel!.text = "~" + String(Int(arretsLocalisation[indexPath.row].distance!)) + "m"
+                    cell.imageView?.image = nil
+                }
             }
             else if indexPath.section == 1 {
                 let iconFavoris = FAKFontAwesome.starIconWithSize(20)
@@ -309,6 +255,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                 cell.accessoryView = UIImageView(image: iconFavoris.imageWithSize(CGSize(width: 20, height: 20)))
                 cell.textLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.titre
                 cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.sousTitre
+                cell.imageView?.image = nil
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
@@ -316,6 +263,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
                 cell.textLabel?.text = AppValues.arrets[arretsKeys[indexPath.row]]!.titre
                 cell.detailTextLabel!.text = AppValues.arrets[arretsKeys[indexPath.row]]!.sousTitre
+                cell.imageView?.image = nil
             }
             
             let backgroundView = UIView()
@@ -330,7 +278,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("arretsCell", forIndexPath: indexPath)
-            let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
+            let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(20)
             iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             let backgroundView = UIView()
@@ -360,13 +308,21 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                 else if tableView.indexPathForSelectedRow!.section == 1 {
                     departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[tableView.indexPathForSelectedRow!.row]]
                 }
-                else {
+                else if !chargementLocalisation {
                     departsArretsViewController.arret = AppValues.arrets[self.arretsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                 }
             }
         }
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if tableView.indexPathForSelectedRow!.section == 0 && chargementLocalisation {
+            return false
+        }
+        else {
+            return true
+        }
+    }
     deinit {
         tableView.dg_removePullToRefresh()
     }

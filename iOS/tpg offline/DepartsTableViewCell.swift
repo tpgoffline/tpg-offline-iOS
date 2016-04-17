@@ -9,7 +9,7 @@
 import UIKit
 
 class DepartsTableViewCell: UITableViewCell {
-    @IBOutlet weak var pictoLigne: UILabel!
+    @IBOutlet weak var pictoLigne: UIImageView!
     @IBOutlet weak var labelDirection: UILabel!
     @IBOutlet weak var labelTempsRestant: UILabel!
     override func awakeFromNib() {

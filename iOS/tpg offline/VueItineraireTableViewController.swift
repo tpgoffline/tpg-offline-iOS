@@ -32,8 +32,6 @@ class VueItineraireTableViewController: UITableViewController {
 			listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
 		}
 		
-		
-		
 		var listeItems: [UIBarButtonItem] = []
 		
 		if AppValues.premium == true {

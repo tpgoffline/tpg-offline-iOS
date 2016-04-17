@@ -14,7 +14,7 @@ struct AppValues {
     static var arretsFavoris: [String: Arret]!  = [:]
     static var nomCompletsFavoris: [String]!  = []
 	static var favorisItineraires: [[Arret]]! = []
-	
+    static var stopCodeToArret: [String: String] = [:]	
     static var primaryColor: UIColor! = UIColor.flatOrangeColor()
     static var secondaryColor: UIColor! = UIColor.flatOrangeColorDark()
     static var textColor: UIColor! = UIColor.whiteColor()

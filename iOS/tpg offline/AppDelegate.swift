@@ -140,6 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let arrets = tpgUrl.getAllStops() {			
 			
 			for (_, subJson) in arrets["stops"] {
+                AppValues.stopCodeToArret[subJson["stopCode"].string!] = subJson["stopName"].string!
 				AppValues.arrets[subJson["stopName"].string!] = Arret(
 					nomComplet: subJson["stopName"].string!,
 					titre: subJson["titleName"].string!,

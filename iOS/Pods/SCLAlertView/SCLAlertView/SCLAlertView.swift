@@ -117,9 +117,14 @@ public class SCLAlertView: UIViewController {
     // UI Options
     public var showCloseButton = true
     public var showCircularIcon = true
+    public var shouldAutoDismiss = true //Set this false to 'Disable' Auto hideView when SCLButton is tapped
     public var contentViewCornerRadius : CGFloat = 5.0
     public var fieldCornerRadius : CGFloat = 3.0
     public var buttonCornerRadius : CGFloat = 3.0
+    public var iconTintColor: UIColor?
+    
+    // Actions
+    public var hideWhenBackgroundViewIsTapped = false
     
     // Members declaration
     var baseView = UIView()
@@ -132,11 +137,8 @@ public class SCLAlertView: UIViewController {
     var durationTimer: NSTimer!
     var dismissBlock : DismissBlock?
     private var inputs = [UITextField]()
-    private var buttons = [SCLButton]()
+    internal var buttons = [SCLButton]()
     private var selfReference: SCLAlertView?
-    
-    // Bug Alert Going up/down
-    var skeyBoard = 0
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -184,7 +186,7 @@ public class SCLAlertView: UIViewController {
         viewText.textColor = UIColorFromRGB(0x4D4D4D)
         contentView.layer.borderColor = UIColorFromRGB(0xCCCCCC).CGColor
         //Gesture Recognizer for tapping outside the textinput
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard"))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SCLAlertView.tapped(_:)))
         tapGesture.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapGesture)
     }
@@ -255,8 +257,8 @@ public class SCLAlertView: UIViewController {
     
     override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SCLAlertView.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SCLAlertView.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
     }
     
     override public func viewDidDisappear(animated: Bool) {
@@ -278,8 +280,7 @@ public class SCLAlertView: UIViewController {
         let txt = UITextField()
         txt.borderStyle = UITextBorderStyle.RoundedRect
         txt.font = UIFont(name:kDefaultFont, size: 14)
-        txt.autocapitalizationType = UITextAutocapitalizationType.None
-        txt.autocorrectionType = .No
+        txt.autocapitalizationType = UITextAutocapitalizationType.Words
         txt.clearButtonMode = UITextFieldViewMode.WhileEditing
         txt.layer.masksToBounds = true
         txt.layer.borderWidth = 1.0
@@ -295,9 +296,9 @@ public class SCLAlertView: UIViewController {
         let btn = addButton(title)
         btn.actionType = SCLActionType.Closure
         btn.action = action
-        btn.addTarget(self, action:Selector("buttonTapped:"), forControlEvents:.TouchUpInside)
-        btn.addTarget(self, action:Selector("buttonTapDown:"), forControlEvents:[.TouchDown, .TouchDragEnter])
-        btn.addTarget(self, action:Selector("buttonRelease:"), forControlEvents:[.TouchUpInside, .TouchUpOutside, .TouchCancel, .TouchDragOutside] )
+        btn.addTarget(self, action:#selector(SCLAlertView.buttonTapped(_:)), forControlEvents:.TouchUpInside)
+        btn.addTarget(self, action:#selector(SCLAlertView.buttonTapDown(_:)), forControlEvents:[.TouchDown, .TouchDragEnter])
+        btn.addTarget(self, action:#selector(SCLAlertView.buttonRelease(_:)), forControlEvents:[.TouchUpInside, .TouchUpOutside, .TouchCancel, .TouchDragOutside] )
         return btn
     }
     
@@ -306,9 +307,9 @@ public class SCLAlertView: UIViewController {
         btn.actionType = SCLActionType.Selector
         btn.target = target
         btn.selector = selector
-        btn.addTarget(self, action:Selector("buttonTapped:"), forControlEvents:.TouchUpInside)
-        btn.addTarget(self, action:Selector("buttonTapDown:"), forControlEvents:[.TouchDown, .TouchDragEnter])
-        btn.addTarget(self, action:Selector("buttonRelease:"), forControlEvents:[.TouchUpInside, .TouchUpOutside, .TouchCancel, .TouchDragOutside] )
+        btn.addTarget(self, action:#selector(SCLAlertView.buttonTapped(_:)), forControlEvents:.TouchUpInside)
+        btn.addTarget(self, action:#selector(SCLAlertView.buttonTapDown(_:)), forControlEvents:[.TouchDown, .TouchDragEnter])
+        btn.addTarget(self, action:#selector(SCLAlertView.buttonRelease(_:)), forControlEvents:[.TouchUpInside, .TouchUpOutside, .TouchCancel, .TouchDragOutside] )
         return btn
     }
     
@@ -335,7 +336,7 @@ public class SCLAlertView: UIViewController {
             print("Unknow action type for button")
         }
         
-        if(self.view.alpha != 0.0){ hideView() }
+        if(self.view.alpha != 0.0 && shouldAutoDismiss){ hideView() }
     }
     
     
@@ -359,24 +360,17 @@ public class SCLAlertView: UIViewController {
     
     func keyboardWillShow(notification: NSNotification) {
         keyboardHasBeenShown = true
-        if let userInfo = notification.userInfo {
-            if let beginKeyBoardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue.origin.y {
-                if let endKeyBoardFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.origin.y {
-                    if skeyBoard == 0 { // SAVE INITIAL POSITION OF THE ALERT FIRST TIME
-                        tmpContentViewFrameOrigin = self.contentView.frame.origin
-                        tmpCircleViewFrameOrigin = self.circleBG.frame.origin
-                        skeyBoard = 1
-                    }
-                    
-                    self.contentView.frame.origin = tmpContentViewFrameOrigin!
-                    self.circleBG.frame.origin = tmpCircleViewFrameOrigin!
-
-                    self.contentView.frame.origin.y = endKeyBoardFrame - self.contentView.frame.size.height - 10 // 10 is abitrary space between keyb and alert
-                    let newBallViewFrameY = self.contentView.frame.origin.y - self.circleBG.frame.size.height / 2
-                    self.circleBG.frame.origin.y = newBallViewFrameY
-                }
-            }
-        }
+        
+        guard let userInfo = notification.userInfo else {return}
+        guard let beginKeyBoardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue.origin.y else {return}
+        guard let endKeyBoardFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.origin.y else {return}
+        
+        tmpContentViewFrameOrigin = self.contentView.frame.origin
+        tmpCircleViewFrameOrigin = self.circleBG.frame.origin
+        let newContentViewFrameY = beginKeyBoardFrame - endKeyBoardFrame - self.contentView.frame.origin.y
+        let newBallViewFrameY = self.circleBG.frame.origin.y - newContentViewFrameY
+        self.contentView.frame.origin.y -= newContentViewFrameY
+        self.circleBG.frame.origin.y = newBallViewFrameY
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -392,9 +386,14 @@ public class SCLAlertView: UIViewController {
         }
     }
     
-    //Dismiss keyboard when tapped outside textfield
-    func dismissKeyboard(){
+    //Dismiss keyboard when tapped outside textfield & close SCLAlertView when hideWhenBackgroundViewIsTapped
+    func tapped(gestureRecognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
+        
+        if let tappedView = gestureRecognizer.view where tappedView.hitTest(gestureRecognizer.locationInView(tappedView), withEvent: nil) == baseView && hideWhenBackgroundViewIsTapped {
+            
+            hideView()
+        }
     }
     
     // showSuccess(view, title, subTitle)
@@ -503,7 +502,7 @@ public class SCLAlertView: UIViewController {
         // Done button
         if showCloseButton {
             let txt = completeText != nil ? completeText! : "Done"
-            addButton(txt, target:self, selector:Selector("hideView"))
+            addButton(txt, target:self, selector:#selector(SCLAlertView.hideView))
         }
         
         //hidden/show circular view based on the ui option
@@ -519,7 +518,13 @@ public class SCLAlertView: UIViewController {
             circleIconView = indicator
         }
         else {
-            circleIconView = UIImageView(image: iconImage!)
+            if let iconTintColor = iconTintColor {
+                circleIconView = UIImageView(image: iconImage!.imageWithRenderingMode(.AlwaysTemplate))
+                circleIconView?.tintColor = iconTintColor
+            }
+            else {
+                circleIconView = UIImageView(image: iconImage!)
+            }
         }
         circleView.addSubview(circleIconView!)
         let x = (kCircleHeight - kCircleIconHeight) / 2
@@ -536,7 +541,7 @@ public class SCLAlertView: UIViewController {
         // Adding duration
         if duration > 0 {
             durationTimer?.invalidate()
-            durationTimer = NSTimer.scheduledTimerWithTimeInterval(duration!, target: self, selector: Selector("hideView"), userInfo: nil, repeats: false)
+            durationTimer = NSTimer.scheduledTimerWithTimeInterval(duration!, target: self, selector: #selector(SCLAlertView.hideView), userInfo: nil, repeats: false)
         }
         
         // Animate in the alert view

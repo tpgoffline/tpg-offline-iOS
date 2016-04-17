@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.3.0)
+  - Alamofire (3.3.1)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -27,7 +27,7 @@ PODS:
     - FontAwesomeKit/Core
   - FontAwesomeKit/Zocial (2.2.1):
     - FontAwesomeKit/Core
-  - FSCalendar (2.0.1)
+  - FSCalendar (2.1.0)
   - INTULocationManager (4.2.0)
   - Localize-Swift (1.1)
   - MRProgress (0.8.3):
@@ -58,10 +58,10 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - Onboard (2.1.7)
+  - Onboard (2.1.9)
   - PermissionScope (1.0.2)
   - SCLAlertView (0.5.1)
-  - SwiftDate (3.0.8)
+  - SwiftDate (3.0.9)
   - SwiftInAppPurchase (1.0.0)
   - SwiftyJSON (2.3.2)
 
@@ -75,10 +75,10 @@ DEPENDENCIES:
   - FSCalendar
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
   - Localize-Swift (from `https://github.com/marmelroy/Localize-Swift.git`)
-  - MRProgress (from `https://github.com/mrackwitz/MRProgress.git`)
+  - MRProgress (from `https://github.com/RemyDCF/MRProgress.git`)
   - Onboard (from `https://github.com/mamaral/Onboard.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
-  - SCLAlertView (from `https://github.com/Pevika/SCLAlertView-Swift.git`)
+  - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
   - SwiftInAppPurchase (from `https://github.com/rpzzzzzz/SwiftInAppPurchase.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -99,13 +99,13 @@ EXTERNAL SOURCES:
   Localize-Swift:
     :git: https://github.com/marmelroy/Localize-Swift.git
   MRProgress:
-    :git: https://github.com/mrackwitz/MRProgress.git
+    :git: https://github.com/RemyDCF/MRProgress.git
   Onboard:
     :git: https://github.com/mamaral/Onboard.git
   PermissionScope:
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
-    :git: https://github.com/Pevika/SCLAlertView-Swift.git
+    :git: https://github.com/vikmeup/SCLAlertView-Swift.git
   SwiftDate:
     :git: https://github.com/malcommac/SwiftDate.git
   SwiftInAppPurchase:
@@ -115,16 +115,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
-    :commit: 5fc82fcf9b56ead9f70a8d73122a1985547bc4b8
+    :commit: bc00897e8f21640f01611d30ce3f5a027b37028c
     :git: https://github.com/ViccAlexander/Chameleon.git
   DGElasticPullToRefresh:
-    :commit: f9609227855702d94c2c880e4ca058b631d4376f
+    :commit: 188a2ff3c498c81aa3a5fe1916c1f8ed15c85dda
     :git: https://github.com/gontovnik/DGElasticPullToRefresh.git
   DGRunkeeperSwitch:
-    :commit: 1f4d6c80225ce6766705f75494995a5adb66c648
+    :commit: 75829583f41c6eee1b86c66a0b2d947df70cc734
     :git: https://github.com/gontovnik/DGRunkeeperSwitch.git
   EFCircularSlider:
-    :commit: 52783c3f13b87fea6b5384fb2fbd4e287a3dd65f
+    :commit: 6366f39721c33d0d457f17cc7f225d7795cea2da
     :git: https://github.com/RemyDCF/EFCircularSlider.git
   FontAwesomeKit:
     :commit: eac30313fee77f6db1b6832b1d4b7d8f2007b381
@@ -136,19 +136,19 @@ CHECKOUT OPTIONS:
     :commit: cac9f41c3fd0b518776b8d5faabe0279449c347d
     :git: https://github.com/marmelroy/Localize-Swift.git
   MRProgress:
-    :commit: 973569c82738e4720f4226ad9afbcc723efa4a90
-    :git: https://github.com/mrackwitz/MRProgress.git
+    :commit: 0a9a8e9299c35f1ed1be0648910505fbd156e952
+    :git: https://github.com/RemyDCF/MRProgress.git
   Onboard:
-    :commit: c1a4afaea8307a56466560c033d098883c240f2d
+    :commit: cef8682f3c73af9eb563c96febb100acade23311
     :git: https://github.com/mamaral/Onboard.git
   PermissionScope:
-    :commit: f37fbf61ccdd56e40ff58ad5a69472f2500974ae
+    :commit: 6f47986cb65ce68cc500b95a2a82fd2e946be133
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
-    :commit: 80ad641a4fd3422ba80666d9865c6043a288f19c
-    :git: https://github.com/Pevika/SCLAlertView-Swift.git
+    :commit: e982fbaee48f79a2e60b7db664a2a141cd217fd7
+    :git: https://github.com/vikmeup/SCLAlertView-Swift.git
   SwiftDate:
-    :commit: 947bf6adae948b3743f7b96ffb2d2ef460f51eda
+    :commit: f492c98bfb25e3fc99b08673541ca3c643887a03
     :git: https://github.com/malcommac/SwiftDate.git
   SwiftInAppPurchase:
     :commit: 1080c4821443c5b71dff445a8c6c5b79f4bed2e4
@@ -158,23 +158,23 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
+  DGElasticPullToRefresh: 3129c558cd59d68f9c2472d79abcd68a49bcd345
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
   EFCircularSlider: 8c9e901891fb813e89c4158508eefa8e35903454
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
-  FSCalendar: 18117308f5876a8f6f0fe572085d543580c2c5e5
+  FSCalendar: d8b9dddaf96fff7621a33b110763d981bb01bc04
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
-  Onboard: 87648089e1b76d13b4f5bf8f7a1cdb144092f0af
+  Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
-  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+  SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
   SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: c12f925074d5205d111f2d1bbc2a60a2561128b8
+PODFILE CHECKSUM: c600d99c2b73b98207b2ed134d138de9ccbc6a1e
 
-COCOAPODS: 1.0.0.beta.6
+COCOAPODS: 1.0.0.beta.5

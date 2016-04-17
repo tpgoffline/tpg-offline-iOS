@@ -43,6 +43,7 @@
 		00ABBE151C29C81B00479FF4 /* Departs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ABBE141C29C81B00479FF4 /* Departs.swift */; };
 		00B39B8B1C131C05006FC8A3 /* tpgURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B39B8A1C131C05006FC8A3 /* tpgURL.swift */; };
 		00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */; };
+		00BEB4371CBD61AA00DDD313 /* Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BEB4361CBD61AA00DDD313 /* Thermometer.swift */; };
 		00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C8DD551C0CCACC004743A5 /* couleursLignes.json */; };
 		00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */; };
 		00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C491C4810E1008E8B2A /* Itineraire.swift */; };
@@ -51,6 +52,8 @@
 		00CA21D31C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */; };
 		00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D0355B1C0E25D600B3697D /* CoreLocation.framework */; };
 		00D7C3D21C4BDCAE00D6864C /* ItineraireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */; };
+		00DA802B1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA802A1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift */; };
+		00DA802F1CBAA9090006ADB3 /* VoirLigneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA802E1CBAA9090006ADB3 /* VoirLigneTableViewCell.swift */; };
 		00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCD9581C285EBB0094C0EB /* Ticket.swift */; };
 		00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* PlansTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
@@ -116,6 +119,7 @@
 		00B39B8A1C131C05006FC8A3 /* tpgURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tpgURL.swift; sourceTree = "<group>"; };
 		00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tpg offline-Bridging-Header.h"; sourceTree = "<group>"; };
 		00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TimeSelectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00BEB4361CBD61AA00DDD313 /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
 		00C8DD551C0CCACC004743A5 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
 		00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = tpgArretSelectionTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00C98C491C4810E1008E8B2A /* Itineraire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itineraire.swift; sourceTree = "<group>"; };
@@ -124,17 +128,21 @@
 		00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeItinerairesTableViewCell.swift; sourceTree = "<group>"; };
 		00D0355B1C0E25D600B3697D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraireTableViewCell.swift; sourceTree = "<group>"; };
+		00DA802A1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoirLigneTableViewController.swift; sourceTree = "<group>"; };
+		00DA802E1CBAA9090006ADB3 /* VoirLigneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoirLigneTableViewCell.swift; sourceTree = "<group>"; };
 		00DCD9581C285EBB0094C0EB /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		00DDC0B11C255CED002B288E /* PlansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlansTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EAD0B938A89BC4A90E7F807 /* Pods-tpg offline Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		43D3491A7E1B71A24C25DCFF /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
+		49E8C04CC4A6DB7A30065287 /* Pods-tpg offline (watchOS) Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline (watchOS) Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline (watchOS) Extension/Pods-tpg offline (watchOS) Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		69DE50635AF86CF27D8967D8 /* Pods-tpg offline UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline UnitTests/Pods-tpg offline UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FA3EDDC2561403D5B825DE8 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 		8264D7D3E4E5B7CCC11E97AF /* Pods-tpg offline UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline UnitTests/Pods-tpg offline UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		846FA2F488A2367C92180682 /* Pods_tpg_offline_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F795F56D99CE049BA49A67 /* Pods-tpg offline (watchOS) Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline (watchOS) Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline (watchOS) Extension/Pods-tpg offline (watchOS) Extension.release.xcconfig"; sourceTree = "<group>"; };
 		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
 		AD0148121C7F6CDE0057E884 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +160,7 @@
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADB2D6DC1C7A222F0023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADB2D6DD1C7A22300023718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B58AEDB7ED20BAC5FE82B725 /* Pods_tpg_offline__watchOS__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline__watchOS__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,6 +259,7 @@
 				004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */,
 				AD3F41E11C7DB011009113F0 /* TtitrePremiumTableViewCell.swift */,
 				AD3F41E31C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift */,
+				00DA802E1CBAA9090006ADB3 /* VoirLigneTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -286,6 +296,7 @@
 				002B47F21C01FA87000BF3E8 /* ArretsTableViewController.swift */,
 				002B47F31C01FA87000BF3E8 /* DepartsArretTableViewController.swift */,
 				000ECABC1C469A3500E4FC92 /* RouteViewController.swift */,
+				00DA802A1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift */,
 			);
 			name = "Départs";
 			sourceTree = "<group>";
@@ -308,6 +319,7 @@
 				00DCD9581C285EBB0094C0EB /* Ticket.swift */,
 				00ABBE141C29C81B00479FF4 /* Departs.swift */,
 				00C98C491C4810E1008E8B2A /* Itineraire.swift */,
+				00BEB4361CBD61AA00DDD313 /* Thermometer.swift */,
 			);
 			name = "Général";
 			sourceTree = "<group>";
@@ -339,6 +351,8 @@
 				E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */,
 				8264D7D3E4E5B7CCC11E97AF /* Pods-tpg offline UnitTests.debug.xcconfig */,
 				69DE50635AF86CF27D8967D8 /* Pods-tpg offline UnitTests.release.xcconfig */,
+				49E8C04CC4A6DB7A30065287 /* Pods-tpg offline (watchOS) Extension.debug.xcconfig */,
+				A8F795F56D99CE049BA49A67 /* Pods-tpg offline (watchOS) Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -353,6 +367,7 @@
 				DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */,
 				9F8F1AE07E1C419959ED8311 /* Pods_tpg_offline_Dev.framework */,
 				846FA2F488A2367C92180682 /* Pods_tpg_offline_UnitTests.framework */,
+				B58AEDB7ED20BAC5FE82B725 /* Pods_tpg_offline__watchOS__Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -549,11 +564,13 @@
 				004E8BD61C6E23840055006B /* ThemesCollectionViewController.swift in Sources */,
 				002E5C781C1337DD0008623D /* NSUserDefaultsExtension.swift in Sources */,
 				00D7C3D21C4BDCAE00D6864C /* ItineraireTableViewCell.swift in Sources */,
+				00DA802F1CBAA9090006ADB3 /* VoirLigneTableViewCell.swift in Sources */,
 				007266281C259191009EFEB5 /* PlanViewController.swift in Sources */,
 				002149151C5BDDC5009C0264 /* CreditsTableViewController.swift in Sources */,
 				007D924F1C4AA27E0036BEE6 /* VueItineraireTableViewController.swift in Sources */,
 				00391C491C271DA6005250D4 /* ChoixMenuTableViewController.swift in Sources */,
 				008F53191C18744500127BDA /* AppValues.swift in Sources */,
+				00BEB4371CBD61AA00DDD313 /* Thermometer.swift in Sources */,
 				AD3F41E21C7DB011009113F0 /* TtitrePremiumTableViewCell.swift in Sources */,
 				00CA21D11C4EA43200CCB994 /* ListeItinerairesTableViewController.swift in Sources */,
 				007CF3581C497D48006C1898 /* CalendarSelectionViewController.swift in Sources */,
@@ -564,6 +581,7 @@
 				002B47F51C01FA87000BF3E8 /* ArretsTableViewController.swift in Sources */,
 				00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */,
 				AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */,
+				00DA802B1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift in Sources */,
 				002B47F71C01FA87000BF3E8 /* DepartsTableViewCell.swift in Sources */,
 				004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */,
 				AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */,
@@ -729,7 +747,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 13;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -758,7 +776,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 13;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",

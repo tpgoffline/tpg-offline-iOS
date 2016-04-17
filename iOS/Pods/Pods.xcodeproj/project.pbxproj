@@ -2662,23 +2662,6 @@
 			};
 			name = Debug;
 		};
-		027B812D73A79175756501C1A97F7027 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BA25803D233A4FDBFDB8587B512C8E8 /* SwiftInAppPurchase.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = $CONFIGURATION_BUILD_DIR/;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/SwiftInAppPurchase/ResourceBundle-SwiftInAppPurchase-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = SwiftInAppPurchase;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		09515F26AB11858214F2389CC506A00E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46D65D6947D841673B37F9B3C72C6563 /* SwiftyJSON.xcconfig */;
@@ -2887,23 +2870,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		4EA9E9B8AB1A07F29529F78739E8A3AF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BA25803D233A4FDBFDB8587B512C8E8 /* SwiftInAppPurchase.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = $CONFIGURATION_BUILD_DIR/;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/SwiftInAppPurchase/ResourceBundle-SwiftInAppPurchase-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = SwiftInAppPurchase;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
 		};
 		555049B14083397727FB1FF7A1488710 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3661,6 +3627,22 @@
 			};
 			name = Release;
 		};
+		CC30CE28239B3DD309908EA44C9FFCD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BA25803D233A4FDBFDB8587B512C8E8 /* SwiftInAppPurchase.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/SwiftInAppPurchase/ResourceBundle-SwiftInAppPurchase-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = SwiftInAppPurchase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		CD8A3BE4AE2CEF50203E4F7910B3CC2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF4DE5F774A65AD2B4B7B539917EA0FB /* DGRunkeeperSwitch.xcconfig */;
@@ -3720,6 +3702,22 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		ED261086EF1FCA72049DC7E600A76E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BA25803D233A4FDBFDB8587B512C8E8 /* SwiftInAppPurchase.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/SwiftInAppPurchase/ResourceBundle-SwiftInAppPurchase-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = SwiftInAppPurchase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 		F9EAB52F5C156FD838E611107250E5E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3909,8 +3907,8 @@
 		EE3794A366433D2AC6C5B25C522F57E4 /* Build configuration list for PBXNativeTarget "SwiftInAppPurchase-SwiftInAppPurchase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				027B812D73A79175756501C1A97F7027 /* Debug */,
-				4EA9E9B8AB1A07F29529F78739E8A3AF /* Release */,
+				CC30CE28239B3DD309908EA44C9FFCD1 /* Debug */,
+				ED261086EF1FCA72049DC7E600A76E1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

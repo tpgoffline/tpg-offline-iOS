@@ -1,6 +1,6 @@
 {
   "name": "SwiftDate",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "summary": "Swift library to easily manage dates; also with varying time zones, calendars and locales",
   "homepage": "https://github.com/malcommac/SwiftDate",
   "license": {
@@ -13,7 +13,7 @@
   "social_media_url": "http://twitter.com/danielemargutti",
   "source": {
     "git": "https://github.com/malcommac/SwiftDate.git",
-    "tag": "3.0.8"
+    "tag": "3.0.9"
   },
   "source_files": "Sources/SwiftDate/*.swift",
   "platforms": {

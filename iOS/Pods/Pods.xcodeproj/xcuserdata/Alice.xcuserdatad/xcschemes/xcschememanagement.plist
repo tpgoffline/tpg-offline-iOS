@@ -8,91 +8,127 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>DGElasticPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>DGRunkeeperSwitch.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>EFCircularSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>FSCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>FontAwesomeKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>INTULocationManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>Localize-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>MRProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>Onboard.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 		<key>PermissionScope.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>14</integer>
 		</dict>
 		<key>Pods-tpg offline.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>15</integer>
 		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 		<key>SwiftDate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>17</integer>
 		</dict>
 		<key>SwiftInAppPurchase-SwiftInAppPurchase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 		<key>SwiftInAppPurchase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>18</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>20</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -107,7 +143,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2CFF252DF9A03CD2ED995985086C65CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>333AF6C01215FC70F8EFEA31AE066621</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3BB42675630DE4EB3D73C57F89A15C23</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +173,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5B53DCD693FF61F869C88A581E0FDFEE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>63EC34486B6A8A7305E2AFE70F298068</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71B4663C2825F36A448909A16508BD78</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,6 +198,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>81F50714866DB7C06FED77A8375DDD43</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8F17DD5BDDF65F3AB77F350BE14632BE</key>
 		<dict>
 			<key>primary</key>
@@ -152,12 +213,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9B59633294B19EBDF63CF260272464E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9CAAB2A1855182D992E2945796B03B4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B2619B2813D910DBC9FE9714E0788D55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B26ACE7FF7B9855E13246C4680056F5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -178,6 +249,16 @@
 			<true/>
 		</dict>
 		<key>D7FF48F3092783E4E42B336F0DEF2D1A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE93A8AA765104379CF56703A1A36270</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6CCE5370D749E67A568F6DDB5BBBE49</key>
 		<dict>
 			<key>primary</key>
 			<true/>

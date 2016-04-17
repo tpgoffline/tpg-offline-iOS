@@ -120,10 +120,12 @@ class ParametresTableViewController: UITableViewController {
                     switch response.result {
                     case .Success:
                         if let value = response.result.value {
+                            print("a")
                             var compteur = 0
+                            var ok = 0
                             let json = JSON(value)
                             for (index, subJson) in json {
-                                if let data = NSData(contentsOfURL: NSURL(string: "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/" + subJson.stringValue)!) {
+                                /*if let data = NSData(contentsOfURL: NSURL(string: "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/" + subJson.stringValue)!) {
                                     let file = subJson.stringValue
                                     if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
                                         let path = dir.stringByAppendingPathComponent(file);
@@ -134,20 +136,105 @@ class ParametresTableViewController: UITableViewController {
                                 }
                                 else {
                                     compteur += 1
+                                }*/
+                                print(index)
+                                Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                    let fileManager = NSFileManager.defaultManager()
+                                    let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+                                    let pathComponent = response.suggestedFilename
+                                    
+                                    if NSFileManager.defaultManager().fileExistsAtPath(directoryURL.URLByAppendingPathComponent(pathComponent!).path!) {
+                                        try! NSFileManager.defaultManager().removeItemAtURL(directoryURL.URLByAppendingPathComponent(pathComponent!))
+                                        print("\(response.suggestedFilename!) deleted")
+                                    }
+                                    
+                                    return directoryURL.URLByAppendingPathComponent(pathComponent!)
+                                }).response { _, _, _, error in
+                                    if error != nil {
+                                        Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                            let fileManager = NSFileManager.defaultManager()
+                                            let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+                                            let pathComponent = response.suggestedFilename
+                                            
+                                            if NSFileManager.defaultManager().fileExistsAtPath(directoryURL.URLByAppendingPathComponent(pathComponent!).path!) {
+                                                try! NSFileManager.defaultManager().removeItemAtURL(directoryURL.URLByAppendingPathComponent(pathComponent!))
+                                                print("\(response.suggestedFilename!) deleted")
+                                            }
+                                            
+                                            return directoryURL.URLByAppendingPathComponent(pathComponent!)
+                                        }).response { _, _, _, error in
+                                            if error != nil {
+                                                Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                                    let fileManager = NSFileManager.defaultManager()
+                                                    let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+                                                    let pathComponent = response.suggestedFilename
+                                                    
+                                                    if NSFileManager.defaultManager().fileExistsAtPath(directoryURL.URLByAppendingPathComponent(pathComponent!).path!) {
+                                                        try! NSFileManager.defaultManager().removeItemAtURL(directoryURL.URLByAppendingPathComponent(pathComponent!))
+                                                        print("\(response.suggestedFilename!) deleted")
+                                                    }
+                                                    
+                                                    return directoryURL.URLByAppendingPathComponent(pathComponent!)
+                                                }).response { _, _, _, error in
+                                                    if error != nil {
+                                                        print("Failed with error: \(error)")
+                                                        compteur += 1
+                                                    } else {
+                                                        print("Downloaded \(subJson.stringValue) file successfully")
+                                                        ok += 1
+                                                    }
+                                                    progressBar.setProgress(Float(Int(ok + compteur) * 100) / Float(json.count) / 100, animated: true)
+                                                    CATransaction.flush()
+                                                    
+                                                    if compteur + ok == json.count {
+                                                        progressBar.dismiss(true)
+                                                        let alerte2 = SCLAlertView()
+                                                        if compteur != 0 {
+                                                            alerte2.showWarning("Opération terminée", subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.", closeButtonTitle: "Fermer")
+                                                        }
+                                                        else {
+                                                            alerte2.showSuccess("Opération terminée", subTitle: "L'opération s'est terminée avec succès.", closeButtonTitle: "Fermer")
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                print("Downloaded \(subJson.stringValue) file successfully")
+                                                ok += 1
+                                            }
+                                            progressBar.setProgress(Float(Int(ok + compteur) * 100) / Float(json.count) / 100, animated: true)
+                                            CATransaction.flush()
+                                            
+                                            if compteur + ok == json.count {
+                                                progressBar.dismiss(true)
+                                                let alerte2 = SCLAlertView()
+                                                if compteur != 0 {
+                                                    alerte2.showWarning("Opération terminée", subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.", closeButtonTitle: "Fermer")
+                                                }
+                                                else {
+                                                    alerte2.showSuccess("Opération terminée", subTitle: "L'opération s'est terminée avec succès.", closeButtonTitle: "Fermer")
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        print("Downloaded \(subJson.stringValue) file successfully")
+                                        ok += 1
+                                    }
+                                    progressBar.setProgress(Float(Int(ok + compteur) * 100) / Float(json.count) / 100, animated: true)
+                                    CATransaction.flush()
+                                    
+                                    if compteur + ok == json.count {
+                                        progressBar.dismiss(true)
+                                        let alerte2 = SCLAlertView()
+                                        if compteur != 0 {
+                                            alerte2.showWarning("Opération terminée", subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.", closeButtonTitle: "Fermer")
+                                        }
+                                        else {
+                                            alerte2.showSuccess("Opération terminée", subTitle: "L'opération s'est terminée avec succès.", closeButtonTitle: "Fermer")
+                                        }
+                                    }
                                 }
-                                progressBar.setProgress(Float(Int(index)! * 100) / Float(json.count) / 100, animated: true)
-                                
-                                CATransaction.flush()
                             }
-                            print(compteur)
-                            progressBar.dismiss(true)
-                            let alerte2 = SCLAlertView()
-                            if compteur != 0 {
-                                alerte2.showWarning("Opération terminée", subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.", closeButtonTitle: "Fermer")
-                            }
-                            else {
-                                alerte2.showSuccess("Opération terminée", subTitle: "L'opération s'est terminée avec succès.", closeButtonTitle: "Fermer")
-                            }
+                            
                         }
                     case .Failure(_):
                         progressBar.dismiss(true)

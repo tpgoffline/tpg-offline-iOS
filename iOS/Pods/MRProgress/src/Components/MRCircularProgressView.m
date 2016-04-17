@@ -18,7 +18,6 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 @interface MRCircularProgressView ()
 
 @property (nonatomic, strong, readwrite) NSNumberFormatter *numberFormatter;
-@property (nonatomic, strong, readwrite) NSTimer *valueLabelUpdateTimer;
 
 @property (nonatomic, weak, readwrite) UILabel *valueLabel;
 @property (nonatomic, weak, readwrite) MRStopButton *stopButton;
@@ -204,6 +203,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
         }
         
         [self animateToProgress:progress];
+        
     } else {
         self.progress = progress;
     }
@@ -227,16 +227,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
     [self.shapeLayer addAnimation:animation forKey:MRCircularProgressViewProgressAnimationKey];
-    
-    // Add timer to update valueLabel
-    _valueLabelProgressPercentDifference = (progress - self.progress) * 100;
-    CFTimeInterval timerInterval =  self.animationDuration / ABS(_valueLabelProgressPercentDifference);
-    self.valueLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval
-                                                                  target:self
-                                                                selector:@selector(onValueLabelUpdateTimer:)
-                                                                userInfo:nil
-                                                                 repeats:YES];
-    
+    [self updateLabel:progress];
     
     _progress = progress;
 }
@@ -244,10 +235,6 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 - (void)stopAnimation {
     // Stop running animation
     [self.layer removeAnimationForKey:MRCircularProgressViewProgressAnimationKey];
-    
-    // Stop timer
-    [self.valueLabelUpdateTimer invalidate];
-    self.valueLabelUpdateTimer = nil;
 }
 
 - (void)onValueLabelUpdateTimer:(NSTimer *)timer {
