@@ -1,6 +1,11 @@
 
 ![tpg offline logo](banniere.png)
 
+## Présentation
+
+tpg offline est une application pour les transports publics genevois apportant quelques améliorations à l'application officielle, notamment le mode hors ligne.
+Cette application est disponible sur [l'iOS App Store](https://itunes.apple.com/us/app/tpg-offline/id1001560047?l=fr&ls=1&mt=8)
+
 ## Auteur
 
 Rémy Da Costa Faro
