@@ -18,4 +18,6 @@ target 'tpg offline' do
 	pod 'Onboard', git: "https://github.com/mamaral/Onboard.git"
 	pod 'Alamofire'
 	pod "SwiftDate", git: 'https://github.com/malcommac/SwiftDate.git'
+	pod 'Log', git: "https://github.com/delba/Log.git"
+  pod 'NVActivityIndicatorView', git: "https://github.com/ninjaprox/NVActivityIndicatorView.git"
 end

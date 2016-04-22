@@ -15,6 +15,7 @@ import DGElasticPullToRefresh
 import MRProgress
 import SwiftDate
 import Alamofire
+import NVActivityIndicatorView
 
 class DepartsArretTableViewController: UITableViewController {
     var arret: Arret? = nil
@@ -29,6 +30,9 @@ class DepartsArretTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if arret == nil {
+            arret = AppValues.arrets[[String](AppValues.arrets.keys).sort()[0]]
+        }
         arretsKeys = [String](AppValues.arrets.keys)
         arretsKeys.sortInPlace({ (string1, string2) -> Bool in
             let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
@@ -44,10 +48,9 @@ class DepartsArretTableViewController: UITableViewController {
         
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             
-            self!.refreshDeparts()
-            self!.tableView.reloadData()
             
-            self?.tableView.dg_stopLoading()
+            
+            self!.refresh()
             
             }, loadingView: loadingView)
         
@@ -65,12 +68,9 @@ class DepartsArretTableViewController: UITableViewController {
         
         tableView.backgroundColor = AppValues.primaryColor
         
-        refresh(self)
+        refresh()
     }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -89,14 +89,13 @@ class DepartsArretTableViewController: UITableViewController {
                 barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:#selector(DepartsArretTableViewController.toggleFavorite(_:))))
             }
             barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
-            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
+            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh)))
             
             self.navigationItem.rightBarButtonItems = barButtonsItems
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     deinit {
@@ -142,7 +141,7 @@ class DepartsArretTableViewController: UITableViewController {
             barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.toggleFavorite(_:))))
         }
         barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.showItinerary(_:))))
-        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh(_:))))
+        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(DepartsArretTableViewController.refresh)))
         
         self.navigationItem.rightBarButtonItems = barButtonsItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
@@ -184,7 +183,7 @@ class DepartsArretTableViewController: UITableViewController {
         
         UIApplication.sharedApplication().scheduleLocalNotification(reminder)
         
-        print("Firing at \(now.hour):\(now.minute-before):\(now.second)")
+        AppValues.logger.debug("Firing at \(now.hour):\(now.minute-before):\(now.second)")
         
         let okView = SCLAlertView()
         if before == 0 {
@@ -213,13 +212,10 @@ class DepartsArretTableViewController: UITableViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
-    func refresh(sender:AnyObject) {
-        chargement = true
-        tableView.reloadData()
-        refreshDeparts()
-    }
-    func refreshDeparts() {
+
+    func refresh() {
+        self.chargement = true
+        self.tableView.reloadData()
         listeDeparts = []
         Alamofire.request(.GET, "http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json", parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": arret!.stopCode])
             .responseJSON { response in
@@ -262,6 +258,7 @@ class DepartsArretTableViewController: UITableViewController {
                     }
                     self.chargement = false
                     self.tableView.reloadData()
+                    self.tableView.dg_stopLoading()
                 }
                 else {
                     if AppValues.premium == true {
@@ -338,6 +335,7 @@ class DepartsArretTableViewController: UITableViewController {
                         }
                         self.chargement = false
                         self.tableView.reloadData()
+                        self.tableView.dg_stopLoading()
                     }
                     else {
                         self.offline = true
@@ -346,6 +344,7 @@ class DepartsArretTableViewController: UITableViewController {
                         self.serviceTermine = false
                         self.chargement = false
                         self.tableView.reloadData()
+                        self.tableView.dg_stopLoading()
                     }
                 }
         }
@@ -356,7 +355,10 @@ extension DepartsArretTableViewController {
     // MARK: tableView
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if offline {
+        if chargement == true {
+            return 1
+        }
+        else if offline {
             return 2
         }
         return 1
@@ -471,31 +473,29 @@ extension DepartsArretTableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if chargement == true {
-            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath) as! DepartsTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
-            let icone = FAKFontAwesome.spinnerIconWithSize(50)
+            cell.activityIndicator.startAnimation()
+
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()
-                cell.textLabel?.textColor = UIColor.whiteColor()
-                cell.detailTextLabel?.textColor = UIColor.whiteColor()
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+                cell.titleLabel?.textColor = UIColor.whiteColor()
+                cell.subTitleLabel?.textColor = UIColor.whiteColor()
+                cell.activityIndicator.color = UIColor.whiteColor()
             }
             else {
                 cell.backgroundColor = UIColor.whiteColor()
-                cell.textLabel?.textColor = UIColor.flatBlueColor()
-                cell.detailTextLabel?.textColor = UIColor.flatBlueColor()
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatBlueColor())
-                
+                cell.titleLabel?.textColor = UIColor.flatBlueColor()
+                cell.subTitleLabel?.textColor = UIColor.flatBlueColor()
+                cell.activityIndicator.color = UIColor.flatBlueColor()
             }
-            cell.textLabel?.text = "Chargement".localized()
-            cell.detailTextLabel?.text = "Merci de patienter".localized()
-            
-            cell.imageView?.image = icone.imageWithSize(CGSize(width: 50, height: 50))
+            cell.titleLabel?.text = "Chargement".localized()
+            cell.subTitleLabel?.text = "Merci de patienter".localized()
             cell.accessoryView = nil
             return cell
         }
         else if indexPath.section == 0 && offline {
-            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath) as! DepartsTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath)
             
             cell.backgroundColor = AppValues.secondaryColor
             cell.textLabel?.textColor = AppValues.textColor
@@ -509,7 +509,7 @@ extension DepartsArretTableViewController {
             return cell
         }
         else if offline && indexPath.section == 1 && serviceTermine {
-            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath) as! DepartsTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath)
             
             cell.backgroundColor = AppValues.secondaryColor
             cell.textLabel?.textColor = AppValues.textColor
@@ -523,7 +523,7 @@ extension DepartsArretTableViewController {
             return cell
         }
         else if !offline && indexPath.section == 0 && serviceTermine {
-            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath) as! DepartsTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath)
             
             cell.backgroundColor = AppValues.secondaryColor
             cell.textLabel?.textColor = AppValues.textColor

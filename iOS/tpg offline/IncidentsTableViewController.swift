@@ -11,32 +11,33 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import DGElasticPullToRefresh
+import Alamofire
 
 class IncidentsTableViewController: UITableViewController {
-    
-    let tpgUrl = tpgURL()
     let defaults = NSUserDefaults.standardUserDefaults()
     var distrubtions: [Perturbations] = []
     var listeBackgroundColor = [String:UIColor]()
     var listeColor = [String:UIColor]()
     var erreur = false
     var aucunProbleme = false
+    var chargement: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-		let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-		loadingView.tintColor = AppValues.textColor
-		
-		tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-			
-			self!.refresh(loadingView)
-			self?.tableView.dg_stopLoading()
-			
-			}, loadingView: loadingView)
-		
-		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
-		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-		
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = AppValues.textColor
+        
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            
+            self!.refresh(loadingView)
+            self?.tableView.dg_stopLoading()
+            
+            }, loadingView: loadingView)
+        
+        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+        
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
@@ -51,10 +52,10 @@ class IncidentsTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-		
-		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
-		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-		
+        
+        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+        
         actualiserTheme()
     }
     override func didReceiveMemoryWarning() {
@@ -67,42 +68,56 @@ class IncidentsTableViewController: UITableViewController {
         aucunProbleme = false
         erreur = false
         distrubtions = []
-        if let json = tpgUrl.getDisruptions() {
-            if json["disruptions"].count != 0 {
-                for x in 0...json["disruptions"].count - 1 {
-                    if listeColor[json["disruptions"][x]["lineCode"].string!] != nil {
-                        distrubtions.append(Perturbations(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
+        chargement = true
+        tableView.reloadData()
+        
+        Alamofire.request(.GET, "http://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json", parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"])
+            .responseJSON { response in
+                if let data = response.result.value {
+                    let json = JSON(data)
+                    if json["disruptions"].count != 0 {
+                        for x in 0...json["disruptions"].count - 1 {
+                            if self.listeColor[json["disruptions"][x]["lineCode"].string!] != nil {
+                                self.distrubtions.append(Perturbations(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
+                            }
+                        }
                     }
+                    else {
+                        self.aucunProbleme = true
+                    }
+                    self.chargement = false
+                    self.tableView.reloadData()
                 }
-            }
-            else {
-                aucunProbleme = true
-            }
+                else {
+                    self.erreur = true
+                    self.tableView.reloadData()
+                }
         }
-        else {
-            erreur = true
-        }
-
+        
         tableView.reloadData()
     }
-        
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-	
-	deinit {
-		tableView.dg_removePullToRefresh()
-	}
-	
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if aucunProbleme == true {
+        if chargement {
             return 1
         }
-        if erreur == true {
+        else if aucunProbleme == true {
             return 1
         }
-        return distrubtions.count
+        else if erreur == true {
+            return 1
+        }
+        else {
+            return distrubtions.count
+        }
     }
     
     func labelToImage(label: UILabel!) -> UIImage {
@@ -115,9 +130,30 @@ class IncidentsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("incidentsCell", forIndexPath: indexPath)
-        
-        if aucunProbleme {
+        if chargement == true {
+            let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
+            
+            cell.activityIndicator.startAnimation()
+            
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                cell.backgroundColor = UIColor.flatBlueColor()
+                cell.titleLabel?.textColor = UIColor.whiteColor()
+                cell.subTitleLabel?.textColor = UIColor.whiteColor()
+                cell.activityIndicator.color = UIColor.whiteColor()
+            }
+            else {
+                cell.backgroundColor = UIColor.whiteColor()
+                cell.titleLabel?.textColor = UIColor.flatBlueColor()
+                cell.subTitleLabel?.textColor = UIColor.flatBlueColor()
+                cell.activityIndicator.color = UIColor.flatBlueColor()
+            }
+            cell.titleLabel?.text = "Chargement".localized()
+            cell.subTitleLabel?.text = "Merci de patienter".localized()
+            cell.accessoryView = nil
+            return cell
+        }
+        else if aucunProbleme {
+            let cell = tableView.dequeueReusableCellWithIdentifier("incidentsCell", forIndexPath: indexPath)
             cell.textLabel?.text = "Aucun incident".localized()
             
             let dateFormatter = NSDateFormatter()
@@ -155,8 +191,10 @@ class IncidentsTableViewController: UITableViewController {
                 iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatYellowColorDark())
                 cell.imageView?.image = iconeSmile.imageWithSize(CGSize(width: 25, height: 25))
             }
+            return cell
         }
         else if erreur {
+            let cell = tableView.dequeueReusableCellWithIdentifier("incidentsCell", forIndexPath: indexPath)
             cell.textLabel?.text = "Pas de réseau !".localized()
             
             cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.".localized()
@@ -179,9 +217,10 @@ class IncidentsTableViewController: UITableViewController {
                 iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedColorDark())
                 cell.imageView?.image = iconeError.imageWithSize(CGSize(width: 25, height: 25))
             }
+            return cell
         }
         else {
-            
+            let cell = tableView.dequeueReusableCellWithIdentifier("incidentsCell", forIndexPath: indexPath)
             cell.textLabel?.text = distrubtions[indexPath.row].title
             cell.detailTextLabel!.text = distrubtions[indexPath.row].subTitle
             
@@ -219,8 +258,8 @@ class IncidentsTableViewController: UITableViewController {
             
             let image = labelToImage(labelPictoLigne)
             cell.imageView?.image = image
+            return cell
         }
-        return cell
         
     }
     

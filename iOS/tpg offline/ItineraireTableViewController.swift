@@ -31,6 +31,11 @@ class ItineraireTableViewController: UITableViewController {
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .AllVisible
         
+        var barButtonsItems: [UIBarButtonItem] = []
+        let echangeIcone = FAKFontAwesome.exchangeIconWithSize(20)
+        barButtonsItems.append(UIBarButtonItem(image: echangeIcone.imageWithSize(CGSize(width: 20, height: 20)), style: .Done, target: self, action: #selector(ItineraireTableViewController.echangerArrets)))
+        navigationItem.leftBarButtonItems = barButtonsItems
+        
 		ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
 		
 	}
@@ -45,7 +50,14 @@ class ItineraireTableViewController: UITableViewController {
 		
 	}
 	
-	
+    func echangerArrets() {
+        let arretDepart = ItineraireEnCours.itineraire.depart
+        let arretArrivee = ItineraireEnCours.itineraire.arrivee
+        ItineraireEnCours.itineraire.depart = arretArrivee
+        ItineraireEnCours.itineraire.arrivee = arretDepart
+        tableView.reloadData()
+    }
+    
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		if AppValues.favorisItineraires.count == 0 {
 			return 1

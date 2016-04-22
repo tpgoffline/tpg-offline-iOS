@@ -19,26 +19,26 @@ class tpgArretSelectionTableViewController: UITableViewController {
     var filtredResults = [Arret]()
     let searchController = UISearchController(searchResultsController: nil)
     var locationManager = CLLocationManager()
-    let tpgUrl = tpgURL()
     let defaults = NSUserDefaults.standardUserDefaults()
     var arretsKeys: [String]!
+    var chargementLocalisation: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-		loadingView.tintColor = AppValues.textColor
-		
-		tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-			
-			self!.refresh(loadingView)
-			self?.tableView.dg_stopLoading()
-			
-			}, loadingView: loadingView)
-		
-		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
-		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-		
+        
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = AppValues.textColor
+        
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            
+            self!.refresh(loadingView)
+            self?.tableView.dg_stopLoading()
+            
+            }, loadingView: loadingView)
+        
+        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+        
         // Result Search Controller
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -47,52 +47,52 @@ class tpgArretSelectionTableViewController: UITableViewController {
         
         arretsKeys = [String](AppValues.arrets.keys)
         arretsKeys.sortInPlace({ (string1, string2) -> Bool in
-			let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
-			let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
-			if stringA.lowercaseString < stringB.lowercaseString {
-				return true
-			}
-			return false
+            let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
+            let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
+            if stringA.lowercaseString < stringB.lowercaseString {
+                return true
+            }
+            return false
         })
-		
-		navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
-		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
-		navigationController?.navigationBar.tintColor = AppValues.textColor
-		tableView.backgroundColor = AppValues.primaryColor
-		searchController.searchBar.barTintColor = AppValues.primaryColor
-		searchController.searchBar.tintColor = AppValues.textColor
-		tableView.tableHeaderView = self.searchController.searchBar
-		
-		
-		locationManager.delegate = self
-		var accurency = kCLLocationAccuracyHundredMeters
-		if self.defaults.integerForKey("locationAccurency") == 1 {
-			accurency = kCLLocationAccuracyNearestTenMeters
-		}
-		else if self.defaults.integerForKey("locationAccurency") == 2 {
-			accurency = kCLLocationAccuracyBest
-		}
-		locationManager.desiredAccuracy = accurency
-		
-		requestLocation()
+        
+        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
+        navigationController?.navigationBar.tintColor = AppValues.textColor
+        tableView.backgroundColor = AppValues.primaryColor
+        searchController.searchBar.barTintColor = AppValues.primaryColor
+        searchController.searchBar.tintColor = AppValues.textColor
+        tableView.tableHeaderView = self.searchController.searchBar
+        
+        
+        locationManager.delegate = self
+        var accurency = kCLLocationAccuracyHundredMeters
+        if self.defaults.integerForKey("locationAccurency") == 1 {
+            accurency = kCLLocationAccuracyNearestTenMeters
+        }
+        else if self.defaults.integerForKey("locationAccurency") == 2 {
+            accurency = kCLLocationAccuracyBest
+        }
+        locationManager.desiredAccuracy = accurency
+        
+        requestLocation()
     }
-	
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-		
-		tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
-		tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-		
-     
+        
+        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+        
+        
         actualiserTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
     }
-	
-	deinit {
-		tableView.dg_removePullToRefresh()
-	}
-
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -121,7 +121,12 @@ class tpgArretSelectionTableViewController: UITableViewController {
         }
         else {
             if section == 0 {
-                return arretsLocalisation.count
+                if (chargementLocalisation == true) {
+                    return 1
+                }
+                else {
+                    return arretsLocalisation.count
+                }
             }
             else if section == 1 {
                 if (AppValues.arretsFavoris == nil) {
@@ -138,6 +143,8 @@ class tpgArretSelectionTableViewController: UITableViewController {
     }
     
     func requestLocation() {
+        chargementLocalisation = true
+        tableView.reloadData()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
@@ -146,11 +153,22 @@ class tpgArretSelectionTableViewController: UITableViewController {
         if !searchController.active {
             let cell = tableView.dequeueReusableCellWithIdentifier("arretsCell", forIndexPath: indexPath)
             if indexPath.section == 0 {
-                let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
-                iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = arretsLocalisation[indexPath.row].nomComplet
-                cell.detailTextLabel!.text = "~" + String(Int(arretsLocalisation[indexPath.row].distance!)) + "m"
+                if chargementLocalisation {
+                    let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
+                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+                    cell.imageView?.image = iconLocation.imageWithSize(CGSize(width: 20, height: 20))
+                    cell.textLabel?.text = "Recherche des arrets..."
+                    cell.detailTextLabel?.text = ""
+                    cell.accessoryView = UIView()
+                }
+                else {
+                    let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
+                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+                    cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
+                    cell.textLabel?.text = arretsLocalisation[indexPath.row].nomComplet
+                    cell.detailTextLabel!.text = "~" + String(Int(arretsLocalisation[indexPath.row].distance!)) + "m"
+                    cell.imageView?.image = nil
+                }
             }
             else if indexPath.section == 1 {
                 let iconFavoris = FAKFontAwesome.starIconWithSize(20)
@@ -158,6 +176,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 cell.accessoryView = UIImageView(image: iconFavoris.imageWithSize(CGSize(width: 20, height: 20)))
                 cell.textLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.titre
                 cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.sousTitre
+                cell.imageView?.image = nil
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
@@ -165,10 +184,11 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
                 cell.textLabel?.text = AppValues.arrets[arretsKeys[indexPath.row]]!.titre
                 cell.detailTextLabel!.text = AppValues.arrets[arretsKeys[indexPath.row]]!.sousTitre
+                cell.imageView?.image = nil
             }
             
             let backgroundView = UIView()
-			backgroundView.backgroundColor = AppValues.secondaryColor
+            backgroundView.backgroundColor = AppValues.secondaryColor
             cell.selectedBackgroundView = backgroundView
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
@@ -181,10 +201,10 @@ class tpgArretSelectionTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("arretsCell", forIndexPath: indexPath)
             let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
             iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-			
-			let backgroundView = UIView()
-			backgroundView.backgroundColor = AppValues.secondaryColor
-			cell.selectedBackgroundView = backgroundView
+            
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = AppValues.secondaryColor
+            cell.selectedBackgroundView = backgroundView
             cell.textLabel?.text = filtredResults[indexPath.row].titre
             cell.detailTextLabel!.text = filtredResults[indexPath.row].sousTitre
             cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
@@ -202,7 +222,9 @@ class tpgArretSelectionTableViewController: UITableViewController {
         }
         else {
             if indexPath.section == 0 {
-                arret = arretsLocalisation[indexPath.row]
+                if !chargementLocalisation {
+                    arret = arretsLocalisation[indexPath.row]
+                }
             }
             else if indexPath.section == 1 {
                 arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]
@@ -225,12 +247,12 @@ class tpgArretSelectionTableViewController: UITableViewController {
             return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
-			let stringA = String(arret1.titre + arret1.sousTitre)
-			let stringB = String(arret2.titre + arret2.sousTitre)
-			if stringA.lowercaseString < stringB.lowercaseString {
-				return true
-			}
-			return false
+            let stringA = String(arret1.titre + arret1.sousTitre)
+            let stringB = String(arret2.titre + arret2.sousTitre)
+            if stringA.lowercaseString < stringB.lowercaseString {
+                return true
+            }
+            return false
         }
         
         tableView.reloadData()
@@ -248,7 +270,7 @@ extension tpgArretSelectionTableViewController: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         let location = locations[0]
         self.arretsLocalisation = []
-        print("Résultat de la localisation")
+        AppValues.logger.info("Résultat de la localisation")
         
         if self.defaults.integerForKey("proximityDistance") == 0 {
             self.defaults.setInteger(500, forKey: "proximityDistance")
@@ -260,8 +282,8 @@ extension tpgArretSelectionTableViewController: CLLocationManagerDelegate {
             if (location.distanceFromLocation(x.location) <= Double(self.defaults.integerForKey("proximityDistance"))) {
                 
                 self.arretsLocalisation.append(x)
-                print(x.stopCode)
-                print(String(location.distanceFromLocation(x.location)))
+                AppValues.logger.info(x.stopCode)
+                AppValues.logger.info(String(location.distanceFromLocation(x.location)))
             }
         }
         self.arretsLocalisation.sortInPlace({ (arret1, arret2) -> Bool in
@@ -272,10 +294,13 @@ extension tpgArretSelectionTableViewController: CLLocationManagerDelegate {
                 return false
             }
         })
+        self.chargementLocalisation = false
         self.tableView.reloadData()
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error while updating location " + error.localizedDescription)
+        self.chargementLocalisation = false
+        self.tableView.reloadData()
+        AppValues.logger.warning("Error while updating location " + error.localizedDescription)
     }
 }

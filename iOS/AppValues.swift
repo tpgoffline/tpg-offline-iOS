@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import Log
 
 struct AppValues {
     static var arrets: [String: Arret] = [:]
@@ -19,4 +20,5 @@ struct AppValues {
     static var secondaryColor: UIColor! = UIColor.flatOrangeColorDark()
     static var textColor: UIColor! = UIColor.whiteColor()
 	static var premium: Bool! = false
+    static var logger = Logger()
 }

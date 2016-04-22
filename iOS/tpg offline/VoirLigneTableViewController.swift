@@ -40,12 +40,7 @@ class VoirLigneTableViewController: UITableViewController {
         loadingView.tintColor = AppValues.textColor
         
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            
             self!.refresh()
-            self!.tableView.reloadData()
-            
-            self?.tableView.dg_stopLoading()
-            
             }, loadingView: loadingView)
         
         tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
@@ -97,26 +92,24 @@ class VoirLigneTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if chargement == true {
-            let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
-            let icone = FAKFontAwesome.spinnerIconWithSize(50)
+            cell.activityIndicator.startAnimation()
+            
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()
-                cell.textLabel?.textColor = UIColor.whiteColor()
-                cell.detailTextLabel?.textColor = UIColor.whiteColor()
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+                cell.titleLabel?.textColor = UIColor.whiteColor()
+                cell.subTitleLabel?.textColor = UIColor.whiteColor()
+                cell.activityIndicator.color = UIColor.whiteColor()
             }
             else {
                 cell.backgroundColor = UIColor.whiteColor()
-                cell.textLabel?.textColor = UIColor.flatBlueColor()
-                cell.detailTextLabel?.textColor = UIColor.flatBlueColor()
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatBlueColor())
-                
+                cell.titleLabel?.textColor = UIColor.flatBlueColor()
+                cell.subTitleLabel?.textColor = UIColor.flatBlueColor()
+                cell.activityIndicator.color = UIColor.flatBlueColor()
             }
-            cell.textLabel?.text = "Chargement".localized()
-            cell.detailTextLabel?.text = "Merci de patienter".localized()
-            
-            cell.imageView?.image = icone.imageWithSize(CGSize(width: 50, height: 50))
+            cell.titleLabel?.text = "Chargement".localized()
+            cell.subTitleLabel?.text = "Merci de patienter".localized()
             cell.accessoryView = nil
             return cell
         }
@@ -349,11 +342,13 @@ class VoirLigneTableViewController: UITableViewController {
                     }
                     self.chargement = false
                     self.tableView.reloadData()
+                    self.tableView.dg_stopLoading()
                 }
                 else {
                     self.thermometerList = []
                     self.chargement = false
                     self.tableView.reloadData()
+                    self.tableView.dg_stopLoading()
                 }
         }
     }

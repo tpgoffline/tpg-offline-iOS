@@ -14,6 +14,7 @@ import Onboard
 import Alamofire
 import MRProgress
 import SCLAlertView
+import SafariServices
 
 class ParametresTableViewController: UITableViewController {
     
@@ -34,6 +35,8 @@ class ParametresTableViewController: UITableViewController {
         [FAKFontAwesome.starIconWithSize(20), "Premium".localized(), "showPremium"]
     ]
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +46,10 @@ class ParametresTableViewController: UITableViewController {
         }
         else {
             listeRows += listeRowNonPremium
+        }
+        
+        if !defaults.boolForKey("tutorial") {
+            afficherTutoriel()
         }
     }
     
@@ -94,6 +101,20 @@ class ParametresTableViewController: UITableViewController {
         else if listeRows[indexPath.row][2] as! String == "actualiserDeparts" {
             actualiserDeparts()
         }
+        else if listeRows[indexPath.row][2] as! String == "showGitHub" {
+            if #available(iOS 9.0, *) {
+                let safariViewController = SFSafariViewController(URL: NSURL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: true)
+                if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                    safariViewController.view.tintColor = AppValues.primaryColor
+                }
+                else {
+                    safariViewController.view.tintColor = AppValues.textColor
+                }
+                presentViewController(safariViewController, animated: true, completion: nil)
+            } else {
+                performSegueWithIdentifier("showGitHub", sender: self)
+            }
+        }
         else {
             performSegueWithIdentifier(listeRows[indexPath.row][2] as! String, sender: self)
         }
@@ -120,24 +141,10 @@ class ParametresTableViewController: UITableViewController {
                     switch response.result {
                     case .Success:
                         if let value = response.result.value {
-                            print("a")
                             var compteur = 0
                             var ok = 0
                             let json = JSON(value)
-                            for (index, subJson) in json {
-                                /*if let data = NSData(contentsOfURL: NSURL(string: "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/" + subJson.stringValue)!) {
-                                    let file = subJson.stringValue
-                                    if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
-                                        let path = dir.stringByAppendingPathComponent(file);
-                                        if !(data.writeToFile(path, atomically: true)) {
-                                            compteur += 1
-                                        }
-                                    }
-                                }
-                                else {
-                                    compteur += 1
-                                }*/
-                                print(index)
+                            for (_, subJson) in json {
                                 Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
                                     let fileManager = NSFileManager.defaultManager()
                                     let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
@@ -145,7 +152,6 @@ class ParametresTableViewController: UITableViewController {
                                     
                                     if NSFileManager.defaultManager().fileExistsAtPath(directoryURL.URLByAppendingPathComponent(pathComponent!).path!) {
                                         try! NSFileManager.defaultManager().removeItemAtURL(directoryURL.URLByAppendingPathComponent(pathComponent!))
-                                        print("\(response.suggestedFilename!) deleted")
                                     }
                                     
                                     return directoryURL.URLByAppendingPathComponent(pathComponent!)
@@ -158,7 +164,6 @@ class ParametresTableViewController: UITableViewController {
                                             
                                             if NSFileManager.defaultManager().fileExistsAtPath(directoryURL.URLByAppendingPathComponent(pathComponent!).path!) {
                                                 try! NSFileManager.defaultManager().removeItemAtURL(directoryURL.URLByAppendingPathComponent(pathComponent!))
-                                                print("\(response.suggestedFilename!) deleted")
                                             }
                                             
                                             return directoryURL.URLByAppendingPathComponent(pathComponent!)
@@ -171,16 +176,42 @@ class ParametresTableViewController: UITableViewController {
                                                     
                                                     if NSFileManager.defaultManager().fileExistsAtPath(directoryURL.URLByAppendingPathComponent(pathComponent!).path!) {
                                                         try! NSFileManager.defaultManager().removeItemAtURL(directoryURL.URLByAppendingPathComponent(pathComponent!))
-                                                        print("\(response.suggestedFilename!) deleted")
                                                     }
                                                     
                                                     return directoryURL.URLByAppendingPathComponent(pathComponent!)
                                                 }).response { _, _, _, error in
                                                     if error != nil {
-                                                        print("Failed with error: \(error)")
-                                                        compteur += 1
+                                                        Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                                            let fileManager = NSFileManager.defaultManager()
+                                                            let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+                                                            let pathComponent = response.suggestedFilename
+                                                            
+                                                            if NSFileManager.defaultManager().fileExistsAtPath(directoryURL.URLByAppendingPathComponent(pathComponent!).path!) {
+                                                                try! NSFileManager.defaultManager().removeItemAtURL(directoryURL.URLByAppendingPathComponent(pathComponent!))
+                                                            }
+                                                            
+                                                            return directoryURL.URLByAppendingPathComponent(pathComponent!)
+                                                        }).response { _, _, _, error in
+                                                            if error != nil {
+                                                                compteur += 1
+                                                            } else {
+                                                                ok += 1
+                                                            }
+                                                            progressBar.setProgress(Float(Int(ok + compteur) * 100) / Float(json.count) / 100, animated: true)
+                                                            CATransaction.flush()
+                                                            
+                                                            if compteur + ok == json.count {
+                                                                progressBar.dismiss(true)
+                                                                let alerte2 = SCLAlertView()
+                                                                if compteur != 0 {
+                                                                    alerte2.showWarning("Opération terminée", subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.", closeButtonTitle: "Fermer")
+                                                                }
+                                                                else {
+                                                                    alerte2.showSuccess("Opération terminée", subTitle: "L'opération s'est terminée avec succès.", closeButtonTitle: "Fermer")
+                                                                }
+                                                            }
+                                                        }
                                                     } else {
-                                                        print("Downloaded \(subJson.stringValue) file successfully")
                                                         ok += 1
                                                     }
                                                     progressBar.setProgress(Float(Int(ok + compteur) * 100) / Float(json.count) / 100, animated: true)
@@ -198,7 +229,6 @@ class ParametresTableViewController: UITableViewController {
                                                     }
                                                 }
                                             } else {
-                                                print("Downloaded \(subJson.stringValue) file successfully")
                                                 ok += 1
                                             }
                                             progressBar.setProgress(Float(Int(ok + compteur) * 100) / Float(json.count) / 100, animated: true)
@@ -216,7 +246,6 @@ class ParametresTableViewController: UITableViewController {
                                             }
                                         }
                                     } else {
-                                        print("Downloaded \(subJson.stringValue) file successfully")
                                         ok += 1
                                     }
                                     progressBar.setProgress(Float(Int(ok + compteur) * 100) / Float(json.count) / 100, animated: true)
@@ -292,6 +321,10 @@ class ParametresTableViewController: UITableViewController {
         iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         let page10 = OnboardingContentViewController (title: "Et beaucoup d'autres choses".localized(), body: "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Terminer".localized(), actionBlock: { (onboardingvc) in
             self.dismissViewControllerAnimated(true, completion: nil)
+            if !self.defaults.boolForKey("tutorial") {
+                self.defaults.setBool(true, forKey: "tutorial")
+                self.tabBarController?.selectedIndex = 0
+            }
         })
         
         page1.movesToNextViewController = true
@@ -318,6 +351,10 @@ class ParametresTableViewController: UITableViewController {
         onboardingVC.skipButton.setTitle("Passer".localized(), forState: .Normal)
         onboardingVC.skipHandler = {
             self.dismissViewControllerAnimated(true, completion: nil)
+            if !self.defaults.boolForKey("tutorial") {
+                self.defaults.setBool(true, forKey: "tutorial")
+                self.tabBarController?.selectedIndex = 0
+            }
         }
         presentViewController(onboardingVC, animated: true, completion: nil)
     }

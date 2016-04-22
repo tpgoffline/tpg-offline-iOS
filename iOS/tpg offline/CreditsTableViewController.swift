@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import SafariServices
 
 class CreditsTableViewController: UITableViewController {
 
@@ -70,7 +71,18 @@ class CreditsTableViewController: UITableViewController {
     }
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		performSegueWithIdentifier("showURL", sender: self)
+        if #available(iOS 9.0, *) {
+            let safariViewController = SFSafariViewController(URL: NSURL(string: listeCredits[tableView.indexPathForSelectedRow!.row][2])!, entersReaderIfAvailable: true)
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                safariViewController.view.tintColor = AppValues.primaryColor
+            }
+            else {
+                safariViewController.view.tintColor = AppValues.textColor
+            }
+            presentViewController(safariViewController, animated: true, completion: nil)
+        } else {
+            performSegueWithIdentifier("showURL", sender: self)
+        }
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

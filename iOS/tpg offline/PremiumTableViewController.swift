@@ -49,7 +49,7 @@ class PremiumTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
-                print("Error: \(error)")
+                AppValues.logger.error(error)
             }
         }
 		
@@ -154,7 +154,7 @@ class PremiumTableViewController: UITableViewController {
             switch result{
             case .Purchased(let productId,let transaction,let paymentQueue):
                 paymentQueue.finishTransaction(transaction)
-                print("Purchase Success: \(productId)")
+                AppValues.logger.info("Purchase Success: \(productId)")
                 AppValues.premium = true
                 self.defaults.setBool(true, forKey: "premium")
                 let alerte = SCLAlertView()
@@ -166,7 +166,7 @@ class PremiumTableViewController: UITableViewController {
                 })
                 
             case .Failed(let error):
-                print("Purchase Failed: \(error)")
+                AppValues.logger.error("Purchase Failed: \(error)")
                 let alerte = SCLAlertView()
                 alerte.showError("Échec".localized(), subTitle: "L'achat n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
                 
@@ -182,7 +182,7 @@ class PremiumTableViewController: UITableViewController {
             switch result{
             case .Restored(let productId,let transaction,let paymentQueue) :
                 paymentQueue.finishTransaction(transaction)
-                print("Restore Success: \(productId)")
+                AppValues.logger.info("Restore Success: \(productId)")
                 AppValues.premium = true
                 self.defaults.setBool(true, forKey: "premium")
                 let alerte = SCLAlertView()
@@ -194,7 +194,7 @@ class PremiumTableViewController: UITableViewController {
                 })
                 
             case .Failed(let error):
-                print("Restore Failed: \(error)")
+                AppValues.logger.error("Restore Failed: \(error)")
                 let alerte = SCLAlertView()
                 alerte.showError("Échec", subTitle: "La restauration n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20)
                 

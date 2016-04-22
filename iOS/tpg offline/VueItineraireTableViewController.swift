@@ -310,7 +310,7 @@ class VueItineraireTableViewController: UITableViewController {
         
         UIApplication.sharedApplication().scheduleLocalNotification(reminder)
         
-        print("Firing at \(now.hour):\(now.minute - before):\(now.second)")
+        AppValues.logger.info("Firing at \(now.hour):\(now.minute - before):\(now.second)")
         
         let okView = SCLAlertView()
         if before == 0 {

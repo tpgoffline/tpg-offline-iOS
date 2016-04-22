@@ -15,13 +15,11 @@ import PermissionScope
 import DGElasticPullToRefresh
 import INTULocationManager
 import Localize_Swift
-import Onboard
 
 class ArretsTableViewController: UITableViewController, UISplitViewControllerDelegate {
     var arretsLocalisation = [Arret]()
     var filtredResults = [Arret]()
     let searchController = UISearchController(searchResultsController: nil)
-    let tpgUrl = tpgURL()
     let defaults = NSUserDefaults.standardUserDefaults()
     var arretsKeys: [String] = []
     let pscope = PermissionScope()
@@ -101,14 +99,14 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
             pscope.bodyLabel.text = "Nous avons besoin de quelques autorisations".localized()
             pscope.closeButton.setTitle("X", forState: .Normal)
             pscope.show({ finished, results in
-                print("got results \(results)")
+                AppValues.logger.info("got results \(results)")
                 for x in results {
                     if x.type == PermissionType.LocationInUse {
                         self.requestLocation()
                     }
                 }
                 }, cancelled: { (results) -> Void in
-                    print("thing was cancelled")
+                    AppValues.logger.info("thing was cancelled")
             })
             
         }
@@ -129,7 +127,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         localisationManager.requestLocationWithDesiredAccuracy(accurency, timeout: 60, delayUntilAuthorized: true) { (location, accurency, status) in
             if status == .Success {
                 self.arretsLocalisation = []
-                print("Résultat de la localisation")
+                AppValues.logger.info("Résultat de la localisation")
                 
                 if self.defaults.integerForKey("proximityDistance") == 0 {
                     self.defaults.setInteger(500, forKey: "proximityDistance")
@@ -141,8 +139,8 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                     if (location.distanceFromLocation(x.location) <= Double(self.defaults.integerForKey("proximityDistance"))) {
                         
                         self.arretsLocalisation.append(x)
-                        print(x.stopCode)
-                        print(String(location.distanceFromLocation(x.location)))
+                        AppValues.logger.info(x.stopCode)
+                        AppValues.logger.info(String(location.distanceFromLocation(x.location)))
                     }
                 }
                 self.arretsLocalisation.sortInPlace({ (arret1, arret2) -> Bool in
@@ -238,7 +236,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                     cell.imageView?.image = iconLocation.imageWithSize(CGSize(width: 20, height: 20))
                     cell.textLabel?.text = "Recherche des arrets..."
                     cell.detailTextLabel?.text = ""
-                    cell.accessoryView = nil
+                    cell.accessoryView = UIView()
                 }
                 else {
                     let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
@@ -289,6 +287,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
             cell.detailTextLabel!.text = filtredResults[indexPath.row].sousTitre
             cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
             cell.backgroundColor = AppValues.primaryColor
+            cell.imageView?.image = nil
             
             return cell
         }
@@ -308,7 +307,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                 else if tableView.indexPathForSelectedRow!.section == 1 {
                     departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[tableView.indexPathForSelectedRow!.row]]
                 }
-                else if !chargementLocalisation {
+                else {
                     departsArretsViewController.arret = AppValues.arrets[self.arretsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                 }
             }
@@ -316,7 +315,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if tableView.indexPathForSelectedRow!.section == 0 && chargementLocalisation {
+        if tableView.indexPathForSelectedRow!.section == 0 && chargementLocalisation && !searchController.active {
             return false
         }
         else {

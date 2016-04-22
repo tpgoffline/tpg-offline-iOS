@@ -30,6 +30,7 @@ PODS:
   - FSCalendar (2.1.0)
   - INTULocationManager (4.2.0)
   - Localize-Swift (1.1)
+  - Log (0.4)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -58,6 +59,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
+  - NVActivityIndicatorView (2.5)
   - Onboard (2.1.9)
   - PermissionScope (1.0.2)
   - SCLAlertView (0.5.1)
@@ -75,7 +77,9 @@ DEPENDENCIES:
   - FSCalendar
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
   - Localize-Swift (from `https://github.com/marmelroy/Localize-Swift.git`)
+  - Log (from `https://github.com/delba/Log.git`)
   - MRProgress (from `https://github.com/RemyDCF/MRProgress.git`)
+  - NVActivityIndicatorView (from `https://github.com/ninjaprox/NVActivityIndicatorView.git`)
   - Onboard (from `https://github.com/mamaral/Onboard.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
@@ -98,8 +102,12 @@ EXTERNAL SOURCES:
     :git: https://github.com/intuit/LocationManager.git
   Localize-Swift:
     :git: https://github.com/marmelroy/Localize-Swift.git
+  Log:
+    :git: https://github.com/delba/Log.git
   MRProgress:
     :git: https://github.com/RemyDCF/MRProgress.git
+  NVActivityIndicatorView:
+    :git: https://github.com/ninjaprox/NVActivityIndicatorView.git
   Onboard:
     :git: https://github.com/mamaral/Onboard.git
   PermissionScope:
@@ -135,9 +143,15 @@ CHECKOUT OPTIONS:
   Localize-Swift:
     :commit: cac9f41c3fd0b518776b8d5faabe0279449c347d
     :git: https://github.com/marmelroy/Localize-Swift.git
+  Log:
+    :commit: 01e1650138c4568fa0efec8c9f44ccc124066b93
+    :git: https://github.com/delba/Log.git
   MRProgress:
     :commit: 0a9a8e9299c35f1ed1be0648910505fbd156e952
     :git: https://github.com/RemyDCF/MRProgress.git
+  NVActivityIndicatorView:
+    :commit: f21a3bd51e15cb808ff61b49efc5a042a1cb5dc4
+    :git: https://github.com/ninjaprox/NVActivityIndicatorView.git
   Onboard:
     :commit: cef8682f3c73af9eb563c96febb100acade23311
     :git: https://github.com/mamaral/Onboard.git
@@ -167,7 +181,9 @@ SPEC CHECKSUMS:
   FSCalendar: d8b9dddaf96fff7621a33b110763d981bb01bc04
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
+  Log: 202ae5ea306f3a74440500434b9560db1c4b1f9e
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
+  NVActivityIndicatorView: 18e82784c9cb2d5f3df3129a3e4754eb075ebca0
   Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
@@ -175,6 +191,6 @@ SPEC CHECKSUMS:
   SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: c600d99c2b73b98207b2ed134d138de9ccbc6a1e
+PODFILE CHECKSUM: b954a621ccf064b9664d6ab37e2a192f4ebe4424
 
 COCOAPODS: 1.0.0.beta.5
