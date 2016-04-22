@@ -25,12 +25,14 @@ class CreditsTableViewController: UITableViewController {
 		["DGElasticPullToRefresh", "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT".localized(), "https://github.com/gontovnik/DGElasticPullToRefresh.git"],
 		["MRProgress", "Projet maintenu sur GitHub par mrackwitz - Projet en licence MIT".localized(), "https://github.com/mrackwitz/MRProgress.git"],
 		["INTULocationManager", "Projet maintenu sur GitHub par intuit - Projet en licence MIT".localized(), "https://github.com/intuit/LocationManager.git"],
-		["SwiftyStoreKit", "Projet maintenu sur GitHub par bizz84 - Projet en licence MIT".localized(), "https://github.com/bizz84/SwiftyStoreKit.git"],
+		["SwiftInAppPurchase", "Projet maintenu sur GitHub par rpzzzzzz - Projet en licence MIT".localized(), "https://github.com/rpzzzzzz/SwiftInAppPurchase.git"],
 		["Localize-Swift", "Projet maintenu sur GitHub par marmelroy - Projet en licence MIT".localized(), "https://github.com/marmelroy/Localize-Swift.git"],
 		["Onboard", "Projet maintenu sur GitHub par mamaral - Projet en licence MIT".localized(), "https://github.com/mamaral/Onboard.git"],
 		["Alamofire", "Projet maintenu sur GitHub par Alamofire - Projet en licence MIT".localized(), "https://github.com/Alamofire/Alamofire.git"],
 		["EFCircularSlider", "Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT".localized(), "https://github.com/RemyDCF/EFCircularSlider.git"],
-		["SwiftDate", "Projet maintenu sur GitHub par malcommac - Projet en licence MIT".localized(), "https://github.com/malcommac/SwiftDate"]
+		["SwiftDate", "Projet maintenu sur GitHub par malcommac - Projet en licence MIT".localized(), "https://github.com/malcommac/SwiftDate"],
+		["Log", "Projet maintenu sur GitHub par delba - Projet en licence MIT".localized(), "https://github.com/delba/Log.git"],
+		["NVActivityIndicatorView", "Projet maintenu sur GitHub par ninjaprox - Projet en licence MIT".localized(), "https://github.com/ninjaprox/NVActivityIndicatorView.git"]
     ]
     override func viewDidLoad() {
         super.viewDidLoad()     
