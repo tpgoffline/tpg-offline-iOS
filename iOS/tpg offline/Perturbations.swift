@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Perturbations {
+internal class Perturbations {
     var lineCode: String!
     var title: String!
     var subTitle: String!

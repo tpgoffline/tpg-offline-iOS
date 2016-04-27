@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Departs {
+internal class Departs {
     var ligne: String!
     var direction: String!
     var couleur: UIColor!

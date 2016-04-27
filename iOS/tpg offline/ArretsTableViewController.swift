@@ -24,6 +24,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     var arretsKeys: [String] = []
     let pscope = PermissionScope()
     var chargementLocalisation = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +49,8 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
+        searchController.searchBar.scopeButtonTitles = ["Arrets", "Lignes"]
+        searchController.searchBar.delegate = self
         
         arretsKeys = [String](AppValues.arrets.keys)
         arretsKeys.sortInPlace({ (string1, string2) -> Bool in
@@ -326,9 +329,17 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         tableView.dg_removePullToRefresh()
     }
     
-    func filterContentForSearchText(searchText: String) {
+    func filterContentForSearchText(searchText: String, scope: String = "Arrets") {
         filtredResults = [Arret](AppValues.arrets.values).filter { arret in
-            return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+            if scope == "Arrets" {
+                return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+            }
+            else if scope == "Lignes" {
+                return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+            }
+            else {
+                return false
+            }
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
             let stringA = String(arret1.titre + arret1.sousTitre)
@@ -343,6 +354,14 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     }
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
         return true
+    }
+}
+
+extension ArretsTableViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
 }
 

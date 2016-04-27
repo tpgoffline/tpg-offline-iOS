@@ -133,8 +133,6 @@ class IncidentsTableViewController: UITableViewController {
         if chargement == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
-            cell.activityIndicator.startAnimation()
-            
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()
                 cell.titleLabel?.textColor = UIColor.whiteColor()
@@ -150,6 +148,9 @@ class IncidentsTableViewController: UITableViewController {
             cell.titleLabel?.text = "Chargement".localized()
             cell.subTitleLabel?.text = "Merci de patienter".localized()
             cell.accessoryView = nil
+            
+            cell.activityIndicator.startAnimation()
+
             return cell
         }
         else if aucunProbleme {

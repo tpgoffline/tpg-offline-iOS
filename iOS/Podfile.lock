@@ -62,7 +62,8 @@ PODS:
   - NVActivityIndicatorView (2.5)
   - Onboard (2.1.9)
   - PermissionScope (1.0.2)
-  - SCLAlertView (0.5.1)
+  - SCLAlertView (0.5.4)
+  - SimulatorStatusMagic (1.8)
   - SwiftDate (3.0.9)
   - SwiftInAppPurchase (1.0.0)
   - SwiftyJSON (2.3.2)
@@ -83,6 +84,7 @@ DEPENDENCIES:
   - Onboard (from `https://github.com/mamaral/Onboard.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
+  - SimulatorStatusMagic (from `https://github.com/shinydevelopment/SimulatorStatusMagic.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
   - SwiftInAppPurchase (from `https://github.com/rpzzzzzz/SwiftInAppPurchase.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -114,6 +116,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
+  SimulatorStatusMagic:
+    :git: https://github.com/shinydevelopment/SimulatorStatusMagic.git
   SwiftDate:
     :git: https://github.com/malcommac/SwiftDate.git
   SwiftInAppPurchase:
@@ -156,11 +160,14 @@ CHECKOUT OPTIONS:
     :commit: cef8682f3c73af9eb563c96febb100acade23311
     :git: https://github.com/mamaral/Onboard.git
   PermissionScope:
-    :commit: 6f47986cb65ce68cc500b95a2a82fd2e946be133
+    :commit: cd4bc9541756674d850e5a7fafd7580d24f107be
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
-    :commit: e982fbaee48f79a2e60b7db664a2a141cd217fd7
+    :commit: ac18b0b6ab8b20ec830acdf15594ccbc4a5ade55
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
+  SimulatorStatusMagic:
+    :commit: 89697fe29fc97bd972d8ec76917edbc0c219e0e3
+    :git: https://github.com/shinydevelopment/SimulatorStatusMagic.git
   SwiftDate:
     :commit: f492c98bfb25e3fc99b08673541ca3c643887a03
     :git: https://github.com/malcommac/SwiftDate.git
@@ -186,11 +193,12 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: 18e82784c9cb2d5f3df3129a3e4754eb075ebca0
   Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
-  SCLAlertView: 3ac39a863d3e10fc165662b1228b03402297aea9
+  SCLAlertView: 081f824b17b7cf41057159535591f4d6fc8acde3
+  SimulatorStatusMagic: 4dbf0faa0208e9ac0d56cea06eaa5f7a5f3d02fb
   SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
   SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: b954a621ccf064b9664d6ab37e2a192f4ebe4424
+PODFILE CHECKSUM: d9673ab857302f17f7b4ead81c861ad759b71920
 
-COCOAPODS: 1.0.0.beta.5
+COCOAPODS: 1.0.0.beta.8

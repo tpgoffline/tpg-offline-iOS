@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Thermometer {
+internal class Thermometer {
     var tempsRestant: String?
     var devie: Bool!
     var correspondance1: String?

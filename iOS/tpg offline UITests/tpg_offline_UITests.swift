@@ -19,7 +19,7 @@ class tpg_offline_UITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
 		let app = XCUIApplication()
-		app.launchArguments = ["-donotask", "-whitoutanalytics"]
+		app.launchArguments = ["-donotask", "-premium", "-takeScreenshot"]
 		setupSnapshot(app)
 		app.launch()
 
@@ -31,29 +31,57 @@ class tpg_offline_UITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-		snapshot("Departs")
-		
-		let tabBar = XCUIApplication().tabBars
-		
-		XCUIApplication().tables.staticTexts["31 Décembre"].tap()
-		
-		snapshot("31DC")
-		
-		var secondButton = tabBar.buttons.elementBoundByIndex(2)
-		secondButton.tap()
-		
-		snapshot("Itineraires")
-		
-		secondButton = tabBar.buttons.elementBoundByIndex(3)
-		secondButton.tap()
-		
-		snapshot("Plans")
-		
-		secondButton = tabBar.buttons.elementBoundByIndex(4)
-		secondButton.tap()
-		
-		snapshot("Paramètres")
+    func takeScreenshot() {
+        
+        let app = XCUIApplication()
+        let tabBarsQuery = app.tabBars
+        let paramTresButton = tabBarsQuery.buttons["Paramètres"]
+        paramTresButton.tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery.staticTexts["Thèmes"].tap()
+        
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery.staticTexts["Défaut"].tap()
+        tabBarsQuery.buttons["Départs"].tap()
+        
+        snapshot("Arrets")
+        
+        tablesQuery.staticTexts["31 Décembre"].tap()
+        
+        snapshot("Departs")
+        
+        tabBarsQuery.buttons["Incidents"].tap()
+        
+        snapshot("Incidents")
+        
+        paramTresButton.tap()
+        collectionViewsQuery.staticTexts["Inversé"].tap()
+        tabBarsQuery.buttons["Itinéraires"].tap()
+        tablesQuery.staticTexts["Départ"].tap()
+        tablesQuery.staticTexts["31 Décembre"].tap()
+        
+        app.navigationBars["tpg_offline.tpgArretSelectionTableView"].buttons["Itinéraires"].tap()
+        app.navigationBars["Itinéraires"].childrenMatchingType(.Button).elementBoundByIndex(0).tap()
+        
+        tablesQuery.staticTexts["Arrivée"].tap()
+        tablesQuery.staticTexts["ZIPLO"].tap()
+        tablesQuery.buttons["Rechercher"].tap()
+        app.navigationBars.containingType(.Button, identifier:"Itinéraires").childrenMatchingType(.Button).elementBoundByIndex(2).tap()
+        app.navigationBars.matchingIdentifier("tpg_offline.ListeItinerairesTableView").buttons["Itinéraires"].tap()
+        
+        snapshot("Itinéraires")
+        
+        tabBarsQuery.buttons["Plans"].tap()
+        
+        snapshot("Plans")
+        
+        paramTresButton.tap()
+        app.collectionViews.staticTexts["Nuit"].tap()
+        paramTresButton.tap()
+        
+        snapshot("Paramètres")
     }
-	
+    
+    
 }

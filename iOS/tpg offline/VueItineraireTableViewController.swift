@@ -288,7 +288,7 @@ class VueItineraireTableViewController: UITableViewController {
         }
 	}
 	
-	func scheduleNotification(time: NSDate, before: Int = 5, ligne: String, direction: String) {
+    func scheduleNotification(time: NSDate, before: Int = 5, ligne: String, direction: String, arretDescente: String) {
         let time2 = time - before.minutes
         let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time2)
         
@@ -302,9 +302,16 @@ class VueItineraireTableViewController: UITableViewController {
         texte += ligne
         texte += " en direction de ".localized()
         texte += direction
-        texte += " va partir dans ".localized()
-        texte += String(before)
-        texte += " minutes".localized()
+        if before == 0 {
+            texte += " va partir immédiatement. ".localized()
+        }
+        else {
+            texte += " va partir dans ".localized()
+            texte += String(before)
+            texte += " minutes. ".localized()
+        }
+        texte += "Descendez à ".localized()
+        texte += String(arretDescente)
         reminder.alertBody = texte
         reminder.soundName = UILocalNotificationDefaultSoundName
         
@@ -336,17 +343,16 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 			else {
 				alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
-					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
-					
+					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
 				})
 				if time > 60 * 5 {
 					alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
-						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
 					})
 				}
 				if time > 60 * 10 {
 					alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
-						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
 					})
 				}
 				alertView.addButton("Autre", action: { () -> Void in
@@ -362,7 +368,7 @@ class VueItineraireTableViewController: UITableViewController {
 							
 						}
 						else {
-							self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
+							self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue)
 							customValueAlert.hideView()
 						}
 					})

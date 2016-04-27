@@ -151,6 +151,15 @@ class DepartsArretTableViewController: UITableViewController {
         }
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if (identifier == "showLigne" && listeDeparts[tableView.indexPathForSelectedRow!.row].tempsRestant == "no more") {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
     func showItinerary(sender: AnyObject!) {
         performSegueWithIdentifier("showItinerary", sender: self)
     }
@@ -475,8 +484,6 @@ extension DepartsArretTableViewController {
         if chargement == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
-            cell.activityIndicator.startAnimation()
-
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()
                 cell.titleLabel?.textColor = UIColor.whiteColor()
@@ -492,6 +499,9 @@ extension DepartsArretTableViewController {
             cell.titleLabel?.text = "Chargement".localized()
             cell.subTitleLabel?.text = "Merci de patienter".localized()
             cell.accessoryView = nil
+            
+            cell.activityIndicator.startAnimation()
+
             return cell
         }
         else if indexPath.section == 0 && offline {
@@ -627,6 +637,7 @@ extension DepartsArretTableViewController {
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
                 
                 if (listeDeparts[indexPath.row].tempsRestant == "no more") {
+                    cell.accessoryView = UIImageView(image: nil)
                     let iconTimes = FAKFontAwesome.timesIconWithSize(20)
                     if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                         iconTimes.addAttribute(NSForegroundColorAttributeName, value: listeDeparts[indexPath.row].couleur)

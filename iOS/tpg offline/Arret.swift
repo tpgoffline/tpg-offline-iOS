@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class Arret : NSObject, NSCoding {
+internal class Arret : NSObject, NSCoding {
     var nomComplet: String!
     var titre: String!
     var sousTitre: String!
@@ -17,6 +17,7 @@ class Arret : NSObject, NSCoding {
     var location: CLLocation!
     var distance: Double?
     var idTransportAPI: String!
+    var connections: [Int]!
 	
     override init() {
         super.init()
@@ -29,8 +30,9 @@ class Arret : NSObject, NSCoding {
         stopCode = decoder.decodeObjectForKey("stopCode") as! String
         idTransportAPI = decoder.decodeObjectForKey("idTransportAPI") as! String
         location = decoder.decodeObjectForKey("location") as! CLLocation
+        connections = decoder.decodeObjectForKey("connections") as? [Int] ?? []
     }
-    convenience init(nomComplet: String, titre: String, sousTitre: String, stopCode: String, location: CLLocation, idTransportAPI: String) {
+    convenience init(nomComplet: String, titre: String, sousTitre: String, stopCode: String, location: CLLocation, idTransportAPI: String, connections: [Int]) {
         self.init()
         self.nomComplet = nomComplet
         self.titre = titre
@@ -38,6 +40,7 @@ class Arret : NSObject, NSCoding {
         self.stopCode = stopCode
         self.location = location
         self.idTransportAPI = idTransportAPI
+        self.connections = connections
     }
 
     func encodeWithCoder(coder: NSCoder) {
@@ -47,5 +50,6 @@ class Arret : NSObject, NSCoding {
         if let stopCode = stopCode { coder.encodeObject(stopCode, forKey: "stopCode") }
         if let location = location { coder.encodeObject(location, forKey: "location") }
         if let idTransportAPI = idTransportAPI { coder.encodeObject(idTransportAPI, forKey: "idTransportAPI") }
+        if let connections = connections { coder.encodeObject(connections, forKey: "connections") }
     }
 }

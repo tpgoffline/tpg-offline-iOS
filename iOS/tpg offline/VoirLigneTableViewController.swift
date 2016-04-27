@@ -20,6 +20,7 @@ class VoirLigneTableViewController: UITableViewController {
     var listeBackgroundColor = [String:UIColor]()
     var listeColor = [String:UIColor]()
     var chargement: Bool = false
+    var rowForVisible = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,6 @@ class VoirLigneTableViewController: UITableViewController {
         tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
-        self.tableView.allowsSelection = false
         self.actualiserTheme()
     }
     
@@ -94,8 +94,6 @@ class VoirLigneTableViewController: UITableViewController {
         if chargement == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
-            cell.activityIndicator.startAnimation()
-            
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()
                 cell.titleLabel?.textColor = UIColor.whiteColor()
@@ -111,6 +109,9 @@ class VoirLigneTableViewController: UITableViewController {
             cell.titleLabel?.text = "Chargement".localized()
             cell.subTitleLabel?.text = "Merci de patienter".localized()
             cell.accessoryView = nil
+            
+            cell.activityIndicator.startAnimation()
+            
             return cell
         }
         else {
@@ -296,6 +297,11 @@ class VoirLigneTableViewController: UITableViewController {
                 shapeLayer.lineWidth = 3
                 cell.barDirection.layer.addSublayer(shapeLayer)
             }
+            
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.2)
+            cell.selectedBackgroundView = backgroundView
+            
             return cell
         }
     }
@@ -306,13 +312,15 @@ class VoirLigneTableViewController: UITableViewController {
     
     func refresh() {
         chargement = true
+        self.tableView.allowsSelection = false
         tableView.reloadData()
+        rowForVisible = -1
         Alamofire.request(.GET, "http://prod.ivtr-od.tpg.ch/v1/GetThermometer.json", parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "departureCode": depart.code])
             .responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)
                     self.thermometerList = []
-                    for (_, subJSON) in json["steps"] {
+                    for (index, subJSON) in json["steps"] {
                         var listeCorrespondances: [String] = []
                         for x in 0...subJSON["stop"]["connections"].count - 1 {
                             if subJSON["stop"]["connections"][x]["lineCode"].int != nil {
@@ -339,17 +347,38 @@ class VoirLigneTableViewController: UITableViewController {
                         } else {
                             self.thermometerList.append(Thermometer(arret: AppValues.arrets[AppValues.stopCodeToArret[subJSON["stop"]["stopCode"].stringValue]!], tempsRestant: subJSON["arrivalTime"].string, devie: subJSON["deviation"].boolValue, correspondance1: nil, correspondance2: nil, correspondance3: nil, correspondance4: nil))
                         }
+                        if subJSON["arrivalTime"].string != nil && self.rowForVisible == -1 {
+                            self.rowForVisible = Int(index)!
+                        }
                     }
                     self.chargement = false
+                    self.tableView.allowsSelection = true
                     self.tableView.reloadData()
                     self.tableView.dg_stopLoading()
+                    if self.rowForVisible != -1 {
+                        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.rowForVisible, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+                    }
                 }
                 else {
                     self.thermometerList = []
+                    self.tableView.allowsSelection = false
                     self.chargement = false
                     self.tableView.reloadData()
                     self.tableView.dg_stopLoading()
                 }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if !chargement {
+            performSegueWithIdentifier("showLigneArret", sender: self)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showLigneArret" {
+            let departArretTableViewController:DepartsArretTableViewController = (segue.destinationViewController) as! DepartsArretTableViewController
+            departArretTableViewController.arret = thermometerList[(self.tableView.indexPathForSelectedRow?.row)!].arret
         }
     }
 }

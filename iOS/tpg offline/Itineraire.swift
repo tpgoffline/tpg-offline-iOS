@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Itineraire: NSObject, NSCoding {
+internal class Itineraire: NSObject, NSCoding {
 	var depart: Arret?
 	var arrivee: Arret?
 	var date: NSDateComponents?

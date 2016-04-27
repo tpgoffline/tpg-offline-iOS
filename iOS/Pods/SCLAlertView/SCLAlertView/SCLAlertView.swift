@@ -181,10 +181,10 @@ public class SCLAlertView: UIViewController {
         viewText.textContainer.lineFragmentPadding = 0;
         viewText.font = UIFont(name: kDefaultFont, size:14)
         // Colours
-        contentView.backgroundColor = UIColorFromRGB(0xFFFFFF)
-        labelTitle.textColor = UIColorFromRGB(0x4D4D4D)
-        viewText.textColor = UIColorFromRGB(0x4D4D4D)
-        contentView.layer.borderColor = UIColorFromRGB(0xCCCCCC).CGColor
+        contentView.backgroundColor = 0xFFFFFF.toUIColor()
+        labelTitle.textColor = 0x4D4D4D.toUIColor()
+        viewText.textColor = 0x4D4D4D.toUIColor()
+        contentView.layer.borderColor = 0xCCCCCC.toCGColor()
         //Gesture Recognizer for tapping outside the textinput
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SCLAlertView.tapped(_:)))
         tapGesture.numberOfTapsRequired = 1
@@ -359,6 +359,7 @@ public class SCLAlertView: UIViewController {
     var keyboardHasBeenShown:Bool = false
     
     func keyboardWillShow(notification: NSNotification) {
+        guard !keyboardHasBeenShown else {return}
         keyboardHasBeenShown = true
         
         guard let userInfo = notification.userInfo else {return}
@@ -374,16 +375,16 @@ public class SCLAlertView: UIViewController {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if(keyboardHasBeenShown){//This could happen on the simulator (keyboard will be hidden)
-            if(self.tmpContentViewFrameOrigin != nil){
-                self.contentView.frame.origin.y = self.tmpContentViewFrameOrigin!.y
-            }
-            if(self.tmpCircleViewFrameOrigin != nil){
-                self.circleBG.frame.origin.y = self.tmpCircleViewFrameOrigin!.y
-            }
-            
-            keyboardHasBeenShown = false
+        guard keyboardHasBeenShown else {return} //This could happen on the simulator (keyboard will be hidden)
+        
+        if(self.tmpContentViewFrameOrigin != nil){
+            self.contentView.frame.origin.y = self.tmpContentViewFrameOrigin!.y
         }
+        if(self.tmpCircleViewFrameOrigin != nil){
+            self.circleBG.frame.origin.y = self.tmpCircleViewFrameOrigin!.y
+        }
+        
+        keyboardHasBeenShown = false
     }
     
     //Dismiss keyboard when tapped outside textfield & close SCLAlertView when hideWhenBackgroundViewIsTapped
@@ -448,7 +449,7 @@ public class SCLAlertView: UIViewController {
         viewColor = UIColor()
         var iconImage: UIImage?
         let colorInt = colorStyle ?? style.defaultColorInt
-        viewColor = UIColorFromRGB(colorInt)
+        viewColor = colorInt.toUIColor()
         // Icon style
         switch style {
         case .Success:
@@ -535,7 +536,7 @@ public class SCLAlertView: UIViewController {
         }
         for btn in buttons {
             btn.backgroundColor = viewColor
-            btn.setTitleColor(UIColorFromRGB(colorTextButton ?? 0xFFFFFF), forState:UIControlState.Normal)
+            btn.setTitleColor(colorTextButton?.toUIColor() ?? 0xFFFFFF.toUIColor(), forState:UIControlState.Normal)
         }
         
         // Adding duration
@@ -587,16 +588,6 @@ public class SCLAlertView: UIViewController {
         } else {
             return defaultImage
         }
-    }
-    
-    // Helper function to convert from RGB to UIColor
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 }
 
