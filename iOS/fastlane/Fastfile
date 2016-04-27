@@ -32,6 +32,7 @@ platform :ios do
 
   lane :snapshot do
   	snapshot(
+	erase_simulator: true,
     	clear_previous_screenshots: true,
      	languages: ["fr-FR"],
      	devices: [
