@@ -116,6 +116,7 @@
 		007D924E1C4AA27E0036BEE6 /* VueItineraireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VueItineraireTableViewController.swift; sourceTree = "<group>"; };
 		008B84431C232D84007BE1B3 /* IncidentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = IncidentsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		008F53181C18744500127BDA /* AppValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = AppValues.swift; path = ../AppValues.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00A761C61CD27B490099ADFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00ABBE141C29C81B00479FF4 /* Departs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Departs.swift; sourceTree = "<group>"; };
 		00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tpg offline-Bridging-Header.h"; sourceTree = "<group>"; };
 		00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TimeSelectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -126,6 +127,8 @@
 		00C98C4B1C481573008E8B2A /* ItineraireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ItineraireTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00CA21D01C4EA43200CCB994 /* ListeItinerairesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ListeItinerairesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeItinerairesTableViewCell.swift; sourceTree = "<group>"; };
+		00CB6C711CD26FED00CE1B59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		00CB6C721CD26FED00CE1B59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		00D0355B1C0E25D600B3697D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraireTableViewCell.swift; sourceTree = "<group>"; };
 		00DA802A1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoirLigneTableViewController.swift; sourceTree = "<group>"; };
@@ -458,6 +461,7 @@
 			knownRegions = (
 				Base,
 				fr,
+				en,
 			);
 			mainGroup = 002B47D41C01FA6F000BF3E8;
 			productRefGroup = 002B47DE1C01FA6F000BF3E8 /* Products */;
@@ -622,6 +626,7 @@
 			children = (
 				002B47E51C01FA6F000BF3E8 /* Base */,
 				ADB2D6D31C7A1BC30023718F /* fr */,
+				00CB6C711CD26FED00CE1B59 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -631,6 +636,7 @@
 			children = (
 				002B47EA1C01FA6F000BF3E8 /* Base */,
 				ADB2D6D41C7A1BC30023718F /* fr */,
+				00CB6C721CD26FED00CE1B59 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 			children = (
 				ADB2D6D81C7A1BFD0023718F /* Base */,
 				ADB2D6DC1C7A222F0023718F /* fr */,
+				00A761C61CD27B490099ADFE /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

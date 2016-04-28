@@ -11,7 +11,7 @@ import SwiftyJSON
 import FontAwesomeKit
 import CoreLocation
 import ChameleonFramework
-import SimulatorStatusMagic
+//import SimulatorStatusMagic
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppValues.logger.enabled = true
         
         if (NSProcessInfo.processInfo().arguments.contains("-takeScreenshot")) {
-            SDStatusBarManager.sharedInstance().enableOverrides()
+            //SDStatusBarManager.sharedInstance().enableOverrides()
         }
         
         if defaults.objectForKey("arretsFavoris") == nil {
@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     longitude: subJson["locationY"].double!
                 ),
                 idTransportAPI: subJson["idTransportAPI"].string!,
-                connections: []
+                connections: subJson["connections"].arrayObject as! [String]
             )
         }
         return true

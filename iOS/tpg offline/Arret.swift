@@ -17,7 +17,7 @@ internal class Arret : NSObject, NSCoding {
     var location: CLLocation!
     var distance: Double?
     var idTransportAPI: String!
-    var connections: [Int]!
+    var connections: [String]!
 	
     override init() {
         super.init()
@@ -30,9 +30,9 @@ internal class Arret : NSObject, NSCoding {
         stopCode = decoder.decodeObjectForKey("stopCode") as! String
         idTransportAPI = decoder.decodeObjectForKey("idTransportAPI") as! String
         location = decoder.decodeObjectForKey("location") as! CLLocation
-        connections = decoder.decodeObjectForKey("connections") as? [Int] ?? []
+        connections = decoder.decodeObjectForKey("connections") as? [String] ?? []
     }
-    convenience init(nomComplet: String, titre: String, sousTitre: String, stopCode: String, location: CLLocation, idTransportAPI: String, connections: [Int]) {
+    convenience init(nomComplet: String, titre: String, sousTitre: String, stopCode: String, location: CLLocation, idTransportAPI: String, connections: [String]) {
         self.init()
         self.nomComplet = nomComplet
         self.titre = titre

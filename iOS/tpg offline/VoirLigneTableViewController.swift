@@ -33,7 +33,7 @@ class VoirLigneTableViewController: UITableViewController {
         }
         
         if depart != nil {
-            self.title = "Ligne \(depart.ligne)"
+            self.title = "Ligne".localized() + " \(depart.ligne)"
             refresh()
         }
         
