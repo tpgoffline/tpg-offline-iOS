@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F18b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rhD-oN-Bk9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rhD-oN-Bk9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -225,15 +225,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pas de position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-AV-aDZ">
-                                <rect key="frame" x="70" y="72" width="510" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="i1M-P6-qHY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-sp-mcc">
                                 <rect key="frame" x="0.0" y="101" width="600" height="499"/>
                                 <connections>
@@ -250,17 +241,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pas de position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-AV-aDZ">
+                                <rect key="frame" x="70" y="72" width="510" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="i1M-P6-qHY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="gfu-AV-aDZ" firstAttribute="top" secondItem="KXQ-ou-zM2" secondAttribute="bottom" constant="52" id="8Mh-Cd-fTF"/>
+                            <constraint firstItem="gfu-AV-aDZ" firstAttribute="top" secondItem="KXQ-ou-zM2" secondAttribute="bottom" constant="8" id="8Mh-Cd-fTF"/>
                             <constraint firstItem="ghp-sp-mcc" firstAttribute="leading" secondItem="J5t-CZ-W6n" secondAttribute="leadingMargin" constant="-20" id="CXc-oB-KyO"/>
                             <constraint firstItem="but-13-oa1" firstAttribute="leading" secondItem="J5t-CZ-W6n" secondAttribute="leadingMargin" id="HeR-KW-wbW"/>
                             <constraint firstItem="gfu-AV-aDZ" firstAttribute="trailing" secondItem="J5t-CZ-W6n" secondAttribute="trailingMargin" id="Jo6-GX-uL8"/>
                             <constraint firstItem="gfu-AV-aDZ" firstAttribute="leading" secondItem="but-13-oa1" secondAttribute="trailing" constant="8" id="K8s-0N-5aQ"/>
                             <constraint firstItem="ghp-sp-mcc" firstAttribute="top" secondItem="gfu-AV-aDZ" secondAttribute="bottom" constant="8" id="PFg-Yi-BuJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ghp-sp-mcc" secondAttribute="trailing" constant="-20" id="Uak-YM-St0"/>
-                            <constraint firstItem="but-13-oa1" firstAttribute="top" secondItem="KXQ-ou-zM2" secondAttribute="bottom" constant="52" id="W99-Ld-eMo"/>
+                            <constraint firstItem="but-13-oa1" firstAttribute="top" secondItem="KXQ-ou-zM2" secondAttribute="bottom" constant="8" id="W99-Ld-eMo"/>
                             <constraint firstItem="HRX-iH-mMU" firstAttribute="top" secondItem="ghp-sp-mcc" secondAttribute="bottom" id="bgN-Zu-jE2"/>
                             <constraint firstItem="gfu-AV-aDZ" firstAttribute="leading" secondItem="J5t-CZ-W6n" secondAttribute="leadingMargin" id="hhz-6R-25P"/>
                         </constraints>
@@ -2141,11 +2141,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="S1h-ao-xh0"/>
+        <segue reference="LJi-TT-Dgf"/>
+        <segue reference="hgu-ac-qJp"/>
         <segue reference="5h4-1H-jes"/>
         <segue reference="QU0-Nc-zyX"/>
-        <segue reference="hgu-ac-qJp"/>
-        <segue reference="LJi-TT-Dgf"/>
-        <segue reference="06s-d1-T9Q"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -44,6 +44,8 @@ class tpgArretSelectionTableViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
+        searchController.searchBar.scopeButtonTitles = ["Arrets".localized(), "Lignes".localized()]
+        searchController.searchBar.delegate = self
         
         arretsKeys = [String](AppValues.arrets.keys)
         arretsKeys.sortInPlace({ (string1, string2) -> Bool in
@@ -233,18 +235,35 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 arret = AppValues.arrets[arretsKeys[indexPath.row]]!
             }
         }
-        if (depart == true) {
-            ItineraireEnCours.itineraire.depart = arret
+        if arret != nil {
+            if (depart == true) {
+                ItineraireEnCours.itineraire.depart = arret
+            }
+            else {
+                ItineraireEnCours.itineraire.arrivee = arret
+            }
         }
         else {
-            ItineraireEnCours.itineraire.arrivee = arret
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func filterContentForSearchText(searchText: String) {
+    func filterContentForSearchText(searchText: String, scope: String = "Arrets".localized()) {
         filtredResults = [Arret](AppValues.arrets.values).filter { arret in
-            return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+            if scope == "Arrets".localized() {
+                return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+            }
+            else if scope == "Lignes".localized() {
+                if arret.connections.indexOf(searchText.uppercaseString) != nil {
+                    return true
+                }
+                else {
+                    return false
+                }
+            }
+            else {
+                return false
+            }
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
             let stringA = String(arret1.titre + arret1.sousTitre)
@@ -259,9 +278,24 @@ class tpgArretSelectionTableViewController: UITableViewController {
     }
 }
 
+extension tpgArretSelectionTableViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        if selectedScope == 0 {
+            return searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
+        }
+        else if selectedScope == 1 {
+            searchController.searchBar.placeholder = "Rechercher les arrêts d'une ligne".localized()
+        }
+        
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
 extension tpgArretSelectionTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
 }
 

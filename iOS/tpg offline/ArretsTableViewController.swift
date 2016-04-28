@@ -49,7 +49,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
-        searchController.searchBar.scopeButtonTitles = ["Arrets", "Lignes"]
+        searchController.searchBar.scopeButtonTitles = ["Arrets".localized(), "Lignes".localized()]
         searchController.searchBar.delegate = self
         
         arretsKeys = [String](AppValues.arrets.keys)
@@ -329,13 +329,18 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         tableView.dg_removePullToRefresh()
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "Arrets") {
+    func filterContentForSearchText(searchText: String, scope: String = "Arrets".localized()) {
         filtredResults = [Arret](AppValues.arrets.values).filter { arret in
-            if scope == "Arrets" {
+            if scope == "Arrets".localized() {
                 return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
             }
-            else if scope == "Lignes" {
-                return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+            else if scope == "Lignes".localized() {
+                if arret.connections.indexOf(searchText.uppercaseString) != nil {
+                    return true
+                }
+                else {
+                    return false
+                }
             }
             else {
                 return false
@@ -359,15 +364,22 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
 
 extension ArretsTableViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+        if selectedScope == 0 {
+            return searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
+        }
+        else if selectedScope == 1 {
+            searchController.searchBar.placeholder = "Rechercher les arrêts d'une ligne".localized()
+        }
+        
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
 extension ArretsTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
     }
 }
 
