@@ -31,7 +31,7 @@ class tpg_offline_UITests: XCTestCase {
         super.tearDown()
     }
     
-    func takeScreenshot() {
+    func testTakeScreenshot() {
         
         let app = XCUIApplication()
         let tabBarsQuery = app.tabBars
@@ -61,8 +61,8 @@ class tpg_offline_UITests: XCTestCase {
         tablesQuery.staticTexts["Départ"].tap()
         tablesQuery.staticTexts["31 Décembre"].tap()
         
-        app.navigationBars["tpg_offline.tpgArretSelectionTableView"].buttons["Itinéraires"].tap()
-        app.navigationBars["Itinéraires"].childrenMatchingType(.Button).elementBoundByIndex(0).tap()
+        //app.navigationBars["tpg_offline.tpgArretSelectionTableView"].buttons["Itinéraires"].tap()
+        //app.navigationBars["Itinéraires"].childrenMatchingType(.Button).elementBoundByIndex(0).tap()
         
         tablesQuery.staticTexts["Arrivée"].tap()
         tablesQuery.staticTexts["ZIPLO"].tap()

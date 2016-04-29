@@ -44,8 +44,6 @@ class tpgArretSelectionTableViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
-        searchController.searchBar.scopeButtonTitles = ["Arrets".localized(), "Lignes".localized()]
-        searchController.searchBar.delegate = self
         
         arretsKeys = [String](AppValues.arrets.keys)
         arretsKeys.sortInPlace({ (string1, string2) -> Bool in
@@ -159,7 +157,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
                     let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.imageView?.image = iconLocation.imageWithSize(CGSize(width: 20, height: 20))
-                    cell.textLabel?.text = "Recherche des arrets..."
+                    cell.textLabel?.text = "Recherche des arrêts..."
                     cell.detailTextLabel?.text = ""
                     cell.accessoryView = UIView()
                 }
@@ -218,7 +216,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var arret: Arret!
+        var arret: Arret? = nil
         if searchController.active {
             arret = filtredResults[indexPath.row]
         }
@@ -237,33 +235,21 @@ class tpgArretSelectionTableViewController: UITableViewController {
         }
         if arret != nil {
             if (depart == true) {
-                ItineraireEnCours.itineraire.depart = arret
+                ItineraireEnCours.itineraire.depart = arret!
             }
             else {
-                ItineraireEnCours.itineraire.arrivee = arret
+                ItineraireEnCours.itineraire.arrivee = arret!
             }
+            self.navigationController?.popViewControllerAnimated(true)
         }
         else {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "Arrets".localized()) {
+    func filterContentForSearchText(searchText: String) {
         filtredResults = [Arret](AppValues.arrets.values).filter { arret in
-            if scope == "Arrets".localized() {
-                return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
-            }
-            else if scope == "Lignes".localized() {
-                if arret.connections.indexOf(searchText.uppercaseString) != nil {
-                    return true
-                }
-                else {
-                    return false
-                }
-            }
-            else {
-                return false
-            }
+            return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
             let stringA = String(arret1.titre + arret1.sousTitre)
@@ -278,24 +264,9 @@ class tpgArretSelectionTableViewController: UITableViewController {
     }
 }
 
-extension tpgArretSelectionTableViewController: UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        if selectedScope == 0 {
-            return searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
-        }
-        else if selectedScope == 1 {
-            searchController.searchBar.placeholder = "Rechercher les arrêts d'une ligne".localized()
-        }
-        
-        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
-    }
-}
-
 extension tpgArretSelectionTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+        filterContentForSearchText(searchController.searchBar.text!)
     }
 }
 

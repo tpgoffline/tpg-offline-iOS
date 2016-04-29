@@ -129,6 +129,7 @@
 		00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeItinerairesTableViewCell.swift; sourceTree = "<group>"; };
 		00CB6C711CD26FED00CE1B59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		00CB6C721CD26FED00CE1B59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		00CE715D1CD3ACC10096087B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00D0355B1C0E25D600B3697D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		00D7C3D11C4BDCAE00D6864C /* ItineraireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraireTableViewCell.swift; sourceTree = "<group>"; };
 		00DA802A1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoirLigneTableViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +160,6 @@
 		ADB2D6D31C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		ADB2D6D41C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ADB2D6DC1C7A222F0023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B58AEDB7ED20BAC5FE82B725 /* Pods_tpg_offline__watchOS__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline__watchOS__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEEDDCE54361873473292826 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B74E57689FC92A63485E7D /* Pods-tpg offline Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Dev/Pods-tpg offline Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -645,8 +645,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADB2D6D81C7A1BFD0023718F /* Base */,
-				ADB2D6DC1C7A222F0023718F /* fr */,
 				00A761C61CD27B490099ADFE /* en */,
+				00CE715D1CD3ACC10096087B /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
