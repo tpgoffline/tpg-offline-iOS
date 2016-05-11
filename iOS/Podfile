@@ -21,4 +21,5 @@ target 'tpg offline' do
 	pod 'Log', git: "https://github.com/delba/Log.git"
   pod 'NVActivityIndicatorView', git: "https://github.com/ninjaprox/NVActivityIndicatorView.git"
   pod 'SimulatorStatusMagic', git: "https://github.com/shinydevelopment/SimulatorStatusMagic.git", :configurations => ['Debug']
+  pod 'AsyncSwift'
 end

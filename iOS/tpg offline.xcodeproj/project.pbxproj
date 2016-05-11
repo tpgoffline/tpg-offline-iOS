@@ -32,7 +32,10 @@
 		004E8BD61C6E23840055006B /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */; };
 		004E8BD81C6E24870055006B /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */; };
 		00500AF41C1B396F00341F7A /* Arret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00500AF31C1B396F00341F7A /* Arret.swift */; };
+		005572591CE0FE5A00B70D26 /* Itineraire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005572581CE0FE5A00B70D26 /* Itineraire.swift */; };
+		0055725B1CE0FEB500B70D26 /* ItineraireCorrespondances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0055725A1CE0FEB500B70D26 /* ItineraireCorrespondances.swift */; };
 		005DF8111C0DF74E00377031 /* ArretsImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DF8101C0DF74E00377031 /* ArretsImageTableViewCell.swift */; };
+		0067FB261CD3B1AD007EFDE6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
 		0068B63D1CC7C0C1005815CE /* loadingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068B63C1CC7C0C1005815CE /* loadingCellTableViewCell.swift */; };
 		007266281C259191009EFEB5 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007266271C259191009EFEB5 /* PlanViewController.swift */; };
 		007CF3581C497D48006C1898 /* CalendarSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF3571C497D48006C1898 /* CalendarSelectionViewController.swift */; };
@@ -46,7 +49,7 @@
 		00BEB4371CBD61AA00DDD313 /* Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BEB4361CBD61AA00DDD313 /* Thermometer.swift */; };
 		00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C8DD551C0CCACC004743A5 /* couleursLignes.json */; };
 		00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */; };
-		00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C491C4810E1008E8B2A /* Itineraire.swift */; };
+		00C98C4A1C4810E1008E8B2A /* RechercheItineraire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C491C4810E1008E8B2A /* RechercheItineraire.swift */; };
 		00C98C4C1C481573008E8B2A /* ItineraireTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C4B1C481573008E8B2A /* ItineraireTableViewController.swift */; };
 		00CA21D11C4EA43200CCB994 /* ListeItinerairesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA21D01C4EA43200CCB994 /* ListeItinerairesTableViewController.swift */; };
 		00CA21D31C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */; };
@@ -107,6 +110,8 @@
 		004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		00500AF31C1B396F00341F7A /* Arret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Arret.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		005572581CE0FE5A00B70D26 /* Itineraire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itineraire.swift; sourceTree = "<group>"; };
+		0055725A1CE0FEB500B70D26 /* ItineraireCorrespondances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraireCorrespondances.swift; sourceTree = "<group>"; };
 		005DF8101C0DF74E00377031 /* ArretsImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ArretsImageTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0068B63C1CC7C0C1005815CE /* loadingCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingCellTableViewCell.swift; sourceTree = "<group>"; };
 		007266271C259191009EFEB5 /* PlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlanViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -123,7 +128,7 @@
 		00BEB4361CBD61AA00DDD313 /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
 		00C8DD551C0CCACC004743A5 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
 		00C98C451C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = tpgArretSelectionTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		00C98C491C4810E1008E8B2A /* Itineraire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itineraire.swift; sourceTree = "<group>"; };
+		00C98C491C4810E1008E8B2A /* RechercheItineraire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechercheItineraire.swift; sourceTree = "<group>"; };
 		00C98C4B1C481573008E8B2A /* ItineraireTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ItineraireTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00CA21D01C4EA43200CCB994 /* ListeItinerairesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ListeItinerairesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00CA21D21C4EA46800CCB994 /* ListeItinerairesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeItinerairesTableViewCell.swift; sourceTree = "<group>"; };
@@ -318,8 +323,10 @@
 				00500AF31C1B396F00341F7A /* Arret.swift */,
 				00DCD9581C285EBB0094C0EB /* Ticket.swift */,
 				00ABBE141C29C81B00479FF4 /* Departs.swift */,
-				00C98C491C4810E1008E8B2A /* Itineraire.swift */,
+				00C98C491C4810E1008E8B2A /* RechercheItineraire.swift */,
 				00BEB4361CBD61AA00DDD313 /* Thermometer.swift */,
+				005572581CE0FE5A00B70D26 /* Itineraire.swift */,
+				0055725A1CE0FEB500B70D26 /* ItineraireCorrespondances.swift */,
 			);
 			name = "Général";
 			sourceTree = "<group>";
@@ -498,6 +505,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0067FB261CD3B1AD007EFDE6 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +584,7 @@
 				00C98C461C480E6E008E8B2A /* tpgArretSelectionTableViewController.swift in Sources */,
 				00391C471C271D1E005250D4 /* ParametresTableViewController.swift in Sources */,
 				00ABBE151C29C81B00479FF4 /* Departs.swift in Sources */,
+				005572591CE0FE5A00B70D26 /* Itineraire.swift in Sources */,
 				AD3F41E41C7DB31A009113F0 /* AcheterPremiumTableViewCell.swift in Sources */,
 				002B47F51C01FA87000BF3E8 /* ArretsTableViewController.swift in Sources */,
 				00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */,
@@ -586,6 +595,7 @@
 				AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */,
 				00500AF41C1B396F00341F7A /* Arret.swift in Sources */,
 				007D924B1C4A989F0036BEE6 /* SwitchTableViewCell.swift in Sources */,
+				0055725B1CE0FEB500B70D26 /* ItineraireCorrespondances.swift in Sources */,
 				AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */,
 				002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */,
 				00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */,
@@ -597,7 +607,7 @@
 				007D924D1C4A98A80036BEE6 /* ButtonTableViewCell.swift in Sources */,
 				00DDC0B21C255CED002B288E /* PlansTableViewController.swift in Sources */,
 				004E8BD81C6E24870055006B /* ThemeCollectionViewCell.swift in Sources */,
-				00C98C4A1C4810E1008E8B2A /* Itineraire.swift in Sources */,
+				00C98C4A1C4810E1008E8B2A /* RechercheItineraire.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

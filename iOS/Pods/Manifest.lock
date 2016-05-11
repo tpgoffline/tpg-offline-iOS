@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.3.1)
+  - AsyncSwift (1.7.2)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -70,6 +71,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AsyncSwift
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DGElasticPullToRefresh (from `https://github.com/gontovnik/DGElasticPullToRefresh.git`)
   - DGRunkeeperSwitch (from `https://github.com/gontovnik/DGRunkeeperSwitch.git`)
@@ -180,6 +182,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DGElasticPullToRefresh: 3129c558cd59d68f9c2472d79abcd68a49bcd345
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
@@ -199,6 +202,6 @@ SPEC CHECKSUMS:
   SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: d9673ab857302f17f7b4ead81c861ad759b71920
+PODFILE CHECKSUM: a98c374a7cb4509421b2eb4729f0c9b8f4af73e9
 
-COCOAPODS: 1.0.0.beta.8
+COCOAPODS: 1.0.0.rc.1

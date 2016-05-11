@@ -7,21 +7,26 @@
 //
 
 import UIKit
-import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 import DGRunkeeperSwitch
 import SCLAlertView
 
 struct ItineraireEnCours {
-	static var itineraire: Itineraire!
-	static var json: JSON!
+	static var itineraire: RechercheItineraire!
 	static var canFavorite: Bool!
+    static var itineraireResultat: [Itineraire]!
 }
 
 class ItineraireTableViewController: UITableViewController {
 	
-	let row = [["itineraryCell", FAKIonIcons.logOutIconWithSize(20), "Départ".localized(), "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.logInIconWithSize(20), "Arrivée".localized(), "voirArretsItineraire"], ["itineraryCell", FAKIonIcons.calendarIconWithSize(20), "Date".localized(), "selectDate"], ["itineraryCell", FAKIonIcons.clockIconWithSize(20), "Heure".localized(), "selectHour"], ["switchCell", "Heure de départ".localized(), "Heure d'arrivée".localized()], ["buttonCell", "Rechercher".localized()]]
+	let row = [
+        ["itineraryCell", FAKIonIcons.logOutIconWithSize(20), "Départ".localized(), "voirArretsItineraire"],
+        ["itineraryCell", FAKIonIcons.logInIconWithSize(20), "Arrivée".localized(), "voirArretsItineraire"],
+        ["itineraryCell", FAKIonIcons.calendarIconWithSize(20), "Date".localized(), "selectDate"],
+        ["itineraryCell", FAKIonIcons.clockIconWithSize(20), "Heure".localized(), "selectHour"],
+        ["switchCell", "Heure de départ".localized(), "Heure d'arrivée".localized()],
+        ["buttonCell", "Rechercher".localized()]]
 	
 	let headers = ["Recherche".localized(), "Favoris".localized()]
 	
@@ -36,7 +41,8 @@ class ItineraireTableViewController: UITableViewController {
         barButtonsItems.append(UIBarButtonItem(image: echangeIcone.imageWithSize(CGSize(width: 20, height: 20)), style: .Done, target: self, action: #selector(ItineraireTableViewController.echangerArrets)))
         navigationItem.leftBarButtonItems = barButtonsItems
         
-		ItineraireEnCours.itineraire = Itineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
+		ItineraireEnCours.itineraire = RechercheItineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
+        ItineraireEnCours.itineraireResultat = []
 		
 	}
 	override func viewDidAppear(animated: Bool) {
@@ -79,7 +85,9 @@ class ItineraireTableViewController: UITableViewController {
 			
 			if (row[indexPath.row][0] as! String) == "itineraryCell" {
 				let cell = tableView.dequeueReusableCellWithIdentifier("itineraryCell", forIndexPath: indexPath)
+                
 				cell.textLabel?.text = (row[indexPath.row][2] as! String)
+                
 				let image = row[indexPath.row][1] as! FAKIonIcons
 				image.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
 				cell.imageView?.image = image.imageWithSize(CGSize(width: 20, height: 20))
@@ -200,7 +208,7 @@ class ItineraireTableViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 1 {
-			ItineraireEnCours.itineraire = Itineraire(depart: AppValues.favorisItineraires[indexPath.row][0], arrivee: AppValues.favorisItineraires[indexPath.row][1])
+			ItineraireEnCours.itineraire = RechercheItineraire(depart: AppValues.favorisItineraires[indexPath.row][0], arrivee: AppValues.favorisItineraires[indexPath.row][1])
 			performSegueWithIdentifier("rechercherItineraire", sender: self)
 		}
 		else if (row[indexPath.row][0] as! String) == "itineraryCell" {

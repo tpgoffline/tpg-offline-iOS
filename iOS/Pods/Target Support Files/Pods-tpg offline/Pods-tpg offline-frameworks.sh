@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AsyncSwift/Async.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ChameleonFramework/ChameleonFramework.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DGElasticPullToRefresh/DGElasticPullToRefresh.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DGRunkeeperSwitch/DGRunkeeperSwitch.framework"
@@ -106,6 +107,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AsyncSwift/Async.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ChameleonFramework/ChameleonFramework.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DGElasticPullToRefresh/DGElasticPullToRefresh.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DGRunkeeperSwitch/DGRunkeeperSwitch.framework"

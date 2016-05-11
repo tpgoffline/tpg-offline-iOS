@@ -24,7 +24,7 @@ class ListeItinerairesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ItineraireEnCours.json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
+        ItineraireEnCours.itineraireResultat = []
         tableView.backgroundColor = AppValues.primaryColor
         
         if ItineraireEnCours.itineraire.depart != nil && ItineraireEnCours.itineraire.arrivee != nil && ItineraireEnCours.itineraire.date != nil {
@@ -82,11 +82,11 @@ class ListeItinerairesTableViewController: UITableViewController {
         else if pasReseau {
             return 1
         }
-        else if ItineraireEnCours.json["connections"].count == 0 {
+        else if ItineraireEnCours.itineraireResultat.count == 0 {
             return 1
         }
         else {
-            return ItineraireEnCours.json["connections"].count
+            return ItineraireEnCours.itineraireResultat.count
         }
     }
     
@@ -102,10 +102,52 @@ class ListeItinerairesTableViewController: UITableViewController {
             "isArrivalTime": String(Int(ItineraireEnCours.itineraire.dateArrivee))
         ]
         
-        ItineraireEnCours.json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
+        ItineraireEnCours.itineraireResultat = []
         Alamofire.request(.GET, "http://transport.opendata.ch/v1/connections", parameters: parameters).responseJSON { response in
             if let data = response.result.value {
-                ItineraireEnCours.json = JSON(data)
+                let json = JSON(data)
+                for (_, subJSON) in json["connections"] {
+                    var correspondances: [ItineraireCorrespondances] = []
+                    for (_, subJSON2) in subJSON["sections"] {
+                        if subJSON2["walk"].type == .Null {
+                            correspondances.append(ItineraireCorrespondances(
+                                ligne: subJSON2["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1],
+                                isTpg: (subJSON2["journey"]["operator"].stringValue == "TPG"),
+                                isSBB: (subJSON2["journey"]["operator"].stringValue == "SBB"),
+                                categorie: subJSON2["journey"]["categoryCode"].intValue,
+                                de: subJSON2["departure"]["station"]["name"].stringValue,
+                                a: subJSON2["arrival"]["station"]["name"].stringValue,
+                                direction: subJSON2["journey"]["to"].stringValue,
+                                timestampDepart: subJSON2["departure"]["departureTimestamp"].intValue,
+                                timestampArrivee: subJSON2["arrival"]["arrivalTimestamp"].intValue
+                                ))
+                        }
+                        else {
+                            correspondances.append(
+                                ItineraireCorrespondances(
+                                    isWalk: true,
+                                    de: subJSON2["departure"]["station"]["name"].stringValue,
+                                    a: subJSON2["arrival"]["station"]["name"].stringValue,
+                                    timestampDepart: subJSON2["departure"]["departureTimestamp"].intValue,
+                                    timestampArrivee: subJSON2["arrival"]["arrivalTimestamp"].intValue,
+                                    direction: subJSON2["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)".localized()
+                                )
+                            )
+                        }
+                    }
+                    var dureeString = subJSON["duration"].stringValue
+                    dureeString.removeRange(dureeString.startIndex..<dureeString.startIndex.advancedBy(3))
+                    ItineraireEnCours.itineraireResultat.append(
+                        Itineraire(
+                            de: subJSON["from"]["station"]["name"].stringValue,
+                            a: subJSON["to"]["station"]["name"].stringValue,
+                            duree: dureeString,
+                            timestampDepart: subJSON["from"]["departureTimestamp"].intValue,
+                            timestampArrivee: subJSON["to"]["arrivalTimestamp"].intValue,
+                            correspondances: correspondances
+                        )
+                    )
+                }
                 self.chargement = false
                 self.tableView.reloadData()
             }
@@ -169,7 +211,7 @@ class ListeItinerairesTableViewController: UITableViewController {
             return cell
         }
             
-        else if ItineraireEnCours.json["connections"].count == 0 {
+        else if ItineraireEnCours.itineraireResultat.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! ListeItinerairesTableViewCell
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.whiteColor()
@@ -203,7 +245,7 @@ class ListeItinerairesTableViewController: UITableViewController {
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             var attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
-            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][indexPath.row]["from"]["station"]["name"].stringValue))
+            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[indexPath.row].de))
             cell.labelDepart.attributedText = attributedString
             cell.labelDepart.textColor = AppValues.textColor
             
@@ -211,7 +253,7 @@ class ListeItinerairesTableViewController: UITableViewController {
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
-            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][indexPath.row]["to"]["station"]["name"].stringValue))
+            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[indexPath.row].a))
             cell.labelArrivee.attributedText = attributedString
             cell.labelArrivee.textColor = AppValues.textColor
             
@@ -219,15 +261,15 @@ class ListeItinerairesTableViewController: UITableViewController {
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
-            attributedString.appendAttributedString(NSAttributedString(string: " " + String(ItineraireEnCours.json["connections"][indexPath.row]["duration"].stringValue.characters.dropFirst().dropFirst().dropFirst())))
+            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[indexPath.row].duree))
             cell.labelDuree.attributedText = attributedString
             cell.labelDuree.textColor = AppValues.textColor
             
-            var timestamp = ItineraireEnCours.json["connections"][indexPath.row]["from"]["departureTimestamp"].intValue
+            var timestamp = ItineraireEnCours.itineraireResultat[indexPath.row].timestampDepart
             cell.labelHeureDepart.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             cell.labelHeureDepart.textColor = AppValues.textColor
             
-            timestamp = ItineraireEnCours.json["connections"][indexPath.row]["to"]["arrivalTimestamp"].intValue
+            timestamp = ItineraireEnCours.itineraireResultat[indexPath.row].timestampArrivee
             cell.labelHeureArrivee.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             cell.labelHeureArrivee.textColor = AppValues.textColor
             
@@ -245,12 +287,6 @@ class ListeItinerairesTableViewController: UITableViewController {
         if segue.identifier == "voirItineraire" {
             let destinationViewController: VueItineraireTableViewController = (segue.destinationViewController) as! VueItineraireTableViewController
             destinationViewController.compteur = (tableView.indexPathForSelectedRow?.row)!
-            var listeHoraires = [NSDate]()
-            for (_, subJson) in ItineraireEnCours.json["connections"][(tableView.indexPathForSelectedRow?.row)!]["sections"] {
-                listeHoraires.append(NSDate(timeIntervalSince1970: Double(subJson["departure"]["departureTimestamp"].intValue)))
-            }
-            destinationViewController.listeHeures = listeHoraires
-            
         }
     }
     func toggleFavorite(sender: AnyObject!) {
@@ -344,7 +380,7 @@ class ListeItinerairesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["departure"]["departureTimestamp"].intValue)).timeIntervalSinceDate(NSDate())
+        let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.itineraireResultat[indexPath.row].timestampDepart)).timeIntervalSinceDate(NSDate())
         let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler".localized()) { (action, indexPath) in
             let icone = FAKIonIcons.iosClockIconWithSize(20)
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
@@ -355,17 +391,17 @@ class ListeItinerairesTableViewController: UITableViewController {
             }
             else {
                 alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
-                    self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["to"].stringValue, arretDescente:  ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+                    self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
                     
                 })
                 if time > 60 * 5 {
                     alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
-                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["to"].stringValue, arretDescente:  ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
                     })
                 }
                 if time > 60 * 10 {
                     alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
-                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["to"].stringValue, arretDescente:  ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
                     })
                 }
                 alertView.addButton("Autre", action: { () -> Void in
@@ -381,7 +417,7 @@ class ListeItinerairesTableViewController: UITableViewController {
                             
                         }
                         else {
-                            self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["journey"]["to"].stringValue, arretDescente:  ItineraireEnCours.json["connections"][indexPath.row]["sections"][0]["arrival"]["station"]["name"].stringValue)
+                            self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
                             customValueAlert.hideView()
                         }
                     })
@@ -400,7 +436,7 @@ class ListeItinerairesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if pasReseau || ItineraireEnCours.json["connections"].count == 0 {
+        if pasReseau || ItineraireEnCours.itineraireResultat.count == 0 {
             return false
         }
         else {

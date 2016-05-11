@@ -20,7 +20,6 @@ class tpgArretSelectionTableViewController: UITableViewController {
     let searchController = UISearchController(searchResultsController: nil)
     var locationManager = CLLocationManager()
     let defaults = NSUserDefaults.standardUserDefaults()
-    var arretsKeys: [String]!
     var chargementLocalisation: Bool = false
     
     override func viewDidLoad() {
@@ -44,16 +43,6 @@ class tpgArretSelectionTableViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
-        
-        arretsKeys = [String](AppValues.arrets.keys)
-        arretsKeys.sortInPlace({ (string1, string2) -> Bool in
-            let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
-            let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
-            if stringA.lowercaseString < stringB.lowercaseString {
-                return true
-            }
-            return false
-        })
         
         navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
@@ -182,8 +171,8 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[arretsKeys[indexPath.row]]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[arretsKeys[indexPath.row]]!.sousTitre
+                cell.textLabel?.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.titre
+                cell.detailTextLabel!.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.sousTitre
                 cell.imageView?.image = nil
             }
             
@@ -230,7 +219,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]
             }
             else {
-                arret = AppValues.arrets[arretsKeys[indexPath.row]]!
+                arret = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!
             }
         }
         if arret != nil {

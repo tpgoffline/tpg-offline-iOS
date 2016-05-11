@@ -36,8 +36,8 @@ platform :ios do
     	clear_previous_screenshots: true,
      	languages: ["fr-FR"],
      	devices: [
-  			"iPhone 6",
-  			"iPhone 6 Plus",
+  			"iPhone 6s",
+  			"iPhone 6s Plus",
   			"iPhone 5",
   			"iPhone 4s",
   			"iPad Retina",

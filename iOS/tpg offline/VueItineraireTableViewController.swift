@@ -16,21 +16,11 @@ import SwiftDate
 class VueItineraireTableViewController: UITableViewController {
 	
 	var compteur = 0
-	var listeBackgroundColor = [String:UIColor]()
-	var listeColor = [String:UIColor]()
-	var listeHeures = [NSDate]()
 	let defaults = NSUserDefaults.standardUserDefaults()
 	var favoris = false
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
-		let couleurs = JSON(data: dataCouleurs!)
-		for i in 0 ..< couleurs["colors"].count {
-			listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
-			listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
-		}
 		
 		var listeItems: [UIBarButtonItem] = []
 		
@@ -71,8 +61,7 @@ class VueItineraireTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
-		return ItineraireEnCours.json["connections"][compteur]["sections"].count
+		return ItineraireEnCours.itineraireResultat[compteur].correspondances.count
 	}
 	
 	func labelToImage(label: UILabel!) -> UIImage {
@@ -89,42 +78,24 @@ class VueItineraireTableViewController: UITableViewController {
 		
 		var couleurTexte = UIColor.whiteColor()
 		
-		if ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["walk"].type == .Null {
+		if ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].categorie != .Marche {
 			
-            cell.ligneLabel.text = "Ligne " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]
+            cell.ligneLabel.text = "Ligne " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
             
-            var icone = FAKIonIcons.androidTrainIconWithSize(24)
-            switch ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["categoryCode"].intValue {
-            case 6:
-                icone = FAKIonIcons.androidBusIconWithSize(24)
-                break
-                
-            case 4:
-                icone = FAKIonIcons.androidBoatIconWithSize(24)
-                break
-                
-            case 9:
-                icone = FAKIonIcons.androidSubwayIconWithSize(24)
-                break
-                
-            default:
-                break
-            }
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
                 cell.backgroundColor = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
                 
-                if ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["operator"].stringValue == "TPG" {
-                    cell.backgroundColor = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]
-                    couleurTexte = listeColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!
+                if ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].isTpg {
+                    cell.backgroundColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]
+                    couleurTexte = AppValues.listeColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!
                     
                     let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                    labelPictoLigne.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]
+                    labelPictoLigne.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
                     labelPictoLigne.textAlignment = .Center
-                    labelPictoLigne.textColor = listeColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!
+                    labelPictoLigne.textColor = couleurTexte
                     labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                    labelPictoLigne.layer.borderColor = listeColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!.CGColor
+                    labelPictoLigne.layer.borderColor = couleurTexte.CGColor
                     labelPictoLigne.layer.borderWidth = 1
                     let image = labelToImage(labelPictoLigne)
                     for x in cell.iconeImageView.constraints {
@@ -135,24 +106,31 @@ class VueItineraireTableViewController: UITableViewController {
                     cell.iconeImageView.image = image
                 }
                 else {
-                    cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 21, height: 21))
+                    cell.iconeImageView.image = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getImageofType(42, color: UIColor.whiteColor())
+                    for x in cell.iconeImageView.constraints {
+                        if x.identifier == "iconeImageViewHeight" {
+                            x.constant = 42
+                        }
+                    }
                 }
+                let attributedString = NSMutableAttributedString(attributedString: ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getAttributedStringofType(24, color: UIColor.whiteColor()))
+                attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].direction))
+                cell.directionLabel.attributedText = attributedString
             }
             else {
                 couleurTexte = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
-                icone.addAttribute(NSForegroundColorAttributeName, value: UIColor(red:0.93, green:0, blue:0.01, alpha:1))
                 cell.backgroundColor = AppValues.primaryColor
                 
-                if ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["operator"].stringValue == "TPG" {
-                    if ContrastColorOf(listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!, returnFlat: true) == FlatWhite() {
+                if ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].isTpg {
+                    if ContrastColorOf(AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!, returnFlat: true) == FlatWhite() {
                         cell.backgroundColor = UIColor.whiteColor()
-                        couleurTexte = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!
+                        couleurTexte = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!
                         let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                        labelPictoLigne.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]
+                        labelPictoLigne.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
                         labelPictoLigne.textAlignment = .Center
-                        labelPictoLigne.textColor = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!
+                        labelPictoLigne.textColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!
                         labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                        labelPictoLigne.layer.borderColor = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!.CGColor
+                        labelPictoLigne.layer.borderColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.CGColor
                         labelPictoLigne.layer.borderWidth = 1
                         
                         let image = labelToImage(labelPictoLigne)
@@ -165,14 +143,14 @@ class VueItineraireTableViewController: UITableViewController {
                     }
                     else {
                         cell.backgroundColor = UIColor.whiteColor()
-                        couleurTexte = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!.darkenByPercentage(0.2)
+                        couleurTexte = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.darkenByPercentage(0.2)
                         
                         let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                        labelPictoLigne.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]
+                        labelPictoLigne.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
                         labelPictoLigne.textAlignment = .Center
-                        labelPictoLigne.textColor = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!.darkenByPercentage(0.2)
+                        labelPictoLigne.textColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.darkenByPercentage(0.2)
                         labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                        labelPictoLigne.layer.borderColor = listeBackgroundColor[ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1]]!.darkenByPercentage(0.2).CGColor
+                        labelPictoLigne.layer.borderColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.darkenByPercentage(0.2).CGColor
                         labelPictoLigne.layer.borderWidth = 1
                         
                         let image = labelToImage(labelPictoLigne)
@@ -186,16 +164,12 @@ class VueItineraireTableViewController: UITableViewController {
                     }
                 }
                 else {
-                    cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 24, height: 24))
+                    cell.iconeImageView.image = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getImageofType(42, color: couleurTexte)
                 }
+                let attributedString = NSMutableAttributedString(attributedString: ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getAttributedStringofType(24, color: couleurTexte))
+                attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].direction))
+                cell.directionLabel.attributedText = attributedString
             }
-            
-            
-            
-            // Direction Label
-            let attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
-            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["journey"]["to"].stringValue))
-            cell.directionLabel.attributedText = attributedString
 		}
 		else {
 			let icone = FAKIonIcons.androidWalkIconWithSize(42)
@@ -211,7 +185,7 @@ class VueItineraireTableViewController: UITableViewController {
             
 			cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 42, height: 42))
 			cell.ligneLabel.text = "Marche".localized()
-			cell.directionLabel.text = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)".localized()
+			cell.directionLabel.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].direction
 			
 		}
         
@@ -225,19 +199,19 @@ class VueItineraireTableViewController: UITableViewController {
         var icone2 = FAKIonIcons.logOutIconWithSize(21)
         icone2.addAttribute(NSForegroundColorAttributeName, value: couleurTexte)
         var attributedString = NSMutableAttributedString(attributedString: icone2.attributedString())
-        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["station"]["name"].stringValue))
+        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].de))
         cell.departLabel.attributedText = attributedString
         
-        var timestamp = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["departureTimestamp"].intValue
+        var timestamp = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].timestampDepart
         cell.heureDepartLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
-        timestamp = ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["arrival"]["arrivalTimestamp"].intValue
+        timestamp = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].timestampArrivee
         cell.heureArriveeLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
         icone2 = FAKIonIcons.logInIconWithSize(21)
         icone2.addAttribute(NSForegroundColorAttributeName, value: couleurTexte)
         attributedString = NSMutableAttributedString(attributedString: icone2.attributedString())
-        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue))
+        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].a))
         cell.arriveeLabel.attributedText = attributedString
 		
 		return cell
@@ -332,7 +306,7 @@ class VueItineraireTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-		let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.json["connections"][compteur]["sections"][indexPath.row]["departure"]["departureTimestamp"].intValue)).timeIntervalSinceDate(NSDate())
+		let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].timestampDepart)).timeIntervalSinceDate(NSDate())
 		let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler".localized()) { (action, indexPath) in
 			let icone = FAKIonIcons.iosClockIconWithSize(20)
 			icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
@@ -343,16 +317,16 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 			else {
 				alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
-					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
+					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
 				})
 				if time > 60 * 5 {
 					alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
-						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
 					})
 				}
 				if time > 60 * 10 {
 					alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
-						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue)
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
 					})
 				}
 				alertView.addButton("Autre", action: { () -> Void in
@@ -368,7 +342,7 @@ class VueItineraireTableViewController: UITableViewController {
 							
 						}
 						else {
-							self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1], direction: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["arrival"]["station"]["name"].stringValue, arretDescente: ItineraireEnCours.json["connections"][self.compteur]["sections"][indexPath.row]["journey"]["to"].stringValue)
+							self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
 							customValueAlert.hideView()
 						}
 					})

@@ -21,7 +21,6 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     var filtredResults = [Arret]()
     let searchController = UISearchController(searchResultsController: nil)
     let defaults = NSUserDefaults.standardUserDefaults()
-    var arretsKeys: [String] = []
     let pscope = PermissionScope()
     var chargementLocalisation = false
     
@@ -49,16 +48,6 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
-        
-        arretsKeys = [String](AppValues.arrets.keys)
-        arretsKeys.sortInPlace({ (string1, string2) -> Bool in
-            let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
-            let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
-            if stringA.lowercaseString < stringB.lowercaseString {
-                return true
-            }
-            return false
-        })
         
         actualiserTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
@@ -260,8 +249,8 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[arretsKeys[indexPath.row]]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[arretsKeys[indexPath.row]]!.sousTitre
+                cell.textLabel?.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.titre
+                cell.detailTextLabel!.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.sousTitre
                 cell.imageView?.image = nil
             }
             
@@ -309,7 +298,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                     departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[tableView.indexPathForSelectedRow!.row]]
                 }
                 else {
-                    departsArretsViewController.arret = AppValues.arrets[self.arretsKeys[(tableView.indexPathForSelectedRow?.row)!]]
+                    departsArretsViewController.arret = AppValues.arrets[AppValues.arretsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                 }
             }
         }
@@ -373,7 +362,7 @@ extension ArretsTableViewController : UIViewControllerPreviewingDelegate {
                 detailVC.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]
             }
             else {
-                detailVC.arret = AppValues.arrets[self.arretsKeys[indexPath.row]]
+                detailVC.arret = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]
             }
         }
         if #available(iOS 9.0, *) {

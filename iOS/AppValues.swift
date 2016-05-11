@@ -21,4 +21,15 @@ struct AppValues {
     static var textColor: UIColor! = UIColor.whiteColor()
 	static var premium: Bool! = false
     static var logger = Logger()
+    static var arretsKeys: [String] = []
+    static var listeBackgroundColor = [String:UIColor]()
+    static var listeColor = [String:UIColor]()
+    
+    static func testTimeExecution(title: String!, block: () -> ()) {
+        // Thanks to @kristopherjohnson (GitHub)
+        let start = CACurrentMediaTime()
+        block();
+        let end = CACurrentMediaTime()
+        logger.info("Execution time of \(title) : \(end - start)s")
+    }
 }

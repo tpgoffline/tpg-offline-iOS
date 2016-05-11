@@ -20,9 +20,6 @@ import NVActivityIndicatorView
 class DepartsArretTableViewController: UITableViewController {
     var arret: Arret? = nil
     var listeDeparts: [Departs]! = []
-    var listeBackgroundColor = [String:UIColor]()
-    var listeColor = [String:UIColor]()
-    var arretsKeys: [String] = []
     let defaults = NSUserDefaults.standardUserDefaults()
     var offline = false
     var serviceTermine = false
@@ -33,36 +30,17 @@ class DepartsArretTableViewController: UITableViewController {
         if arret == nil {
             arret = AppValues.arrets[[String](AppValues.arrets.keys).sort()[0]]
         }
-        arretsKeys = [String](AppValues.arrets.keys)
-        arretsKeys.sortInPlace({ (string1, string2) -> Bool in
-            let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
-            let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
-            if stringA.lowercaseString < stringB.lowercaseString {
-                return true
-            }
-            return false
-        })
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = AppValues.textColor
         
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            
-            
-            
             self!.refresh()
             
             }, loadingView: loadingView)
         
         tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-        
-        let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
-        let couleurs = JSON(data: dataCouleurs!)
-        for i in 0 ..< couleurs["colors"].count {
-            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
-            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
-        }
         
         title = arret?.nomComplet
         
@@ -231,7 +209,7 @@ class DepartsArretTableViewController: UITableViewController {
                 if let data = response.result.value {
                     let departs = JSON(data)
                     for (_, subjson) in departs["departures"] {
-                        if self.listeColor[subjson["line"]["lineCode"].string!] == nil {
+                        if AppValues.listeColor[subjson["line"]["lineCode"].string!] == nil {
                             self.listeDeparts.append(Departs(
                                 ligne: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
@@ -247,8 +225,8 @@ class DepartsArretTableViewController: UITableViewController {
                             self.listeDeparts.append(Departs(
                                 ligne: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
-                                couleur: self.listeColor[subjson["line"]["lineCode"].string!]!,
-                                couleurArrierePlan: self.listeBackgroundColor[subjson["line"]["lineCode"].string!]!,
+                                couleur: AppValues.listeColor[subjson["line"]["lineCode"].string!]!,
+                                couleurArrierePlan: AppValues.listeBackgroundColor[subjson["line"]["lineCode"].string!]!,
                                 
                                 code: String(subjson["departureCode"].intValue ?? 0),
                                 tempsRestant: subjson["waitingTime"].string!,
@@ -293,12 +271,12 @@ class DepartsArretTableViewController: UITableViewController {
                             let dataDeparts = NSData(contentsOfFile: path)
                             let departs = JSON(data: dataDeparts!)
                             for (_, subJson) in departs {
-                                if self.listeColor[subJson["ligne"].string!] != nil {
+                                if AppValues.listeColor[subJson["ligne"].string!] != nil {
                                     self.listeDeparts.append(Departs(
                                         ligne: subJson["ligne"].string!,
                                         direction: subJson["destination"].string!,
-                                        couleur: self.listeColor[subJson["ligne"].string!]!,
-                                        couleurArrierePlan: self.listeBackgroundColor[subJson["ligne"].string!]!,
+                                        couleur: AppValues.listeColor[subJson["ligne"].string!]!,
+                                        couleurArrierePlan: AppValues.listeBackgroundColor[subJson["ligne"].string!]!,
                                         code: nil,
                                         tempsRestant: "0",
                                         timestamp: subJson["timestamp"].string!
@@ -334,7 +312,6 @@ class DepartsArretTableViewController: UITableViewController {
                         })
                         
                         self.offline = true
-                        self.tableView.allowsSelection = false
                         
                         if self.listeDeparts.count == 0 {
                             self.serviceTermine = true
@@ -343,6 +320,8 @@ class DepartsArretTableViewController: UITableViewController {
                             self.serviceTermine = false
                         }
                         self.chargement = false
+                        
+                        self.tableView.allowsSelection = false
                         self.tableView.reloadData()
                         self.tableView.dg_stopLoading()
                     }
