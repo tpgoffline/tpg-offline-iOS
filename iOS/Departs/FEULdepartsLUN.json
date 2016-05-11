@@ -1,1 +1,272 @@
-[{"destination":"Bardonnex","timestamp":"2016-03-04T05:51:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T06:32:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T07:12:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T07:43:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T08:13:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T08:43:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T09:13:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T10:03:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T10:53:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T11:44:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T12:33:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T13:23:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T14:13:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T15:03:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T15:53:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T16:34:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T16:59:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T17:24:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T17:54:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T18:24:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T18:54:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T19:53:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T20:53:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T21:52:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-04T22:52:36+0100","ligne":"46"},{"destination":"Bardonnex","timestamp":"2016-03-05T00:01:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T06:00:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T06:41:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T07:11:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T07:38:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T08:11:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T08:40:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T09:10:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T09:40:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T10:20:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T11:10:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T12:00:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T12:50:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T13:40:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T14:30:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T15:20:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T16:10:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T16:51:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T17:21:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T17:51:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T18:21:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T18:50:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T19:20:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T20:20:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T21:20:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T22:20:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-04T23:20:36+0100","ligne":"46"},{"destination":"Stade de Gen\u00e8ve","timestamp":"2016-03-05T00:10:36+0100","ligne":"46"},{"destination":"Bus scolaire","timestamp":"2016-03-04T11:59:37+0100","ligne":"92"},{"destination":"Bus scolaire","timestamp":"2016-03-04T13:05:37+0100","ligne":"92"},{"destination":"Bardonnex","timestamp":"2016-03-05T03:33:37+0100","ligne":"NO"}]
+[
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T05:51:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T06:32:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T07:12:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T07:42:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T08:12:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T08:42:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T09:12:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T10:02:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T10:52:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T11:43:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T12:32:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T13:22:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T14:12:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T15:02:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T15:53:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T16:33:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T16:58:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T17:23:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T17:53:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T18:23:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T18:53:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T19:53:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T20:52:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T21:52:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-11T22:51:50+0200"
+    },
+    {
+        "destination": "Bardonnex",
+        "ligne": "46",
+        "timestamp": "2016-05-12T00:01:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T06:00:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T06:40:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T07:10:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T07:37:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T08:10:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T08:40:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T09:10:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T09:40:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T10:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T11:10:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T12:00:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T12:50:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T13:40:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T14:30:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T15:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T16:10:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T16:50:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T17:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T17:50:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T18:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T18:50:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T19:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T20:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T21:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T22:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-11T23:20:50+0200"
+    },
+    {
+        "destination": "Stade de Genève",
+        "ligne": "46",
+        "timestamp": "2016-05-12T00:10:50+0200"
+    },
+    {
+        "destination": "Bus scolaire",
+        "ligne": "92",
+        "timestamp": "2016-05-11T11:59:51+0200"
+    }
+]
