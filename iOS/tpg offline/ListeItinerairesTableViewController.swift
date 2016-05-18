@@ -91,15 +91,32 @@ class ListeItinerairesTableViewController: UITableViewController {
     }
     
     func refresh() {
-        chargement = true
-        tableView.reloadData()
-        let parameters = [
+        self.chargement = true
+        self.tableView.reloadData()
+        let parameters: [String:AnyObject] = [
             "key": "d95be980-0830-11e5-a039-0002a5d5c51b",
             "from": ItineraireEnCours.itineraire.depart!.idTransportAPI,
             "to": ItineraireEnCours.itineraire.arrivee!.idTransportAPI,
             "date": String(ItineraireEnCours.itineraire.date!.year) + "-" + String(ItineraireEnCours.itineraire.date!.month) + "-" + String(ItineraireEnCours.itineraire.date!.day),
             "time": String(ItineraireEnCours.itineraire.date!.hour) + ":" + String(ItineraireEnCours.itineraire.date!.minute),
-            "isArrivalTime": String(Int(ItineraireEnCours.itineraire.dateArrivee))
+            "isArrivalTime": String(Int(ItineraireEnCours.itineraire.dateArrivee)),
+            "fields": [
+                "connections/duration",
+                "connections/from/station/name",
+                "connections/from/departureTimestamp",
+                "connections/to/station/name",
+                "connections/to/arrivalTimestamp",
+                "connections/sections/journey/name",
+                "connections/sections/journey/operator",
+                "connections/sections/journey/categoryCode",
+                "connections/sections/journey/walk/duration",
+                "connections/sections/journey/to",
+                "connections/sections/departure/station/name",
+                "connections/sections/departure/departureTimestamp",
+                "connections/sections/arrival/station/name",
+                "connections/sections/arrival/arrivalTimestamp"
+            ],
+            "limit": 6
         ]
         
         ItineraireEnCours.itineraireResultat = []
@@ -148,6 +165,9 @@ class ListeItinerairesTableViewController: UITableViewController {
                         )
                     )
                 }
+                if ItineraireEnCours.itineraire.dateArrivee == true {
+                    ItineraireEnCours.itineraireResultat = ItineraireEnCours.itineraireResultat.reverse()
+                }
                 self.chargement = false
                 self.tableView.reloadData()
             }
@@ -163,6 +183,8 @@ class ListeItinerairesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if chargement == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
+            
+            cell.activityIndicator.stopAnimation()
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()

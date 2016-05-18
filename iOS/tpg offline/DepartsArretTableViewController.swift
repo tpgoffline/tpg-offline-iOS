@@ -110,6 +110,7 @@ class DepartsArretTableViewController: UITableViewController {
             let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.arretsFavoris!)
             defaults.setObject(encodedData, forKey: "arretsFavoris")
         }
+
         var barButtonsItems: [UIBarButtonItem] = []
         
         if ((AppValues.nomCompletsFavoris.indexOf(arret!.nomComplet)) != nil) {
@@ -194,6 +195,14 @@ class DepartsArretTableViewController: UITableViewController {
             let voirLigneTableViewController: VoirLigneTableViewController = (segue.destinationViewController) as! VoirLigneTableViewController
             voirLigneTableViewController.depart = listeDeparts[(tableView.indexPathForSelectedRow?.row)!]
         }
+        else if segue.identifier == "showAllDepartures" {
+            let indexPath = sender as! NSIndexPath
+            let voirTousLesDepartsViewController: VoirTousLesDepartsViewController = (segue.destinationViewController) as! VoirTousLesDepartsViewController
+            voirTousLesDepartsViewController.arret = self.arret!
+            voirTousLesDepartsViewController.ligne = self.listeDeparts[indexPath.row].ligne
+            voirTousLesDepartsViewController.direction = self.listeDeparts[indexPath.row].direction
+            voirTousLesDepartsViewController.destinationCode = self.listeDeparts[indexPath.row].destinationCode
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -213,6 +222,7 @@ class DepartsArretTableViewController: UITableViewController {
                             self.listeDeparts.append(Departs(
                                 ligne: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
+                                destinationCode: subjson["line"]["destinationCode"].string!,
                                 couleur: UIColor.whiteColor(),
                                 couleurArrierePlan: UIColor.flatGrayColor(),
                                 
@@ -225,6 +235,7 @@ class DepartsArretTableViewController: UITableViewController {
                             self.listeDeparts.append(Departs(
                                 ligne: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
+                                destinationCode: subjson["line"]["destinationCode"].string!,
                                 couleur: AppValues.listeColor[subjson["line"]["lineCode"].string!]!,
                                 couleurArrierePlan: AppValues.listeBackgroundColor[subjson["line"]["lineCode"].string!]!,
                                 
@@ -275,6 +286,7 @@ class DepartsArretTableViewController: UITableViewController {
                                     self.listeDeparts.append(Departs(
                                         ligne: subJson["ligne"].string!,
                                         direction: subJson["destination"].string!,
+                                        destinationCode: "",
                                         couleur: AppValues.listeColor[subJson["ligne"].string!]!,
                                         couleurArrierePlan: AppValues.listeBackgroundColor[subJson["ligne"].string!]!,
                                         code: nil,
@@ -286,6 +298,7 @@ class DepartsArretTableViewController: UITableViewController {
                                     self.listeDeparts.append(Departs(
                                         ligne: subJson["ligne"].string!,
                                         direction: subJson["destination"].string!,
+                                        destinationCode: "",
                                         couleur: UIColor.whiteColor(),
                                         couleurArrierePlan: UIColor.flatGrayColorDark(),
                                         code: nil,
@@ -434,7 +447,12 @@ extension DepartsArretTableViewController {
             }
         }
         timerAction.backgroundColor = UIColor.flatBlueColor()
-        return [timerAction]
+        
+        let voirToutAction = UITableViewRowAction(style: .Default, title: "Voir tout".localized()) { (action, indexPath) in
+            self.performSegueWithIdentifier("showAllDepartures", sender: indexPath)
+        }
+        voirToutAction.backgroundColor = UIColor.flatGreenColor()
+        return [voirToutAction, timerAction]
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -462,6 +480,8 @@ extension DepartsArretTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if chargement == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
+            
+            cell.activityIndicator.stopAnimation()
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()

@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Mon tpg
+//  tpg offline
 //
-//  Created by remy on 21/06/2015.
-//  Copyright (c) 2015 dacostafaro. All rights reserved.
+//  Created by Alice on 14/05/2016.
+//  Copyright © 2016 dacostafaro. All rights reserved.
 //
 
 import Cocoa

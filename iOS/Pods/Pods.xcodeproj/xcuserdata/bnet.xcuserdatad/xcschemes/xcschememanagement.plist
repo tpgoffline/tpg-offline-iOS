@@ -4,115 +4,125 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AKPickerView-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AsyncSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>DGElasticPullToRefresh.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>DGRunkeeperSwitch.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>EFCircularSlider.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>FSCalendar.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>FontAwesomeKit.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>INTULocationManager.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Localize-Swift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Log.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MRProgress.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Onboard.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>PermissionScope.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>14</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-tpg offline.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>15</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftDate.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>17</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftInAppPurchase-SwiftInAppPurchase.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>19</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftInAppPurchase.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftTweaks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>20</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>082B1F982B620FA2B45C0AC91F0BFE3F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>110C0DFB1269B42ED4B9EEB299CD9A15</key>
+		<key>0B8425B8F4D3561217B6AA74FC402DF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +132,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2ED24E48E1402F5E5AA7921C9F64EBE5</key>
+		<key>2DB10599FA9A882C692067E1F5EFF597</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E3BBCA6078A6AAAD053C911572F0B0C</key>
+		<key>37385EE645814E2633304DC425A25C1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CB51CC21BAFC56F670577DAB81D8A42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E155FBB6070C868840C7A2BB6E75E85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,11 +162,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5FB3DA31781FDD3A945EF84CF6A69A90</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>626D49AD18621B0A3059EE726B27AE89</key>
 		<dict>
 			<key>primary</key>
@@ -157,12 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F17DD5BDDF65F3AB77F350BE14632BE</key>
+		<key>820483322AB11027D68FD4651CB9A0E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>92A121EDF81F430FCD652C25E446E5DE</key>
+		<key>833BAB1B8689BCB97EB8BD7D288FD91D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F17DD5BDDF65F3AB77F350BE14632BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,6 +197,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A935A97AC32C1A07BD4E57ECEFC0A3E2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B2619B2813D910DBC9FE9714E0788D55</key>
 		<dict>
 			<key>primary</key>
@@ -187,17 +212,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CBD8AD9E6FD3D925385A032D9A44FE6C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D67A7CAE55F155565BF32CCBD3F1B7AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7FF48F3092783E4E42B336F0DEF2D1A</key>
+		<key>D75DB5948E2BD6895FF6CEB9685F8D74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAA8C39A15ACFB6989D3E4D80251B401</key>
+		<key>D7FF48F3092783E4E42B336F0DEF2D1A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

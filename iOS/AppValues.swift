@@ -9,6 +9,7 @@
 import UIKit
 import ChameleonFramework
 import Log
+import SwiftTweaks
 
 struct AppValues {
     static var arrets: [String: Arret] = [:]
@@ -32,4 +33,20 @@ struct AppValues {
         let end = CACurrentMediaTime()
         logger.info("Execution time of \(title) : \(end - start)s")
     }
+}
+
+public struct TpgOfflineTweaks: TweakLibraryType {
+    
+    public static let defaultStore: TweakStore = {
+        let allTweaks: [TweakClusterType] = []
+        
+        // Since SwiftTweaks is a dynamic library, you'll need to determine whether tweaks are enabled.
+        // Try using the DEBUG flag (add "-D DEBUG" to "Other Swift Flags" in your project's Build Settings).
+        let tweaksEnabled: Bool = false
+        
+        return TweakStore(
+            tweaks: allTweaks,
+            enabled: tweaksEnabled
+        )
+    }()
 }

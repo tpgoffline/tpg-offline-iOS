@@ -85,7 +85,7 @@ extension RouteViewController : MKMapViewDelegate {
 
         let directions = MKDirections(request: request)
         
-        directions.calculateDirectionsWithCompletionHandler { [unowned self] response, error in
+        directions.calculateDirectionsWithCompletionHandler {response, error in
             guard let route = response?.routes.first else { return }
             
             self.directionsRoute = route
@@ -96,10 +96,11 @@ extension RouteViewController : MKMapViewDelegate {
                 route.polyline.boundingMapRect,
                 animated: true
             )
+            var temps = userLocation.location!.distanceFromLocation(self.arret.location) / 1000
+            temps /= 5
+            self.label.text = String(Int(route.expectedTravelTime / 60)) + " Minutes".localized()
         }
-
-        var temps = userLocation.location!.distanceFromLocation(self.arret.location) / 1000
-        temps /= 5
-        self.label.text = String(Int(temps * 100)) + " Minutes".localized()
+        self.label.text = "Chargement en cours".localized()
+        
     }
 }

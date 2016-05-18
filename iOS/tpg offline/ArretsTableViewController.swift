@@ -349,6 +349,10 @@ extension ArretsTableViewController : UIViewControllerPreviewingDelegate {
         
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return nil }
         
+        if tableView.indexPathForSelectedRow!.section == 0 && chargementLocalisation && !searchController.active {
+            return nil
+        }
+        
         guard let detailVC = storyboard?.instantiateViewControllerWithIdentifier("departsArretTableViewController") as? DepartsArretTableViewController else { return nil }
         
         if searchController.active {

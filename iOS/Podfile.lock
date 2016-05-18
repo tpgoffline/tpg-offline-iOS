@@ -1,12 +1,16 @@
 PODS:
+  - AKPickerView-Swift (1.0.1)
   - Alamofire (3.3.1)
   - AsyncSwift (1.7.2)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Crashlytics (3.7.0):
+    - Fabric (~> 1.6.3)
   - DGElasticPullToRefresh (1.0.3)
   - DGRunkeeperSwitch (1.1.1)
   - EFCircularSlider (0.2.0)
+  - Fabric (1.6.7)
   - FontAwesomeKit (2.2.1):
     - FontAwesomeKit/Core (= 2.2.1)
     - FontAwesomeKit/FontAwesome (= 2.2.1)
@@ -64,18 +68,21 @@ PODS:
   - Onboard (2.1.9)
   - PermissionScope (1.0.2)
   - SCLAlertView (0.5.4)
-  - SimulatorStatusMagic (1.8)
   - SwiftDate (3.0.9)
   - SwiftInAppPurchase (1.0.0)
+  - SwiftTweaks (1.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - AKPickerView-Swift
   - Alamofire
-  - AsyncSwift
+  - AsyncSwift (from `https://github.com/duemunk/Async.git`)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - Crashlytics
   - DGElasticPullToRefresh (from `https://github.com/gontovnik/DGElasticPullToRefresh.git`)
   - DGRunkeeperSwitch (from `https://github.com/gontovnik/DGRunkeeperSwitch.git`)
   - EFCircularSlider (from `https://github.com/RemyDCF/EFCircularSlider.git`)
+  - Fabric
   - FontAwesomeKit (from `https://github.com/PrideChung/FontAwesomeKit.git`)
   - FSCalendar
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
@@ -86,12 +93,14 @@ DEPENDENCIES:
   - Onboard (from `https://github.com/mamaral/Onboard.git`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
-  - SimulatorStatusMagic (from `https://github.com/shinydevelopment/SimulatorStatusMagic.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
   - SwiftInAppPurchase (from `https://github.com/rpzzzzzz/SwiftInAppPurchase.git`)
+  - SwiftTweaks
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
+  AsyncSwift:
+    :git: https://github.com/duemunk/Async.git
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
   DGElasticPullToRefresh:
@@ -118,8 +127,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
-  SimulatorStatusMagic:
-    :git: https://github.com/shinydevelopment/SimulatorStatusMagic.git
   SwiftDate:
     :git: https://github.com/malcommac/SwiftDate.git
   SwiftInAppPurchase:
@@ -128,6 +135,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
+  AsyncSwift:
+    :commit: e8e53f0fd39fabc226f4609d1c910c8af27a17cc
+    :git: https://github.com/duemunk/Async.git
   ChameleonFramework:
     :commit: bc00897e8f21640f01611d30ce3f5a027b37028c
     :git: https://github.com/ViccAlexander/Chameleon.git
@@ -167,9 +177,6 @@ CHECKOUT OPTIONS:
   SCLAlertView:
     :commit: ac18b0b6ab8b20ec830acdf15594ccbc4a5ade55
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
-  SimulatorStatusMagic:
-    :commit: 89697fe29fc97bd972d8ec76917edbc0c219e0e3
-    :git: https://github.com/shinydevelopment/SimulatorStatusMagic.git
   SwiftDate:
     :commit: f492c98bfb25e3fc99b08673541ca3c643887a03
     :git: https://github.com/malcommac/SwiftDate.git
@@ -181,12 +188,15 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
+  AKPickerView-Swift: 8509d472bb257649383c276506334a7373d3cb33
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
-  AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
+  AsyncSwift: 15c496983f752a3ab8d1be17e64dd4c6f2a31239
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   DGElasticPullToRefresh: 3129c558cd59d68f9c2472d79abcd68a49bcd345
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
   EFCircularSlider: 8c9e901891fb813e89c4158508eefa8e35903454
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   FSCalendar: d8b9dddaf96fff7621a33b110763d981bb01bc04
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
@@ -197,11 +207,9 @@ SPEC CHECKSUMS:
   Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: 081f824b17b7cf41057159535591f4d6fc8acde3
-  SimulatorStatusMagic: 4dbf0faa0208e9ac0d56cea06eaa5f7a5f3d02fb
   SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
   SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
+  SwiftTweaks: f1496b2a528bbe5ae05d46fe7811a8acc0b6542e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: a98c374a7cb4509421b2eb4729f0c9b8f4af73e9
-
-COCOAPODS: 1.0.0.rc.1
+COCOAPODS: 0.39.0.rc.1

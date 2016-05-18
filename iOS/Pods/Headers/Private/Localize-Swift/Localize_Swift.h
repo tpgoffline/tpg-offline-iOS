@@ -1,0 +1,1 @@
+../../../Localize-Swift/Sources/Localize_Swift.h

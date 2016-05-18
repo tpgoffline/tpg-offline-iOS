@@ -38,6 +38,7 @@
 		0067FB261CD3B1AD007EFDE6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
 		0068B63D1CC7C0C1005815CE /* loadingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068B63C1CC7C0C1005815CE /* loadingCellTableViewCell.swift */; };
 		007266281C259191009EFEB5 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007266271C259191009EFEB5 /* PlanViewController.swift */; };
+		007778FA1CEB5089007C5630 /* VoirTousLesDepartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007778F91CEB5089007C5630 /* VoirTousLesDepartsViewController.swift */; };
 		007CF3581C497D48006C1898 /* CalendarSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF3571C497D48006C1898 /* CalendarSelectionViewController.swift */; };
 		007D924B1C4A989F0036BEE6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007D924A1C4A989F0036BEE6 /* SwitchTableViewCell.swift */; };
 		007D924D1C4A98A80036BEE6 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007D924C1C4A98A80036BEE6 /* ButtonTableViewCell.swift */; };
@@ -115,6 +116,7 @@
 		005DF8101C0DF74E00377031 /* ArretsImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ArretsImageTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0068B63C1CC7C0C1005815CE /* loadingCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingCellTableViewCell.swift; sourceTree = "<group>"; };
 		007266271C259191009EFEB5 /* PlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlanViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		007778F91CEB5089007C5630 /* VoirTousLesDepartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoirTousLesDepartsViewController.swift; sourceTree = "<group>"; };
 		007CF3571C497D48006C1898 /* CalendarSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CalendarSelectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		007D924A1C4A989F0036BEE6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		007D924C1C4A98A80036BEE6 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				002B47F31C01FA87000BF3E8 /* DepartsArretTableViewController.swift */,
 				000ECABC1C469A3500E4FC92 /* RouteViewController.swift */,
 				00DA802A1CBAA2A30006ADB3 /* VoirLigneTableViewController.swift */,
+				007778F91CEB5089007C5630 /* VoirTousLesDepartsViewController.swift */,
 			);
 			name = "Départs";
 			sourceTree = "<group>";
@@ -322,10 +325,10 @@
 				004D812A1C24737800C6AD55 /* Perturbations.swift */,
 				00500AF31C1B396F00341F7A /* Arret.swift */,
 				00DCD9581C285EBB0094C0EB /* Ticket.swift */,
+				005572581CE0FE5A00B70D26 /* Itineraire.swift */,
 				00ABBE141C29C81B00479FF4 /* Departs.swift */,
 				00C98C491C4810E1008E8B2A /* RechercheItineraire.swift */,
 				00BEB4361CBD61AA00DDD313 /* Thermometer.swift */,
-				005572581CE0FE5A00B70D26 /* Itineraire.swift */,
 				0055725A1CE0FEB500B70D26 /* ItineraireCorrespondances.swift */,
 			);
 			name = "Général";
@@ -402,6 +405,8 @@
 				002B47DB1C01FA6F000BF3E8 /* Resources */,
 				A8BC474FB226BE6B046FAD9C /* 📦 Embed Pods Frameworks */,
 				8670B5EE69019AA352C1D32E /* 📦 Copy Pods Resources */,
+				0000AA101CEC98F4002E6B9A /* 📦 Fabric */,
+				F88DC38FD68E4E7992E84AAE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -512,6 +517,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0000AA101CEC98F4002E6B9A /* 📦 Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Fabric";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 75b8798b16086f8a41d0d9fbe73703be77a9706c 598a875e80bdece5e37bb2c05ba976b83626e6d2ac1016c6335b76beadf12eca";
+		};
 		8670B5EE69019AA352C1D32E /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -557,6 +576,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F88DC38FD68E4E7992E84AAE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -594,6 +628,7 @@
 				004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */,
 				AD13B1061C78A09500ECCDFD /* FavorisTableViewCell.swift in Sources */,
 				00500AF41C1B396F00341F7A /* Arret.swift in Sources */,
+				007778FA1CEB5089007C5630 /* VoirTousLesDepartsViewController.swift in Sources */,
 				007D924B1C4A989F0036BEE6 /* SwitchTableViewCell.swift in Sources */,
 				0055725B1CE0FEB500B70D26 /* ItineraireCorrespondances.swift in Sources */,
 				AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */,
@@ -756,6 +791,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 13;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -771,6 +807,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACH_O_TYPE = mh_execute;
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -804,6 +841,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACH_O_TYPE = mh_execute;
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

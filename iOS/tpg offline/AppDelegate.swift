@@ -3,7 +3,7 @@
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 22/11/2015.
-//  Copyright © 2015 dacostafaro. All rights reserved.
+//  Copyright © 2015 dacostafaaro. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,9 @@ import FontAwesomeKit
 import CoreLocation
 import ChameleonFramework
 import Async
-//import SimulatorStatusMagic
+import Fabric
+import Crashlytics
+import SwiftTweaks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,12 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        /*let rootVc = window?.rootViewController
+        window = TweakWindow(frame: UIScreen.mainScreen().bounds, tweakStore: TpgOfflineTweaks.defaultStore)
+        window!.rootViewController = rootVc
+        window!.makeKeyAndVisible()*/
+        
         AppValues.logger.enabled = true
-        
-        if (NSProcessInfo.processInfo().arguments.contains("-takeScreenshot")) {
-            //SDStatusBarManager.sharedInstance().enableOverrides()
-        }
-        
+        Fabric.with([Crashlytics.self])
+   
         getDefaults()
         setTabBar()
         
@@ -229,4 +233,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppValues.logger.info("Async terminé")
     }
 }
-

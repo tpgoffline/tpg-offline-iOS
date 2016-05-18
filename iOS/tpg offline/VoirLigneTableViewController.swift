@@ -94,6 +94,8 @@ class VoirLigneTableViewController: UITableViewController {
         if chargement == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
+            cell.activityIndicator.stopAnimation()
+            
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlueColor()
                 cell.titleLabel?.textColor = UIColor.whiteColor()
