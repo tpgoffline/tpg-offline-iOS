@@ -3,7 +3,7 @@
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 17/12/2015.
-//  Copyright © 2015 dacostafaro. All rights reserved.
+//  Copyright © 2016 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -44,8 +44,8 @@ class IncidentsTableViewController: UITableViewController {
         let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
         let couleurs = JSON(data: dataCouleurs!)
         for i in 0 ..< couleurs["colors"].count {
-            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
-            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
+            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
+            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
         }
         refresh(self)
     }

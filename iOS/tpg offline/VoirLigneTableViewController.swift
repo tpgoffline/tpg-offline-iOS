@@ -2,7 +2,7 @@
 //  VoirLigneTableViewController.swift
 //  tpg offline
 //
-//  Created by Alice on 10/04/2016.
+//  Created by Rémy Da Costa Faro on 10/04/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 
@@ -28,8 +28,8 @@ class VoirLigneTableViewController: UITableViewController {
         let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
         let couleurs = JSON(data: dataCouleurs!)
         for i in 0 ..< couleurs["colors"].count {
-            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
-            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
+            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
+            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
         }
         
         if depart != nil {

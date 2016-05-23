@@ -4,7 +4,7 @@
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 16/11/2015.
-//  Copyright © 2015 dacostafaro. All rights reserved.
+//  Copyright © 2016 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -284,6 +284,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        searchController.searchBar.resignFirstResponder()
         if (segue.identifier == "afficherProchainsDeparts") {
             let nav = segue.destinationViewController as! UINavigationController
             let departsArretsViewController = nav.viewControllers[0] as! DepartsArretTableViewController

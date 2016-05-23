@@ -2,27 +2,27 @@ use_frameworks!
 
 target 'tpg offline' do
   platform :ios, '8.0'
-  pod 'SwiftyJSON', git: "https://github.com/SwiftyJSON/SwiftyJSON.git"
-  pod 'FontAwesomeKit', git: "https://github.com/PrideChung/FontAwesomeKit.git"
-	pod 'ChameleonFramework/Swift' , git: "https://github.com/ViccAlexander/Chameleon.git"
-	pod 'SCLAlertView', git:"https://github.com/vikmeup/SCLAlertView-Swift.git"
+  pod 'SwiftyJSON', git: 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'FontAwesomeKit', git: 'https://github.com/PrideChung/FontAwesomeKit.git'
+	pod 'ChameleonFramework/Swift' , git: 'https://github.com/ViccAlexander/Chameleon.git'
+	pod 'SCLAlertView', git:'https://github.com/vikmeup/SCLAlertView-Swift.git'
 	pod 'FSCalendar'
-	pod 'EFCircularSlider', git: "https://github.com/RemyDCF/EFCircularSlider.git"
-	pod 'DGRunkeeperSwitch', git: "https://github.com/gontovnik/DGRunkeeperSwitch.git"
-	pod 'PermissionScope', git:"https://github.com/nickoneill/PermissionScope.git"
-	pod 'DGElasticPullToRefresh', git:"https://github.com/gontovnik/DGElasticPullToRefresh.git"
-	pod 'MRProgress', git:"https://github.com/RemyDCF/MRProgress.git"
-	pod 'INTULocationManager', git:"https://github.com/intuit/LocationManager.git"
-	pod 'SwiftInAppPurchase', git: "https://github.com/rpzzzzzz/SwiftInAppPurchase.git"
-	pod 'Localize-Swift', git: "https://github.com/marmelroy/Localize-Swift.git"
-	pod 'Onboard', git: "https://github.com/mamaral/Onboard.git"
+	pod 'EFCircularSlider', git: 'https://github.com/RemyDCF/EFCircularSlider.git'
+	pod 'DGRunkeeperSwitch', git: 'https://github.com/gontovnik/DGRunkeeperSwitch.git'
+	pod 'PermissionScope', git:'https://github.com/nickoneill/PermissionScope.git'
+	pod 'DGElasticPullToRefresh', git:'https://github.com/gontovnik/DGElasticPullToRefresh.git'
+	pod 'MRProgress', git:'https://github.com/RemyDCF/MRProgress.git'
+	pod 'INTULocationManager', git:'https://github.com/intuit/LocationManager.git'
+	pod 'SwiftInAppPurchase', git: 'https://github.com/rpzzzzzz/SwiftInAppPurchase.git'
+	pod 'Localize-Swift', git: 'https://github.com/marmelroy/Localize-Swift.git'
+	pod 'Onboard', git: 'https://github.com/mamaral/Onboard.git'
 	pod 'Alamofire'
-	pod "SwiftDate", git: 'https://github.com/malcommac/SwiftDate.git'
-	pod 'Log', git: "https://github.com/delba/Log.git"
-  pod 'NVActivityIndicatorView', git: "https://github.com/ninjaprox/NVActivityIndicatorView.git"
-  pod 'AsyncSwift', git: "https://github.com/duemunk/Async.git"
-  pod "AKPickerView-Swift"
+	pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git'
+	pod 'Log', git: 'https://github.com/delba/Log.git'
+  pod 'NVActivityIndicatorView', git: 'https://github.com/ninjaprox/NVActivityIndicatorView.git'
+  pod 'AsyncSwift', git: 'https://github.com/duemunk/Async.git'
+  pod 'AKPickerView-Swift', git: 'https://github.com/Akkyie/AKPickerView-Swift.git'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'SwiftTweaks'
+  pod 'SwiftTweaks', git: 'https://github.com/Khan/SwiftTweaks.git'
 end

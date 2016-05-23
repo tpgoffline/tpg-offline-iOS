@@ -2,7 +2,7 @@
 //  VoirTousLesDepartsViewController.swift
 //  tpg offline
 //
-//  Created by Alice on 17/05/2016.
+//  Created by Rémy Da Costa Faro on 17/05/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 
@@ -12,12 +12,12 @@ import SwiftyJSON
 import Alamofire
 import SCLAlertView
 import Async
-import SwiftTweaks
+import ChameleonFramework
 
 class VoirTousLesDepartsViewController: UIViewController {
     
     @IBOutlet weak var hourPicker: AKPickerView!
-    @IBOutlet weak var departuresTableView: UITableView!
+    @IBOutlet weak var departuresCollectionView: UICollectionView!
     @IBOutlet weak var labelLigne: UILabel!
     @IBOutlet weak var labelDirection: UILabel!
     
@@ -41,8 +41,8 @@ class VoirTousLesDepartsViewController: UIViewController {
         labelDirection.textColor = AppValues.listeColor[ligne]
         labelDirection.backgroundColor = AppValues.listeBackgroundColor[ligne]
         
-        departuresTableView.allowsSelection = false
-        departuresTableView.backgroundColor = AppValues.primaryColor
+        departuresCollectionView.allowsSelection = false
+        departuresCollectionView.backgroundColor = AppValues.primaryColor
         
         hourPicker.backgroundColor = AppValues.primaryColor
         hourPicker.textColor = AppValues.textColor
@@ -53,16 +53,14 @@ class VoirTousLesDepartsViewController: UIViewController {
         
         refresh()
         actualiserTheme()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        departuresTableView.backgroundColor = AppValues.primaryColor
+        departuresCollectionView.backgroundColor = AppValues.primaryColor
         actualiserTheme()
-        departuresTableView.reloadData()
+        departuresCollectionView.reloadData()
         
         hourPicker.backgroundColor = AppValues.primaryColor
         hourPicker.textColor = AppValues.textColor
@@ -223,36 +221,36 @@ class VoirTousLesDepartsViewController: UIViewController {
             }
             }.main {
                 self.hourPicker.reloadData()
-                self.departuresTableView.reloadData()
+                self.departuresCollectionView.reloadData()
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
-extension VoirTousLesDepartsViewController : UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listeDeparts.count
-    }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+extension VoirTousLesDepartsViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tousLesDepartsCell", forIndexPath: indexPath)
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.listeDeparts.count
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tousLesDepartsCell", forIndexPath: indexPath) as! TousLesDepartsCollectionViewCell
         
-        cell.textLabel?.text = NSDateFormatter.localizedStringFromDate(NSDate(components: listeDeparts[indexPath.row].dateCompenents!), dateStyle: .NoStyle, timeStyle: .ShortStyle)
-        cell.textLabel?.textColor = AppValues.textColor
-        cell.backgroundColor = AppValues.primaryColor
+        cell.titre.text = NSDateFormatter.localizedStringFromDate(NSDate(components: listeDeparts[indexPath.row].dateCompenents!), dateStyle: .NoStyle, timeStyle: .ShortStyle)
+        cell.titre.textColor = AppValues.textColor
+        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            cell.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
+        }
+        else {
+            cell.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
+        }
         
         return cell
+    }
+    func collectionView(collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: UIScreen.mainScreen().bounds.width / 4, height: 50)
     }
 }
 

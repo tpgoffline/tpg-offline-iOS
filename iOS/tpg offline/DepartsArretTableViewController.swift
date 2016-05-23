@@ -3,7 +3,7 @@
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 16/11/2015.
-//  Copyright © 2015 dacostafaro. All rights reserved.
+//  Copyright © 2016 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit

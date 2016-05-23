@@ -13,9 +13,9 @@ import DGRunkeeperSwitch
 import SCLAlertView
 
 struct ItineraireEnCours {
-	static var itineraire: RechercheItineraire!
-	static var canFavorite: Bool!
-    static var itineraireResultat: [Itineraire]!
+	static var itineraire: RechercheItineraire! = RechercheItineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
+	static var canFavorite: Bool! = false
+    static var itineraireResultat: [Itineraire]! = []
 }
 
 class ItineraireTableViewController: UITableViewController {
@@ -40,10 +40,6 @@ class ItineraireTableViewController: UITableViewController {
         let echangeIcone = FAKFontAwesome.exchangeIconWithSize(20)
         barButtonsItems.append(UIBarButtonItem(image: echangeIcone.imageWithSize(CGSize(width: 20, height: 20)), style: .Done, target: self, action: #selector(ItineraireTableViewController.echangerArrets)))
         navigationItem.leftBarButtonItems = barButtonsItems
-        
-		ItineraireEnCours.itineraire = RechercheItineraire(depart: nil, arrivee: nil, date: NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate()), dateArrivee: false)
-        ItineraireEnCours.itineraireResultat = []
-		
 	}
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)

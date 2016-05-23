@@ -2,7 +2,7 @@
 //  ItineraireCorrespondances.swift
 //  tpg offline
 //
-//  Created by Alice on 09/05/2016.
+//  Created by Rémy Da Costa Faro on 09/05/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 

@@ -1,6 +1,6 @@
 {
   "name": "Log",
-  "version": "0.4",
+  "version": "0.5",
   "license": {
     "type": "MIT"
   },
@@ -11,7 +11,7 @@
   "summary": "An extensible logging framework for Swift",
   "source": {
     "git": "https://github.com/delba/Log.git",
-    "tag": "v0.4"
+    "tag": "v0.5"
   },
   "platforms": {
     "ios": "8.0",
@@ -19,6 +19,6 @@
     "tvos": "9.0",
     "watchos": "2.0"
   },
-  "source_files": "Source/**/*.swift",
+  "source_files": "Source/**/*.{swift, h}",
   "requires_arc": true
 }

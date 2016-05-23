@@ -1,7 +1,7 @@
 //
 // Theme.swift
 //
-// Copyright (c) 2015 Damien (http://delba.io)
+// Copyright (c) 2015-2016 Damien (http://delba.io)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,8 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
-import Foundation
 
 public class Themes {}
 
@@ -50,11 +48,11 @@ public class Theme: Themes {
      */
     public init(trace: String, debug: String, info: String, warning: String, error: String) {
         self.colors = [
-            .Trace: Theme.formatHex(trace),
-            .Debug: Theme.formatHex(debug),
-            .Info: Theme.formatHex(info),
+            .Trace:   Theme.formatHex(trace),
+            .Debug:   Theme.formatHex(debug),
+            .Info:    Theme.formatHex(info),
             .Warning: Theme.formatHex(warning),
-            .Error: Theme.formatHex(error)
+            .Error:   Theme.formatHex(error)
         ]
     }
     
@@ -73,7 +71,7 @@ public class Theme: Themes {
         scanner.scanHexInt(&hex)
         
         let r = (hex & 0xFF0000) >> 16
-        let g = (hex & 0xFF00)  >> 8
+        let g = (hex & 0xFF00) >> 8
         let b = (hex & 0xFF)
         
         return [r, g, b].map({ String($0) }).joinWithSeparator(",")

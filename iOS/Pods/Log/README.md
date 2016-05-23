@@ -6,6 +6,7 @@
     <a href="https://travis-ci.org/delba/Log"><img alt="Travis Status" src="https://img.shields.io/travis/delba/Log.svg"/></a>
     <a href="https://img.shields.io/cocoapods/v/Log.svg"><img alt="CocoaPods compatible" src="https://img.shields.io/cocoapods/v/Log.svg"/></a>
     <a href="https://github.com/Carthage/Carthage"><img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat"/></a>
+    <a href="https://img.shields.io/cocoapods/p/Log.svg"><img alt="Platform" src="https://img.shields.io/cocoapods/p/Log.svg"/></a>
 </p>
 
 `Log` is a powerful logging framework that provides built-in themes and formatters, and a nice API to define your owns.
@@ -159,7 +160,7 @@ pod 'Log'
 
 ## License
 
-Copyright (c) 2015 Damien (http://delba.io)
+Copyright (c) 2015-2016 Damien (http://delba.io)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

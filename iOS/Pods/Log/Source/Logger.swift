@@ -1,7 +1,7 @@
 //
 // Logger.swift
 //
-// Copyright (c) 2015 Damien (http://delba.io)
+// Copyright (c) 2015-2016 Damien (http://delba.io)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 // SOFTWARE.
 //
 
-import Foundation
+private let benchmarker = Benchmarker()
 
 public enum Level {
     case Trace, Debug, Info, Warning, Error
@@ -79,7 +79,7 @@ public class Logger {
      
      - returns: A newly created logger.
      */
-    public init(formatter: Formatter = .Default, theme: Theme? = .Default, minLevel: Level = .Trace) {
+    public init(formatter: Formatter = .Default, theme: Theme? = nil, minLevel: Level = .Trace) {
         self.formatter = formatter
         self.theme = theme
         self.minLevel = minLevel
@@ -87,18 +87,19 @@ public class Logger {
         formatter.logger = self
     }
     
-    public typealias Context = (file: String, line: Int, column: Int, function: String)
-    
     /**
      Logs a message with a trace severity level.
      
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
-     - parameter context:    The context in which the log happens
+     - parameter file:       The file in which the log happens.
+     - parameter line:       The line at which the log happens.
+     - parameter column:     The column at which the log happens.
+     - parameter function:   The function in which the log happens.
      */
-    public func trace(items: Any..., separator: String = " ", terminator: String = "\n", context: Context = (#file, #line, #column, #function)) {
-        log(.Trace, items, separator, terminator, context)
+    public func trace(items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(.Trace, items, separator, terminator, file, line, column, function)
     }
     
     /**
@@ -107,10 +108,13 @@ public class Logger {
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
-     - parameter context:    The context in which the log happens
+     - parameter file:       The file in which the log happens.
+     - parameter line:       The line at which the log happens.
+     - parameter column:     The column at which the log happens.
+     - parameter function:   The function in which the log happens.
      */
-    public func debug(items: Any..., separator: String = " ", terminator: String = "\n", context: Context = (#file, #line, #column, #function)) {
-        log(.Debug, items, separator, terminator, context)
+    public func debug(items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(.Debug, items, separator, terminator, file, line, column, function)
     }
     
     /**
@@ -119,10 +123,13 @@ public class Logger {
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
-     - parameter context:    The context in which the log happens
+     - parameter file:       The file in which the log happens.
+     - parameter line:       The line at which the log happens.
+     - parameter column:     The column at which the log happens.
+     - parameter function:   The function in which the log happens.
      */
-    public func info(items: Any..., separator: String = " ", terminator: String = "\n", context: Context = (#file, #line, #column, #function)) {
-        log(.Info, items, separator, terminator, context)
+    public func info(items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(.Info, items, separator, terminator, file, line, column, function)
     }
     
     /**
@@ -131,10 +138,13 @@ public class Logger {
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
-     - parameter context:    The context in which the log happens
+     - parameter file:       The file in which the log happens.
+     - parameter line:       The line at which the log happens.
+     - parameter column:     The column at which the log happens.
+     - parameter function:   The function in which the log happens.
      */
-    public func warning(items: Any..., separator: String = " ", terminator: String = "\n", context: Context = (#file, #line, #column, #function)) {
-        log(.Warning, items, separator, terminator, context)
+    public func warning(items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(.Warning, items, separator, terminator, file, line, column, function)
     }
     
     /**
@@ -143,12 +153,15 @@ public class Logger {
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
-     - parameter context:    The context in which the log happens
+     - parameter file:       The file in which the log happens.
+     - parameter line:       The line at which the log happens.
+     - parameter column:     The column at which the log happens.
+     - parameter function:   The function in which the log happens.
      */
-    public func error(items: Any..., separator: String = " ", terminator: String = "\n", context: Context = (#file, #line, #column, #function)) {
-        log(.Error, items, separator, terminator, context)
+    public func error(items: Any..., separator: String = " ", terminator: String = "\n", file: String = #file, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(.Error, items, separator, terminator, file, line, column, function)
     }
-
+    
     /**
      Logs a message.
      
@@ -156,9 +169,12 @@ public class Logger {
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
-     - parameter context:    The context in which the log happens
+     - parameter file:       The file in which the log happens.
+     - parameter line:       The line at which the log happens.
+     - parameter column:     The column at which the log happens.
+     - parameter function:   The function in which the log happens.
      */
-    private func log(level: Level, _ items: [Any], _ separator: String, _ terminator: String, _ context: Context) {
+    private func log(level: Level, _ items: [Any], _ separator: String, _ terminator: String, _ file: String, _ line: Int, _ column: Int, _ function: String) {
         guard enabled && level >= minLevel else { return }
         
         let date = NSDate()
@@ -168,15 +184,49 @@ public class Logger {
             items: items,
             separator: separator,
             terminator: terminator,
-            file: context.file,
-            line: context.line,
-            column: context.column,
-            function: context.function,
+            file: file,
+            line: line,
+            column: column,
+            function: function,
             date: date
         )
         
         dispatch_async(queue) {
             Swift.print(result, separator: "", terminator: "")
+        }
+    }
+    
+    /**
+     Measures the performance of code.
+     
+     - parameter description: The measure description.
+     - parameter n:           The number of iterations.
+     - parameter file:        The file in which the measure happens.
+     - parameter line:        The line at which the measure happens.
+     - parameter column:      The column at which the measure happens.
+     - parameter function:    The function in which the measure happens.
+     - parameter block:       The block to measure.
+     */
+    public func measure(description: String? = nil, iterations n: Int = 10, file: String = #file, line: Int = #line, column: Int = #column, function: String = #function, block: () -> Void) {
+        guard enabled && .Debug >= minLevel else { return }
+        
+        let measure = benchmarker.measure(description, iterations: n, block: block)
+        
+        let date = NSDate()
+        
+        let result = formatter.format(
+            description: measure.description,
+            average: measure.average,
+            relativeStandardDeviation: measure.relativeStandardDeviation,
+            file: file,
+            line: line,
+            column: column,
+            function: function,
+            date: date
+        )
+        
+        dispatch_async(queue) {
+            Swift.print(result)
         }
     }
 }

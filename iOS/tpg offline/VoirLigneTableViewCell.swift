@@ -2,7 +2,7 @@
 //  VoirLigneTableViewCell.swift
 //  tpg offline
 //
-//  Created by Alice on 10/04/2016.
+//  Created by Rémy Da Costa Faro on 10/04/2016.
 //  Copyright © 2016 dacostafaro. All rights reserved.
 //
 

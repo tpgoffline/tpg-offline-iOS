@@ -1,13 +1,13 @@
 # SwiftTweaks
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![GitHub release](https://img.shields.io/github/release/Khan/SwiftTweaks.svg)](https://github.com/Khan/SwiftTweaks/releases) ![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg) ![platforms](https://img.shields.io/badge/platforms-iOS%20-lightgrey.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Version](http://img.shields.io/cocoapods/v/SwiftTweaks.svg)](http://cocoapods.org/?q=SwiftTweaks) [![GitHub release](https://img.shields.io/github/release/Khan/SwiftTweaks.svg)](https://github.com/Khan/SwiftTweaks/releases) ![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg) ![platforms](https://img.shields.io/badge/platforms-iOS%20-lightgrey.svg) [![Build Status](https://travis-ci.org/Khan/SwiftTweaks.svg?branch=master)](https://travis-ci.org/Khan/SwiftTweaks)
 
 Adjust your iOS app on the fly without needing to compile!
 ![Tweaks](https://github.com/Khan/SwiftTweaks/blob/master/Images/SwiftTweaks%20Overview.png?raw=true)
 
-Your users won’t see your animation study, your Sketch comps, or your user personas. What they *will* see is the finished product - so it’s really important to make your app feel great in-hand!
+Your users won’t see your animation study, Sketch comps, or prototypes. What they will see is the finished product - so it’s really important to make sure that your app feels right on a real device!
 
-Animations that look great in After Effects feel too slow on-device. Typography that looks just right on a 27” display is too small on a 4.5” phone. Light gray text is legible in Sketch, but isn’t when you’re trying to read it outside on a sunny day.
+Animations that look great on your laptop often feel too slow when in-hand. Layouts that looks perfect on a 27-inch display might be too cramped on a 4-inch device. Light gray text may look subtle in Sketch, but it’s downright illegible when you’re outside on a sunny day.
 
 These animation timings, font sizes, and color choices are all examples of “magic numbers” - the constants that give your app its usability and identity. The goal of SwiftTweaks: allow you to fine-tune these magic numbers in the debug builds of your Swift project, without having to wait for Xcode to rebuild the app.
 
@@ -26,12 +26,12 @@ A `Tweak` looks like this:
 public static let colorTint = Tweak("General", "Colors", "Tint", UIColor.blueColor())
 ```
 
-There are also *really* nifty `TweakGroupTemplate` types, like this one for iOS spring animations:
+There are also helpful `TweakGroupTemplate` types, like this one for iOS spring animations:
 ```swift
 public static let buttonAnimation = SpringAnimationTweakTemplate("Animation", "Button Animation")
 ```
 
-There are also templates for “basic” `UIView` animations, `UIEdgeInsets`, and best of all - you can create your own `TweakGroupTemplate` type and contribute ‘em back here!
+There are templates for “basic” `UIView` animations, `UIEdgeInsets`, and best of all - you can create your own `TweakGroupTemplate` type and contribute ‘em back here!
 
 ![Tweaks](https://github.com/Khan/SwiftTweaks/blob/master/Images/SwiftTweaks%20Demo.gif?raw=true)
 
@@ -41,12 +41,13 @@ Good question! I’m glad you asked. **The whole reason SwiftTweaks exists is be
 But Swift doesn’t support this macro-wizardry, so FBTweaks is burdensome to use in Swift code. Our app is nearly all Swift, so we wanted to see if we could make something that was a little easier!
 
 ## Steps to Tweaking
-There are three parts to using a `Tweak`:
+There are three steps to add SwiftTweaks to your project:
 
-0. Create a `TweakLibraryType`, which contains a set of `Tweak`s and a `TweakStore` which persists them.
-1. Reference that `TweakLibraryType` in your code to use a `Tweak`.
+1. Create a `TweakLibraryType`, which contains a set of `Tweak`s and a `TweakStore` to persist them.
+2. Reference that `TweakLibraryType` in your code to use a `Tweak`.
 3. In your AppDelegate, make the `TweakWindow` the root view controller of your app (there are other options, but this is the most straightforward! More on that later.)
-2. Build-and-run, then shake your phone to bring up the Tweaks UI! Adjust tweaks, and when you’re satisfied with what you’ve got, share your tweaks with others from within the Tweaks UI.
+
+Now build-and-run, then shake your phone to bring up the Tweaks UI! Adjust tweaks, and when you’re satisfied with what you’ve got, share your tweaks with others from within the Tweaks UI.
 
 ### Step One: Make your TweakLibrary
 A tweak library is responsible for listing out a bunch of `public static` tweaks, and building a `TweakStore`. A tweak library  looks like this:
@@ -118,11 +119,19 @@ For more examples, check out the example project’s `ViewController.swift` file
 ### Step Three: Set TweakWindow as your Root View Controller
 By default, SwiftTweaks uses a shake gesture to bring up the UI, but you can also use a custom gesture if you prefer it!
 
-## Getting started
+## Installation
 
+#### Carthage
 To add `SwiftTweaks` to your application, add it to your `Cartfile`:
+
 ```
-github "Khan/SwiftTweaks"
+github "Khan/SwiftTweaks" ~> 1.0
+```
+
+#### [CocoaPods](http://cocoapods.org/?q=SwiftTweaks)
+
+```ruby
+pod 'SwiftTweaks', '~> 1.0'
 ```
 
 ## FAQ
@@ -131,7 +140,7 @@ Nope! Wherever/however you prefer, just create a `TweaksViewController` like so:
 	let tweaksVC = TweaksViewController(tweakStore: ExampleTweaks.defaultStore)
 
 #### Can I have multiple `TweakLibraryType`s in my app?
-I’m not sure why you’d want to do that, but… sure! You’d initialize their `defaultStore`s with a unique `storeName` identifier, like so:
+Sure! You’d initialize their `defaultStore`s with a unique `storeName` identifier, like so:
 
 ```swift
 public struct FirstTweaksLibrary: TweakLibraryType {

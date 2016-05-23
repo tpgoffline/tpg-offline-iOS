@@ -3,7 +3,7 @@
 //  tpg offline
 //
 //  Created by Bernex.net on 17.09.15.
-//  Copyright © 2015 DCF. All rights reserved.
+//  Copyright © 2016 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit

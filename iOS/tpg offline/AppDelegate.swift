@@ -3,7 +3,7 @@
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 22/11/2015.
-//  Copyright © 2015 dacostafaaro. All rights reserved.
+//  Copyright © 2016 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()*/
         
         AppValues.logger.enabled = true
-        Fabric.with([Crashlytics.self])
+        //Fabric.with([Crashlytics.self])
    
         getDefaults()
         setTabBar()
@@ -175,8 +175,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
             let couleurs = JSON(data: dataCouleurs!)
             for i in 0 ..< couleurs["colors"].count {
-                AppValues.listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string)
-                AppValues.listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string)
+                AppValues.listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
+                AppValues.listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
             }
             AppValues.logger.info("Chargement des couleurs terminées")
         }

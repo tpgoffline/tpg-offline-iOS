@@ -294,7 +294,7 @@ public enum NVActivityIndicatorType: Int {
 
 /// Activity indicator view with nice animations
 public class NVActivityIndicatorView: UIView {
-    private static let DEFAULT_TYPE: NVActivityIndicatorType = .Pacman
+    private static let DEFAULT_TYPE: NVActivityIndicatorType = .BallSpinFadeLoader
     private static let DEFAULT_COLOR = UIColor.whiteColor()
     private static let DEFAULT_PADDING: CGFloat = 0
     
@@ -332,7 +332,7 @@ public class NVActivityIndicatorView: UIView {
      Create a activity indicator view with default type, color and padding.
      This is used by storyboard to initiate the view.
      
-     - Default type is pacman.
+     - Default type is BallSpinFadeLoader.
      - Default color is white.
      - Default padding is 0.
      
@@ -349,7 +349,7 @@ public class NVActivityIndicatorView: UIView {
      Create a activity indicator view with specified frame, type, color and padding.
      
      - parameter frame: view's frame.
-     - parameter type: animation type, value of NVActivityIndicatorType enum. Default type is pacman.
+     - parameter type: animation type, value of NVActivityIndicatorType enum. Default type is BallSpinFadeLoader.
      - parameter color: color of activity indicator view. Default color is white.
      - parameter padding: view's padding. Default padding is 0.
      
