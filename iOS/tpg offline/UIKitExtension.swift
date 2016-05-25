@@ -10,7 +10,7 @@ import UIKit
 import ChameleonFramework
 
 extension UIViewController {
-    func actualiserTheme() {
+    func refreshTheme() {
         navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
@@ -40,8 +40,8 @@ extension UIViewController {
 }
 
 extension UITableViewController {
-    override func actualiserTheme() {
-        super.actualiserTheme()
+    override func refreshTheme() {
+        super.refreshTheme()
         
         tableView.backgroundColor = AppValues.primaryColor
         tableView.reloadData()

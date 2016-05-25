@@ -1,5 +1,5 @@
 //
-//  ChoixMenuTableViewController.swift
+//  SelectDefaultTabBarItem.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 20/12/2015.
@@ -11,9 +11,10 @@ import SwiftyJSON
 import ChameleonFramework
 import FontAwesomeKit
 
-class ChoixMenuTableViewController: UITableViewController {
+class SelectDefaultTabBarItem: UITableViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
     var rowSelected = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         rowSelected = defaults.integerForKey("selectedTabBar")
@@ -23,7 +24,7 @@ class ChoixMenuTableViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
     }
     
     override func didReceiveMemoryWarning() {

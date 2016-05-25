@@ -1,5 +1,5 @@
 //
-//  ListeItinerairesTableViewController.swift
+//  RoutesListTableViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 19/01/2016.
@@ -15,45 +15,46 @@ import MRProgress
 import SwiftDate
 import Alamofire
 
-class ListeItinerairesTableViewController: UITableViewController {
+class RoutesListTableViewController: UITableViewController {
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    var favoris = false
-    var pasReseau = false
-    var chargement = false
+    var favorite = false
+    var noNetwork = false
+    var loading = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ItineraireEnCours.itineraireResultat = []
+        ActualRoutes.routeResult = []
         tableView.backgroundColor = AppValues.primaryColor
         
-        if ItineraireEnCours.itineraire.depart != nil && ItineraireEnCours.itineraire.arrivee != nil && ItineraireEnCours.itineraire.date != nil {
-            chargement = true
+        if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
+            loading = true
             refresh()
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
         
         tableView.backgroundColor = AppValues.primaryColor
         
-        if ItineraireEnCours.itineraire.depart != nil && ItineraireEnCours.itineraire.arrivee != nil && ItineraireEnCours.itineraire.date != nil {
+        if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
             var listeItems: [UIBarButtonItem] = []
             
             if (AppValues.premium == true) {
-                for x in AppValues.favorisItineraires {
-                    if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
-                        favoris = true
+                for x in AppValues.favoritesRoutes {
+                    if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+                        favorite = true
                         break
                     }
                 }
-                if favoris {
-                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
+                if favorite {
+                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RoutesListTableViewController.toggleFavorite(_:))))
                 }
                 else {
-                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
+                    listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RoutesListTableViewController.toggleFavorite(_:))))
                 }
             }
             self.navigationItem.rightBarButtonItems = listeItems
@@ -70,36 +71,36 @@ class ListeItinerairesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if chargement == true {
+        if loading == true {
             return 1
         }
-        else if ItineraireEnCours.itineraire == nil {
+        else if ActualRoutes.route == nil {
             return 0
         }
-        else if ItineraireEnCours.itineraire.depart == nil || ItineraireEnCours.itineraire.arrivee == nil || ItineraireEnCours.itineraire.date == nil {
+        else if ActualRoutes.route.departure == nil || ActualRoutes.route.arrival == nil || ActualRoutes.route.date == nil {
             return 0
         }
-        else if pasReseau {
+        else if noNetwork {
             return 1
         }
-        else if ItineraireEnCours.itineraireResultat.count == 0 {
+        else if ActualRoutes.routeResult.count == 0 {
             return 1
         }
         else {
-            return ItineraireEnCours.itineraireResultat.count
+            return ActualRoutes.routeResult.count
         }
     }
     
     func refresh() {
-        self.chargement = true
+        self.loading = true
         self.tableView.reloadData()
         let parameters: [String:AnyObject] = [
             "key": "d95be980-0830-11e5-a039-0002a5d5c51b",
-            "from": ItineraireEnCours.itineraire.depart!.idTransportAPI,
-            "to": ItineraireEnCours.itineraire.arrivee!.idTransportAPI,
-            "date": String(ItineraireEnCours.itineraire.date!.year) + "-" + String(ItineraireEnCours.itineraire.date!.month) + "-" + String(ItineraireEnCours.itineraire.date!.day),
-            "time": String(ItineraireEnCours.itineraire.date!.hour) + ":" + String(ItineraireEnCours.itineraire.date!.minute),
-            "isArrivalTime": String(Int(ItineraireEnCours.itineraire.dateArrivee)),
+            "from": ActualRoutes.route.departure!.transportAPIiD,
+            "to": ActualRoutes.route.arrival!.transportAPIiD,
+            "date": String(ActualRoutes.route.date!.year) + "-" + String(ActualRoutes.route.date!.month) + "-" + String(ActualRoutes.route.date!.day),
+            "time": String(ActualRoutes.route.date!.hour) + ":" + String(ActualRoutes.route.date!.minute),
+            "isArrivalTime": String(Int(ActualRoutes.route.isArrivalDate)),
             "fields": [
                 "connections/duration",
                 "connections/from/station/name",
@@ -119,34 +120,34 @@ class ListeItinerairesTableViewController: UITableViewController {
             "limit": 6
         ]
         
-        ItineraireEnCours.itineraireResultat = []
+        ActualRoutes.routeResult = []
         Alamofire.request(.GET, "http://transport.opendata.ch/v1/connections", parameters: parameters).responseJSON { response in
             if let data = response.result.value {
                 let json = JSON(data)
                 for (_, subJSON) in json["connections"] {
-                    var correspondances: [ItineraireCorrespondances] = []
+                    var connections: [RoutesConnections] = []
                     for (_, subJSON2) in subJSON["sections"] {
                         if subJSON2["walk"].type == .Null {
-                            correspondances.append(ItineraireCorrespondances(
-                                ligne: subJSON2["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1],
+                            connections.append(RoutesConnections(
+                                line: subJSON2["journey"]["name"].stringValue.characters.split(" ").map(String.init)[1],
                                 isTpg: (subJSON2["journey"]["operator"].stringValue == "TPG"),
                                 isSBB: (subJSON2["journey"]["operator"].stringValue == "SBB"),
-                                categorie: subJSON2["journey"]["categoryCode"].intValue,
-                                de: subJSON2["departure"]["station"]["name"].stringValue,
-                                a: subJSON2["arrival"]["station"]["name"].stringValue,
+                                transportCategory: subJSON2["journey"]["categoryCode"].intValue,
+                                from: subJSON2["departure"]["station"]["name"].stringValue,
+                                to: subJSON2["arrival"]["station"]["name"].stringValue,
                                 direction: subJSON2["journey"]["to"].stringValue,
-                                timestampDepart: subJSON2["departure"]["departureTimestamp"].intValue,
-                                timestampArrivee: subJSON2["arrival"]["arrivalTimestamp"].intValue
+                                departureTimestamp: subJSON2["departure"]["departureTimestamp"].intValue,
+                                arrivalTimestamp: subJSON2["arrival"]["arrivalTimestamp"].intValue
                                 ))
                         }
                         else {
-                            correspondances.append(
-                                ItineraireCorrespondances(
+                            connections.append(
+                            RoutesConnections(
                                     isWalk: true,
-                                    de: subJSON2["departure"]["station"]["name"].stringValue,
-                                    a: subJSON2["arrival"]["station"]["name"].stringValue,
-                                    timestampDepart: subJSON2["departure"]["departureTimestamp"].intValue,
-                                    timestampArrivee: subJSON2["arrival"]["arrivalTimestamp"].intValue,
+                                    from: subJSON2["departure"]["station"]["name"].stringValue,
+                                    to: subJSON2["arrival"]["station"]["name"].stringValue,
+                                    departureTimestamp: subJSON2["departure"]["departureTimestamp"].intValue,
+                                    arrivalTimestamp: subJSON2["arrival"]["arrivalTimestamp"].intValue,
                                     direction: subJSON2["walk"]["duration"].stringValue.characters.split(":").map(String.init)[1] + " minute(s)".localized()
                                 )
                             )
@@ -154,26 +155,26 @@ class ListeItinerairesTableViewController: UITableViewController {
                     }
                     var dureeString = subJSON["duration"].stringValue
                     dureeString.removeRange(dureeString.startIndex..<dureeString.startIndex.advancedBy(3))
-                    ItineraireEnCours.itineraireResultat.append(
-                        Itineraire(
-                            de: subJSON["from"]["station"]["name"].stringValue,
-                            a: subJSON["to"]["station"]["name"].stringValue,
-                            duree: dureeString,
-                            timestampDepart: subJSON["from"]["departureTimestamp"].intValue,
-                            timestampArrivee: subJSON["to"]["arrivalTimestamp"].intValue,
-                            correspondances: correspondances
+                    ActualRoutes.routeResult.append(
+                        Route(
+                            from: subJSON["from"]["station"]["name"].stringValue,
+                            to: subJSON["to"]["station"]["name"].stringValue,
+                            duration: dureeString,
+                            departureTimestamp: subJSON["from"]["departureTimestamp"].intValue,
+                            arrivalTimestamp: subJSON["to"]["arrivalTimestamp"].intValue,
+                            connections: connections
                         )
                     )
                 }
-                if ItineraireEnCours.itineraire.dateArrivee == true {
-                    ItineraireEnCours.itineraireResultat = ItineraireEnCours.itineraireResultat.reverse()
+                if ActualRoutes.route.isArrivalDate == true {
+                    ActualRoutes.routeResult = ActualRoutes.routeResult.reverse()
                 }
-                self.chargement = false
+                self.loading = false
                 self.tableView.reloadData()
             }
             else {
-                self.pasReseau = true
-                self.chargement = false
+                self.noNetwork = true
+                self.loading = false
                 self.tableView.allowsSelection = false
                 self.tableView.reloadData()
             }
@@ -181,7 +182,7 @@ class ListeItinerairesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if chargement == true {
+        if loading == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
             cell.activityIndicator.stopAnimation()
@@ -207,8 +208,8 @@ class ListeItinerairesTableViewController: UITableViewController {
             return cell
         }
             
-        else if pasReseau {
-            let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! ListeItinerairesTableViewCell
+        else if noNetwork {
+            let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! RoutesListTableViewCell
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.whiteColor()
                 cell.detailTextLabel?.textColor = UIColor.whiteColor()
@@ -233,8 +234,8 @@ class ListeItinerairesTableViewController: UITableViewController {
             return cell
         }
             
-        else if ItineraireEnCours.itineraireResultat.count == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! ListeItinerairesTableViewCell
+        else if ActualRoutes.routeResult.count == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! RoutesListTableViewCell
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.whiteColor()
                 cell.detailTextLabel?.textColor = UIColor.whiteColor()
@@ -260,40 +261,40 @@ class ListeItinerairesTableViewController: UITableViewController {
         }
             
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! ListeItinerairesTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("listeItineaireCell", forIndexPath: indexPath) as! RoutesListTableViewCell
             cell.textLabel?.text = nil
             cell.imageView?.image = nil
             var icone = FAKIonIcons.logOutIconWithSize(21)
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             var attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
-            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[indexPath.row].de))
-            cell.labelDepart.attributedText = attributedString
-            cell.labelDepart.textColor = AppValues.textColor
+            attributedString.appendAttributedString(NSAttributedString(string: " " + ActualRoutes.routeResult[indexPath.row].from))
+            cell.departureLabel.attributedText = attributedString
+            cell.departureLabel.textColor = AppValues.textColor
             
             icone = FAKIonIcons.logInIconWithSize(21)
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
-            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[indexPath.row].a))
-            cell.labelArrivee.attributedText = attributedString
-            cell.labelArrivee.textColor = AppValues.textColor
+            attributedString.appendAttributedString(NSAttributedString(string: " " + ActualRoutes.routeResult[indexPath.row].to))
+            cell.arrivalLabel.attributedText = attributedString
+            cell.arrivalLabel.textColor = AppValues.textColor
             
             icone = FAKIonIcons.clockIconWithSize(21)
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
-            attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[indexPath.row].duree))
-            cell.labelDuree.attributedText = attributedString
-            cell.labelDuree.textColor = AppValues.textColor
+            attributedString.appendAttributedString(NSAttributedString(string: " " + ActualRoutes.routeResult[indexPath.row].duration))
+            cell.durationLabel.attributedText = attributedString
+            cell.durationLabel.textColor = AppValues.textColor
             
-            var timestamp = ItineraireEnCours.itineraireResultat[indexPath.row].timestampDepart
-            cell.labelHeureDepart.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-            cell.labelHeureDepart.textColor = AppValues.textColor
+            var timestamp = ActualRoutes.routeResult[indexPath.row].departureTimestamp
+            cell.hourDepartureLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+            cell.hourDepartureLabel.textColor = AppValues.textColor
             
-            timestamp = ItineraireEnCours.itineraireResultat[indexPath.row].timestampArrivee
-            cell.labelHeureArrivee.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-            cell.labelHeureArrivee.textColor = AppValues.textColor
+            timestamp = ActualRoutes.routeResult[indexPath.row].arrivalTimestamp
+            cell.hourArrivalLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+            cell.hourArrivalLabel.textColor = AppValues.textColor
             
             cell.backgroundColor = AppValues.primaryColor
             
@@ -307,57 +308,57 @@ class ListeItinerairesTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voirItineraire" {
-            let destinationViewController: VueItineraireTableViewController = (segue.destinationViewController) as! VueItineraireTableViewController
-            destinationViewController.compteur = (tableView.indexPathForSelectedRow?.row)!
+            let destinationViewController: RouteDetailTableViewController = (segue.destinationViewController) as! RouteDetailTableViewController
+            destinationViewController.actualRoute = (tableView.indexPathForSelectedRow?.row)!
         }
     }
     func toggleFavorite(sender: AnyObject!) {
-        if AppValues.favorisItineraires.isEmpty {
-            AppValues.favorisItineraires = [[ItineraireEnCours.itineraire.depart!, ItineraireEnCours.itineraire.arrivee!]]
+        if AppValues.favoritesRoutes.isEmpty {
+            AppValues.favoritesRoutes = [[ActualRoutes.route.departure!, ActualRoutes.route.arrival!]]
         }
         else {
-            if self.favoris {
-                AppValues.favorisItineraires = AppValues.favorisItineraires.filter({ (arretA) -> Bool in
-                    if arretA[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && arretA[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
+            if self.favorite {
+                AppValues.favoritesRoutes = AppValues.favoritesRoutes.filter({ (arretA) -> Bool in
+                    if arretA[0].fullName == ActualRoutes.route.departure?.fullName && arretA[1].fullName == ActualRoutes.route.arrival?.fullName {
                         return false
                     }
                     return true
                 })
             }
             else {
-                AppValues.favorisItineraires.append([ItineraireEnCours.itineraire.depart!, ItineraireEnCours.itineraire.arrivee!])
+                AppValues.favoritesRoutes.append([ActualRoutes.route.departure!, ActualRoutes.route.arrival!])
             }
         }
         
-        self.favoris = !self.favoris
+        self.favorite = !self.favorite
         
-        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.favorisItineraires)
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.favoritesRoutes)
         defaults.setObject(encodedData, forKey: "itinerairesFavoris")
         
         var listeItems: [UIBarButtonItem] = []
         
         var favoris = false
         
-        for x in AppValues.favorisItineraires {
-            if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
+        for x in AppValues.favoritesRoutes {
+            if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
                 favoris = true
                 break
             }
         }
         if favoris {
-            listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
+            listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RoutesListTableViewController.toggleFavorite(_:))))
         }
         else {
-            listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(ListeItinerairesTableViewController.toggleFavorite(_:))))
+            listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RoutesListTableViewController.toggleFavorite(_:))))
         }
         self.navigationItem.rightBarButtonItems = listeItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
-        if (navController.viewControllers[0].isKindOfClass(ItineraireTableViewController)) {
-            let itineraireTableViewController = navController.viewControllers[0] as! ItineraireTableViewController
+        if (navController.viewControllers[0].isKindOfClass(RoutesTableViewController)) {
+            let itineraireTableViewController = navController.viewControllers[0] as! RoutesTableViewController
             itineraireTableViewController.tableView.reloadData()
         }
     }
-    func scheduleNotification(time: NSDate, before: Int = 5, ligne: String, direction: String, arretDescente: String) {
+    func scheduleNotification(time: NSDate, before: Int = 5, line: String, direction: String, arretDescente: String) {
         let time2 = time - before.minutes
         let now: NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute, .Second], fromDate: time2)
         
@@ -367,8 +368,8 @@ class ListeItinerairesTableViewController: UITableViewController {
         let reminder = UILocalNotification()
         reminder.fireDate = date
         
-        var texte =  "Le tpg de la ligne ".localized()
-        texte += ligne
+        var texte =  "Le tpg de la line ".localized()
+        texte += line
         texte += " en direction de ".localized()
         texte += direction
         if before == 0 {
@@ -402,7 +403,7 @@ class ListeItinerairesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.itineraireResultat[indexPath.row].timestampDepart)).timeIntervalSinceDate(NSDate())
+        let time = NSDate(timeIntervalSince1970: Double(ActualRoutes.routeResult[indexPath.row].departureTimestamp)).timeIntervalSinceDate(NSDate())
         let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler".localized()) { (action, indexPath) in
             let icone = FAKIonIcons.iosClockIconWithSize(20)
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
@@ -413,17 +414,17 @@ class ListeItinerairesTableViewController: UITableViewController {
             }
             else {
                 alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
-                    self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
+                    self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                     
                 })
                 if time > 60 * 5 {
                     alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
-                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
+                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                     })
                 }
                 if time > 60 * 10 {
                     alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
-                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
+                        self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                     })
                 }
                 alertView.addButton("Autre", action: { () -> Void in
@@ -439,7 +440,7 @@ class ListeItinerairesTableViewController: UITableViewController {
                             
                         }
                         else {
-                            self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].ligne, direction: ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].direction, arretDescente:  ItineraireEnCours.itineraireResultat[indexPath.row].correspondances[0].a)
+                            self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                             customValueAlert.hideView()
                         }
                     })
@@ -458,7 +459,7 @@ class ListeItinerairesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if pasReseau || ItineraireEnCours.itineraireResultat.count == 0 {
+        if noNetwork || ActualRoutes.routeResult.count == 0 {
             return false
         }
         else {

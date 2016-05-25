@@ -12,7 +12,7 @@ import SafariServices
 
 class CreditsTableViewController: UITableViewController {
 
-    let listeCredits = [
+    let creditsList = [
         ["Open data des Transports Publics Genevois".localized(), "Données fournis par la société des Transports Publics Genevois".localized(), "http://www.tpg.ch/web/open-data/"],
         ["Open data de Transport API".localized(), "Données fournis par Opendata.ch".localized(), "https://transport.opendata.ch"],
         ["SwiftyJSON", "Projet maintenu sur GitHub par SwiftyJSON - Projet en licence MIT".localized(), "https://github.com/SwiftyJSON/SwiftyJSON.git"],
@@ -44,7 +44,7 @@ class CreditsTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,15 +56,15 @@ class CreditsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listeCredits.count
+        return creditsList.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("creditsCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = listeCredits[indexPath.row][0]
-        cell.detailTextLabel?.text = listeCredits[indexPath.row][1]
+        cell.textLabel?.text = creditsList[indexPath.row][0]
+        cell.detailTextLabel?.text = creditsList[indexPath.row][1]
         cell.textLabel?.textColor = AppValues.textColor
         cell.detailTextLabel?.textColor = AppValues.textColor
         cell.backgroundColor = AppValues.primaryColor
@@ -78,7 +78,7 @@ class CreditsTableViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if #available(iOS 9.0, *) {
-            let safariViewController = SFSafariViewController(URL: NSURL(string: listeCredits[tableView.indexPathForSelectedRow!.row][2])!, entersReaderIfAvailable: true)
+            let safariViewController = SFSafariViewController(URL: NSURL(string: creditsList[tableView.indexPathForSelectedRow!.row][2])!, entersReaderIfAvailable: true)
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 safariViewController.view.tintColor = AppValues.primaryColor
             }
@@ -94,7 +94,7 @@ class CreditsTableViewController: UITableViewController {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "showURL" {
 			let destinationViewController: WebViewController = (segue.destinationViewController) as! WebViewController
-			destinationViewController.url = listeCredits[tableView.indexPathForSelectedRow!.row][2]
+			destinationViewController.url = creditsList[tableView.indexPathForSelectedRow!.row][2]
 		}
 	}
 }

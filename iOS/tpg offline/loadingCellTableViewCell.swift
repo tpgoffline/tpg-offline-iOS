@@ -1,5 +1,5 @@
 //
-//  loadingCellTableViewCell.swift
+//  LoadingCellTableViewCell.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 20/04/2016.

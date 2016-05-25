@@ -1,26 +1,23 @@
 //
-//  DepartsTableViewCell.swift
+//  StopImageTableViewCell.swift
 //  tpg offline
 //
-//  Created by Rémy Da Costa Faro on 17/11/2015.
+//  Created by Rémy Da Costa Faro on 01/12/2015.
 //  Copyright © 2016 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
 
-class DepartsTableViewCell: UITableViewCell {
-    @IBOutlet weak var pictoLigne: UIImageView!
-    @IBOutlet weak var labelDirection: UILabel!
-    @IBOutlet weak var labelTempsRestant: UILabel!
+class StopImageTableViewCell: UITableViewCell {
+    @IBOutlet weak var logoLabel: UILabel!
+    @IBOutlet weak var stopNameLabel: UILabel!
+    @IBOutlet weak var stopSubTitleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-                
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        
     }
 
 }

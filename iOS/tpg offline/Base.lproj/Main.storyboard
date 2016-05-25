@@ -9,7 +9,7 @@
         <!--Départs-->
         <scene sceneID="ak0-v8-lWF">
             <objects>
-                <tableViewController id="M4P-bf-gmF" customClass="ArretsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="M4P-bf-gmF" customClass="StopsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gOS-UQ-eAW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,16 +57,16 @@
             </objects>
             <point key="canvasLocation" x="2516" y="-4"/>
         </scene>
-        <!--Departs Arret Table View Controller-->
+        <!--Departures Stop Table View Controller-->
         <scene sceneID="aNR-jR-mhN">
             <objects>
-                <tableViewController storyboardIdentifier="departsArretTableViewController" id="MVg-ED-plC" customClass="DepartsArretTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="departsArretTableViewController" id="MVg-ED-plC" customClass="DeparturesTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="S1K-hC-EWy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="departArretCell" rowHeight="60" id="5Wy-cz-13l" customClass="DepartsTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="departArretCell" rowHeight="60" id="5Wy-cz-13l" customClass="DeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Wy-cz-13l" id="vfq-pa-C5f">
@@ -217,7 +217,7 @@
         <!--Route View Controller-->
         <scene sceneID="db2-Zx-rKS">
             <objects>
-                <viewController id="8rT-To-JDz" customClass="RouteViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rT-To-JDz" customClass="RouteToStopViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KXQ-ou-zM2"/>
                         <viewControllerLayoutGuide type="bottom" id="HRX-iH-mMU"/>
@@ -281,10 +281,10 @@
             </objects>
             <point key="canvasLocation" x="3216" y="675"/>
         </scene>
-        <!--Voir Tous Les Departs View Controller-->
+        <!--Voir Tous Les Departures View Controller-->
         <scene sceneID="bdj-cQ-kus">
             <objects>
-                <viewController id="xQB-G1-Yh7" customClass="VoirTousLesDepartsViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xQB-G1-Yh7" customClass="SeeAllDeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LmA-es-GmR"/>
                         <viewControllerLayoutGuide type="bottom" id="0EH-Jo-SIn"/>
@@ -328,7 +328,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tousLesDepartsCell" id="YhW-Yt-RTG" customClass="TousLesDepartsCollectionViewCell" customModule="tpg_offline" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tousLesDepartsCell" id="YhW-Yt-RTG" customClass="AllDeparturesCollectionViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="87" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -461,7 +461,7 @@
                                     <outlet property="titleLabel" destination="HGG-jU-dK5" id="Gri-ls-ES6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="voirLigneDepartCell" rowHeight="70" id="dc5-zw-x9u" customClass="VoirLigneTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="voirLigneDepartCell" rowHeight="70" id="dc5-zw-x9u" customClass="SeeLineTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="152" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dc5-zw-x9u" id="sQe-tr-shR">
@@ -698,7 +698,7 @@
                                     <outlet property="titreLabel" destination="ShG-Bg-eQl" id="9vG-V4-8ga"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" textLabel="HG5-vi-TwX" detailTextLabel="HTm-t6-R4q" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="GJL-6K-c59" customClass="VoirLigneTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" textLabel="HG5-vi-TwX" detailTextLabel="HTm-t6-R4q" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="GJL-6K-c59" customClass="SeeLineTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="222" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJL-6K-c59" id="2Q3-cH-a41">
@@ -934,7 +934,7 @@
         <!--Plans-->
         <scene sceneID="BT5-9w-SUb">
             <objects>
-                <tableViewController id="4xY-4v-1mH" customClass="PlansTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4xY-4v-1mH" customClass="MapsListTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="u2y-t7-BCg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -976,7 +976,7 @@
         <!--Paramètres-->
         <scene sceneID="4oy-um-gbM">
             <objects>
-                <tableViewController id="QhC-WT-yPT" customClass="ParametresTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QhC-WT-yPT" customClass="SettingsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="V1V-gU-DrK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1026,7 +1026,7 @@
         <!--Choix Menu Table View Controller-->
         <scene sceneID="Xds-L3-ftc">
             <objects>
-                <tableViewController id="KMO-yd-eMh" customClass="ChoixMenuTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="KMO-yd-eMh" customClass="SelectDefaultTabBarItem" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Ja-ME-eeJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1144,7 +1144,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="titrePremiumCell" rowHeight="100" id="0Oh-2s-iL5" customClass="TitrePremiumTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="titrePremiumCell" rowHeight="100" id="0Oh-2s-iL5" customClass="PremiumTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="192" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Oh-2s-iL5" id="IM8-9d-PcE">
@@ -1171,7 +1171,7 @@
                                     <outlet property="titreLabel" destination="EJk-fG-uQg" id="trP-Oy-uGN"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="acheterPremiumCell" rowHeight="100" id="9gT-7F-cym" userLabel="acheterPremiumCell" customClass="AcheterPremiumTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="acheterPremiumCell" rowHeight="100" id="9gT-7F-cym" userLabel="acheterPremiumCell" customClass="BuyPremiumTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="292" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9gT-7F-cym" id="whY-mx-7Ll">
@@ -1322,7 +1322,7 @@
         <!--Plan View Controller-->
         <scene sceneID="6Te-cg-Wv9">
             <objects>
-                <viewController id="I4o-YC-PGX" customClass="PlanViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I4o-YC-PGX" customClass="MapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NBK-sa-zl1"/>
                         <viewControllerLayoutGuide type="bottom" id="KPB-3g-5h2"/>
@@ -1403,7 +1403,7 @@
         <!--Itinéraires-->
         <scene sceneID="m1w-nH-O9U">
             <objects>
-                <tableViewController title="Itinéraires" id="g9M-O5-Wzf" customClass="ItineraireTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Itinéraires" id="g9M-O5-Wzf" customClass="RoutesTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Uvu-ia-nWP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1481,7 +1481,7 @@
                                     <outlet property="button" destination="4H2-me-uwx" id="CPZ-wA-uJx"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favorisCell" rowHeight="88" id="ZXe-Ph-V8G" customClass="FavorisItinerairesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favorisCell" rowHeight="88" id="ZXe-Ph-V8G" customClass="FavoriteRouteTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="224" width="600" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZXe-Ph-V8G" id="F5M-ZM-oSm">
@@ -1578,10 +1578,10 @@
             </objects>
             <point key="canvasLocation" x="2462" y="4000"/>
         </scene>
-        <!--Tpg Arret Selection Table View Controller-->
+        <!--Tpg Stop Selection Table View Controller-->
         <scene sceneID="cSS-pM-Ome">
             <objects>
-                <tableViewController id="VKI-Lo-KNa" customClass="tpgArretSelectionTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="VKI-Lo-KNa" customClass="RoutesStopsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rTg-2D-vYp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1822,13 +1822,13 @@
         <!--Liste Itineraires Table View Controller-->
         <scene sceneID="f14-X0-JYY">
             <objects>
-                <tableViewController id="C4a-bD-eqd" customClass="ListeItinerairesTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="C4a-bD-eqd" customClass="RoutesListTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="NPS-LV-2g3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listeItineaireCell" rowHeight="99" id="aPg-T2-wgM" customClass="ListeItinerairesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listeItineaireCell" rowHeight="99" id="aPg-T2-wgM" customClass="RoutesListTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aPg-T2-wgM" id="Ofx-dI-gN7">
@@ -1982,16 +1982,16 @@
             </objects>
             <point key="canvasLocation" x="2468" y="4706"/>
         </scene>
-        <!--Vue Itineraire Table View Controller-->
+        <!--Vue Route Table View Controller-->
         <scene sceneID="Coc-0k-Dsz">
             <objects>
-                <tableViewController id="c4w-XN-uGa" customClass="VueItineraireTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="c4w-XN-uGa" customClass="RouteDetailTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" id="yrK-kH-ht6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itineraireCell" rowHeight="145" id="jag-GB-3z2" customClass="ItineraireTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itineraireCell" rowHeight="145" id="jag-GB-3z2" customClass="DetailRouteTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="145"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jag-GB-3z2" id="ysB-AK-iSN">

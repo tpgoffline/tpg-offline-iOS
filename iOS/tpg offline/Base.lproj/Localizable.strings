@@ -64,7 +64,7 @@
 
 
 /*
- * ./tpg offline/RouteViewController.swift
+ * ./tpg offline/RouteToStopViewController.swift
  */
 
 " Minutes" = " Minutes";
@@ -128,7 +128,7 @@
 
 
 /*
- * ./tpg offline/ItineraireTableViewController.swift
+ * ./tpg offline/RoutesTableViewController.swift
  */
 
 "Départ" = "Départ";
@@ -182,7 +182,7 @@
 
 
 /*
- * ./tpg offline/ListeItinerairesTableViewController.swift
+ * ./tpg offline/RoutesListTableViewController.swift
  */
 
 "Pas de réseau" = "Pas de réseau";
@@ -196,7 +196,7 @@
 
 
 /*
- * ./tpg offline/VueItineraireTableViewController.swift
+ * ./tpg offline/RouteDetailTableViewController.swift
  */
 
 "Marche" = "Marche";
@@ -240,7 +240,7 @@
 
 
 /*
- * ./tpg offline/ParametresTableViewController.swift
+ * ./tpg offline/SettingsTableViewController.swift
  */
 
 "Choix du menu par défaut" = "Choix du menu par défaut";
@@ -344,7 +344,7 @@
 
 
 /*
- * ./tpg offline/ArretsTableViewController.swift
+ * ./tpg offline/StopsTableViewController.swift
  */
 
 "Cette autorisation sert à envoyer des rappels." = "Cette autorisation sert à envoyer des rappels.";

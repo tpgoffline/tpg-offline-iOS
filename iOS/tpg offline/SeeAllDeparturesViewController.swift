@@ -1,5 +1,5 @@
 //
-//  VoirTousLesDepartsViewController.swift
+//  SeeAllDeparturesViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 17/05/2016.
@@ -14,32 +14,32 @@ import SCLAlertView
 import Async
 import ChameleonFramework
 
-class VoirTousLesDepartsViewController: UIViewController {
+class SeeAllDeparturesViewController: UIViewController {
     
     @IBOutlet weak var hourPicker: AKPickerView!
     @IBOutlet weak var departuresCollectionView: UICollectionView!
-    @IBOutlet weak var labelLigne: UILabel!
-    @IBOutlet weak var labelDirection: UILabel!
+    @IBOutlet weak var lineLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
     
-    var ligne = "1"
+    var line = "1"
     var direction = "Jar.-Botanique"
     var destinationCode = "JAR.-BOTANIQUE"
-    var arret: Arret = AppValues.arrets[AppValues.arretsKeys[0]]!
-    var listeDeparts: [Departs] = []
-    var listeDepartsInitial: [Departs] = []
-    var listeHeures: [Int] = []
-    var heureActuelle = 5
+    var stop: Stop = AppValues.stops[AppValues.stopsKeys[0]]!
+    var departuresList: [Departures] = []
+    var initialDeparturesList: [Departures] = []
+    var hoursList: [Int] = []
+    var actualHour = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        labelLigne.text = ligne
-        labelLigne.textColor = AppValues.listeColor[ligne]
-        labelLigne.backgroundColor = AppValues.listeBackgroundColor[ligne]
+        lineLabel.text = line
+        lineLabel.textColor = AppValues.linesColor[line]
+        lineLabel.backgroundColor = AppValues.linesBackgroundColor[line]
         
-        labelDirection.text = direction
-        labelDirection.textColor = AppValues.listeColor[ligne]
-        labelDirection.backgroundColor = AppValues.listeBackgroundColor[ligne]
+        directionLabel.text = direction
+        directionLabel.textColor = AppValues.linesColor[line]
+        directionLabel.backgroundColor = AppValues.linesBackgroundColor[line]
         
         departuresCollectionView.allowsSelection = false
         departuresCollectionView.backgroundColor = AppValues.primaryColor
@@ -52,14 +52,14 @@ class VoirTousLesDepartsViewController: UIViewController {
         hourPicker.dataSource = self
         
         refresh()
-        actualiserTheme()
+        refreshTheme()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         departuresCollectionView.backgroundColor = AppValues.primaryColor
-        actualiserTheme()
+        refreshTheme()
         departuresCollectionView.reloadData()
         
         hourPicker.backgroundColor = AppValues.primaryColor
@@ -74,130 +74,130 @@ class VoirTousLesDepartsViewController: UIViewController {
     
     func refresh() {
         Async.background {
-            self.listeDeparts = []
+            self.departuresList = []
             let day = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate())
             var path = ""
             if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
                 switch day.weekday {
                 case 7:
-                    path = dir.stringByAppendingPathComponent(self.arret.stopCode + "departsSAM.json")
+                    path = dir.stringByAppendingPathComponent(self.stop.stopCode + "departsSAM.json")
                     break
                 case 1:
-                    path = dir.stringByAppendingPathComponent(self.arret.stopCode + "departsDIM.json");
+                    path = dir.stringByAppendingPathComponent(self.stop.stopCode + "departsDIM.json");
                     break
                 default:
-                    path = dir.stringByAppendingPathComponent(self.arret.stopCode + "departsLUN.json");
+                    path = dir.stringByAppendingPathComponent(self.stop.stopCode + "departsLUN.json");
                     
                     break
                 }
             }
             
             if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                if self.listeDepartsInitial.isEmpty {
+                if self.initialDeparturesList.isEmpty {
                     let dataDeparts = NSData(contentsOfFile: path)
                     let departs = JSON(data: dataDeparts!)
                     for (_, subJson) in departs {
-                        if AppValues.listeColor[subJson["ligne"].string!] != nil {
-                            self.listeDepartsInitial.append(Departs(
-                                ligne: subJson["ligne"].string!,
+                        if AppValues.linesColor[subJson["ligne"].string!] != nil {
+                            self.initialDeparturesList.append(Departures(
+                                line: subJson["ligne"].string!,
                                 direction: subJson["destination"].string!,
                                 destinationCode: "",
-                                couleur: AppValues.listeColor[subJson["ligne"].string!]!,
-                                couleurArrierePlan: AppValues.listeBackgroundColor[subJson["ligne"].string!]!,
+                                lineColor: AppValues.linesColor[subJson["ligne"].string!]!,
+                                lineBackgroundColor: AppValues.linesBackgroundColor[subJson["ligne"].string!]!,
                                 code: nil,
-                                tempsRestant: "0",
+                                leftTime: "0",
                                 timestamp: subJson["timestamp"].string!
                                 ))
                         }
                         else {
-                            self.listeDepartsInitial.append(Departs(
-                                ligne: subJson["ligne"].string!,
+                            self.initialDeparturesList.append(Departures(
+                                line: subJson["ligne"].string!,
                                 direction: subJson["destination"].string!,
                                 destinationCode: subJson["line"]["destinationCode"].string!,
-                                couleur: UIColor.whiteColor(),
-                                couleurArrierePlan: UIColor.flatGrayColorDark(),
+                                lineColor: UIColor.whiteColor(),
+                                lineBackgroundColor: UIColor.flatGrayColorDark(),
                                 code: nil,
-                                tempsRestant: "0",
+                                leftTime: "0",
                                 timestamp: subJson["timestamp"].string!
                                 ))
                         }
-                        self.listeDepartsInitial.last?.calculerTempsRestant()
+                        self.initialDeparturesList.last?.calculerTempsRestant()
                     }
                     
-                    self.listeDepartsInitial = self.listeDepartsInitial.filter({ (depart) -> Bool in
-                        if depart.ligne == self.ligne && depart.direction == self.direction {
+                    self.initialDeparturesList = self.initialDeparturesList.filter({ (depart) -> Bool in
+                        if depart.line == self.line && depart.direction == self.direction {
                             return true
                         }
                         return false
                     })
                 }
                 
-                if self.listeHeures.isEmpty {
-                    for depart in self.listeDepartsInitial {
-                        if self.listeHeures.indexOf((depart.dateCompenents?.hour)!) == nil {
-                            self.listeHeures.append((depart.dateCompenents?.hour)!)
+                if self.hoursList.isEmpty {
+                    for depart in self.initialDeparturesList {
+                        if self.hoursList.indexOf((depart.dateCompenents?.hour)!) == nil {
+                            self.hoursList.append((depart.dateCompenents?.hour)!)
                         }
                     }
                     
                     
-                    self.heureActuelle = self.listeHeures[0]
+                    self.actualHour = self.hoursList[0]
                 }
                 
-                self.listeDeparts = self.listeDepartsInitial.filter({ (depart) -> Bool in
-                    if depart.dateCompenents?.hour == self.heureActuelle {
+                self.departuresList = self.initialDeparturesList.filter({ (depart) -> Bool in
+                    if depart.dateCompenents?.hour == self.actualHour {
                         return true
                     }
                     return false
                 })
             }
             else {
-                if self.listeDepartsInitial.isEmpty {
-                    Alamofire.request(.GET, "http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": self.arret.stopCode, "lineCode": self.ligne, "destinationCode": self.destinationCode]).responseJSON { response in
+                if self.initialDeparturesList.isEmpty {
+                    Alamofire.request(.GET, "http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": self.stop.stopCode, "lineCode": self.line, "destinationCode": self.destinationCode]).responseJSON { response in
                         if let data = response.result.value {
                             let departs = JSON(data)
                             for (_, subjson) in departs["departures"] {
-                                if AppValues.listeColor[subjson["line"]["lineCode"].string!] == nil {
-                                    self.listeDepartsInitial.append(Departs(
-                                        ligne: subjson["line"]["lineCode"].string!,
+                                if AppValues.linesColor[subjson["line"]["lineCode"].string!] == nil {
+                                    self.initialDeparturesList.append(Departures(
+                                        line: subjson["line"]["lineCode"].string!,
                                         direction: subjson["line"]["destinationName"].string!,
                                         destinationCode: subjson["line"]["destinationCode"].string!,
-                                        couleur: UIColor.whiteColor(),
-                                        couleurArrierePlan: UIColor.flatGrayColor(),
+                                        lineColor: UIColor.whiteColor(),
+                                        lineBackgroundColor: UIColor.flatGrayColor(),
                                         
                                         code: String(subjson["departureCode"].intValue ?? 0),
-                                        tempsRestant: subjson["waitingTime"].string!,
+                                        leftTime: subjson["waitingTime"].string!,
                                         timestamp: subjson["timestamp"].string
                                         ))
                                 }
                                 else {
-                                    self.listeDepartsInitial.append(Departs(
-                                        ligne: subjson["line"]["lineCode"].string!,
+                                    self.initialDeparturesList.append(Departures(
+                                        line: subjson["line"]["lineCode"].string!,
                                         direction: subjson["line"]["destinationName"].string!,
                                         destinationCode: subjson["line"]["destinationCode"].string!,
-                                        couleur: AppValues.listeColor[subjson["line"]["lineCode"].string!]!,
-                                        couleurArrierePlan: AppValues.listeBackgroundColor[subjson["line"]["lineCode"].string!]!,
+                                        lineColor: AppValues.linesColor[subjson["line"]["lineCode"].string!]!,
+                                        lineBackgroundColor: AppValues.linesBackgroundColor[subjson["line"]["lineCode"].string!]!,
                                         
                                         code: String(subjson["departureCode"].intValue ?? 0),
-                                        tempsRestant: subjson["waitingTime"].string!,
+                                        leftTime: subjson["waitingTime"].string!,
                                         timestamp: subjson["timestamp"].string
                                         ))
                                 }
-                                self.listeDepartsInitial.last?.calculerTempsRestant()
+                                self.initialDeparturesList.last?.calculerTempsRestant()
                             }
                             
-                            if self.listeHeures.isEmpty {
-                                for depart in self.listeDepartsInitial {
-                                    if self.listeHeures.indexOf((depart.dateCompenents?.hour)!) == nil {
-                                        self.listeHeures.append((depart.dateCompenents?.hour)!)
+                            if self.hoursList.isEmpty {
+                                for depart in self.initialDeparturesList {
+                                    if self.hoursList.indexOf((depart.dateCompenents?.hour)!) == nil {
+                                        self.hoursList.append((depart.dateCompenents?.hour)!)
                                     }
                                 }
                                 
                                 self.hourPicker.reloadData()
-                                self.heureActuelle = self.listeHeures[0]
+                                self.actualHour = self.hoursList[0]
                             }
                             
-                            self.listeDeparts = self.listeDepartsInitial.filter({ (depart) -> Bool in
-                                if depart.dateCompenents?.hour == self.heureActuelle {
+                            self.departuresList = self.initialDeparturesList.filter({ (depart) -> Bool in
+                                if depart.dateCompenents?.hour == self.actualHour {
                                     return true
                                 }
                                 return false
@@ -211,8 +211,8 @@ class VoirTousLesDepartsViewController: UIViewController {
                     }
                 }
                 else {
-                    self.listeDeparts = self.listeDepartsInitial.filter({ (depart) -> Bool in
-                        if depart.dateCompenents?.hour == self.heureActuelle {
+                    self.departuresList = self.initialDeparturesList.filter({ (depart) -> Bool in
+                        if depart.dateCompenents?.hour == self.actualHour {
                             return true
                         }
                         return false
@@ -226,18 +226,18 @@ class VoirTousLesDepartsViewController: UIViewController {
     }
 }
 
-extension VoirTousLesDepartsViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+extension SeeAllDeparturesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.listeDeparts.count
+        return self.departuresList.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tousLesDepartsCell", forIndexPath: indexPath) as! TousLesDepartsCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tousLesDepartsCell", forIndexPath: indexPath) as! AllDeparturesCollectionViewCell
         
-        cell.titre.text = NSDateFormatter.localizedStringFromDate(NSDate(components: listeDeparts[indexPath.row].dateCompenents!), dateStyle: .NoStyle, timeStyle: .ShortStyle)
-        cell.titre.textColor = AppValues.textColor
+        cell.title.text = NSDateFormatter.localizedStringFromDate(NSDate(components: departuresList[indexPath.row].dateCompenents!), dateStyle: .NoStyle, timeStyle: .ShortStyle)
+        cell.title.textColor = AppValues.textColor
         if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
             cell.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
         }
@@ -254,15 +254,15 @@ extension VoirTousLesDepartsViewController : UICollectionViewDelegate, UICollect
     }
 }
 
-extension VoirTousLesDepartsViewController : AKPickerViewDataSource, AKPickerViewDelegate {
+extension SeeAllDeparturesViewController: AKPickerViewDataSource, AKPickerViewDelegate {
     func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
-        return listeHeures.count
+        return hoursList.count
     }
     func pickerView(pickerView: AKPickerView, titleForItem item: Int) -> String {
-        return "\(listeHeures[item])h"
+        return "\(hoursList[item])h"
     }
     func pickerView(pickerView: AKPickerView, didSelectItem item: Int) {
-        self.heureActuelle = listeHeures[item]
+        self.actualHour = hoursList[item]
         refresh()
     }
 }

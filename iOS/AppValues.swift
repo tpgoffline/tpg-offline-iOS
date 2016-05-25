@@ -12,19 +12,19 @@ import Log
 import SwiftTweaks
 
 struct AppValues {
-    static var arrets: [String: Arret] = [:]
-    static var arretsFavoris: [String: Arret]!  = [:]
-    static var nomCompletsFavoris: [String]!  = []
-	static var favorisItineraires: [[Arret]]! = []
-    static var stopCodeToArret: [String: String] = [:]	
+    static var stops: [String:Stop] = [:]
+    static var favoritesStops: [String:Stop]!  = [:]
+    static var fullNameFavoritesStops: [String]!  = []
+	static var favoritesRoutes: [[Stop]]! = []
+    static var stopCodeToStopItem: [String: String] = [:]
     static var primaryColor: UIColor! = UIColor.flatOrangeColor()
     static var secondaryColor: UIColor! = UIColor.flatOrangeColorDark()
     static var textColor: UIColor! = UIColor.whiteColor()
 	static var premium: Bool! = false
     static var logger = Logger()
-    static var arretsKeys: [String] = []
-    static var listeBackgroundColor = [String:UIColor]()
-    static var listeColor = [String:UIColor]()
+    static var stopsKeys: [String] = []
+    static var linesBackgroundColor = [String:UIColor]()
+    static var linesColor = [String:UIColor]()
     
     static func testTimeExecution(title: String!, block: () -> ()) {
         // Thanks to @kristopherjohnson (GitHub)

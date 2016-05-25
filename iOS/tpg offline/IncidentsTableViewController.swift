@@ -15,12 +15,10 @@ import Alamofire
 
 class IncidentsTableViewController: UITableViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
-    var distrubtions: [Perturbations] = []
-    var listeBackgroundColor = [String:UIColor]()
-    var listeColor = [String:UIColor]()
-    var erreur = false
-    var aucunProbleme = false
-    var chargement: Bool = false
+    var distrubtions: [Distrubtions] = []
+    var error = false
+    var noDistrubtions = false
+    var loading: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +38,7 @@ class IncidentsTableViewController: UITableViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
-        let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
-        let couleurs = JSON(data: dataCouleurs!)
-        for i in 0 ..< couleurs["colors"].count {
-            listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
-            listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
-        }
+
         refresh(self)
     }
     
@@ -56,7 +48,7 @@ class IncidentsTableViewController: UITableViewController {
         tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
-        actualiserTheme()
+        refreshTheme()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,10 +57,10 @@ class IncidentsTableViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
-        aucunProbleme = false
-        erreur = false
+        noDistrubtions = false
+        error = false
         distrubtions = []
-        chargement = true
+        loading = true
         tableView.reloadData()
         
         Alamofire.request(.GET, "http://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json", parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"])
@@ -77,19 +69,19 @@ class IncidentsTableViewController: UITableViewController {
                     let json = JSON(data)
                     if json["disruptions"].count != 0 {
                         for x in 0...json["disruptions"].count - 1 {
-                            if self.listeColor[json["disruptions"][x]["lineCode"].string!] != nil {
-                                self.distrubtions.append(Perturbations(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
+                            if AppValues.linesColor[json["disruptions"][x]["lineCode"].string!] != nil {
+                                self.distrubtions.append(Distrubtions(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
                             }
                         }
                     }
                     else {
-                        self.aucunProbleme = true
+                        self.noDistrubtions = true
                     }
-                    self.chargement = false
+                    self.loading = false
                     self.tableView.reloadData()
                 }
                 else {
-                    self.erreur = true
+                    self.error = true
                     self.tableView.reloadData()
                 }
         }
@@ -106,13 +98,13 @@ class IncidentsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if chargement {
+        if loading {
             return 1
         }
-        else if aucunProbleme == true {
+        else if noDistrubtions == true {
             return 1
         }
-        else if erreur == true {
+        else if error == true {
             return 1
         }
         else {
@@ -130,7 +122,7 @@ class IncidentsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if chargement == true {
+        if loading == true {
             let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! loadingCellTableViewCell
             
             cell.activityIndicator.stopAnimation()
@@ -155,7 +147,7 @@ class IncidentsTableViewController: UITableViewController {
 
             return cell
         }
-        else if aucunProbleme {
+        else if noDistrubtions {
             let cell = tableView.dequeueReusableCellWithIdentifier("incidentsCell", forIndexPath: indexPath)
             cell.textLabel?.text = "Aucun incident".localized()
             
@@ -196,7 +188,7 @@ class IncidentsTableViewController: UITableViewController {
             }
             return cell
         }
-        else if erreur {
+        else if error {
             let cell = tableView.dequeueReusableCellWithIdentifier("incidentsCell", forIndexPath: indexPath)
             cell.textLabel?.text = "Pas de réseau !".localized()
             
@@ -235,26 +227,26 @@ class IncidentsTableViewController: UITableViewController {
             labelPictoLigne.layer.borderWidth = 1
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.backgroundColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
-                cell.textLabel?.textColor = listeColor[distrubtions[indexPath.row].lineCode]
-                cell.detailTextLabel?.textColor = listeColor[distrubtions[indexPath.row].lineCode]
-                labelPictoLigne.textColor = listeColor[distrubtions[indexPath.row].lineCode]
-                labelPictoLigne.layer.borderColor = listeColor[distrubtions[indexPath.row].lineCode]?.CGColor
+                cell.backgroundColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                cell.textLabel?.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
+                cell.detailTextLabel?.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
+                labelPictoLigne.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
+                labelPictoLigne.layer.borderColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]?.CGColor
             }
             else {
-                if ContrastColorOf(listeBackgroundColor[distrubtions[indexPath.row].lineCode]!, returnFlat: true) == FlatWhite() {
+                if ContrastColorOf(AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!, returnFlat: true) == FlatWhite() {
                     cell.backgroundColor = UIColor.flatWhiteColor()
-                    cell.textLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
-                    cell.detailTextLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
-                    labelPictoLigne.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]
-                    labelPictoLigne.layer.borderColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]?.CGColor
+                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]?.CGColor
                 }
                 else {
                     cell.backgroundColor = UIColor.flatWhiteColor()
-                    cell.textLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
-                    cell.detailTextLabel?.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
-                    labelPictoLigne.textColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
-                    labelPictoLigne.layer.borderColor = listeBackgroundColor[distrubtions[indexPath.row].lineCode]?.darkenByPercentage(0.2).CGColor
+                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
+                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darkenByPercentage(0.2)
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]?.darkenByPercentage(0.2).CGColor
                 }
                 
             }

@@ -18,6 +18,7 @@ class LocationSettingsTableViewController: UITableViewController {
     let choices = [["Normale".localized(), "Précise".localized(), "Très précise".localized()], ["100m".localized(), "200m".localized(), "500m".localized(), "750m".localized(), "1km".localized()]]
     let values = [[0, 1, 2], [100, 200, 500, 750, 1000]]
     var rowSelected = [0,0]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         rowSelected[0] = values[0].indexOf(defaults.integerForKey("locationAccurency"))!
@@ -31,7 +32,7 @@ class LocationSettingsTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
     }
     
     override func didReceiveMemoryWarning() {

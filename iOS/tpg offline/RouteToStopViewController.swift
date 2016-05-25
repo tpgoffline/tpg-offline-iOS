@@ -1,5 +1,5 @@
 //
-//  RouteViewController.swift
+//  RouteToStopViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 13/01/2016.
@@ -14,25 +14,26 @@ import FontAwesomeKit
 import SCLAlertView
 import ChameleonFramework
 
-class RouteViewController: UIViewController {
+class RouteToStopViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var labelPieton: UILabel!
-    var arret: Arret!
+    @IBOutlet weak var timeToGoLabel: UILabel!
+    @IBOutlet weak var walkLabel: UILabel!
+    var stop: Stop!
     var directionsRoute: MKRoute!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        labelPieton.attributedText = FAKIonIcons.androidWalkIconWithSize(label.bounds.height).attributedString()
+        walkLabel.attributedText = FAKIonIcons.androidWalkIconWithSize(timeToGoLabel.bounds.height).attributedString()
         
         let pin = MKPointAnnotation()
-        pin.coordinate = self.arret.location.coordinate
-        pin.title = self.arret.nomComplet
+        pin.coordinate = self.stop.location.coordinate
+        pin.title = self.stop.fullName
 		
         map.addAnnotation(pin)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: (self.arret.location.coordinate), span: span)
+        let region = MKCoordinateRegion(center: (self.stop.location.coordinate), span: span)
         map.setRegion(region, animated: true)
     }
     
@@ -45,7 +46,7 @@ class RouteViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
 		
 		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
 			map.tintColor = AppValues.primaryColor
@@ -54,12 +55,12 @@ class RouteViewController: UIViewController {
 			map.tintColor = AppValues.textColor
 		}
      
-        label.textColor = AppValues.textColor
-        labelPieton.textColor = AppValues.textColor
+        timeToGoLabel.textColor = AppValues.textColor
+        walkLabel.textColor = AppValues.textColor
     }
 }
 
-extension RouteViewController : MKMapViewDelegate {
+extension RouteToStopViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: directionsRoute.polyline)
@@ -79,7 +80,7 @@ extension RouteViewController : MKMapViewDelegate {
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         let request = MKDirectionsRequest()
         request.source = MKMapItem.mapItemForCurrentLocation()
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: self.arret.location.coordinate, addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: self.stop.location.coordinate, addressDictionary: nil))
         request.requestsAlternateRoutes = false
         request.transportType = .Walking
 
@@ -96,11 +97,11 @@ extension RouteViewController : MKMapViewDelegate {
                 route.polyline.boundingMapRect,
                 animated: true
             )
-            var temps = userLocation.location!.distanceFromLocation(self.arret.location) / 1000
-            temps /= 5
-            self.label.text = String(Int(route.expectedTravelTime / 60)) + " Minutes".localized()
+            var timeToGo = userLocation.location!.distanceFromLocation(self.stop.location) / 1000
+            timeToGo /= 5
+            self.timeToGoLabel.text = String(Int(route.expectedTravelTime / 60)) + " Minutes".localized()
         }
-        self.label.text = "Chargement en cours".localized()
+        self.timeToGoLabel.text = "Chargement en cours".localized()
         
     }
 }

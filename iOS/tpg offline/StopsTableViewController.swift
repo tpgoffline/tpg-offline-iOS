@@ -1,6 +1,6 @@
 
 //
-//  ArretsTableViewController.swift
+//  StopsTableViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 16/11/2015.
@@ -16,13 +16,13 @@ import DGElasticPullToRefresh
 import INTULocationManager
 import Localize_Swift
 
-class ArretsTableViewController: UITableViewController, UISplitViewControllerDelegate {
-    var arretsLocalisation = [Arret]()
-    var filtredResults = [Arret]()
+class StopsTableViewController: UITableViewController, UISplitViewControllerDelegate {
+    var localizedStops = [Stop]()
+    var filtredResults = [Stop]()
     let searchController = UISearchController(searchResultsController: nil)
     let defaults = NSUserDefaults.standardUserDefaults()
     let pscope = PermissionScope()
-    var chargementLocalisation = false
+    var localisationLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
         
-        actualiserTheme()
+        refreshTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
         tableView.tableHeaderView = self.searchController.searchBar
@@ -103,7 +103,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     }
     
     func requestLocation() {
-        chargementLocalisation = true
+        localisationLoading = true
         tableView.reloadData()
         var accurency = INTULocationAccuracy.Block
         if self.defaults.integerForKey("locationAccurency") == 1 {
@@ -116,24 +116,24 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         let localisationManager = INTULocationManager.sharedInstance()
         localisationManager.requestLocationWithDesiredAccuracy(accurency, timeout: 60, delayUntilAuthorized: true) { (location, accurency, status) in
             if status == .Success {
-                self.arretsLocalisation = []
-                AppValues.logger.info("Résultat de la localisation")
+                self.localizedStops = []
+                AppValues.logger.info("Localisation results")
                 
                 if self.defaults.integerForKey("proximityDistance") == 0 {
                     self.defaults.setInteger(500, forKey: "proximityDistance")
                 }
                 
-                for x in [Arret](AppValues.arrets.values) {
+                for x in [Stop](AppValues.stops.values) {
                     x.distance = location.distanceFromLocation(x.location)
                     
                     if (location.distanceFromLocation(x.location) <= Double(self.defaults.integerForKey("proximityDistance"))) {
                         
-                        self.arretsLocalisation.append(x)
+                        self.localizedStops.append(x)
                         AppValues.logger.info(x.stopCode)
                         AppValues.logger.info(String(location.distanceFromLocation(x.location)))
                     }
                 }
-                self.arretsLocalisation.sortInPlace({ (arret1, arret2) -> Bool in
+                self.localizedStops.sortInPlace({ (arret1, arret2) -> Bool in
                     if arret1.distance < arret2.distance {
                         return true
                     }
@@ -141,11 +141,11 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                         return false
                     }
                 })
-                self.chargementLocalisation = false
+                self.localisationLoading = false
                 self.tableView.reloadData()
             }
             else {
-                self.chargementLocalisation = false
+                self.localisationLoading = false
                 self.tableView.reloadData()
             }
         }
@@ -155,7 +155,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        actualiserTheme()
+        refreshTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
         
@@ -196,23 +196,23 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         }
         else {
             if section == 0 {
-                if chargementLocalisation {
+                if localisationLoading {
                     return 1
                 }
                 else {
-                    return arretsLocalisation.count
+                    return localizedStops.count
                 }
             }
             else if section == 1 {
-                if (AppValues.arretsFavoris == nil) {
+                if (AppValues.favoritesStops == nil) {
                     return 0
                 }
                 else {
-                    return AppValues.arretsFavoris.count
+                    return AppValues.favoritesStops.count
                 }
             }
             else {
-                return AppValues.arrets.count
+                return AppValues.stops.count
             }
         }
     }
@@ -220,7 +220,7 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         if !searchController.active {
             let cell = tableView.dequeueReusableCellWithIdentifier("arretsCell", forIndexPath: indexPath)
             if indexPath.section == 0 {
-                if chargementLocalisation {
+                if localisationLoading {
                     let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.imageView?.image = iconLocation.imageWithSize(CGSize(width: 20, height: 20))
@@ -232,8 +232,8 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                     let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
-                    cell.textLabel?.text = arretsLocalisation[indexPath.row].nomComplet
-                    cell.detailTextLabel!.text = "~" + String(Int(arretsLocalisation[indexPath.row].distance!)) + "m"
+                    cell.textLabel?.text = localizedStops[indexPath.row].fullName
+                    cell.detailTextLabel!.text = "~" + String(Int(localizedStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
             }
@@ -241,16 +241,16 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
                 let iconFavoris = FAKFontAwesome.starIconWithSize(20)
                 iconFavoris.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconFavoris.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.titre
-                cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.sousTitre
+                cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.title
+                cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.sousTitre
+                cell.textLabel?.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.title
+                cell.detailTextLabel!.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.subTitle
                 cell.imageView?.image = nil
             }
             
@@ -272,9 +272,9 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
             let backgroundView = UIView()
             backgroundView.backgroundColor = AppValues.secondaryColor
             cell.selectedBackgroundView = backgroundView
-            cell.textLabel?.text = filtredResults[indexPath.row].titre
+            cell.textLabel?.text = filtredResults[indexPath.row].title
             cell.textLabel?.textColor = AppValues.textColor
-            cell.detailTextLabel!.text = filtredResults[indexPath.row].sousTitre
+            cell.detailTextLabel!.text = filtredResults[indexPath.row].subTitle
             cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
             cell.backgroundColor = AppValues.primaryColor
             cell.imageView?.image = nil
@@ -287,26 +287,26 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
         searchController.searchBar.resignFirstResponder()
         if (segue.identifier == "afficherProchainsDeparts") {
             let nav = segue.destinationViewController as! UINavigationController
-            let departsArretsViewController = nav.viewControllers[0] as! DepartsArretTableViewController
+            let departsArretsViewController = nav.viewControllers[0] as! DeparturesTableViewController
             if searchController.active {
-                departsArretsViewController.arret = filtredResults[(tableView.indexPathForSelectedRow?.row)!]
+                departsArretsViewController.stop = filtredResults[(tableView.indexPathForSelectedRow?.row)!]
             }
             else {
                 if tableView.indexPathForSelectedRow!.section == 0 {
-                    departsArretsViewController.arret = arretsLocalisation[tableView.indexPathForSelectedRow!.row]
+                    departsArretsViewController.stop = localizedStops[tableView.indexPathForSelectedRow!.row]
                 }
                 else if tableView.indexPathForSelectedRow!.section == 1 {
-                    departsArretsViewController.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[tableView.indexPathForSelectedRow!.row]]
+                    departsArretsViewController.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[tableView.indexPathForSelectedRow!.row]]
                 }
                 else {
-                    departsArretsViewController.arret = AppValues.arrets[AppValues.arretsKeys[(tableView.indexPathForSelectedRow?.row)!]]
+                    departsArretsViewController.stop = AppValues.stops[AppValues.stopsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                 }
             }
         }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if tableView.indexPathForSelectedRow!.section == 0 && chargementLocalisation && !searchController.active {
+        if tableView.indexPathForSelectedRow!.section == 0 && localisationLoading && !searchController.active {
             return false
         }
         else {
@@ -318,12 +318,12 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     }
     
     func filterContentForSearchText(searchText: String) {
-        filtredResults = [Arret](AppValues.arrets.values).filter { arret in
-            return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+        filtredResults = [Stop](AppValues.stops.values).filter { arret in
+            return arret.fullName.lowercaseString.containsString(searchText.lowercaseString)
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
-            let stringA = String(arret1.titre + arret1.sousTitre)
-            let stringB = String(arret2.titre + arret2.sousTitre)
+            let stringA = String(arret1.title + arret1.subTitle)
+            let stringB = String(arret2.title + arret2.subTitle)
             if stringA.lowercaseString < stringB.lowercaseString {
                 return true
             }
@@ -337,37 +337,37 @@ class ArretsTableViewController: UITableViewController, UISplitViewControllerDel
     }
 }
 
-extension ArretsTableViewController: UISearchResultsUpdating {
+extension StopsTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }
 
-extension ArretsTableViewController : UIViewControllerPreviewingDelegate {
+extension StopsTableViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         
         guard let indexPath = tableView.indexPathForRowAtPoint(location) else { return nil }
         
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return nil }
         
-        if tableView.indexPathForSelectedRow!.section == 0 && chargementLocalisation && !searchController.active {
+        if tableView.indexPathForSelectedRow!.section == 0 && localisationLoading && !searchController.active {
             return nil
         }
         
-        guard let detailVC = storyboard?.instantiateViewControllerWithIdentifier("departsArretTableViewController") as? DepartsArretTableViewController else { return nil }
+        guard let detailVC = storyboard?.instantiateViewControllerWithIdentifier("departsArretTableViewController") as? DeparturesTableViewController else { return nil }
         
         if searchController.active {
-            detailVC.arret = filtredResults[indexPath.row]
+            detailVC.stop = filtredResults[indexPath.row]
         }
         else {
             if indexPath.section == 0 {
-                detailVC.arret = arretsLocalisation[indexPath.row]
+                detailVC.stop = localizedStops[indexPath.row]
             }
             else if indexPath.section == 1 {
-                detailVC.arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]
+                detailVC.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
             }
             else {
-                detailVC.arret = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]
+                detailVC.stop = AppValues.stops[AppValues.stopsKeys[indexPath.row]]
             }
         }
         if #available(iOS 9.0, *) {

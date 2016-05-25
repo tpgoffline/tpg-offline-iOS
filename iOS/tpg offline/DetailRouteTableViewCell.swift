@@ -1,5 +1,5 @@
 //
-//  ItineraireTableViewCell.swift
+//  DetailRouteTableViewCell.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 17/01/2016.
@@ -8,16 +8,15 @@
 
 import UIKit
 
-class ItineraireTableViewCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var iconeImageView: UIImageView!
-    @IBOutlet weak var ligneLabel: UILabel!
+class DetailRouteTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
-    @IBOutlet weak var departLabel: UILabel!
-    @IBOutlet weak var heureDepartLabel: UILabel!
-    @IBOutlet weak var arriveeLabel: UILabel!
-    @IBOutlet weak var heureArriveeLabel: UILabel!
+    @IBOutlet weak var departureLabel: UILabel!
+    @IBOutlet weak var hourDepartureLabel: UILabel!
+    @IBOutlet weak var arrivalLabel: UILabel!
+    @IBOutlet weak var hourArrivalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

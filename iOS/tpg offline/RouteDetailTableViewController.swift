@@ -1,5 +1,5 @@
 //
-//  VueItineraireTableViewController.swift
+//  RouteDetailTableViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 16/01/2016.
@@ -13,32 +13,32 @@ import FontAwesomeKit
 import SCLAlertView
 import SwiftDate
 
-class VueItineraireTableViewController: UITableViewController {
+class RouteDetailTableViewController: UITableViewController {
 	
-	var compteur = 0
+	var actualRoute = 0
 	let defaults = NSUserDefaults.standardUserDefaults()
-	var favoris = false
+	var favorite = false
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		var listeItems: [UIBarButtonItem] = []
+		var itemsList: [UIBarButtonItem] = []
 		
 		if AppValues.premium == true {
-		for x in AppValues.favorisItineraires {
-			if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
-				favoris = true
+		for x in AppValues.favoritesRoutes {
+			if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+				favorite = true
 				break
 			}
 		}
-		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+		if favorite {
+			itemsList.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+			itemsList.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
 		}
 		}
-		self.navigationItem.rightBarButtonItems = listeItems
+		self.navigationItem.rightBarButtonItems = itemsList
 		tableView.backgroundColor = AppValues.primaryColor
 	}
 	
@@ -49,19 +49,18 @@ class VueItineraireTableViewController: UITableViewController {
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		actualiserTheme()
+		refreshTheme()
 		
 		tableView.backgroundColor = AppValues.primaryColor
 		tableView.reloadData()
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		
 		return 1
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return ItineraireEnCours.itineraireResultat[compteur].correspondances.count
+		return ActualRoutes.routeResult[actualRoute].connections.count
 	}
 	
 	func labelToImage(label: UILabel!) -> UIImage {
@@ -74,68 +73,68 @@ class VueItineraireTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("itineraireCell", forIndexPath: indexPath) as! ItineraireTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("itineraireCell", forIndexPath: indexPath) as! DetailRouteTableViewCell
 		
 		var couleurTexte = UIColor.whiteColor()
 		
-		if ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].categorie != .Marche {
+		if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].transportCategory != .Walk {
 			
-            cell.ligneLabel.text = "Ligne " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
+            cell.lineLabel.text = "Ligne " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
             
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
                 
-                if ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].isTpg {
-                    cell.backgroundColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]
-                    couleurTexte = AppValues.listeColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!
+                if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].isTpg {
+                    cell.backgroundColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]
+                    couleurTexte = AppValues.linesColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
                     
                     let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                    labelPictoLigne.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
+                    labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
                     labelPictoLigne.textAlignment = .Center
                     labelPictoLigne.textColor = couleurTexte
                     labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
                     labelPictoLigne.layer.borderColor = couleurTexte.CGColor
                     labelPictoLigne.layer.borderWidth = 1
                     let image = labelToImage(labelPictoLigne)
-                    for x in cell.iconeImageView.constraints {
+                    for x in cell.iconImageView.constraints {
                         if x.identifier == "iconeImageViewHeight" {
                             x.constant = 24
                         }
                     }
-                    cell.iconeImageView.image = image
+                    cell.iconImageView.image = image
                 }
                 else {
-                    cell.iconeImageView.image = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getImageofType(42, color: UIColor.whiteColor())
-                    for x in cell.iconeImageView.constraints {
+                    cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getImageofType(42, color: UIColor.whiteColor())
+                    for x in cell.iconImageView.constraints {
                         if x.identifier == "iconeImageViewHeight" {
                             x.constant = 42
                         }
                     }
                 }
-                let attributedString = NSMutableAttributedString(attributedString: ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getAttributedStringofType(24, color: UIColor.whiteColor()))
-                attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].direction))
+                let attributedString = NSMutableAttributedString(attributedString: ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getAttributedStringofType(24, color: UIColor.whiteColor()))
+                attributedString.appendAttributedString(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].direction))
                 cell.directionLabel.attributedText = attributedString
             }
             else {
                 couleurTexte = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
                 cell.backgroundColor = AppValues.primaryColor
                 
-                if ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].isTpg {
-                    if ContrastColorOf(AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!, returnFlat: true) == FlatWhite() {
+                if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].isTpg {
+                    if ContrastColorOf(AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!, returnFlat: true) == FlatWhite() {
                         cell.backgroundColor = UIColor.whiteColor()
-                        couleurTexte = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!
+                        couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
                         let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                        labelPictoLigne.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
+                        labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
                         labelPictoLigne.textAlignment = .Center
-                        labelPictoLigne.textColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!
+                        labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
                         labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                        labelPictoLigne.layer.borderColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.CGColor
+                        labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!.CGColor
                         labelPictoLigne.layer.borderWidth = 1
                         
                         let image = labelToImage(labelPictoLigne)
-                        cell.iconeImageView.image = image
-                        for x in cell.iconeImageView.constraints {
+                        cell.iconImageView.image = image
+                        for x in cell.iconImageView.constraints {
                             if x.identifier == "iconeImageViewHeight" {
                                 x.constant = 24
                             }
@@ -143,19 +142,19 @@ class VueItineraireTableViewController: UITableViewController {
                     }
                     else {
                         cell.backgroundColor = UIColor.whiteColor()
-                        couleurTexte = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.darkenByPercentage(0.2)
+                        couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!.darkenByPercentage(0.2)
                         
                         let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                        labelPictoLigne.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne
+                        labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
                         labelPictoLigne.textAlignment = .Center
-                        labelPictoLigne.textColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.darkenByPercentage(0.2)
+                        labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!.darkenByPercentage(0.2)
                         labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                        labelPictoLigne.layer.borderColor = AppValues.listeBackgroundColor[ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].ligne]!.darkenByPercentage(0.2).CGColor
+                        labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!.darkenByPercentage(0.2).CGColor
                         labelPictoLigne.layer.borderWidth = 1
                         
                         let image = labelToImage(labelPictoLigne)
-                        cell.iconeImageView.image = image
-                        for x in cell.iconeImageView.constraints {
+                        cell.iconImageView.image = image
+                        for x in cell.iconImageView.constraints {
                             if x.identifier == "iconeImageViewHeight" {
                                 x.constant = 24
                             }
@@ -164,10 +163,10 @@ class VueItineraireTableViewController: UITableViewController {
                     }
                 }
                 else {
-                    cell.iconeImageView.image = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getImageofType(42, color: couleurTexte)
+                    cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getImageofType(42, color: couleurTexte)
                 }
-                let attributedString = NSMutableAttributedString(attributedString: ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].getAttributedStringofType(24, color: couleurTexte))
-                attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].direction))
+                let attributedString = NSMutableAttributedString(attributedString: ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getAttributedStringofType(24, color: couleurTexte))
+                attributedString.appendAttributedString(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].direction))
                 cell.directionLabel.attributedText = attributedString
             }
 		}
@@ -178,86 +177,86 @@ class VueItineraireTableViewController: UITableViewController {
             cell.backgroundColor = AppValues.primaryColor
             couleurTexte = AppValues.textColor
 			
-            cell.departLabel.text = ""
-            cell.heureDepartLabel.text = ""
-            cell.arriveeLabel.text = ""
-            cell.heureArriveeLabel.text = ""
+            cell.departureLabel.text = ""
+            cell.hourDepartureLabel.text = ""
+            cell.arrivalLabel.text = ""
+            cell.hourArrivalLabel.text = ""
             
-			cell.iconeImageView.image = icone.imageWithSize(CGSize(width: 42, height: 42))
-			cell.ligneLabel.text = "Marche".localized()
-			cell.directionLabel.text = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].direction
+			cell.iconImageView.image = icone.imageWithSize(CGSize(width: 42, height: 42))
+			cell.lineLabel.text = "Marche".localized()
+			cell.directionLabel.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].direction
 			
 		}
         
-        cell.ligneLabel.textColor = couleurTexte
+        cell.lineLabel.textColor = couleurTexte
         cell.directionLabel.textColor = couleurTexte
-        cell.departLabel.textColor = couleurTexte
-        cell.heureDepartLabel.textColor = couleurTexte
-        cell.arriveeLabel.textColor = couleurTexte
-        cell.heureArriveeLabel.textColor = couleurTexte
+        cell.departureLabel.textColor = couleurTexte
+        cell.hourDepartureLabel.textColor = couleurTexte
+        cell.arrivalLabel.textColor = couleurTexte
+        cell.hourArrivalLabel.textColor = couleurTexte
         
         var icone2 = FAKIonIcons.logOutIconWithSize(21)
         icone2.addAttribute(NSForegroundColorAttributeName, value: couleurTexte)
         var attributedString = NSMutableAttributedString(attributedString: icone2.attributedString())
-        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].de))
-        cell.departLabel.attributedText = attributedString
+        attributedString.appendAttributedString(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].from))
+        cell.departureLabel.attributedText = attributedString
         
-        var timestamp = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].timestampDepart
-        cell.heureDepartLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        var timestamp = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].departureTimestamp
+        cell.hourDepartureLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
-        timestamp = ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].timestampArrivee
-        cell.heureArriveeLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        timestamp = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].arrivalTimestamp
+        cell.hourArrivalLabel.text = NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSince1970: Double(timestamp)), dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
         icone2 = FAKIonIcons.logInIconWithSize(21)
         icone2.addAttribute(NSForegroundColorAttributeName, value: couleurTexte)
         attributedString = NSMutableAttributedString(attributedString: icone2.attributedString())
-        attributedString.appendAttributedString(NSAttributedString(string: " " + ItineraireEnCours.itineraireResultat[compteur].correspondances[indexPath.row].a))
-        cell.arriveeLabel.attributedText = attributedString
+        attributedString.appendAttributedString(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].to))
+        cell.arrivalLabel.attributedText = attributedString
 		
 		return cell
 	}
 	
 	func toggleFavorite(sender: AnyObject!) {
-		if AppValues.favorisItineraires.isEmpty {
-			AppValues.favorisItineraires = [[ItineraireEnCours.itineraire.depart!, ItineraireEnCours.itineraire.arrivee!]]
+		if AppValues.favoritesRoutes.isEmpty {
+			AppValues.favoritesRoutes = [[ActualRoutes.route.departure!, ActualRoutes.route.arrival!]]
 		}
 		else {
-			if self.favoris {
-				AppValues.favorisItineraires = AppValues.favorisItineraires.filter({ (arretA) -> Bool in
-					if arretA[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && arretA[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
+			if self.favorite {
+				AppValues.favoritesRoutes = AppValues.favoritesRoutes.filter({ (arretA) -> Bool in
+					if arretA[0].fullName == ActualRoutes.route.departure?.fullName && arretA[1].fullName == ActualRoutes.route.arrival?.fullName {
 						return false
 					}
 					return true
 				})
 			}
 			else {
-				AppValues.favorisItineraires.append([ItineraireEnCours.itineraire.depart!, ItineraireEnCours.itineraire.arrivee!])
+				AppValues.favoritesRoutes.append([ActualRoutes.route.departure!, ActualRoutes.route.arrival!])
 			}
 		}
 		
-		self.favoris = !self.favoris
+		self.favorite = !self.favorite
 		
-		let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.favorisItineraires)
+		let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.favoritesRoutes)
 		defaults.setObject(encodedData, forKey: "itinerairesFavoris")
 		
 		var listeItems: [UIBarButtonItem] = []
 		var favoris = false
-		for x in AppValues.favorisItineraires {
-			if x[0].nomComplet == ItineraireEnCours.itineraire.depart?.nomComplet && x[1].nomComplet == ItineraireEnCours.itineraire.arrivee?.nomComplet {
+		for x in AppValues.favoritesRoutes {
+			if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
 				favoris = true
 				break
 			}
 		}
 		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:#selector(VueItineraireTableViewController.toggleFavorite(_:))))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action:#selector(RouteDetailTableViewController.toggleFavorite(_:))))
 		}
 		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(VueItineraireTableViewController.toggleFavorite(_:))))
+			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
 		}
 		self.navigationItem.rightBarButtonItems = listeItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
-        if (navController.viewControllers[0].isKindOfClass(ItineraireTableViewController)) {
-            let itineraireTableViewController = navController.viewControllers[0] as! ItineraireTableViewController
+        if (navController.viewControllers[0].isKindOfClass(RoutesTableViewController)) {
+            let itineraireTableViewController = navController.viewControllers[0] as! RoutesTableViewController
             itineraireTableViewController.tableView.reloadData()
         }
 	}
@@ -272,7 +271,7 @@ class VueItineraireTableViewController: UITableViewController {
         let reminder = UILocalNotification()
         reminder.fireDate = date
         
-        var texte =  "Le tpg de la ligne ".localized()
+        var texte =  "Le tpg de la line ".localized()
         texte += ligne
         texte += " en direction de ".localized()
         texte += direction
@@ -306,7 +305,7 @@ class VueItineraireTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-		let time = NSDate(timeIntervalSince1970: Double(ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].timestampDepart)).timeIntervalSinceDate(NSDate())
+		let time = NSDate(timeIntervalSince1970: Double(ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].departureTimestamp)).timeIntervalSinceDate(NSDate())
 		let timerAction = UITableViewRowAction(style: .Default, title: "Rappeler".localized()) { (action, indexPath) in
 			let icone = FAKIonIcons.iosClockIconWithSize(20)
 			icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
@@ -317,16 +316,16 @@ class VueItineraireTableViewController: UITableViewController {
 			}
 			else {
 				alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
-					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
+					self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 0, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
 				})
 				if time > 60 * 5 {
 					alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
-						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 5, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
 					})
 				}
 				if time > 60 * 10 {
 					alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
-						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
+						self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: 10, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
 					})
 				}
 				alertView.addButton("Autre", action: { () -> Void in
@@ -342,7 +341,7 @@ class VueItineraireTableViewController: UITableViewController {
 							
 						}
 						else {
-							self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].ligne, direction: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].direction, arretDescente: ItineraireEnCours.itineraireResultat[self.compteur].correspondances[indexPath.row].a)
+							self.scheduleNotification(NSDate(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
 							customValueAlert.hideView()
 						}
 					})

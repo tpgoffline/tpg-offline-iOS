@@ -16,7 +16,7 @@ class CalendarSelectionViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        actualiserTheme()
+        refreshTheme()
      
         calendar.selectionColor = AppValues.secondaryColor
         calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
@@ -28,7 +28,7 @@ class CalendarSelectionViewController: UIViewController {
         calendar.titlePlaceholderColor = AppValues.textColor
         calendar.titleTodayColor = AppValues.textColor
         calendar.titleSelectionColor = AppValues.textColor
-        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!)!, scrollToDate: true)
+        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ActualRoutes.route.date!)!, scrollToDate: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +37,7 @@ class CalendarSelectionViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
      
         calendar.selectionColor = AppValues.secondaryColor
         calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
@@ -49,7 +49,7 @@ class CalendarSelectionViewController: UIViewController {
         calendar.titlePlaceholderColor = AppValues.textColor
         calendar.titleTodayColor = AppValues.textColor
         calendar.titleSelectionColor = AppValues.textColor
-        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ItineraireEnCours.itineraire.date!)!, scrollToDate: true)
+        calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ActualRoutes.route.date!)!, scrollToDate: true)
     }
 }
 
@@ -59,16 +59,16 @@ extension CalendarSelectionViewController : FSCalendarDataSource, FSCalendarDele
     }
     
     func calendar(calendar: FSCalendar, didSelectDate date: NSDate) {
-        if ItineraireEnCours.itineraire.date == nil {
-            ItineraireEnCours.itineraire.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: date)
-            ItineraireEnCours.itineraire.date!.hour = 0
-            ItineraireEnCours.itineraire.date!.minute = 0
+        if ActualRoutes.route.date == nil {
+            ActualRoutes.route.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: date)
+            ActualRoutes.route.date!.hour = 0
+            ActualRoutes.route.date!.minute = 0
         }
         else {
             let dateCalendar = NSCalendar.currentCalendar().components([.Day, .Month, .Year], fromDate: date)
-            ItineraireEnCours.itineraire.date!.day = dateCalendar.day
-            ItineraireEnCours.itineraire.date!.month = dateCalendar.month
-            ItineraireEnCours.itineraire.date!.year = dateCalendar.year
+            ActualRoutes.route.date!.day = dateCalendar.day
+            ActualRoutes.route.date!.month = dateCalendar.month
+            ActualRoutes.route.date!.year = dateCalendar.year
         }
         self.navigationController?.popViewControllerAnimated(true)
     }

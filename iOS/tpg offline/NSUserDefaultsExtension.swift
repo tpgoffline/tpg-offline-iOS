@@ -56,15 +56,15 @@ extension NSUserDefaults {
         setObject(stringData, forKey: key)
     }
     
-    func arretArrayForKey(key: String) -> [Arret]? {
-        var arrayValue: [Arret]?
+    func arretArrayForKey(key: String) -> [Stop]? {
+        var arrayValue: [Stop]?
         if let arrayData = dataForKey(key) {
-            arrayValue = NSKeyedUnarchiver.unarchiveObjectWithData(arrayData) as? [Arret]
+            arrayValue = NSKeyedUnarchiver.unarchiveObjectWithData(arrayData) as? [Stop]
         }
         return arrayValue
     }
     
-    func setArretArray(array: [Arret]?, forKey key: String) {
+    func setArretArray(array: [Stop]?, forKey key: String) {
         var arrayData: NSData?
         if let array = array {
             arrayData = NSKeyedArchiver.archivedDataWithRootObject(array)

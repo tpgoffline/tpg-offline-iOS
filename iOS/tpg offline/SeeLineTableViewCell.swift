@@ -1,5 +1,5 @@
 //
-//  VoirLigneTableViewCell.swift
+//  SeeLineTableViewCell.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 10/04/2016.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class VoirLigneTableViewCell: UITableViewCell {
+class SeeLineTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var tempsRestantLabel: UILabel!
-    @IBOutlet weak var titreLabel: UILabel!
-    @IBOutlet weak var sousTitreLabel: UILabel!
-    @IBOutlet weak var correspondance1Label: UILabel!
-    @IBOutlet weak var correspondance2Label: UILabel!
-    @IBOutlet weak var correspondance3Label: UILabel!
-    @IBOutlet weak var correspondance4Label: UILabel!
+    @IBOutlet weak var leftTimeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var connection1Label: UILabel!
+    @IBOutlet weak var connection2Label: UILabel!
+    @IBOutlet weak var connection3Label: UILabel!
+    @IBOutlet weak var connection4Label: UILabel!
     @IBOutlet weak var barDirection: UIView!
     
     override func awakeFromNib() {

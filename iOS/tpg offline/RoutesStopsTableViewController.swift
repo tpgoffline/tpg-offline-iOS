@@ -1,5 +1,5 @@
 //
-//  tpgArretSelectionTableViewController.swift
+//  RoutesStopsTableViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 14/01/2016.
@@ -13,14 +13,14 @@ import FontAwesomeKit
 import CoreLocation
 import DGElasticPullToRefresh
 
-class tpgArretSelectionTableViewController: UITableViewController {
-    var depart: Bool!
-    var arretsLocalisation = [Arret]()
-    var filtredResults = [Arret]()
+class RoutesStopsTableViewController: UITableViewController {
+    var departure: Bool!
+    var localisationStops = [Stop]()
+    var filtredResults = [Stop]()
     let searchController = UISearchController(searchResultsController: nil)
     var locationManager = CLLocationManager()
     let defaults = NSUserDefaults.standardUserDefaults()
-    var chargementLocalisation: Bool = false
+    var localisationLoading: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         
-        actualiserTheme()
+        refreshTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
     }
@@ -110,29 +110,29 @@ class tpgArretSelectionTableViewController: UITableViewController {
         }
         else {
             if section == 0 {
-                if (chargementLocalisation == true) {
+                if (localisationLoading == true) {
                     return 1
                 }
                 else {
-                    return arretsLocalisation.count
+                    return localisationStops.count
                 }
             }
             else if section == 1 {
-                if (AppValues.arretsFavoris == nil) {
+                if (AppValues.favoritesStops == nil) {
                     return 0
                 }
                 else {
-                    return AppValues.arretsFavoris.count
+                    return AppValues.favoritesStops.count
                 }
             }
             else {
-                return AppValues.arrets.count
+                return AppValues.stops.count
             }
         }
     }
     
     func requestLocation() {
-        chargementLocalisation = true
+        localisationLoading = true
         tableView.reloadData()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -142,7 +142,7 @@ class tpgArretSelectionTableViewController: UITableViewController {
         if !searchController.active {
             let cell = tableView.dequeueReusableCellWithIdentifier("arretsCell", forIndexPath: indexPath)
             if indexPath.section == 0 {
-                if chargementLocalisation {
+                if localisationLoading {
                     let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.imageView?.image = iconLocation.imageWithSize(CGSize(width: 20, height: 20))
@@ -154,8 +154,8 @@ class tpgArretSelectionTableViewController: UITableViewController {
                     let iconLocation = FAKFontAwesome.locationArrowIconWithSize(20)
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.accessoryView = UIImageView(image: iconLocation.imageWithSize(CGSize(width: 20, height: 20)))
-                    cell.textLabel?.text = arretsLocalisation[indexPath.row].nomComplet
-                    cell.detailTextLabel!.text = "~" + String(Int(arretsLocalisation[indexPath.row].distance!)) + "m"
+                    cell.textLabel?.text = localisationStops[indexPath.row].fullName
+                    cell.detailTextLabel!.text = "~" + String(Int(localisationStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
             }
@@ -163,16 +163,16 @@ class tpgArretSelectionTableViewController: UITableViewController {
                 let iconFavoris = FAKFontAwesome.starIconWithSize(20)
                 iconFavoris.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconFavoris.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.titre
-                cell.detailTextLabel?.text = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]?.sousTitre
+                cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.title
+                cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.titre
-                cell.detailTextLabel!.text = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!.sousTitre
+                cell.textLabel?.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.title
+                cell.detailTextLabel!.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.subTitle
                 cell.imageView?.image = nil
             }
             
@@ -194,8 +194,8 @@ class tpgArretSelectionTableViewController: UITableViewController {
             let backgroundView = UIView()
             backgroundView.backgroundColor = AppValues.secondaryColor
             cell.selectedBackgroundView = backgroundView
-            cell.textLabel?.text = filtredResults[indexPath.row].titre
-            cell.detailTextLabel!.text = filtredResults[indexPath.row].sousTitre
+            cell.textLabel?.text = filtredResults[indexPath.row].title
+            cell.detailTextLabel!.text = filtredResults[indexPath.row].subTitle
             cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
             cell.backgroundColor = AppValues.primaryColor
             
@@ -205,29 +205,29 @@ class tpgArretSelectionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var arret: Arret? = nil
+        var arret: Stop? = nil
         if searchController.active {
             arret = filtredResults[indexPath.row]
         }
         else {
             if indexPath.section == 0 {
-                if !chargementLocalisation {
-                    arret = arretsLocalisation[indexPath.row]
+                if !localisationLoading {
+                    arret = localisationStops[indexPath.row]
                 }
             }
             else if indexPath.section == 1 {
-                arret = AppValues.arretsFavoris[AppValues.nomCompletsFavoris[indexPath.row]]
+                arret = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
             }
             else {
-                arret = AppValues.arrets[AppValues.arretsKeys[indexPath.row]]!
+                arret = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!
             }
         }
         if arret != nil {
-            if (depart == true) {
-                ItineraireEnCours.itineraire.depart = arret!
+            if (departure == true) {
+                ActualRoutes.route.departure = arret!
             }
             else {
-                ItineraireEnCours.itineraire.arrivee = arret!
+                ActualRoutes.route.arrival = arret!
             }
             self.navigationController?.popViewControllerAnimated(true)
         }
@@ -237,12 +237,12 @@ class tpgArretSelectionTableViewController: UITableViewController {
     }
     
     func filterContentForSearchText(searchText: String) {
-        filtredResults = [Arret](AppValues.arrets.values).filter { arret in
-            return arret.nomComplet.lowercaseString.containsString(searchText.lowercaseString)
+        filtredResults = [Stop](AppValues.stops.values).filter { arret in
+            return arret.fullName.lowercaseString.containsString(searchText.lowercaseString)
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
-            let stringA = String(arret1.titre + arret1.sousTitre)
-            let stringB = String(arret2.titre + arret2.sousTitre)
+            let stringA = String(arret1.title + arret1.subTitle)
+            let stringB = String(arret2.title + arret2.subTitle)
             if stringA.lowercaseString < stringB.lowercaseString {
                 return true
             }
@@ -253,34 +253,34 @@ class tpgArretSelectionTableViewController: UITableViewController {
     }
 }
 
-extension tpgArretSelectionTableViewController: UISearchResultsUpdating {
+extension RoutesStopsTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }
 
-extension tpgArretSelectionTableViewController: CLLocationManagerDelegate {
+extension RoutesStopsTableViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
         let location = locations[0]
-        self.arretsLocalisation = []
+        self.localisationStops = []
         AppValues.logger.info("Résultat de la localisation")
         
         if self.defaults.integerForKey("proximityDistance") == 0 {
             self.defaults.setInteger(500, forKey: "proximityDistance")
         }
         
-        for x in [Arret](AppValues.arrets.values) {
+        for x in [Stop](AppValues.stops.values) {
             x.distance = location.distanceFromLocation(x.location)
             
             if (location.distanceFromLocation(x.location) <= Double(self.defaults.integerForKey("proximityDistance"))) {
                 
-                self.arretsLocalisation.append(x)
+                self.localisationStops.append(x)
                 AppValues.logger.info(x.stopCode)
                 AppValues.logger.info(String(location.distanceFromLocation(x.location)))
             }
         }
-        self.arretsLocalisation.sortInPlace({ (arret1, arret2) -> Bool in
+        self.localisationStops.sortInPlace({ (arret1, arret2) -> Bool in
             if arret1.distance < arret2.distance {
                 return true
             }
@@ -288,12 +288,12 @@ extension tpgArretSelectionTableViewController: CLLocationManagerDelegate {
                 return false
             }
         })
-        self.chargementLocalisation = false
+        self.localisationLoading = false
         self.tableView.reloadData()
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        self.chargementLocalisation = false
+        self.localisationLoading = false
         self.tableView.reloadData()
         AppValues.logger.warning("Error while updating location " + error.localizedDescription)
     }

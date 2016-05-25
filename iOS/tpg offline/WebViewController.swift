@@ -20,7 +20,7 @@ class WebViewController: UIViewController {
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		self.actualiserTheme()
+		self.refreshTheme()
 		webView.backgroundColor = AppValues.primaryColor
 	}
 

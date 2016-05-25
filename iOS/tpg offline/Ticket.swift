@@ -9,17 +9,17 @@
 import UIKit
 
 class Ticket {
-    var nom: String!
-    var prix: String!
-    var code: String!
+    var name: String!
+    var price: String!
+    var smsCode: String!
     var description: String!
-    var heure: Bool!
+    var isValidOneHour: Bool!
     
-    init(nom: String, prix: String, code:String, description: String, heure: Bool) {
-        self.nom = nom
-        self.prix = prix
-        self.code = code
+    init(name: String, price: String, smsCode:String, description: String, isValidOneHour: Bool) {
+        self.name = name
+        self.price = price
+        self.smsCode = smsCode
         self.description = description
-        self.heure = heure
+        self.isValidOneHour = isValidOneHour
     }
 }

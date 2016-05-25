@@ -1,5 +1,5 @@
 //
-//  ListeItinerairesTableViewCell.swift
+//  RoutesListTableViewCell.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 19/01/2016.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ListeItinerairesTableViewCell: UITableViewCell {
+class RoutesListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var labelDepart: UILabel!
-    @IBOutlet weak var labelHeureDepart: UILabel!
+    @IBOutlet weak var departureLabel: UILabel!
+    @IBOutlet weak var hourDepartureLabel: UILabel!
     
-    @IBOutlet weak var labelArrivee: UILabel!
-    @IBOutlet weak var labelHeureArrivee: UILabel!
+    @IBOutlet weak var arrivalLabel: UILabel!
+    @IBOutlet weak var hourArrivalLabel: UILabel!
     
-    @IBOutlet weak var labelDuree: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

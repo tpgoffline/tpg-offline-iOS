@@ -1,5 +1,5 @@
 //
-//  titrePremiumTableViewCell.swift
+//  PremiumTableViewCell.swift
 //  tpg offline
 //
 //  Created by remy on 24/02/16.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TitrePremiumTableViewCell: UITableViewCell {
+class PremiumTableViewCell: UITableViewCell {
 
-	@IBOutlet weak var titreLabel: UILabel!
+	@IBOutlet weak var titleLabel: UILabel!
 	
     override func awakeFromNib() {
         super.awakeFromNib()

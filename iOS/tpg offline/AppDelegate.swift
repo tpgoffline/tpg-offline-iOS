@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()*/
         
         AppValues.logger.enabled = true
-        //Fabric.with([Crashlytics.self])
+        Fabric.with([Crashlytics.self])
    
         getDefaults()
         setTabBar()
@@ -117,50 +117,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getDefaults() {
         let group = AsyncGroup()
         group.background {
-            AppValues.logger.debug("Initialisation du chargement des arrets")
-            
             let dataArrets = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("arrets", ofType: "json")!)
             let arrets = JSON(data: dataArrets!)
             for (_, subJson) in arrets["stops"] {
-                AppValues.stopCodeToArret[subJson["stopCode"].string!] = subJson["stopName"].string!
-                AppValues.arrets[subJson["stopName"].string!] = Arret(
-                    nomComplet: subJson["stopName"].string!,
-                    titre: subJson["titleName"].string!,
-                    sousTitre: subJson["subTitleName"].string!,
+                AppValues.stopCodeToStopItem[subJson["stopCode"].string!] = subJson["stopName"].string!
+                AppValues.stops[subJson["stopName"].string!] = Stop(
+                    fullName: subJson["stopName"].string!,
+                    title: subJson["titleName"].string!,
+                    subTitle: subJson["subTitleName"].string!,
                     stopCode: subJson["stopCode"].string!,
                     location: CLLocation(
                         latitude: subJson["locationX"].double!,
                         longitude: subJson["locationY"].double!
                     ),
-                    idTransportAPI: subJson["idTransportAPI"].string!,
+                    transportAPIiD: subJson["idTransportAPI"].string!,
                     connections: subJson["connections"].arrayObject as! [String]
                 )
             }
             
-            AppValues.arretsKeys = [String](AppValues.arrets.keys)
-            AppValues.arretsKeys.sortInPlace({ (string1, string2) -> Bool in
-                let stringA = String((AppValues.arrets[string1]?.titre)! + (AppValues.arrets[string1]?.sousTitre)!)
-                let stringB = String((AppValues.arrets[string2]?.titre)! + (AppValues.arrets[string2]?.sousTitre)!)
+            AppValues.stopsKeys = [String](AppValues.stops.keys)
+            AppValues.stopsKeys.sortInPlace({ (string1, string2) -> Bool in
+                let stringA = String((AppValues.stops[string1]?.title)! + (AppValues.stops[string1]?.subTitle)!)
+                let stringB = String((AppValues.stops[string2]?.title)! + (AppValues.stops[string2]?.subTitle)!)
                 if stringA.lowercaseString < stringB.lowercaseString {
                     return true
                 }
                 return false
             })
-            AppValues.logger.info("Chargement des arrets terminé")
-            
         }
         group.background {
-            AppValues.logger.debug("Initialisation du chargement des arrets favoris")
             if self.defaults.objectForKey("arretsFavoris") == nil {
-                AppValues.arretsFavoris = [:]
+                AppValues.favoritesStops = [:]
             }
             else {
                 let decoded  = self.defaults.objectForKey("arretsFavoris")
-                AppValues.arretsFavoris = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as! [String:Arret]
-                for (_, y) in AppValues.arretsFavoris {
-                    AppValues.nomCompletsFavoris.append(y.nomComplet)
+                AppValues.favoritesStops = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as! [String:Stop]
+                for (_, y) in AppValues.favoritesStops {
+                    AppValues.fullNameFavoritesStops.append(y.fullName)
                 }
-                AppValues.nomCompletsFavoris = AppValues.nomCompletsFavoris.sort({ (value1, value2) -> Bool in
+                AppValues.fullNameFavoritesStops = AppValues.fullNameFavoritesStops.sort({ (value1, value2) -> Bool in
                     if (value1.lowercaseString < value2.lowercaseString) {
                         return true
                     } else {
@@ -168,21 +163,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 })
             }
-            AppValues.logger.info("Chargement des arrets favoris terminé")
         }
         
         group.background {
             let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
             let couleurs = JSON(data: dataCouleurs!)
             for i in 0 ..< couleurs["colors"].count {
-                AppValues.listeBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
-                AppValues.listeColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
+                AppValues.linesBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
+                AppValues.linesColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
             }
-            AppValues.logger.info("Chargement des couleurs terminées")
         }
         
         group.background {
-            AppValues.logger.debug("Initialisation du NSUserDefaults")
             var decoded = self.defaults.objectForKey("itinerairesFavoris")
             if decoded == nil {
                 decoded = []
@@ -190,9 +182,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.defaults.setObject(encodedData, forKey: "itinerairesFavoris")
             }
             else {
-                AppValues.favorisItineraires = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [[Arret]]
-                if AppValues.favorisItineraires == nil {
-                    AppValues.favorisItineraires = []
+                AppValues.favoritesRoutes = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [[Stop]]
+                if AppValues.favoritesRoutes == nil {
+                    AppValues.favoritesRoutes = []
                     let encodedData = NSKeyedArchiver.archivedDataWithRootObject([])
                     self.defaults.setObject(encodedData, forKey: "itinerairesFavoris")
                 }
@@ -226,10 +218,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             else {
                 AppValues.textColor = self.defaults.colorForKey("textColor")
             }
-            AppValues.logger.info("NSUserDefaults terminé")
         }
         
         group.wait()
-        AppValues.logger.info("Async terminé")
     }
 }

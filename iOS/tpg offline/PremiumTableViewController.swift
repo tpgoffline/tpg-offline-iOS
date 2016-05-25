@@ -31,7 +31,7 @@ class PremiumTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		actualiserTheme()
+		refreshTheme()
 		
         iap.setProductionMode(false)
         var productIden = Set<String>()
@@ -62,7 +62,7 @@ class PremiumTableViewController: UITableViewController {
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		actualiserTheme()
+		refreshTheme()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -92,14 +92,14 @@ class PremiumTableViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCellWithIdentifier("titrePremiumCell", forIndexPath: indexPath) as! TitrePremiumTableViewCell
+			let cell = tableView.dequeueReusableCellWithIdentifier("titrePremiumCell", forIndexPath: indexPath) as! PremiumTableViewCell
 			
 			let icone = FAKIonIcons.starIconWithSize(30)
 			icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
 			let attributedString = NSMutableAttributedString(attributedString: icone.attributedString())
 			attributedString.appendAttributedString(NSAttributedString(string: " Premium"))
-			cell.titreLabel.attributedText = attributedString
-			cell.titreLabel.textColor = AppValues.textColor
+			cell.titleLabel.attributedText = attributedString
+			cell.titleLabel.textColor = AppValues.textColor
 			
 			cell.backgroundColor = AppValues.primaryColor
 			let selectedView = UIView()
@@ -129,19 +129,19 @@ class PremiumTableViewController: UITableViewController {
 			return cell
 		}
 		else {
-			let cell = tableView.dequeueReusableCellWithIdentifier("acheterPremiumCell", forIndexPath: indexPath) as! AcheterPremiumTableViewCell
+			let cell = tableView.dequeueReusableCellWithIdentifier("acheterPremiumCell", forIndexPath: indexPath) as! BuyPremiumTableViewCell
 			
-			cell.boutonAcheter.setTitle(boutonsStoreKit[indexPath.row], forState: .Normal)
-			cell.boutonAcheter.backgroundColor = UIColor.flatGreenColor()
+			cell.buyButton.setTitle(boutonsStoreKit[indexPath.row], forState: .Normal)
+			cell.buyButton.backgroundColor = UIColor.flatGreenColor()
 			
 			if indexPath.row == 0 {
-				cell.boutonAcheter.addTarget(self, action: #selector(PremiumTableViewController.acheter(_:)), forControlEvents: .TouchUpInside)
+				cell.buyButton.addTarget(self, action: #selector(PremiumTableViewController.acheter(_:)), forControlEvents: .TouchUpInside)
 				if price != "" {
-					cell.boutonAcheter.setTitle("\(boutonsStoreKit[indexPath.row]) (\(price))", forState: .Normal)
+					cell.buyButton.setTitle("\(boutonsStoreKit[indexPath.row]) (\(price))", forState: .Normal)
 				}
 			}
 			else if indexPath.row == 1 {
-				cell.boutonAcheter.addTarget(self, action: #selector(PremiumTableViewController.restaurerAchat(_:)), forControlEvents: .TouchUpInside)
+				cell.buyButton.addTarget(self, action: #selector(PremiumTableViewController.restaurerAchat(_:)), forControlEvents: .TouchUpInside)
 			}
 			
 			return cell
@@ -159,8 +159,8 @@ class PremiumTableViewController: UITableViewController {
                 self.defaults.setBool(true, forKey: "premium")
                 let alerte = SCLAlertView()
                 alerte.showSuccess("L'achat a réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 30).setDismissBlock({
-                    if ((self.navigationController?.viewControllers[0].isKindOfClass(ParametresTableViewController)) == true) {
-                       (self.navigationController?.viewControllers[0] as! ParametresTableViewController).tableView.reloadData()
+                    if ((self.navigationController?.viewControllers[0].isKindOfClass(SettingsTableViewController)) == true) {
+                       (self.navigationController?.viewControllers[0] as! SettingsTableViewController).tableView.reloadData()
                     }
                     self.navigationController?.popViewControllerAnimated(true)
                 })
@@ -187,8 +187,8 @@ class PremiumTableViewController: UITableViewController {
                 self.defaults.setBool(true, forKey: "premium")
                 let alerte = SCLAlertView()
                 alerte.showSuccess("La restauration à réussi".localized(), subTitle: "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.".localized(), closeButtonTitle: "Fermer".localized(), duration: 20).setDismissBlock({
-                    if ((self.navigationController?.viewControllers[0].isKindOfClass(ParametresTableViewController)) == true) {
-                        (self.navigationController?.viewControllers[0] as! ParametresTableViewController).tableView.reloadData()
+                    if ((self.navigationController?.viewControllers[0].isKindOfClass(SettingsTableViewController)) == true) {
+                        (self.navigationController?.viewControllers[0] as! SettingsTableViewController).tableView.reloadData()
                     }
                     self.navigationController?.popViewControllerAnimated(true)
                 })

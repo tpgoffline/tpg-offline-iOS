@@ -34,10 +34,10 @@ class TimeSelectionViewController: UIViewController {
         
         minuteSlider.addTarget(self, action: #selector(TimeSelectionViewController.minuteChanged(_:)), forControlEvents: .ValueChanged)
         
-        if ItineraireEnCours.itineraire.date != nil {
-            hourSlider.currentValue = Float(ItineraireEnCours.itineraire.date!.hour)
-            minuteSlider.currentValue = Float(ItineraireEnCours.itineraire.date!.minute)
-            labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        if ActualRoutes.route.date != nil {
+            hourSlider.currentValue = Float(ActualRoutes.route.date!.hour)
+            minuteSlider.currentValue = Float(ActualRoutes.route.date!.minute)
+            labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ActualRoutes.route.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         }
         
         minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
@@ -62,7 +62,7 @@ class TimeSelectionViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
         
         boutonValider.backgroundColor = AppValues.secondaryColor
         boutonValider.setTitleColor(AppValues.textColor, forState: .Normal)
@@ -78,20 +78,20 @@ class TimeSelectionViewController: UIViewController {
         hourSlider.handleColor = hourSlider.filledColor
     }
     func minuteChanged(sender: AnyObject!) {
-        labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        if ItineraireEnCours.itineraire.date == nil {
-            ItineraireEnCours.itineraire.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate())
-            ItineraireEnCours.itineraire.date!.hour = 0
+        labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ActualRoutes.route.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        if ActualRoutes.route.date == nil {
+            ActualRoutes.route.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate())
+            ActualRoutes.route.date!.hour = 0
         }
-        ItineraireEnCours.itineraire.date!.minute = Int(minuteSlider.currentValue)
+        ActualRoutes.route.date!.minute = Int(minuteSlider.currentValue)
     }
     func hourChanged(sender: AnyObject!) {
-        labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ItineraireEnCours.itineraire.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        if ItineraireEnCours.itineraire.date == nil {
-            ItineraireEnCours.itineraire.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate())
-            ItineraireEnCours.itineraire.date!.minute = 0
+        labelHeure.text = NSDateFormatter.localizedStringFromDate(NSCalendar.currentCalendar().dateFromComponents(ActualRoutes.route.date!)!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        if ActualRoutes.route.date == nil {
+            ActualRoutes.route.date = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: NSDate())
+            ActualRoutes.route.date!.minute = 0
         }
-        ItineraireEnCours.itineraire.date!.hour = Int(hourSlider.currentValue)
+        ActualRoutes.route.date!.hour = Int(hourSlider.currentValue)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

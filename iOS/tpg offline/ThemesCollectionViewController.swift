@@ -23,8 +23,8 @@ class ThemesCollectionViewController: UICollectionViewController {
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    
     var keys = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +76,7 @@ class ThemesCollectionViewController: UICollectionViewController {
         AppValues.primaryColor = themes[keys[indexPath.row]]![0]
         AppValues.secondaryColor = themes[keys[indexPath.row]]![1]
         AppValues.textColor = themes[keys[indexPath.row]]![2]
-        actualiserTheme()
+        refreshTheme()
         collectionView.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.2)
 		
         defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")

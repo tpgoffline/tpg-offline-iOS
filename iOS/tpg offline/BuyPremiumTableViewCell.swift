@@ -1,5 +1,5 @@
 //
-//  AcheterPremiumTableViewCell.swift
+//  buyPremiumTableViewCell.swift
 //  tpg offline
 //
 //  Created by remy on 24/02/16.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AcheterPremiumTableViewCell: UITableViewCell {
+class BuyPremiumTableViewCell: UITableViewCell {
 
-	@IBOutlet weak var boutonAcheter: UIButton!
+	@IBOutlet weak var buyButton: UIButton!
 	
     override func awakeFromNib() {
         super.awakeFromNib()

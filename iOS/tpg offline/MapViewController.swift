@@ -1,5 +1,5 @@
 //
-//  PlanViewController.swift
+//  MapViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 19/12/2015.
@@ -8,14 +8,15 @@
 
 import UIKit
 
-class PlanViewController: UIViewController {
-    var image: UIImage!
+class MapViewController: UIViewController {
+
+    var mapImage: UIImage!
     var scrollView: UIScrollView!
     var imageView: UIImageView!
-	var titre: String! = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView = UIImageView(image: image)
+        imageView = UIImageView(image: mapImage)
         
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.delegate = self
@@ -35,12 +36,12 @@ class PlanViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        actualiserTheme()
+        refreshTheme()
 		view.backgroundColor = UIColor.whiteColor()
     }
 }
 
-extension PlanViewController : UIScrollViewDelegate {
+extension MapViewController: UIScrollViewDelegate {
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
     }

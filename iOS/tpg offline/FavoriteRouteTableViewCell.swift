@@ -1,5 +1,5 @@
 //
-//  FavorisTableViewCell.swift
+//  FavoriteRouteTableViewCell.swift
 //  tpg offline
 //
 //  Created by remy on 20/02/16.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FavorisItinerairesTableViewCell: UITableViewCell {
+class FavoriteRouteTableViewCell: UITableViewCell {
 	
-	@IBOutlet weak var iconeView: UIView!
-	@IBOutlet weak var iconeImage: UIImageView!
+	@IBOutlet weak var iconView: UIView!
+	@IBOutlet weak var iconImageView: UIImageView!
 	@IBOutlet weak var accessoryImage: UIImageView!
 	
-	@IBOutlet weak var labelDepart: UILabel!
-	@IBOutlet weak var labelArrivee: UILabel!
+	@IBOutlet weak var departureLabel: UILabel!
+	@IBOutlet weak var arrivalLabel: UILabel!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()

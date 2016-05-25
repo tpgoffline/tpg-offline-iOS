@@ -1,5 +1,5 @@
 //
-//  Departs.swift
+//  Departures.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 22/12/2015.
@@ -8,31 +8,31 @@
 
 import UIKit
 
-internal class Departs {
-    var ligne: String!
+internal class Departures {
+    var line: String!
     var direction: String!
     var destinationCode: String!
-    var couleur: UIColor!
-    var couleurArrierePlan: UIColor!
+    var lineColor: UIColor!
+    var lineBackgroundColor: UIColor!
     var code: String!
-    var tempsRestant: String!
+    var leftTime: String!
     var timestamp: String!
     var dateCompenents: NSDateComponents?
     
-    init(ligne: String!, direction: String!, destinationCode: String, couleur: UIColor!, couleurArrierePlan: UIColor!, code: String!, tempsRestant: String?, timestamp: String!) {
-        self.ligne = ligne
+    init(line: String!, direction: String!, destinationCode: String, lineColor: UIColor!, lineBackgroundColor: UIColor!, code: String!, leftTime: String?, timestamp: String!) {
+        self.line = line
         self.direction = direction
         self.destinationCode = destinationCode
-        self.couleur = couleur
-        self.couleurArrierePlan = couleurArrierePlan
+        self.lineColor = lineColor
+        self.lineBackgroundColor = lineBackgroundColor
         self.code = code
-        self.tempsRestant = tempsRestant
+        self.leftTime = leftTime
         self.timestamp = timestamp
     }
     
     func calculerTempsRestant() {
         if timestamp == nil {
-            self.tempsRestant = "-1"
+            self.leftTime = "-1"
         }
         else {
             let dateFormatter = NSDateFormatter()
@@ -48,10 +48,10 @@ internal class Departs {
             dateCompenents = tempsTimestamp
             
             if NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.compare(NSDate()) == .OrderedAscending {
-                self.tempsRestant = "-1"
+                self.leftTime = "-1"
             }
             else {
-                self.tempsRestant = String(Int(NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.timeIntervalSinceNow / 60))
+                self.leftTime = String(Int(NSCalendar.currentCalendar().dateFromComponents(tempsTimestamp)!.timeIntervalSinceNow / 60))
             }
         }
     }

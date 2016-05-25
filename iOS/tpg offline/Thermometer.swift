@@ -9,21 +9,21 @@
 import Foundation
 
 internal class Thermometer {
-    var tempsRestant: String?
-    var devie: Bool!
-    var correspondance1: String?
-    var correspondance2: String?
-    var correspondance3: String?
-    var correspondance4: String?
-    var arret: Arret!
+    var leftTime: String?
+    var isDeflect: Bool!
+    var connection1: String?
+    var connection2: String?
+    var connection3: String?
+    var connection4: String?
+    var stop: Stop!
     
-    init(arret: Arret!, tempsRestant: String?, devie:Bool!, correspondance1: String?, correspondance2: String?, correspondance3: String?, correspondance4: String?) {
-        self.arret = arret
-        self.tempsRestant = tempsRestant
-        self.devie = devie
-        self.correspondance1 = correspondance1
-        self.correspondance2 = correspondance2
-        self.correspondance3 = correspondance3
-        self.correspondance4 = correspondance4
+    init(stop: Stop!, leftTime: String?, isDeflect:Bool!, connection1: String?, connection2: String?, connection3: String?, connection4: String?) {
+        self.stop = stop
+        self.leftTime = leftTime
+        self.isDeflect = isDeflect
+        self.connection1 = connection1
+        self.connection2 = connection2
+        self.connection3 = connection3
+        self.connection4 = connection4
     }
 }

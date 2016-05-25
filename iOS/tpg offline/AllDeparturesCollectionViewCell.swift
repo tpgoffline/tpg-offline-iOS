@@ -1,5 +1,5 @@
 //
-//  TousLesDepartsCollectionViewCell.swift
+//  AllDeparturesCollectionViewCell.swift
 //  tpg offline
 //
 //  Created by Alice on 19/05/2016.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TousLesDepartsCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var titre: UILabel!
+class AllDeparturesCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var title: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

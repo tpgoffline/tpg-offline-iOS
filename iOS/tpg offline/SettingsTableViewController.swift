@@ -1,5 +1,5 @@
 //
-//  ParametresTableViewController.swift
+//  SettingsTableViewController.swift
 //  tpg offline
 //
 //  Created by Rémy Da Costa Faro on 20/12/2015.
@@ -16,9 +16,9 @@ import MRProgress
 import SCLAlertView
 import SafariServices
 
-class ParametresTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController {
     
-    var listeRows = [
+    var rowsList = [
         [FAKFontAwesome.barsIconWithSize(20), "Choix du menu par défaut".localized(), "showChoixDuMenuParDefault"],
         [FAKFontAwesome.locationArrowIconWithSize(20), "Localisation".localized(), "showLocationMenu"],
         [FAKFontAwesome.infoCircleIconWithSize(20), "Crédits".localized(), "showCredits"],
@@ -26,12 +26,12 @@ class ParametresTableViewController: UITableViewController {
         [FAKFontAwesome.graduationCapIconWithSize(20), "Revoir le tutoriel".localized(), "showTutoriel"]
     ]
     
-    let listeRowPremium = [
+    let premiumRowList = [
         [FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes".localized(), "showThemesMenu"],
         [FAKFontAwesome.refreshIconWithSize(20), "Actualiser les départs (Offline)".localized(), "actualiserDeparts"]
     ]
     
-    let listeRowNonPremium = [
+    let nonPremiumRowList = [
         [FAKFontAwesome.starIconWithSize(20), "Premium".localized(), "showPremium"]
     ]
     
@@ -40,12 +40,12 @@ class ParametresTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        actualiserTheme()
+        refreshTheme()
         if (AppValues.premium == true) {
-            listeRows += listeRowPremium
+            rowsList += premiumRowList
         }
         else {
-            listeRows += listeRowNonPremium
+            rowsList += nonPremiumRowList
         }
         
         if !defaults.boolForKey("tutorial") {
@@ -56,7 +56,7 @@ class ParametresTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        actualiserTheme()
+        refreshTheme()
         tableView.reloadData()
     }
     
@@ -70,18 +70,18 @@ class ParametresTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listeRows.count
+        return rowsList.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("parametresCell", forIndexPath: indexPath)
         
-        cell.textLabel!.text = (listeRows[indexPath.row][1] as! String)
+        cell.textLabel!.text = (rowsList[indexPath.row][1] as! String)
         let iconCheveron = FAKFontAwesome.chevronRightIconWithSize(15)
         iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         cell.accessoryView = UIImageView(image: iconCheveron.imageWithSize(CGSize(width: 20, height: 20)))
-        let icone = listeRows[indexPath.row][0] as! FAKFontAwesome
+        let icone = rowsList[indexPath.row][0] as! FAKFontAwesome
         icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         cell.imageView?.image = icone.imageWithSize(CGSize(width: 20, height: 20))
         cell.backgroundColor = AppValues.primaryColor
@@ -95,13 +95,13 @@ class ParametresTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if listeRows[indexPath.row][2] as! String == "showTutoriel" {
+        if rowsList[indexPath.row][2] as! String == "showTutoriel" {
             afficherTutoriel()
         }
-        else if listeRows[indexPath.row][2] as! String == "actualiserDeparts" {
+        else if rowsList[indexPath.row][2] as! String == "actualiserDeparts" {
             actualiserDeparts()
         }
-        else if listeRows[indexPath.row][2] as! String == "showGitHub" {
+        else if rowsList[indexPath.row][2] as! String == "showGitHub" {
             if #available(iOS 9.0, *) {
                 let safariViewController = SFSafariViewController(URL: NSURL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: true)
                 if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
@@ -116,7 +116,7 @@ class ParametresTableViewController: UITableViewController {
             }
         }
         else {
-            performSegueWithIdentifier(listeRows[indexPath.row][2] as! String, sender: self)
+            performSegueWithIdentifier(rowsList[indexPath.row][2] as! String, sender: self)
         }
     }
     
