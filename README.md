@@ -1,19 +1,18 @@
 
 ![tpg offline logo](banniere.png)
 
-## Présentation
+## Presentation
 
-tpg offline est une application pour les transports publics genevois apportant quelques améliorations à l'application officielle, notamment le mode hors ligne.
-Cette application est disponible sur [l'iOS App Store](https://itunes.apple.com/us/app/tpg-offline/id1001560047?l=fr&ls=1&mt=8)
+tpg offline is an application for the Geneva public transport making some improvements to the official application, including offline. This application is available on the [iOS App Store](https://itunes.apple.com/us/app/tpg-offline/id1001560047?l=fr&ls=1&mt=8)
 
-## Auteur
+## Author
 
 Rémy Da Costa Faro
 
 ## License
 
-tpg offline est disponible sous licence MIT. Voir le fichier LICENCE pour plus d'informations.
+tpg offline is available under the MIT license. See the LICENCE file for more information.
 
 ## Bug reporter
 
-Merci de signaler les bugs et idées d'améliorations sur GitHub ou sur [remydcf.myjetbrains.com](https://remydcf.myjetbrains.com/youtrack/issues?q=project%3A+%7Btpg+offline+(iOS)%7D+sort+by%3A+State%2C+Updated)
+Thank you to report bugs and ideas for improvements on GitHub or on [remydcf.myjetbrains.com](https://remydcf.myjetbrains.com/youtrack/issues?q=project%3A+%7Btpg+offline+(iOS)%7D+sort+by%3A+State%2C+Updated)
