@@ -65,9 +65,9 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - NVActivityIndicatorView (2.6)
-  - Onboard (2.2.0)
+  - Onboard (2.1.9)
   - PermissionScope (1.0.2)
-  - SCLAlertView (0.5.6)
+  - SCLAlertView (0.5.8)
   - SwiftDate (3.0.9)
   - SwiftInAppPurchase (1.0.0)
   - SwiftTweaks (1.0)
@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Log (from `https://github.com/delba/Log.git`)
   - MRProgress (from `https://github.com/RemyDCF/MRProgress.git`)
   - NVActivityIndicatorView (from `https://github.com/ninjaprox/NVActivityIndicatorView.git`)
-  - Onboard (from `https://github.com/mamaral/Onboard.git`)
+  - Onboard (from `https://github.com/mamaral/Onboard.git`, tag `v2.1.9`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
@@ -125,6 +125,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/ninjaprox/NVActivityIndicatorView.git
   Onboard:
     :git: https://github.com/mamaral/Onboard.git
+    :tag: v2.1.9
   PermissionScope:
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
@@ -176,13 +177,13 @@ CHECKOUT OPTIONS:
     :commit: dfc0ea8b99e2be84548590f7786902c32c02098a
     :git: https://github.com/ninjaprox/NVActivityIndicatorView.git
   Onboard:
-    :commit: 3a7b254a4df99b9c75c20f4efe00f0798dfcfa94
     :git: https://github.com/mamaral/Onboard.git
+    :tag: v2.1.9
   PermissionScope:
     :commit: 8e7df5b5b676363b680a9fc0578ff232bcf8be5d
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
-    :commit: 03bb754606a229b7228a2aa278af86c7520707fe
+    :commit: 5824520fd0978c0ff5864639b6340d0d0abd8d5f
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
   SwiftDate:
     :commit: 0dd3a3c610f2147a92c834cb4bdb5d983dd5f37b
@@ -191,7 +192,7 @@ CHECKOUT OPTIONS:
     :commit: 1080c4821443c5b71dff445a8c6c5b79f4bed2e4
     :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
   SwiftTweaks:
-    :commit: e27f24ee19bec23d9f78c0bf60d32ff9d59d7340
+    :commit: 88f8edd00c309afdd4490ce54c23bcc237802c8e
     :git: https://github.com/Khan/SwiftTweaks.git
   SwiftyJSON:
     :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
@@ -214,14 +215,14 @@ SPEC CHECKSUMS:
   Log: 5972312cb85cffbc56407b612936b610eb4af8a5
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
   NVActivityIndicatorView: b8207b369c012af32da0916a8346a56d16a5fbbe
-  Onboard: a42585d38885b7df7b46f9cfd0ce1707d5c55baf
+  Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
-  SCLAlertView: c2b916952520d96cf5e886a38053f1b8c3da502e
+  SCLAlertView: 653e84d1f9fd95333bc54671fbadb7d0c47fce49
   SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
   SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
-  SwiftTweaks: f1496b2a528bbe5ae05d46fe7811a8acc0b6542e
+  SwiftTweaks: ac08b7565d90776a6668e37e60224a9daa1e9ba6
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: bfcc1e0cf1144d54702c55901adfa113bdf3001a
+PODFILE CHECKSUM: 596213e2fc4c05fa013a489af0ee8202454aba06
 
 COCOAPODS: 1.0.0.rc.1

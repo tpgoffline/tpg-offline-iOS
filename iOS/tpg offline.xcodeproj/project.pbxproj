@@ -84,6 +84,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		00C6C3111CF5DA17000C1CF7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		000ECABC1C469A3500E4FC92 /* RouteToStopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RouteToStopViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CreditsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -129,6 +142,7 @@
 		00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tpg offline-Bridging-Header.h"; sourceTree = "<group>"; };
 		00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TimeSelectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00BEB4361CBD61AA00DDD313 /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
+		00C6C3021CF5DA16000C1CF7 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		00C8DD551C0CCACC004743A5 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
 		00C98C451C480E6E008E8B2A /* RoutesStopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RoutesStopsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00C98C491C4810E1008E8B2A /* SearchRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoute.swift; sourceTree = "<group>"; };
@@ -149,6 +163,8 @@
 		139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
+		5D5BB7521D54A8A7E8FAD5FF /* Pods_tpg_offline_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E9CD744CDFB82D1A915D474 /* Pods-tpg offline Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Widget/Pods-tpg offline Widget.release.xcconfig"; sourceTree = "<group>"; };
 		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
 		AD0148121C7F6CDE0057E884 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +179,7 @@
 		ADB2D6D41C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
+		F82E4D6043F38C4FE5F39B94 /* Pods-tpg offline Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Widget/Pods-tpg offline Widget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +371,8 @@
 				00D0355B1C0E25D600B3697D /* CoreLocation.framework */,
 				253CE6CB67EE399CF499A811 /* Pods.framework */,
 				139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */,
+				00C6C3021CF5DA16000C1CF7 /* NotificationCenter.framework */,
+				5D5BB7521D54A8A7E8FAD5FF /* Pods_tpg_offline_Widget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -373,6 +392,8 @@
 			children = (
 				539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */,
 				E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */,
+				F82E4D6043F38C4FE5F39B94 /* Pods-tpg offline Widget.debug.xcconfig */,
+				6E9CD744CDFB82D1A915D474 /* Pods-tpg offline Widget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -384,6 +405,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 002B47EF1C01FA6F000BF3E8 /* Build configuration list for PBXNativeTarget "tpg offline" */;
 			buildPhases = (
+				3257DBC54C85AECC59F63B1F /* 📦 Check Pods Manifest.lock */,
 				819CE82D7E4E10B8611CB691 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				002B47D91C01FA6F000BF3E8 /* Sources */,
 				002B47DA1C01FA6F000BF3E8 /* Frameworks */,
@@ -391,6 +413,9 @@
 				0000AA101CEC98F4002E6B9A /* uD83DuDCE6 Fabric */,
 				42DA7807C14FFD31F49FDE75 /* uD83DuDCE6 Embed Pods Frameworks */,
 				81EA3E643D789D91F73619C7 /* uD83DuDCE6 Copy Pods Resources */,
+				00C6C3111CF5DA17000C1CF7 /* Embed App Extensions */,
+				907F31B0A98F9474746F6C74 /* 📦 Embed Pods Frameworks */,
+				9884B974D93DE1FAAE2FC0C4 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -515,6 +540,21 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 75b8798b16086f8a41d0d9fbe73703be77a9706c 598a875e80bdece5e37bb2c05ba976b83626e6d2ac1016c6335b76beadf12eca";
 		};
+		3257DBC54C85AECC59F63B1F /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		42DA7807C14FFD31F49FDE75 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -553,6 +593,36 @@
 			inputPaths = (
 			);
 			name = "uD83DuDCE6 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		907F31B0A98F9474746F6C74 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9884B974D93DE1FAAE2FC0C4 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +832,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -796,6 +867,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 13;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

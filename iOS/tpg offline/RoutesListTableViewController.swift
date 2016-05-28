@@ -107,6 +107,7 @@ class RoutesListTableViewController: UITableViewController {
                 "connections/from/departureTimestamp",
                 "connections/to/station/name",
                 "connections/to/arrivalTimestamp",
+                "connections/sections/walk",
                 "connections/sections/journey/name",
                 "connections/sections/journey/operator",
                 "connections/sections/journey/categoryCode",

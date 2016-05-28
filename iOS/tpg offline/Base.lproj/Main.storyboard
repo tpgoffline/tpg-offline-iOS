@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="2516" y="-4"/>
         </scene>
-        <!--Departures Stop Table View Controller-->
+        <!--Departures Table View Controller-->
         <scene sceneID="aNR-jR-mhN">
             <objects>
                 <tableViewController storyboardIdentifier="departsArretTableViewController" id="MVg-ED-plC" customClass="DeparturesTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,9 +112,9 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="labelDirection" destination="Sxw-p3-cj5" id="H3m-dS-mbZ"/>
-                                    <outlet property="labelTempsRestant" destination="31P-C6-6zr" id="AWP-xR-5Cx"/>
-                                    <outlet property="pictoLigne" destination="Ak8-Mk-bbd" id="5ka-pd-xwQ"/>
+                                    <outlet property="directionLabel" destination="Sxw-p3-cj5" id="G67-pj-Neh"/>
+                                    <outlet property="leftTimeLabel" destination="31P-C6-6zr" id="tXJ-vs-raI"/>
+                                    <outlet property="linePictogram" destination="Ak8-Mk-bbd" id="c3z-Xy-jnY"/>
                                     <segue destination="CGb-ea-uIX" kind="show" identifier="showLigne" id="1Vc-rr-d4I"/>
                                 </connections>
                             </tableViewCell>
@@ -206,15 +206,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="GSg-IZ-8vf"/>
                     <connections>
-                        <segue destination="8rT-To-JDz" kind="show" identifier="showItinerary" id="tVU-Em-WoH"/>
                         <segue destination="xQB-G1-Yh7" kind="show" identifier="showAllDepartures" id="4yV-kE-SVe"/>
+                        <segue destination="8rT-To-JDz" kind="show" identifier="showItinerary" id="SUl-hh-oou"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f75-Ks-NKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2516" y="675"/>
         </scene>
-        <!--Route View Controller-->
+        <!--Route To Stop View Controller-->
         <scene sceneID="db2-Zx-rKS">
             <objects>
                 <viewController id="8rT-To-JDz" customClass="RouteToStopViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -226,13 +226,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-sp-mcc">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-sp-mcc">
                                 <rect key="frame" x="0.0" y="101" width="600" height="499"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rT-To-JDz" id="xju-N0-mww"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="but-13-oa1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="but-13-oa1">
                                 <rect key="frame" x="20" y="72" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="M6B-w0-MVi"/>
@@ -242,7 +242,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pas de position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-AV-aDZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pas de position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-AV-aDZ">
                                 <rect key="frame" x="70" y="72" width="510" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="i1M-P6-qHY"/>
@@ -281,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="3216" y="675"/>
         </scene>
-        <!--Voir Tous Les Departures View Controller-->
+        <!--See All Departures View Controller-->
         <scene sceneID="bdj-cQ-kus">
             <objects>
                 <viewController id="xQB-G1-Yh7" customClass="SeeAllDeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -351,7 +351,7 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="735-fO-it4" secondAttribute="bottom" constant="-8" id="gvm-mM-Ny2"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="titre" destination="735-fO-it4" id="PXr-gW-QeP"/>
+                                            <outlet property="title" destination="735-fO-it4" id="hlb-Lu-GI2"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -379,19 +379,19 @@
                     </view>
                     <connections>
                         <outlet property="departuresCollectionView" destination="bFF-M5-TaT" id="SXs-5E-M6M"/>
+                        <outlet property="directionLabel" destination="A30-z3-ZK1" id="ezM-Lv-Erf"/>
                         <outlet property="hourPicker" destination="FIq-wd-TfH" id="MFV-Jb-KgQ"/>
-                        <outlet property="labelDirection" destination="A30-z3-ZK1" id="LUo-q4-muo"/>
-                        <outlet property="labelLigne" destination="SBe-BX-BM8" id="qjr-es-CZ5"/>
+                        <outlet property="lineLabel" destination="SBe-BX-BM8" id="5ot-JB-S28"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccZ-nm-Atl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3851" y="675"/>
         </scene>
-        <!--Voir Ligne Table View Controller-->
+        <!--Thermometer Table View Controller-->
         <scene sceneID="ScL-8t-OeD">
             <objects>
-                <tableViewController id="CGb-ea-uIX" customClass="VoirLigneTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="CGb-ea-uIX" customClass="ThermometerTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="x0z-SP-6KW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -688,14 +688,14 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="barDirection" destination="iQJ-NX-a1i" id="GOu-SM-Cbk"/>
-                                    <outlet property="correspondance1Label" destination="iie-VL-nVe" id="IRH-nd-YsH"/>
-                                    <outlet property="correspondance2Label" destination="QTE-31-iZd" id="RFz-gt-CNR"/>
-                                    <outlet property="correspondance3Label" destination="Ywb-Ja-GDA" id="yIc-AG-l5X"/>
-                                    <outlet property="correspondance4Label" destination="0Us-Uu-o33" id="111-L6-cSH"/>
-                                    <outlet property="sousTitreLabel" destination="CVG-uZ-zzB" id="CBq-ux-EaK"/>
-                                    <outlet property="tempsRestantLabel" destination="Uh3-zk-RQG" id="mAg-tY-msb"/>
-                                    <outlet property="titreLabel" destination="ShG-Bg-eQl" id="9vG-V4-8ga"/>
+                                    <outlet property="barDirection" destination="iQJ-NX-a1i" id="ZfP-Lv-rid"/>
+                                    <outlet property="connection1Label" destination="iie-VL-nVe" id="u1T-aS-v8J"/>
+                                    <outlet property="connection2Label" destination="QTE-31-iZd" id="n57-U1-rrk"/>
+                                    <outlet property="connection3Label" destination="Ywb-Ja-GDA" id="Jfb-H6-VrY"/>
+                                    <outlet property="connection4Label" destination="0Us-Uu-o33" id="JfN-2w-Dc8"/>
+                                    <outlet property="leftTimeLabel" destination="Uh3-zk-RQG" id="JlO-vd-h9m"/>
+                                    <outlet property="subTitleLabel" destination="CVG-uZ-zzB" id="wTs-rP-SkO"/>
+                                    <outlet property="titleLabel" destination="ShG-Bg-eQl" id="qEk-Zo-4Oz"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" textLabel="HG5-vi-TwX" detailTextLabel="HTm-t6-R4q" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="GJL-6K-c59" customClass="SeeLineTableViewCell" customModule="tpg_offline" customModuleProvider="target">
@@ -1023,7 +1023,7 @@
             </objects>
             <point key="canvasLocation" x="1799" y="3360"/>
         </scene>
-        <!--Choix Menu Table View Controller-->
+        <!--Select Default Tab Bar Item-->
         <scene sceneID="Xds-L3-ftc">
             <objects>
                 <tableViewController id="KMO-yd-eMh" customClass="SelectDefaultTabBarItem" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -1168,7 +1168,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="titreLabel" destination="EJk-fG-uQg" id="trP-Oy-uGN"/>
+                                    <outlet property="titleLabel" destination="EJk-fG-uQg" id="ClF-7R-2Eq"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="acheterPremiumCell" rowHeight="100" id="9gT-7F-cym" userLabel="acheterPremiumCell" customClass="BuyPremiumTableViewCell" customModule="tpg_offline" customModuleProvider="target">
@@ -1194,7 +1194,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="boutonAcheter" destination="bnZ-ny-Akx" id="Z31-lo-PoJ"/>
+                                    <outlet property="buyButton" destination="bnZ-ny-Akx" id="UsI-sq-J4C"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1319,7 +1319,7 @@
             </objects>
             <point key="canvasLocation" x="4421" y="3360"/>
         </scene>
-        <!--Plan View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="6Te-cg-Wv9">
             <objects>
                 <viewController id="I4o-YC-PGX" customClass="MapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -1549,10 +1549,10 @@
                                 <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="accessoryImage" destination="aVS-UD-CFV" id="cyJ-wh-09b"/>
-                                    <outlet property="iconeImage" destination="wOC-IL-H7R" id="HiH-IQ-NOe"/>
-                                    <outlet property="iconeView" destination="g3z-xN-MCw" id="q5C-QJ-enY"/>
-                                    <outlet property="labelArrivee" destination="50G-sB-BlM" id="Pz0-uP-WWp"/>
-                                    <outlet property="labelDepart" destination="8N7-pe-2AZ" id="yf9-gX-CiI"/>
+                                    <outlet property="arrivalLabel" destination="50G-sB-BlM" id="eNc-LN-P4Z"/>
+                                    <outlet property="departureLabel" destination="8N7-pe-2AZ" id="fRl-Jn-two"/>
+                                    <outlet property="iconImageView" destination="wOC-IL-H7R" id="o8d-lb-Dzy"/>
+                                    <outlet property="iconView" destination="g3z-xN-MCw" id="3dm-4r-VSX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1578,7 +1578,7 @@
             </objects>
             <point key="canvasLocation" x="2462" y="4000"/>
         </scene>
-        <!--Tpg Stop Selection Table View Controller-->
+        <!--Routes Stops Table View Controller-->
         <scene sceneID="cSS-pM-Ome">
             <objects>
                 <tableViewController id="VKI-Lo-KNa" customClass="RoutesStopsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -1738,7 +1738,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="boutonValider" destination="OrW-kS-VIs" id="6e3-BK-eRC"/>
+                        <outlet property="boutonValider" destination="OrW-kS-VIs" id="6Dk-X6-7VL"/>
                         <outlet property="hourSlider" destination="cjL-cP-y3v" id="T02-Ii-DGA"/>
                         <outlet property="labelHeure" destination="X42-rG-Aql" id="tKm-1Z-u7m"/>
                         <outlet property="minuteSlider" destination="aEi-ha-Gj1" id="koa-vW-BgX"/>
@@ -1819,7 +1819,7 @@
             </objects>
             <point key="canvasLocation" x="4396" y="4000"/>
         </scene>
-        <!--Liste Itineraires Table View Controller-->
+        <!--Routes List Table View Controller-->
         <scene sceneID="f14-X0-JYY">
             <objects>
                 <tableViewController id="C4a-bD-eqd" customClass="RoutesListTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -1900,11 +1900,11 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="labelArrivee" destination="3te-5r-24P" id="YfW-3d-7pQ"/>
-                                    <outlet property="labelDepart" destination="mpC-fn-Rhw" id="egF-ub-QvV"/>
-                                    <outlet property="labelDuree" destination="I3y-iY-SLm" id="2K9-da-ar0"/>
-                                    <outlet property="labelHeureArrivee" destination="gWk-qZ-PrN" id="Gbd-KW-PcM"/>
-                                    <outlet property="labelHeureDepart" destination="RYB-lU-JGm" id="yCe-lK-ti3"/>
+                                    <outlet property="arrivalLabel" destination="3te-5r-24P" id="98m-nX-5EJ"/>
+                                    <outlet property="departureLabel" destination="mpC-fn-Rhw" id="AzQ-v5-4Cl"/>
+                                    <outlet property="durationLabel" destination="I3y-iY-SLm" id="XWg-Oz-CVl"/>
+                                    <outlet property="hourArrivalLabel" destination="gWk-qZ-PrN" id="7hY-0j-zGw"/>
+                                    <outlet property="hourDepartureLabel" destination="RYB-lU-JGm" id="N5f-QO-3hS"/>
                                     <segue destination="c4w-XN-uGa" kind="show" identifier="voirItineraire" id="uJL-FT-5V9"/>
                                 </connections>
                             </tableViewCell>
@@ -1982,7 +1982,7 @@
             </objects>
             <point key="canvasLocation" x="2468" y="4706"/>
         </scene>
-        <!--Vue Route Table View Controller-->
+        <!--Route Detail Table View Controller-->
         <scene sceneID="Coc-0k-Dsz">
             <objects>
                 <tableViewController id="c4w-XN-uGa" customClass="RouteDetailTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -2095,13 +2095,13 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="arriveeLabel" destination="i9i-Gi-k0N" id="gbK-gz-YWY"/>
-                                    <outlet property="departLabel" destination="eql-uL-k0j" id="4D4-LC-pEw"/>
-                                    <outlet property="directionLabel" destination="oTe-Vy-42Q" id="ZTo-Si-511"/>
-                                    <outlet property="heureArriveeLabel" destination="2tM-1y-2NT" id="GDk-kf-Hmk"/>
-                                    <outlet property="heureDepartLabel" destination="J8R-7w-C8Y" id="hy2-Wz-4jA"/>
-                                    <outlet property="iconeImageView" destination="uSz-HK-Tgb" id="VhQ-W7-C8C"/>
-                                    <outlet property="ligneLabel" destination="Qbm-4S-MI8" id="MCv-hC-NE3"/>
+                                    <outlet property="arrivalLabel" destination="i9i-Gi-k0N" id="rn3-IS-0FC"/>
+                                    <outlet property="departureLabel" destination="eql-uL-k0j" id="ceY-Fj-IDr"/>
+                                    <outlet property="directionLabel" destination="oTe-Vy-42Q" id="caQ-qG-CoH"/>
+                                    <outlet property="hourArrivalLabel" destination="2tM-1y-2NT" id="sWn-WM-ihA"/>
+                                    <outlet property="hourDepartureLabel" destination="J8R-7w-C8Y" id="VxK-g8-1y1"/>
+                                    <outlet property="iconImageView" destination="uSz-HK-Tgb" id="crb-VG-Vd1"/>
+                                    <outlet property="lineLabel" destination="Qbm-4S-MI8" id="eyt-Oc-aj2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2249,11 +2249,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="S1h-ao-xh0"/>
         <segue reference="LJi-TT-Dgf"/>
-        <segue reference="hgu-ac-qJp"/>
+        <segue reference="wwx-Yc-2Y4"/>
+        <segue reference="3qI-0p-gtv"/>
         <segue reference="5h4-1H-jes"/>
-        <segue reference="QU0-Nc-zyX"/>
+        <segue reference="06s-d1-T9Q"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

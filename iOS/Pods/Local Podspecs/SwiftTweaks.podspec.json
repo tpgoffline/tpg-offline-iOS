@@ -22,7 +22,8 @@
   },
   "source": {
     "git": "https://github.com/Khan/SwiftTweaks.git",
-    "tag": "v1.0"
+    "tag": "v1.0",
+    "submodules": true
   },
   "source_files": "SwiftTweaks/**/*.swift",
   "resources": "SwiftTweaks/*.xcassets",

@@ -24,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         /*let rootVc = window?.rootViewController
-        window = TweakWindow(frame: UIScreen.mainScreen().bounds, tweakStore: TpgOfflineTweaks.defaultStore)
-        window!.rootViewController = rootVc
-        window!.makeKeyAndVisible()*/
+         window = TweakWindow(frame: UIScreen.mainScreen().bounds, tweakStore: TpgOfflineTweaks.defaultStore)
+         window!.rootViewController = rootVc
+         window!.makeKeyAndVisible()*/
         
         AppValues.logger.enabled = true
         Fabric.with([Crashlytics.self])
-   
+        
         getDefaults()
         setTabBar()
         
@@ -151,7 +151,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             else {
                 let decoded  = self.defaults.objectForKey("arretsFavoris")
-                AppValues.favoritesStops = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as! [String:Stop]
+                let tempUnarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [String:AnyObject]
+                if ((tempUnarchivedData?[Array(tempUnarchivedData!.keys)[0]]!.isKindOfClass(Arret)) == true) {
+                    var favoritesStops:[String:Stop] = [:]
+                    for (key, x) in tempUnarchivedData! {
+                        favoritesStops[key] = Stop(stop: x as! Arret)
+                    }
+                    let encodedData = NSKeyedArchiver.archivedDataWithRootObject(favoritesStops)
+                    self.defaults.setObject(encodedData, forKey: "arretsFavoris")
+                    AppValues.favoritesStops = favoritesStops
+                }
+                else if ((tempUnarchivedData?[Array(tempUnarchivedData!.keys)[0]]!.isKindOfClass(Stop)) == true) {
+                    let unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [String:Stop]
+                    AppValues.favoritesStops = unarchivedData
+                }
                 for (_, y) in AppValues.favoritesStops {
                     AppValues.fullNameFavoritesStops.append(y.fullName)
                 }
@@ -182,8 +195,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.defaults.setObject(encodedData, forKey: "itinerairesFavoris")
             }
             else {
-                AppValues.favoritesRoutes = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [[Stop]]
-                if AppValues.favoritesRoutes == nil {
+                let tempUnarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [[AnyObject]]
+                if tempUnarchivedData != nil {
+                    if !tempUnarchivedData!.isEmpty {
+                        if ((tempUnarchivedData?[0][0].isKindOfClass(Arret)) == true) {
+                            var favoriteRoutes:[[Stop]] = []
+                            for x in tempUnarchivedData! {
+                                var subArray: [Stop] = []
+                                for y in x {
+                                    subArray.append(Stop(stop: (y as! Arret)))
+                                }
+                                favoriteRoutes.append(subArray)
+                            }
+                            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(favoriteRoutes)
+                            self.defaults.setObject(encodedData, forKey: "itinerairesFavoris")
+                            AppValues.favoritesRoutes = favoriteRoutes
+                        }
+                        else if ((tempUnarchivedData?[0][0].isKindOfClass(Stop)) == true) {
+                            let unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [[Stop]]
+                            AppValues.favoritesRoutes = unarchivedData
+                        }
+                    }
+                    else {
+                        AppValues.favoritesRoutes = []
+                        let encodedData = NSKeyedArchiver.archivedDataWithRootObject([])
+                        self.defaults.setObject(encodedData, forKey: "itinerairesFavoris")
+                    }
+                }
+                else {
                     AppValues.favoritesRoutes = []
                     let encodedData = NSKeyedArchiver.archivedDataWithRootObject([])
                     self.defaults.setObject(encodedData, forKey: "itinerairesFavoris")
