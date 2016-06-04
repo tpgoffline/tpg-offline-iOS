@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          window!.makeKeyAndVisible()*/
         
         AppValues.logger.enabled = true
-        Fabric.with([Crashlytics.self])
+        //Fabric.with([Crashlytics.self])
         
         getDefaults()
         setTabBar()
