@@ -23,6 +23,6 @@ target 'tpg offline' do
  	pod 'AsyncSwift', git: 'https://github.com/duemunk/Async.git'
  	pod 'AKPickerView-Swift', git: 'https://github.com/Akkyie/AKPickerView-Swift.git'
 	pod 'Fabric'
-  	pod 'Crashlytics'
+  pod 'Crashlytics'
  	pod 'SwiftTweaks', git: 'https://github.com/Khan/SwiftTweaks.git'
 end
