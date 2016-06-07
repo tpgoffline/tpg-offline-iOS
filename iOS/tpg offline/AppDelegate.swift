@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         tabBarController.tabBar.items![4].selectedImage = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         
-        if !defaults.boolForKey("tutorial") {
+        if !defaults.boolForKey("tutorial") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")){
             tabBarController.selectedIndex = 4
         }
         else {
