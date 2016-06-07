@@ -24,6 +24,7 @@ class DeparturesTableViewController: UITableViewController {
     var offline = false
     var noMoreTransport = false
     var loading: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +49,7 @@ class DeparturesTableViewController: UITableViewController {
         
         refresh()
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -110,7 +111,16 @@ class DeparturesTableViewController: UITableViewController {
             let encodedData = NSKeyedArchiver.archivedDataWithRootObject(AppValues.favoritesStops!)
             defaults.setObject(encodedData, forKey: "favoritesStops")
         }
-
+        
+        if #available(iOS 9.0, *) {
+            do {
+                try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops" : NSKeyedArchiver.archivedDataWithRootObject(AppValues.favoritesStops)])
+                
+            } catch {
+                AppValues.logger.error("Update WatchConnectivity with application context failed")
+            }
+        }
+        
         var barButtonsItems: [UIBarButtonItem] = []
         
         if ((AppValues.fullNameFavoritesStops.indexOf(stop!.fullName)) != nil) {
@@ -208,7 +218,7 @@ class DeparturesTableViewController: UITableViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-
+    
     func refresh() {
         self.loading = true
         self.tableView.reloadData()
@@ -500,7 +510,7 @@ extension DeparturesTableViewController {
             cell.accessoryView = nil
             
             cell.activityIndicator.startAnimation()
-
+            
             return cell
         }
         else if indexPath.section == 0 && offline {

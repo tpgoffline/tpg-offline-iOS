@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0730"
-   version = "1.3">
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B02222757DD07A46E150C0E11274C937"
-               BuildableName = "Pods_tpg_offline.framework"
-               BlueprintName = "Pods-tpg offline"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+               BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+               BuildableName = "tpg offline Watch.app"
+               BlueprintName = "tpg offline Watch"
+               ReferencedContainer = "container:tpg offline.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "005BAE9B1D0452FB00F73C8A"
+               BuildableName = "tpg offline Watch Extension.appex"
+               BlueprintName = "tpg offline Watch Extension"
+               ReferencedContainer = "container:tpg offline.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -34,20 +48,6 @@
                ReferencedContainer = "container:tpg offline.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AD11CD821C8336AA00DFF4AA"
-               BuildableName = "tpg offline UITests.xctest"
-               BlueprintName = "tpg offline UITests"
-               ReferencedContainer = "container:tpg offline.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -60,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "002B47DC1C01FA6F000BF3E8"
-            BuildableName = "tpg offline.app"
-            BlueprintName = "tpg offline"
+            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BuildableName = "tpg offline Watch.app"
+            BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -78,17 +78,30 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "tpg offline Watch Extension/PushNotificationPayload.apns">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.carousel"
+         RemotePath = "/tpg offline">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "002B47DC1C01FA6F000BF3E8"
-            BuildableName = "tpg offline.app"
-            BlueprintName = "tpg offline"
+            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BuildableName = "tpg offline Watch.app"
+            BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BuildableName = "tpg offline Watch.app"
+            BlueprintName = "tpg offline Watch"
+            ReferencedContainer = "container:tpg offline.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -97,17 +110,30 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "tpg offline Watch Extension/PushNotificationPayload.apns">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.carousel"
+         RemotePath = "/tpg offline">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "002B47DC1C01FA6F000BF3E8"
-            BuildableName = "tpg offline.app"
-            BlueprintName = "tpg offline"
+            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BuildableName = "tpg offline Watch.app"
+            BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BuildableName = "tpg offline Watch.app"
+            BlueprintName = "tpg offline Watch"
+            ReferencedContainer = "container:tpg offline.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppValues.logger.enabled = true
         //Fabric.with([Crashlytics.self])
+        if #available(iOS 9.0, *) {
+            WatchSessionManager.sharedManager.startSession()
+        }
         
         getDefaults()
         setTabBar()

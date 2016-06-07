@@ -34,6 +34,20 @@
 		00500AF41C1B396F00341F7A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00500AF31C1B396F00341F7A /* Stop.swift */; };
 		005572591CE0FE5A00B70D26 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005572581CE0FE5A00B70D26 /* Route.swift */; };
 		0055725B1CE0FEB500B70D26 /* RoutesConnections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0055725A1CE0FEB500B70D26 /* RoutesConnections.swift */; };
+		005BAE941D0452FB00F73C8A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005BAE921D0452FB00F73C8A /* Interface.storyboard */; };
+		005BAE961D0452FB00F73C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 005BAE951D0452FB00F73C8A /* Assets.xcassets */; };
+		005BAE9D1D0452FC00F73C8A /* tpg offline Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		005BAEA41D0452FC00F73C8A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEA31D0452FC00F73C8A /* InterfaceController.swift */; };
+		005BAEA61D0452FC00F73C8A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEA51D0452FC00F73C8A /* ExtensionDelegate.swift */; };
+		005BAEA81D0452FC00F73C8A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEA71D0452FC00F73C8A /* NotificationController.swift */; };
+		005BAEAA1D0452FC00F73C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 005BAEA91D0452FC00F73C8A /* Assets.xcassets */; };
+		005BAEAE1D0452FC00F73C8A /* tpg offline Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 005BAE901D0452FB00F73C8A /* tpg offline Watch.app */; };
+		005BAEC01D04569800F73C8A /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005BAEBF1D04569800F73C8A /* WatchConnectivity.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		005BAEC21D04591800F73C8A /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEC11D04591800F73C8A /* WatchSessionManager.swift */; };
+		005BAEC51D045A5A00F73C8A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00500AF31C1B396F00341F7A /* Stop.swift */; };
+		005BAEC61D045A5C00F73C8A /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ABBE141C29C81B00479FF4 /* Departures.swift */; };
+		005BAEC71D045BA000F73C8A /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEC31D045A4F00F73C8A /* WatchSessionManager.swift */; };
+		005BAEC91D045C2E00F73C8A /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEC81D045C2E00F73C8A /* AppValues.swift */; };
 		005DF8111C0DF74E00377031 /* StopImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DF8101C0DF74E00377031 /* StopImageTableViewCell.swift */; };
 		0067FB261CD3B1AD007EFDE6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
 		0068B63D1CC7C0C1005815CE /* LoadingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068B63C1CC7C0C1005815CE /* LoadingCellTableViewCell.swift */; };
@@ -75,6 +89,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		005BAE9E1D0452FC00F73C8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 002B47D51C01FA6F000BF3E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 005BAE9B1D0452FB00F73C8A;
+			remoteInfo = "tpg offline Watch Extension";
+		};
+		005BAEAC1D0452FC00F73C8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 002B47D51C01FA6F000BF3E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 005BAE8F1D0452FB00F73C8A;
+			remoteInfo = "tpg offline Watch";
+		};
 		AD11CD881C8336AA00DFF4AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 002B47D51C01FA6F000BF3E8 /* Project object */;
@@ -85,6 +113,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		005BAEB41D0452FC00F73C8A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				005BAE9D1D0452FC00F73C8A /* tpg offline Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAEB61D0452FC00F73C8A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				005BAEAE1D0452FC00F73C8A /* tpg offline Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00C6C3111CF5DA17000C1CF7 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +177,21 @@
 		00500AF31C1B396F00341F7A /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Stop.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		005572581CE0FE5A00B70D26 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0055725A1CE0FEB500B70D26 /* RoutesConnections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesConnections.swift; sourceTree = "<group>"; };
+		005BAE901D0452FB00F73C8A /* tpg offline Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		005BAE931D0452FB00F73C8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		005BAE951D0452FB00F73C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		005BAE971D0452FB00F73C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		005BAEA21D0452FC00F73C8A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		005BAEA31D0452FC00F73C8A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		005BAEA51D0452FC00F73C8A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		005BAEA71D0452FC00F73C8A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		005BAEA91D0452FC00F73C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		005BAEAB1D0452FC00F73C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		005BAEBF1D04569800F73C8A /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		005BAEC11D04591800F73C8A /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		005BAEC31D045A4F00F73C8A /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchSessionManager.swift; path = "../tpg offline Watch/WatchSessionManager.swift"; sourceTree = "<group>"; };
+		005BAEC81D045C2E00F73C8A /* AppValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppValues.swift; path = "../tpg offline Watch/AppValues.swift"; sourceTree = "<group>"; };
 		005DF8101C0DF74E00377031 /* StopImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StopImageTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0068B63C1CC7C0C1005815CE /* LoadingCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCellTableViewCell.swift; sourceTree = "<group>"; };
 		007266271C259191009EFEB5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MapViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -187,10 +252,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005BAEC01D04569800F73C8A /* WatchConnectivity.framework in Frameworks */,
 				00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */,
 				002E5C761C132A680008623D /* MapKit.framework in Frameworks */,
 				AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */,
 				6AA6F721BA82513EE3E37063 /* Pods_tpg_offline.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE991D0452FB00F73C8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +290,8 @@
 				00430B531C9B1EAD00C71A06 /* arrets.json */,
 				002B47DF1C01FA6F000BF3E8 /* tpg offline */,
 				AD11CD841C8336AA00DFF4AA /* tpg offline UITests */,
+				005BAE911D0452FB00F73C8A /* tpg offline Watch */,
+				005BAEA01D0452FC00F73C8A /* tpg offline Watch Extension */,
 				002B47DE1C01FA6F000BF3E8 /* Products */,
 				A65315FEF759993751E0088F /* Frameworks */,
 				00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */,
@@ -229,6 +304,8 @@
 			children = (
 				002B47DD1C01FA6F000BF3E8 /* tpg offline.app */,
 				AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */,
+				005BAE901D0452FB00F73C8A /* tpg offline Watch.app */,
+				005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,6 +342,39 @@
 				AD0148121C7F6CDE0057E884 /* WebViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		005BAE911D0452FB00F73C8A /* tpg offline Watch */ = {
+			isa = PBXGroup;
+			children = (
+				005BAE921D0452FB00F73C8A /* Interface.storyboard */,
+				005BAE951D0452FB00F73C8A /* Assets.xcassets */,
+				005BAE971D0452FB00F73C8A /* Info.plist */,
+			);
+			path = "tpg offline Watch";
+			sourceTree = "<group>";
+		};
+		005BAEA01D0452FC00F73C8A /* tpg offline Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				005BAEC31D045A4F00F73C8A /* WatchSessionManager.swift */,
+				005BAEC81D045C2E00F73C8A /* AppValues.swift */,
+				005BAEA31D0452FC00F73C8A /* InterfaceController.swift */,
+				005BAEA51D0452FC00F73C8A /* ExtensionDelegate.swift */,
+				005BAEA71D0452FC00F73C8A /* NotificationController.swift */,
+				005BAEA91D0452FC00F73C8A /* Assets.xcassets */,
+				005BAEAB1D0452FC00F73C8A /* Info.plist */,
+				005BAEA11D0452FC00F73C8A /* Supporting Files */,
+			);
+			path = "tpg offline Watch Extension";
+			sourceTree = "<group>";
+		};
+		005BAEA11D0452FC00F73C8A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				005BAEA21D0452FC00F73C8A /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		005DF8121C0DF75300377031 /* Cells */ = {
@@ -341,6 +451,7 @@
 				00C98C491C4810E1008E8B2A /* SearchRoute.swift */,
 				00BEB4361CBD61AA00DDD313 /* Thermometer.swift */,
 				0055725A1CE0FEB500B70D26 /* RoutesConnections.swift */,
+				005BAEC11D04591800F73C8A /* WatchSessionManager.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -366,6 +477,7 @@
 		A65315FEF759993751E0088F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				005BAEBF1D04569800F73C8A /* WatchConnectivity.framework */,
 				AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */,
 				002E5C751C132A680008623D /* MapKit.framework */,
 				00D0355B1C0E25D600B3697D /* CoreLocation.framework */,
@@ -416,15 +528,51 @@
 				00C6C3111CF5DA17000C1CF7 /* Embed App Extensions */,
 				907F31B0A98F9474746F6C74 /* 📦 Embed Pods Frameworks */,
 				9884B974D93DE1FAAE2FC0C4 /* 📦 Copy Pods Resources */,
+				005BAEB61D0452FC00F73C8A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				005BAEAD1D0452FC00F73C8A /* PBXTargetDependency */,
 			);
 			name = "tpg offline";
 			productName = "tpg offline";
 			productReference = 002B47DD1C01FA6F000BF3E8 /* tpg offline.app */;
 			productType = "com.apple.product-type.application";
+		};
+		005BAE8F1D0452FB00F73C8A /* tpg offline Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 005BAEB51D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch" */;
+			buildPhases = (
+				005BAE8E1D0452FB00F73C8A /* Resources */,
+				005BAEB41D0452FC00F73C8A /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				005BAE9F1D0452FC00F73C8A /* PBXTargetDependency */,
+			);
+			name = "tpg offline Watch";
+			productName = "tpg offline Watch";
+			productReference = 005BAE901D0452FB00F73C8A /* tpg offline Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		005BAE9B1D0452FB00F73C8A /* tpg offline Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 005BAEB31D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch Extension" */;
+			buildPhases = (
+				005BAE981D0452FB00F73C8A /* Sources */,
+				005BAE991D0452FB00F73C8A /* Frameworks */,
+				005BAE9A1D0452FB00F73C8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tpg offline Watch Extension";
+			productName = "tpg offline Watch Extension";
+			productReference = 005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		AD11CD821C8336AA00DFF4AA /* tpg offline UITests */ = {
 			isa = PBXNativeTarget;
@@ -469,6 +617,14 @@
 							};
 						};
 					};
+					005BAE8F1D0452FB00F73C8A = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 767R4Y4A3U;
+					};
+					005BAE9B1D0452FB00F73C8A = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 767R4Y4A3U;
+					};
 					AD11CD821C8336AA00DFF4AA = {
 						CreatedOnToolsVersion = 7.3;
 						TestTargetID = 002B47DC1C01FA6F000BF3E8;
@@ -491,6 +647,8 @@
 			targets = (
 				002B47DC1C01FA6F000BF3E8 /* tpg offline */,
 				AD11CD821C8336AA00DFF4AA /* tpg offline UITests */,
+				005BAE8F1D0452FB00F73C8A /* tpg offline Watch */,
+				005BAE9B1D0452FB00F73C8A /* tpg offline Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -512,6 +670,23 @@
 				00430B541C9B1EAD00C71A06 /* arrets.json in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE8E1D0452FB00F73C8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				005BAE961D0452FB00F73C8A /* Assets.xcassets in Resources */,
+				005BAE941D0452FB00F73C8A /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE9A1D0452FB00F73C8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				005BAEAA1D0452FC00F73C8A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,11 +853,26 @@
 				0068B63D1CC7C0C1005815CE /* LoadingCellTableViewCell.swift in Sources */,
 				004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */,
 				005DF8111C0DF74E00377031 /* StopImageTableViewCell.swift in Sources */,
+				005BAEC21D04591800F73C8A /* WatchSessionManager.swift in Sources */,
 				008B84441C232D84007BE1B3 /* IncidentsTableViewController.swift in Sources */,
 				007D924D1C4A98A80036BEE6 /* ButtonTableViewCell.swift in Sources */,
 				00DDC0B21C255CED002B288E /* MapsListTableViewController.swift in Sources */,
 				004E8BD81C6E24870055006B /* ThemeCollectionViewCell.swift in Sources */,
 				00C98C4A1C4810E1008E8B2A /* SearchRoute.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE981D0452FB00F73C8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				005BAEA81D0452FC00F73C8A /* NotificationController.swift in Sources */,
+				005BAEA61D0452FC00F73C8A /* ExtensionDelegate.swift in Sources */,
+				005BAEC71D045BA000F73C8A /* WatchSessionManager.swift in Sources */,
+				005BAEA41D0452FC00F73C8A /* InterfaceController.swift in Sources */,
+				005BAEC91D045C2E00F73C8A /* AppValues.swift in Sources */,
+				005BAEC51D045A5A00F73C8A /* Stop.swift in Sources */,
+				005BAEC61D045A5C00F73C8A /* Departures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +888,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		005BAE9F1D0452FC00F73C8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 005BAE9B1D0452FB00F73C8A /* tpg offline Watch Extension */;
+			targetProxy = 005BAE9E1D0452FC00F73C8A /* PBXContainerItemProxy */;
+		};
+		005BAEAD1D0452FC00F73C8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 005BAE8F1D0452FB00F73C8A /* tpg offline Watch */;
+			targetProxy = 005BAEAC1D0452FC00F73C8A /* PBXContainerItemProxy */;
+		};
 		AD11CD891C8336AA00DFF4AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 002B47DC1C01FA6F000BF3E8 /* tpg offline */;
@@ -724,6 +924,14 @@
 				00CB6C721CD26FED00CE1B59 /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		005BAE921D0452FB00F73C8A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				005BAE931D0452FB00F73C8A /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 		ADB2D6D91C7A1BFD0023718F /* Localizable.strings */ = {
@@ -893,6 +1101,76 @@
 			};
 			name = Release;
 		};
+		005BAEAF1D0452FC00F73C8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = tpg_offline_Watch_Extension;
+				INFOPLIST_FILE = "tpg offline Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		005BAEB01D0452FC00F73C8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = tpg_offline_Watch_Extension;
+				INFOPLIST_FILE = "tpg offline Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		005BAEB11D0452FC00F73C8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "tpg offline Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		005BAEB21D0452FC00F73C8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "tpg offline Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 		AD11CD8A1C8336AA00DFF4AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -902,7 +1180,6 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -919,7 +1196,6 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -944,6 +1220,24 @@
 			buildConfigurations = (
 				002B47F01C01FA6F000BF3E8 /* Debug */,
 				002B47F11C01FA6F000BF3E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		005BAEB31D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				005BAEB11D0452FC00F73C8A /* Debug */,
+				005BAEB21D0452FC00F73C8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		005BAEB51D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				005BAEAF1D0452FC00F73C8A /* Debug */,
+				005BAEB01D0452FC00F73C8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
