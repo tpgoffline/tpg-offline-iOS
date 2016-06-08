@@ -48,7 +48,7 @@ class SettingsTableViewController: UITableViewController {
             rowsList += nonPremiumRowList
         }
         
-        if !defaults.boolForKey("tutorial") {
+        if !defaults.boolForKey("tutorial") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
             afficherTutoriel()
         }
     }
