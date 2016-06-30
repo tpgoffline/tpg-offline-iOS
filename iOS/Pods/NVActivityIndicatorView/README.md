@@ -47,6 +47,8 @@ For first-hand experience, just open the project and run it.
 27. BallGridBeat
 28. SemiCircleSpin
 29. BallRotateChase
+30. Orbit
+31. AudioEqualizer
 
 # Installation
 
@@ -165,6 +167,27 @@ Stop animation
 activityIndicatorView.stopAnimation()
 ```
 
+## UI blocker
+
+You can use `NVActivityIndicatorView` as UI blocker for `UIViewController` by conforming `NVActivityIndicatorViewable` protocol.
+
+```swift
+class ViewController: UIViewController, NVActivityIndicatorViewable { }
+```
+
+Start animation
+
+```swift
+startActivityAnimating(message) // plus other parameters as when initializing
+startActivityAnimating(message, color: color)
+```
+
+Stop animation
+
+```swift
+stopActivityAnimating()
+```
+
 ## Change properties
 
 If you use `NVActivityIndicatorView` in storyboard, you can change these properties in Attributes inspector tab of Utilities panel.
@@ -192,6 +215,16 @@ activityIndicatorView.hidesWhenStopped = true
 Get current status of animation
 ```swift
 animation = activityIndicatorView.animating
+```
+
+## Change defaults
+
+Change global defaults if needed
+
+```swift
+NVActivityIndicatorView.DEFAULT_TYPE = .Pacman
+NVActivityIndicatorView.DEFAULT_COLOR = .yellowColor()
+NVActivityIndicatorView.DEFAULT_PADDING = CGFloat(5.0)
 ```
 
 # Acknowledgment

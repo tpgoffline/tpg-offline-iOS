@@ -16,7 +16,7 @@ target 'tpg offline' do
 	pod 'SwiftInAppPurchase', git: 'https://github.com/rpzzzzzz/SwiftInAppPurchase.git'
 	pod 'Localize-Swift', git: 'https://github.com/marmelroy/Localize-Swift.git'
 	pod 'Onboard', git: 'https://github.com/mamaral/Onboard.git', :tag => "v2.1.9"
-	pod 'Alamofire'
+	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'
 	pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git'
 	pod 'Log', git: 'https://github.com/delba/Log.git'
 	pod 'NVActivityIndicatorView', git: 'https://github.com/ninjaprox/NVActivityIndicatorView.git'
@@ -24,5 +24,10 @@ target 'tpg offline' do
  	pod 'AKPickerView-Swift', git: 'https://github.com/Akkyie/AKPickerView-Swift.git'
 	pod 'Fabric'
   pod 'Crashlytics'
- 	pod 'SwiftTweaks', git: 'https://github.com/Khan/SwiftTweaks.git'
+end
+
+target 'tpg offline Watch Extension' do
+  platform :watchos, '2.0'
+	pod 'SwiftyJSON', git: 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'
 end

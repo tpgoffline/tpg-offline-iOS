@@ -26,8 +26,28 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         if applicationContext["favoritesStops"] != nil {
-            AppValues.favoritesStops = NSKeyedUnarchiver.unarchiveObjectWithData(applicationContext["favoritesStops"] as! NSData) as! [String:Stop]
-            print("a")
+            var favoritesStops = [String:Stop]()
+            
+            let tempUnarchive = NSKeyedUnarchiver.unarchiveObjectWithData(applicationContext["favoritesStops"] as! NSData) as! [String:[String:AnyObject]]
+            for (x, y) in tempUnarchive {
+                favoritesStops[x] = Stop(dictionnary: y)
+            }
+            
+            AppValues.favoritesStops = favoritesStops
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(favoritesStops)
+            defaults.setObject(encodedData, forKey: "favoritesStops")
+        }
+        
+        if applicationContext["offlineDepartures"] != nil {
+            let offlineDepartures = applicationContext["offlineDepartures"] as! [String: String]
+            
+            AppValues.offlineDepartures = offlineDepartures
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(offlineDepartures)
+            defaults.setObject(encodedData, forKey: "offlineDepartures")
         }
     }
 }

@@ -16,6 +16,7 @@ import MRProgress
 import SwiftDate
 import Alamofire
 import NVActivityIndicatorView
+import WatchConnectivity
 
 class DeparturesTableViewController: UITableViewController {
     var stop: Stop? = nil
@@ -85,7 +86,7 @@ class DeparturesTableViewController: UITableViewController {
         UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
         label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }
@@ -113,11 +114,59 @@ class DeparturesTableViewController: UITableViewController {
         }
         
         if #available(iOS 9.0, *) {
-            do {
-                try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops" : NSKeyedArchiver.archivedDataWithRootObject(AppValues.favoritesStops)])
-                
-            } catch {
-                AppValues.logger.error("Update WatchConnectivity with application context failed")
+            if WCSession.isSupported() {
+                do {
+                    var a: [String:[String:AnyObject]] = [:]
+                    for (x, y) in AppValues.favoritesStops {
+                        a[x] = y.toDictionnary()
+                    }
+                    var offlineDepartures: [String:String] = [:]
+                    if (AppValues.premium == true) {
+                        var path = ""
+                        for (_, y) in AppValues.favoritesStops {
+                            var json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
+                            var departuresArray: [String:String] = [:]
+                            if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+                                path = dir.stringByAppendingPathComponent(y.stopCode + "departsSAM.json")
+                                
+                                if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                                    do {
+                                        try departuresArray["SAM"] = String(contentsOfFile: path)
+                                    } catch {
+                                        print("Reading of \(path) is failed")
+                                    }
+                                }
+                                
+                                path = dir.stringByAppendingPathComponent(y.stopCode + "departsDIM.json")
+                                
+                                if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                                    do {
+                                        try departuresArray["DIM"] = String(contentsOfFile: path)
+                                    } catch {
+                                        print("Reading of \(path) is failed")
+                                    }
+                                }
+                                
+                                path = dir.stringByAppendingPathComponent(y.stopCode + "departsLUN.json")
+                                
+                                if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                                    do {
+                                        try departuresArray["LUN"] = String(contentsOfFile: path)
+                                    } catch {
+                                        print("Reading of \(path) is failed")
+                                    }
+                                }
+                            }
+                            json.dictionaryObject = departuresArray
+                            offlineDepartures[y.stopCode] = json.rawString() ?? ""
+                        }
+                        
+                    }
+                    try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops": NSKeyedArchiver.archivedDataWithRootObject(a), "offlineDepartures": offlineDepartures])
+                    
+                } catch {
+                    AppValues.logger.error("Update WatchConnectivity with application context failed")
+                }
             }
         }
         

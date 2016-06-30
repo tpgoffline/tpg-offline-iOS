@@ -44,22 +44,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tpg offline/WatchSessionManager.swift"
-            timestampString = "486826653.040416"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "updateApplicationContext(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tpg offline/WatchSessionManager.swift"
             timestampString = "486826759.44182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -75,13 +59,181 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "tpg offline Watch/WatchSessionManager.swift"
-            timestampString = "486827832.457618"
+            filePath = "tpg offline/Stop.swift"
+            timestampString = "487085787.960597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "init(coder:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tpg offline/DeparturesTableViewController.swift"
+            timestampString = "488969134.999822"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "toggleFavorite(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "tpg offline Watch/WatchSessionManager.swift"
+            timestampString = "488132622.094379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "session(_:didReceiveApplicationContext:)"
+            landmarkType = "5">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po AppValues.favoritesStops">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tpg offline Watch Extension/DeparturesInterfaceController.swift"
+            timestampString = "488984424.47702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "refreshDepartures()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tpg_offline_Watch_Extension.DeparturesInterfaceController.(refreshDepartures () -&gt; ()).(closure #1)"
+                  moduleName = "tpg offline Watch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Alice/Remy/remy/tpg-offline/iOS/tpg%20offline%20Watch%20Extension/DeparturesInterfaceController.swift"
+                  timestampString = "488984815.269754"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "25162">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tpg_offline_Watch_Extension.DeparturesInterfaceController.(refreshDepartures () -&gt; ()).(closure #1)"
+                  moduleName = "tpg offline Watch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Alice/Remy/remy/tpg-offline/iOS/tpg%20offline%20Watch%20Extension/DeparturesInterfaceController.swift"
+                  timestampString = "488984815.269921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "55551">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tpg offline Watch Extension/DeparturesInterfaceController.swift"
+            timestampString = "488984424.47702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "refreshDepartures()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tpg offline Watch Extension/DeparturesInterfaceController.swift"
+            timestampString = "488984424.47702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "refreshDepartures()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tpg_offline_Watch_Extension.DeparturesInterfaceController.(refreshDepartures () -&gt; ()).(closure #1)"
+                  moduleName = "tpg offline Watch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Alice/Remy/remy/tpg-offline/iOS/tpg%20offline%20Watch%20Extension/DeparturesInterfaceController.swift"
+                  timestampString = "488984815.271268"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "53432">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tpg_offline_Watch_Extension.DeparturesInterfaceController.(refreshDepartures () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "tpg offline Watch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Alice/Remy/remy/tpg-offline/iOS/tpg%20offline%20Watch%20Extension/DeparturesInterfaceController.swift"
+                  timestampString = "488984815.271424"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tpg offline Watch Extension/DeparturesInterfaceController.swift"
+            timestampString = "488984424.47702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "refreshDepartures()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,3 +1,4 @@
+[![Platform](https://img.shields.io/cocoapods/p/Localize-Swift.svg?maxAge=2592000)](http://cocoapods.org/?q=Localize-Swift)
 [![Build Status](https://travis-ci.org/marmelroy/Localize-Swift.svg?branch=master)](https://travis-ci.org/marmelroy/Localize-Swift) [![Version](http://img.shields.io/cocoapods/v/Localize-Swift.svg)](http://cocoapods.org/?q=Localize-Swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -11,7 +12,7 @@ Localize-Swift is a simple framework that improves i18n and localization in Swif
 - Keep the Localizable.strings file your app already uses.
 - Allow your users to change the app's language without changing their device language.
 - Use .localized() instead of NSLocalizedString(key,comment) - a more Swifty syntax.
-- Generate your strings with a new genstrings python script that recognises .localized().
+- Generate your strings with a new genstrings swift/python script that recognises .localized().
 
 ## Usage
 
@@ -49,9 +50,14 @@ Localize.resetCurrentLanguageToDefault()
 
 ## genstrings
 
-To support this new i18n syntax, Localize-Swift includes a custom genstrings python script.
+To support this new i18n syntax, Localize-Swift includes custom genstrings swift and python scripts.
 
-Copy the genstrings.py file into your project's root folder and run with
+Copy the genstrings file (either .swift or .py) into your project's root folder and run with
+
+```
+./genstrings.swift
+```
+or
 
 ```
 python genstrings.py
@@ -59,6 +65,7 @@ python genstrings.py
 
 This will print the collected strings in the terminal. Select and copy to your default Localizable.strings.
 
+The swift genstrings includes the ability to specify excluded directories and files (by editing the script).
 
 ### Setting up with Carthage
 

@@ -1,6 +1,9 @@
 SCLAlertView
 ===========
 
+[![Version](https://img.shields.io/cocoapods/v/SCLAlertView.svg?style=flat)](http://cocoadocs.org/docsets/SCLAlertView/)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 Animated Alert View written in Swift, which can be used as a `UIAlertView` or `UIAlertController` replacement. Since `UIAlertView` is deprecated and `UIAlertController` only works on iOS 8.x or above, if you have a Swift project where you want to support iOS 7.x too, SCLAlertView is an ideal substitution.
 
 ![BackgroundImage](https://raw.githubusercontent.com/vikmeup/SCPopUpView/master/successScreenshot.png)_
@@ -229,6 +232,17 @@ enum SCLAlertViewStyle: Int {
     case Success, Error, Notice, Warning, Info, Edit, Wait
 }
 ```
+
+
+### Alert show animation Styles
+
+```swift
+// Animation Styles
+public enum SCLAnimationStyle {
+    case NoAnimation, TopToBottom, BottomToTop, LeftToRight, RightToLeft
+}
+```
+
 
 Installation
 ---

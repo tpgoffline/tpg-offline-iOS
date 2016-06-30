@@ -544,6 +544,11 @@
             _preferredSubtitleFontSize = FSCalendarStandardSubtitleTextSize * 1.15;
             _preferredWeekdayFontSize = _preferredTitleFontSize;
         }
+        CGFloat multiplier = 1+(_calendar.lineHeightMultiplier-1)/4;
+        _preferredHeaderTitleFontSize *= multiplier;
+        _preferredTitleFontSize *= multiplier;
+        _preferredSubtitleFontSize *= multiplier;
+        _preferredSubtitleFontSize *= multiplier;
     }
     
     // reload appearance
@@ -565,13 +570,6 @@
     [self invalidateTextColors];
     [self invalidateBorderColors];
     [self invalidateFillColors];
-    /*
-    [_calendar.collectionView.visibleCells enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [_calendar invalidateAppearanceForCell:obj];
-    }];
-    [_calendar.header.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
-    [_calendar.visibleStickyHeaders makeObjectsPerformSelector:@selector(setNeedsLayout)];
-     */
 }
 
 - (void)invalidateFonts

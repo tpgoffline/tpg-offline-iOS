@@ -141,7 +141,7 @@
     if (self.contentView.hidden) {
         return;
     }
-    _titleLabel.text = [NSString stringWithFormat:@"%@",@([_calendar dayOfDate:_date])];
+    _titleLabel.text = self.title ?: [NSString stringWithFormat:@"%@",@([_calendar dayOfDate:_date])];
     if (_subtitle) {
         _subtitleLabel.text = _subtitle;
         if (_subtitleLabel.hidden) {
@@ -173,6 +173,8 @@
             _titleLabel.frame = CGRectMake(0, _appearance.titleVerticalOffset, self.contentView.fs_width, floor(self.contentView.fs_height*5.0/6.0));
         }
         
+        _imageView.center = CGPointMake(self.contentView.fs_width/2.0, _imageView.center.y);
+        
     }
     
     UIColor *textColor = self.colorForTitleLabel;
@@ -203,14 +205,14 @@
             _shapeLayer.path = path;
         }
         
-        CGColorRef fillColor = self.colorForCellFill.CGColor;
-        if (!CGColorEqualToColor(_shapeLayer.fillColor, fillColor)) {
-            _shapeLayer.fillColor = fillColor;
+        CGColorRef cellFillColor = self.colorForCellFill.CGColor;
+        if (!CGColorEqualToColor(_shapeLayer.fillColor, cellFillColor)) {
+            _shapeLayer.fillColor = cellFillColor;
         }
         
-        CGColorRef borderColor = self.colorForCellBorder.CGColor;
-        if (!CGColorEqualToColor(_shapeLayer.strokeColor, borderColor)) {
-            _shapeLayer.strokeColor = borderColor;
+        CGColorRef cellBorderColor = self.colorForCellBorder.CGColor;
+        if (!CGColorEqualToColor(_shapeLayer.strokeColor, cellBorderColor)) {
+            _shapeLayer.strokeColor = cellBorderColor;
         }
         
     }

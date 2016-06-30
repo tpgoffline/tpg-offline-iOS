@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftyJSON
 
 internal class Stop: NSObject, NSCoding {
     var fullName: String!
@@ -62,6 +63,29 @@ internal class Stop: NSObject, NSCoding {
         distance = stop.distance
         transportAPIiD = stop.idTransportAPI
         connections = stop.connections
+    }
+    
+    init(dictionnary: [String:AnyObject]) {
+        fullName = dictionnary["fullName"] as? String ?? ""
+        title = dictionnary["title"] as? String ?? ""
+        subTitle = dictionnary["subTitle"] as? String ?? ""
+        stopCode = dictionnary["stopCode"] as? String ?? ""
+        location = dictionnary["location"] as? CLLocation ?? CLLocation(latitude: 46.204705, longitude: 6.143060)
+        transportAPIiD = dictionnary["transportAPIiD"] as? String ?? ""
+        connections = dictionnary["connections"] as? [String] ?? []
+    }
+    
+    func toDictionnary() -> [String:AnyObject] {
+        let attributes = [
+            "fullName": fullName,
+            "title": title,
+            "subTitle": subTitle,
+            "stopCode": stopCode,
+            "transportAPIid": transportAPIiD,
+            "location": location,
+            "connections": connections
+        ]
+        return attributes
     }
 }
 

@@ -67,7 +67,7 @@ class RouteDetailTableViewController: UITableViewController {
 		UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
 		label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
 		
-		let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+		let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
 		UIGraphicsEndImageContext()
 		return image
 	}

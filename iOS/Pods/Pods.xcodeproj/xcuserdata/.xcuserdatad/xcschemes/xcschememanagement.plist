@@ -9,7 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Alamofire.xcscheme</key>
+		<key>Alamofire-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Alamofire-watchOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -84,6 +89,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-tpg offline Watch Extension.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-tpg offline.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -109,12 +119,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftTweaks.xcscheme</key>
+		<key>SwiftyJSON-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>SwiftyJSON-watchOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

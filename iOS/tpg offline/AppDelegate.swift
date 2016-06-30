@@ -14,7 +14,6 @@ import ChameleonFramework
 import Async
 import Fabric
 import Crashlytics
-import SwiftTweaks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,12 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        /*let rootVc = window?.rootViewController
-         window = TweakWindow(frame: UIScreen.mainScreen().bounds, tweakStore: TpgOfflineTweaks.defaultStore)
-         window!.rootViewController = rootVc
-         window!.makeKeyAndVisible()*/
-        
         AppValues.logger.enabled = true
+        #if DEBUG
+            AppValues.logger.info("Debug mode")
+        #else
+            AppValues.logger.info("Release mode")
+        #endif
+        
         //Fabric.with([Crashlytics.self])
         if #available(iOS 9.0, *) {
             WatchSessionManager.sharedManager.startSession()
@@ -184,9 +184,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         group.background {
             let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
             let couleurs = JSON(data: dataCouleurs!)
-            for i in 0 ..< couleurs["colors"].count {
-                AppValues.linesBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
-                AppValues.linesColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
+            for (_, j) in couleurs["colors"] {
+                AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string, withAlpha: 1)
+                AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string, withAlpha: 1)
             }
         }
         

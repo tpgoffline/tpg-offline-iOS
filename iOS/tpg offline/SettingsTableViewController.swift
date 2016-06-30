@@ -283,9 +283,9 @@ class SettingsTableViewController: UITableViewController {
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, AppValues.primaryColor.CGColor)
+        CGContextSetFillColorWithColor(context!, AppValues.primaryColor.CGColor)
         
-        CGContextFillRect(context, rect)
+        CGContextFillRect(context!, rect)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

@@ -12,9 +12,8 @@
 #import "FSCalendarEventIndicator.h"
 #import "FSCalendarFlowLayout.h"
 #import "FSCalendarHeader.h"
+#import "FSCalendarScopeHandle.h"
 #import "FSCalendarStickyHeader.h"
-#import "NSDate+FSExtension.h"
-#import "NSString+FSExtension.h"
 #import "UIView+FSExtension.h"
 
 FOUNDATION_EXPORT double FSCalendarVersionNumber;

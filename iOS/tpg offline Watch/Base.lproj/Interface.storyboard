@@ -5,12 +5,100 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--tpg offline-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="tpg_offline_Watch" customModuleProvider="target"/>
+                <controller title="tpg offline" id="AgC-eL-Hgc" customClass="StopsInterfaceController" customModule="tpg_offline_Watch_Extension">
+                    <items>
+                        <table alignment="left" id="Hcj-Ui-eUR">
+                            <items>
+                                <tableRow identifier="StopsRow" id="hYy-Kf-36p" customClass="StopsRowController" customModule="tpg_offline_Watch_Extension">
+                                    <group key="rootItem" width="1" height="42" alignment="left" spacing="6" id="ioM-sr-0kn">
+                                        <items>
+                                            <separator height="1" heightAdjustment="-4" alignment="left" verticalAlignment="center" id="CAW-fc-aWY">
+                                                <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </separator>
+                                            <group width="0.90000000000000002" alignment="left" verticalAlignment="center" id="MMS-tV-JXb">
+                                                <items>
+                                                    <group width="20" height="20" alignment="left" verticalAlignment="center" id="4ee-3e-o9l">
+                                                        <items>
+                                                            <imageView width="20" height="20" alignment="left" verticalAlignment="center" id="yvO-zi-vRm"/>
+                                                        </items>
+                                                    </group>
+                                                    <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="pCM-q6-WEX">
+                                                        <items>
+                                                            <label alignment="left" verticalAlignment="center" text="Label" textAlignment="center" id="0Da-nU-3OS"/>
+                                                            <label alignment="left" verticalAlignment="center" text="Label" id="hHj-ef-TlO"/>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="separator" destination="CAW-fc-aWY" id="msV-gx-L6I"/>
+                                        <outlet property="stopSubTitleLabel" destination="hHj-ef-TlO" id="mZo-i5-3WB"/>
+                                        <outlet property="stopTitleLabel" destination="0Da-nU-3OS" id="atv-zG-rvw"/>
+                                        <outlet property="typeImage" destination="yvO-zi-vRm" id="nwQ-Lr-123"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <menu key="menu" id="qVf-PN-AtK">
+                        <items>
+                            <menuItem title="Reload" icon="resume" id="TjG-6E-awh">
+                                <connections>
+                                    <action selector="reloadButtonTaped:" destination="AgC-eL-Hgc" id="qts-gR-GcN"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="stopsTable" destination="Hcj-Ui-eUR" id="rHc-VB-u7e"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Departures-->
+        <scene sceneID="13p-A6-tTA">
+            <objects>
+                <controller identifier="Departures" id="W2j-Na-vWJ" customClass="DeparturesInterfaceController" customModule="tpg_offline_Watch_Extension">
+                    <items>
+                        <imageView width="100" height="100" alignment="center" image="wave_" id="KHy-yd-knr"/>
+                        <table alignment="left" id="EGD-HQ-rJf">
+                            <items>
+                                <tableRow identifier="DeparturesRow" selectable="NO" id="QCH-b6-eic" customClass="DeparturesRowController" customModule="tpg_offline_Watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" spacing="4" id="QLD-Am-u1p">
+                                        <items>
+                                            <label width="22" alignment="left" verticalAlignment="center" text="99" textAlignment="center" id="Fqu-4e-vfY">
+                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                            </label>
+                                            <separator alignment="left" verticalAlignment="center" id="Hcq-gx-Fqy"/>
+                                            <label width="59" alignment="left" verticalAlignment="center" text="Label" minimumScaleFactor="0.40000000000000002" id="zYc-On-u4e"/>
+                                            <label width="29" alignment="right" verticalAlignment="center" text="&gt;1h" textAlignment="right" id="f5t-Yr-2AM">
+                                                <fontDescription key="font" type="system" pointSize="16"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="directionLabel" destination="zYc-On-u4e" id="SiL-4C-S4a"/>
+                                        <outlet property="leftTimeLabel" destination="f5t-Yr-2AM" id="MRM-st-G4K"/>
+                                        <outlet property="lineLabel" destination="Fqu-4e-vfY" id="IcN-Qq-QHW"/>
+                                        <outlet property="separator" destination="Hcq-gx-Fqy" id="VGj-4B-zYn"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="departuresTable" destination="EGD-HQ-rJf" id="HF2-YG-WUc"/>
+                        <outlet property="loadingImage" destination="KHy-yd-knr" id="sIL-4g-fzN"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="470" y="344"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -36,4 +124,5 @@
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
