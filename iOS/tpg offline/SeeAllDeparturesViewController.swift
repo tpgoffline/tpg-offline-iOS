@@ -57,9 +57,9 @@ class SeeAllDeparturesViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        departuresCollectionView.backgroundColor = AppValues.primaryColor
         refreshTheme()
+        departuresCollectionView.backgroundColor = AppValues.primaryColor
+        
         departuresCollectionView.reloadData()
         
         hourPicker.backgroundColor = AppValues.primaryColor

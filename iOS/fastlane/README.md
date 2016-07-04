@@ -11,14 +11,9 @@ sudo gem install fastlane
 fastlane ios test
 ```
 Runs all the tests
-### ios snapshot
+### ios screenshot
 ```
-fastlane ios snapshot
-```
-
-### ios frameit
-```
-fastlane ios frameit
+fastlane ios screenshot
 ```
 
 ### ios testflight

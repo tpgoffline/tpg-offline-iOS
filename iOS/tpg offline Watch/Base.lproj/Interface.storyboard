@@ -10,6 +10,7 @@
             <objects>
                 <controller title="tpg offline" id="AgC-eL-Hgc" customClass="StopsInterfaceController" customModule="tpg_offline_Watch_Extension">
                     <items>
+                        <label alignment="center" verticalAlignment="center" text="No favorites detected. You can add favorite in iOS application and press depper for refresh." textAlignment="center" numberOfLines="10" id="tDI-1N-7lN"/>
                         <table alignment="left" id="Hcj-Ui-eUR">
                             <items>
                                 <tableRow identifier="StopsRow" id="hYy-Kf-36p" customClass="StopsRowController" customModule="tpg_offline_Watch_Extension">
@@ -18,19 +19,12 @@
                                             <separator height="1" heightAdjustment="-4" alignment="left" verticalAlignment="center" id="CAW-fc-aWY">
                                                 <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </separator>
-                                            <group width="0.90000000000000002" alignment="left" verticalAlignment="center" id="MMS-tV-JXb">
+                                            <group width="0.90000000000000002" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="pCM-q6-WEX">
                                                 <items>
-                                                    <group width="20" height="20" alignment="left" verticalAlignment="center" id="4ee-3e-o9l">
-                                                        <items>
-                                                            <imageView width="20" height="20" alignment="left" verticalAlignment="center" id="yvO-zi-vRm"/>
-                                                        </items>
-                                                    </group>
-                                                    <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="pCM-q6-WEX">
-                                                        <items>
-                                                            <label alignment="left" verticalAlignment="center" text="Label" textAlignment="center" id="0Da-nU-3OS"/>
-                                                            <label alignment="left" verticalAlignment="center" text="Label" id="hHj-ef-TlO"/>
-                                                        </items>
-                                                    </group>
+                                                    <label alignment="left" verticalAlignment="center" text="Label" textAlignment="center" minimumScaleFactor="0.5" id="0Da-nU-3OS"/>
+                                                    <label alignment="left" verticalAlignment="center" text="Label" minimumScaleFactor="0.5" id="hHj-ef-TlO">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
                                                 </items>
                                             </group>
                                         </items>
@@ -39,7 +33,6 @@
                                         <outlet property="separator" destination="CAW-fc-aWY" id="msV-gx-L6I"/>
                                         <outlet property="stopSubTitleLabel" destination="hHj-ef-TlO" id="mZo-i5-3WB"/>
                                         <outlet property="stopTitleLabel" destination="0Da-nU-3OS" id="atv-zG-rvw"/>
-                                        <outlet property="typeImage" destination="yvO-zi-vRm" id="nwQ-Lr-123"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -55,6 +48,7 @@
                         </items>
                     </menu>
                     <connections>
+                        <outlet property="noFavoritesLabel" destination="tDI-1N-7lN" id="Px3-h2-94e"/>
                         <outlet property="stopsTable" destination="Hcj-Ui-eUR" id="rHc-VB-u7e"/>
                     </connections>
                 </controller>
@@ -76,7 +70,7 @@
                                                 <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                             </label>
                                             <separator alignment="left" verticalAlignment="center" id="Hcq-gx-Fqy"/>
-                                            <label width="59" alignment="left" verticalAlignment="center" text="Label" minimumScaleFactor="0.40000000000000002" id="zYc-On-u4e"/>
+                                            <label alignment="left" verticalAlignment="center" text="Label" minimumScaleFactor="0.40000000000000002" id="zYc-On-u4e"/>
                                             <label width="29" alignment="right" verticalAlignment="center" text="&gt;1h" textAlignment="right" id="f5t-Yr-2AM">
                                                 <fontDescription key="font" type="system" pointSize="16"/>
                                             </label>
@@ -107,21 +101,16 @@
                     <items>
                         <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sashColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </notificationCategory>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
                     </connections>
                 </notificationController>
             </objects>
             <point key="canvasLocation" x="220" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="tpg_offline_Watch" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
     <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

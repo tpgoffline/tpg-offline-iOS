@@ -51,7 +51,7 @@ class TimeSelectionViewController: UIViewController {
         minuteSlider.handleColor = minuteSlider.filledColor
         hourSlider.handleColor = hourSlider.filledColor
         
-        boutonValider.backgroundColor = AppValues.secondaryColor
+        boutonValider.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
         boutonValider.setTitle("Valider", forState: .Normal)
         boutonValider.setTitleColor(AppValues.textColor, forState: .Normal)
     }
@@ -62,9 +62,9 @@ class TimeSelectionViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        refreshTheme()
         
-        boutonValider.backgroundColor = AppValues.secondaryColor
+        refreshTheme()
+        boutonValider.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
         boutonValider.setTitleColor(AppValues.textColor, forState: .Normal)
         minuteSlider.unfilledColor = AppValues.primaryColor.darkenByPercentage(0.1)
         minuteSlider.filledColor = AppValues.primaryColor.lightenByPercentage(0.2)

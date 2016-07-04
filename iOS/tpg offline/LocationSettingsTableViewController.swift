@@ -84,7 +84,7 @@ class LocationSettingsTableViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView()
-        returnedView.backgroundColor = AppValues.secondaryColor
+        returnedView.backgroundColor = AppValues.primaryColor
         
         let label = UILabel(frame: CGRect(x: 20, y: 5, width: 500, height: 30))
         label.text = headers[section]

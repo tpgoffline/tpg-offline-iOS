@@ -18,7 +18,7 @@ target 'tpg offline' do
 	pod 'Onboard', git: 'https://github.com/mamaral/Onboard.git', :tag => "v2.1.9"
 	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'
 	pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git'
-	pod 'Log', git: 'https://github.com/delba/Log.git'
+	pod 'SwiftyBeaver', git: 'https://github.com/SwiftyBeaver/SwiftyBeaver.git'
 	pod 'NVActivityIndicatorView', git: 'https://github.com/ninjaprox/NVActivityIndicatorView.git'
  	pod 'AsyncSwift', git: 'https://github.com/duemunk/Async.git'
  	pod 'AKPickerView-Swift', git: 'https://github.com/Akkyie/AKPickerView-Swift.git'

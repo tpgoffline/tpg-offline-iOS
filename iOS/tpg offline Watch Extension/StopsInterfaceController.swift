@@ -13,10 +13,19 @@ import WatchConnectivity
 class StopsInterfaceController: WKInterfaceController {
 
     @IBOutlet weak var stopsTable: WKInterfaceTable!
+    @IBOutlet weak var noFavoritesLabel: WKInterfaceLabel!
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        refresh()
+        if AppValues.favoritesStops.count == 0 {
+            noFavoritesLabel.setHidden(false)
+            stopsTable.setHidden(true)
+        }
+        else {
+            noFavoritesLabel.setHidden(true)
+            stopsTable.setHidden(false)
+            refresh()
+        }
     }
 
     override func willActivate() {
@@ -29,7 +38,15 @@ class StopsInterfaceController: WKInterfaceController {
     }
     
     @IBAction func reloadButtonTaped(sender: AnyObject!) {
-        refresh()
+        if AppValues.favoritesStops.count == 0 {
+            noFavoritesLabel.setHidden(false)
+            stopsTable.setHidden(true)
+        }
+        else {
+            noFavoritesLabel.setHidden(true)
+            stopsTable.setHidden(false)
+            refresh()
+        }
     }
     
     func refresh() {

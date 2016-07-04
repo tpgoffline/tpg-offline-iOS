@@ -174,6 +174,7 @@ class RoutesListTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
+                AppValues.logger.error(response.result.error)
                 self.noNetwork = true
                 self.loading = false
                 self.tableView.allowsSelection = false
@@ -300,7 +301,7 @@ class RoutesListTableViewController: UITableViewController {
             cell.backgroundColor = AppValues.primaryColor
             
             let view = UIView()
-            view.backgroundColor = AppValues.secondaryColor
+            view.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = view
             
             return cell

@@ -30,4 +30,7 @@ class SeeLineTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override func didMoveToSuperview() {
+        layoutIfNeeded()
+    }
 }

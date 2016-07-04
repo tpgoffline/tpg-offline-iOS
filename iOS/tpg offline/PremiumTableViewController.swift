@@ -103,7 +103,7 @@ class PremiumTableViewController: UITableViewController {
 			
 			cell.backgroundColor = AppValues.primaryColor
 			let selectedView = UIView()
-			selectedView.backgroundColor = AppValues.secondaryColor
+			selectedView.backgroundColor = AppValues.primaryColor
 			cell.selectedBackgroundView = selectedView
 			
 			return cell
@@ -123,7 +123,7 @@ class PremiumTableViewController: UITableViewController {
 			
 			cell.backgroundColor = AppValues.primaryColor
 			let selectedView = UIView()
-			selectedView.backgroundColor = AppValues.secondaryColor
+			selectedView.backgroundColor = AppValues.primaryColor
 			cell.selectedBackgroundView = selectedView
 			
 			return cell

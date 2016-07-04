@@ -49,8 +49,8 @@ class RouteDetailTableViewController: UITableViewController {
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		refreshTheme()
 		
+		refreshTheme()
 		tableView.backgroundColor = AppValues.primaryColor
 		tableView.reloadData()
 	}

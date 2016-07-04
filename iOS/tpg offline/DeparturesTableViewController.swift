@@ -41,7 +41,7 @@ class DeparturesTableViewController: UITableViewController {
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         title = stop?.fullName
@@ -54,7 +54,7 @@ class DeparturesTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         refreshTheme()
@@ -565,7 +565,7 @@ extension DeparturesTableViewController {
         else if indexPath.section == 0 && offline {
             let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath)
             
-            cell.backgroundColor = AppValues.secondaryColor
+            cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Mode offline".localized()
             cell.detailTextLabel?.textColor = AppValues.textColor
@@ -579,7 +579,7 @@ extension DeparturesTableViewController {
         else if offline && indexPath.section == 1 && noMoreTransport {
             let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath)
             
-            cell.backgroundColor = AppValues.secondaryColor
+            cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Service terminé".localized()
             cell.detailTextLabel?.textColor = AppValues.textColor
@@ -593,7 +593,7 @@ extension DeparturesTableViewController {
         else if !offline && indexPath.section == 0 && noMoreTransport {
             let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath)
             
-            cell.backgroundColor = AppValues.secondaryColor
+            cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Service terminé".localized()
             cell.detailTextLabel?.textColor = AppValues.textColor

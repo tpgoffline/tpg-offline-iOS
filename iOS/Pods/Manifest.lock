@@ -35,7 +35,6 @@ PODS:
   - FSCalendar (2.2.0)
   - INTULocationManager (4.2.0)
   - Localize-Swift (1.5)
-  - Log (0.5)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -64,12 +63,13 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - NVActivityIndicatorView (2.8)
+  - NVActivityIndicatorView (2.9)
   - Onboard (2.1.9)
   - PermissionScope (1.0.2)
   - SCLAlertView (0.5.9)
   - SwiftDate (3.0.9)
   - SwiftInAppPurchase (1.0.0)
+  - SwiftyBeaver (0.6.3)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -86,7 +86,6 @@ DEPENDENCIES:
   - FSCalendar
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
   - Localize-Swift (from `https://github.com/marmelroy/Localize-Swift.git`)
-  - Log (from `https://github.com/delba/Log.git`)
   - MRProgress (from `https://github.com/RemyDCF/MRProgress.git`)
   - NVActivityIndicatorView (from `https://github.com/ninjaprox/NVActivityIndicatorView.git`)
   - Onboard (from `https://github.com/mamaral/Onboard.git`, tag `v2.1.9`)
@@ -94,6 +93,7 @@ DEPENDENCIES:
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
   - SwiftInAppPurchase (from `https://github.com/rpzzzzzz/SwiftInAppPurchase.git`)
+  - SwiftyBeaver (from `https://github.com/SwiftyBeaver/SwiftyBeaver.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -117,8 +117,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/intuit/LocationManager.git
   Localize-Swift:
     :git: https://github.com/marmelroy/Localize-Swift.git
-  Log:
-    :git: https://github.com/delba/Log.git
   MRProgress:
     :git: https://github.com/RemyDCF/MRProgress.git
   NVActivityIndicatorView:
@@ -134,6 +132,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/malcommac/SwiftDate.git
   SwiftInAppPurchase:
     :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
+  SwiftyBeaver:
+    :git: https://github.com/SwiftyBeaver/SwiftyBeaver.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
@@ -163,19 +163,16 @@ CHECKOUT OPTIONS:
     :commit: eac30313fee77f6db1b6832b1d4b7d8f2007b381
     :git: https://github.com/PrideChung/FontAwesomeKit.git
   INTULocationManager:
-    :commit: 3d40f72beeda3e11f5cc6933951ef666aaba2ea1
+    :commit: 7741779256eae4fe727b027a046d6dcc7900566a
     :git: https://github.com/intuit/LocationManager.git
   Localize-Swift:
     :commit: e3ce4b72c184dce8261a1cf35cb0875e55549e20
     :git: https://github.com/marmelroy/Localize-Swift.git
-  Log:
-    :commit: a022dde550f5b5d549d0c7960548a050624c0a20
-    :git: https://github.com/delba/Log.git
   MRProgress:
     :commit: 0a9a8e9299c35f1ed1be0648910505fbd156e952
     :git: https://github.com/RemyDCF/MRProgress.git
   NVActivityIndicatorView:
-    :commit: b8da61122e444c169fff29be7a01d216a22ca3f7
+    :commit: 49a0beb6a33eebc6cec322f05448516881615bf6
     :git: https://github.com/ninjaprox/NVActivityIndicatorView.git
   Onboard:
     :git: https://github.com/mamaral/Onboard.git
@@ -192,6 +189,9 @@ CHECKOUT OPTIONS:
   SwiftInAppPurchase:
     :commit: 4af9f507563329a1bb4d44cfd7b2e1e4f60e2733
     :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
+  SwiftyBeaver:
+    :commit: 572c71899c772f22a7706e83ae92213237ef9940
+    :git: https://github.com/SwiftyBeaver/SwiftyBeaver.git
   SwiftyJSON:
     :commit: 73670b94292b8d8496c398a973f56ac67789ba9f
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
@@ -210,16 +210,16 @@ SPEC CHECKSUMS:
   FSCalendar: 766367b91bcf2829c492c5ac50a58652c6df4ee8
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
   Localize-Swift: 288aa763db72b0628d2cb111fbf5babc90529d0c
-  Log: 5972312cb85cffbc56407b612936b610eb4af8a5
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
-  NVActivityIndicatorView: 6aba1dbbd893f615a9452c9e66ae46473e1ce092
+  NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
   Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: d7c6a48c7d340e60206d4ed0e8ebcbff3b9d2a44
   SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
   SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
+  SwiftyBeaver: c182c001d532111becf2285b8878abf54c7b5621
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: fe27f06e5db70867cce7041ff310a42ee8f7e1a5
+PODFILE CHECKSUM: e6920533312855bd3ea0f4675d10344e22c2ca03
 
 COCOAPODS: 1.0.0

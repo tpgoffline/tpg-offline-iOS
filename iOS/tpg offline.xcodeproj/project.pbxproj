@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		000ECABD1C469A3500E4FC92 /* RouteToStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000ECABC1C469A3500E4FC92 /* RouteToStopViewController.swift */; };
 		002149151C5BDDC5009C0264 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */; };
+		0021FE3A1D29499300A29A0B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0021FE3C1D29499300A29A0B /* Localizable.strings */; };
 		002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */; };
 		002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 002B47E41C01FA6F000BF3E8 /* Main.storyboard */; };
 		002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 002B47E71C01FA6F000BF3E8 /* Assets.xcassets */; };
@@ -168,6 +169,11 @@
 /* Begin PBXFileReference section */
 		000ECABC1C469A3500E4FC92 /* RouteToStopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RouteToStopViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CreditsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0021FE351D2944A400A29A0B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Interface.strings; sourceTree = "<group>"; };
+		0021FE371D2944A600A29A0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
+		0021FE3B1D29499300A29A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0021FE3D1D29499B00A29A0B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0021FE3E1D29499D00A29A0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		002B47DD1C01FA6F000BF3E8 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002B47E51C01FA6F000BF3E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -259,7 +265,7 @@
 		AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UITests.swift; sourceTree = "<group>"; };
 		AD11CD871C8336AA00DFF4AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; usesTabs = 0; };
 		AD13B1051C78A09500ECCDFD /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E11C7DB011009113F0 /* PremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E31C7DB31A009113F0 /* BuyPremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyPremiumTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +273,7 @@
 		ADB2D6D31C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		ADB2D6D41C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CDBAF1891ED8A73A43CAB6CB /* Pods_tpg_offline_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE794BD079485476939A1A8C /* Pods_tpg_offline_Watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -399,6 +406,7 @@
 				005BAEAB1D0452FC00F73C8A /* Info.plist */,
 				005BAEA11D0452FC00F73C8A /* Supporting Files */,
 				00B870A61D0B24C5001027E5 /* RowsControllers */,
+				0021FE3C1D29499300A29A0B /* Localizable.strings */,
 			);
 			path = "tpg offline Watch Extension";
 			sourceTree = "<group>";
@@ -540,6 +548,7 @@
 				5D5BB7521D54A8A7E8FAD5FF /* Pods_tpg_offline_Widget.framework */,
 				0E0E74AD774A69C9D741C626 /* Pods_tpg_offline_Watch.framework */,
 				DE794BD079485476939A1A8C /* Pods_tpg_offline_Watch_Extension.framework */,
+				CDBAF1891ED8A73A43CAB6CB /* Pods_tpg_offline_UITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -750,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				005BAEAA1D0452FC00F73C8A /* Assets.xcassets in Resources */,
+				0021FE3A1D29499300A29A0B /* Localizable.strings in Resources */,
 				002EC5E01D0D9EB8005E6365 /* couleursLignes.json in Resources */,
 				002EC6371D0DAB70005E6365 /* FontAwesome.otf in Resources */,
 			);
@@ -1019,6 +1029,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0021FE3C1D29499300A29A0B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0021FE3B1D29499300A29A0B /* Base */,
+				0021FE3D1D29499B00A29A0B /* fr */,
+				0021FE3E1D29499D00A29A0B /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		002B47E41C01FA6F000BF3E8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1043,6 +1063,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				005BAE931D0452FB00F73C8A /* Base */,
+				0021FE351D2944A400A29A0B /* fr */,
+				0021FE371D2944A600A29A0B /* en */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";

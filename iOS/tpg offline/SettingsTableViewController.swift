@@ -88,7 +88,7 @@ class SettingsTableViewController: UITableViewController {
         cell.textLabel?.textColor = AppValues.textColor
         
         let view = UIView()
-        view.backgroundColor = AppValues.secondaryColor
+        view.backgroundColor = AppValues.primaryColor
         cell.selectedBackgroundView = view
         
         return cell
@@ -127,9 +127,9 @@ class SettingsTableViewController: UITableViewController {
             CATransaction.begin()
             
             let progressBar = MRProgressOverlayView.showOverlayAddedTo(self.view.window, title: "Chargement", mode: .DeterminateCircular, animated: true)
-            if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
-                progressBar.tintColor = AppValues.secondaryColor
-                progressBar.titleLabel!.textColor = AppValues.secondaryColor
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                progressBar.tintColor = AppValues.primaryColor
+                progressBar.titleLabel!.textColor = AppValues.primaryColor
             }
             else {
                 progressBar.tintColor = AppValues.textColor
@@ -145,7 +145,8 @@ class SettingsTableViewController: UITableViewController {
                             var ok = 0
                             let json = JSON(value)
                             for (_, subJson) in json {
-                                Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                let url = "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)"
+                                Alamofire.download(.GET, url, destination: { (temporaryURL, response) -> NSURL in
                                     let fileManager = NSFileManager.defaultManager()
                                     let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
                                     let pathComponent = response.suggestedFilename
@@ -157,7 +158,7 @@ class SettingsTableViewController: UITableViewController {
                                     return directoryURL.URLByAppendingPathComponent(pathComponent!)
                                 }).response { _, _, _, error in
                                     if error != nil {
-                                        Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                        Alamofire.download(.GET, url, destination: { (temporaryURL, response) -> NSURL in
                                             let fileManager = NSFileManager.defaultManager()
                                             let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
                                             let pathComponent = response.suggestedFilename
@@ -169,7 +170,7 @@ class SettingsTableViewController: UITableViewController {
                                             return directoryURL.URLByAppendingPathComponent(pathComponent!)
                                         }).response { _, _, _, error in
                                             if error != nil {
-                                                Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                                Alamofire.download(.GET, url, destination: { (temporaryURL, response) -> NSURL in
                                                     let fileManager = NSFileManager.defaultManager()
                                                     let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
                                                     let pathComponent = response.suggestedFilename
@@ -181,7 +182,7 @@ class SettingsTableViewController: UITableViewController {
                                                     return directoryURL.URLByAppendingPathComponent(pathComponent!)
                                                 }).response { _, _, _, error in
                                                     if error != nil {
-                                                        Alamofire.download(.GET, "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)", destination: { (temporaryURL, response) -> NSURL in
+                                                        Alamofire.download(.GET, url, destination: { (temporaryURL, response) -> NSURL in
                                                             let fileManager = NSFileManager.defaultManager()
                                                             let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
                                                             let pathComponent = response.suggestedFilename
@@ -341,7 +342,7 @@ class SettingsTableViewController: UITableViewController {
         onboardingVC.titleTextColor = AppValues.textColor
         onboardingVC.bodyTextColor = AppValues.textColor
         onboardingVC.buttonTextColor = AppValues.textColor
-        onboardingVC.pageControl.pageIndicatorTintColor = AppValues.secondaryColor
+        onboardingVC.pageControl.pageIndicatorTintColor = AppValues.primaryColor
         onboardingVC.pageControl.currentPageIndicatorTintColor = AppValues.textColor
         onboardingVC.skipButton.setTitleColor(AppValues.textColor, forState: .Normal)
         onboardingVC.bodyFontSize = 18

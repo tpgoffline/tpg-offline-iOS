@@ -33,7 +33,7 @@ class IncidentsTableViewController: UITableViewController {
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
@@ -45,7 +45,7 @@ class IncidentsTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         refreshTheme()
@@ -81,6 +81,7 @@ class IncidentsTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
                 else {
+                    AppValues.logger.error(response.result.error)
                     self.error = true
                     self.tableView.reloadData()
                 }

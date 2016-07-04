@@ -35,7 +35,7 @@ class RoutesStopsTableViewController: UITableViewController {
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         // Result Search Controller
@@ -44,7 +44,7 @@ class RoutesStopsTableViewController: UITableViewController {
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
         
-        navigationController?.navigationBar.barTintColor = AppValues.secondaryColor
+        navigationController?.navigationBar.barTintColor = AppValues.primaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
         tableView.backgroundColor = AppValues.primaryColor
@@ -69,11 +69,11 @@ class RoutesStopsTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
-        
         refreshTheme()
+        
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
     }
@@ -177,7 +177,7 @@ class RoutesStopsTableViewController: UITableViewController {
             }
             
             let backgroundView = UIView()
-            backgroundView.backgroundColor = AppValues.secondaryColor
+            backgroundView.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = backgroundView
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
@@ -192,7 +192,7 @@ class RoutesStopsTableViewController: UITableViewController {
             iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             let backgroundView = UIView()
-            backgroundView.backgroundColor = AppValues.secondaryColor
+            backgroundView.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = backgroundView
             cell.textLabel?.text = filtredResults[indexPath.row].title
             cell.detailTextLabel!.text = filtredResults[indexPath.row].subTitle

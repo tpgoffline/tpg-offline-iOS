@@ -8,7 +8,7 @@
 
 import UIKit
 import ChameleonFramework
-import Log
+import SwiftyBeaver
 
 struct AppValues {
     static var stops: [String:Stop] = [:]
@@ -17,18 +17,19 @@ struct AppValues {
 	static var favoritesRoutes: [[Stop]]! = []
     static var stopCodeToStopItem: [String: String] = [:]
     static var primaryColor: UIColor! = UIColor.flatOrangeColor()
-    static var secondaryColor: UIColor! = UIColor.flatOrangeColorDark()
     static var textColor: UIColor! = UIColor.whiteColor()
 	static var premium: Bool! = false
-    static var logger = Logger()
     static var stopsKeys: [String] = []
     static var linesBackgroundColor = [String:UIColor]()
     static var linesColor = [String:UIColor]()
     
+    static var logger = SwiftyBeaver.self
+    
     static func testTimeExecution(title: String!, block: () -> ()) {
-        // Thanks to @kristopherjohnson (GitHub)
+        // Thanks to @kristopherjohnson GitHub user.
+        
         let start = CACurrentMediaTime()
-        block();
+        block()
         let end = CACurrentMediaTime()
         logger.info("Execution time of \(title) : \(end - start)s")
     }

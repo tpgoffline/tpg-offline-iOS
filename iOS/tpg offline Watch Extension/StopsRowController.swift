@@ -10,14 +10,14 @@ import WatchKit
 
 class StopsRowController: NSObject {
     @IBOutlet var separator: WKInterfaceSeparator!
-    @IBOutlet var typeImage: WKInterfaceImage!
+    //@IBOutlet var typeImage: WKInterfaceImage!
     @IBOutlet var stopTitleLabel: WKInterfaceLabel!
     @IBOutlet var stopSubTitleLabel: WKInterfaceLabel!
     
     var stop: Stop? {
         didSet {
             if let stop = stop {
-                typeImage.setImage(UIImage(named: "Star"))
+                //typeImage.setImage(UIImage(named: "Star"))
                 stopTitleLabel.setText(stop.title)
                 stopSubTitleLabel.setText(stop.subTitle)
                 separator.setColor(UIColor.orangeColor())

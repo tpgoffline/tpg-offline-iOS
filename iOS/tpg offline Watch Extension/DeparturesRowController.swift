@@ -25,6 +25,11 @@ class DeparturesRowController: NSObject {
                     let attrStr = NSAttributedString(string: "\u{f00d}", attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
                     leftTimeLabel.setAttributedText(attrStr)
                 }
+                else if (departure.leftTime == "offline") {
+                    let attrStr = NSAttributedString(string: "\u{f0ac}", attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
+                    lineLabel.setAttributedText(attrStr)
+                    leftTimeLabel.setHidden(true)
+                }
                 else if (departure.leftTime == "&gt;1h") {
                     leftTimeLabel.setText(">1h")
                 }

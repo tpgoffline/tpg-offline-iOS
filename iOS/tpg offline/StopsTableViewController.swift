@@ -40,7 +40,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         // Result Search Controller
@@ -159,7 +159,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         if !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
@@ -255,7 +255,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             }
             
             let backgroundView = UIView()
-            backgroundView.backgroundColor = AppValues.secondaryColor
+            backgroundView.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = backgroundView
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
@@ -270,7 +270,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             
             let backgroundView = UIView()
-            backgroundView.backgroundColor = AppValues.secondaryColor
+            backgroundView.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = backgroundView
             cell.textLabel?.text = filtredResults[indexPath.row].title
             cell.textLabel?.textColor = AppValues.textColor
