@@ -29,9 +29,6 @@
 		00430B541C9B1EAD00C71A06 /* arrets.json in Resources */ = {isa = PBXBuildFile; fileRef = 00430B531C9B1EAD00C71A06 /* arrets.json */; };
 		00430B611C9B23C700C71A06 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5B1C9B23C700C71A06 /* FontAwesome.otf */; };
 		00430B621C9B23C700C71A06 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */; };
-		00430B641C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */; };
-		00430B651C9B23C700C71A06 /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5F1C9B23C700C71A06 /* octicons.ttf */; };
-		00430B661C9B23C700C71A06 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */; };
 		004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D812A1C24737800C6AD55 /* Perturbations.swift */; };
 		004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */; };
 		004E8BD61C6E23840055006B /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */; };
@@ -190,9 +187,6 @@
 		00430B531C9B1EAD00C71A06 /* arrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrets.json; sourceTree = "<group>"; };
 		00430B5B1C9B23C700C71A06 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Pods/FontAwesomeKit/FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
 		00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
-		00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Material-Design-Iconic-Font.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
-		00430B5F1C9B23C700C71A06 /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = octicons.ttf; path = Pods/FontAwesomeKit/FontAwesomeKit/octicons.ttf; sourceTree = "<group>"; };
-		00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
 		004D812A1C24737800C6AD55 /* Perturbations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perturbations.swift; sourceTree = "<group>"; };
 		004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -314,9 +308,6 @@
 				003D10ED1C21A46800F9857E /* Ionicons.ttf */,
 				00430B5B1C9B23C700C71A06 /* FontAwesome.otf */,
 				00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */,
-				00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */,
-				00430B5F1C9B23C700C71A06 /* octicons.ttf */,
-				00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */,
 				00430B531C9B1EAD00C71A06 /* arrets.json */,
 				002B47DF1C01FA6F000BF3E8 /* tpg offline */,
 				AD11CD841C8336AA00DFF4AA /* tpg offline UITests */,
@@ -712,13 +703,10 @@
 			files = (
 				003D10EE1C21A47400F9857E /* Ionicons.ttf in Resources */,
 				00430B611C9B23C700C71A06 /* FontAwesome.otf in Resources */,
-				00430B661C9B23C700C71A06 /* zocial-regular-webfont.ttf in Resources */,
-				00430B641C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf in Resources */,
 				00430B621C9B23C700C71A06 /* foundation-icons.ttf in Resources */,
 				002B47EB1C01FA6F000BF3E8 /* LaunchScreen.storyboard in Resources */,
 				002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */,
 				ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */,
-				00430B651C9B23C700C71A06 /* octicons.ttf in Resources */,
 				00430B541C9B1EAD00C71A06 /* arrets.json in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
