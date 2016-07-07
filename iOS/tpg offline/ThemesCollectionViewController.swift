@@ -19,7 +19,10 @@ class ThemesCollectionViewController: UICollectionViewController {
         "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatWhiteColor()],
         "Menthe".localized() : [UIColor.flatWhiteColor(), UIColor.flatMintColorDark()],
         "Bleu".localized() : [UIColor.flatWhiteColor(), UIColor.flatSkyBlueColor()],
-        "Vert".localized() : [UIColor.flatWhiteColor(), UIColor.flatGreenColorDark()]
+        "Vert".localized() : [UIColor.flatWhiteColor(), UIColor.flatGreenColorDark()],
+        "Noir".localized() : [UIColor.flatWhiteColor(), UIColor.flatBlackColorDark()],
+        "Forêt".localized() : [UIColor.flatWhiteColor(), UIColor.flatForestGreenColor()],
+        "Mauve".localized() : [UIColor.flatWhiteColor(), UIColor.flatMagentaColor()]
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()
