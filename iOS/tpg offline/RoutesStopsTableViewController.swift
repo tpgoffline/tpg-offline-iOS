@@ -237,13 +237,14 @@ class RoutesStopsTableViewController: UITableViewController {
     }
     
     func filterContentForSearchText(searchText: String) {
+        let espacapedSearchTextString = searchText.lowercaseString.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "")
         filtredResults = [Stop](AppValues.stops.values).filter { arret in
-            return arret.fullName.lowercaseString.containsString(searchText.lowercaseString)
+            return arret.fullName.lowercaseString.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "").containsString(espacapedSearchTextString)
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
-            let stringA = String(arret1.title + arret1.subTitle)
-            let stringB = String(arret2.title + arret2.subTitle)
-            if stringA.lowercaseString < stringB.lowercaseString {
+            let stringA = String(arret1.title + arret1.subTitle).lowercaseString.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "")
+            let stringB = String(arret2.title + arret2.subTitle).lowercaseString.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "")
+            if stringA < stringB {
                 return true
             }
             return false

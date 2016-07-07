@@ -73,10 +73,10 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 // thanks!
                 return
             }
-            switch PermissionScope().statusLocationAlways() {
+            switch PermissionScope().statusLocationInUse() {
             case .Unknown:
                 // ask
-                pscope.addPermission(LocationAlwaysPermission(), message: "Cette autorisation sert à indiquer les arrets les plus proches.".localized())
+                pscope.addPermission(LocationWhileInUsePermission(), message: "Cette autorisation sert à indiquer les arrets les plus proches.".localized())
             case .Unauthorized, .Disabled:
                 // bummer
                 return
@@ -319,13 +319,14 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     }
     
     func filterContentForSearchText(searchText: String) {
+        let espacapedSearchTextString = searchText.lowercaseString.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "")
         filtredResults = [Stop](AppValues.stops.values).filter { arret in
-            return arret.fullName.lowercaseString.containsString(searchText.lowercaseString)
+            return arret.fullName.lowercaseString.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "").containsString(espacapedSearchTextString)
         }
         filtredResults.sortInPlace { (arret1, arret2) -> Bool in
-            let stringA = String(arret1.title + arret1.subTitle)
-            let stringB = String(arret2.title + arret2.subTitle)
-            if stringA.lowercaseString < stringB.lowercaseString {
+            let stringA = String(arret1.title + arret1.subTitle).stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "").lowercaseString
+            let stringB = String(arret2.title + arret2.subTitle).stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale()).stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("+", withString: "").lowercaseString
+            if stringA < stringB {
                 return true
             }
             return false
