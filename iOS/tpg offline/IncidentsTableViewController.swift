@@ -38,6 +38,12 @@ class IncidentsTableViewController: UITableViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        var barButtonsItems: [UIBarButtonItem] = []
+        
+        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(IncidentsTableViewController.refresh(_:))))
+        
+        self.navigationItem.rightBarButtonItems = barButtonsItems
 
         refresh(self)
     }

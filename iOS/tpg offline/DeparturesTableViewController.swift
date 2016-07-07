@@ -25,6 +25,7 @@ class DeparturesTableViewController: UITableViewController {
     var offline = false
     var noMoreTransport = false
     var loading: Bool = false
+    var notDownloaded: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,45 +122,43 @@ class DeparturesTableViewController: UITableViewController {
                         a[x] = y.toDictionnary()
                     }
                     var offlineDepartures: [String:String] = [:]
-                    if (AppValues.premium == true) {
-                        var path = ""
-                        for (_, y) in AppValues.favoritesStops {
-                            var json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
-                            var departuresArray: [String:String] = [:]
-                            if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
-                                path = dir.stringByAppendingPathComponent(y.stopCode + "departsSAM.json")
-                                
-                                if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                                    do {
-                                        try departuresArray["SAM"] = String(contentsOfFile: path)
-                                    } catch {
-                                        print("Reading of \(path) is failed")
-                                    }
-                                }
-                                
-                                path = dir.stringByAppendingPathComponent(y.stopCode + "departsDIM.json")
-                                
-                                if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                                    do {
-                                        try departuresArray["DIM"] = String(contentsOfFile: path)
-                                    } catch {
-                                        print("Reading of \(path) is failed")
-                                    }
-                                }
-                                
-                                path = dir.stringByAppendingPathComponent(y.stopCode + "departsLUN.json")
-                                
-                                if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                                    do {
-                                        try departuresArray["LUN"] = String(contentsOfFile: path)
-                                    } catch {
-                                        print("Reading of \(path) is failed")
-                                    }
+                    var path = ""
+                    for (_, y) in AppValues.favoritesStops {
+                        var json = JSON(data: "{}".dataUsingEncoding(NSUTF8StringEncoding)!)
+                        var departuresArray: [String:String] = [:]
+                        if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+                            path = dir.stringByAppendingPathComponent(y.stopCode + "departsSAM.json")
+                            
+                            if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                                do {
+                                    try departuresArray["SAM"] = String(contentsOfFile: path)
+                                } catch {
+                                    print("Reading of \(path) is failed")
                                 }
                             }
-                            json.dictionaryObject = departuresArray
-                            offlineDepartures[y.stopCode] = json.rawString() ?? ""
+                            
+                            path = dir.stringByAppendingPathComponent(y.stopCode + "departsDIM.json")
+                            
+                            if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                                do {
+                                    try departuresArray["DIM"] = String(contentsOfFile: path)
+                                } catch {
+                                    print("Reading of \(path) is failed")
+                                }
+                            }
+                            
+                            path = dir.stringByAppendingPathComponent(y.stopCode + "departsLUN.json")
+                            
+                            if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                                do {
+                                    try departuresArray["LUN"] = String(contentsOfFile: path)
+                                } catch {
+                                    print("Reading of \(path) is failed")
+                                }
+                            }
                         }
+                        json.dictionaryObject = departuresArray
+                        offlineDepartures[y.stopCode] = json.rawString() ?? ""
                         
                     }
                     try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops": NSKeyedArchiver.archivedDataWithRootObject(a), "offlineDepartures": offlineDepartures])
@@ -270,6 +269,7 @@ class DeparturesTableViewController: UITableViewController {
     
     func refresh() {
         self.loading = true
+        self.notDownloaded = false
         self.tableView.reloadData()
         departuresList = []
         Alamofire.request(.GET, "http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json", parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": stop!.stopCode])
@@ -318,57 +318,54 @@ class DeparturesTableViewController: UITableViewController {
                     self.tableView.dg_stopLoading()
                 }
                 else {
-                    if AppValues.premium == true {
-                        let day = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate())
-                        var path = ""
-                        if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
-                            switch day.weekday {
-                            case 7:
-                                
-                                path = dir.stringByAppendingPathComponent(self.stop!.stopCode + "departsSAM.json")
-                                break
-                            case 1:
-                                path = dir.stringByAppendingPathComponent(self.stop!.stopCode + "departsDIM.json");
-                                break
-                            default:
-                                path = dir.stringByAppendingPathComponent(self.stop!.stopCode + "departsLUN.json");
-                                
-                                break
-                            }
+                    let day = NSCalendar.currentCalendar().components([.Weekday], fromDate: NSDate())
+                    var path = ""
+                    if let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+                        switch day.weekday {
+                        case 7:
+                            
+                            path = dir.stringByAppendingPathComponent(self.stop!.stopCode + "departsSAM.json")
+                            break
+                        case 1:
+                            path = dir.stringByAppendingPathComponent(self.stop!.stopCode + "departsDIM.json");
+                            break
+                        default:
+                            path = dir.stringByAppendingPathComponent(self.stop!.stopCode + "departsLUN.json");
+                            
+                            break
                         }
-                        
-                        if NSFileManager.defaultManager().fileExistsAtPath(path) {
-                            let dataDeparts = NSData(contentsOfFile: path)
-                            let departs = JSON(data: dataDeparts!)
-                            for (_, subJson) in departs {
-                                if AppValues.linesColor[subJson["ligne"].string!] != nil {
-                                    self.departuresList.append(Departures(
-                                        line: subJson["ligne"].string!,
-                                        direction: subJson["destination"].string!,
-                                        destinationCode: "",
-                                        lineColor: AppValues.linesColor[subJson["ligne"].string!]!,
-                                        lineBackgroundColor: AppValues.linesBackgroundColor[subJson["ligne"].string!]!,
-                                        code: nil,
-                                        leftTime: "0",
-                                        timestamp: subJson["timestamp"].string!
-                                        ))
-                                }
-                                else {
-                                    self.departuresList.append(Departures(
-                                        line: subJson["ligne"].string!,
-                                        direction: subJson["destination"].string!,
-                                        destinationCode: "",
-                                        lineColor: UIColor.whiteColor(),
-                                        lineBackgroundColor: UIColor.flatGrayColorDark(),
-                                        code: nil,
-                                        leftTime: "0",
-                                        timestamp: subJson["timestamp"].string!
-                                        ))
-                                }
-                                self.departuresList.last?.calculerTempsRestant()
+                    }
+                    
+                    if NSFileManager.defaultManager().fileExistsAtPath(path) {
+                        let dataDeparts = NSData(contentsOfFile: path)
+                        let departs = JSON(data: dataDeparts!)
+                        for (_, subJson) in departs {
+                            if AppValues.linesColor[subJson["ligne"].string!] != nil {
+                                self.departuresList.append(Departures(
+                                    line: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    destinationCode: "",
+                                    lineColor: AppValues.linesColor[subJson["ligne"].string!]!,
+                                    lineBackgroundColor: AppValues.linesBackgroundColor[subJson["ligne"].string!]!,
+                                    code: nil,
+                                    leftTime: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
                             }
+                            else {
+                                self.departuresList.append(Departures(
+                                    line: subJson["ligne"].string!,
+                                    direction: subJson["destination"].string!,
+                                    destinationCode: "",
+                                    lineColor: UIColor.whiteColor(),
+                                    lineBackgroundColor: UIColor.flatGrayColorDark(),
+                                    code: nil,
+                                    leftTime: "0",
+                                    timestamp: subJson["timestamp"].string!
+                                    ))
+                            }
+                            self.departuresList.last?.calculerTempsRestant()
                         }
-                        
                         self.departuresList = self.departuresList.filter({ (depart) -> Bool in
                             if depart.leftTime != "-1" {
                                 return true
@@ -396,6 +393,7 @@ class DeparturesTableViewController: UITableViewController {
                         self.tableView.allowsSelection = false
                         self.tableView.reloadData()
                         self.tableView.dg_stopLoading()
+                        
                     }
                     else {
                         self.offline = true
@@ -403,9 +401,12 @@ class DeparturesTableViewController: UITableViewController {
                         self.departuresList = []
                         self.noMoreTransport = false
                         self.loading = false
+                        self.notDownloaded = true
                         self.tableView.reloadData()
                         self.tableView.dg_stopLoading()
                     }
+                    
+                    
                 }
         }
     }
@@ -418,7 +419,7 @@ extension DeparturesTableViewController {
         if loading == true {
             return 1
         }
-        else if offline {
+        else if offline || notDownloaded {
             return 2
         }
         return 1
@@ -426,6 +427,9 @@ extension DeparturesTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if loading == true {
+            return 1
+        }
+        else if offline && notDownloaded {
             return 1
         }
         else if offline && section == 0 {
@@ -444,6 +448,9 @@ extension DeparturesTableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if loading == true {
+            return 60
+        }
+        else if offline && notDownloaded {
             return 60
         }
         else if offline && indexPath.section == 0 {
@@ -521,6 +528,9 @@ extension DeparturesTableViewController {
         if loading == true {
             return false
         }
+        else if offline && notDownloaded {
+            return false
+        }
         else if offline && indexPath.section == 0 {
             return false
         }
@@ -571,6 +581,20 @@ extension DeparturesTableViewController {
             cell.detailTextLabel?.textColor = AppValues.textColor
             cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification".localized()
             let icone = FAKFontAwesome.globeIconWithSize(50)
+            icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+            cell.imageView?.image = icone.imageWithSize(CGSize(width: 50, height: 50))
+            cell.accessoryView = nil
+            return cell
+        }
+        else if offline && notDownloaded && indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("infoArretCell", forIndexPath: indexPath)
+            
+            cell.backgroundColor = AppValues.primaryColor
+            cell.textLabel?.textColor = AppValues.textColor
+            cell.textLabel?.text = "Non téléchargé".localized()
+            cell.detailTextLabel?.textColor = AppValues.textColor
+            cell.detailTextLabel?.text = "Vous pouvez télécharger les départs dans les paramètres afin d'y avoir accès en mode hors-ligne.".localized()
+            let icone = FAKFontAwesome.downloadIconWithSize(50)
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.imageView?.image = icone.imageWithSize(CGSize(width: 50, height: 50))
             cell.accessoryView = nil

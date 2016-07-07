@@ -18,7 +18,6 @@ struct AppValues {
     static var stopCodeToStopItem: [String: String] = [:]
     static var primaryColor: UIColor! = UIColor.flatOrangeColor()
     static var textColor: UIColor! = UIColor.whiteColor()
-	static var premium: Bool! = false
     static var stopsKeys: [String] = []
     static var linesBackgroundColor = [String:UIColor]()
     static var linesColor = [String:UIColor]()

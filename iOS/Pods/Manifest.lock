@@ -68,7 +68,6 @@ PODS:
   - PermissionScope (1.0.2)
   - SCLAlertView (0.5.9)
   - SwiftDate (3.0.9)
-  - SwiftInAppPurchase (1.0.0)
   - SwiftyBeaver (0.6.3)
   - SwiftyJSON (2.3.2)
 
@@ -92,7 +91,6 @@ DEPENDENCIES:
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
-  - SwiftInAppPurchase (from `https://github.com/rpzzzzzz/SwiftInAppPurchase.git`)
   - SwiftyBeaver (from `https://github.com/SwiftyBeaver/SwiftyBeaver.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -130,8 +128,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
   SwiftDate:
     :git: https://github.com/malcommac/SwiftDate.git
-  SwiftInAppPurchase:
-    :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
   SwiftyBeaver:
     :git: https://github.com/SwiftyBeaver/SwiftyBeaver.git
   SwiftyJSON:
@@ -186,9 +182,6 @@ CHECKOUT OPTIONS:
   SwiftDate:
     :commit: 0dd3a3c610f2147a92c834cb4bdb5d983dd5f37b
     :git: https://github.com/malcommac/SwiftDate.git
-  SwiftInAppPurchase:
-    :commit: 4af9f507563329a1bb4d44cfd7b2e1e4f60e2733
-    :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
   SwiftyBeaver:
     :commit: 572c71899c772f22a7706e83ae92213237ef9940
     :git: https://github.com/SwiftyBeaver/SwiftyBeaver.git
@@ -216,10 +209,9 @@ SPEC CHECKSUMS:
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
   SCLAlertView: d7c6a48c7d340e60206d4ed0e8ebcbff3b9d2a44
   SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
-  SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
   SwiftyBeaver: c182c001d532111becf2285b8878abf54c7b5621
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: e6920533312855bd3ea0f4675d10344e22c2ca03
+PODFILE CHECKSUM: ef83cc600101fd8f5e6957cfa365b330a4325a07
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1

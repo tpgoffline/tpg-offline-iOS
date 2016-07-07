@@ -23,16 +23,9 @@ class SettingsTableViewController: UITableViewController {
         [FAKFontAwesome.locationArrowIconWithSize(20), "Localisation".localized(), "showLocationMenu"],
         [FAKFontAwesome.infoCircleIconWithSize(20), "Crédits".localized(), "showCredits"],
         [FAKFontAwesome.githubIconWithSize(20), "Page GitHub du projet".localized(), "showGitHub"],
-        [FAKFontAwesome.graduationCapIconWithSize(20), "Revoir le tutoriel".localized(), "showTutoriel"]
-    ]
-    
-    let premiumRowList = [
+        [FAKFontAwesome.graduationCapIconWithSize(20), "Revoir le tutoriel".localized(), "showTutoriel"],
         [FAKFontAwesome.paintBrushIconWithSize(20), "Thèmes".localized(), "showThemesMenu"],
         [FAKFontAwesome.refreshIconWithSize(20), "Actualiser les départs (Offline)".localized(), "actualiserDeparts"]
-    ]
-    
-    let nonPremiumRowList = [
-        [FAKFontAwesome.starIconWithSize(20), "Premium".localized(), "showPremium"]
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -41,15 +34,12 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         refreshTheme()
-        if (AppValues.premium == true) {
-            rowsList += premiumRowList
-        }
-        else {
-            rowsList += nonPremiumRowList
-        }
         
         if !defaults.boolForKey("tutorial") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
             afficherTutoriel()
+        }
+        else if !defaults.boolForKey("version4") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
+            afficherMiseAJour()
         }
     }
     
@@ -324,6 +314,7 @@ class SettingsTableViewController: UITableViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
             if !self.defaults.boolForKey("tutorial") {
                 self.defaults.setBool(true, forKey: "tutorial")
+                self.defaults.setBool(true, forKey: "version4")
                 self.tabBarController?.selectedIndex = 0
             }
         })
@@ -342,7 +333,7 @@ class SettingsTableViewController: UITableViewController {
         onboardingVC.titleTextColor = AppValues.textColor
         onboardingVC.bodyTextColor = AppValues.textColor
         onboardingVC.buttonTextColor = AppValues.textColor
-        onboardingVC.pageControl.pageIndicatorTintColor = AppValues.primaryColor
+        onboardingVC.pageControl.pageIndicatorTintColor = AppValues.primaryColor.darkenByPercentage(0.1)
         onboardingVC.pageControl.currentPageIndicatorTintColor = AppValues.textColor
         onboardingVC.skipButton.setTitleColor(AppValues.textColor, forState: .Normal)
         onboardingVC.bodyFontSize = 18
@@ -354,11 +345,67 @@ class SettingsTableViewController: UITableViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
             if !self.defaults.boolForKey("tutorial") {
                 self.defaults.setBool(true, forKey: "tutorial")
+                self.defaults.setBool(true, forKey: "version4")
                 self.tabBarController?.selectedIndex = 0
             }
         }
         presentViewController(onboardingVC, animated: true, completion: nil)
     }
+    
+    func afficherMiseAJour() {
+        let rect = CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context!, AppValues.primaryColor.CGColor)
+        
+        CGContextFillRect(context!, rect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let page1 = OnboardingContentViewController (title: "Bienvenue dans tpg offline".localized(), body: "Merci d'avoir mis à jour tpg offline. Nous allons vous expliquer les grandes nouveautés de cette version.".localized(), image: nil, buttonText: "Continuer".localized(), actionBlock: nil)
+        
+        var iconeF = FAKFontAwesome.dollarIconWithSize(50)
+        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        let page2 = OnboardingContentViewController (title: "Gratuit\rEt pour toujours !".localized(), body: "Le premium n'existe plus. Désormais, tout le monde peut accéder aux départs en mode hors ligne (sous réserve de les avoir au préalable téléchargés dans les paramètres), aux thèmes, etc...".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+        
+        let iconeI = FAKIonIcons.androidWatchIconWithSize(50)
+        iconeI.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        let page3 = OnboardingContentViewController (title: "watchOS", body: "Vous avez une Apple Watch ? Super, car tpg offline a désormais une extension pour Apple Watch qui vous permettra de visualiser les départs des arrêts favoris en un clin d'œil.".localized(), image: iconeI.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Continuer".localized(), actionBlock: nil)
+        
+        iconeF = FAKFontAwesome.rocketIconWithSize(50)
+        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        let page4 = OnboardingContentViewController (title: "Encore plus. Bientôt".localized(), body: "D'autres surprises vont arriver dans les prochaines versions.".localized(), image: iconeF.imageWithSize(CGSize(width: 50, height: 50)), buttonText: "Terminer".localized(), actionBlock: { (onboardingvc) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.defaults.setBool(true, forKey: "version4")
+            self.tabBarController?.selectedIndex = 0
+        })
+        
+        page1.movesToNextViewController = true
+        page2.movesToNextViewController = true
+        page3.movesToNextViewController = true
+        
+        let onboardingVC = OnboardingViewController(backgroundImage: image, contents: [page1, page2, page3, page4])
+        onboardingVC.titleTextColor = AppValues.textColor
+        onboardingVC.bodyTextColor = AppValues.textColor
+        onboardingVC.buttonTextColor = AppValues.textColor
+        onboardingVC.pageControl.pageIndicatorTintColor = AppValues.primaryColor.darkenByPercentage(0.1)
+        onboardingVC.pageControl.currentPageIndicatorTintColor = AppValues.textColor
+        onboardingVC.titleFontSize = 30
+        onboardingVC.bodyFontSize = 18
+        onboardingVC.shouldMaskBackground = false
+        onboardingVC.shouldFadeTransitions = true
+        onboardingVC.allowSkipping = false
+        onboardingVC.skipButton.setTitle("Passer".localized(), forState: .Normal)
+        onboardingVC.skipHandler = {
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.defaults.setBool(true, forKey: "version4")
+            self.tabBarController?.selectedIndex = 0
+        }
+        presentViewController(onboardingVC, animated: true, completion: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showGitHub" {
             let destinationViewController: WebViewController = (segue.destinationViewController) as! WebViewController

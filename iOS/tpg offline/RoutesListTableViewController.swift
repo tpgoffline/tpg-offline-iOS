@@ -43,7 +43,6 @@ class RoutesListTableViewController: UITableViewController {
         if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
             var listeItems: [UIBarButtonItem] = []
             
-            if (AppValues.premium == true) {
                 for x in AppValues.favoritesRoutes {
                     if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
                         favorite = true
@@ -56,7 +55,6 @@ class RoutesListTableViewController: UITableViewController {
                 else {
                     listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RoutesListTableViewController.toggleFavorite(_:))))
                 }
-            }
             self.navigationItem.rightBarButtonItems = listeItems
         }
     }

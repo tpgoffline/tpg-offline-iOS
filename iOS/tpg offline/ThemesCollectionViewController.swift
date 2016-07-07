@@ -34,7 +34,7 @@ class ThemesCollectionViewController: UICollectionViewController {
             }
             return false
         })
-        collectionView!.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.2)
+        collectionView!.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
 	}
 
     override func didReceiveMemoryWarning() {
@@ -97,14 +97,9 @@ class ThemesCollectionViewController: UICollectionViewController {
         tabBarController!.tabBar.tintColor = AppValues.textColor
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
         
-        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-            tabBarController!.tabBar.barTintColor = AppValues.primaryColor
-            view.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
-        }
-        else {
-            tabBarController!.tabBar.barTintColor = AppValues.primaryColor.darkenByPercentage(0.1)
-            view.backgroundColor = AppValues.primaryColor
-        }
+        tabBarController!.tabBar.barTintColor = AppValues.primaryColor
+        view.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.05)
+        
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
         view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()

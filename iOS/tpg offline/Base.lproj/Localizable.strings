@@ -22,48 +22,6 @@
 "Bonjour" = "Bonjour";
 
 /*
- * ./tpg offline/PremiumTableViewController.swift
- */
-
-"Mode offline des départs" = "Mode offline des départs";
-
-"Pas de réseau ? Pas de problème avec le mode offline, vous pouvez accéder aux horaires hors ligne. Attetion : Les horaires du mode offline ne peuvent pas prévoir les évantuels retards, avances, perturbation en cours sur le réseau tpg." = "Pas de réseau ? Pas de problème avec le mode offline, vous pouvez accéder aux horaires hors ligne. Attetion : Les horaires du mode offline ne peuvent pas prévoir les évantuels retards, avances, perturbation en cours sur le réseau tpg.";
-
-"Avec le premium, vous pouvez accéder à une multitude de thèmes pour personnaliser votre application." = "Avec le premium, vous pouvez accéder à une multitude de thèmes pour personnaliser votre application.";
-
-"Favoris des itinéraires" = "Favoris des itinéraires";
-
-"Avec les favoris des itinéraires, vous pouvez en un seul appui voir les prochains itinéraires de un point à un autre." = "Avec les favoris des itinéraires, vous pouvez en un seul appui voir les prochains itinéraires de un point à un autre.";
-
-"Fonctionnalités futures" = "Fonctionnalités futures";
-
-"Un seul achat et vous aurez toutes les merveilles à venir. Pour toujours !" = "Un seul achat et vous aurez toutes les merveilles à venir. Pour toujours !";
-
-"Acheter" = "Acheter";
-
-"Restaurer les achats" = "Restaurer les achats";
-
-"L'achat a réussi" = "L'achat a réussi";
-
-"Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres." = "Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres.";
-
-"Fermer" = "Fermer";
-
-"Échec" = "Échec";
-
-"L'achat n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions." = "L'achat n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.";
-
-"La restauration à réussi" = "La restauration à réussi";
-
-"La restauration n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions." = "La restauration n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions.";
-
-
-
-
-
-
-
-/*
  * ./tpg offline/RouteToStopViewController.swift
  */
 
@@ -255,8 +213,6 @@
 
 "Actualiser les départs (Offline)" = "Actualiser les départs (Offline)";
 
-"Premium" = "Premium";
-
 "Bienvenue dans tpg offline" = "Bienvenue dans tpg offline";
 
 "tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau." = "tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau.";
@@ -301,8 +257,17 @@
 
 "Passer" = "Passer";
 
+"Merci d'avoir mis à jour tpg offline. Nous allons vous expliquer les grandes nouveautés de cette version." = "Merci d'avoir mis à jour tpg offline. Nous allons vous expliquer les grandes nouveautés de cette version.";
 
+"Gratuit\rEt pour toujours !" = "Gratuit\rEt pour toujours !";
 
+"Le premium n'existe plus. Désormais, tout le monde peut accéder aux départs en mode hors ligne (sous réserve de les avoir au préalable téléchargés dans les paramètres), aux thèmes, etc..." = "Le premium n'existe plus. Désormais, tout le monde peut accéder aux départs en mode hors ligne (sous réserve de les avoir au préalable téléchargés dans les paramètres), aux thèmes, etc...";
+
+"Vous avez une Apple Watch ? Super, car tpg offline a désormais une extension pour Apple Watch qui vous permettra de visualiser les départs des arrêts favoris en un clin d'œil." = "Vous avez une Apple Watch ? Super, car tpg offline a désormais une extension pour Apple Watch qui vous permettra de visualiser les départs des arrêts favoris en un clin d'œil.";
+
+"Encore plus. Bientôt" = "Encore plus. Bientôt";
+
+"D'autres surprises vont arriver dans les prochaines versions." = "D'autres surprises vont arriver dans les prochaines versions.";
 
 
 
@@ -337,7 +302,9 @@
 
 "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt." = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.";
 
+"Non téléchargé" = "Non téléchargé";
 
+"Vous pouvez télécharger les départs dans les paramètres afin d'y avoir accès en mode hors-ligne." = "Vous pouvez télécharger les départs dans les paramètres afin d'y avoir accès en mode hors-ligne.";
 
 
 

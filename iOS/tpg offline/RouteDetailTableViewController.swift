@@ -24,7 +24,6 @@ class RouteDetailTableViewController: UITableViewController {
 		
 		var itemsList: [UIBarButtonItem] = []
 		
-		if AppValues.premium == true {
 		for x in AppValues.favoritesRoutes {
 			if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
 				favorite = true
@@ -36,7 +35,6 @@ class RouteDetailTableViewController: UITableViewController {
 		}
 		else {
 			itemsList.append(UIBarButtonItem(image: FAKFontAwesome.starOIconWithSize(20).imageWithSize(CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
-		}
 		}
 		self.navigationItem.rightBarButtonItems = itemsList
 		tableView.backgroundColor = AppValues.primaryColor

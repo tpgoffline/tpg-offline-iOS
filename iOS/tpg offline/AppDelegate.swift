@@ -72,14 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.tabBar.tintColor = AppValues.textColor
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
         
-        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-            tabBarController.tabBar.barTintColor = AppValues.primaryColor
-            view.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
-        }
-        else {
-            tabBarController.tabBar.barTintColor = AppValues.primaryColor.darkenByPercentage(0.1)
-            view.backgroundColor = AppValues.primaryColor
-        }
+        tabBarController.tabBar.barTintColor = AppValues.primaryColor
+        view.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.05)
+        
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
         view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -110,8 +105,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         tabBarController.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         tabBarController.tabBar.items![4].selectedImage = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
+                
         if !defaults.boolForKey("tutorial") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
+            tabBarController.selectedIndex = 4
+        }
+        else if !defaults.boolForKey("version4") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
             tabBarController.selectedIndex = 4
         }
         else {
@@ -237,13 +235,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let encodedData = NSKeyedArchiver.archivedDataWithRootObject([])
                     self.defaults.setObject(encodedData, forKey: "itinerairesFavoris")
                 }
-            }
-            
-            if (NSProcessInfo.processInfo().arguments.contains("-premium")) {
-                AppValues.premium = true
-            }
-            else {
-                AppValues.premium = self.defaults.boolForKey("premium")
             }
             
             

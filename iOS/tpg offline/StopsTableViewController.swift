@@ -155,9 +155,10 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        refreshTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
+        
+        refreshTheme()
         
         tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)

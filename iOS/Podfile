@@ -13,7 +13,6 @@ target 'tpg offline' do
 	pod 'DGElasticPullToRefresh', git:'https://github.com/gontovnik/DGElasticPullToRefresh.git'
 	pod 'MRProgress', git:'https://github.com/RemyDCF/MRProgress.git'
 	pod 'INTULocationManager', git:'https://github.com/intuit/LocationManager.git'
-	pod 'SwiftInAppPurchase', git: 'https://github.com/rpzzzzzz/SwiftInAppPurchase.git'
 	pod 'Localize-Swift', git: 'https://github.com/marmelroy/Localize-Swift.git'
 	pod 'Onboard', git: 'https://github.com/mamaral/Onboard.git', :tag => "v2.1.9"
 	pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git'

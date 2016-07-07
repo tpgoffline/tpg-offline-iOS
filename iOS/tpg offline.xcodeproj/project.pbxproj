@@ -84,17 +84,14 @@
 		00DD017B1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD017A1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift */; };
 		00DDC0B21C255CED002B288E /* MapsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* MapsListTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
-		6AA6F721BA82513EE3E37063 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */; };
-		6DEFC1656FAF1B9F27403FD3 /* Pods_tpg_offline_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE794BD079485476939A1A8C /* Pods_tpg_offline_Watch_Extension.framework */; };
-		AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */; };
+		8F6520FDD3B9D2E54EBAA4CA /* Pods_tpg_offline_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8508D901F460022127623 /* Pods_tpg_offline_Watch_Extension.framework */; };
 		AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0148121C7F6CDE0057E884 /* WebViewController.swift */; };
 		AD11CD861C8336AA00DFF4AA /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */; };
 		AD11CD8E1C83373300DFF4AA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */; };
 		AD13B1061C78A09500ECCDFD /* FavoriteRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B1051C78A09500ECCDFD /* FavoriteRouteTableViewCell.swift */; };
 		AD3F41E21C7DB011009113F0 /* PremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E11C7DB011009113F0 /* PremiumTableViewCell.swift */; };
-		AD3F41E41C7DB31A009113F0 /* BuyPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E31C7DB31A009113F0 /* BuyPremiumTableViewCell.swift */; };
-		AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */; };
 		ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
+		F670C8159862DE0952B72A37 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C1A2456E8A9AF7B38F9C1E /* Pods_tpg_offline.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,14 +250,10 @@
 		00DD017A1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		00DDC0B11C255CED002B288E /* MapsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MapsListTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		0E0E74AD774A69C9D741C626 /* Pods_tpg_offline_Watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CBA50C07BBC5B44B48B8F11 /* Pods-tpg offline Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		11D8520CFA99930E118500BB /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
-		5727A895101709484F1109B3 /* Pods-tpg offline Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		5D5BB7521D54A8A7E8FAD5FF /* Pods_tpg_offline_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		900770355536FBB3DE11ABA9 /* Pods-tpg offline Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
-		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
+		27C1A2456E8A9AF7B38F9C1E /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0148121C7F6CDE0057E884 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UITests.swift; sourceTree = "<group>"; };
@@ -268,14 +261,12 @@
 		AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; usesTabs = 0; };
 		AD13B1051C78A09500ECCDFD /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E11C7DB011009113F0 /* PremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewCell.swift; sourceTree = "<group>"; };
-		AD3F41E31C7DB31A009113F0 /* BuyPremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyPremiumTableViewCell.swift; sourceTree = "<group>"; };
-		AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ADB2D6D31C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		ADB2D6D41C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CDBAF1891ED8A73A43CAB6CB /* Pods_tpg_offline_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE794BD079485476939A1A8C /* Pods_tpg_offline_Watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
+		B1B98CE9FCFF7F8966643507 /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
+		B37EFC05092C7ED1B6515408 /* Pods-tpg offline Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		D3F8508D901F460022127623 /* Pods_tpg_offline_Watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,8 +277,7 @@
 				005BAEC01D04569800F73C8A /* WatchConnectivity.framework in Frameworks */,
 				00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */,
 				002E5C761C132A680008623D /* MapKit.framework in Frameworks */,
-				AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */,
-				6AA6F721BA82513EE3E37063 /* Pods_tpg_offline.framework in Frameworks */,
+				F670C8159862DE0952B72A37 /* Pods_tpg_offline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DEFC1656FAF1B9F27403FD3 /* Pods_tpg_offline_Watch_Extension.framework in Frameworks */,
+				8F6520FDD3B9D2E54EBAA4CA /* Pods_tpg_offline_Watch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +325,7 @@
 				002B47DE1C01FA6F000BF3E8 /* Products */,
 				A65315FEF759993751E0088F /* Frameworks */,
 				00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */,
-				F1EC4FF71627F150B69628C0 /* Pods */,
+				40676B7323B0F34A87EAE820 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -378,7 +368,6 @@
 				00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */,
 				002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */,
 				004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */,
-				AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */,
 				AD0148121C7F6CDE0057E884 /* WebViewController.swift */,
 			);
 			name = Settings;
@@ -426,7 +415,6 @@
 				005DF8101C0DF74E00377031 /* StopImageTableViewCell.swift */,
 				004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */,
 				AD3F41E11C7DB011009113F0 /* PremiumTableViewCell.swift */,
-				AD3F41E31C7DB31A009113F0 /* BuyPremiumTableViewCell.swift */,
 				00DA802E1CBAA9090006ADB3 /* SeeLineTableViewCell.swift */,
 				0068B63C1CC7C0C1005815CE /* LoadingCellTableViewCell.swift */,
 				00DD017A1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift */,
@@ -534,21 +522,28 @@
 			name = Maps;
 			sourceTree = "<group>";
 		};
+		40676B7323B0F34A87EAE820 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1B98CE9FCFF7F8966643507 /* Pods-tpg offline.debug.xcconfig */,
+				11D8520CFA99930E118500BB /* Pods-tpg offline.release.xcconfig */,
+				0CBA50C07BBC5B44B48B8F11 /* Pods-tpg offline Watch Extension.debug.xcconfig */,
+				B37EFC05092C7ED1B6515408 /* Pods-tpg offline Watch Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A65315FEF759993751E0088F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				002EC5E31D0DA1FB005E6365 /* CoreText.framework */,
 				005BAEBF1D04569800F73C8A /* WatchConnectivity.framework */,
-				AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */,
 				002E5C751C132A680008623D /* MapKit.framework */,
 				00D0355B1C0E25D600B3697D /* CoreLocation.framework */,
 				253CE6CB67EE399CF499A811 /* Pods.framework */,
-				139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */,
 				00C6C3021CF5DA16000C1CF7 /* NotificationCenter.framework */,
-				5D5BB7521D54A8A7E8FAD5FF /* Pods_tpg_offline_Widget.framework */,
-				0E0E74AD774A69C9D741C626 /* Pods_tpg_offline_Watch.framework */,
-				DE794BD079485476939A1A8C /* Pods_tpg_offline_Watch_Extension.framework */,
-				CDBAF1891ED8A73A43CAB6CB /* Pods_tpg_offline_UITests.framework */,
+				27C1A2456E8A9AF7B38F9C1E /* Pods_tpg_offline.framework */,
+				D3F8508D901F460022127623 /* Pods_tpg_offline_Watch_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -563,17 +558,6 @@
 			path = "tpg offline UITests";
 			sourceTree = "<group>";
 		};
-		F1EC4FF71627F150B69628C0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */,
-				E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */,
-				5727A895101709484F1109B3 /* Pods-tpg offline Watch Extension.debug.xcconfig */,
-				900770355536FBB3DE11ABA9 /* Pods-tpg offline Watch Extension.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -581,17 +565,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 002B47EF1C01FA6F000BF3E8 /* Build configuration list for PBXNativeTarget "tpg offline" */;
 			buildPhases = (
-				3257DBC54C85AECC59F63B1F /* 📦 Check Pods Manifest.lock */,
-				819CE82D7E4E10B8611CB691 /* uD83DuDCE6 Check Pods Manifest.lock */,
+				819CE82D7E4E10B8611CB691 /* [CP] Check Pods Manifest.lock */,
 				002B47D91C01FA6F000BF3E8 /* Sources */,
 				002B47DA1C01FA6F000BF3E8 /* Frameworks */,
 				002B47DB1C01FA6F000BF3E8 /* Resources */,
 				0000AA101CEC98F4002E6B9A /* uD83DuDCE6 Fabric */,
-				42DA7807C14FFD31F49FDE75 /* uD83DuDCE6 Embed Pods Frameworks */,
-				81EA3E643D789D91F73619C7 /* uD83DuDCE6 Copy Pods Resources */,
+				42DA7807C14FFD31F49FDE75 /* [CP] Embed Pods Frameworks */,
+				81EA3E643D789D91F73619C7 /* [CP] Copy Pods Resources */,
 				00C6C3111CF5DA17000C1CF7 /* Embed App Extensions */,
-				907F31B0A98F9474746F6C74 /* 📦 Embed Pods Frameworks */,
-				9884B974D93DE1FAAE2FC0C4 /* 📦 Copy Pods Resources */,
 				005BAEB61D0452FC00F73C8A /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -626,13 +607,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 005BAEB31D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch Extension" */;
 			buildPhases = (
-				5EE2187C2AB0BC1CA4B52517 /* 📦 Check Pods Manifest.lock */,
+				11680781195D29544EC0DFCC /* [CP] Check Pods Manifest.lock */,
 				005BAE981D0452FB00F73C8A /* Sources */,
 				005BAE991D0452FB00F73C8A /* Frameworks */,
 				005BAE9A1D0452FB00F73C8A /* Resources */,
-				C21DF6DC18FC578309018894 /* 📦 Embed Pods Frameworks */,
-				EF233ED5E0CCD79E2F9894AA /* 📦 Copy Pods Resources */,
 				002EC5FE1D0DA3F1005E6365 /* Embed Frameworks */,
+				BFEF9BDFA598FDEE5E3351FB /* [CP] Embed Pods Frameworks */,
+				4E13F8F49DD58B9F5EBC7F0B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -680,7 +661,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -790,14 +771,14 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 75b8798b16086f8a41d0d9fbe73703be77a9706c 598a875e80bdece5e37bb2c05ba976b83626e6d2ac1016c6335b76beadf12eca";
 		};
-		3257DBC54C85AECC59F63B1F /* 📦 Check Pods Manifest.lock */ = {
+		11680781195D29544EC0DFCC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,14 +786,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		42DA7807C14FFD31F49FDE75 /* uD83DuDCE6 Embed Pods Frameworks */ = {
+		42DA7807C14FFD31F49FDE75 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "uD83DuDCE6 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -820,109 +801,64 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5EE2187C2AB0BC1CA4B52517 /* 📦 Check Pods Manifest.lock */ = {
+		4E13F8F49DD58B9F5EBC7F0B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		819CE82D7E4E10B8611CB691 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		81EA3E643D789D91F73619C7 /* uD83DuDCE6 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		907F31B0A98F9474746F6C74 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9884B974D93DE1FAAE2FC0C4 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C21DF6DC18FC578309018894 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF233ED5E0CCD79E2F9894AA /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		819CE82D7E4E10B8611CB691 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		81EA3E643D789D91F73619C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFEF9BDFA598FDEE5E3351FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -954,7 +890,6 @@
 				00391C471C271D1E005250D4 /* SettingsTableViewController.swift in Sources */,
 				00ABBE151C29C81B00479FF4 /* Departures.swift in Sources */,
 				005572591CE0FE5A00B70D26 /* Route.swift in Sources */,
-				AD3F41E41C7DB31A009113F0 /* BuyPremiumTableViewCell.swift in Sources */,
 				002B47F51C01FA87000BF3E8 /* StopsTableViewController.swift in Sources */,
 				00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */,
 				AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */,
@@ -966,7 +901,6 @@
 				007778FA1CEB5089007C5630 /* SeeAllDeparturesViewController.swift in Sources */,
 				007D924B1C4A989F0036BEE6 /* SwitchTableViewCell.swift in Sources */,
 				0055725B1CE0FEB500B70D26 /* RoutesConnections.swift in Sources */,
-				AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */,
 				002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */,
 				00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */,
 				00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */,
@@ -1169,7 +1103,7 @@
 		};
 		002B47F01C01FA6F000BF3E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */;
+			baseConfigurationReference = B1B98CE9FCFF7F8966643507 /* Pods-tpg offline.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1206,7 +1140,7 @@
 		};
 		002B47F11C01FA6F000BF3E8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */;
+			baseConfigurationReference = 11D8520CFA99930E118500BB /* Pods-tpg offline.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1280,7 +1214,7 @@
 		};
 		005BAEB11D0452FC00F73C8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5727A895101709484F1109B3 /* Pods-tpg offline Watch Extension.debug.xcconfig */;
+			baseConfigurationReference = 0CBA50C07BBC5B44B48B8F11 /* Pods-tpg offline Watch Extension.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1300,7 +1234,7 @@
 		};
 		005BAEB21D0452FC00F73C8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 900770355536FBB3DE11ABA9 /* Pods-tpg offline Watch Extension.release.xcconfig */;
+			baseConfigurationReference = B37EFC05092C7ED1B6515408 /* Pods-tpg offline Watch Extension.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;

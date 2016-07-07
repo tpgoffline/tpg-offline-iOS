@@ -1,48 +1,6 @@
 "Bonjour" = "Hello";
 
 /*
- * ./tpg offline/PremiumTableViewController.swift
- */
-
-"Mode offline des départs" = "Departures offline mode";
-
-"Pas de réseau ? Pas de problème avec le mode offline, vous pouvez accéder aux horaires hors ligne. Attetion : Les horaires du mode offline ne peuvent pas prévoir les évantuels retards, avances, perturbation en cours sur le réseau tpg." = "No network ? No problem with the offline mode, you can access the schedules offline. Attetion: the offline mode schedules can not predict delays, advances, current tpg disturbance on the network.";
-
-"Avec le premium, vous pouvez accéder à une multitude de thèmes pour personnaliser votre application." = "With the premium, you can access a multitude of themes to customize your application.";
-
-"Favoris des itinéraires" = "Favorites routes";
-
-"Avec les favoris des itinéraires, vous pouvez en un seul appui voir les prochains itinéraires de un point à un autre." = "With favorites itineraries, you can see a single press of the next itineraries one point to another.";
-
-"Fonctionnalités futures" = "Future features";
-
-"Un seul achat et vous aurez toutes les merveilles à venir. Pour toujours !" = "One purchase and you will all come to Wonderland. Forever !";
-
-"Acheter" = "Buy";
-
-"Restaurer les achats" = "Restore purchases";
-
-"L'achat a réussi" = "The purchase was successful";
-
-"Toutes les fonctions premium sont débloquées. Merci beaucoup ! Nous vous recommendons de télécharger les départs hors ligne dans les paramètres." = "All premium features are enabled. Thank you very much ! We recommend you to download the departures in offline settings.";
-
-"Fermer" = "Close";
-
-"Échec" = "Failure";
-
-"L'achat n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions." = "The purchase has not been finalized. Thank you to verify in-app purchases are allowed to Settings > General > Restrictions.";
-
-"La restauration à réussi" = "Restoring successful";
-
-"La restauration n'a pas pu être finalisé. Merci de vérifier si les achats intégrés sont autorisés dans Réglages > Général > Restrictions." = "The restoration has not been finalized. Thank you to verify in-app purchases are allowed to Settings > General > Restrictions.";
-
-
-
-
-
-
-
-/*
  * ./tpg offline/RouteToStopViewController.swift
  */
 
@@ -234,13 +192,11 @@
 
 "Actualiser les départs (Offline)" = "Refresh departures (Offline)";
 
-"Premium" = "Premium";
-
 "Bienvenue dans tpg offline" = "Welcome tpg offline";
 
 "tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau." = "tpg offline is an application that makes traveling with the Geneva public transport, even without network.";
 
-"Continuer" = "Continuer";
+"Continuer" = "Next";
 
 "Départs" = "Départs";
 
@@ -280,7 +236,17 @@
 
 "Passer" = "Skip";
 
+"Merci d'avoir mis à jour tpg offline. Nous allons vous expliquer les grandes nouveautés de cette version." = "Thank you for updated tpg offline. We will explain the great innovations of this release.";
 
+"Gratuit\rEt pour toujours !" = "Free\rAnd forever !";
+
+"Le premium n'existe plus. Désormais, tout le monde peut accéder aux départs en mode hors ligne (sous réserve de les avoir au préalable téléchargés dans les paramètres), aux thèmes, etc..." = "The premium is no more. Now everyone can access the departures offline (you have to download departures in the settings menu), themes, etc...";
+
+"Vous avez une Apple Watch ? Super, car tpg offline a désormais une extension pour Apple Watch qui vous permettra de visualiser les départs des arrêts favoris en un clin d'œil." = "You have an Apple Watch? Great, because tpg offline now has an extension for Apple Watch will allow you to view the departures of favorite stops in an instant.";
+
+"Encore plus. Bientôt" = "Even more. Soon";
+
+"D'autres surprises vont arriver dans les prochaines versions." = "Other surprises will arrive in future releases.";
 
 
 
@@ -316,7 +282,9 @@
 
 "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt." = "No more departure is planned for all lines.";
 
+"Non téléchargé" = "Not downloaded";
 
+"Vous pouvez télécharger les départs dans les paramètres afin d'y avoir accès en mode hors-ligne." = "You can download the departures in settings menu to be accessed in offline mode.";
 
 
 
