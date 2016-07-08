@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		000ECABD1C469A3500E4FC92 /* RouteToStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000ECABC1C469A3500E4FC92 /* RouteToStopViewController.swift */; };
 		002149151C5BDDC5009C0264 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */; };
+		0021FE3A1D29499300A29A0B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0021FE3C1D29499300A29A0B /* Localizable.strings */; };
 		002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */; };
 		002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 002B47E41C01FA6F000BF3E8 /* Main.storyboard */; };
 		002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 002B47E71C01FA6F000BF3E8 /* Assets.xcassets */; };
@@ -18,22 +19,39 @@
 		002B47F71C01FA87000BF3E8 /* DeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B47F41C01FA87000BF3E8 /* DeparturesTableViewCell.swift */; };
 		002E5C761C132A680008623D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002E5C751C132A680008623D /* MapKit.framework */; };
 		002E5C781C1337DD0008623D /* NSUserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */; };
+		002EC5DF1D0D949D005E6365 /* DeparturesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002EC5DE1D0D949D005E6365 /* DeparturesRowController.swift */; };
+		002EC5E01D0D9EB8005E6365 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C8DD551C0CCACC004743A5 /* couleursLignes.json */; };
+		002EC5E41D0DA1FB005E6365 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002EC5E31D0DA1FB005E6365 /* CoreText.framework */; };
+		002EC6371D0DAB70005E6365 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5B1C9B23C700C71A06 /* FontAwesome.otf */; };
 		00391C471C271D1E005250D4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00391C461C271D1E005250D4 /* SettingsTableViewController.swift */; };
 		00391C491C271DA6005250D4 /* SelectDefaultTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00391C481C271DA6005250D4 /* SelectDefaultTabBarItem.swift */; };
 		003D10EE1C21A47400F9857E /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 003D10ED1C21A46800F9857E /* Ionicons.ttf */; };
 		00430B541C9B1EAD00C71A06 /* arrets.json in Resources */ = {isa = PBXBuildFile; fileRef = 00430B531C9B1EAD00C71A06 /* arrets.json */; };
 		00430B611C9B23C700C71A06 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5B1C9B23C700C71A06 /* FontAwesome.otf */; };
 		00430B621C9B23C700C71A06 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */; };
-		00430B641C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */; };
-		00430B651C9B23C700C71A06 /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5F1C9B23C700C71A06 /* octicons.ttf */; };
-		00430B661C9B23C700C71A06 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */; };
 		004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D812A1C24737800C6AD55 /* Perturbations.swift */; };
 		004D812D1C2476BD00C6AD55 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */; };
 		004E8BD61C6E23840055006B /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */; };
 		004E8BD81C6E24870055006B /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */; };
 		00500AF41C1B396F00341F7A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00500AF31C1B396F00341F7A /* Stop.swift */; };
+		0053F5631D09D5C500E45632 /* StopsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0053F5621D09D5C500E45632 /* StopsRowController.swift */; };
 		005572591CE0FE5A00B70D26 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005572581CE0FE5A00B70D26 /* Route.swift */; };
 		0055725B1CE0FEB500B70D26 /* RoutesConnections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0055725A1CE0FEB500B70D26 /* RoutesConnections.swift */; };
+		005B44281D18518B009EE12E /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00430B5B1C9B23C700C71A06 /* FontAwesome.otf */; };
+		005BAE941D0452FB00F73C8A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005BAE921D0452FB00F73C8A /* Interface.storyboard */; };
+		005BAE961D0452FB00F73C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 005BAE951D0452FB00F73C8A /* Assets.xcassets */; };
+		005BAE9D1D0452FC00F73C8A /* tpg offline Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		005BAEA41D0452FC00F73C8A /* StopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEA31D0452FC00F73C8A /* StopsInterfaceController.swift */; };
+		005BAEA61D0452FC00F73C8A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEA51D0452FC00F73C8A /* ExtensionDelegate.swift */; };
+		005BAEA81D0452FC00F73C8A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEA71D0452FC00F73C8A /* NotificationController.swift */; };
+		005BAEAA1D0452FC00F73C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 005BAEA91D0452FC00F73C8A /* Assets.xcassets */; };
+		005BAEAE1D0452FC00F73C8A /* tpg offline Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 005BAE901D0452FB00F73C8A /* tpg offline Watch.app */; };
+		005BAEC01D04569800F73C8A /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005BAEBF1D04569800F73C8A /* WatchConnectivity.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		005BAEC21D04591800F73C8A /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEC11D04591800F73C8A /* WatchSessionManager.swift */; };
+		005BAEC51D045A5A00F73C8A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00500AF31C1B396F00341F7A /* Stop.swift */; };
+		005BAEC61D045A5C00F73C8A /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ABBE141C29C81B00479FF4 /* Departures.swift */; };
+		005BAEC71D045BA000F73C8A /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEC31D045A4F00F73C8A /* WatchSessionManager.swift */; };
+		005BAEC91D045C2E00F73C8A /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BAEC81D045C2E00F73C8A /* AppValues.swift */; };
 		005DF8111C0DF74E00377031 /* StopImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DF8101C0DF74E00377031 /* StopImageTableViewCell.swift */; };
 		0067FB261CD3B1AD007EFDE6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
 		0068B63D1CC7C0C1005815CE /* LoadingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068B63C1CC7C0C1005815CE /* LoadingCellTableViewCell.swift */; };
@@ -47,6 +65,7 @@
 		008F53191C18744500127BDA /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F53181C18744500127BDA /* AppValues.swift */; };
 		00ABBE151C29C81B00479FF4 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ABBE141C29C81B00479FF4 /* Departures.swift */; };
 		00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */; };
+		00B870A91D0B2598001027E5 /* DeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B870A81D0B2598001027E5 /* DeparturesInterfaceController.swift */; };
 		00BEB4371CBD61AA00DDD313 /* Thermometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BEB4361CBD61AA00DDD313 /* Thermometer.swift */; };
 		00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C8DD551C0CCACC004743A5 /* couleursLignes.json */; };
 		00C98C461C480E6E008E8B2A /* RoutesStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C98C451C480E6E008E8B2A /* RoutesStopsTableViewController.swift */; };
@@ -62,19 +81,31 @@
 		00DD017B1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD017A1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift */; };
 		00DDC0B21C255CED002B288E /* MapsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DDC0B11C255CED002B288E /* MapsListTableViewController.swift */; };
 		00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */; };
-		6AA6F721BA82513EE3E37063 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */; };
-		AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */; };
+		8F6520FDD3B9D2E54EBAA4CA /* Pods_tpg_offline_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8508D901F460022127623 /* Pods_tpg_offline_Watch_Extension.framework */; };
 		AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0148121C7F6CDE0057E884 /* WebViewController.swift */; };
 		AD11CD861C8336AA00DFF4AA /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */; };
 		AD11CD8E1C83373300DFF4AA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */; };
 		AD13B1061C78A09500ECCDFD /* FavoriteRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B1051C78A09500ECCDFD /* FavoriteRouteTableViewCell.swift */; };
 		AD3F41E21C7DB011009113F0 /* PremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E11C7DB011009113F0 /* PremiumTableViewCell.swift */; };
-		AD3F41E41C7DB31A009113F0 /* BuyPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3F41E31C7DB31A009113F0 /* BuyPremiumTableViewCell.swift */; };
-		AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */; };
 		ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB2D6D91C7A1BFD0023718F /* Localizable.strings */; };
+		F670C8159862DE0952B72A37 /* Pods_tpg_offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C1A2456E8A9AF7B38F9C1E /* Pods_tpg_offline.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		005BAE9E1D0452FC00F73C8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 002B47D51C01FA6F000BF3E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 005BAE9B1D0452FB00F73C8A;
+			remoteInfo = "tpg offline Watch Extension";
+		};
+		005BAEAC1D0452FC00F73C8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 002B47D51C01FA6F000BF3E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 005BAE8F1D0452FB00F73C8A;
+			remoteInfo = "tpg offline Watch";
+		};
 		AD11CD881C8336AA00DFF4AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 002B47D51C01FA6F000BF3E8 /* Project object */;
@@ -85,6 +116,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		002EC5FE1D0DA3F1005E6365 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAEB41D0452FC00F73C8A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				005BAE9D1D0452FC00F73C8A /* tpg offline Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAEB61D0452FC00F73C8A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				005BAEAE1D0452FC00F73C8A /* tpg offline Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00C6C3111CF5DA17000C1CF7 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,6 +163,11 @@
 /* Begin PBXFileReference section */
 		000ECABC1C469A3500E4FC92 /* RouteToStopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RouteToStopViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CreditsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0021FE351D2944A400A29A0B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Interface.strings; sourceTree = "<group>"; };
+		0021FE371D2944A600A29A0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
+		0021FE3B1D29499300A29A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0021FE3D1D29499B00A29A0B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0021FE3E1D29499D00A29A0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		002B47DD1C01FA6F000BF3E8 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B47E01C01FA6F000BF3E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		002B47E51C01FA6F000BF3E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,22 +179,37 @@
 		002B47F41C01FA87000BF3E8 /* DeparturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesTableViewCell.swift; sourceTree = "<group>"; };
 		002E5C751C132A680008623D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		002E5C771C1337DD0008623D /* NSUserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsExtension.swift; sourceTree = "<group>"; };
+		002EC5DE1D0D949D005E6365 /* DeparturesRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesRowController.swift; sourceTree = "<group>"; };
+		002EC5E31D0DA1FB005E6365 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.2.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		00391C461C271D1E005250D4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00391C481C271DA6005250D4 /* SelectDefaultTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SelectDefaultTabBarItem.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		003D10ED1C21A46800F9857E /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		00430B531C9B1EAD00C71A06 /* arrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrets.json; sourceTree = "<group>"; };
 		00430B5B1C9B23C700C71A06 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Pods/FontAwesomeKit/FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
 		00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
-		00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Material-Design-Iconic-Font.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
-		00430B5F1C9B23C700C71A06 /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = octicons.ttf; path = Pods/FontAwesomeKit/FontAwesomeKit/octicons.ttf; sourceTree = "<group>"; };
-		00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "Pods/FontAwesomeKit/FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
 		004D812A1C24737800C6AD55 /* Perturbations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perturbations.swift; sourceTree = "<group>"; };
 		004D812C1C2476BD00C6AD55 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		00500AF31C1B396F00341F7A /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Stop.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0053F5621D09D5C500E45632 /* StopsRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsRowController.swift; sourceTree = "<group>"; };
 		005572581CE0FE5A00B70D26 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0055725A1CE0FEB500B70D26 /* RoutesConnections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesConnections.swift; sourceTree = "<group>"; };
+		005BAE901D0452FB00F73C8A /* tpg offline Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		005BAE931D0452FB00F73C8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		005BAE951D0452FB00F73C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		005BAE971D0452FB00F73C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		005BAEA21D0452FC00F73C8A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		005BAEA31D0452FC00F73C8A /* StopsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsInterfaceController.swift; sourceTree = "<group>"; };
+		005BAEA51D0452FC00F73C8A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		005BAEA71D0452FC00F73C8A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		005BAEA91D0452FC00F73C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		005BAEAB1D0452FC00F73C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		005BAEBF1D04569800F73C8A /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		005BAEC11D04591800F73C8A /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		005BAEC31D045A4F00F73C8A /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchSessionManager.swift; path = "../tpg offline Watch/WatchSessionManager.swift"; sourceTree = "<group>"; };
+		005BAEC81D045C2E00F73C8A /* AppValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppValues.swift; path = "../tpg offline Watch/AppValues.swift"; sourceTree = "<group>"; };
 		005DF8101C0DF74E00377031 /* StopImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StopImageTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0068B63C1CC7C0C1005815CE /* LoadingCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCellTableViewCell.swift; sourceTree = "<group>"; };
 		007266271C259191009EFEB5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MapViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -141,6 +224,7 @@
 		00ABBE141C29C81B00479FF4 /* Departures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
 		00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tpg offline-Bridging-Header.h"; sourceTree = "<group>"; };
 		00B7CBC61C4A5A6400BB85CC /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TimeSelectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		00B870A81D0B2598001027E5 /* DeparturesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesInterfaceController.swift; sourceTree = "<group>"; };
 		00BEB4361CBD61AA00DDD313 /* Thermometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thermometer.swift; sourceTree = "<group>"; };
 		00C6C3021CF5DA16000C1CF7 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		00C8DD551C0CCACC004743A5 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
@@ -160,24 +244,23 @@
 		00DD017A1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		00DDC0B11C255CED002B288E /* MapsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MapsListTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CBA50C07BBC5B44B48B8F11 /* Pods-tpg offline Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		11D8520CFA99930E118500BB /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
 		253CE6CB67EE399CF499A811 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
-		5D5BB7521D54A8A7E8FAD5FF /* Pods_tpg_offline_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewController.swift; sourceTree = "<group>"; };
+		27C1A2456E8A9AF7B38F9C1E /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0148121C7F6CDE0057E884 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD11CD851C8336AA00DFF4AA /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UITests.swift; sourceTree = "<group>"; };
 		AD11CD871C8336AA00DFF4AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		AD11CD8D1C83373300DFF4AA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; usesTabs = 0; };
 		AD13B1051C78A09500ECCDFD /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
 		AD3F41E11C7DB011009113F0 /* PremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumTableViewCell.swift; sourceTree = "<group>"; };
-		AD3F41E31C7DB31A009113F0 /* BuyPremiumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyPremiumTableViewCell.swift; sourceTree = "<group>"; };
-		AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ADB2D6D31C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		ADB2D6D41C7A1BC30023718F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ADB2D6D81C7A1BFD0023718F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
+		B1B98CE9FCFF7F8966643507 /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
+		B37EFC05092C7ED1B6515408 /* Pods-tpg offline Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tpg offline Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		D3F8508D901F460022127623 /* Pods_tpg_offline_Watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline_Watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,10 +268,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005BAEC01D04569800F73C8A /* WatchConnectivity.framework in Frameworks */,
 				00D0355C1C0E25D600B3697D /* CoreLocation.framework in Frameworks */,
 				002E5C761C132A680008623D /* MapKit.framework in Frameworks */,
-				AD3F41E61C7DBB8A009113F0 /* StoreKit.framework in Frameworks */,
-				6AA6F721BA82513EE3E37063 /* Pods_tpg_offline.framework in Frameworks */,
+				F670C8159862DE0952B72A37 /* Pods_tpg_offline.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE991D0452FB00F73C8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F6520FDD3B9D2E54EBAA4CA /* Pods_tpg_offline_Watch_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F73D9D9A88D6A87DE0352F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				002EC5E41D0DA1FB005E6365 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,16 +308,15 @@
 				003D10ED1C21A46800F9857E /* Ionicons.ttf */,
 				00430B5B1C9B23C700C71A06 /* FontAwesome.otf */,
 				00430B5C1C9B23C700C71A06 /* foundation-icons.ttf */,
-				00430B5E1C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf */,
-				00430B5F1C9B23C700C71A06 /* octicons.ttf */,
-				00430B601C9B23C700C71A06 /* zocial-regular-webfont.ttf */,
 				00430B531C9B1EAD00C71A06 /* arrets.json */,
 				002B47DF1C01FA6F000BF3E8 /* tpg offline */,
 				AD11CD841C8336AA00DFF4AA /* tpg offline UITests */,
+				005BAE911D0452FB00F73C8A /* tpg offline Watch */,
+				005BAEA01D0452FC00F73C8A /* tpg offline Watch Extension */,
 				002B47DE1C01FA6F000BF3E8 /* Products */,
 				A65315FEF759993751E0088F /* Frameworks */,
 				00B7CBBF1C4A531B00BB85CC /* tpg offline-Bridging-Header.h */,
-				F1EC4FF71627F150B69628C0 /* Pods */,
+				40676B7323B0F34A87EAE820 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,6 +325,8 @@
 			children = (
 				002B47DD1C01FA6F000BF3E8 /* tpg offline.app */,
 				AD11CD831C8336AA00DFF4AA /* tpg offline UITests.xctest */,
+				005BAE901D0452FB00F73C8A /* tpg offline Watch.app */,
+				005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -259,10 +359,44 @@
 				00E20C2F1C4429D6007BAD3D /* LocationSettingsTableViewController.swift */,
 				002149141C5BDDC5009C0264 /* CreditsTableViewController.swift */,
 				004E8BD51C6E23840055006B /* ThemesCollectionViewController.swift */,
-				AD00CEA11C7D903500527EC7 /* PremiumTableViewController.swift */,
 				AD0148121C7F6CDE0057E884 /* WebViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		005BAE911D0452FB00F73C8A /* tpg offline Watch */ = {
+			isa = PBXGroup;
+			children = (
+				005BAE921D0452FB00F73C8A /* Interface.storyboard */,
+				005BAE951D0452FB00F73C8A /* Assets.xcassets */,
+				005BAE971D0452FB00F73C8A /* Info.plist */,
+			);
+			path = "tpg offline Watch";
+			sourceTree = "<group>";
+		};
+		005BAEA01D0452FC00F73C8A /* tpg offline Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				00B870A71D0B255A001027E5 /* InterfacesControllers */,
+				005BAEC31D045A4F00F73C8A /* WatchSessionManager.swift */,
+				005BAEC81D045C2E00F73C8A /* AppValues.swift */,
+				005BAEA51D0452FC00F73C8A /* ExtensionDelegate.swift */,
+				005BAEA71D0452FC00F73C8A /* NotificationController.swift */,
+				005BAEA91D0452FC00F73C8A /* Assets.xcassets */,
+				005BAEAB1D0452FC00F73C8A /* Info.plist */,
+				005BAEA11D0452FC00F73C8A /* Supporting Files */,
+				00B870A61D0B24C5001027E5 /* RowsControllers */,
+				0021FE3C1D29499300A29A0B /* Localizable.strings */,
+			);
+			path = "tpg offline Watch Extension";
+			sourceTree = "<group>";
+		};
+		005BAEA11D0452FC00F73C8A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				005BAEA21D0452FC00F73C8A /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		005DF8121C0DF75300377031 /* Cells */ = {
@@ -272,7 +406,6 @@
 				005DF8101C0DF74E00377031 /* StopImageTableViewCell.swift */,
 				004E8BD71C6E24870055006B /* ThemeCollectionViewCell.swift */,
 				AD3F41E11C7DB011009113F0 /* PremiumTableViewCell.swift */,
-				AD3F41E31C7DB31A009113F0 /* BuyPremiumTableViewCell.swift */,
 				00DA802E1CBAA9090006ADB3 /* SeeLineTableViewCell.swift */,
 				0068B63C1CC7C0C1005815CE /* LoadingCellTableViewCell.swift */,
 				00DD017A1CEE0E2F00F92EAD /* AllDeparturesCollectionViewCell.swift */,
@@ -304,6 +437,24 @@
 				007D924E1C4AA27E0036BEE6 /* RouteDetailTableViewController.swift */,
 			);
 			name = Routes;
+			sourceTree = "<group>";
+		};
+		00B870A61D0B24C5001027E5 /* RowsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0053F5621D09D5C500E45632 /* StopsRowController.swift */,
+				002EC5DE1D0D949D005E6365 /* DeparturesRowController.swift */,
+			);
+			name = RowsControllers;
+			sourceTree = "<group>";
+		};
+		00B870A71D0B255A001027E5 /* InterfacesControllers */ = {
+			isa = PBXGroup;
+			children = (
+				005BAEA31D0452FC00F73C8A /* StopsInterfaceController.swift */,
+				00B870A81D0B2598001027E5 /* DeparturesInterfaceController.swift */,
+			);
+			name = InterfacesControllers;
 			sourceTree = "<group>";
 		};
 		00DDC0AC1C254FD7002B288E /* Departures */ = {
@@ -339,6 +490,7 @@
 				00C98C491C4810E1008E8B2A /* SearchRoute.swift */,
 				00BEB4361CBD61AA00DDD313 /* Thermometer.swift */,
 				0055725A1CE0FEB500B70D26 /* RoutesConnections.swift */,
+				005BAEC11D04591800F73C8A /* WatchSessionManager.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -361,16 +513,28 @@
 			name = Maps;
 			sourceTree = "<group>";
 		};
+		40676B7323B0F34A87EAE820 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1B98CE9FCFF7F8966643507 /* Pods-tpg offline.debug.xcconfig */,
+				11D8520CFA99930E118500BB /* Pods-tpg offline.release.xcconfig */,
+				0CBA50C07BBC5B44B48B8F11 /* Pods-tpg offline Watch Extension.debug.xcconfig */,
+				B37EFC05092C7ED1B6515408 /* Pods-tpg offline Watch Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A65315FEF759993751E0088F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD3F41E51C7DBB8A009113F0 /* StoreKit.framework */,
+				002EC5E31D0DA1FB005E6365 /* CoreText.framework */,
+				005BAEBF1D04569800F73C8A /* WatchConnectivity.framework */,
 				002E5C751C132A680008623D /* MapKit.framework */,
 				00D0355B1C0E25D600B3697D /* CoreLocation.framework */,
 				253CE6CB67EE399CF499A811 /* Pods.framework */,
-				139EB3711623A6181C3C3BE8 /* Pods_tpg_offline.framework */,
 				00C6C3021CF5DA16000C1CF7 /* NotificationCenter.framework */,
-				5D5BB7521D54A8A7E8FAD5FF /* Pods_tpg_offline_Widget.framework */,
+				27C1A2456E8A9AF7B38F9C1E /* Pods_tpg_offline.framework */,
+				D3F8508D901F460022127623 /* Pods_tpg_offline_Watch_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -385,15 +549,6 @@
 			path = "tpg offline UITests";
 			sourceTree = "<group>";
 		};
-		F1EC4FF71627F150B69628C0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */,
-				E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -401,26 +556,64 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 002B47EF1C01FA6F000BF3E8 /* Build configuration list for PBXNativeTarget "tpg offline" */;
 			buildPhases = (
-				3257DBC54C85AECC59F63B1F /* 📦 Check Pods Manifest.lock */,
-				819CE82D7E4E10B8611CB691 /* uD83DuDCE6 Check Pods Manifest.lock */,
+				819CE82D7E4E10B8611CB691 /* [CP] Check Pods Manifest.lock */,
 				002B47D91C01FA6F000BF3E8 /* Sources */,
 				002B47DA1C01FA6F000BF3E8 /* Frameworks */,
 				002B47DB1C01FA6F000BF3E8 /* Resources */,
 				0000AA101CEC98F4002E6B9A /* uD83DuDCE6 Fabric */,
-				42DA7807C14FFD31F49FDE75 /* uD83DuDCE6 Embed Pods Frameworks */,
-				81EA3E643D789D91F73619C7 /* uD83DuDCE6 Copy Pods Resources */,
+				42DA7807C14FFD31F49FDE75 /* [CP] Embed Pods Frameworks */,
+				81EA3E643D789D91F73619C7 /* [CP] Copy Pods Resources */,
 				00C6C3111CF5DA17000C1CF7 /* Embed App Extensions */,
-				907F31B0A98F9474746F6C74 /* 📦 Embed Pods Frameworks */,
-				9884B974D93DE1FAAE2FC0C4 /* 📦 Copy Pods Resources */,
+				005BAEB61D0452FC00F73C8A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				005BAEAD1D0452FC00F73C8A /* PBXTargetDependency */,
 			);
 			name = "tpg offline";
 			productName = "tpg offline";
 			productReference = 002B47DD1C01FA6F000BF3E8 /* tpg offline.app */;
 			productType = "com.apple.product-type.application";
+		};
+		005BAE8F1D0452FB00F73C8A /* tpg offline Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 005BAEB51D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch" */;
+			buildPhases = (
+				005BAE8E1D0452FB00F73C8A /* Resources */,
+				005BAEB41D0452FC00F73C8A /* Embed App Extensions */,
+				3F73D9D9A88D6A87DE0352F6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				005BAE9F1D0452FC00F73C8A /* PBXTargetDependency */,
+			);
+			name = "tpg offline Watch";
+			productName = "tpg offline Watch";
+			productReference = 005BAE901D0452FB00F73C8A /* tpg offline Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		005BAE9B1D0452FB00F73C8A /* tpg offline Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 005BAEB31D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch Extension" */;
+			buildPhases = (
+				11680781195D29544EC0DFCC /* [CP] Check Pods Manifest.lock */,
+				005BAE981D0452FB00F73C8A /* Sources */,
+				005BAE991D0452FB00F73C8A /* Frameworks */,
+				005BAE9A1D0452FB00F73C8A /* Resources */,
+				002EC5FE1D0DA3F1005E6365 /* Embed Frameworks */,
+				BFEF9BDFA598FDEE5E3351FB /* [CP] Embed Pods Frameworks */,
+				4E13F8F49DD58B9F5EBC7F0B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tpg offline Watch Extension";
+			productName = "tpg offline Watch Extension";
+			productReference = 005BAE9C1D0452FB00F73C8A /* tpg offline Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		AD11CD821C8336AA00DFF4AA /* tpg offline UITests */ = {
 			isa = PBXNativeTarget;
@@ -447,23 +640,33 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = dacostafaro;
 				TargetAttributes = {
 					002B47DC1C01FA6F000BF3E8 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 767R4Y4A3U;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 						};
+					};
+					005BAE8F1D0452FB00F73C8A = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 767R4Y4A3U;
+					};
+					005BAE9B1D0452FB00F73C8A = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 767R4Y4A3U;
+						LastSwiftMigration = 0800;
 					};
 					AD11CD821C8336AA00DFF4AA = {
 						CreatedOnToolsVersion = 7.3;
@@ -487,6 +690,8 @@
 			targets = (
 				002B47DC1C01FA6F000BF3E8 /* tpg offline */,
 				AD11CD821C8336AA00DFF4AA /* tpg offline UITests */,
+				005BAE8F1D0452FB00F73C8A /* tpg offline Watch */,
+				005BAE9B1D0452FB00F73C8A /* tpg offline Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -498,16 +703,34 @@
 			files = (
 				003D10EE1C21A47400F9857E /* Ionicons.ttf in Resources */,
 				00430B611C9B23C700C71A06 /* FontAwesome.otf in Resources */,
-				00430B661C9B23C700C71A06 /* zocial-regular-webfont.ttf in Resources */,
-				00430B641C9B23C700C71A06 /* Material-Design-Iconic-Font.ttf in Resources */,
 				00430B621C9B23C700C71A06 /* foundation-icons.ttf in Resources */,
 				002B47EB1C01FA6F000BF3E8 /* LaunchScreen.storyboard in Resources */,
 				002B47E81C01FA6F000BF3E8 /* Assets.xcassets in Resources */,
 				ADB2D6D71C7A1BFD0023718F /* Localizable.strings in Resources */,
-				00430B651C9B23C700C71A06 /* octicons.ttf in Resources */,
 				00430B541C9B1EAD00C71A06 /* arrets.json in Resources */,
 				002B47E61C01FA6F000BF3E8 /* Main.storyboard in Resources */,
 				00C8DD561C0CCACC004743A5 /* couleursLignes.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE8E1D0452FB00F73C8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				005BAE961D0452FB00F73C8A /* Assets.xcassets in Resources */,
+				005BAE941D0452FB00F73C8A /* Interface.storyboard in Resources */,
+				005B44281D18518B009EE12E /* FontAwesome.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE9A1D0452FB00F73C8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				005BAEAA1D0452FC00F73C8A /* Assets.xcassets in Resources */,
+				0021FE3A1D29499300A29A0B /* Localizable.strings in Resources */,
+				002EC5E01D0D9EB8005E6365 /* couleursLignes.json in Resources */,
+				002EC6371D0DAB70005E6365 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,14 +759,14 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 75b8798b16086f8a41d0d9fbe73703be77a9706c 598a875e80bdece5e37bb2c05ba976b83626e6d2ac1016c6335b76beadf12eca";
 		};
-		3257DBC54C85AECC59F63B1F /* 📦 Check Pods Manifest.lock */ = {
+		11680781195D29544EC0DFCC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,14 +774,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		42DA7807C14FFD31F49FDE75 /* uD83DuDCE6 Embed Pods Frameworks */ = {
+		42DA7807C14FFD31F49FDE75 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "uD83DuDCE6 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,14 +789,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		819CE82D7E4E10B8611CB691 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
+		4E13F8F49DD58B9F5EBC7F0B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		819CE82D7E4E10B8611CB691 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,14 +819,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		81EA3E643D789D91F73619C7 /* uD83DuDCE6 Copy Pods Resources */ = {
+		81EA3E643D789D91F73619C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "uD83DuDCE6 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,34 +834,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		907F31B0A98F9474746F6C74 /* 📦 Embed Pods Frameworks */ = {
+		BFEF9BDFA598FDEE5E3351FB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9884B974D93DE1FAAE2FC0C4 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline/Pods-tpg offline-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tpg offline Watch Extension/Pods-tpg offline Watch Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -655,7 +878,6 @@
 				00391C471C271D1E005250D4 /* SettingsTableViewController.swift in Sources */,
 				00ABBE151C29C81B00479FF4 /* Departures.swift in Sources */,
 				005572591CE0FE5A00B70D26 /* Route.swift in Sources */,
-				AD3F41E41C7DB31A009113F0 /* BuyPremiumTableViewCell.swift in Sources */,
 				002B47F51C01FA87000BF3E8 /* StopsTableViewController.swift in Sources */,
 				00E20C301C4429D6007BAD3D /* LocationSettingsTableViewController.swift in Sources */,
 				AD0148131C7F6CDE0057E884 /* WebViewController.swift in Sources */,
@@ -667,18 +889,35 @@
 				007778FA1CEB5089007C5630 /* SeeAllDeparturesViewController.swift in Sources */,
 				007D924B1C4A989F0036BEE6 /* SwitchTableViewCell.swift in Sources */,
 				0055725B1CE0FEB500B70D26 /* RoutesConnections.swift in Sources */,
-				AD00CEA21C7D903500527EC7 /* PremiumTableViewController.swift in Sources */,
 				002B47E11C01FA6F000BF3E8 /* AppDelegate.swift in Sources */,
 				00B7CBC71C4A5A6400BB85CC /* TimeSelectionViewController.swift in Sources */,
 				00DCD9591C285EBB0094C0EB /* Ticket.swift in Sources */,
 				0068B63D1CC7C0C1005815CE /* LoadingCellTableViewCell.swift in Sources */,
 				004D812B1C24737800C6AD55 /* Perturbations.swift in Sources */,
 				005DF8111C0DF74E00377031 /* StopImageTableViewCell.swift in Sources */,
+				005BAEC21D04591800F73C8A /* WatchSessionManager.swift in Sources */,
 				008B84441C232D84007BE1B3 /* IncidentsTableViewController.swift in Sources */,
 				007D924D1C4A98A80036BEE6 /* ButtonTableViewCell.swift in Sources */,
 				00DDC0B21C255CED002B288E /* MapsListTableViewController.swift in Sources */,
 				004E8BD81C6E24870055006B /* ThemeCollectionViewCell.swift in Sources */,
 				00C98C4A1C4810E1008E8B2A /* SearchRoute.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		005BAE981D0452FB00F73C8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0053F5631D09D5C500E45632 /* StopsRowController.swift in Sources */,
+				002EC5DF1D0D949D005E6365 /* DeparturesRowController.swift in Sources */,
+				005BAEA81D0452FC00F73C8A /* NotificationController.swift in Sources */,
+				00B870A91D0B2598001027E5 /* DeparturesInterfaceController.swift in Sources */,
+				005BAEA61D0452FC00F73C8A /* ExtensionDelegate.swift in Sources */,
+				005BAEC71D045BA000F73C8A /* WatchSessionManager.swift in Sources */,
+				005BAEA41D0452FC00F73C8A /* StopsInterfaceController.swift in Sources */,
+				005BAEC91D045C2E00F73C8A /* AppValues.swift in Sources */,
+				005BAEC51D045A5A00F73C8A /* Stop.swift in Sources */,
+				005BAEC61D045A5C00F73C8A /* Departures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +933,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		005BAE9F1D0452FC00F73C8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 005BAE9B1D0452FB00F73C8A /* tpg offline Watch Extension */;
+			targetProxy = 005BAE9E1D0452FC00F73C8A /* PBXContainerItemProxy */;
+		};
+		005BAEAD1D0452FC00F73C8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 005BAE8F1D0452FB00F73C8A /* tpg offline Watch */;
+			targetProxy = 005BAEAC1D0452FC00F73C8A /* PBXContainerItemProxy */;
+		};
 		AD11CD891C8336AA00DFF4AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 002B47DC1C01FA6F000BF3E8 /* tpg offline */;
@@ -702,6 +951,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0021FE3C1D29499300A29A0B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0021FE3B1D29499300A29A0B /* Base */,
+				0021FE3D1D29499B00A29A0B /* fr */,
+				0021FE3E1D29499D00A29A0B /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		002B47E41C01FA6F000BF3E8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -722,6 +981,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		005BAE921D0452FB00F73C8A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				005BAE931D0452FB00F73C8A /* Base */,
+				0021FE351D2944A400A29A0B /* fr */,
+				0021FE371D2944A600A29A0B /* en */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		ADB2D6D91C7A1BFD0023718F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -739,6 +1008,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -784,6 +1054,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -820,8 +1091,9 @@
 		};
 		002B47F01C01FA6F000BF3E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 539FFD61F5A22907B10CDAB0 /* Pods-tpg offline.debug.xcconfig */;
+			baseConfigurationReference = B1B98CE9FCFF7F8966643507 /* Pods-tpg offline.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -843,20 +1115,22 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACH_O_TYPE = mh_execute;
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "tpg offline-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		002B47F11C01FA6F000BF3E8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E73220C66195349E002695C1 /* Pods-tpg offline.release.xcconfig */;
+			baseConfigurationReference = 11D8520CFA99930E118500BB /* Pods-tpg offline.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -877,13 +1151,93 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACH_O_TYPE = mh_execute;
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "tpg offline-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		005BAEAF1D0452FC00F73C8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				IBSC_MODULE = tpg_offline_Watch_Extension;
+				INFOPLIST_FILE = "tpg offline Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		005BAEB01D0452FC00F73C8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				IBSC_MODULE = tpg_offline_Watch_Extension;
+				INFOPLIST_FILE = "tpg offline Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		005BAEB11D0452FC00F73C8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CBA50C07BBC5B44B48B8F11 /* Pods-tpg offline Watch Extension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "tpg offline Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		005BAEB21D0452FC00F73C8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B37EFC05092C7ED1B6515408 /* Pods-tpg offline Watch Extension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "tpg offline Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
@@ -896,7 +1250,6 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -913,10 +1266,10 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TEST_TARGET_NAME = "tpg offline";
 			};
 			name = Release;
@@ -938,6 +1291,24 @@
 			buildConfigurations = (
 				002B47F01C01FA6F000BF3E8 /* Debug */,
 				002B47F11C01FA6F000BF3E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		005BAEB31D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				005BAEB11D0452FC00F73C8A /* Debug */,
+				005BAEB21D0452FC00F73C8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		005BAEB51D0452FC00F73C8A /* Build configuration list for PBXNativeTarget "tpg offline Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				005BAEAF1D0452FC00F73C8A /* Debug */,
+				005BAEB01D0452FC00F73C8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

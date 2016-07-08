@@ -30,24 +30,19 @@ platform :ios do
     scan
   end
 
-  lane :snapshot do
+  lane :screenshot do
   	snapshot(
 	erase_simulator: true,
     	clear_previous_screenshots: true,
-     	languages: ["fr-FR"],
+     	languages: ["fr-FR", "en-US"],
      	devices: [
   			"iPhone 6s",
   			"iPhone 6s Plus",
   			"iPhone 5",
   			"iPhone 4s",
   			"iPad Retina",
-  			"iPad Pro"
-		]
+  		]
     )
-  end
-
-  lane :frameit do
-    frameit
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"

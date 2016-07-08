@@ -7,22 +7,21 @@
 // 
 //  https://github.com/WenchaoD
 //
+//
+//  FSCalendar is a superior awesome calendar control with high performance, high customizablility and very simple usage.
+//
+//  @warning All NSDate instances used in the calendar should be managed by the DateTools category. See FSCalendar+DateTools.
+//
+//  @see FSCalendarDataSource
+//  @see FSCalendarDelegate
+//  @see FSCalendarDelegateAppearance
+//  @see FSCalendarAppearance
+//  @see FSCalendar+DateTools
+//
 
 #import <UIKit/UIKit.h>
 #import "FSCalendarAppearance.h"
 #import "FSCalendarConstance.h"
-
-/**
- * FSCalendar is a superior awesome calendar control with high performance, high customizablility and very simple usage.
- *
- * @warning All NSDate instances used in the calendar should be managed by the DateTools category. See FSCalendar+DateTools.
- *
- * @see FSCalendarDataSource
- * @see FSCalendarDelegate
- * @see FSCalendarDelegateAppearance
- * @see FSCalendarAppearance
- * @see FSCalendar+DateTools
- */
 
 //! Project version number for FSCalendar.
 FOUNDATION_EXPORT double FSCalendarVersionNumber;
@@ -56,6 +55,11 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol FSCalendarDataSource <NSObject>
 
 @optional
+
+/**
+ * Asks the dataSource for a title for the specific date as a replacement of the day text
+ */
+- (nullable NSString *)calendar:(FSCalendar *)calendar titleForDate:(NSDate *)date;
 
 /**
  * Asks the dataSource for a subtitle for the specific date under the day text.
@@ -318,6 +322,17 @@ IB_DESIGNABLE
  * A Boolean value that determines whether the calendar should show days out of month. Default is YES.
  */
 @property (assign, nonatomic) IBInspectable BOOL showsPlaceholders;
+
+/**
+ * A Boolean value that determines whether the calendar should show a handle for control the scope. Default is NO;
+ */
+@property (assign, nonatomic) IBInspectable BOOL showsScopeHandle;
+
+
+/**
+ * The multiplier of line height while paging enabled is NO. Default is 1.0;
+ */
+@property (assign, nonatomic) IBInspectable CGFloat lineHeightMultiplier;
 
 /**
  * The calendar appearance used to control the global fonts、colors .etc

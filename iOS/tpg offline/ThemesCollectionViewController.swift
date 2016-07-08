@@ -14,12 +14,15 @@ private let reuseIdentifier = "ThemesCell"
 
 class ThemesCollectionViewController: UICollectionViewController {
     let themes = [
-        "Défaut".localized() : [UIColor.flatOrangeColor(), UIColor.flatOrangeColorDark(), UIColor.whiteColor()],
-        "Inversé".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatOrangeColorDark()],
-        "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatNavyBlueColorDark(), UIColor.flatWhiteColor()],
-        "Menthe".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatMintColorDark()],
-        "Bleu".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatSkyBlueColor()],
-        "Vert".localized() : [UIColor.flatWhiteColor(), UIColor.flatWhiteColor().darkenByPercentage(0.1), UIColor.flatGreenColorDark()]
+        "Défaut".localized() : [UIColor.flatOrangeColor(), UIColor.whiteColor()],
+        "Inversé".localized() : [UIColor.flatWhiteColor(), UIColor.flatOrangeColorDark()],
+        "Nuit".localized() : [UIColor.flatNavyBlueColor(), UIColor.flatWhiteColor()],
+        "Menthe".localized() : [UIColor.flatWhiteColor(), UIColor.flatMintColorDark()],
+        "Bleu".localized() : [UIColor.flatWhiteColor(), UIColor.flatSkyBlueColor()],
+        "Vert".localized() : [UIColor.flatWhiteColor(), UIColor.flatGreenColorDark()],
+        "Noir".localized() : [UIColor.flatWhiteColor(), UIColor.flatBlackColorDark()],
+        "Forêt".localized() : [UIColor.flatWhiteColor(), UIColor.flatForestGreenColor()],
+        "Mauve".localized() : [UIColor.flatWhiteColor(), UIColor.flatMagentaColor()]
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -34,7 +37,7 @@ class ThemesCollectionViewController: UICollectionViewController {
             }
             return false
         })
-        collectionView!.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.2)
+        collectionView!.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
 	}
 
     override func didReceiveMemoryWarning() {
@@ -59,8 +62,7 @@ class ThemesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ThemeCollectionViewCell
     
         cell.primaryColorView.backgroundColor = themes[keys[indexPath.row]]![0]
-        cell.secondaryColorView.backgroundColor = themes[keys[indexPath.row]]![1]
-        cell.textColorLabel.textColor = themes[keys[indexPath.row]]![2]
+        cell.textColorLabel.textColor = themes[keys[indexPath.row]]![1]
         cell.textColorLabel.text = keys[indexPath.row]
     
         return cell
@@ -74,13 +76,11 @@ class ThemesCollectionViewController: UICollectionViewController {
 	
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         AppValues.primaryColor = themes[keys[indexPath.row]]![0]
-        AppValues.secondaryColor = themes[keys[indexPath.row]]![1]
-        AppValues.textColor = themes[keys[indexPath.row]]![2]
+        AppValues.textColor = themes[keys[indexPath.row]]![1]
         refreshTheme()
-        collectionView.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.2)
+        collectionView.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
 		
         defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")
-        defaults.setColor(AppValues.secondaryColor, forKey: "secondaryColor")
         defaults.setColor(AppValues.textColor, forKey: "textColor")
 		
 		setTabBar()
@@ -94,51 +94,44 @@ class ThemesCollectionViewController: UICollectionViewController {
     }
 	
 	func setTabBar() {
-		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Selected)
-		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Normal)
-		
-		tabBarController!.tabBar.barTintColor = AppValues.secondaryColor
-		tabBarController!.tabBar.tintColor = AppValues.textColor
-		let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
-		
-		if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
-			tabBarController!.tabBar.barTintColor = AppValues.secondaryColor
-			view.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
-		}
-		else {
-			tabBarController!.tabBar.barTintColor = AppValues.secondaryColor.darkenByPercentage(0.1)
-			view.backgroundColor = AppValues.secondaryColor
-		}
-		
-		UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-		view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
-		let image = UIGraphicsGetImageFromCurrentImageContext()
-		UIGraphicsEndImageContext()
-		tabBarController!.tabBar.selectionIndicatorImage = image
-		
-		let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
-		iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-		tabBarController!.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		tabBarController!.tabBar.items![0].selectedImage = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		
-		let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
-		iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-		tabBarController!.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		tabBarController!.tabBar.items![1].selectedImage = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		
-		let iconeItineraire = FAKFontAwesome.mapSignsIconWithSize(20)
-		iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-		tabBarController!.tabBar.items![2].image = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		tabBarController!.tabBar.items![2].selectedImage = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		
-		let iconePlan = FAKFontAwesome.mapIconWithSize(20)
-		iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-		tabBarController!.tabBar.items![3].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		tabBarController!.tabBar.items![3].selectedImage = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		
-		let iconeParametre = FAKFontAwesome.cogIconWithSize(20)
-		iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-		tabBarController!.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-		tabBarController!.tabBar.items![4].selectedImage = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-	}
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], forState: .Normal)
+        
+        tabBarController!.tabBar.tintColor = AppValues.textColor
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
+        
+        tabBarController!.tabBar.barTintColor = AppValues.primaryColor
+        view.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.05)
+        
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
+        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        tabBarController!.tabBar.selectionIndicatorImage = image
+        
+        let iconeHorloge = FAKIonIcons.iosClockIconWithSize(20)
+        iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        tabBarController!.tabBar.items![0].image = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        tabBarController!.tabBar.items![0].selectedImage = iconeHorloge.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        let iconeAttention = FAKFontAwesome.warningIconWithSize(20)
+        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        tabBarController!.tabBar.items![1].image = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        tabBarController!.tabBar.items![1].selectedImage = iconeAttention.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        let iconeItineraire = FAKFontAwesome.mapSignsIconWithSize(20)
+        iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        tabBarController!.tabBar.items![2].image = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        tabBarController!.tabBar.items![2].selectedImage = iconeItineraire.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        let iconePlan = FAKFontAwesome.mapIconWithSize(20)
+        iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        tabBarController!.tabBar.items![3].image = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        tabBarController!.tabBar.items![3].selectedImage = iconePlan.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        
+        let iconeParametre = FAKFontAwesome.cogIconWithSize(20)
+        iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        tabBarController!.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+        tabBarController!.tabBar.items![4].selectedImage = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
+    }
 }

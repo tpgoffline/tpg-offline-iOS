@@ -43,7 +43,7 @@ class RoutesTableViewController: UITableViewController {
 	}
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		
+		refreshTheme()
 		ActualRoutes.canFavorite = true
 		refreshTheme()
 	}
@@ -112,7 +112,7 @@ class RoutesTableViewController: UITableViewController {
 				cell.backgroundColor = AppValues.primaryColor
 				
 				let view = UIView()
-				view.backgroundColor = AppValues.secondaryColor
+				view.backgroundColor = AppValues.primaryColor
 				cell.selectedBackgroundView = view
 				return cell
 			}
@@ -122,11 +122,11 @@ class RoutesTableViewController: UITableViewController {
 				cell.switchObject.rightTitle = row[indexPath.row][2] as! String
 				if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
 					cell.switchObject.backgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
-					cell.switchObject.selectedBackgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+					cell.switchObject.selectedBackgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
 				}
 				else {
 					cell.switchObject.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
-					cell.switchObject.selectedBackgroundColor = AppValues.secondaryColor.lightenByPercentage(0.1)
+					cell.switchObject.selectedBackgroundColor = AppValues.primaryColor.lightenByPercentage(0.1)
 				}
 				
 				cell.switchObject.titleColor = AppValues.textColor
@@ -137,26 +137,26 @@ class RoutesTableViewController: UITableViewController {
 				cell.switchObject.addTarget(self, action:#selector(RoutesTableViewController.dateArriveeChange(_:)), forControlEvents: .ValueChanged)
 				cell.backgroundColor = AppValues.primaryColor
 				let view = UIView()
-				view.backgroundColor = AppValues.secondaryColor
+				view.backgroundColor = AppValues.primaryColor
 				cell.selectedBackgroundView = view
 				return cell
 			}
 			else {
 				let cell = tableView.dequeueReusableCellWithIdentifier("buttonCell", forIndexPath: indexPath) as! ButtonTableViewCell
 				cell.button.setTitle((row[indexPath.row][1] as! String), forState: .Normal)
-				cell.button.backgroundColor = AppValues.secondaryColor
+				cell.button.backgroundColor = AppValues.primaryColor
 				cell.button.tintColor = AppValues.textColor
 				cell.button.addTarget(self, action: #selector(RoutesTableViewController.rechercher(_:)), forControlEvents: .TouchUpInside)
-                cell.backgroundColor = AppValues.secondaryColor
+                cell.backgroundColor = AppValues.primaryColor
 				let view = UIView()
-				view.backgroundColor = AppValues.secondaryColor
+				view.backgroundColor = AppValues.primaryColor
 				cell.selectedBackgroundView = view
 				return cell
 			}
 		}
 		else {
 			let cell = tableView.dequeueReusableCellWithIdentifier("favorisCell", forIndexPath: indexPath) as! FavoriteRouteTableViewCell
-			cell.iconView.backgroundColor = AppValues.secondaryColor
+			cell.iconView.backgroundColor = AppValues.primaryColor
 			
 			let starIcon = FAKFontAwesome.starIconWithSize(20)
 			starIcon.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
@@ -217,7 +217,7 @@ class RoutesTableViewController: UITableViewController {
 		
 	override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let returnedView = UIView()
-		returnedView.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
+		returnedView.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.1)
 		
 		let label = UILabel(frame: CGRect(x: 20, y: 5, width: 500, height: 30))
 		label.text = headers[section]

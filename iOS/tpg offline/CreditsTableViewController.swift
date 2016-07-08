@@ -31,11 +31,10 @@ class CreditsTableViewController: UITableViewController {
 		["Alamofire", "Projet maintenu sur GitHub par Alamofire - Projet en licence MIT".localized(), "https://github.com/Alamofire/Alamofire.git"],
 		["EFCircularSlider", "Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT".localized(), "https://github.com/RemyDCF/EFCircularSlider.git"],
 		["SwiftDate", "Projet maintenu sur GitHub par malcommac - Projet en licence MIT".localized(), "https://github.com/malcommac/SwiftDate"],
-		["Log", "Projet maintenu sur GitHub par delba - Projet en licence MIT".localized(), "https://github.com/delba/Log.git"],
+		["SwiftyBeaver", "Projet maintenu sur GitHub par SwiftyBeaver - Projet en licence MIT".localized(), "https://github.com/SwiftyBeaver/SwiftyBeaver.git"],
 		["NVActivityIndicatorView", "Projet maintenu sur GitHub par ninjaprox - Projet en licence MIT".localized(), "https://github.com/ninjaprox/NVActivityIndicatorView.git"],
 		["AsyncSwift", "Projet maintenu sur GitHub par duemunk - Projet en licence MIT".localized(), "https://github.com/duemunk/Async.git"],
 		["AKPickerView-Swift", "Projet maintenu sur GitHub par Akkyie - Projet en licence MIT".localized(), "https://github.com/Akkyie/AKPickerView-Swift.git"],
-		["SwiftTweaks", "Projet maintenu sur GitHub par Khan Academy - Projet en licence MIT".localized(), "https://github.com/Khan/SwiftTweaks.git"],
 		["Fabric - Crashlytics", "Projet maintenu sur GitHub par Twitter - Projet en licence MIT".localized(), "https://fabric.io"]
     ]
     override func viewDidLoad() {
@@ -70,7 +69,7 @@ class CreditsTableViewController: UITableViewController {
         cell.backgroundColor = AppValues.primaryColor
         
         let view = UIView()
-        view.backgroundColor = AppValues.secondaryColor
+        view.backgroundColor = AppValues.primaryColor
         cell.selectedBackgroundView = view
         
         return cell

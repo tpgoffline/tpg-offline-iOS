@@ -35,7 +35,7 @@ class ThermometerTableViewController: UITableViewController {
             self!.refresh()
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         self.refreshTheme()
@@ -44,7 +44,7 @@ class ThermometerTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         self.refreshTheme()
@@ -300,7 +300,7 @@ class ThermometerTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 70.00
     }
     
     func refresh() {
@@ -353,6 +353,7 @@ class ThermometerTableViewController: UITableViewController {
                     }
                 }
                 else {
+                    AppValues.logger.error(response.result.error)
                     self.thermometerList = []
                     self.tableView.allowsSelection = false
                     self.loading = false
@@ -366,6 +367,10 @@ class ThermometerTableViewController: UITableViewController {
         if !loading {
             performSegueWithIdentifier("showLigneArret", sender: self)
         }
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 70.00
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

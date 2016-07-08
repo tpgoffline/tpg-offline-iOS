@@ -14,7 +14,7 @@ import ChameleonFramework
 import Async
 import Fabric
 import Crashlytics
-import SwiftTweaks
+import SwiftyBeaver
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,13 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        /*let rootVc = window?.rootViewController
-         window = TweakWindow(frame: UIScreen.mainScreen().bounds, tweakStore: TpgOfflineTweaks.defaultStore)
-         window!.rootViewController = rootVc
-         window!.makeKeyAndVisible()*/
+        let console = ConsoleDestination()
+        AppValues.logger.addDestination(console)
+        #if DEBUG
+            AppValues.logger.info("Debug mode")
+        #else
+            AppValues.logger.info("Release mode")
+            Fabric.with([Crashlytics.self])
+        #endif
         
-        AppValues.logger.enabled = true
-        //Fabric.with([Crashlytics.self])
+        if #available(iOS 9.0, *) {
+            WatchSessionManager.sharedManager.startSession()
+        }
         
         getDefaults()
         setTabBar()
@@ -67,14 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.tabBar.tintColor = AppValues.textColor
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
         
-        if ContrastColorOf(AppValues.secondaryColor, returnFlat: true) == FlatWhite() {
-            tabBarController.tabBar.barTintColor = AppValues.secondaryColor
-            view.backgroundColor = AppValues.secondaryColor.darkenByPercentage(0.1)
-        }
-        else {
-            tabBarController.tabBar.barTintColor = AppValues.secondaryColor.darkenByPercentage(0.1)
-            view.backgroundColor = AppValues.secondaryColor
-        }
+        tabBarController.tabBar.barTintColor = AppValues.primaryColor
+        view.backgroundColor = AppValues.primaryColor.darkenByPercentage(0.05)
+        
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
         view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -105,8 +105,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         tabBarController.tabBar.items![4].image = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
         tabBarController.tabBar.items![4].selectedImage = iconeParametre.imageWithSize(CGSize(width: 20, height: 20)).imageWithRenderingMode(.AlwaysOriginal)
-        
-        if !defaults.boolForKey("tutorial") {
+                
+        if !defaults.boolForKey("tutorial") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
+            tabBarController.selectedIndex = 4
+        }
+        else if !defaults.boolForKey("version4") && !(NSProcessInfo.processInfo().arguments.contains("-donotask")) {
             tabBarController.selectedIndex = 4
         }
         else {
@@ -116,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getDefaults() {
         let group = AsyncGroup()
+        
         group.background {
             let dataArrets = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("arrets", ofType: "json")!)
             let arrets = JSON(data: dataArrets!)
@@ -145,6 +149,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
             })
         }
+        
+        
         group.background {
             if self.defaults.objectForKey("arretsFavoris") == nil {
                 AppValues.favoritesStops = [:]
@@ -178,14 +184,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        
         group.background {
             let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
             let couleurs = JSON(data: dataCouleurs!)
-            for i in 0 ..< couleurs["colors"].count {
-                AppValues.linesBackgroundColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["background"].string, withAlpha: 1)
-                AppValues.linesColor[couleurs["colors"][i]["lineCode"].string!] = UIColor(hexString: couleurs["colors"][i]["text"].string, withAlpha: 1)
+            for (_, j) in couleurs["colors"] {
+                AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string, withAlpha: 1)
+                AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string, withAlpha: 1)
             }
         }
+        
         
         group.background {
             var decoded = self.defaults.objectForKey("itinerairesFavoris")
@@ -229,27 +237,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-            if (NSProcessInfo.processInfo().arguments.contains("-premium")) {
-                AppValues.premium = true
-            }
-            else {
-                AppValues.premium = self.defaults.boolForKey("premium")
-            }
-            
             
             if self.defaults.colorForKey("primaryColor") == nil {
                 self.defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")
             }
             else {
                 AppValues.primaryColor = self.defaults.colorForKey("primaryColor")
+                AppValues.primaryColor = self.defaults.colorForKey("primaryColor")
             }
             
-            if self.defaults.colorForKey("secondaryColor") == nil {
-                self.defaults.setColor(AppValues.secondaryColor, forKey: "secondaryColor")
-            }
-            else {
-                AppValues.secondaryColor = self.defaults.colorForKey("secondaryColor")
-            }
+            /*if self.defaults.colorForKey("primaryColor") == nil {
+             self.defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")
+             }
+             else {
+             AppValues.primaryColor = self.defaults.colorForKey("primaryColor")
+             }*/
             
             if self.defaults.colorForKey("textColor") == nil {
                 self.defaults.setColor(AppValues.textColor, forKey: "textColor")

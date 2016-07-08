@@ -16,9 +16,10 @@ class CalendarSelectionViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         refreshTheme()
-     
-        calendar.selectionColor = AppValues.secondaryColor
+        
+        calendar.selectionColor = AppValues.primaryColor.darkenByPercentage(0.1)
         calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
         calendar.backgroundColor = AppValues.primaryColor
         calendar.tintColor = AppValues.textColor
@@ -30,16 +31,17 @@ class CalendarSelectionViewController: UIViewController {
         calendar.titleSelectionColor = AppValues.textColor
         calendar.selectDate(NSCalendar(identifier: NSCalendarIdentifierGregorian)!.dateFromComponents(ActualRoutes.route.date!)!, scrollToDate: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         refreshTheme()
-     
-        calendar.selectionColor = AppValues.secondaryColor
+        
+        calendar.selectionColor = AppValues.primaryColor.darkenByPercentage(0.1)
         calendar.todayColor = AppValues.primaryColor.lightenByPercentage(0.2)
         calendar.backgroundColor = AppValues.primaryColor
         calendar.tintColor = AppValues.textColor

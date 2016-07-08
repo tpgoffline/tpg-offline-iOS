@@ -46,8 +46,8 @@ class RouteToStopViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        refreshTheme()
-		
+        
+		refreshTheme()
 		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
 			map.tintColor = AppValues.primaryColor
 		}

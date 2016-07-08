@@ -33,11 +33,17 @@ class IncidentsTableViewController: UITableViewController {
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        var barButtonsItems: [UIBarButtonItem] = []
+        
+        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIconWithSize(20).imageWithSize(CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.Done, target: self, action: #selector(IncidentsTableViewController.refresh(_:))))
+        
+        self.navigationItem.rightBarButtonItems = barButtonsItems
 
         refresh(self)
     }
@@ -45,7 +51,7 @@ class IncidentsTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.secondaryColor)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darkenByPercentage(0.1))
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         refreshTheme()
@@ -81,6 +87,7 @@ class IncidentsTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
                 else {
+                    AppValues.logger.error(response.result.error)
                     self.error = true
                     self.tableView.reloadData()
                 }
@@ -116,7 +123,7 @@ class IncidentsTableViewController: UITableViewController {
         UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
         label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }

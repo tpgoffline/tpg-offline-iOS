@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -35,16 +35,6 @@
                BlueprintIdentifier = "AD11CD821C8336AA00DFF4AA"
                BuildableName = "tpg offline UITests.xctest"
                BlueprintName = "tpg offline UITests"
-               ReferencedContainer = "container:tpg offline.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00430B461C9B1D4D00C71A06"
-               BuildableName = "tpg offline UnitTests.xctest"
-               BlueprintName = "tpg offline UnitTests"
                ReferencedContainer = "container:tpg offline.xcodeproj">
             </BuildableReference>
          </TestableReference>

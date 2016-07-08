@@ -1,11 +1,11 @@
 PODS:
   - AKPickerView-Swift (1.0.1)
-  - Alamofire (3.4.0)
+  - Alamofire (3.4.1)
   - AsyncSwift (1.7.2)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - Crashlytics (3.7.0):
+  - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
   - DGElasticPullToRefresh (1.0.3)
   - DGRunkeeperSwitch (1.1.1)
@@ -32,10 +32,9 @@ PODS:
     - FontAwesomeKit/Core
   - FontAwesomeKit/Zocial (2.2.1):
     - FontAwesomeKit/Core
-  - FSCalendar (2.1.1)
+  - FSCalendar (2.2.0)
   - INTULocationManager (4.2.0)
-  - Localize-Swift (1.1.2)
-  - Log (0.5)
+  - Localize-Swift (1.5)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -64,18 +63,17 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - NVActivityIndicatorView (2.6)
+  - NVActivityIndicatorView (2.9)
   - Onboard (2.1.9)
   - PermissionScope (1.0.2)
-  - SCLAlertView (0.5.8)
+  - SCLAlertView (0.5.9)
   - SwiftDate (3.0.9)
-  - SwiftInAppPurchase (1.0.0)
-  - SwiftTweaks (1.0)
+  - SwiftyBeaver (0.6.3)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - AKPickerView-Swift (from `https://github.com/Akkyie/AKPickerView-Swift.git`)
-  - Alamofire
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
   - AsyncSwift (from `https://github.com/duemunk/Async.git`)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Crashlytics
@@ -87,20 +85,20 @@ DEPENDENCIES:
   - FSCalendar
   - INTULocationManager (from `https://github.com/intuit/LocationManager.git`)
   - Localize-Swift (from `https://github.com/marmelroy/Localize-Swift.git`)
-  - Log (from `https://github.com/delba/Log.git`)
   - MRProgress (from `https://github.com/RemyDCF/MRProgress.git`)
   - NVActivityIndicatorView (from `https://github.com/ninjaprox/NVActivityIndicatorView.git`)
   - Onboard (from `https://github.com/mamaral/Onboard.git`, tag `v2.1.9`)
   - PermissionScope (from `https://github.com/nickoneill/PermissionScope.git`)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
-  - SwiftInAppPurchase (from `https://github.com/rpzzzzzz/SwiftInAppPurchase.git`)
-  - SwiftTweaks (from `https://github.com/Khan/SwiftTweaks.git`)
+  - SwiftyBeaver (from `https://github.com/SwiftyBeaver/SwiftyBeaver.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
   AKPickerView-Swift:
     :git: https://github.com/Akkyie/AKPickerView-Swift.git
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
   AsyncSwift:
     :git: https://github.com/duemunk/Async.git
   ChameleonFramework:
@@ -117,8 +115,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/intuit/LocationManager.git
   Localize-Swift:
     :git: https://github.com/marmelroy/Localize-Swift.git
-  Log:
-    :git: https://github.com/delba/Log.git
   MRProgress:
     :git: https://github.com/RemyDCF/MRProgress.git
   NVActivityIndicatorView:
@@ -132,10 +128,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
   SwiftDate:
     :git: https://github.com/malcommac/SwiftDate.git
-  SwiftInAppPurchase:
-    :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
-  SwiftTweaks:
-    :git: https://github.com/Khan/SwiftTweaks.git
+  SwiftyBeaver:
+    :git: https://github.com/SwiftyBeaver/SwiftyBeaver.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
@@ -143,17 +137,20 @@ CHECKOUT OPTIONS:
   AKPickerView-Swift:
     :commit: 07c03dca3878fb3adaaa1087c40e5e4dc592fe0d
     :git: https://github.com/Akkyie/AKPickerView-Swift.git
+  Alamofire:
+    :commit: 0f506b1c455e5ce4312d27daeb98c10a608107d3
+    :git: https://github.com/Alamofire/Alamofire.git
   AsyncSwift:
     :commit: e8e53f0fd39fabc226f4609d1c910c8af27a17cc
     :git: https://github.com/duemunk/Async.git
   ChameleonFramework:
-    :commit: 3f87b407bb84ad5e23a0ee8a2ef4023ebb62b00a
+    :commit: 5b51a317485339c3e6762cd7d2adb2b4c7481ca2
     :git: https://github.com/ViccAlexander/Chameleon.git
   DGElasticPullToRefresh:
     :commit: 188a2ff3c498c81aa3a5fe1916c1f8ed15c85dda
     :git: https://github.com/gontovnik/DGElasticPullToRefresh.git
   DGRunkeeperSwitch:
-    :commit: 75829583f41c6eee1b86c66a0b2d947df70cc734
+    :commit: aa5c3986905e7d5b320bf5c4499f9aef60201618
     :git: https://github.com/gontovnik/DGRunkeeperSwitch.git
   EFCircularSlider:
     :commit: 6366f39721c33d0d457f17cc7f225d7795cea2da
@@ -162,19 +159,16 @@ CHECKOUT OPTIONS:
     :commit: eac30313fee77f6db1b6832b1d4b7d8f2007b381
     :git: https://github.com/PrideChung/FontAwesomeKit.git
   INTULocationManager:
-    :commit: 8e8402e8b4486e4a59581ed77efc928a2f727481
+    :commit: 7741779256eae4fe727b027a046d6dcc7900566a
     :git: https://github.com/intuit/LocationManager.git
   Localize-Swift:
-    :commit: 9a2bc3a3749390bb92c40694a4da4829a9b602c4
+    :commit: e3ce4b72c184dce8261a1cf35cb0875e55549e20
     :git: https://github.com/marmelroy/Localize-Swift.git
-  Log:
-    :commit: 153e9c3d68031726f575bb255e3dc62267f4d1a1
-    :git: https://github.com/delba/Log.git
   MRProgress:
     :commit: 0a9a8e9299c35f1ed1be0648910505fbd156e952
     :git: https://github.com/RemyDCF/MRProgress.git
   NVActivityIndicatorView:
-    :commit: dfc0ea8b99e2be84548590f7786902c32c02098a
+    :commit: 49a0beb6a33eebc6cec322f05448516881615bf6
     :git: https://github.com/ninjaprox/NVActivityIndicatorView.git
   Onboard:
     :git: https://github.com/mamaral/Onboard.git
@@ -183,46 +177,41 @@ CHECKOUT OPTIONS:
     :commit: 8e7df5b5b676363b680a9fc0578ff232bcf8be5d
     :git: https://github.com/nickoneill/PermissionScope.git
   SCLAlertView:
-    :commit: 5824520fd0978c0ff5864639b6340d0d0abd8d5f
+    :commit: 58090eb84843bb4cea3a554eefbd8217e6a2ec13
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
   SwiftDate:
     :commit: 0dd3a3c610f2147a92c834cb4bdb5d983dd5f37b
     :git: https://github.com/malcommac/SwiftDate.git
-  SwiftInAppPurchase:
-    :commit: 1080c4821443c5b71dff445a8c6c5b79f4bed2e4
-    :git: https://github.com/rpzzzzzz/SwiftInAppPurchase.git
-  SwiftTweaks:
-    :commit: 88f8edd00c309afdd4490ce54c23bcc237802c8e
-    :git: https://github.com/Khan/SwiftTweaks.git
+  SwiftyBeaver:
+    :commit: 572c71899c772f22a7706e83ae92213237ef9940
+    :git: https://github.com/SwiftyBeaver/SwiftyBeaver.git
   SwiftyJSON:
-    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :commit: 73670b94292b8d8496c398a973f56ac67789ba9f
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   AKPickerView-Swift: 8509d472bb257649383c276506334a7373d3cb33
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AsyncSwift: 15c496983f752a3ab8d1be17e64dd4c6f2a31239
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   DGElasticPullToRefresh: 3129c558cd59d68f9c2472d79abcd68a49bcd345
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
   EFCircularSlider: 8c9e901891fb813e89c4158508eefa8e35903454
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
-  FSCalendar: 04dc531f06fbde8a8e5b7394e9d4edebd45a591f
+  FSCalendar: 766367b91bcf2829c492c5ac50a58652c6df4ee8
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
-  Localize-Swift: 584bcde9c6b13fcccb1333f398a46a0e60735e7a
-  Log: 5972312cb85cffbc56407b612936b610eb4af8a5
+  Localize-Swift: 288aa763db72b0628d2cb111fbf5babc90529d0c
   MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
-  NVActivityIndicatorView: b8207b369c012af32da0916a8346a56d16a5fbbe
+  NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
   Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PermissionScope: 860828c5516d349b6f49e5491799cfef33c5ccc7
-  SCLAlertView: 653e84d1f9fd95333bc54671fbadb7d0c47fce49
+  SCLAlertView: d7c6a48c7d340e60206d4ed0e8ebcbff3b9d2a44
   SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
-  SwiftInAppPurchase: e6d19c8a9d102635cb62fd9de7291eb6f3f0669e
-  SwiftTweaks: ac08b7565d90776a6668e37e60224a9daa1e9ba6
+  SwiftyBeaver: c182c001d532111becf2285b8878abf54c7b5621
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: a7106aefefacad5bbb4bc23c5be7c778bb25884d
+PODFILE CHECKSUM: ef83cc600101fd8f5e6957cfa365b330a4325a07
 
-COCOAPODS: 1.0.0.rc.1
+COCOAPODS: 1.0.1
