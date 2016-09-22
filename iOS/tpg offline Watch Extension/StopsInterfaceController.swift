@@ -15,8 +15,8 @@ class StopsInterfaceController: WKInterfaceController {
     @IBOutlet weak var stopsTable: WKInterfaceTable!
     @IBOutlet weak var noFavoritesLabel: WKInterfaceLabel!
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         if AppValues.favoritesStops.count == 0 {
             noFavoritesLabel.setHidden(false)
             stopsTable.setHidden(true)
@@ -37,7 +37,7 @@ class StopsInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
-    @IBAction func reloadButtonTaped(sender: AnyObject!) {
+    @IBAction func reloadButtonTaped(_ sender: AnyObject!) {
         if AppValues.favoritesStops.count == 0 {
             noFavoritesLabel.setHidden(false)
             stopsTable.setHidden(true)
@@ -51,23 +51,24 @@ class StopsInterfaceController: WKInterfaceController {
     
     func refresh() {
         stopsTable.setNumberOfRows(AppValues.favoritesStops.count, withRowType: "StopsRow")
-        var favortesStopsKeys = Array(AppValues.favoritesStops.keys)
-        favortesStopsKeys.sortInPlace({ (string1, string2) -> Bool in
+        var favoritesStopsKeys = Array(AppValues.favoritesStops.keys)
+        favoritesStopsKeys.sort { (string1, string2) -> Bool in
             let stringA = String((AppValues.favoritesStops[string1]?.title)! + (AppValues.favoritesStops[string1]?.subTitle)!)
             let stringB = String((AppValues.favoritesStops[string2]?.title)! + (AppValues.favoritesStops[string2]?.subTitle)!)
-            if stringA.lowercaseString < stringB.lowercaseString {
+            if stringA!.lowercased() < (stringB!.lowercased()) {
                 return true
             }
             return false
-        })
+        }
+
         for index in 0..<stopsTable.numberOfRows {
-            if let controller = stopsTable.rowControllerAtIndex(index) as? StopsRowController {
-                controller.stop = AppValues.favoritesStops[favortesStopsKeys[index]]
+            if let controller = stopsTable.rowController(at: index) as? StopsRowController {
+                controller.stop = AppValues.favoritesStops[favoritesStopsKeys[index]]
             }
         }
     }
 
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        pushControllerWithName("Departures", context: (stopsTable.rowControllerAtIndex(rowIndex) as! StopsRowController).stop)
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        pushController(withName: "Departures", context: (stopsTable.rowController(at: rowIndex) as! StopsRowController).stop)
     }
 }

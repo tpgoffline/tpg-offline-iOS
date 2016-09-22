@@ -4,17 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>tpg offline (Tests).xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>tpg offline Travis CI.xcscheme_^#shared#^_</key>
+		<key>tpg offline UITests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>tpg offline UITests.xcscheme</key>
+		<key>tpg offline Watch (Notification).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
@@ -22,7 +17,7 @@
 		<key>tpg offline Watch.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
 		</dict>
 		<key>tpg offline.xcscheme</key>
 		<dict>
@@ -32,22 +27,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>002B47DC1C01FA6F000BF3E8</key>
+		<key>ADC7338B1D68908F00296449</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>004499931C624DA900CAA058</key>
+		<key>ADC7339F1D68908F00296449</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>005BAE8F1D0452FB00F73C8A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AD11CD821C8336AA00DFF4AA</key>
+		<key>ADC734631D6890EF00296449</key>
 		<dict>
 			<key>primary</key>
 			<true/>

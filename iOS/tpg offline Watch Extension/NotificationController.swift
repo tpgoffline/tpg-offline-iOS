@@ -2,12 +2,13 @@
 //  NotificationController.swift
 //  tpg offline Watch Extension
 //
-//  Created by Alice on 05/06/2016.
-//  Copyright © 2016 dacostafaro. All rights reserved.
+//  Created by Rémy DA COSTA FARO on 20/08/2016.
+//  Copyright © 2016 Rémy DA COSTA FARO. All rights reserved.
 //
 
 import WatchKit
 import Foundation
+import UserNotifications
 
 
 class NotificationController: WKUserNotificationInterfaceController {
@@ -15,6 +16,7 @@ class NotificationController: WKUserNotificationInterfaceController {
     override init() {
         // Initialize variables here.
         super.init()
+        
         // Configure interface objects here.
     }
 
@@ -28,8 +30,14 @@ class NotificationController: WKUserNotificationInterfaceController {
         super.didDeactivate()
     }
 
-    
-    override func didReceiveLocalNotification(localNotification: UILocalNotification, withCompletion completionHandler: ((WKUserNotificationInterfaceType) -> Void)) {
-        completionHandler(.Default)
+    /*
+    override func didReceive(_ notification: UNNotification, withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Swift.Void) {
+        // This method is called when a notification needs to be presented.
+        // Implement it if you use a dynamic notification interface.
+        // Populate your dynamic notification interface as quickly as possible.
+        //
+        // After populating your dynamic notification interface call the completion block.
+        completionHandler(.custom)
     }
+    */
 }

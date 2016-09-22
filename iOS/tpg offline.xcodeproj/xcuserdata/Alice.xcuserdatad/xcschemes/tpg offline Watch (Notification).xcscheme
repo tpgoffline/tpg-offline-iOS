@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+               BlueprintIdentifier = "ADC734631D6890EF00296449"
                BuildableName = "tpg offline Watch.app"
                BlueprintName = "tpg offline Watch"
                ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -28,21 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "005BAE9B1D0452FB00F73C8A"
-               BuildableName = "tpg offline Watch Extension.appex"
-               BlueprintName = "tpg offline Watch Extension"
-               ReferencedContainer = "container:tpg offline.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "002B47DC1C01FA6F000BF3E8"
+               BlueprintIdentifier = "ADC7338B1D68908F00296449"
                BuildableName = "tpg offline.app"
                BlueprintName = "tpg offline"
                ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -60,7 +46,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BlueprintIdentifier = "ADC734631D6890EF00296449"
             BuildableName = "tpg offline Watch.app"
             BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -79,7 +65,7 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "16"
+      launchAutomaticallySubstyle = "8"
       notificationPayloadFile = "tpg offline Watch Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
@@ -87,7 +73,7 @@
          RemotePath = "/tpg offline">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BlueprintIdentifier = "ADC734631D6890EF00296449"
             BuildableName = "tpg offline Watch.app"
             BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -96,7 +82,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BlueprintIdentifier = "ADC734631D6890EF00296449"
             BuildableName = "tpg offline Watch.app"
             BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -119,7 +105,7 @@
          RemotePath = "/tpg offline">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BlueprintIdentifier = "ADC734631D6890EF00296449"
             BuildableName = "tpg offline Watch.app"
             BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -128,7 +114,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "005BAE8F1D0452FB00F73C8A"
+            BlueprintIdentifier = "ADC734631D6890EF00296449"
             BuildableName = "tpg offline Watch.app"
             BlueprintName = "tpg offline Watch"
             ReferencedContainer = "container:tpg offline.xcodeproj">

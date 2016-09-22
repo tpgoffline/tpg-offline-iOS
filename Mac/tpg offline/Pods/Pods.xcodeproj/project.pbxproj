@@ -1,0 +1,911 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C4D04F47B67EE39D078DBC454D036D3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC771E651750E168D5E22FFDD61CA28 /* Cocoa.framework */; };
+		1DF5F68319071EDAB53BD9C2E0958160 /* NIKFontAwesomeImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CC61EAE1FDCA50CDD6430BBA580A21 /* NIKFontAwesomeImageView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1FB7AA580C42E00E09BC1C3B891BACBF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC771E651750E168D5E22FFDD61CA28 /* Cocoa.framework */; };
+		214CA80ED93FE1C45AA6BA9C21E97B42 /* NIKFontAwesomePathRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3C69CA976D12521F812CB280666307 /* NIKFontAwesomePathRenderer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2C26E9F86C7C545A103EF0A4659023E1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC771E651750E168D5E22FFDD61CA28 /* Cocoa.framework */; };
+		32C7FA0822A1C030A0D7E18D610A47E2 /* NIKFontAwesomeImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = C11E7BABC0D660903CD43808AD0BE480 /* NIKFontAwesomeImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		386E636CE3D07D34AA08A2B6B0A8AD34 /* NIKFontAwesomeIconFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 162951C9FEC7ED1ADE2F72DC856DE6CA /* NIKFontAwesomeIconFactory.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		389E73747BC288FCBDFF51569787F882 /* NIKFontAwesomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 720ECA216C3CEAE7AE8DD8D5F026388A /* NIKFontAwesomeButton.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		39A0D56000D1B6AE5A826394C06634BB /* FontAwesomeIconFactory-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F52B5BCDCE6C2A3521CD263AC842EF /* FontAwesomeIconFactory-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D8176EA9B2289862B245E3A86F3E933 /* NIKFontAwesomeIconFactory+OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ABE3F4F93F9ECC68504D5F7632D04ED /* NIKFontAwesomeIconFactory+OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48CA2514EF0CC50219ADCA32B39CFE3C /* FontAwesomeIconFactory-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6802D4FD38BAAD7AADBE7785C745FB /* FontAwesomeIconFactory-dummy.m */; };
+		4A4D1BA15DA2C5A6D6D60A663772A249 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F2E31B65FA5161EB75A7C36FFFA94A18 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B0B1BB6F23FE41A902E3C40DE79713B /* NIKFontAwesomePathFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1B31474C4E8C20B5711ED95C37D2 /* NIKFontAwesomePathFactory.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6B952CE6125CFDD2A02F2DD94B548EBA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2804F30EA5C202BDB12AA80D14C9E56 /* CoreText.framework */; };
+		73F4DE75AC6B1C11B8F6379E42BA1475 /* NIKFontAwesomeIconFactory+iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3521E75A7DF0969593D52D1814BAD540 /* NIKFontAwesomeIconFactory+iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76239EBAC135A899CADF4535C3740C09 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04D7A5ED99C3BEB6568FA556416BD02 /* ApplicationServices.framework */; };
+		825D8F320BCC3460C1E4B8F11FFA1CE8 /* NIKFontAwesomeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1866E5ABBB214F6C4B4AA9E9772D13C6 /* NIKFontAwesomeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84AAFE83A38984CB2D2C193EC1117DBA /* NIKFontAwesomePathFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = A182A6C3C23BF66DE310875F9F3E6F4B /* NIKFontAwesomePathFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		854EE7EBE52BB65C90E2E4C09ADE2A13 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6821A644ACA7FC167C65CAD4C0585D /* SwiftyJSON-dummy.m */; };
+		8DFB5C44BD97E3E2F94336373B0DD22E /* Pods-tpg offlineUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D05324731B2F6B499FAC724B67E5B /* Pods-tpg offlineUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9260B2C97F8E068ACEFE49FBCB5366D8 /* Pods-tpg offlineUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BB6EA8E2C8040D6890E81E4F3677E4 /* Pods-tpg offlineUITests-dummy.m */; };
+		AF033918877BCCE3675DCD25D77688C0 /* FontAwesomeIconFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = E3BB89FABC845A0DF4468C6500555BE7 /* FontAwesomeIconFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4ADABD1EFD8EEE71BEEDB180EAF5D5D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC771E651750E168D5E22FFDD61CA28 /* Cocoa.framework */; };
+		B96502AE9ED335D0E4CFD16D0EC69842 /* NIKFontAwesomeIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = DE6F4344C04BB7D107399F2D8CCDC112 /* NIKFontAwesomeIcon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B9F3202D3536D1907CB9FF1FBAB78640 /* NIKFontAwesomePathRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 59711B87B17D9FAE882641E1268E2F99 /* NIKFontAwesomePathRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2ADECD30DB122D279E5EC46A3A4BF5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E8701EBB91CED0E2BFBDDC2338915A /* CoreGraphics.framework */; };
+		D6F216C5BB237CA8EEB56CEA4A135889 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B05BF51F0777F18EEB1F88FE0C5FB0 /* SwiftyJSON.swift */; };
+		D8A82E9C26340C565CAB94408DF68E7F /* Pods-tpg offline-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 378FBD7785E4AD1B54B42D6916EFD6F6 /* Pods-tpg offline-dummy.m */; };
+		E1D1AD3B58286959D7FAB99DF61E83FB /* Pods-tpg offline-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DCB7008797664D56B956451D9F9E8D2 /* Pods-tpg offline-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E64F0937E1EFD12617AAB8F451B29EB3 /* NIKFontAwesomeIconTraits.h in Headers */ = {isa = PBXBuildFile; fileRef = 52F9C0A53AB194B52EA8616B4696F303 /* NIKFontAwesomeIconTraits.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3A194780D15F7819A84EA8B802C6A11 /* NIKFontAwesomeIconFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 5604BAAD6358304290CFD8DE6DE213FD /* NIKFontAwesomeIconFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4B88D1254A7940D74EC257CC8CF378C /* NIKFontAwesomeIconTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 647CC503F7AB26A3EE4FB655571B4B82 /* NIKFontAwesomeIconTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6111A637962E9F4138B89EDF645444E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27939217BD914189EB1812C5F908F7D0;
+			remoteInfo = SwiftyJSON;
+		};
+		B33CB04D298DFF5CAA5F3F81B696C55A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F82F4587989B28D61D8530626EEA1462;
+			remoteInfo = FontAwesomeIconFactory;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02EE1B31474C4E8C20B5711ED95C37D2 /* NIKFontAwesomePathFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NIKFontAwesomePathFactory.m; path = FontAwesomeIconFactory/NIKFontAwesomePathFactory.m; sourceTree = "<group>"; };
+		0ABE3F4F93F9ECC68504D5F7632D04ED /* NIKFontAwesomeIconFactory+OSX.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NIKFontAwesomeIconFactory+OSX.h"; path = "FontAwesomeIconFactory/NIKFontAwesomeIconFactory+OSX.h"; sourceTree = "<group>"; };
+		1204A7C09FA93529483C244FBD1F2D63 /* Pods-tpg offline-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-tpg offline-resources.sh"; sourceTree = "<group>"; };
+		162951C9FEC7ED1ADE2F72DC856DE6CA /* NIKFontAwesomeIconFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NIKFontAwesomeIconFactory.m; path = FontAwesomeIconFactory/NIKFontAwesomeIconFactory.m; sourceTree = "<group>"; };
+		1866E5ABBB214F6C4B4AA9E9772D13C6 /* NIKFontAwesomeButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomeButton.h; path = FontAwesomeIconFactory/OSX/NIKFontAwesomeButton.h; sourceTree = "<group>"; };
+		23643B0DFC5DF656C87630385D86C4C7 /* Pods-tpg offlineUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-tpg offlineUITests-resources.sh"; sourceTree = "<group>"; };
+		2DC771E651750E168D5E22FFDD61CA28 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		2E3DE927CFE7F8FFF7229C7951623CE1 /* Pods-tpg offlineUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-tpg offlineUITests.modulemap"; sourceTree = "<group>"; };
+		3521E75A7DF0969593D52D1814BAD540 /* NIKFontAwesomeIconFactory+iOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NIKFontAwesomeIconFactory+iOS.h"; path = "FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h"; sourceTree = "<group>"; };
+		35E5FD87F92D133E8E7D36E933DF76DA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		378FBD7785E4AD1B54B42D6916EFD6F6 /* Pods-tpg offline-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-tpg offline-dummy.m"; sourceTree = "<group>"; };
+		386485BE62FAA8B455A1605DA5CF1BE1 /* Pods-tpg offlineUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-tpg offlineUITests-frameworks.sh"; sourceTree = "<group>"; };
+		3D6E0229D5A79928F0E04CDF09F2D12A /* FontAwesomeIconFactory-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeIconFactory-prefix.pch"; sourceTree = "<group>"; };
+		45827EF2FBEF45F4EECCC8A95914B5BC /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		4C980DE6DD8B7D180C24F4F934402460 /* Pods-tpg offline-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-tpg offline-acknowledgements.plist"; sourceTree = "<group>"; };
+		52F9C0A53AB194B52EA8616B4696F303 /* NIKFontAwesomeIconTraits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomeIconTraits.h; path = FontAwesomeIconFactory/NIKFontAwesomeIconTraits.h; sourceTree = "<group>"; };
+		5604BAAD6358304290CFD8DE6DE213FD /* NIKFontAwesomeIconFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomeIconFactory.h; path = FontAwesomeIconFactory/NIKFontAwesomeIconFactory.h; sourceTree = "<group>"; };
+		5838AEBCE8C7159652FB9F9D1412940D /* Pods_tpg_offlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offlineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59711B87B17D9FAE882641E1268E2F99 /* NIKFontAwesomePathRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomePathRenderer.h; path = FontAwesomeIconFactory/NIKFontAwesomePathRenderer.h; sourceTree = "<group>"; };
+		5D6802D4FD38BAAD7AADBE7785C745FB /* FontAwesomeIconFactory-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesomeIconFactory-dummy.m"; sourceTree = "<group>"; };
+		5DCB7008797664D56B956451D9F9E8D2 /* Pods-tpg offline-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-tpg offline-umbrella.h"; sourceTree = "<group>"; };
+		600AC3B50696F17E30059372EB3BC2D0 /* Pods-tpg offlineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-tpg offlineUITests.release.xcconfig"; sourceTree = "<group>"; };
+		647CC503F7AB26A3EE4FB655571B4B82 /* NIKFontAwesomeIconTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomeIconTypes.h; path = FontAwesomeIconFactory/NIKFontAwesomeIconTypes.h; sourceTree = "<group>"; };
+		6F4E3804BAA3638A52C095537AF3FE08 /* Pods-tpg offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-tpg offline.release.xcconfig"; sourceTree = "<group>"; };
+		7104115BDBA9D77962428A6BF676985C /* Pods-tpg offlineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-tpg offlineUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		720ECA216C3CEAE7AE8DD8D5F026388A /* NIKFontAwesomeButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NIKFontAwesomeButton.m; path = FontAwesomeIconFactory/OSX/NIKFontAwesomeButton.m; sourceTree = "<group>"; };
+		79E8701EBB91CED0E2BFBDDC2338915A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		82E133A09D72F0D5767213B88839F937 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		8707F6ECD435B6B464292621C2941527 /* FontAwesomeIconFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FontAwesomeIconFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89E6692E71BF0B833EC1437ED867C9E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9140211B335FE10C570C01B0C3A3AA18 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97B05BF51F0777F18EEB1F88FE0C5FB0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		A106D4E02504018234E0F39DB3E9ED68 /* Pods-tpg offline-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-tpg offline-frameworks.sh"; sourceTree = "<group>"; };
+		A182A6C3C23BF66DE310875F9F3E6F4B /* NIKFontAwesomePathFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomePathFactory.h; path = FontAwesomeIconFactory/NIKFontAwesomePathFactory.h; sourceTree = "<group>"; };
+		A29D05324731B2F6B499FAC724B67E5B /* Pods-tpg offlineUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-tpg offlineUITests-umbrella.h"; sourceTree = "<group>"; };
+		AB6821A644ACA7FC167C65CAD4C0585D /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		B1BB6EA8E2C8040D6890E81E4F3677E4 /* Pods-tpg offlineUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-tpg offlineUITests-dummy.m"; sourceTree = "<group>"; };
+		BECFEE22A9018CDF40CC76E16F0A39C7 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		C11E7BABC0D660903CD43808AD0BE480 /* NIKFontAwesomeImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomeImageView.h; path = FontAwesomeIconFactory/OSX/NIKFontAwesomeImageView.h; sourceTree = "<group>"; };
+		C359D6A4B1337BA0E0B34581757CD0C7 /* FontAwesomeIconFactory.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FontAwesomeIconFactory.modulemap; sourceTree = "<group>"; };
+		C5B74B89BF8AF8BB45D90A92356E9527 /* Pods-tpg offlineUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-tpg offlineUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		CAA7AFA873A6AE34343B65A258DABB41 /* Pods-tpg offlineUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-tpg offlineUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D04D7A5ED99C3BEB6568FA556416BD02 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/ApplicationServices.framework; sourceTree = DEVELOPER_DIR; };
+		D1BF2A840C511E940B520C65FEDF76F4 /* Pods-tpg offline-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-tpg offline-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D2CC61EAE1FDCA50CDD6430BBA580A21 /* NIKFontAwesomeImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NIKFontAwesomeImageView.m; path = FontAwesomeIconFactory/OSX/NIKFontAwesomeImageView.m; sourceTree = "<group>"; };
+		D851E048C20DC9354FF9BE00B2E366C9 /* Pods-tpg offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-tpg offline.debug.xcconfig"; sourceTree = "<group>"; };
+		DB9E586BB15850C0708F0CEF8D06BD13 /* Pods-tpg offline.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-tpg offline.modulemap"; sourceTree = "<group>"; };
+		DCA1D5CD11E0F937B0BC8B8B775711F7 /* FontAwesomeIconFactory.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesomeIconFactory.xcconfig; sourceTree = "<group>"; };
+		DE6F4344C04BB7D107399F2D8CCDC112 /* NIKFontAwesomeIcon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NIKFontAwesomeIcon.h; path = FontAwesomeIconFactory/NIKFontAwesomeIcon.h; sourceTree = "<group>"; };
+		E08B1873F5EDC02EDD942EABF070DC40 /* Pods_tpg_offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tpg_offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2804F30EA5C202BDB12AA80D14C9E56 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		E3BB89FABC845A0DF4468C6500555BE7 /* FontAwesomeIconFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FontAwesomeIconFactory.h; path = FontAwesomeIconFactory/FontAwesomeIconFactory.h; sourceTree = "<group>"; };
+		E7F52B5BCDCE6C2A3521CD263AC842EF /* FontAwesomeIconFactory-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesomeIconFactory-umbrella.h"; sourceTree = "<group>"; };
+		EE3C69CA976D12521F812CB280666307 /* NIKFontAwesomePathRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NIKFontAwesomePathRenderer.m; path = FontAwesomeIconFactory/NIKFontAwesomePathRenderer.m; sourceTree = "<group>"; };
+		F2E31B65FA5161EB75A7C36FFFA94A18 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		F72E149B0711D286A42FD5E7E4ADE540 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8C95BC70060F6A58B868FA61B02F99 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03324F3E832527E77437CD5C5226DD15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C26E9F86C7C545A103EF0A4659023E1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4509A11E56FB53421998F3EB1EAA995B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FB7AA580C42E00E09BC1C3B891BACBF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4468A1B8C4BE0CA11BBDC2EB864B077 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76239EBAC135A899CADF4535C3740C09 /* ApplicationServices.framework in Frameworks */,
+				1C4D04F47B67EE39D078DBC454D036D3 /* Cocoa.framework in Frameworks */,
+				D2ADECD30DB122D279E5EC46A3A4BF5C /* CoreGraphics.framework in Frameworks */,
+				6B952CE6125CFDD2A02F2DD94B548EBA /* CoreText.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F14F1723FB776780844AFDC677D97D28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4ADABD1EFD8EEE71BEEDB180EAF5D5D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00659EF6BE2E7DD494C55025D6922ECE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9EBC5752E482840FEB464A9073385EC0 /* FontAwesomeIconFactory */,
+				B916451E0C67D62A135C89547A40A229 /* SwiftyJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3FD308B677509278C282E6177F986F9D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8707F6ECD435B6B464292621C2941527 /* FontAwesomeIconFactory.framework */,
+				E08B1873F5EDC02EDD942EABF070DC40 /* Pods_tpg_offline.framework */,
+				5838AEBCE8C7159652FB9F9D1412940D /* Pods_tpg_offlineUITests.framework */,
+				F72E149B0711D286A42FD5E7E4ADE540 /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B4C6B038B503F70463478C0D6F2BF0D /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				D04D7A5ED99C3BEB6568FA556416BD02 /* ApplicationServices.framework */,
+				2DC771E651750E168D5E22FFDD61CA28 /* Cocoa.framework */,
+				79E8701EBB91CED0E2BFBDDC2338915A /* CoreGraphics.framework */,
+				E2804F30EA5C202BDB12AA80D14C9E56 /* CoreText.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		6A88EF2AD382577A59F2CC20757A86F0 /* Pods-tpg offline */ = {
+			isa = PBXGroup;
+			children = (
+				89E6692E71BF0B833EC1437ED867C9E8 /* Info.plist */,
+				DB9E586BB15850C0708F0CEF8D06BD13 /* Pods-tpg offline.modulemap */,
+				D1BF2A840C511E940B520C65FEDF76F4 /* Pods-tpg offline-acknowledgements.markdown */,
+				4C980DE6DD8B7D180C24F4F934402460 /* Pods-tpg offline-acknowledgements.plist */,
+				378FBD7785E4AD1B54B42D6916EFD6F6 /* Pods-tpg offline-dummy.m */,
+				A106D4E02504018234E0F39DB3E9ED68 /* Pods-tpg offline-frameworks.sh */,
+				1204A7C09FA93529483C244FBD1F2D63 /* Pods-tpg offline-resources.sh */,
+				5DCB7008797664D56B956451D9F9E8D2 /* Pods-tpg offline-umbrella.h */,
+				D851E048C20DC9354FF9BE00B2E366C9 /* Pods-tpg offline.debug.xcconfig */,
+				6F4E3804BAA3638A52C095537AF3FE08 /* Pods-tpg offline.release.xcconfig */,
+			);
+			name = "Pods-tpg offline";
+			path = "Target Support Files/Pods-tpg offline";
+			sourceTree = "<group>";
+		};
+		6B80208478D2A11E6623673E7F2F8063 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				35E5FD87F92D133E8E7D36E933DF76DA /* Info.plist */,
+				82E133A09D72F0D5767213B88839F937 /* SwiftyJSON.modulemap */,
+				45827EF2FBEF45F4EECCC8A95914B5BC /* SwiftyJSON.xcconfig */,
+				AB6821A644ACA7FC167C65CAD4C0585D /* SwiftyJSON-dummy.m */,
+				BECFEE22A9018CDF40CC76E16F0A39C7 /* SwiftyJSON-prefix.pch */,
+				F2E31B65FA5161EB75A7C36FFFA94A18 /* SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
+			sourceTree = "<group>";
+		};
+		7CCF2C1BE22E26CF92A1D5373135183C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C359D6A4B1337BA0E0B34581757CD0C7 /* FontAwesomeIconFactory.modulemap */,
+				DCA1D5CD11E0F937B0BC8B8B775711F7 /* FontAwesomeIconFactory.xcconfig */,
+				5D6802D4FD38BAAD7AADBE7785C745FB /* FontAwesomeIconFactory-dummy.m */,
+				3D6E0229D5A79928F0E04CDF09F2D12A /* FontAwesomeIconFactory-prefix.pch */,
+				E7F52B5BCDCE6C2A3521CD263AC842EF /* FontAwesomeIconFactory-umbrella.h */,
+				FA8C95BC70060F6A58B868FA61B02F99 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FontAwesomeIconFactory";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				CD75D5B60FCA72FBF7F9C770460B2C26 /* Frameworks */,
+				00659EF6BE2E7DD494C55025D6922ECE /* Pods */,
+				3FD308B677509278C282E6177F986F9D /* Products */,
+				E86AC53506FD5B354AD292DB385FE55D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8C8373CD6FA6F2B2DB46806499A4B0B6 /* Pods-tpg offlineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9140211B335FE10C570C01B0C3A3AA18 /* Info.plist */,
+				2E3DE927CFE7F8FFF7229C7951623CE1 /* Pods-tpg offlineUITests.modulemap */,
+				CAA7AFA873A6AE34343B65A258DABB41 /* Pods-tpg offlineUITests-acknowledgements.markdown */,
+				C5B74B89BF8AF8BB45D90A92356E9527 /* Pods-tpg offlineUITests-acknowledgements.plist */,
+				B1BB6EA8E2C8040D6890E81E4F3677E4 /* Pods-tpg offlineUITests-dummy.m */,
+				386485BE62FAA8B455A1605DA5CF1BE1 /* Pods-tpg offlineUITests-frameworks.sh */,
+				23643B0DFC5DF656C87630385D86C4C7 /* Pods-tpg offlineUITests-resources.sh */,
+				A29D05324731B2F6B499FAC724B67E5B /* Pods-tpg offlineUITests-umbrella.h */,
+				7104115BDBA9D77962428A6BF676985C /* Pods-tpg offlineUITests.debug.xcconfig */,
+				600AC3B50696F17E30059372EB3BC2D0 /* Pods-tpg offlineUITests.release.xcconfig */,
+			);
+			name = "Pods-tpg offlineUITests";
+			path = "Target Support Files/Pods-tpg offlineUITests";
+			sourceTree = "<group>";
+		};
+		9EBC5752E482840FEB464A9073385EC0 /* FontAwesomeIconFactory */ = {
+			isa = PBXGroup;
+			children = (
+				E3BB89FABC845A0DF4468C6500555BE7 /* FontAwesomeIconFactory.h */,
+				1866E5ABBB214F6C4B4AA9E9772D13C6 /* NIKFontAwesomeButton.h */,
+				720ECA216C3CEAE7AE8DD8D5F026388A /* NIKFontAwesomeButton.m */,
+				DE6F4344C04BB7D107399F2D8CCDC112 /* NIKFontAwesomeIcon.h */,
+				5604BAAD6358304290CFD8DE6DE213FD /* NIKFontAwesomeIconFactory.h */,
+				162951C9FEC7ED1ADE2F72DC856DE6CA /* NIKFontAwesomeIconFactory.m */,
+				3521E75A7DF0969593D52D1814BAD540 /* NIKFontAwesomeIconFactory+iOS.h */,
+				0ABE3F4F93F9ECC68504D5F7632D04ED /* NIKFontAwesomeIconFactory+OSX.h */,
+				52F9C0A53AB194B52EA8616B4696F303 /* NIKFontAwesomeIconTraits.h */,
+				647CC503F7AB26A3EE4FB655571B4B82 /* NIKFontAwesomeIconTypes.h */,
+				C11E7BABC0D660903CD43808AD0BE480 /* NIKFontAwesomeImageView.h */,
+				D2CC61EAE1FDCA50CDD6430BBA580A21 /* NIKFontAwesomeImageView.m */,
+				A182A6C3C23BF66DE310875F9F3E6F4B /* NIKFontAwesomePathFactory.h */,
+				02EE1B31474C4E8C20B5711ED95C37D2 /* NIKFontAwesomePathFactory.m */,
+				59711B87B17D9FAE882641E1268E2F99 /* NIKFontAwesomePathRenderer.h */,
+				EE3C69CA976D12521F812CB280666307 /* NIKFontAwesomePathRenderer.m */,
+				7CCF2C1BE22E26CF92A1D5373135183C /* Support Files */,
+			);
+			path = FontAwesomeIconFactory;
+			sourceTree = "<group>";
+		};
+		B916451E0C67D62A135C89547A40A229 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				97B05BF51F0777F18EEB1F88FE0C5FB0 /* SwiftyJSON.swift */,
+				6B80208478D2A11E6623673E7F2F8063 /* Support Files */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		CD75D5B60FCA72FBF7F9C770460B2C26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B4C6B038B503F70463478C0D6F2BF0D /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E86AC53506FD5B354AD292DB385FE55D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A88EF2AD382577A59F2CC20757A86F0 /* Pods-tpg offline */,
+				8C8373CD6FA6F2B2DB46806499A4B0B6 /* Pods-tpg offlineUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1CF67AA8A4D567CA83E7FC5DD4A10EE6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1D1AD3B58286959D7FAB99DF61E83FB /* Pods-tpg offline-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E2C577ECA60D96A5DBE2F1D879AFFCD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DFB5C44BD97E3E2F94336373B0DD22E /* Pods-tpg offlineUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C062BDFC30F9A74CE2ACDADC73510DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39A0D56000D1B6AE5A826394C06634BB /* FontAwesomeIconFactory-umbrella.h in Headers */,
+				AF033918877BCCE3675DCD25D77688C0 /* FontAwesomeIconFactory.h in Headers */,
+				825D8F320BCC3460C1E4B8F11FFA1CE8 /* NIKFontAwesomeButton.h in Headers */,
+				B96502AE9ED335D0E4CFD16D0EC69842 /* NIKFontAwesomeIcon.h in Headers */,
+				73F4DE75AC6B1C11B8F6379E42BA1475 /* NIKFontAwesomeIconFactory+iOS.h in Headers */,
+				3D8176EA9B2289862B245E3A86F3E933 /* NIKFontAwesomeIconFactory+OSX.h in Headers */,
+				F3A194780D15F7819A84EA8B802C6A11 /* NIKFontAwesomeIconFactory.h in Headers */,
+				E64F0937E1EFD12617AAB8F451B29EB3 /* NIKFontAwesomeIconTraits.h in Headers */,
+				F4B88D1254A7940D74EC257CC8CF378C /* NIKFontAwesomeIconTypes.h in Headers */,
+				32C7FA0822A1C030A0D7E18D610A47E2 /* NIKFontAwesomeImageView.h in Headers */,
+				84AAFE83A38984CB2D2C193EC1117DBA /* NIKFontAwesomePathFactory.h in Headers */,
+				B9F3202D3536D1907CB9FF1FBAB78640 /* NIKFontAwesomePathRenderer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17A8D5347A54AAF75DAB6C8546AFB77 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A4D1BA15DA2C5A6D6D60A663772A249 /* SwiftyJSON-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		27939217BD914189EB1812C5F908F7D0 /* SwiftyJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548A773982C983EBE9F9F6A1910650A7 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildPhases = (
+				F7FC8927D70501F587894711031A97AA /* Sources */,
+				03324F3E832527E77437CD5C5226DD15 /* Frameworks */,
+				A17A8D5347A54AAF75DAB6C8546AFB77 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = F72E149B0711D286A42FD5E7E4ADE540 /* SwiftyJSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		822C3E51A1F250AF81CA665BCAAE09E1 /* Pods-tpg offlineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27193FB8AA3ABAEA8ADD3AA8A0A11AE1 /* Build configuration list for PBXNativeTarget "Pods-tpg offlineUITests" */;
+			buildPhases = (
+				7E829D509276C89BA3BBE7B1AECA4351 /* Sources */,
+				F14F1723FB776780844AFDC677D97D28 /* Frameworks */,
+				1E2C577ECA60D96A5DBE2F1D879AFFCD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-tpg offlineUITests";
+			productName = "Pods-tpg offlineUITests";
+			productReference = 5838AEBCE8C7159652FB9F9D1412940D /* Pods_tpg_offlineUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8C2D7C650EDB412CEE80D70B753AEC43 /* Pods-tpg offline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DAB1F5A861951E68776CD46D8977280 /* Build configuration list for PBXNativeTarget "Pods-tpg offline" */;
+			buildPhases = (
+				FBD2E0173BCD3E8DE5AC8AFC4275D3F0 /* Sources */,
+				4509A11E56FB53421998F3EB1EAA995B /* Frameworks */,
+				1CF67AA8A4D567CA83E7FC5DD4A10EE6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8056DC22622C98D9674D5DB4875A367F /* PBXTargetDependency */,
+				8072A969F43580CA63C85530D61CB643 /* PBXTargetDependency */,
+			);
+			name = "Pods-tpg offline";
+			productName = "Pods-tpg offline";
+			productReference = E08B1873F5EDC02EDD942EABF070DC40 /* Pods_tpg_offline.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F82F4587989B28D61D8530626EEA1462 /* FontAwesomeIconFactory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7244D9562A1E9D506DAE36C6D6F7754E /* Build configuration list for PBXNativeTarget "FontAwesomeIconFactory" */;
+			buildPhases = (
+				C1F4D8C4D30C491AC3E57B1D4E2686E0 /* Sources */,
+				D4468A1B8C4BE0CA11BBDC2EB864B077 /* Frameworks */,
+				4C062BDFC30F9A74CE2ACDADC73510DD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FontAwesomeIconFactory;
+			productName = FontAwesomeIconFactory;
+			productReference = 8707F6ECD435B6B464292621C2941527 /* FontAwesomeIconFactory.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 3FD308B677509278C282E6177F986F9D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F82F4587989B28D61D8530626EEA1462 /* FontAwesomeIconFactory */,
+				8C2D7C650EDB412CEE80D70B753AEC43 /* Pods-tpg offline */,
+				822C3E51A1F250AF81CA665BCAAE09E1 /* Pods-tpg offlineUITests */,
+				27939217BD914189EB1812C5F908F7D0 /* SwiftyJSON */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E829D509276C89BA3BBE7B1AECA4351 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9260B2C97F8E068ACEFE49FBCB5366D8 /* Pods-tpg offlineUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1F4D8C4D30C491AC3E57B1D4E2686E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48CA2514EF0CC50219ADCA32B39CFE3C /* FontAwesomeIconFactory-dummy.m in Sources */,
+				389E73747BC288FCBDFF51569787F882 /* NIKFontAwesomeButton.m in Sources */,
+				386E636CE3D07D34AA08A2B6B0A8AD34 /* NIKFontAwesomeIconFactory.m in Sources */,
+				1DF5F68319071EDAB53BD9C2E0958160 /* NIKFontAwesomeImageView.m in Sources */,
+				5B0B1BB6F23FE41A902E3C40DE79713B /* NIKFontAwesomePathFactory.m in Sources */,
+				214CA80ED93FE1C45AA6BA9C21E97B42 /* NIKFontAwesomePathRenderer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7FC8927D70501F587894711031A97AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				854EE7EBE52BB65C90E2E4C09ADE2A13 /* SwiftyJSON-dummy.m in Sources */,
+				D6F216C5BB237CA8EEB56CEA4A135889 /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD2E0173BCD3E8DE5AC8AFC4275D3F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8A82E9C26340C565CAB94408DF68E7F /* Pods-tpg offline-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8056DC22622C98D9674D5DB4875A367F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FontAwesomeIconFactory;
+			target = F82F4587989B28D61D8530626EEA1462 /* FontAwesomeIconFactory */;
+			targetProxy = B33CB04D298DFF5CAA5F3F81B696C55A /* PBXContainerItemProxy */;
+		};
+		8072A969F43580CA63C85530D61CB643 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = 27939217BD914189EB1812C5F908F7D0 /* SwiftyJSON */;
+			targetProxy = 6111A637962E9F4138B89EDF645444E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0577E960F68FF02722D75DA2D211E3A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		20EF189B4603D551A71EB2FAFAB94BAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F4E3804BAA3638A52C095537AF3FE08 /* Pods-tpg offline.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-tpg offline/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/Pods-tpg offline/Pods-tpg offline.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_tpg_offline;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		475B64433992942E56309384F48948AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7104115BDBA9D77962428A6BF676985C /* Pods-tpg offlineUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-tpg offlineUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/Pods-tpg offlineUITests/Pods-tpg offlineUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_tpg_offlineUITests;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		52ACD6A21AF3B161E0DE19731DFA8957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45827EF2FBEF45F4EECCC8A95914B5BC /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		578820E498FFD85CA5D93A33D365FBED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		75956835A0266C75C774269F8F72E3FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCA1D5CD11E0F937B0BC8B8B775711F7 /* FontAwesomeIconFactory.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FontAwesomeIconFactory/FontAwesomeIconFactory-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FontAwesomeIconFactory/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MODULEMAP_FILE = "Target Support Files/FontAwesomeIconFactory/FontAwesomeIconFactory.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = FontAwesomeIconFactory;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		88600CF6F442E5EA0C76BF16165B24B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 600AC3B50696F17E30059372EB3BC2D0 /* Pods-tpg offlineUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-tpg offlineUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/Pods-tpg offlineUITests/Pods-tpg offlineUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_tpg_offlineUITests;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A87E967F3B1FCA0A10778802B1F0C8C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45827EF2FBEF45F4EECCC8A95914B5BC /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C53B055355770DC5E8B4E23E63BBA849 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCA1D5CD11E0F937B0BC8B8B775711F7 /* FontAwesomeIconFactory.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FontAwesomeIconFactory/FontAwesomeIconFactory-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FontAwesomeIconFactory/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MODULEMAP_FILE = "Target Support Files/FontAwesomeIconFactory/FontAwesomeIconFactory.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = FontAwesomeIconFactory;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E67491E87FEDD7485DCF3E27D78E593D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D851E048C20DC9354FF9BE00B2E366C9 /* Pods-tpg offline.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-tpg offline/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/Pods-tpg offline/Pods-tpg offline.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_tpg_offline;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0DAB1F5A861951E68776CD46D8977280 /* Build configuration list for PBXNativeTarget "Pods-tpg offline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E67491E87FEDD7485DCF3E27D78E593D /* Debug */,
+				20EF189B4603D551A71EB2FAFAB94BAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27193FB8AA3ABAEA8ADD3AA8A0A11AE1 /* Build configuration list for PBXNativeTarget "Pods-tpg offlineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				475B64433992942E56309384F48948AB /* Debug */,
+				88600CF6F442E5EA0C76BF16165B24B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0577E960F68FF02722D75DA2D211E3A8 /* Debug */,
+				578820E498FFD85CA5D93A33D365FBED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548A773982C983EBE9F9F6A1910650A7 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A87E967F3B1FCA0A10778802B1F0C8C8 /* Debug */,
+				52ACD6A21AF3B161E0DE19731DFA8957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7244D9562A1E9D506DAE36C6D6F7754E /* Build configuration list for PBXNativeTarget "FontAwesomeIconFactory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75956835A0266C75C774269F8F72E3FC /* Debug */,
+				C53B055355770DC5E8B4E23E63BBA849 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

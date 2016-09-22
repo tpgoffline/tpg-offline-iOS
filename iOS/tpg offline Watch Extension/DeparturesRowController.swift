@@ -17,7 +17,7 @@ class DeparturesRowController: NSObject {
     var departure: Departures? {
         didSet {
             if let departure = departure {
-                separator.setColor(departure.lineBackgroundColor ?? UIColor.whiteColor())
+                separator.setColor(departure.lineBackgroundColor ?? UIColor.white)
                 lineLabel.setText(departure.line)
                 directionLabel.setText(departure.direction)
                 

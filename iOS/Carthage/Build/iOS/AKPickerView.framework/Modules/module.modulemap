@@ -1,0 +1,10 @@
+framework module AKPickerView {
+  umbrella header "AKPickerView.h"
+
+  export *
+  module * { export * }
+}
+
+module AKPickerView.Swift {
+    header "AKPickerView-Swift.h"
+}

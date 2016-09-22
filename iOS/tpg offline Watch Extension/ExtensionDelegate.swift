@@ -2,8 +2,8 @@
 //  ExtensionDelegate.swift
 //  tpg offline Watch Extension
 //
-//  Created by Alice on 05/06/2016.
-//  Copyright © 2016 dacostafaro. All rights reserved.
+//  Created by Rémy DA COSTA FARO on 20/08/2016.
+//  Copyright © 2016 Rémy DA COSTA FARO. All rights reserved.
 //
 
 import WatchKit
@@ -12,22 +12,22 @@ import SwiftyJSON
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        var decoded = defaults.objectForKey("arretsFavoris")
+        var decoded = defaults.object(forKey: "arretsFavoris")
         if decoded != nil {
-            let unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [String:Stop]
+            let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [String:Stop]
             AppValues.favoritesStops = unarchivedData
         }
         
-        decoded = defaults.objectForKey("offlineDepartures")
+        decoded = defaults.object(forKey: "offlineDepartures")
         if decoded != nil {
-            let unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(decoded as! NSData) as? [String:String]
+            let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [String:String]
             AppValues.offlineDepartures = unarchivedData!
         }
 
-        let dataCouleurs = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("couleursLignes", ofType: "json")!)
-        let couleurs = JSON(data: dataCouleurs!)
+        let dataCouleurs = NSData(contentsOfFile: Bundle.main.path(forResource: "couleursLignes", ofType: "json")!)
+        let couleurs = JSON(data: dataCouleurs! as Data)
         for (_, j) in couleurs["colors"] {
             AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!)
             AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!)
@@ -46,13 +46,37 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Use this method to pause ongoing tasks, disable timers, etc.
     }
 
+    func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
+        // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
+        for task in backgroundTasks {
+            // Use a switch statement to check the task type
+            switch task {
+            case let backgroundTask as WKApplicationRefreshBackgroundTask:
+                // Be sure to complete the background task once you’re done.
+                backgroundTask.setTaskCompleted()
+            case let snapshotTask as WKSnapshotRefreshBackgroundTask:
+                // Snapshot tasks have a unique completion call, make sure to set your expiration date
+                snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)
+            case let connectivityTask as WKWatchConnectivityRefreshBackgroundTask:
+                // Be sure to complete the connectivity task once you’re done.
+                connectivityTask.setTaskCompleted()
+            case let urlSessionTask as WKURLSessionRefreshBackgroundTask:
+                // Be sure to complete the URL session task once you’re done.
+                urlSessionTask.setTaskCompleted()
+            default:
+                // make sure to complete unhandled task types
+                task.setTaskCompleted()
+            }
+        }
+    }
+
 }
 
 extension UIColor {
     convenience init(hexString: String) {
-        let hex = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = hexString.trimmingCharacters(in: NSCharacterSet.alphanumerics.inverted)
         var int = UInt32()
-        NSScanner(string: hex).scanHexInt(&int)
+        Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
         switch hex.characters.count {
         case 3: // RGB (12-bit)

@@ -1,0 +1,6 @@
+framework module FontAwesomeIconFactory {
+  umbrella header "FontAwesomeIconFactory-umbrella.h"
+
+  export *
+  module * { export * }
+}

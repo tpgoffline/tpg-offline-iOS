@@ -1,0 +1,29 @@
+PODS:
+  - FontAwesomeIconFactory (2.1.1)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - FontAwesomeIconFactory (from `https://github.com/nschum/FontAwesomeIconFactory.git`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  FontAwesomeIconFactory:
+    :git: https://github.com/nschum/FontAwesomeIconFactory.git
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  FontAwesomeIconFactory:
+    :commit: f7171a5762b029f64a745addc55a6b6198cc9491
+    :git: https://github.com/nschum/FontAwesomeIconFactory.git
+  SwiftyJSON:
+    :commit: 73670b94292b8d8496c398a973f56ac67789ba9f
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  FontAwesomeIconFactory: bb9ce26d3dd13044854a82d380023c8e7d3ebf1a
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+PODFILE CHECKSUM: 4f4c6e4c876b8c856a3fc9f5ce676383bfd758d5
+
+COCOAPODS: 1.0.1

@@ -1,0 +1,6 @@
+framework module FSCalendar {
+  umbrella header "FSCalendar.h"
+
+  export *
+  module * { export * }
+}

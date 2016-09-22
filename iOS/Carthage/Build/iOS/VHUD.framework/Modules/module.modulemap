@@ -1,0 +1,10 @@
+framework module VHUD {
+  umbrella header "VHUD.h"
+
+  export *
+  module * { export * }
+}
+
+module VHUD.Swift {
+    header "VHUD-Swift.h"
+}

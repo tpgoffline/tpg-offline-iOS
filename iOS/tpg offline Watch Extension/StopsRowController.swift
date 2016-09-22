@@ -20,7 +20,7 @@ class StopsRowController: NSObject {
                 //typeImage.setImage(UIImage(named: "Star"))
                 stopTitleLabel.setText(stop.title)
                 stopSubTitleLabel.setText(stop.subTitle)
-                separator.setColor(UIColor.orangeColor())
+                separator.setColor(UIColor.orange)
             }
         }
     }

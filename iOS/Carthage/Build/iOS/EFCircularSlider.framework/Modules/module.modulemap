@@ -1,0 +1,6 @@
+framework module EFCircularSlider {
+  umbrella header "EFCircularSlider.h"
+
+  export *
+  module * { export * }
+}
