@@ -6,11 +6,11 @@
 //  Copyright © 2016 Wenchao Ding. All rights reserved.
 // 
 //  注意: 这些方法仅仅为了在IB中使用，不建议直接调用。这些方法在calendar.appearance中使用。如: calendar.appearance.eventDefaultColor
-//  Warning: For IB usage only. Directly calling these methods is NOT RECOMMENDED. Use calendar.appearance to call these methods instead
+//  Warning: For IB usage only. Directly calling these methods is NOT RECOMMENDED. Use calendar.appearance instead.
 
 
 #import "FSCalendar.h"
-#import "FSCalendarConstance.h"
+#import "FSCalendarConstants.h"
 
 IB_DESIGNABLE
 @interface FSCalendar (IBExtension)

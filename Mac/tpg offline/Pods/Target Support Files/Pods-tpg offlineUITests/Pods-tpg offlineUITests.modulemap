@@ -1,6 +1,0 @@
-framework module Pods_tpg_offlineUITests {
-  umbrella header "Pods-tpg offlineUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

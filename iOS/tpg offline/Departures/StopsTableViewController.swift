@@ -11,8 +11,8 @@ import UIKit
 import SwiftyJSON
 import Chameleon
 import PermissionScope
-import INTULocationManager
 import FontAwesomeKit
+import SwiftLocation
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -111,52 +111,48 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     
     func requestLocation() {
         localisationLoading = true
+        self.localizedStops = []
         tableView.reloadData()
-        var accurency = INTULocationAccuracy.block
+        
+        var accuracy = Accuracy.block
         if self.defaults.integer(forKey: "locationAccurency") == 1 {
-            accurency = INTULocationAccuracy.house
+            accuracy = .house
         }
         else if self.defaults.integer(forKey: "locationAccurency") == 2 {
-            accurency = INTULocationAccuracy.room
+            accuracy = .room
         }
         
-        let localisationManager = INTULocationManager.sharedInstance()
-        localisationManager.requestLocation(withDesiredAccuracy: accurency, timeout: 60, delayUntilAuthorized: true) { (location, accurency, status) in
-            if status == .success {
-                self.localizedStops = []
-                AppValues.logger.info("Localisation results")
+        Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
+            AppValues.logger.info("Localisation results: \(location)")
+            
+            if self.defaults.integer(forKey: "proximityDistance") == 0 {
+                self.defaults.set(500, forKey: "proximityDistance")
+            }
+            
+            for x in [Stop](AppValues.stops.values) {
+                x.distance = location.distance(from: x.location)
                 
-                if self.defaults.integer(forKey: "proximityDistance") == 0 {
-                    self.defaults.set(500, forKey: "proximityDistance")
-                }
-                
-                for x in [Stop](AppValues.stops.values) {
-                    x.distance = location?.distance(from: x.location)
+                if ((location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: "proximityDistance"))) {
                     
-                    if ((location?.distance(from: x.location))! <= Double(self.defaults.integer(forKey: "proximityDistance"))) {
-                        
-                        self.localizedStops.append(x)
-                        AppValues.logger.info(x.stopCode)
-                        AppValues.logger.info(String(describing: location?.distance(from: x.location)))
-                    }
+                    self.localizedStops.append(x)
+                    AppValues.logger.info(x.stopCode)
+                    AppValues.logger.info(String(describing: location.distance(from: x.location)))
                 }
-                self.localizedStops.sort(by: { (arret1, arret2) -> Bool in
-                    if arret1.distance < arret2.distance {
-                        return true
-                    }
-                    else {
-                        return false
-                    }
-                })
-                self.localisationLoading = false
-                self.tableView.reloadData()
             }
-            else {
-                self.localisationLoading = false
-                self.tableView.reloadData()
-            }
+            self.localizedStops.sort(by: { (arret1, arret2) -> Bool in
+                if arret1.distance < arret2.distance {
+                    return true
+                }
+                else {
+                    return false
+                }
+            })
+            self.localisationLoading = false
+            self.tableView.reloadData()
+            }) { (location, error) in
+                AppValues.logger.error("Location update failed: \(error.localizedDescription)")
+                AppValues.logger.error("Last location: \(location)")
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -171,7 +167,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         if !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
-            switch PermissionScope().statusLocationAlways() {
+            switch PermissionScope().statusLocationInUse() {
             case .unauthorized, .disabled, .unknown:
                 // bummer
                 return
@@ -321,8 +317,11 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             return true
         }
     }
+    
     deinit {
-        tableView.dg_removePullToRefresh()
+        if let table = tableView {
+            table.dg_removePullToRefresh()
+        }
     }
     
     func filterContentForSearchText(_ searchText: String) {

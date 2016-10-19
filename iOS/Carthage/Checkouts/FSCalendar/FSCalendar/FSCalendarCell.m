@@ -8,9 +8,9 @@
 
 #import "FSCalendarCell.h"
 #import "FSCalendar.h"
-#import "UIView+FSExtension.h"
+#import "FSCalendarExtensions.h"
 #import "FSCalendarDynamicHeader.h"
-#import "FSCalendarConstance.h"
+#import "FSCalendarConstants.h"
 
 @interface FSCalendarCell ()
 
@@ -95,7 +95,8 @@
                                        bounds.size.width,
                                        eventSize*0.83
                                       );
-    _imageView.frame = self.contentView.bounds;
+    _imageView.frame = CGRectMake(self.preferredImageOffset.x, self.preferredImageOffset.y, self.contentView.fs_width, self.contentView.fs_height);
+    
 }
 
 - (void)layoutSubviews
@@ -146,8 +147,8 @@
 - (void)configureCell
 {
     if (self.dateIsPlaceholder) {
-        if (self.calendar.placeholderType == FSCalendarPlaceholderTypeNone) {
-            self.contentView.hidden = YES;
+        if (self.calendar.placeholderType==FSCalendarPlaceholderTypeNone) {
+            self.contentView.hidden = [self.calendar isDateInRange:self.date]||![self.calendar.gregorian isDate:self.date equalToDate:self.month toUnitGranularity:NSCalendarUnitMonth];
         } else if (self.calendar.placeholderType == FSCalendarPlaceholderTypeFillHeadTail && self.calendar.scope == FSCalendarScopeMonth && !self.calendar.floatingMode) {
             
             NSIndexPath *indexPath = [self.calendar.collectionView indexPathForCell:self];
@@ -213,7 +214,7 @@
         
         _imageView.center = CGPointMake(
                                         self.contentView.fs_width/2.0 + self.preferredImageOffset.x,
-                                        _imageView.center.y + self.preferredImageOffset.y
+                                        self.contentView.fs_height/2.0 + self.preferredImageOffset.y
                                        );
     } else {
         _titleLabel.fs_width = self.contentView.fs_width;
@@ -279,8 +280,7 @@
 - (BOOL)isWeekend
 {
     if (!_date) return NO;
-    NSInteger weekday = [self.calendar.gregorian component:NSCalendarUnitWeekday fromDate:_date];
-    return weekday == 1 || weekday == 7;
+    return [self.calendar.gregorian isDateInWeekend:self.date];
 }
 
 - (UIColor *)colorForCurrentStateInDictionary:(NSDictionary *)dictionary

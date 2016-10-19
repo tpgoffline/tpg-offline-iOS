@@ -10,18 +10,17 @@
 
 # Updates
 
-To get the iOS7 compatibility, You need to include [NSCalendarExtension](https://github.com/WenchaoD/NSCalendarExtension) into your project.
-
-# [中文介绍](http://www.jianshu.com/notebooks/4276521/latest)
-[**QQ交流群: 323861692**](#qq_group)
+* [NSCalendarExtension](https://github.com/WenchaoD/NSCalendarExtension) is required to get iOS7 compatibility.
 
 
 # Table of contents
 * [Screenshots](#screenshots)
 * [Installation](#installation)
 * [Pre-knowledge](#pre-knowledge)
-* [Support me](#support)
+* [Support](#support)
 * [Contact](#contact)
+
+[**QQ交流群: 323861692**](#qq_group)
 
 # <a id="screenshots"></a>Screenshots
 
@@ -42,10 +41,17 @@ To get the iOS7 compatibility, You need to include [NSCalendarExtension](https:/
 
 > FSCalendar doesn't change frame or the constraint by itself, see [Adjusts frame dynamicly](#adjusts_frame_dynamicly)
 
-## Today Extension
+<br>
+
+## Today Extension (iOS8/9)
 ![1](https://cloud.githubusercontent.com/assets/5186464/18406879/0d072d92-7736-11e6-90bc-2633f5ca2b54.gif)
 <br>
 ![2](https://cloud.githubusercontent.com/assets/5186464/18406887/47c4822c-7736-11e6-96f0-ccb4c9cba199.gif)
+
+## Today Extension With NCWidgetDisplayMode (iOS10)
+![2](https://cloud.githubusercontent.com/assets/5186464/18870531/9afa7cd4-84e3-11e6-93c6-4e8811fd71a7.gif)
+
+
 
 # <a id="installation"></a>Installation
 
@@ -64,7 +70,7 @@ pod 'FSCalendar'
 pod 'FSCalendar'
 ```
 
-> To get the iOS7-compatibility, you will also need to include [NSCalendarExtension](https://github.com/WenchaoD/NSCalendarExtension) into your project.
+> [NSCalendarExtension](https://github.com/WenchaoD/NSCalendarExtension) is required to get iOS7 compatibility.
 
 * Alternatively to give it a test run, run the command:
 
@@ -128,6 +134,9 @@ calendar.delegate = self
 view.addSubview(calendar)
 self.calendar = calendar
 ```
+
+> **FSCalendar** is fully compatible for Swift3, see `SwiftExample` for more details.
+
 <br/>
 
 ## <a id='adjusts_frame_dynamicly' /></a>Warning 
@@ -156,7 +165,11 @@ self.calendar = calendar
 ![fscalendar - ibdesignable](https://cloud.githubusercontent.com/assets/5186464/9301716/2e76a2ca-4503-11e5-8450-1fa7aa93e9fd.gif)
 
 # <a id="pre-knowledge"></a>Pre-knowledge
+
+> In `Swift3`, `NSDate` and `NSDateFormatter` have been renamed to ***Date*** and ***DateFormatter*** , see `SwiftExample` for details.
+
 ## How to create NSDate object
+
 * By **NSCalendar**.
 
 ```objc
@@ -203,6 +216,18 @@ NSLog(@"Date is %@", string);
 ```objc
 self.gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
 ```
+* Get component of NSDate
+
+```objc
+NSInteger era = [self.gregorian component:NSCalendarUnitEra fromDate:date];
+NSInteger year = [self.gregorian component:NSCalendarUnitYear fromDate:date];
+NSInteger month = [self.gregorian component:NSCalendarUnitMonth fromDate:date];
+NSInteger day = [self.gregorian component:NSCalendarUnitDay fromDate:date];
+NSInteger hour = [self.gregorian component:NSCalendarUnitHour fromDate:date];
+NSInteger minute = [self.gregorian component:NSCalendarUnitMinute fromDate:date];
+...
+
+```
 
 * Get next **month**
 
@@ -243,39 +268,35 @@ BOOL inSameUnit = [self.gregorian isDate:date1 equalToDate:date2 toUnitGranulari
 
 ```
 
-> These features of NSCalendar is introduced in iOS8, to use them in lower version, pay attention to [NSCalendarExtension](https://github.com/WenchaoD/NSCalendarExtension) <br>
 
+## <a id="support"></a>Support this repo
+* ***Star*** this repo <a href="#"><img style="margin-bottom:-12px" width="72" alt="star" src="https://cloud.githubusercontent.com/assets/5186464/15383105/fcf9cdf0-1dc2-11e6-88db-bf221042a584.png"></a>
+<br/>
+* Support with &nbsp; <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z84P82H3V4Q26&lc=C2&item_name=Lunch%20is%20on%20me%21&item_number=Support%20FSCalendar&amount=10%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted" target="_blank"><img src="https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg" width="100" height="40" style="margin-bottom:-15px;"></a>
+<br/>
+* Support with <a href="https://cloud.githubusercontent.com/assets/5186464/15096775/bacc0506-1539-11e6-91b7-b1a7a773622b.png" target="_blank"><img src="http://a1.mzstatic.com/us/r30/Purple49/v4/50/16/b3/5016b341-39c1-b47b-2994-d7e23823baed/icon175x175.png" width="40" height="40" style="margin-bottom:-15px;-webkit-border-radius:10px;border:1px solid rgba(30, 154, 236, 1);"></a> or
+<a href="https://cloud.githubusercontent.com/assets/5186464/15096872/b06f3a3a-153c-11e6-89f9-2e9c7b88ef42.png" target="_blank"><img src="http://a4.mzstatic.com/us/r30/Purple49/v4/23/31/14/233114f8-2e8d-7b63-8dc5-85d29893061e/icon175x175.jpeg" height="40" width="40" style="margin-bottom:-15px; -webkit-border-radius: 10px;border:1px solid rgba(43, 177, 0, 1)"></a>
 
-# <a id="support"></a>Support me via [![paypal](https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg)](https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg) <br>
-
-* ☕️ [This coffee is on me!](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z84P82H3V4Q26&lc=C2&item_name=This%20coffee%20is%20on%20me%21&item_number=Support%20FSCalendar%20%2d%20WenchaoIOS&amount=5%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted)
-* [Lunch is on me!](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z84P82H3V4Q26&lc=C2&item_name=Lunch%20is%20on%20me%21&item_number=Support%20FSCalendar&amount=10%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted)
-* [Have a nice dinner!](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z84P82H3V4Q26&lc=C2&item_name=Tonight%27s%20dinner%20is%20on%20me%21&item_number=Support%20FSCalendar%20%2d%20WenchaoIOS&amount=25%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted)
-* [Greate work! Keep the change!](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z84P82H3V4Q26&lc=C2&item_name=Great%20work%21%20Keep%20the%20change%21&item_number=Support%20FSCalendar%20%2d%20WenchaoIOS&amount=100%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted)
 
 <br/>
 
-# 打赏支持
 
-<div class="center">
-<a href="https://cloud.githubusercontent.com/assets/5186464/15096775/bacc0506-1539-11e6-91b7-b1a7a773622b.png" target="_blank"><img src="http://a1.mzstatic.com/us/r30/Purple49/v4/50/16/b3/5016b341-39c1-b47b-2994-d7e23823baed/icon175x175.png" width="150" height="150" style="-webkit-border-radius:20px;border:1px solid rgba(30, 154, 236, 1)"></a>
-<a href="https://cloud.githubusercontent.com/assets/5186464/15096872/b06f3a3a-153c-11e6-89f9-2e9c7b88ef42.png" target="_blank"><img src="http://a4.mzstatic.com/us/r30/Purple49/v4/23/31/14/233114f8-2e8d-7b63-8dc5-85d29893061e/icon175x175.jpeg" height="150" width="150" style="margin-left:15px;-webkit-border-radius: 20px;border:1px solid rgba(43, 177, 0, 1)"></a>
-</div>
-
-
-# Communications
-* If you found a bug ***with certain steps to reproduce***, open an issue.
-* If you need help about your code, use [stackoverflow](http://stackoverflow.com/questions/tagged/fscalendar) and tag `fscalendar`
-* If you want to contribute, submit a pull request. Make sure to follow [Coding Guidelines for Cocoa](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)
-
-#<a id='contact'/></a> Contact
+## <a id='contact'/></a> Contact
 * 微博： [**@WenchaoD**](http://weibo.com/WenchaoD)
 * Twitter：[**@WenchaoD**](https://twitter.com/WenchaoD)
 * <a id='qq_group'/></a>QQ群: <br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![fscalendar](https://cloud.githubusercontent.com/assets/5186464/18407011/8e4b6e48-7738-11e6-9fad-0e23cc881516.JPG)
 
+> If your made a beautiful calendar with this library in your app, please take a screen shot and [@me](https://twitter.com/WenchaoD) in twitter. Your help really means a lot to me! <br/>
+> 如果你用这个库完成了一个外观漂亮的日历，希望你能将这个漂亮的日历截图在微博中[@我](http://weibo.com/WenchaoD)，十分感谢！
 
 # License
 FSCalendar is available under the MIT license. See the LICENSE file for more info.
+
+# [中文说明](http://www.jianshu.com/notebooks/4276521/latest)
+<br><br>
+
+
+
 

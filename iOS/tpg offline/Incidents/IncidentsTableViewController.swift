@@ -98,7 +98,9 @@ class IncidentsTableViewController: UITableViewController {
     }
     
     deinit {
-        tableView.dg_removePullToRefresh()
+        if let table = tableView {
+            table.dg_removePullToRefresh()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

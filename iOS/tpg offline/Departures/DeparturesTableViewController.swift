@@ -14,6 +14,8 @@ import Alamofire
 import NVActivityIndicatorView
 import WatchConnectivity
 import FontAwesomeKit
+import UserNotifications
+import Crashlytics
 
 class DeparturesTableViewController: UITableViewController {
     var stop: Stop? = nil
@@ -111,57 +113,57 @@ class DeparturesTableViewController: UITableViewController {
             defaults.set(encodedData, forKey: "favoritesStops")
         }
         
-            if WCSession.isSupported() {
-                do {
-                    var a: [String:[String:Any]] = [:]
-                    for (x, y) in AppValues.favoritesStops {
-                        a[x] = y.toDictionnary()
-                    }
-                    var offlineDepartures: [String:String] = [:]
-                    var path = ""
-                    for (_, y) in AppValues.favoritesStops {
-                        var json = JSON(data: "{}".data(using: String.Encoding.utf8)!)
-                        var departuresArray: [String:String] = [:]
-                        let dir: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!)
-                        path = dir.appendingPathComponent(y.stopCode + "departsSAM.json").absoluteString
-                        
-                        if FileManager.default.fileExists(atPath: path) {
-                            do {
-                                try departuresArray["SAM"] = String(contentsOfFile: path)
-                            } catch {
-                                print("Reading of \(path) is failed")
-                            }
-                        }
-                        
-                        path = dir.appendingPathComponent(y.stopCode + "departsDIM.json").absoluteString
-                        
-                        if FileManager.default.fileExists(atPath: path) {
-                            do {
-                                try departuresArray["DIM"] = String(contentsOfFile: path)
-                            } catch {
-                                print("Reading of \(path) is failed")
-                            }
-                        }
-                        
-                        path = dir.appendingPathComponent(y.stopCode + "departsLUN.json").absoluteString
-                        
-                        if FileManager.default.fileExists(atPath: path) {
-                            do {
-                                try departuresArray["LUN"] = String(contentsOfFile: path)
-                            } catch {
-                                print("Reading of \(path) is failed")
-                            }
-                        }
-                        
-                        json.dictionaryObject = departuresArray
-                        offlineDepartures[y.stopCode] = json.rawString() ?? ""
-                        
-                    }
-                    try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops": NSKeyedArchiver.archivedData(withRootObject: a) as Any, "offlineDepartures": offlineDepartures as Any])
-                    
-                } catch {
-                    AppValues.logger.error("Update WatchConnectivity with application context failed")
+        if WCSession.isSupported() {
+            do {
+                var a: [String:[String:Any]] = [:]
+                for (x, y) in AppValues.favoritesStops {
+                    a[x] = y.toDictionnary()
                 }
+                var offlineDepartures: [String:String] = [:]
+                var path = ""
+                for (_, y) in AppValues.favoritesStops {
+                    var json = JSON(data: "{}".data(using: String.Encoding.utf8)!)
+                    var departuresArray: [String:String] = [:]
+                    let dir: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!)
+                    path = dir.appendingPathComponent(y.stopCode + "departsSAM.json").absoluteString
+                    
+                    if FileManager.default.fileExists(atPath: path) {
+                        do {
+                            try departuresArray["SAM"] = String(contentsOfFile: path)
+                        } catch {
+                            print("Reading of \(path) is failed")
+                        }
+                    }
+                    
+                    path = dir.appendingPathComponent(y.stopCode + "departsDIM.json").absoluteString
+                    
+                    if FileManager.default.fileExists(atPath: path) {
+                        do {
+                            try departuresArray["DIM"] = String(contentsOfFile: path)
+                        } catch {
+                            print("Reading of \(path) is failed")
+                        }
+                    }
+                    
+                    path = dir.appendingPathComponent(y.stopCode + "departsLUN.json").absoluteString
+                    
+                    if FileManager.default.fileExists(atPath: path) {
+                        do {
+                            try departuresArray["LUN"] = String(contentsOfFile: path)
+                        } catch {
+                            print("Reading of \(path) is failed")
+                        }
+                    }
+                    
+                    json.dictionaryObject = departuresArray
+                    offlineDepartures[y.stopCode] = json.rawString() ?? ""
+                    
+                }
+                try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops": NSKeyedArchiver.archivedData(withRootObject: a) as Any, "offlineDepartures": offlineDepartures as Any])
+                
+            } catch {
+                AppValues.logger.error("Update WatchConnectivity with application context failed")
+            }
         }
         
         var barButtonsItems: [UIBarButtonItem] = []
@@ -197,44 +199,105 @@ class DeparturesTableViewController: UITableViewController {
     }
     
     func scheduleNotification(_ hour: String, before: Int, line: String, direction: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-        var time = dateFormatter.date(from: hour)
-        time!.addTimeInterval(Double(before) * -1.0)
-        let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
-        
-        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
-        let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
-        let reminder = UILocalNotification()
-        reminder.fireDate = date
-        reminder.soundName = UILocalNotificationDefaultSoundName
-        if before == 0 {
-            reminder.alertBody = "Le tpg de la line ".localized() + line + " en direction de ".localized() + direction + " va partir immédiatement".localized()
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            
+            center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                if granted {
+                    let content = UNMutableNotificationContent()
+                    if before == 0 {
+                        content.title = "Départ immédiat !".localized()
+                        content.body = "Le tpg de la line ".localized() + line + " en direction de ".localized() + direction + " va partir immédiatement".localized()
+                    }
+                    else {
+                        content.title = "Départ dans ".localized() + String(before) + " minutes".localized()
+                        var text =  "Le tpg de la line ".localized()
+                        text += line
+                        text += " en direction de ".localized()
+                        text += direction
+                        text += " va partir dans ".localized()
+                        text += String(before)
+                        text += " minutes".localized()
+                        content.body = text
+                    }
+                    content.categoryIdentifier = "departureNotifications"
+                    content.userInfo = [:]
+                    content.sound = UNNotificationSound.default()
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+                    var time = dateFormatter.date(from: hour)
+                    time!.addTimeInterval(Double(before) * -1.0)
+                    let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
+                    
+                    let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+                    let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
+                    
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!), repeats: false)
+                    
+                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    center.add(request, withCompletionHandler: { (error) in
+                        if error == nil {
+                            let okView = SCLAlertView()
+                            if before == 0 {
+                                okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK", duration: 10)
+                            }
+                            else {
+                                var texte =  "La notification à été enregistrée et sera affichée ".localized()
+                                texte += String(before)
+                                texte += " minutes avant le départ.".localized()
+                                okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK", duration: 10)
+                            }
+                        } else {
+                            Crashlytics.sharedInstance().recordError(error!)
+                            SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30)
+                        }
+                    })
+                } else {
+                    SCLAlertView().showError("Notifications désactivées", subTitle: "Merci d'activer les notifications dans les réglages", closeButtonTitle: "OK", duration: 30)
+                }
+            }
         }
         else {
-            var texte =  "Le tpg de la line ".localized()
-            texte += line
-            texte += " en direction de ".localized()
-            texte += direction
-            texte += " va partir dans ".localized()
-            texte += String(before)
-            texte += " minutes".localized()
-            reminder.alertBody = texte
-        }
-        
-        UIApplication.shared.scheduleLocalNotification(reminder)
-        
-        AppValues.logger.debug("Firing at \(now.hour):\(now.minute!-before):\(now.second)")
-        
-        let okView = SCLAlertView()
-        if before == 0 {
-            okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK", duration: 10)
-        }
-        else {
-            var texte =  "La notification à été enregistrée et sera affichée ".localized()
-            texte += String(before)
-            texte += " minutes avant le départ.".localized()
-            okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK", duration: 10)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+            var time = dateFormatter.date(from: hour)
+            time!.addTimeInterval(Double(before) * -1.0)
+            let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
+            
+            let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+            let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
+            let reminder = UILocalNotification()
+            reminder.fireDate = date
+            reminder.soundName = UILocalNotificationDefaultSoundName
+            if before == 0 {
+                reminder.alertBody = "Le tpg de la line ".localized() + line + " en direction de ".localized() + direction + " va partir immédiatement".localized()
+            }
+            else {
+                var texte =  "Le tpg de la line ".localized()
+                texte += line
+                texte += " en direction de ".localized()
+                texte += direction
+                texte += " va partir dans ".localized()
+                texte += String(before)
+                texte += " minutes".localized()
+                reminder.alertBody = texte
+            }
+            
+            UIApplication.shared.scheduleLocalNotification(reminder)
+            
+            AppValues.logger.debug("Firing at \(now.hour):\(now.minute!-before):\(now.second)")
+            
+            let okView = SCLAlertView()
+            if before == 0 {
+                okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK", duration: 10)
+            }
+            else {
+                var texte =  "La notification à été enregistrée et sera affichée ".localized()
+                texte += String(before)
+                texte += " minutes avant le départ.".localized()
+                okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK", duration: 10)
+            }
         }
     }
     
@@ -321,11 +384,10 @@ class DeparturesTableViewController: UITableViewController {
                         break
                     default:
                         path = dir.appendingPathComponent(self.stop!.stopCode + "departsLUN.json");
-                        
+        
                         break
                     }
                     
-                    //reading
                     do {
                         let departuresJSONString = try NSString(contentsOf: path, encoding: String.Encoding.utf8.rawValue)
                         
@@ -619,24 +681,25 @@ extension DeparturesTableViewController {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "departArretCell", for: indexPath) as! DeparturesTableViewCell
             
-            let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-            labelPictoLigne.text = departuresList[(indexPath as NSIndexPath).row].line
-            labelPictoLigne.textAlignment = .center
+            var lineColor = AppValues.textColor
+            
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                labelPictoLigne.textColor = departuresList[(indexPath as NSIndexPath).row].lineColor
-                labelPictoLigne.layer.borderColor = departuresList[(indexPath as NSIndexPath).row].lineColor.cgColor
+                lineColor = departuresList[(indexPath as NSIndexPath).row].lineColor
             }
             else {
                 if ContrastColorOf(departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
-                    labelPictoLigne.textColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
-                    labelPictoLigne.layer.borderColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor.cgColor
+                    lineColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
                 }
                 else {
-                    labelPictoLigne.textColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor.darken(byPercentage: 0.2)
-                    labelPictoLigne.layer.borderColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor.darken(byPercentage: 0.2).cgColor
+                    lineColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor.darken(byPercentage: 0.2)
                 }
-                
             }
+            
+            let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
+            labelPictoLigne.text = departuresList[(indexPath as NSIndexPath).row].line
+            labelPictoLigne.textAlignment = .center
+            labelPictoLigne.textColor = lineColor
+            labelPictoLigne.layer.borderColor = lineColor!.cgColor
             labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
             labelPictoLigne.layer.borderWidth = 1
             let image = labelToImage(labelPictoLigne)
@@ -644,22 +707,14 @@ extension DeparturesTableViewController {
             cell.directionLabel.text = departuresList[(indexPath as NSIndexPath).row].direction
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.directionLabel.textColor = departuresList[(indexPath as NSIndexPath).row].lineColor
-                cell.leftTimeLabel.textColor = departuresList[(indexPath as NSIndexPath).row].lineColor
                 cell.backgroundColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
             }
             else {
-                if ContrastColorOf(departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
-                    cell.directionLabel.textColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
-                    cell.leftTimeLabel.textColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
-                }
-                else {
-                    cell.directionLabel.textColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor.darken(byPercentage: 0.2)
-                    cell.leftTimeLabel.textColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor.darken(byPercentage: 0.2)
-                }
                 cell.backgroundColor = UIColor.flatWhite()
             }
             
+            cell.directionLabel.textColor = lineColor
+            cell.leftTimeLabel.textColor = lineColor
             
             if offline {
                 cell.accessoryView = UIImageView(image: nil)
@@ -673,17 +728,7 @@ extension DeparturesTableViewController {
                 }
                 else if (departuresList[(indexPath as NSIndexPath).row].leftTime == "0") {
                     let iconeBus = FAKFontAwesome.busIcon(withSize: 20)!
-                    if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                        iconeBus.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineColor)
-                    }
-                    else {
-                        if ContrastColorOf(departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
-                            iconeBus.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor)
-                        }
-                        else {
-                            iconeBus.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor.darken(byPercentage:0.2))
-                        }
-                    }
+                    iconeBus.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = iconeBus.attributedString()
                 }
                 else {
@@ -692,34 +737,13 @@ extension DeparturesTableViewController {
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 15)!
-                if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                    iconCheveron.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineColor)
-                }
-                else {
-                    if ContrastColorOf(departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
-                        iconCheveron.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor)
-                    }
-                    else {
-                        iconCheveron.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor.darken(byPercentage:0.2))
-                    }
-                    
-                }
+                iconCheveron.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
                 
                 if (departuresList[(indexPath as NSIndexPath).row].leftTime == "no more") {
                     cell.accessoryView = UIImageView(image: nil)
                     let iconTimes = FAKFontAwesome.timesIcon(withSize: 20)!
-                    if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                        iconTimes.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineColor)
-                    }
-                    else {
-                        if ContrastColorOf(departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
-                            iconTimes.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor)
-                        }
-                        else {
-                            iconTimes.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor.darken(byPercentage:0.2))
-                        }
-                    }
+                    iconTimes.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = iconTimes.attributedString()
                 }
                 else if (departuresList[(indexPath as NSIndexPath).row].leftTime == "&gt;1h") {
@@ -730,18 +754,7 @@ extension DeparturesTableViewController {
                 }
                 else if (departuresList[(indexPath as NSIndexPath).row].leftTime == "0") {
                     let busIcon = FAKFontAwesome.busIcon(withSize: 20)!
-                    if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                        busIcon.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineColor)
-                    }
-                    else {
-                        if ContrastColorOf(departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
-                            busIcon.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor)
-                        }
-                        else {
-                            busIcon.addAttribute(NSForegroundColorAttributeName, value: departuresList[indexPath.row].lineBackgroundColor.darken(byPercentage:0.2))
-                        }
-                        
-                    }
+                    busIcon.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = busIcon.attributedString()
                 }
                 else {

@@ -51,11 +51,7 @@
     _scrollDirection = _calendar.scrollDirection;
     _calendar.appearance.caseOptions = FSCalendarCaseOptionsHeaderUsesUpperCase|FSCalendarCaseOptionsWeekdayUsesUpperCase;
     
-//    _calendar.today = nil;
-//    _calendar.today = [self.calendar dateByAddingDays:2 toDate:[NSDate date]];
-    
-    
-    [_calendar selectDate:[self.dateFormatter1 dateFromString:@"2015/10/05"]];
+//    [_calendar selectDate:[self.dateFormatter1 dateFromString:@"2015/10/05"]];
     
     _datesShouldNotBeSelected = @[@"2015/08/07",
                                   @"2015/09/07",
@@ -69,6 +65,8 @@
                         @"2015-10-07",
                         @"2015-10-15",
                         @"2015-10-25"];
+    
+
     
 //    _calendar.locale = [NSLocale currentLocale];
     
@@ -101,7 +99,7 @@
     if (!_lunar) {
         return nil;
     }
-    NSInteger day = [_lunarCalendar components:NSCalendarUnitDay fromDate:date].day;
+    NSInteger day = [_lunarCalendar component:NSCalendarUnitDay fromDate:date];
     return _lunarChars[day-1];
 }
 
@@ -112,12 +110,12 @@
 
 - (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar
 {
-    return [self.dateFormatter1 dateFromString:@"2015/02/01"];
+    return [self.dateFormatter1 dateFromString:@"2016/02/01"];
 }
 
 - (NSDate *)maximumDateForCalendar:(FSCalendar *)calendar
 {
-    return [self.dateFormatter1 dateFromString:@"2039/05/31"];
+    return [self.dateFormatter1 dateFromString:@"2019/05/31"];
 }
 
 #pragma mark - FSCalendarDelegate

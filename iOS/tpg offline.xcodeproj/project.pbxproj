@@ -26,7 +26,6 @@
 		AD6F20751D689CEE00DEF1F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD6F20741D689CEE00DEF1F0 /* CoreGraphics.framework */; };
 		AD89249C1D84479D00F5FC20 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */; };
 		AD89249D1D84479D00F5FC20 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */; };
-		ADC734191D6890C500296449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B01D6890C500296449 /* AppDelegate.swift */; };
 		ADC7341A1D6890C500296449 /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B11D6890C500296449 /* AppValues.swift */; };
 		ADC7341D1D6890C500296449 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B71D6890C500296449 /* Departures.swift */; };
 		ADC7341F1D6890C500296449 /* Perturbations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B91D6890C500296449 /* Perturbations.swift */; };
@@ -90,7 +89,6 @@
 		ADC734911D68917200296449 /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734901D68917200296449 /* Chameleon.framework */; };
 		ADC734931D68917700296449 /* EFCircularSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734921D68917700296449 /* EFCircularSlider.framework */; };
 		ADC734951D68917D00296449 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734941D68917D00296449 /* FSCalendar.framework */; };
-		ADC734971D68918100296449 /* INTULocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734961D68918100296449 /* INTULocationManager.framework */; };
 		ADC734991D68918500296449 /* Onboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734981D68918500296449 /* Onboard.framework */; };
 		ADC7349B1D68918900296449 /* PermissionScope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC7349A1D68918900296449 /* PermissionScope.framework */; };
 		ADC7349D1D68918C00296449 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC7349C1D68918C00296449 /* SCLAlertView.framework */; };
@@ -98,6 +96,8 @@
 		ADC734A51D6892B200296449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734A31D6892B200296449 /* Alamofire.framework */; };
 		ADC734A61D6892B200296449 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734A41D6892B200296449 /* SwiftyJSON.framework */; };
 		ADC743411D92D32C00042584 /* DGRunkeeperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC743401D92D32C00042584 /* DGRunkeeperSwitch.swift */; };
+		ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */; };
+		ADEC094B1D97EAC300491C9F /* SwiftLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEC094A1D97EAC300491C9F /* SwiftLocation.framework */; };
 		ADF6D3FB1D6C8F4700679317 /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6D3F61D6C8F4700679317 /* DGElasticPullToRefreshConstants.swift */; };
 		ADF6D3FC1D6C8F4700679317 /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6D3F71D6C8F4700679317 /* DGElasticPullToRefreshExtensions.swift */; };
 		ADF6D3FD1D6C8F4700679317 /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6D3F81D6C8F4700679317 /* DGElasticPullToRefreshLoadingView.swift */; };
@@ -176,7 +176,6 @@
 		AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = tpg_offline_UITests.swift; path = "tpg offline UITests/tpg_offline_UITests.swift"; sourceTree = SOURCE_ROOT; };
 		ADC7338C1D68908F00296449 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC733A01D68908F00296449 /* tpg offlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offlineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADC733B01D6890C500296449 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADC733B11D6890C500296449 /* AppValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppValues.swift; sourceTree = "<group>"; };
 		ADC733B71D6890C500296449 /* Departures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
 		ADC733B91D6890C500296449 /* Perturbations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perturbations.swift; sourceTree = "<group>"; };
@@ -248,7 +247,6 @@
 		ADC734901D68917200296449 /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		ADC734921D68917700296449 /* EFCircularSlider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EFCircularSlider.framework; path = Carthage/Build/iOS/EFCircularSlider.framework; sourceTree = "<group>"; };
 		ADC734941D68917D00296449 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
-		ADC734961D68918100296449 /* INTULocationManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INTULocationManager.framework; path = Carthage/Build/iOS/INTULocationManager.framework; sourceTree = "<group>"; };
 		ADC734981D68918500296449 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = Carthage/Build/iOS/Onboard.framework; sourceTree = "<group>"; };
 		ADC7349A1D68918900296449 /* PermissionScope.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PermissionScope.framework; path = Carthage/Build/iOS/PermissionScope.framework; sourceTree = "<group>"; };
 		ADC7349C1D68918C00296449 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
@@ -257,6 +255,8 @@
 		ADC734A31D6892B200296449 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		ADC734A41D6892B200296449 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		ADC743401D92D32C00042584 /* DGRunkeeperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGRunkeeperSwitch.swift; sourceTree = "<group>"; };
+		ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ADEC094A1D97EAC300491C9F /* SwiftLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftLocation.framework; path = Carthage/Build/iOS/SwiftLocation.framework; sourceTree = "<group>"; };
 		ADF6D3F61D6C8F4700679317 /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
 		ADF6D3F71D6C8F4700679317 /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
 		ADF6D3F81D6C8F4700679317 /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
@@ -271,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADEC094B1D97EAC300491C9F /* SwiftLocation.framework in Frameworks */,
 				AD6F20751D689CEE00DEF1F0 /* CoreGraphics.framework in Frameworks */,
 				AD6F20731D689CE700DEF1F0 /* QuartzCore.framework in Frameworks */,
 				ADC7348D1D68916A00296449 /* AKPickerView.framework in Frameworks */,
@@ -280,7 +281,6 @@
 				ADC734931D68917700296449 /* EFCircularSlider.framework in Frameworks */,
 				AD6F20601D6898C800DEF1F0 /* FontAwesomeKit.framework in Frameworks */,
 				ADC734951D68917D00296449 /* FSCalendar.framework in Frameworks */,
-				ADC734971D68918100296449 /* INTULocationManager.framework in Frameworks */,
 				ADC734991D68918500296449 /* Onboard.framework in Frameworks */,
 				ADC7349B1D68918900296449 /* PermissionScope.framework in Frameworks */,
 				ADC7349D1D68918C00296449 /* SCLAlertView.framework in Frameworks */,
@@ -376,7 +376,7 @@
 		ADC733AF1D6890C500296449 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				ADC733B01D6890C500296449 /* AppDelegate.swift */,
+				ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */,
 				AD6F206C1D689A7A00DEF1F0 /* Async.swift */,
 				ADC733B11D6890C500296449 /* AppValues.swift */,
 				AD6F20611D689A0800DEF1F0 /* DGElasticPullToRefresh */,
@@ -541,6 +541,7 @@
 		ADC7348B1D68916A00296449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADEC094A1D97EAC300491C9F /* SwiftLocation.framework */,
 				ADC7348C1D68916A00296449 /* AKPickerView.framework */,
 				ADC734A31D6892B200296449 /* Alamofire.framework */,
 				ADC7348E1D68916D00296449 /* Alamofire.framework */,
@@ -551,7 +552,6 @@
 				AD6F201C1D68958100DEF1F0 /* Fabric.framework */,
 				AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */,
 				ADC734941D68917D00296449 /* FSCalendar.framework */,
-				ADC734961D68918100296449 /* INTULocationManager.framework */,
 				ADC734981D68918500296449 /* Onboard.framework */,
 				ADC7349A1D68918900296449 /* PermissionScope.framework */,
 				AD6F20721D689CE700DEF1F0 /* QuartzCore.framework */,
@@ -767,7 +767,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EFCircularSlider.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FSCalendar.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/INTULocationManager.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Onboard.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PermissionScope.framework",
@@ -776,6 +775,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesomeKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/VHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftLocation.framework",
 			);
 			name = "Install Carthage frameworks";
 			outputPaths = (
@@ -812,10 +812,10 @@
 				ADC7342C1D6890C500296449 /* LoadingCellTableViewCell.swift in Sources */,
 				ADC734311D6890C500296449 /* ThemeCollectionViewCell.swift in Sources */,
 				ADC743411D92D32C00042584 /* DGRunkeeperSwitch.swift in Sources */,
-				ADC734191D6890C500296449 /* AppDelegate.swift in Sources */,
 				ADC7342E1D6890C500296449 /* SeeLineTableViewCell.swift in Sources */,
 				ADC7341D1D6890C500296449 /* Departures.swift in Sources */,
 				ADC734221D6890C500296449 /* SearchRoute.swift in Sources */,
+				ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */,
 				ADC734531D6890C500296449 /* RoutesListTableViewController.swift in Sources */,
 				ADC7341A1D6890C500296449 /* AppValues.swift in Sources */,
 				ADC734471D6890C500296449 /* IncidentsTableViewController.swift in Sources */,

@@ -14,15 +14,21 @@
 #import "FSCalendarAnimator.h"
 #import "FSCalendarScopeHandle.h"
 
-#import "UIView+FSExtension.h"
+#import "FSCalendarExtensions.h"
 #import "FSCalendarDynamicHeader.h"
 #import "FSCalendarCollectionView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 static inline void FSCalendarAssertDateInBounds(NSDate *date, NSCalendar *calendar, NSDate *minimumDate, NSDate *maximumDate) {
-    BOOL notValid = [calendar components:NSCalendarUnitDay fromDate:minimumDate toDate:date options:0].day < 0 || [calendar components:NSCalendarUnitDay fromDate:maximumDate toDate:date options:0].day > 0;
-    if (notValid) {
+    BOOL valid = YES;
+    NSInteger minOffset = [calendar components:NSCalendarUnitDay fromDate:minimumDate toDate:date options:0].day;
+    valid &= minOffset >= 0;
+    if (valid) {
+        NSInteger maxOffset = [calendar components:NSCalendarUnitDay fromDate:maximumDate toDate:date options:0].day;
+        valid &= maxOffset <= 0;
+    }
+    if (!valid) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy/MM/dd";
         [NSException raise:@"FSCalendar date out of bounds exception" format:@"Target date %@ beyond bounds [%@ - %@]", [formatter stringFromDate:date], [formatter stringFromDate:minimumDate], [formatter stringFromDate:date]];
@@ -139,6 +145,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
 - (void)scrollToPageForDate:(NSDate *)date animated:(BOOL)animated;
 
+- (BOOL)isPageInRange:(NSDate *)page;
 - (BOOL)isDateInRange:(NSDate *)date;
 - (BOOL)isDateSelected:(NSDate *)date;
 - (BOOL)isDateInDifferentPage:(NSDate *)date;
@@ -274,6 +281,12 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     [daysContainer addSubview:collectionView];
     self.collectionView = collectionView;
     self.collectionViewLayout = collectionViewLayout;
+    
+    
+    SEL selector = NSSelectorFromString(@"setPrefetchingEnabled:");
+    if (selector && [collectionView respondsToSelector:selector]) {
+        [collectionView fs_performSelector:selector withObjects:@NO, nil];
+    }
     
     if (!FSCalendarInAppExtension) {
         
@@ -491,6 +504,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
+    [self requestBoundingDatesIfNecessary];
     if (self.animator.transition == FSCalendarTransitionWeekToMonth) {
         NSInteger sections = [self.gregorian components:NSCalendarUnitMonth fromDate:[self beginingOfMonth:self.minimumDate] toDate:self.maximumDate options:0].month + 1;
         return sections;
@@ -578,8 +592,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         if (_placeholderType == FSCalendarPlaceholderTypeNone) return NO;
         if ([self isDateInRange:cell.date]) {
             [self selectDate:cell.date scrollToDate:YES forPlaceholder:YES];
-        } else if (![self.gregorian isDate:cell.date equalToDate:_currentPage toUnitGranularity:NSCalendarUnitMonth]){
-            [self scrollToPageForDate:cell.date animated:YES];
         }
         return NO;
     }
@@ -829,10 +841,11 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
             [self setNeedsLayout];
         }
     }
-    
-    [_collectionView.visibleCells makeObjectsPerformSelector:@selector(setDateIsToday:) withObject:@NO];
-    [[_collectionView cellForItemAtIndexPath:[self indexPathForDate:today]] setValue:@YES forKey:@"dateIsToday"];
-    [_collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+    if (self.hasValidateVisibleLayout) {
+        [_collectionView.visibleCells makeObjectsPerformSelector:@selector(setDateIsToday:) withObject:@NO];
+        [[_collectionView cellForItemAtIndexPath:[self indexPathForDate:today]] setValue:@YES forKey:@"dateIsToday"];
+        [_collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+    }
 }
 
 - (void)setCurrentPage:(NSDate *)currentPage
@@ -843,10 +856,11 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 - (void)setCurrentPage:(NSDate *)currentPage animated:(BOOL)animated
 {
     [self requestBoundingDatesIfNecessary];
-    FSCalendarAssertDateInBounds(currentPage,self.gregorian,self.minimumDate,self.maximumDate);
     if (self.floatingMode || [self isDateInDifferentPage:currentPage]) {
         currentPage = [self.gregorian dateBySettingHour:0 minute:0 second:0 ofDate:currentPage options:0];
-        [self scrollToPageForDate:currentPage animated:animated];
+        if ([self isPageInRange:currentPage]) {
+            [self scrollToPageForDate:currentPage animated:animated];
+        }
     }
 }
 
@@ -1063,6 +1077,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (void)reloadData
 {
+    if (!self.hasValidateVisibleLayout) return;
     NSDate *minimumDate = self.minimumDateForCalendar;
     NSDate *maximumDate = self.maximumDateForCalendar;
     if (![self.gregorian isDate:minimumDate equalToDate:_minimumDate toUnitGranularity:NSCalendarUnitMonth] || ![self.gregorian isDate:maximumDate equalToDate:_maximumDate toUnitGranularity:NSCalendarUnitMonth]) {
@@ -1071,16 +1086,13 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         [_collectionView reloadData];
         [_header.collectionView reloadData];
         [self setNeedsLayout];
-    }
-    else {
+    } else {
         [self reloadVisibleCells];
     }
-    
     [self invalidateWeekdayFont];
     [self invalidateWeekdayTextColor];
     [self invalidateWeekdaySymbols];
     [self invalidateHeaders];
-    
 }
 
 - (void)setScope:(FSCalendarScope)scope animated:(BOOL)animated
@@ -1248,15 +1260,15 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     animated &= _scrollEnabled; // No animation if _scrollEnabled == NO;
     _supressEvent = !animated;
     
-    FSCalendarAssertDateInBounds(date,self.gregorian,self.minimumDate,self.maximumDate);
-    
     NSInteger scrollOffset = 0;
     switch (_scope) {
         case FSCalendarScopeMonth: {
+            FSCalendarAssertDateInBounds(date,self.gregorian,[self beginingOfMonth:self.minimumDate],[self endOfMonth:self.maximumDate]);
             scrollOffset = [self.gregorian components:NSCalendarUnitMonth fromDate:[self beginingOfMonth:self.minimumDate] toDate:date options:0].month;
             break;
         }
         case FSCalendarScopeWeek: {
+            FSCalendarAssertDateInBounds(date,self.gregorian,[self beginingOfWeek:self.minimumDate],[self endOfWeek:self.maximumDate]);
             scrollOffset = [self.gregorian components:NSCalendarUnitWeekOfYear fromDate:[self beginingOfWeek:self.minimumDate] toDate:date options:0].weekOfYear;
             break;
         }
@@ -1275,16 +1287,13 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         }
         
     } else {
-        // 全屏模式中，切换页面时需要将该月份提升到视图最上方
         if (self.hasValidateVisibleLayout) {
             // Force layout to avoid crash on orientation changing
             [_collectionViewLayout layoutAttributesForElementsInRect:_collectionView.bounds];
             CGRect headerFrame = [_collectionViewLayout layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:scrollOffset]].frame;
             CGPoint targetOffset = CGPointMake(0, MIN(headerFrame.origin.y,MAX(0,_collectionView.contentSize.height-_collectionView.fs_bottom)));
             [_collectionView setContentOffset:targetOffset animated:animated];
-            
         } else {
-            // 如果在loadView或者viewDidLoad中调用需要切换月份的方法, 这时UICollectionView并没有准备好自己的单元格和空间大小，这时不能直接调用setContentOffset,而是等到在layoutSubviews之后再去调用
             _currentPage = date;
             _needsAdjustingMonthPosition = YES;
             [self setNeedsLayout];
@@ -1300,7 +1309,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (void)scrollToPageForDate:(NSDate *)date animated:(BOOL)animated
 {
-    if (!date) return;
+    if (!date || ![self isDateInRange:date]) return;
     
     if (!self.floatingMode) {
         if ([self isDateInDifferentPage:date]) {
@@ -1308,10 +1317,12 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
             NSDate *lastPage = _currentPage;
             switch (_scope) {
                 case FSCalendarScopeMonth: {
+                    FSCalendarAssertDateInBounds(date, self.gregorian, [self beginingOfMonth:self.minimumDate], [self endOfMonth:self.maximumDate]);
                     _currentPage = [self beginingOfMonth:date];
                     break;
                 }
                 case FSCalendarScopeWeek: {
+                    FSCalendarAssertDateInBounds(date, self.gregorian, [self beginingOfWeek:self.minimumDate], [self endOfWeek:self.maximumDate]);
                     _currentPage = [self beginingOfWeek:date];
                     break;
                 }
@@ -1416,8 +1427,35 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (BOOL)isDateInRange:(NSDate *)date
 {
-    BOOL flag = [self.gregorian components:NSCalendarUnitDay fromDate:date toDate:self.minimumDate options:0].day <= 0;
+    BOOL flag = YES;
+    flag &= [self.gregorian components:NSCalendarUnitDay fromDate:date toDate:self.minimumDate options:0].day <= 0;
     flag &= [self.gregorian components:NSCalendarUnitDay fromDate:date toDate:self.maximumDate options:0].day >= 0;;
+    return flag;
+}
+
+- (BOOL)isPageInRange:(NSDate *)page
+{
+    BOOL flag = YES;
+    switch (self.scope) {
+        case FSCalendarScopeMonth: {
+            NSDateComponents *c1 = [self.gregorian components:NSCalendarUnitDay fromDate:[self beginingOfMonth:self.minimumDate] toDate:page options:0];
+            flag &= (c1.day>=0);
+            if (!flag) break;
+            NSDateComponents *c2 = [self.gregorian components:NSCalendarUnitDay fromDate:page toDate:[self endOfMonth:self.maximumDate] options:0];
+            flag &= (c2.day>=0);
+            break;
+        }
+        case FSCalendarScopeWeek: {
+            NSDateComponents *c1 = [self.gregorian components:NSCalendarUnitDay fromDate:[self beginingOfWeek:self.minimumDate] toDate:page options:0];
+            flag &= (c1.day>=0);
+            if (!flag) break;
+            NSDateComponents *c2 = [self.gregorian components:NSCalendarUnitDay fromDate:page toDate:[self endOfWeek:self.maximumDate] options:0];
+            flag &= (c2.day>=0);
+            break;
+        }
+        default:
+            break;
+    }
     return flag;
 }
 
@@ -1526,6 +1564,9 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         if (_header) {
             [_header removeFromSuperview];
         }
+        if (_deliver) {
+            [_deliver removeFromSuperview];
+        }
         if (_weekdays.count) {
             [_weekdays makeObjectsPerformSelector:@selector(removeFromSuperview)];
             [_weekdays removeAllObjects];
@@ -1609,7 +1650,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     cell.title = [self titleForDate:cell.date];
     cell.subtitle  = [self subtitleForDate:cell.date];
     cell.dateIsSelected = [_selectedDates containsObject:cell.date];
-    cell.dateIsToday = [self.gregorian isDate:cell.date inSameDayAsDate:self.today];
+    cell.dateIsToday = self.today?[self.gregorian isDate:cell.date inSameDayAsDate:self.today]:NO;
     switch (_scope) {
         case FSCalendarScopeMonth: {
             NSDate *firstPage = [self beginingOfMonth:_minimumDate];
@@ -1631,7 +1672,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     }
     [self invalidateAppearanceForCell:cell];
     if (cell.dateIsSelected) {
-        if (cell.dateIsPlaceholder) indexPath = [self indexPathForDate:cell.date];
         [_collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     } else if ([_collectionView.indexPathsForSelectedItems containsObject:indexPath]) {
         [_collectionView deselectItemAtIndexPath:indexPath animated:NO];
@@ -1641,8 +1681,10 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (void)reloadVisibleCells
 {
-    [_collectionView.indexPathsForVisibleItems enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
-        FSCalendarCell *cell = (FSCalendarCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    FSCalendarUseWeakSelf
+    [self.collectionView.indexPathsForVisibleItems enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
+        FSCalendarUseStrongSelf
+        FSCalendarCell *cell = (FSCalendarCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
         [self reloadDataForCell:cell atIndexPath:indexPath];
     }];
 }
@@ -2067,6 +2109,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         minimumDate = [_dataSource minimumDateForCalendar:self];
     }
     if (!minimumDate) {
+        self.formatter.dateFormat = @"yyyy-MM-dd";
         minimumDate = [self.formatter dateFromString:@"1970-01-01"];
     } else {
         minimumDate = [self.gregorian dateBySettingHour:0 minute:0 second:0 ofDate:minimumDate options:0];
@@ -2085,6 +2128,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         maximumDate = [_dataSource maximumDateForCalendar:self];
     }
     if (!maximumDate) {
+        self.formatter.dateFormat = @"yyyy-MM-dd";
         maximumDate = [self.formatter dateFromString:@"2099-12-31"];
     } else {
         maximumDate = [self.gregorian dateBySettingHour:0 minute:0 second:0 ofDate:maximumDate options:0];
@@ -2192,6 +2236,4 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 @end
 
-
-#undef FSCalendarAssertDateInBounds
 

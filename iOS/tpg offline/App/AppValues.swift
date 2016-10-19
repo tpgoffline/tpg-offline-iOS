@@ -18,8 +18,8 @@ struct AppValues {
     static var nameTransportAPIToTpgStopName: [String: String]!  = [:]
 	static var favoritesRoutes: [[Stop]]! = []
     static var stopCodeToStopItem: [String: String] = [:]
-    static var primaryColor: UIColor! = UIColor.flatOrange()
-    static var textColor: UIColor! = UIColor.white
+    static var primaryColor: UIColor! = UIColor.flatWhite()
+    static var textColor: UIColor! = UIColor.flatOrangeColorDark()
     static var stopsKeys: [String] = []
     static var linesBackgroundColor = [String:UIColor]()
     static var linesColor = [String:UIColor]()

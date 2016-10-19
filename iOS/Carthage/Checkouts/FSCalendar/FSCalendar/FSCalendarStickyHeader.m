@@ -8,8 +8,8 @@
 
 #import "FSCalendarStickyHeader.h"
 #import "FSCalendar.h"
-#import "UIView+FSExtension.h"
-#import "FSCalendarConstance.h"
+#import "FSCalendarExtensions.h"
+#import "FSCalendarConstants.h"
 #import "FSCalendarDynamicHeader.h"
 
 @interface FSCalendarStickyHeader ()

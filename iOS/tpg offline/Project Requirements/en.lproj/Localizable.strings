@@ -255,9 +255,11 @@
 
 "D'autres surprises vont arriver dans les prochaines versions." = "Other surprises will arrive in future releases.";
 
+"Vous ne pouvez pas envoyer d'emails" = "You can't send emails";
 
+"Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages" = "Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages";
 
-
+"Donnez votre avis !" = "Share your opinion !•";
 
 /*
  * ./tpg offline/DeparturesTableViewController.swift
@@ -293,9 +295,11 @@
 
 "Vous pouvez télécharger les départs dans les paramètres afin d'y avoir accès en mode hors-ligne." = "You can download the departures in settings menu to be accessed in offline mode.";
 
+"Départ dans " = "Leaving in ";
 
+"Départ immédiat !" = "Immediate departure";
 
-
+"Impossible d'enregistrer la notification" = "Unable to save the notification";
 
 /*
  * ./tpg offline/StopsTableViewController.swift

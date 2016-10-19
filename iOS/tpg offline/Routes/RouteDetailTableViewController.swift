@@ -82,7 +82,6 @@ class RouteDetailTableViewController: UITableViewController {
                 cell.lineLabel.text = "Ligne ".localized() + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
             }
             
-            
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
                 
@@ -119,48 +118,37 @@ class RouteDetailTableViewController: UITableViewController {
             }
             else {
                 couleurTexte = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
-                cell.backgroundColor = AppValues.primaryColor
+                cell.backgroundColor = UIColor.white
                 
                 if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].isTpg {
+                    
+                    cell.backgroundColor = UIColor.white
+                    
+                    let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
+                    labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
+                    labelPictoLigne.textAlignment = .center
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
+                    labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!.cgColor
+                    labelPictoLigne.layer.borderWidth = 1
+                    
+                    couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
+                    
                     if ContrastColorOf(AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!, returnFlat: true) == FlatWhite() {
-                        cell.backgroundColor = UIColor.white
                         couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
-                        let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                        labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
-                        labelPictoLigne.textAlignment = .center
-                        labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
-                        labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                        labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!.cgColor
-                        labelPictoLigne.layer.borderWidth = 1
-                        
-                        let image = labelToImage(labelPictoLigne)
-                        cell.iconImageView.image = image
-                        for x in cell.iconImageView.constraints {
-                            if x.identifier == "iconeImageViewHeight" {
-                                x.constant = 24
-                            }
-                        }
                     }
                     else {
-                        cell.backgroundColor = UIColor.white
-                        couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!.darken(byPercentage: 0.2)
-                        
-                        let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                        labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
-                        labelPictoLigne.textAlignment = .center
-                        labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!.darken(byPercentage: 0.2)
-                        labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                        labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!.darken(byPercentage: 0.2).cgColor
-                        labelPictoLigne.layer.borderWidth = 1
-                        
-                        let image = labelToImage(labelPictoLigne)
-                        cell.iconImageView.image = image
-                        for x in cell.iconImageView.constraints {
-                            if x.identifier == "iconeImageViewHeight" {
-                                x.constant = 24
-                            }
+                        couleurTexte = couleurTexte.darken(byPercentage: 0.2)
+                        labelPictoLigne.textColor = labelPictoLigne.textColor.darken(byPercentage: 0.2)
+                        labelPictoLigne.layer.borderColor = UIColor(cgColor: labelPictoLigne.layer.borderColor!).darken(byPercentage: 0.2).cgColor
+                    }
+                    
+                    let image = labelToImage(labelPictoLigne)
+                    cell.iconImageView.image = image
+                    for x in cell.iconImageView.constraints {
+                        if x.identifier == "iconeImageViewHeight" {
+                            x.constant = 24
                         }
-                        
                     }
                 }
                 else {
@@ -175,7 +163,7 @@ class RouteDetailTableViewController: UITableViewController {
 			let icone = FAKIonIcons.androidWalkIcon(withSize: 42)!
             
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-            cell.backgroundColor = AppValues.primaryColor
+            cell.backgroundColor = UIColor.white
             couleurTexte = AppValues.textColor
 			
             cell.departureLabel.text = ""
@@ -263,7 +251,7 @@ class RouteDetailTableViewController: UITableViewController {
 	}
 	
     func scheduleNotification(_ time: Date, before: Int = 5, ligne: String, direction: String, arretDescente: String) {
-        let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -10))
+        let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -1))
         
         let cal = Calendar(identifier: Calendar.Identifier.gregorian)
         

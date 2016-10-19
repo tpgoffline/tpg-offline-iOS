@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Chameleon
-import CoreLocation
+import SwiftLocation
 import FontAwesomeKit
 
 class RoutesStopsTableViewController: UITableViewController {
@@ -17,7 +17,6 @@ class RoutesStopsTableViewController: UITableViewController {
     var localisationStops = [Stop]()
     var filtredResults = [Stop]()
     let searchController = UISearchController(searchResultsController: nil)
-    var locationManager = CLLocationManager()
     let defaults = UserDefaults.standard
     var localisationLoading: Bool = false
     
@@ -50,17 +49,6 @@ class RoutesStopsTableViewController: UITableViewController {
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
         tableView.tableHeaderView = self.searchController.searchBar
-        
-        
-        locationManager.delegate = self
-        var accurency = kCLLocationAccuracyHundredMeters
-        if self.defaults.integer(forKey: "locationAccurency") == 1 {
-            accurency = kCLLocationAccuracyNearestTenMeters
-        }
-        else if self.defaults.integer(forKey: "locationAccurency") == 2 {
-            accurency = kCLLocationAccuracyBest
-        }
-        locationManager.desiredAccuracy = accurency
         
         requestLocation()
     }
@@ -132,9 +120,48 @@ class RoutesStopsTableViewController: UITableViewController {
     
     func requestLocation() {
         localisationLoading = true
+        self.localisationStops = []
         tableView.reloadData()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        
+        var accuracy = Accuracy.block
+        if self.defaults.integer(forKey: "locationAccurency") == 1 {
+            accuracy = .house
+        }
+        else if self.defaults.integer(forKey: "locationAccurency") == 2 {
+            accuracy = .room
+        }
+        
+        Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
+            AppValues.logger.info("Localisation results: \(location)")
+            
+            if self.defaults.integer(forKey: "proximityDistance") == 0 {
+                self.defaults.set(500, forKey: "proximityDistance")
+            }
+            
+            for x in [Stop](AppValues.stops.values) {
+                x.distance = location.distance(from: x.location)
+                
+                if ((location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: "proximityDistance"))) {
+                    
+                    self.localisationStops.append(x)
+                    AppValues.logger.info(x.stopCode)
+                    AppValues.logger.info(String(describing: location.distance(from: x.location)))
+                }
+            }
+            self.localisationStops.sort(by: { (arret1, arret2) -> Bool in
+                if arret1.distance! < arret2.distance! {
+                    return true
+                }
+                else {
+                    return false
+                }
+            })
+            self.localisationLoading = false
+            self.tableView.reloadData()
+        }) { (location, error) in
+            AppValues.logger.error("Location update failed: \(error.localizedDescription)")
+            AppValues.logger.error("Last location: \(location)")
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -256,45 +283,5 @@ class RoutesStopsTableViewController: UITableViewController {
 extension RoutesStopsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
-    }
-}
-
-extension RoutesStopsTableViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
-        let location = locations[0]
-        self.localisationStops = []
-        AppValues.logger.info("Résultat de la localisation")
-        
-        if self.defaults.integer(forKey: "proximityDistance") == 0 {
-            self.defaults.set(500, forKey: "proximityDistance")
-        }
-        
-        for x in [Stop](AppValues.stops.values) {
-            x.distance = location.distance(from: x.location)
-            
-            if (location.distance(from: x.location) <= Double(self.defaults.integer(forKey: "proximityDistance"))) {
-                
-                self.localisationStops.append(x)
-                AppValues.logger.info(x.stopCode)
-                AppValues.logger.info(String(location.distance(from: x.location)))
-            }
-        }
-        self.localisationStops.sort(by: { (arret1, arret2) -> Bool in
-            if arret1.distance! < arret2.distance! {
-                return true
-            }
-            else {
-                return false
-            }
-        })
-        self.localisationLoading = false
-        self.tableView.reloadData()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        self.localisationLoading = false
-        self.tableView.reloadData()
-        AppValues.logger.warning("Error while updating location " + error.localizedDescription)
     }
 }

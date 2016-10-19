@@ -152,11 +152,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         group.background {
-            if self.defaults.object(forKey: "arretsFavoris") == nil {
+            if self.defaults.object(forKey: "favoritesStops") == nil {
                 AppValues.favoritesStops = [:]
             }
             else {
-                let decoded  = self.defaults.object(forKey: "arretsFavoris")
+                let decoded  = self.defaults.object(forKey: "favoritesStops")
                 let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [String:Stop]
                 AppValues.favoritesStops = unarchivedData
                 for (_, y) in AppValues.favoritesStops {

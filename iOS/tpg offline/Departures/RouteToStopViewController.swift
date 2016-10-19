@@ -24,7 +24,7 @@ class RouteToStopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        walkLabel.attributedText = FAKIonIcons.androidWalkIcon(withSize: timeToGoLabel.bounds.height).attributedString()
+        walkLabel.attributedText = FAKIonIcons.androidWalkIcon(withSize: walkLabel.bounds.height).attributedString()
         
         let pin = MKPointAnnotation()
         pin.coordinate = self.stop.location.coordinate

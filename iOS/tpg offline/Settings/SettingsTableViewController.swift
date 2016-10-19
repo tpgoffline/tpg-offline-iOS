@@ -15,6 +15,7 @@ import SCLAlertView
 import SafariServices
 import VHUD
 import FontAwesomeKit
+import MessageUI
 
 class SettingsTableViewController: UITableViewController {
     
@@ -22,6 +23,7 @@ class SettingsTableViewController: UITableViewController {
         [FAKFontAwesome.barsIcon(withSize: 20)!, "Choix du menu par défaut".localized(), "showChoixDuMenuParDefault"],
         [FAKFontAwesome.locationArrowIcon(withSize: 20)!, "Localisation".localized(), "showLocationMenu"],
         [FAKFontAwesome.infoCircleIcon(withSize: 20)!, "Crédits".localized(), "showCredits"],
+        [FAKFontAwesome.commentIcon(withSize: 20)!, "Donnez votre avis !".localized(), "sendEmail"],
         [FAKFontAwesome.githubIcon(withSize: 20)!, "Page GitHub du projet".localized(), "showGitHub"],
         [FAKFontAwesome.graduationCapIcon(withSize: 20)!, "Revoir le tutoriel".localized(), "showTutoriel"],
         [FAKFontAwesome.paintBrushIcon(withSize: 20)!, "Thèmes".localized(), "showThemesMenu"],
@@ -88,6 +90,9 @@ class SettingsTableViewController: UITableViewController {
         else if rowsList[indexPath.row][2] as! String == "actualiserDeparts" {
             actualiserDeparts()
         }
+        else if rowsList[indexPath.row][2] as! String == "sendEmail" {
+            sendEmail()
+        }
         else if rowsList[indexPath.row][2] as! String == "showGitHub" {
             let safariViewController = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: true)
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
@@ -100,6 +105,21 @@ class SettingsTableViewController: UITableViewController {
         }
         else {
             performSegue(withIdentifier: rowsList[indexPath.row][2] as! String, sender: self)
+        }
+    }
+    
+    func sendEmail() {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setToRecipients(["support@dacostafaro.com"])
+        mailComposerVC.setSubject("tpg offline")
+        mailComposerVC.setMessageBody("", isHTML: false)
+        
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposerVC, animated: true, completion: nil)
+        } else {
+            SCLAlertView().showError("Vous ne pouvez pas envoyer d'emails".localized(), subTitle: "Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages".localized(), closeButtonTitle: "OK", duration: 30)
         }
     }
     
@@ -342,17 +362,17 @@ class SettingsTableViewController: UITableViewController {
             }
         })
         
-        page1!.movesToNextViewController = true
-        page2!.movesToNextViewController = true
-        page3!.movesToNextViewController = true
-        page4!.movesToNextViewController = true
-        page5!.movesToNextViewController = true
-        page6!.movesToNextViewController = true
-        page7!.movesToNextViewController = true
-        page8!.movesToNextViewController = true
-        page9!.movesToNextViewController = true
+        page1.movesToNextViewController = true
+        page2.movesToNextViewController = true
+        page3.movesToNextViewController = true
+        page4.movesToNextViewController = true
+        page5.movesToNextViewController = true
+        page6.movesToNextViewController = true
+        page7.movesToNextViewController = true
+        page8.movesToNextViewController = true
+        page9.movesToNextViewController = true
         
-        let pages = [page1!, page2!, page3!, page4!, page5!, page6!, page7!, page8!, page9!, page10!]
+        let pages = [page1, page2, page3, page4, page5, page6, page7, page8, page9, page10]
         for x in pages {
             x.titleLabel.textColor = AppValues.textColor
             
@@ -379,5 +399,11 @@ class SettingsTableViewController: UITableViewController {
             }
         }
         present(onboardingVC!, animated: true, completion: nil)
+    }
+}
+
+extension SettingsTableViewController : MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

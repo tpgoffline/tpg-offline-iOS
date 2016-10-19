@@ -11,7 +11,7 @@ import Chameleon
 
 class MapsListTableViewController: UITableViewController {
 
-	let mapsList = ["Plan urbain", "Plan périurbain", "Plan noctambus urbain", "Plan noctambus régional"]
+	let mapsList = ["Plan urbain", "Plan régional", "Plan Noctambus urbain", "Plan Noctambus régional"]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

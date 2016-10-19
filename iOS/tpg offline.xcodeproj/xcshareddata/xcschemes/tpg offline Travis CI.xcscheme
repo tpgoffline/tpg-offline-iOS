@@ -23,6 +23,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "ADC7338B1D68908F00296449"
+            BuildableName = "tpg offline.app"
+            BlueprintName = "tpg offline"
+            ReferencedContainer = "container:tpg offline.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

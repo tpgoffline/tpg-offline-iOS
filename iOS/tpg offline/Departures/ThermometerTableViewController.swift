@@ -23,7 +23,7 @@ class ThermometerTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if departure != nil {
-            self.title = "Ligne".localized() + " \(departure.line)"
+            self.title = "Ligne".localized() + " \(departure.line!)"
             refresh()
         }
         
@@ -109,14 +109,31 @@ class ThermometerTableViewController: UITableViewController {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "voirLigneDepartCell", for: indexPath) as! SeeLineTableViewCell
             
-            cell.backgroundColor = AppValues.primaryColor
-            cell.barDirection.backgroundColor = AppValues.primaryColor
+            var lineColor = AppValues.textColor
+            var backColor = departure.lineBackgroundColor
             
-            cell.leftTimeLabel.textColor = AppValues.textColor
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                lineColor = departure.lineColor
+                cell.backgroundColor = departure.lineBackgroundColor
+            }
+            else {
+                if ContrastColorOf(departure.lineBackgroundColor, returnFlat: true) == FlatWhite() {
+                    lineColor = departure.lineBackgroundColor
+                }
+                else {
+                    lineColor = departure.lineBackgroundColor.darken(byPercentage: 0.2)
+                }
+                cell.backgroundColor = UIColor.white
+                backColor = UIColor.white
+            }
+            
+            cell.barDirection.backgroundColor = backColor
+            
+            cell.leftTimeLabel.textColor = lineColor
             if thermometerList[(indexPath as NSIndexPath).row].leftTime != nil {
                 if thermometerList[(indexPath as NSIndexPath).row].leftTime == "00" {
                     let busIcon = FAKFontAwesome.busIcon(withSize: 20)!
-                    busIcon.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+                    busIcon.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = busIcon.attributedString()
                 }
                 else {
@@ -126,9 +143,9 @@ class ThermometerTableViewController: UITableViewController {
                 cell.leftTimeLabel.text = ""
             }
             
-            cell.titleLabel.textColor = AppValues.textColor
+            cell.titleLabel.textColor = lineColor
             cell.titleLabel.text = thermometerList[(indexPath as NSIndexPath).row].stop.title
-            cell.subTitleLabel.textColor = AppValues.textColor
+            cell.subTitleLabel.textColor = lineColor
             cell.subTitleLabel.text = thermometerList[(indexPath as NSIndexPath).row].stop.subTitle
             
             if thermometerList[(indexPath as NSIndexPath).row].connection1 != nil {
@@ -141,17 +158,17 @@ class ThermometerTableViewController: UITableViewController {
                 else {
                     if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]!, returnFlat: true) == FlatWhite() {
                         cell.connection1Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]
-                        cell.connection1Label.backgroundColor = AppValues.primaryColor
+                        cell.connection1Label.backgroundColor = UIColor.white
                     }
                     else {
                         cell.connection1Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]!.darken(byPercentage: 0.2)
-                        cell.connection1Label.backgroundColor = AppValues.primaryColor
+                        cell.connection1Label.backgroundColor = UIColor.white
                     }
                 }
             }
             else{
                 cell.connection1Label.text = ""
-                cell.connection1Label.backgroundColor = AppValues.primaryColor
+                cell.connection1Label.backgroundColor = backColor
             }
             
             if thermometerList[(indexPath as NSIndexPath).row].connection2 != nil {
@@ -164,18 +181,18 @@ class ThermometerTableViewController: UITableViewController {
                 else {
                     if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]!, returnFlat: true) == FlatWhite() {
                         cell.connection2Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]
-                        cell.connection2Label.backgroundColor = AppValues.primaryColor
+                        cell.connection2Label.backgroundColor = UIColor.white
                     }
                     else {
                         cell.connection2Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]!.darken(byPercentage: 0.2)
-                        cell.connection2Label.backgroundColor = AppValues.primaryColor
+                        cell.connection2Label.backgroundColor = UIColor.white
                     }
                     
                 }
             }
             else{
                 cell.connection2Label.text = ""
-                cell.connection2Label.backgroundColor = AppValues.primaryColor
+                cell.connection2Label.backgroundColor = backColor
             }
             
             if thermometerList[(indexPath as NSIndexPath).row].connection3 != nil {
@@ -188,18 +205,18 @@ class ThermometerTableViewController: UITableViewController {
                 else {
                     if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]!, returnFlat: true) == FlatWhite() {
                         cell.connection3Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]
-                        cell.connection3Label.backgroundColor = AppValues.primaryColor
+                        cell.connection3Label.backgroundColor = UIColor.white
                     }
                     else {
                         cell.connection3Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]!.darken(byPercentage: 0.2)
-                        cell.connection3Label.backgroundColor = AppValues.primaryColor
+                        cell.connection3Label.backgroundColor = UIColor.white
                     }
                     
                 }
             }
             else{
                 cell.connection3Label.text = ""
-                cell.connection3Label.backgroundColor = AppValues.primaryColor
+                cell.connection3Label.backgroundColor = backColor
             }
             
             if thermometerList[(indexPath as NSIndexPath).row].connection4 != nil {
@@ -212,7 +229,7 @@ class ThermometerTableViewController: UITableViewController {
                     }
                     else {
                         cell.connection4Label.textColor = UIColor.flatGrayColorDark()
-                        cell.connection4Label.backgroundColor = AppValues.primaryColor
+                        cell.connection4Label.backgroundColor = UIColor.white
                     }
                 } else {
                     cell.connection4Label.text = String(thermometerList[(indexPath as NSIndexPath).row].connection4!)
@@ -224,11 +241,11 @@ class ThermometerTableViewController: UITableViewController {
                     else {
                         if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]!, returnFlat: true) == FlatWhite() {
                             cell.connection4Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]
-                            cell.connection4Label.backgroundColor = AppValues.primaryColor
+                            cell.connection4Label.backgroundColor = UIColor.white
                         }
                         else {
                             cell.connection4Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]!.darken(byPercentage: 0.2)
-                            cell.connection4Label.backgroundColor = AppValues.primaryColor
+                            cell.connection4Label.backgroundColor = UIColor.white
                         }
                         
                     }
@@ -236,7 +253,7 @@ class ThermometerTableViewController: UITableViewController {
             }
             else{
                 cell.connection4Label.text = ""
-                cell.connection4Label.backgroundColor = AppValues.primaryColor
+                cell.connection4Label.backgroundColor = backColor
             }
             
             if (indexPath as NSIndexPath).row == 0 {
@@ -244,13 +261,13 @@ class ThermometerTableViewController: UITableViewController {
                 let rectanglePath = UIBezierPath(rect: CGRect(x: 10, y: 37, width: 5, height: 33))
                 var shapeLayer = CAShapeLayer()
                 shapeLayer.path = rectanglePath.cgPath
-                shapeLayer.fillColor = AppValues.textColor.cgColor
+                shapeLayer.fillColor = lineColor!.cgColor
                 cell.barDirection.layer.addSublayer(shapeLayer)
                 
                 let ovalPath = UIBezierPath(ovalIn: CGRect(x: 2.5, y: 24.5, width: 20, height: 20))
                 shapeLayer = CAShapeLayer()
                 shapeLayer.path = ovalPath.cgPath
-                shapeLayer.strokeColor = AppValues.textColor.cgColor
+                shapeLayer.strokeColor = lineColor!.cgColor
                 shapeLayer.fillColor = UIColor.white.cgColor
                 shapeLayer.lineWidth = 3
                 cell.barDirection.layer.addSublayer(shapeLayer)
@@ -260,14 +277,14 @@ class ThermometerTableViewController: UITableViewController {
                 let rectanglePath = UIBezierPath(rect: CGRect(x: 10, y: 0, width: 5, height: 32))
                 var shapeLayer = CAShapeLayer()
                 shapeLayer.path = rectanglePath.cgPath
-                shapeLayer.fillColor = AppValues.textColor.cgColor
+                shapeLayer.fillColor = lineColor!.cgColor
                 cell.barDirection.layer.addSublayer(shapeLayer)
                 
                 if !thermometerList[(indexPath as NSIndexPath).row].isDeflect {
                     let ovalPath = UIBezierPath(ovalIn: CGRect(x: 2.5, y: 24.5, width: 20, height: 20))
                     shapeLayer = CAShapeLayer()
                     shapeLayer.path = ovalPath.cgPath
-                    shapeLayer.strokeColor = AppValues.textColor.cgColor
+                    shapeLayer.strokeColor = lineColor!.cgColor
                     shapeLayer.fillColor = UIColor.white.cgColor
                     shapeLayer.lineWidth = 3
                     cell.barDirection.layer.addSublayer(shapeLayer)
@@ -278,20 +295,25 @@ class ThermometerTableViewController: UITableViewController {
                 let rectanglePath = UIBezierPath(rect: CGRect(x: 10, y: 0, width: 5, height: 70))
                 var shapeLayer = CAShapeLayer()
                 shapeLayer.path = rectanglePath.cgPath
-                shapeLayer.fillColor = AppValues.textColor.cgColor
+                shapeLayer.fillColor = lineColor!.cgColor
                 cell.barDirection.layer.addSublayer(shapeLayer)
                 
                 let ovalPath = UIBezierPath(ovalIn: CGRect(x: 2.5, y: 24.5, width: 20, height: 20))
                 shapeLayer = CAShapeLayer()
                 shapeLayer.path = ovalPath.cgPath
-                shapeLayer.strokeColor = AppValues.textColor.cgColor
-                shapeLayer.fillColor = AppValues.textColor.cgColor
+                shapeLayer.strokeColor = lineColor!.cgColor
+                shapeLayer.fillColor = lineColor!.cgColor
                 shapeLayer.lineWidth = 3
                 cell.barDirection.layer.addSublayer(shapeLayer)
             }
             
             let backgroundView = UIView()
-            backgroundView.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.2)
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                backgroundView.backgroundColor = lineColor!.darken(byPercentage: 0.2)
+            }
+            else {
+                backgroundView.backgroundColor = UIColor.white.darken(byPercentage: 0.2)
+            }
             cell.selectedBackgroundView = backgroundView
             
             return cell
@@ -316,12 +338,12 @@ class ThermometerTableViewController: UITableViewController {
                         var connectionsList: [String] = []
                         for x in 0...subJSON["stop"]["connections"].count - 1 {
                             if subJSON["stop"]["connections"][x]["lineCode"].int != nil {
-                                if connectionsList.index(of: String(subJSON["stop"]["connections"][x]["lineCode"].intValue)) == nil {
+                                if connectionsList.index(of: String(subJSON["stop"]["connections"][x]["lineCode"].intValue)) == nil && String(subJSON["stop"]["connections"][x]["lineCode"].intValue) != self.departure.line! {
                                     connectionsList.append(String(subJSON["stop"]["connections"][x]["lineCode"].intValue))
                                 }
                             }
                             else {
-                                if connectionsList.index(of: subJSON["stop"]["connections"][x]["lineCode"].stringValue) == nil {
+                                if connectionsList.index(of: subJSON["stop"]["connections"][x]["lineCode"].stringValue) == nil && subJSON["stop"]["connections"][x]["lineCode"].stringValue != self.departure.line! {
                                     connectionsList.append(subJSON["stop"]["connections"][x]["lineCode"].stringValue)
                                 }
                             }
