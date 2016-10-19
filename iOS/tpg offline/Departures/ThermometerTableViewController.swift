@@ -152,16 +152,21 @@ class ThermometerTableViewController: UITableViewController {
                 cell.connection1Label.text = String(thermometerList[(indexPath as NSIndexPath).row].connection1!)
                 cell.connection1Label.textAlignment = .center
                 if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                    cell.connection1Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]
-                    cell.connection1Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]!
+                    cell.connection1Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)] ?? UIColor.white
+                    cell.connection1Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)] ?? UIColor.black
                 }
                 else {
-                    if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]!, returnFlat: true) == FlatWhite() {
-                        cell.connection1Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]
+                    if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)] ?? UIColor.black, returnFlat: true) == FlatWhite() {
+                        cell.connection1Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)] ?? UIColor.black
                         cell.connection1Label.backgroundColor = UIColor.white
                     }
                     else {
-                        cell.connection1Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)]!.darken(byPercentage: 0.2)
+                        if let color = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection1!)] {
+                            cell.connection1Label.textColor = color.darken(byPercentage: 0.2)
+                        }
+                        else {
+                            cell.connection1Label.textColor = UIColor.black
+                        }
                         cell.connection1Label.backgroundColor = UIColor.white
                     }
                 }
@@ -175,16 +180,21 @@ class ThermometerTableViewController: UITableViewController {
                 cell.connection2Label.text = String(thermometerList[(indexPath as NSIndexPath).row].connection2!)
                 cell.connection2Label.textAlignment = .center
                 if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                    cell.connection2Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]
-                    cell.connection2Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]!
+                    cell.connection2Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)] ?? UIColor.white
+                    cell.connection2Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)] ?? UIColor.black
                 }
                 else {
-                    if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]!, returnFlat: true) == FlatWhite() {
-                        cell.connection2Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]
+                    if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)] ?? UIColor.black, returnFlat: true) == FlatWhite() {
+                        cell.connection2Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)] ?? UIColor.black
                         cell.connection2Label.backgroundColor = UIColor.white
                     }
                     else {
-                        cell.connection2Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)]!.darken(byPercentage: 0.2)
+                        if let color = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection2!)] {
+                            cell.connection2Label.textColor = color.darken(byPercentage: 0.2)
+                        }
+                        else {
+                            cell.connection2Label.textColor = UIColor.black
+                        }
                         cell.connection2Label.backgroundColor = UIColor.white
                     }
                     
@@ -199,16 +209,22 @@ class ThermometerTableViewController: UITableViewController {
                 cell.connection3Label.text = String(thermometerList[(indexPath as NSIndexPath).row].connection3!)
                 cell.connection3Label.textAlignment = .center
                 if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                    cell.connection3Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]
-                    cell.connection3Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]
+                    cell.connection3Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)] ?? UIColor.white
+                    cell.connection3Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)] ?? UIColor.black
                 }
                 else {
-                    if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]!, returnFlat: true) == FlatWhite() {
-                        cell.connection3Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]
+                    if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)] ?? UIColor.black, returnFlat: true) == FlatWhite() {
+                        cell.connection3Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)] ?? UIColor.black
                         cell.connection3Label.backgroundColor = UIColor.white
                     }
                     else {
-                        cell.connection3Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)]!.darken(byPercentage: 0.2)
+                        if let color = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection3!)] {
+                            cell.connection3Label.textColor = color.darken(byPercentage: 0.2)
+                        }
+                        else {
+                            cell.connection3Label.textColor = UIColor.white
+                        }
+                        
                         cell.connection3Label.backgroundColor = UIColor.white
                     }
                     
@@ -235,16 +251,21 @@ class ThermometerTableViewController: UITableViewController {
                     cell.connection4Label.text = String(thermometerList[(indexPath as NSIndexPath).row].connection4!)
                     cell.connection4Label.textAlignment = .center
                     if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                        cell.connection4Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]
-                        cell.connection4Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]!
+                        cell.connection4Label.textColor = AppValues.linesColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)] ?? UIColor.white
+                        cell.connection4Label.backgroundColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)] ?? UIColor.black
                     }
                     else {
-                        if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]!, returnFlat: true) == FlatWhite() {
-                            cell.connection4Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]
+                        if ContrastColorOf(AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)] ?? UIColor.black, returnFlat: true) == FlatWhite() {
+                            cell.connection4Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)] ?? UIColor.black
                             cell.connection4Label.backgroundColor = UIColor.white
                         }
                         else {
-                            cell.connection4Label.textColor = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)]!.darken(byPercentage: 0.2)
+                            if let color = AppValues.linesBackgroundColor[String(thermometerList[(indexPath as NSIndexPath).row].connection4!)] {
+                                cell.connection4Label.textColor = color.darken(byPercentage: 0.2)
+                            }
+                            else {
+                                cell.connection4Label.textColor = UIColor.black
+                            }
                             cell.connection4Label.backgroundColor = UIColor.white
                         }
                         
@@ -374,7 +395,7 @@ class ThermometerTableViewController: UITableViewController {
                     }
                 }
                 else {
-                    AppValues.logger.error(response.result.error)
+                    print(response.result.error)
                     self.thermometerList = []
                     self.tableView.allowsSelection = false
                     self.loading = false

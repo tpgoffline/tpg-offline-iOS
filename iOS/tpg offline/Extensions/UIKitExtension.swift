@@ -30,11 +30,12 @@ extension UIViewController {
                 }
             }
         }
+        
         if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-            setStatusBarStyle(.lightContent)
+            UIApplication.shared.statusBarStyle = .lightContent
         }
         else {
-            setStatusBarStyle(.default)
+            UIApplication.shared.statusBarStyle = .default
         }
     }
 }
@@ -45,16 +46,5 @@ extension UITableViewController {
         
         tableView.backgroundColor = AppValues.primaryColor
         tableView.reloadData()
-    }
-}
-
-extension UINavigationController {
-    override open var preferredStatusBarStyle: UIStatusBarStyle {
-        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-            return .lightContent
-        }
-        else {
-            return .default
-        }
     }
 }

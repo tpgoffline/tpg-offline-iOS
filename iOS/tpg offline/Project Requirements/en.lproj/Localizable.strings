@@ -197,7 +197,7 @@
 
 "Revoir le tutoriel" = "Review the tutorial";
 
-"Actualiser les départs (Offline)" = "Refresh departures (Offline)";
+"Actualiser les départs (Offline)" = "Refresh offline departures";
 
 "Bienvenue dans tpg offline" = "Welcome tpg offline";
 
@@ -243,23 +243,11 @@
 
 "Passer" = "Skip";
 
-"Merci d'avoir mis à jour tpg offline. Nous allons vous expliquer les grandes nouveautés de cette version." = "Thank you for updated tpg offline. We will explain the great innovations of this release.";
-
-"Gratuit\rEt pour toujours !" = "Free\rAnd forever !";
-
-"Le premium n'existe plus. Désormais, tout le monde peut accéder aux départs en mode hors ligne (sous réserve de les avoir au préalable téléchargés dans les paramètres), aux thèmes, etc..." = "The premium is no more. Now everyone can access the departures offline (you have to download departures in the settings menu), themes, etc...";
-
-"Vous avez une Apple Watch ? Super, car tpg offline a désormais une extension pour Apple Watch qui vous permettra de visualiser les départs des arrêts favoris en un clin d'œil." = "You have an Apple Watch? Great, because tpg offline now has an extension for Apple Watch will allow you to view the departures of favorite stops in an instant.";
-
-"Encore plus. Bientôt" = "Even more. Soon";
-
-"D'autres surprises vont arriver dans les prochaines versions." = "Other surprises will arrive in future releases.";
-
 "Vous ne pouvez pas envoyer d'emails" = "You can't send emails";
 
-"Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages" = "Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages";
+"Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages" = "Sorry, but you can't send emails. Verify that an email account is configured in settings";
 
-"Donnez votre avis !" = "Share your opinion !•";
+"Donnez votre avis !" = "Share your opinion !";
 
 /*
  * ./tpg offline/DeparturesTableViewController.swift
@@ -361,7 +349,7 @@
 
 "La notification à été enregistrée et sera affichée à l'heure du départ." = "The notification was recorded and will be posted at the time of departure.";
 
-"La notification à été enregistrée et sera affichée " = "The notification was recorded and posted";
+"La notification à été enregistrée et sera affichée " = "The notification was recorded and posted ";
 
 " minutes avant le départ." = " minutes before departure.";
 
@@ -412,9 +400,10 @@
 "Ligne" = "Line";
 
 "Plan urbain" = "Urban map";
-"Plan périurbain" = "Regional map";
-"Plan noctambus urbain" = "Noctambus urban map";
-"Plan noctambus régional" = "Noctambus regional map";
+"Plan régional" = "Regional map";
+"Plan Noctambus urbain" = "Noctambus urban map";
+"Plan Noctambus régional" = "Noctambus regional map";
+
 "Rechercher les arrêts d'une ligne" = "Search for stops of a line";
 
 "Recherche des arrêts..." = "Searching for the nearest stops...";

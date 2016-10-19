@@ -129,5 +129,12 @@ class ThemesCollectionViewController: UICollectionViewController {
         iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         tabBarController!.tabBar.items![4].image = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         tabBarController!.tabBar.items![4].selectedImage = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        
+        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
+        else {
+            UIApplication.shared.statusBarStyle = .default
+        }
     }
 }

@@ -96,14 +96,14 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             pscope.bodyLabel.text = "Nous avons besoin de quelques autorisations".localized()
             pscope.closeButton.setTitle("X", for: UIControlState())
             pscope.show({ finished, results in
-                AppValues.logger.info("got results \(results)")
+                print("got results \(results)")
                 for x in results {
                     if x.type == PermissionType.locationInUse {
                         self.requestLocation()
                     }
                 }
                 }, cancelled: { (results) -> Void in
-                    AppValues.logger.info("thing was cancelled")
+                    print("thing was cancelled")
             })
             
         }
@@ -123,7 +123,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         }
         
         Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
-            AppValues.logger.info("Localisation results: \(location)")
+            print("Localisation results: \(location)")
             
             if self.defaults.integer(forKey: "proximityDistance") == 0 {
                 self.defaults.set(500, forKey: "proximityDistance")
@@ -135,8 +135,8 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 if ((location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: "proximityDistance"))) {
                     
                     self.localizedStops.append(x)
-                    AppValues.logger.info(x.stopCode)
-                    AppValues.logger.info(String(describing: location.distance(from: x.location)))
+                    print(x.stopCode)
+                    print(String(describing: location.distance(from: x.location)))
                 }
             }
             self.localizedStops.sort(by: { (arret1, arret2) -> Bool in
@@ -150,8 +150,8 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             self.localisationLoading = false
             self.tableView.reloadData()
             }) { (location, error) in
-                AppValues.logger.error("Location update failed: \(error.localizedDescription)")
-                AppValues.logger.error("Last location: \(location)")
+                print("Location update failed: \(error.localizedDescription)")
+                print("Last location: \(location)")
         }
     }
     

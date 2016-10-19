@@ -278,7 +278,7 @@ class RouteDetailTableViewController: UITableViewController {
         
         UIApplication.shared.scheduleLocalNotification(reminder)
         
-        AppValues.logger.info("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
+        print("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
         
         let okView = SCLAlertView()
         if before == 0 {

@@ -22,12 +22,12 @@ class SettingsTableViewController: UITableViewController {
     var rowsList = [
         [FAKFontAwesome.barsIcon(withSize: 20)!, "Choix du menu par défaut".localized(), "showChoixDuMenuParDefault"],
         [FAKFontAwesome.locationArrowIcon(withSize: 20)!, "Localisation".localized(), "showLocationMenu"],
-        [FAKFontAwesome.infoCircleIcon(withSize: 20)!, "Crédits".localized(), "showCredits"],
-        [FAKFontAwesome.commentIcon(withSize: 20)!, "Donnez votre avis !".localized(), "sendEmail"],
-        [FAKFontAwesome.githubIcon(withSize: 20)!, "Page GitHub du projet".localized(), "showGitHub"],
         [FAKFontAwesome.graduationCapIcon(withSize: 20)!, "Revoir le tutoriel".localized(), "showTutoriel"],
         [FAKFontAwesome.paintBrushIcon(withSize: 20)!, "Thèmes".localized(), "showThemesMenu"],
-        [FAKFontAwesome.refreshIcon(withSize: 20)!, "Actualiser les départs (Offline)".localized(), "actualiserDeparts"]
+        [FAKFontAwesome.refreshIcon(withSize: 20)!, "Actualiser les départs (Offline)".localized(), "actualiserDeparts"],
+        [FAKFontAwesome.infoCircleIcon(withSize: 20)!, "Crédits".localized(), "showCredits"],
+        [FAKFontAwesome.commentIcon(withSize: 20)!, "Donnez votre avis !".localized(), "sendEmail"],
+        [FAKFontAwesome.githubIcon(withSize: 20)!, "Page GitHub du projet".localized(), "showGitHub"]
     ]
     
     let defaults = UserDefaults.standard
@@ -147,7 +147,7 @@ class SettingsTableViewController: UITableViewController {
                             }
                             set(value) {
                                 _compteur = value
-                                AppValues.logger.error("Error")
+                                print("Error")
                             }
                         }
                         var ok = 0
@@ -305,7 +305,7 @@ class SettingsTableViewController: UITableViewController {
         do {
             try data.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
         } catch (let error) {
-            AppValues.logger.error(error)
+            print(error)
             return error
         }
         

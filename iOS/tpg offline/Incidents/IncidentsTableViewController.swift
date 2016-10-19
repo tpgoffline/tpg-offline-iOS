@@ -84,7 +84,7 @@ class IncidentsTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
                 else {
-                    AppValues.logger.error(response.result.error)
+                    print(response.result.error)
                     self.error = true
                     self.tableView.reloadData()
                 }

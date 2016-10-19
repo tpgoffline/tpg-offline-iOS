@@ -162,7 +162,7 @@ class DeparturesTableViewController: UITableViewController {
                 try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops": NSKeyedArchiver.archivedData(withRootObject: a) as Any, "offlineDepartures": offlineDepartures as Any])
                 
             } catch {
-                AppValues.logger.error("Update WatchConnectivity with application context failed")
+                print("Update WatchConnectivity with application context failed")
             }
         }
         
@@ -286,7 +286,7 @@ class DeparturesTableViewController: UITableViewController {
             
             UIApplication.shared.scheduleLocalNotification(reminder)
             
-            AppValues.logger.debug("Firing at \(now.hour):\(now.minute!-before):\(now.second)")
+            print("Firing at \(now.hour):\(now.minute!-before):\(now.second)")
             
             let okView = SCLAlertView()
             if before == 0 {

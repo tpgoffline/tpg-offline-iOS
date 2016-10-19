@@ -178,7 +178,7 @@ class RoutesListTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
-                AppValues.logger.error(response.result.error)
+                print(response.result.error)
                 self.noNetwork = true
                 self.loading = false
                 self.tableView.allowsSelection = false
@@ -393,7 +393,7 @@ class RoutesListTableViewController: UITableViewController {
         
         UIApplication.shared.scheduleLocalNotification(reminder)
         
-        AppValues.logger.info("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
+        print("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
         
         let okView = SCLAlertView()
         if before == 0 {

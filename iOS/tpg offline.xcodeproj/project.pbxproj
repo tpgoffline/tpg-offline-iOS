@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AD3AEB111D6C76D5000237B0 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AEB101D6C76D5000237B0 /* Localize.swift */; };
 		AD480F301D6F2981000B0D41 /* VHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD480F2F1D6F2981000B0D41 /* VHUD.framework */; };
-		AD53F4C91D844C89006CDDA2 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC7349E1D68918F00296449 /* SwiftyBeaver.framework */; };
 		AD62DD411D7C6A8100B2CA86 /* DeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD62DD3C1D7C6A8100B2CA86 /* DeparturesInterfaceController.swift */; };
 		AD62DD421D7C6A8100B2CA86 /* DeparturesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD62DD3D1D7C6A8100B2CA86 /* DeparturesRowController.swift */; };
 		AD62DD431D7C6A8100B2CA86 /* StopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD62DD3F1D7C6A8100B2CA86 /* StopsInterfaceController.swift */; };
@@ -250,7 +249,6 @@
 		ADC734981D68918500296449 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = Carthage/Build/iOS/Onboard.framework; sourceTree = "<group>"; };
 		ADC7349A1D68918900296449 /* PermissionScope.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PermissionScope.framework; path = Carthage/Build/iOS/PermissionScope.framework; sourceTree = "<group>"; };
 		ADC7349C1D68918C00296449 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
-		ADC7349E1D68918F00296449 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		ADC734A01D68919200296449 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		ADC734A31D6892B200296449 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		ADC734A41D6892B200296449 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 				ADC734991D68918500296449 /* Onboard.framework in Frameworks */,
 				ADC7349B1D68918900296449 /* PermissionScope.framework in Frameworks */,
 				ADC7349D1D68918C00296449 /* SCLAlertView.framework in Frameworks */,
-				AD53F4C91D844C89006CDDA2 /* SwiftyBeaver.framework in Frameworks */,
 				ADC734A11D68919200296449 /* SwiftyJSON.framework in Frameworks */,
 				AD480F301D6F2981000B0D41 /* VHUD.framework in Frameworks */,
 				AD6F201E1D68958100DEF1F0 /* Fabric.framework in Frameworks */,
@@ -556,7 +553,6 @@
 				ADC7349A1D68918900296449 /* PermissionScope.framework */,
 				AD6F20721D689CE700DEF1F0 /* QuartzCore.framework */,
 				ADC7349C1D68918C00296449 /* SCLAlertView.framework */,
-				ADC7349E1D68918F00296449 /* SwiftyBeaver.framework */,
 				ADC734A41D6892B200296449 /* SwiftyJSON.framework */,
 				ADC734A01D68919200296449 /* SwiftyJSON.framework */,
 				AD480F2F1D6F2981000B0D41 /* VHUD.framework */,
@@ -771,7 +767,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Onboard.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PermissionScope.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SCLAlertView.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesomeKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/VHUD.framework",

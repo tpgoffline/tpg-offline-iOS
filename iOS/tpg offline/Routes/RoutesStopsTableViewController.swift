@@ -132,7 +132,7 @@ class RoutesStopsTableViewController: UITableViewController {
         }
         
         Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
-            AppValues.logger.info("Localisation results: \(location)")
+            print("Localisation results: \(location)")
             
             if self.defaults.integer(forKey: "proximityDistance") == 0 {
                 self.defaults.set(500, forKey: "proximityDistance")
@@ -144,8 +144,8 @@ class RoutesStopsTableViewController: UITableViewController {
                 if ((location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: "proximityDistance"))) {
                     
                     self.localisationStops.append(x)
-                    AppValues.logger.info(x.stopCode)
-                    AppValues.logger.info(String(describing: location.distance(from: x.location)))
+                    print(x.stopCode)
+                    print(String(describing: location.distance(from: x.location)))
                 }
             }
             self.localisationStops.sort(by: { (arret1, arret2) -> Bool in
@@ -159,8 +159,8 @@ class RoutesStopsTableViewController: UITableViewController {
             self.localisationLoading = false
             self.tableView.reloadData()
         }) { (location, error) in
-            AppValues.logger.error("Location update failed: \(error.localizedDescription)")
-            AppValues.logger.error("Last location: \(location)")
+            print("Location update failed: \(error.localizedDescription)")
+            print("Last location: \(location)")
         }
     }
     

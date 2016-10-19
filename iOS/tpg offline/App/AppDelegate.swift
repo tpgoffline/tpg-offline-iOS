@@ -12,7 +12,6 @@ import CoreLocation
 import Chameleon
 import Fabric
 import Crashlytics
-import SwiftyBeaver
 import FontAwesomeKit
 
 @UIApplicationMain
@@ -22,12 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = UserDefaults.standard
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        let console = ConsoleDestination()
-        AppValues.logger.addDestination(console)
         #if DEBUG
-            AppValues.logger.info("Debug mode")
+            print("Debug mode")
         #else
-            AppValues.logger.info("Release mode")
+            print("Release mode")
             Fabric.with([Crashlytics.self])
         #endif
         
@@ -223,6 +220,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             else {
                 AppValues.textColor = self.defaults.colorForKey("textColor")
+            }
+            
+            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+                UIApplication.shared.statusBarStyle = .lightContent
+            }
+            else {
+                UIApplication.shared.statusBarStyle = .default
             }
         }
         

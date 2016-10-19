@@ -8,7 +8,6 @@
 
 import UIKit
 import Chameleon
-import SwiftyBeaver
 
 struct AppValues {
     static var stops: [String:Stop] = [:]
@@ -24,14 +23,12 @@ struct AppValues {
     static var linesBackgroundColor = [String:UIColor]()
     static var linesColor = [String:UIColor]()
     
-    static var logger = SwiftyBeaver.self
-    
     static func testTimeExecution(_ title: String!, block: () -> ()) {
         // Thanks to @kristopherjohnson GitHub user.
         
         let start = CACurrentMediaTime()
         block()
         let end = CACurrentMediaTime()
-        logger.info("Execution time of \(title) : \(end - start)s")
+        print("Execution time of \(title) : \(end - start)s")
     }
 }

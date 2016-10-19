@@ -17,4 +17,4 @@ tpg offline is available under the MIT license. See the LICENCE file for more in
 
 ## Bug reporter
 
-Thank you to report bugs and ideas for improvements on GitHub or on [remydcf.myjetbrains.com](https://remydcf.myjetbrains.com/youtrack/issues?q=project%3A+%7Btpg+offline+(iOS)%7D+sort+by%3A+State%2C+Updated)
+Thank you to report bugs and ideas for improvements on GitHub

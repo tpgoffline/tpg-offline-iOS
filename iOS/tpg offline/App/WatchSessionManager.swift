@@ -48,7 +48,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         do {
             try watchSession!.updateApplicationContext(applicationContext)
         } catch let error {
-            AppValues.logger.error("Error : \(error)")
+            print("Error : \(error)")
             throw error
         }
     }

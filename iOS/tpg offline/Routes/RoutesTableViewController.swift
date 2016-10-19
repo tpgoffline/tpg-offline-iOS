@@ -209,7 +209,7 @@ class RoutesTableViewController: UITableViewController {
             ActualRoutes.route.isArrivalDate = true
         }
         else {
-            AppValues.logger.error("The selected index of DGRunkeeperSwitch object is unknow")
+            print("The selected index of DGRunkeeperSwitch object is unknow")
         }
 	}
 	

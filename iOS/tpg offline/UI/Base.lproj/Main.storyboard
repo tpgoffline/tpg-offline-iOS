@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rhD-oN-Bk9">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rhD-oN-Bk9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -886,7 +886,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ju3-LX-yls" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Incidents" id="UEQ-Bn-crv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="e8S-p9-ZRA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e8S-p9-ZRA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1087,7 +1087,7 @@
         <scene sceneID="eU9-1W-h7Y">
             <objects>
                 <collectionViewController id="v5i-fc-1YS" customClass="ThemesCollectionViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Mc4-w6-uMG">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Mc4-w6-uMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xya-3s-KGr">
@@ -1218,7 +1218,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a7I-7x-a0E" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Plans" id="YVH-0j-zB3"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JZG-7a-j65">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JZG-7a-j65">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1242,7 +1242,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h10-6A-BZ1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Paramètres" id="GlS-QR-a3k"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PS9-NI-1fH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PS9-NI-1fH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2036,7 +2036,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SSA-CS-oVb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Oyl-iH-HNn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oyl-iH-HNn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2072,7 +2072,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zx6-rd-Kh0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qpd-bk-IyK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qpd-bk-IyK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

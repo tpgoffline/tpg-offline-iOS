@@ -144,6 +144,7 @@
 
 
 
+
 /*
  * ./tpg offline/RoutesListTableViewController.swift
  */
@@ -159,7 +160,7 @@
 
 
 /*
- * ./tpg offline/RouteDetailTableViewController.swift
+ * ./tpg offline/VueItineraireTableViewController.swift
  */
 
 "Marche" = "Marche";
@@ -261,18 +262,6 @@
 "Terminer" = "Terminer";
 
 "Passer" = "Passer";
-
-"Merci d'avoir mis à jour tpg offline. Nous allons vous expliquer les grandes nouveautés de cette version." = "Merci d'avoir mis à jour tpg offline. Nous allons vous expliquer les grandes nouveautés de cette version.";
-
-"Gratuit\rEt pour toujours !" = "Gratuit\rEt pour toujours !";
-
-"Le premium n'existe plus. Désormais, tout le monde peut accéder aux départs en mode hors ligne (sous réserve de les avoir au préalable téléchargés dans les paramètres), aux thèmes, etc..." = "Le premium n'existe plus. Désormais, tout le monde peut accéder aux départs en mode hors ligne (sous réserve de les avoir au préalable téléchargés dans les paramètres), aux thèmes, etc...";
-
-"Vous avez une Apple Watch ? Super, car tpg offline a désormais une extension pour Apple Watch qui vous permettra de visualiser les départs des arrêts favoris en un clin d'œil." = "Vous avez une Apple Watch ? Super, car tpg offline a désormais une extension pour Apple Watch qui vous permettra de visualiser les départs des arrêts favoris en un clin d'œil.";
-
-"Encore plus. Bientôt" = "Encore plus. Bientôt";
-
-"D'autres surprises vont arriver dans les prochaines versions." = "D'autres surprises vont arriver dans les prochaines versions.";
 
 "Vous ne pouvez pas envoyer d'emails" = "Vous ne pouvez pas envoyer d'emails";
 
@@ -428,10 +417,4 @@
 
 "Thèmes" = "Thèmes";
 
-"Plan urbain" = "Urban map";
-"Plan périurbain" = "Regional map";
-"Plan noctambus urbain" = "Noctambus urban map";
-"Plan noctambus régional" = "Noctambus regional map";
-"Rechercher les arrêts d'une ligne" = "Search for stops of a line";
-
-"Recherche des arrêts..." = "Searching for the nearest stops...";
+"Recherche des arrêts..." = "Recherche des arrêts...";
