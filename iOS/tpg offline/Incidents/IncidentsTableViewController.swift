@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Chameleon
 import FontAwesomeKit
 import Alamofire
@@ -145,8 +144,8 @@ class IncidentsTableViewController: UITableViewController {
                 cell.subTitleLabel?.textColor = UIColor.flatBlue()
                 cell.activityIndicator.color = UIColor.flatBlue()
             }
-            cell.titleLabel?.text = "Chargement".localized()
-            cell.subTitleLabel?.text = "Merci de patienter".localized()
+            cell.titleLabel?.text = "Chargement".localized
+            cell.subTitleLabel?.text = "Merci de patienter".localized
             cell.accessoryView = nil
             
             cell.activityIndicator.startAnimating()
@@ -155,22 +154,22 @@ class IncidentsTableViewController: UITableViewController {
         }
         else if noDistrubtions {
             let cell = tableView.dequeueReusableCell(withIdentifier: "incidentsCell", for: indexPath)
-            cell.textLabel?.text = "Aucun incident".localized()
+            cell.textLabel?.text = "Aucun incident".localized
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH"
             let heure = Int(dateFormatter.string(from: Date()))
             if heure! < 6 {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized()
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized
             }
             else if heure! < 18 {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne journée !".localized()
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne journée !".localized
             }
             else if heure! < 22 {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne soirée !".localized()
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne soirée !".localized
             }
             else {
-                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized()
+                cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized
             }
             
             
@@ -196,9 +195,9 @@ class IncidentsTableViewController: UITableViewController {
         }
         else if error {
             let cell = tableView.dequeueReusableCell(withIdentifier: "incidentsCell", for: indexPath)
-            cell.textLabel?.text = "Pas de réseau !".localized()
+            cell.textLabel?.text = "Pas de réseau !".localized
             
-            cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.".localized()
+            cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.".localized
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.white

@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import SwiftyJSON
-import SCLAlertView
 import Chameleon
 import Alamofire
-import NVActivityIndicatorView
 import WatchConnectivity
 import FontAwesomeKit
 import UserNotifications
@@ -206,18 +203,18 @@ class DeparturesTableViewController: UITableViewController {
                 if granted {
                     let content = UNMutableNotificationContent()
                     if before == 0 {
-                        content.title = "Départ immédiat !".localized()
-                        content.body = "Le tpg de la line ".localized() + line + " en direction de ".localized() + direction + " va partir immédiatement".localized()
+                        content.title = "Départ immédiat !".localized
+                        content.body = "Le tpg de la line ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
                     }
                     else {
-                        content.title = "Départ dans ".localized() + String(before) + " minutes".localized()
-                        var text =  "Le tpg de la line ".localized()
+                        content.title = "Départ dans ".localized + String(before) + " minutes".localized
+                        var text =  "Le tpg de la line ".localized
                         text += line
-                        text += " en direction de ".localized()
+                        text += " en direction de ".localized
                         text += direction
-                        text += " va partir dans ".localized()
+                        text += " va partir dans ".localized
                         text += String(before)
-                        text += " minutes".localized()
+                        text += " minutes".localized
                         content.body = text
                     }
                     content.categoryIdentifier = "departureNotifications"
@@ -240,13 +237,13 @@ class DeparturesTableViewController: UITableViewController {
                         if error == nil {
                             let okView = SCLAlertView()
                             if before == 0 {
-                                okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK", duration: 10)
+                                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK", duration: 10)
                             }
                             else {
-                                var texte =  "La notification à été enregistrée et sera affichée ".localized()
+                                var texte =  "La notification à été enregistrée et sera affichée ".localized
                                 texte += String(before)
-                                texte += " minutes avant le départ.".localized()
-                                okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK", duration: 10)
+                                texte += " minutes avant le départ.".localized
+                                okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
                             }
                         } else {
                             Crashlytics.sharedInstance().recordError(error!)
@@ -271,16 +268,16 @@ class DeparturesTableViewController: UITableViewController {
             reminder.fireDate = date
             reminder.soundName = UILocalNotificationDefaultSoundName
             if before == 0 {
-                reminder.alertBody = "Le tpg de la line ".localized() + line + " en direction de ".localized() + direction + " va partir immédiatement".localized()
+                reminder.alertBody = "Le tpg de la line ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
             }
             else {
-                var texte =  "Le tpg de la line ".localized()
+                var texte =  "Le tpg de la line ".localized
                 texte += line
-                texte += " en direction de ".localized()
+                texte += " en direction de ".localized
                 texte += direction
-                texte += " va partir dans ".localized()
+                texte += " va partir dans ".localized
                 texte += String(before)
-                texte += " minutes".localized()
+                texte += " minutes".localized
                 reminder.alertBody = texte
             }
             
@@ -290,13 +287,13 @@ class DeparturesTableViewController: UITableViewController {
             
             let okView = SCLAlertView()
             if before == 0 {
-                okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK", duration: 10)
+                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK", duration: 10)
             }
             else {
-                var texte =  "La notification à été enregistrée et sera affichée ".localized()
+                var texte =  "La notification à été enregistrée et sera affichée ".localized
                 texte += String(before)
-                texte += " minutes avant le départ.".localized()
-                okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK", duration: 10)
+                texte += " minutes avant le départ.".localized
+                okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
             }
         }
     }
@@ -516,39 +513,39 @@ extension DeparturesTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized()) { (action, indexPath) in
+        let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
             let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
             icone.image(with: CGSize(width: 20, height: 20))
             let alertView = SCLAlertView()
             if self.departuresList[(indexPath as NSIndexPath).row].leftTime == "0" {
-                alertView.showWarning("Le bus arrive".localized(), subTitle: "Dépêchez vous, vous allez le rater !".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+                alertView.showWarning("Le bus arrive".localized, subTitle: "Dépêchez vous, vous allez le rater !".localized, closeButtonTitle: "OK".localized, duration: 10)
             }
             else {
-                alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
+                alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
                     self.scheduleNotification(self.departuresList[(indexPath as NSIndexPath).row].timestamp, before: 0, line: self.departuresList[(indexPath as NSIndexPath).row].line, direction: self.departuresList[(indexPath as NSIndexPath).row].direction)
                     
                 })
                 if Int(self.departuresList[(indexPath as NSIndexPath).row].leftTime)! > 5 {
-                    alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
+                    alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
                         self.scheduleNotification(self.departuresList[(indexPath as NSIndexPath).row].timestamp, before: 5, line: self.departuresList[(indexPath as NSIndexPath).row].line, direction: self.departuresList[(indexPath as NSIndexPath).row].direction)
                     })
                 }
                 if Int(self.departuresList[(indexPath as NSIndexPath).row].leftTime)! > 10 {
-                    alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
+                    alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
                         self.scheduleNotification(self.departuresList[(indexPath as NSIndexPath).row].timestamp, before: 10, line: self.departuresList[(indexPath as NSIndexPath).row].line, direction: self.departuresList[(indexPath as NSIndexPath).row].direction)
                     })
                 }
-                alertView.addButton("Autre".localized(), action: { () -> Void in
+                alertView.addButton("Autre".localized, action: { () -> Void in
                     alertView.hideView()
                     let customValueAlert = SCLAlertView()
-                    let txt = customValueAlert.addTextField("Nombre de minutes".localized())
+                    let txt = customValueAlert.addTextField("Nombre de minutes".localized)
                     txt.keyboardType = .numberPad
                     txt.becomeFirstResponder()
-                    customValueAlert.addButton("Rappeler".localized(), action: { () -> Void in
+                    customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
                         if Int(self.departuresList[(indexPath as NSIndexPath).row].leftTime)! < Int(txt.text!)! {
                             customValueAlert.hideView()
-                            SCLAlertView().showError("Il y a un problème".localized(), subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+                            SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK".localized, duration: 10)
                             
                         }
                         else {
@@ -556,15 +553,15 @@ extension DeparturesTableViewController {
                             customValueAlert.hideView()
                         }
                     })
-                    customValueAlert.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+                    customValueAlert.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
                 })
-                alertView.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+                alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
                 tableView.setEditing(false, animated: true)
             }
         }
         timerAction.backgroundColor = UIColor.flatBlue()
         
-        let voirToutAction = UITableViewRowAction(style: .default, title: "Voir tout".localized()) { (action, indexPath) in
+        let voirToutAction = UITableViewRowAction(style: .default, title: "Voir tout".localized) { (action, indexPath) in
             self.performSegue(withIdentifier: "showAllDepartures", sender: indexPath)
         }
         voirToutAction.backgroundColor = UIColor.flatGreen()
@@ -614,8 +611,8 @@ extension DeparturesTableViewController {
                 cell.subTitleLabel?.textColor = UIColor.flatBlue()
                 cell.activityIndicator.color = UIColor.flatBlue()
             }
-            cell.titleLabel?.text = "Chargement".localized()
-            cell.subTitleLabel?.text = "Merci de patienter".localized()
+            cell.titleLabel?.text = "Chargement".localized
+            cell.subTitleLabel?.text = "Merci de patienter".localized
             cell.accessoryView = nil
             
             cell.activityIndicator.startAnimating()
@@ -627,9 +624,9 @@ extension DeparturesTableViewController {
             
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
-            cell.textLabel?.text = "Mode offline".localized()
+            cell.textLabel?.text = "Mode offline".localized
             cell.detailTextLabel?.textColor = AppValues.textColor
-            cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification".localized()
+            cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification".localized
             let icone = FAKFontAwesome.globeIcon(withSize: 50)!
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))
@@ -641,9 +638,9 @@ extension DeparturesTableViewController {
             
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
-            cell.textLabel?.text = "Non téléchargé".localized()
+            cell.textLabel?.text = "Non téléchargé".localized
             cell.detailTextLabel?.textColor = AppValues.textColor
-            cell.detailTextLabel?.text = "Vous pouvez télécharger les départs dans les paramètres afin d'y avoir accès en mode hors-ligne.".localized()
+            cell.detailTextLabel?.text = "Vous pouvez télécharger les départs dans les paramètres afin d'y avoir accès en mode hors-ligne.".localized
             let icone = FAKFontAwesome.downloadIcon(withSize: 50)!
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))
@@ -655,9 +652,9 @@ extension DeparturesTableViewController {
             
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
-            cell.textLabel?.text = "Service terminé".localized()
+            cell.textLabel?.text = "Service terminé".localized
             cell.detailTextLabel?.textColor = AppValues.textColor
-            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized()
+            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized
             let icone = FAKFontAwesome.busIcon(withSize: 50)!
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))
@@ -669,9 +666,9 @@ extension DeparturesTableViewController {
             
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
-            cell.textLabel?.text = "Service terminé".localized()
+            cell.textLabel?.text = "Service terminé".localized
             cell.detailTextLabel?.textColor = AppValues.textColor
-            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized()
+            cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized
             let icone = FAKFontAwesome.busIcon(withSize: 50)!
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))

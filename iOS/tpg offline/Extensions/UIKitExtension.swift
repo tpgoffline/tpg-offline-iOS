@@ -8,6 +8,7 @@
 
 import UIKit
 import Chameleon
+import FontAwesomeKit
 
 extension UIViewController {
     func refreshTheme() {
@@ -37,6 +38,36 @@ extension UIViewController {
         else {
             UIApplication.shared.statusBarStyle = .default
         }
+        
+        let iconeHorloge = FAKIonIcons.iosClockIcon(withSize: 20)!
+        iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        var iconImage = iconeHorloge.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        tabBarController!.tabBar.items![0].image = iconImage
+        tabBarController!.tabBar.items![0].selectedImage = iconImage
+        
+        let iconeAttention = FAKFontAwesome.warningIcon(withSize: 20)!
+        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        iconImage = iconeAttention.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        tabBarController!.tabBar.items![1].image = iconImage
+        tabBarController!.tabBar.items![1].selectedImage = iconImage
+        
+        let iconeItineraire = FAKFontAwesome.mapSignsIcon(withSize: 20)!
+        iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        iconImage = iconeItineraire.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        tabBarController!.tabBar.items![2].image = iconImage
+        tabBarController!.tabBar.items![2].selectedImage = iconImage
+        
+        let iconePlan = FAKFontAwesome.mapIcon(withSize: 20)!
+        iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        iconImage = iconePlan.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        tabBarController!.tabBar.items![3].image = iconImage
+        tabBarController!.tabBar.items![3].selectedImage = iconImage
+        
+        let iconeParametre = FAKFontAwesome.cogIcon(withSize: 20)!
+        iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+        iconImage = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        tabBarController!.tabBar.items![4].image = iconImage
+        tabBarController!.tabBar.items![4].selectedImage = iconImage
     }
 }
 

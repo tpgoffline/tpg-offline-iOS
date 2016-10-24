@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Chameleon
-import SCLAlertView
 import Alamofire
 import FontAwesomeKit
 
@@ -151,7 +149,7 @@ class RoutesListTableViewController: UITableViewController {
                                     to: AppValues.idTransportAPIToTpgStopName[Int(subJSON2["arrival"]["station"]["id"].stringValue)!] ?? subJSON2["arrival"]["station"]["name"].stringValue,
                                     departureTimestamp: subJSON2["departure"]["departureTimestamp"].intValue,
                                     arrivalTimestamp: subJSON2["arrival"]["arrivalTimestamp"].intValue,
-                                    direction: subJSON2["walk"]["duration"].stringValue.characters.split(separator: ":").map(String.init)[1] + " minute(s)".localized()
+                                    direction: subJSON2["walk"]["duration"].stringValue.characters.split(separator: ":").map(String.init)[1] + " minute(s)".localized
                                 )
                             )
                         }
@@ -205,8 +203,8 @@ class RoutesListTableViewController: UITableViewController {
                 cell.subTitleLabel?.textColor = UIColor.flatBlue()
                 cell.activityIndicator.color = UIColor.flatBlue()
             }
-            cell.titleLabel?.text = "Chargement".localized()
-            cell.subTitleLabel?.text = "Merci de patienter".localized()
+            cell.titleLabel?.text = "Chargement".localized
+            cell.subTitleLabel?.text = "Merci de patienter".localized
             cell.accessoryView = nil
             
             cell.activityIndicator.startAnimating()
@@ -235,7 +233,7 @@ class RoutesListTableViewController: UITableViewController {
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             
-            cell.textLabel?.text = "Pas de réseau".localized()
+            cell.textLabel?.text = "Pas de réseau".localized
             
             return cell
         }
@@ -261,7 +259,7 @@ class RoutesListTableViewController: UITableViewController {
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             
-            cell.textLabel?.text = "Itinéraires non trouvés".localized()
+            cell.textLabel?.text = "Itinéraires non trouvés".localized
             
             return cell
         }
@@ -373,19 +371,19 @@ class RoutesListTableViewController: UITableViewController {
         let reminder = UILocalNotification()
         reminder.fireDate = date
         
-        var texte =  "Le tpg de la line ".localized()
+        var texte =  "Le tpg de la line ".localized
         texte += line
-        texte += " en direction de ".localized()
+        texte += " en direction de ".localized
         texte += direction
         if before == 0 {
-            texte += " va partir immédiatement. ".localized()
+            texte += " va partir immédiatement. ".localized
         }
         else {
-            texte += " va partir dans ".localized()
+            texte += " va partir dans ".localized
             texte += String(before)
-            texte += " minutes. ".localized()
+            texte += " minutes. ".localized
         }
-        texte += "Descendez à ".localized()
+        texte += "Descendez à ".localized
         texte += String(arretDescente)
         
         reminder.alertBody = texte
@@ -397,51 +395,51 @@ class RoutesListTableViewController: UITableViewController {
         
         let okView = SCLAlertView()
         if before == 0 {
-            okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+            okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK".localized, duration: 10)
         }
         else {
-            var texte = "La notification à été enregistrée et sera affichée ".localized()
+            var texte = "La notification à été enregistrée et sera affichée ".localized
             texte += String(before)
-            texte += " minutes avant le départ.".localized()
-            okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK".localized(), duration: 10)
+            texte += " minutes avant le départ.".localized
+            okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK".localized, duration: 10)
         }
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[(indexPath as NSIndexPath).row].departureTimestamp)).timeIntervalSince(Date())
-        let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized()) { (action, indexPath) in
+        let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
             let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
             icone.image(with: CGSize(width: 20, height: 20))
             let alertView = SCLAlertView()
             if time < 60 {
-                alertView.showWarning("Le bus arrive".localized(), subTitle: "Dépêchez vous, vous allez le rater !".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+                alertView.showWarning("Le bus arrive".localized, subTitle: "Dépêchez vous, vous allez le rater !".localized, closeButtonTitle: "OK".localized, duration: 10)
             }
             else {
-                alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
+                alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
                     self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, line: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].line, direction: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].to)
                     
                 })
                 if time > 60 * 5 {
-                    alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
+                    alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
                         self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, line: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].line, direction: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].to)
                     })
                 }
                 if time > 60 * 10 {
-                    alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
+                    alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
                         self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, line: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].line, direction: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].to)
                     })
                 }
                 alertView.addButton("Autre", action: { () -> Void in
                     alertView.hideView()
                     let customValueAlert = SCLAlertView()
-                    let txt = customValueAlert.addTextField("Nombre de minutes".localized())
+                    let txt = customValueAlert.addTextField("Nombre de minutes".localized)
                     txt.keyboardType = .numberPad
                     txt.becomeFirstResponder()
-                    customValueAlert.addButton("Rappeler".localized(), action: { () -> Void in
+                    customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
                         if Int(time) < Int(txt.text!)! * 60 {
                             customValueAlert.hideView()
-                            SCLAlertView().showError("Il y a un problème".localized(), subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized(), closeButtonTitle: "OK", duration: 10)
+                            SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK", duration: 10)
                             
                         }
                         else {
@@ -449,9 +447,9 @@ class RoutesListTableViewController: UITableViewController {
                             customValueAlert.hideView()
                         }
                     })
-                    customValueAlert.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+                    customValueAlert.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
                 })
-                alertView.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+                alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
                 tableView.setEditing(false, animated: true)
             }
             

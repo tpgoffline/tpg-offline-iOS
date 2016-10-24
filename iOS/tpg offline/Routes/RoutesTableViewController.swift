@@ -8,7 +8,6 @@
 
 import UIKit
 import Chameleon
-import SCLAlertView
 import FontAwesomeKit
 
 struct ActualRoutes {
@@ -20,14 +19,14 @@ struct ActualRoutes {
 class RoutesTableViewController: UITableViewController {
 	
 	let row = [
-        ["itineraryCell", FAKIonIcons.logOutIcon(withSize: 20)!, "Départ".localized(), "voirArretsItineraire"],
-        ["itineraryCell", FAKIonIcons.logInIcon(withSize: 20)!, "Arrivée".localized(), "voirArretsItineraire"],
-        ["itineraryCell", FAKIonIcons.calendarIcon(withSize: 20)!, "Date".localized(), "selectDate"],
-        ["itineraryCell", FAKIonIcons.clockIcon(withSize: 20)!, "Heure".localized(), "selectHour"],
-        ["switchCell", "Heure de départ".localized(), "Heure d'arrivée".localized()],
-        ["buttonCell", "Rechercher".localized()]]
+        ["itineraryCell", FAKIonIcons.logOutIcon(withSize: 20)!, "Départ".localized, "voirArretsItineraire"],
+        ["itineraryCell", FAKIonIcons.logInIcon(withSize: 20)!, "Arrivée".localized, "voirArretsItineraire"],
+        ["itineraryCell", FAKIonIcons.calendarIcon(withSize: 20)!, "Date".localized, "selectDate"],
+        ["itineraryCell", FAKIonIcons.clockIcon(withSize: 20)!, "Heure".localized, "selectHour"],
+        ["switchCell", "Heure de départ".localized, "Heure d'arrivée".localized],
+        ["buttonCell", "Rechercher".localized]]
 	
-	let headers = ["Recherche".localized(), "Favoris".localized()]
+	let headers = ["Recherche".localized, "Favoris".localized]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -91,16 +90,16 @@ class RoutesTableViewController: UITableViewController {
 				iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
 				cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
 				
-				if (row[indexPath.row][2] as! String) == "Départ".localized() {
+				if (row[indexPath.row][2] as! String) == "Départ".localized {
 					cell.detailTextLabel?.text = ActualRoutes.route.departure?.fullName
 				}
-				else if (row[indexPath.row][2] as! String) == "Arrivée".localized() {
+				else if (row[indexPath.row][2] as! String) == "Arrivée".localized {
 					cell.detailTextLabel?.text = ActualRoutes.route.arrival?.fullName
 				}
-				else if (row[indexPath.row][2] as! String) == "Date".localized() && ActualRoutes.route.date != nil {
+				else if (row[indexPath.row][2] as! String) == "Date".localized && ActualRoutes.route.date != nil {
 					cell.detailTextLabel?.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
 				}
-				else if (row[indexPath.row][2] as! String) == "Heure".localized() && ActualRoutes.route.date != nil {
+				else if (row[indexPath.row][2] as! String) == "Heure".localized && ActualRoutes.route.date != nil {
 					cell.detailTextLabel?.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
 				}
 				else {
@@ -197,7 +196,7 @@ class RoutesTableViewController: UITableViewController {
 		}
 		else {
 			let alert = SCLAlertView()
-			alert.showWarning("Information manquante".localized(), subTitle: "Il manque une information pour rechercher un itinéraire".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+			alert.showWarning("Information manquante".localized, subTitle: "Il manque une information pour rechercher un itinéraire".localized, closeButtonTitle: "OK".localized, duration: 10)
 		}
 	}
 	
@@ -245,7 +244,7 @@ class RoutesTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "voirArretsItineraire" {
 			let destinationViewController = segue.destination as! RoutesStopsTableViewController
-			if (tableView.cellForRow(at: tableView.indexPathForSelectedRow!)?.textLabel?.text == "Départ".localized() ) {
+			if (tableView.cellForRow(at: tableView.indexPathForSelectedRow!)?.textLabel?.text == "Départ".localized ) {
 				destinationViewController.departure = true
 			}
 			else {

@@ -9,8 +9,6 @@
 import UIKit
 import CoreLocation
 import MapKit
-import SwiftyJSON
-import SCLAlertView
 import Chameleon
 import FontAwesomeKit
 
@@ -99,9 +97,9 @@ extension RouteToStopViewController: MKMapViewDelegate {
             )
             var timeToGo = userLocation.location!.distance(from: self.stop.location) / 1000
             timeToGo /= 5
-            self.timeToGoLabel.text = String(Int(route.expectedTravelTime / 60)) + " Minutes".localized()
+            self.timeToGoLabel.text = String(Int(route.expectedTravelTime / 60)) + " Minutes".localized
         }
-        self.timeToGoLabel.text = "Chargement en cours".localized()
+        self.timeToGoLabel.text = "Chargement en cours".localized
         
     }
 }

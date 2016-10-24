@@ -7,10 +7,7 @@
 //
 
 import UIKit
-import AKPickerView
-import SwiftyJSON
 import Alamofire
-import SCLAlertView
 import Chameleon
 
 class SeeAllDeparturesViewController: UIViewController {

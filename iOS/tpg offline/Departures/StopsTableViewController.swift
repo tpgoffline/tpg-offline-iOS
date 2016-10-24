@@ -8,11 +8,8 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Chameleon
-import PermissionScope
 import FontAwesomeKit
-import SwiftLocation
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -57,7 +54,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
+        searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized
         
         refreshTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
@@ -72,7 +69,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             switch PermissionScope().statusNotifications() {
             case .unknown:
                 // ask
-                pscope.addPermission(NotificationsPermission(notificationCategories: nil), message: "Cette autorisation sert à envoyer des rappels.".localized())
+                pscope.addPermission(NotificationsPermission(notificationCategories: nil), message: "Cette autorisation sert à envoyer des rappels.".localized)
             case .unauthorized, .disabled:
                 // bummer
                 return
@@ -83,7 +80,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             switch PermissionScope().statusLocationInUse() {
             case .unknown:
                 // ask
-                pscope.addPermission(LocationWhileInUsePermission(), message: "Cette autorisation sert à indiquer les arrets les plus proches.".localized())
+                pscope.addPermission(LocationWhileInUsePermission(), message: "Cette autorisation sert à indiquer les arrets les plus proches.".localized)
             case .unauthorized, .disabled:
                 // bummer
                 return
@@ -92,8 +89,8 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 return
             }
             
-            pscope.headerLabel.text = "Bonjour".localized()
-            pscope.bodyLabel.text = "Nous avons besoin de quelques autorisations".localized()
+            pscope.headerLabel.text = "Bonjour".localized
+            pscope.bodyLabel.text = "Nous avons besoin de quelques autorisations".localized
             pscope.closeButton.setTitle("X", for: UIControlState())
             pscope.show({ finished, results in
                 print("got results \(results)")
@@ -228,7 +225,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                     let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.imageView?.image = iconLocation.image(with: CGSize(width: 20, height: 20))
-                    cell.textLabel?.text = "Recherche des arrêts...".localized()
+                    cell.textLabel?.text = "Recherche des arrêts...".localized
                     cell.detailTextLabel?.text = ""
                     cell.accessoryView = UIView()
                 }

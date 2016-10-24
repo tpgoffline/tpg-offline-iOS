@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Chameleon
-import SwiftLocation
 import FontAwesomeKit
 
 class RoutesStopsTableViewController: UITableViewController {
@@ -40,7 +38,7 @@ class RoutesStopsTableViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized()
+        searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized
         
         navigationController?.navigationBar.barTintColor = AppValues.primaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]

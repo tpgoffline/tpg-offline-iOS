@@ -29,5 +29,9 @@
 	<string>com.dacostafaro.tpgoffline</string>
 	<key>WKWatchKitApp</key>
 	<true/>
+    <key>UIAppFonts</key>
+    <array>
+        <string>FontAwesome.otf</string>
+    </array>
 </dict>
 </plist>

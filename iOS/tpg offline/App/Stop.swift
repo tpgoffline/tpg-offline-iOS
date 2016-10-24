@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreLocation
-import SwiftyJSON
 
 internal class Stop: NSObject, NSCoding {
     var fullName: String!

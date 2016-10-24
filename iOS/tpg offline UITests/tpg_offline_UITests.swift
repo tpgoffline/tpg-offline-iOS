@@ -31,7 +31,7 @@ class tpg_offline_UITests: XCTestCase {
         super.tearDown()
     }
     
-    /*func testStops() {
+    func testStops() {
         let app = XCUIApplication()
         app.tabBars.buttons.element(boundBy: 0).tap()
         
@@ -41,7 +41,7 @@ class tpg_offline_UITests: XCTestCase {
     func testDepartures() {
         let app = XCUIApplication()
         app.tabBars.buttons.element(boundBy: 0).tap()
-        app.tables.cells.element(boundBy: 0).tap()
+        app.tables.children(matching: .cell).element(boundBy: 0).tap()
         
         XCTAssert(app.tables.cells.count != 0)
     }
@@ -49,6 +49,7 @@ class tpg_offline_UITests: XCTestCase {
     func testFavorites() {
         let app = XCUIApplication()
         app.tabBars.buttons.element(boundBy: 0).tap()
+        sleep(1)
         app.tables.cells.element(boundBy: 0).tap()
         
         let button = app.navigationBars.children(matching: .button).element(boundBy: 4)
@@ -60,8 +61,8 @@ class tpg_offline_UITests: XCTestCase {
     func testRouteToStop() {
         let app = XCUIApplication()
         app.tabBars.buttons.element(boundBy: 0).tap()
+        sleep(1)
         app.tables.cells.element(boundBy: 0).tap()
-        
         app.navigationBars.children(matching: .button).element(boundBy: 3).tap()
     }
     
@@ -69,7 +70,6 @@ class tpg_offline_UITests: XCTestCase {
         let app = XCUIApplication()
         app.tabBars.buttons.element(boundBy: 0).tap()
         app.tables.children(matching: .cell).element(boundBy: 0).tap()
-        
         app.tables.cells.element(boundBy: 0).swipeLeft()
         app.tables.buttons.element(boundBy: 1).tap()
     }
@@ -164,5 +164,5 @@ class tpg_offline_UITests: XCTestCase {
         app.collectionViews.children(matching: .cell).element(boundBy: 1).tap()
         
         app.navigationBars.children(matching: .button).element(boundBy: 0).tap()
-    }*/
+    }
 }

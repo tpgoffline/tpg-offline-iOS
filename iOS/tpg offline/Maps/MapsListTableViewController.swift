@@ -44,7 +44,7 @@ class MapsListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "plansCell", for: indexPath)
 		
-		cell.textLabel?.text = mapsList[(indexPath as NSIndexPath).row].localized()
+		cell.textLabel?.text = mapsList[(indexPath as NSIndexPath).row].localized
 		cell.textLabel?.textColor = AppValues.textColor
 		cell.backgroundColor = AppValues.primaryColor
 		
@@ -52,7 +52,7 @@ class MapsListTableViewController: UITableViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "afficherPlan" {
+		if segue.identifier == "showMap" {
             let nav = segue.destination as! UINavigationController
 			let planViewController = nav.viewControllers[0] as! MapViewController
 			planViewController.mapImage = UIImage(named: mapsList[((tableView.indexPathForSelectedRow as NSIndexPath?)?.row)!])

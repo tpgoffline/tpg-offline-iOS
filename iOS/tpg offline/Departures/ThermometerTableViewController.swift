@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Chameleon
 import Alamofire
 import FontAwesomeKit
@@ -23,7 +22,7 @@ class ThermometerTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if departure != nil {
-            self.title = "Ligne".localized() + " \(departure.line!)"
+            self.title = "Ligne".localized + " \(departure.line!)"
             refresh()
         }
         
@@ -98,8 +97,8 @@ class ThermometerTableViewController: UITableViewController {
                 cell.subTitleLabel?.textColor = UIColor.flatBlue()
                 cell.activityIndicator.color = UIColor.flatBlue()
             }
-            cell.titleLabel?.text = "Chargement".localized()
-            cell.subTitleLabel?.text = "Merci de patienter".localized()
+            cell.titleLabel?.text = "Chargement".localized
+            cell.subTitleLabel?.text = "Merci de patienter".localized
             cell.accessoryView = nil
             
             cell.activityIndicator.startAnimating()

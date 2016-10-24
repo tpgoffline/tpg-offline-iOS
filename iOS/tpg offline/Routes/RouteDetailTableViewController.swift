@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Chameleon
-import SCLAlertView
 import FontAwesomeKit
 
 class RouteDetailTableViewController: UITableViewController {
@@ -77,9 +75,9 @@ class RouteDetailTableViewController: UITableViewController {
 		if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].transportCategory != .walk {
 			
             if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].isSBB {
-                cell.lineLabel.text = "Train ".localized() + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
+                cell.lineLabel.text = "Train ".localized + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
             } else {
-                cell.lineLabel.text = "Ligne ".localized() + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
+                cell.lineLabel.text = "Ligne ".localized + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
             }
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
@@ -172,7 +170,7 @@ class RouteDetailTableViewController: UITableViewController {
             cell.hourArrivalLabel.text = ""
             
 			cell.iconImageView.image = icone.image(with: CGSize(width: 42, height: 42))
-			cell.lineLabel.text = "Marche".localized()
+			cell.lineLabel.text = "Marche".localized
 			cell.directionLabel.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].direction
 			
 		}
@@ -259,19 +257,19 @@ class RouteDetailTableViewController: UITableViewController {
         let reminder = UILocalNotification()
         reminder.fireDate = date
         
-        var texte =  "Le tpg de la line ".localized()
+        var texte =  "Le tpg de la line ".localized
         texte += ligne
-        texte += " en direction de ".localized()
+        texte += " en direction de ".localized
         texte += direction
         if before == 0 {
-            texte += " va partir immédiatement. ".localized()
+            texte += " va partir immédiatement. ".localized
         }
         else {
-            texte += " va partir dans ".localized()
+            texte += " va partir dans ".localized
             texte += String(before)
-            texte += " minutes. ".localized()
+            texte += " minutes. ".localized
         }
-        texte += "Descendez à ".localized()
+        texte += "Descendez à ".localized
         texte += String(arretDescente)
         reminder.alertBody = texte
         reminder.soundName = UILocalNotificationDefaultSoundName
@@ -282,50 +280,50 @@ class RouteDetailTableViewController: UITableViewController {
         
         let okView = SCLAlertView()
         if before == 0 {
-            okView.showSuccess("Vous serez notifié".localized(), subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+            okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK".localized, duration: 10)
         }
         else {
-            var texte = "La notification à été enregistrée et sera affichée ".localized()
+            var texte = "La notification à été enregistrée et sera affichée ".localized
             texte += String(before)
-            texte += " minutes avant le départ.".localized()
-            okView.showSuccess("Vous serez notifié".localized(), subTitle: texte, closeButtonTitle: "OK".localized(), duration: 10)
+            texte += " minutes avant le départ.".localized
+            okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK".localized, duration: 10)
         }
 	}
 	
 	override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 		let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].departureTimestamp)).timeIntervalSince(Date())
-		let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized()) { (action, indexPath) in
+		let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
 			let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
 			icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
 			icone.image(with: CGSize(width: 20, height: 20))
 			let alertView = SCLAlertView()
 			if time < 60 {
-				alertView.showWarning("Le bus arrive".localized(), subTitle: "Dépêchez vous, vous allez le rater !".localized(), closeButtonTitle: "OK".localized(), duration: 10)
+				alertView.showWarning("Le bus arrive".localized, subTitle: "Dépêchez vous, vous allez le rater !".localized, closeButtonTitle: "OK".localized, duration: 10)
 			}
 			else {
-				alertView.addButton("A l'heure du départ".localized(), action: { () -> Void in
+				alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
 					self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
 				})
 				if time > 60 * 5 {
-					alertView.addButton("5 min avant le départ".localized(), action: { () -> Void in
+					alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
 						self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
 					})
 				}
 				if time > 60 * 10 {
-					alertView.addButton("10 min avant le départ".localized(), action: { () -> Void in
+					alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
 						self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
 					})
 				}
 				alertView.addButton("Autre", action: { () -> Void in
 					alertView.hideView()
 					let customValueAlert = SCLAlertView()
-					let txt = customValueAlert.addTextField("Nombre de minutes".localized())
+					let txt = customValueAlert.addTextField("Nombre de minutes".localized)
 					txt.keyboardType = .numberPad
 					txt.becomeFirstResponder()
-					customValueAlert.addButton("Rappeler".localized(), action: { () -> Void in
+					customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
 						if Int(time) < Int(txt.text!)! * 60 {
 							customValueAlert.hideView()
-							SCLAlertView().showError("Il y a un problème".localized(), subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized(), closeButtonTitle: "OK", duration: 10)
+							SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK", duration: 10)
 							
 						}
 						else {
@@ -333,9 +331,9 @@ class RouteDetailTableViewController: UITableViewController {
 							customValueAlert.hideView()
 						}
 					})
-					customValueAlert.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+					customValueAlert.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
 				})
-				alertView.showNotice("Rappeler".localized(), subTitle: "Quand voulez-vous être notifié(e) ?".localized(), closeButtonTitle: "Annuler".localized(), circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+				alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
 				tableView.setEditing(false, animated: true)
 			}
 

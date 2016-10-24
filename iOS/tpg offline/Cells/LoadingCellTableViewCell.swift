@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 class loadingCellTableViewCell: UITableViewCell {
 

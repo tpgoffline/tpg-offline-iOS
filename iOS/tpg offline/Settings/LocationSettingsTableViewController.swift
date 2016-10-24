@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import SwiftyJSON
 import FontAwesomeKit
 import Chameleon
 
 class LocationSettingsTableViewController: UITableViewController {
 
     let defaults = UserDefaults.standard
-    let headers = ["Précision".localized(), "Distance de proximité des arrêts".localized()]
-    let choices = [["Normale".localized(), "Précise".localized(), "Très précise".localized()], ["100m".localized(), "200m".localized(), "500m".localized(), "750m".localized(), "1km".localized()]]
+    let headers = ["Précision".localized, "Distance de proximité des arrêts".localized]
+    let choices = [["Normale".localized, "Précise".localized, "Très précise".localized], ["100m".localized, "200m".localized, "500m".localized, "750m".localized, "1km".localized]]
     let values = [[0, 1, 2], [100, 200, 500, 750, 1000]]
     var rowSelected = [0,0]
 
