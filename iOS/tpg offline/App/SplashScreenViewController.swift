@@ -110,7 +110,7 @@ class SplashScreenViewController: UIViewController {
         let group = AsyncGroup()
         
         group.background {
-            let dataArrets = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "arrets", ofType: "json")!))
+            let dataArrets = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
             let arrets = JSON(data: dataArrets!)
             for (_, subJson) in arrets["stops"] {
                 AppValues.stopCodeToStopItem[subJson["stopCode"].string!] = subJson["stopName"].string!
@@ -165,7 +165,7 @@ class SplashScreenViewController: UIViewController {
         
         
         group.background {
-            let dataCouleurs = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "couleursLignes", ofType: "json")!))
+            let dataCouleurs = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "colorLines", ofType: "json")!))
             let couleurs = JSON(data: dataCouleurs!)
             for (_, j) in couleurs["colors"] {
                 AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string, withAlpha: 1)

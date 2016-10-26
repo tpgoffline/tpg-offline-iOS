@@ -26,7 +26,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             AppValues.offlineDepartures = unarchivedData!
         }
 
-        let dataCouleurs = NSData(contentsOfFile: Bundle.main.path(forResource: "couleursLignes", ofType: "json")!)
+        let dataCouleurs = NSData(contentsOfFile: Bundle.main.path(forResource: "colorLines", ofType: "json")!)
         let couleurs = JSON(data: dataCouleurs! as Data)
         for (_, j) in couleurs["colors"] {
             AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!)

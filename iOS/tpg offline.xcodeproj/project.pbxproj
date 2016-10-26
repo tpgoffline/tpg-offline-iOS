@@ -84,7 +84,7 @@
 		AD2162361DBCE81F009801B9 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162351DBCE81F009801B9 /* Maps.storyboard */; };
 		AD2162391DBCE8C8009801B9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162371DBCE8C8009801B9 /* Settings.storyboard */; };
 		AD21623B1DBCE8E2009801B9 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD21623A1DBCE8E2009801B9 /* Routes.storyboard */; };
-		AD4F2EBE1DBA6F66008DE615 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* couleursLignes.json */; };
+		AD4F2EBE1DBA6F66008DE615 /* colorLines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* colorLines.json */; };
 		AD4F2EC31DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
 		AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
 		AD62DD411D7C6A8100B2CA86 /* DeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD62DD3C1D7C6A8100B2CA86 /* DeparturesInterfaceController.swift */; };
@@ -130,10 +130,10 @@
 		ADC734471D6890C500296449 /* IncidentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733EF1D6890C500296449 /* IncidentsTableViewController.swift */; };
 		ADC734481D6890C500296449 /* MapsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733F11D6890C500296449 /* MapsListTableViewController.swift */; };
 		ADC734491D6890C500296449 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733F21D6890C500296449 /* MapViewController.swift */; };
-		ADC7344A1D6890C500296449 /* arrets.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F41D6890C500296449 /* arrets.json */; };
+		ADC7344A1D6890C500296449 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F41D6890C500296449 /* stops.json */; };
 		ADC7344B1D6890C500296449 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F51D6890C500296449 /* Localizable.strings */; };
 		ADC7344C1D6890C500296449 /* Bel-Air.gpx in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F71D6890C500296449 /* Bel-Air.gpx */; };
-		ADC7344D1D6890C500296449 /* couleursLignes.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* couleursLignes.json */; };
+		ADC7344D1D6890C500296449 /* colorLines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* colorLines.json */; };
 		ADC734501D6890C500296449 /* tpg offline.geojson in Resources */ = {isa = PBXBuildFile; fileRef = ADC733FE1D6890C500296449 /* tpg offline.geojson */; };
 		ADC734511D6890C500296449 /* CalendarSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734001D6890C500296449 /* CalendarSelectionViewController.swift */; };
 		ADC734521D6890C500296449 /* RouteDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734011D6890C500296449 /* RouteDetailTableViewController.swift */; };
@@ -337,10 +337,10 @@
 		ADC733EF1D6890C500296449 /* IncidentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncidentsTableViewController.swift; sourceTree = "<group>"; };
 		ADC733F11D6890C500296449 /* MapsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsListTableViewController.swift; sourceTree = "<group>"; };
 		ADC733F21D6890C500296449 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		ADC733F41D6890C500296449 /* arrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrets.json; sourceTree = "<group>"; };
+		ADC733F41D6890C500296449 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stops.json; sourceTree = "<group>"; };
 		ADC733F61D6890C500296449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADC733F71D6890C500296449 /* Bel-Air.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Bel-Air.gpx"; sourceTree = "<group>"; };
-		ADC733F81D6890C500296449 /* couleursLignes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = couleursLignes.json; sourceTree = "<group>"; };
+		ADC733F81D6890C500296449 /* colorLines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colorLines.json; sourceTree = "<group>"; };
 		ADC733F91D6890C500296449 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADC733FA1D6890C500296449 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADC733FB1D6890C500296449 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -675,10 +675,10 @@
 		ADC733F31D6890C500296449 /* Project Requirements */ = {
 			isa = PBXGroup;
 			children = (
-				ADC733F41D6890C500296449 /* arrets.json */,
+				ADC733F41D6890C500296449 /* stops.json */,
 				ADC733F51D6890C500296449 /* Localizable.strings */,
 				ADC733F71D6890C500296449 /* Bel-Air.gpx */,
-				ADC733F81D6890C500296449 /* couleursLignes.json */,
+				ADC733F81D6890C500296449 /* colorLines.json */,
 				ADC733FB1D6890C500296449 /* Info.plist */,
 				ADC733FC1D6890C500296449 /* ionicons.ttf */,
 				ADC733FD1D6890C500296449 /* tpg offline-Bridging-Header.h */,
@@ -930,8 +930,8 @@
 				AD21623B1DBCE8E2009801B9 /* Routes.storyboard in Resources */,
 				ADC7345E1D6890C500296449 /* LaunchScreen.storyboard in Resources */,
 				AD2162361DBCE81F009801B9 /* Maps.storyboard in Resources */,
-				ADC7344A1D6890C500296449 /* arrets.json in Resources */,
-				ADC7344D1D6890C500296449 /* couleursLignes.json in Resources */,
+				ADC7344A1D6890C500296449 /* stops.json in Resources */,
+				ADC7344D1D6890C500296449 /* colorLines.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,7 +958,7 @@
 			files = (
 				ADC7347E1D6890EF00296449 /* Assets.xcassets in Resources */,
 				AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */,
-				AD4F2EBE1DBA6F66008DE615 /* couleursLignes.json in Resources */,
+				AD4F2EBE1DBA6F66008DE615 /* colorLines.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
