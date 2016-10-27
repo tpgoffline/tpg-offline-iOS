@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD087F8A1DC1F90500E51CB1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F51D6890C500296449 /* Localizable.strings */; };
+		AD087F8B1DC1FA7800E51CB1 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161901DBCE064009801B9 /* Localize.swift */; };
+		AD087F8E1DC2010800E51CB1 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161881DBCE064009801B9 /* Async.swift */; };
 		AD1BE0041DBE3222008F33A3 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1BE0031DBE3222008F33A3 /* SplashScreenViewController.swift */; };
 		AD2161CC1DBCE064009801B9 /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161751DBCE064009801B9 /* AKPickerView.swift */; };
 		AD2161DE1DBCE064009801B9 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161881DBCE064009801B9 /* Async.swift */; };
@@ -100,6 +103,7 @@
 		AD6F20601D6898C800DEF1F0 /* FontAwesomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */; };
 		AD89249C1D84479D00F5FC20 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */; };
 		AD89249D1D84479D00F5FC20 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */; };
+		ADBA28711DC0ABA8002E28AD /* ReminderInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */; };
 		ADC7341A1D6890C500296449 /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B11D6890C500296449 /* AppValues.swift */; };
 		ADC7341D1D6890C500296449 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B71D6890C500296449 /* Departures.swift */; };
 		ADC7341F1D6890C500296449 /* Perturbations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B91D6890C500296449 /* Perturbations.swift */; };
@@ -160,6 +164,15 @@
 		ADC734911D68917200296449 /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734901D68917200296449 /* Chameleon.framework */; };
 		ADC734951D68917D00296449 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734941D68917D00296449 /* FSCalendar.framework */; };
 		ADC734991D68918500296449 /* Onboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734981D68918500296449 /* Onboard.framework */; };
+		ADD177131DC0D9F60007F53F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161CB1DBCE064009801B9 /* SwiftyJSON.swift */; };
+		ADD1771D1DC0DB560007F53F /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177151DC0DB560007F53F /* DateModel.swift */; };
+		ADD1771E1DC0DB560007F53F /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177161DC0DB560007F53F /* DictionaryExtension.swift */; };
+		ADD1771F1DC0DB560007F53F /* Koyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177171DC0DB560007F53F /* Koyomi.swift */; };
+		ADD177201DC0DB560007F53F /* KoyomiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177181DC0DB560007F53F /* KoyomiCell.swift */; };
+		ADD177211DC0DB560007F53F /* KoyomiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177191DC0DB560007F53F /* KoyomiLayout.swift */; };
+		ADD177221DC0DB560007F53F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1771A1DC0DB560007F53F /* NSDateExtension.swift */; };
+		ADD177231DC0DB560007F53F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1771B1DC0DB560007F53F /* UIColorExtension.swift */; };
+		ADD177241DC0DB560007F53F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1771C1DC0DB560007F53F /* UIViewExtension.swift */; };
 		ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +226,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD087F8C1DC1FAC100E51CB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
+		AD087F8D1DC1FAC300E51CB1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Interface.strings; sourceTree = "<group>"; };
 		AD1BE0031DBE3222008F33A3 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		AD2161751DBCE064009801B9 /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		AD2161881DBCE064009801B9 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -305,6 +320,7 @@
 		AD8924981D84479D00F5FC20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "tpg offline UITests/Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = "tpg offline UITests/SnapshotHelper.swift"; sourceTree = SOURCE_ROOT; };
 		AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = tpg_offline_UITests.swift; path = "tpg offline UITests/tpg_offline_UITests.swift"; sourceTree = SOURCE_ROOT; };
+		ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		ADC7338C1D68908F00296449 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC733A01D68908F00296449 /* tpg offlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offlineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC733B11D6890C500296449 /* AppValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppValues.swift; sourceTree = "<group>"; };
@@ -375,6 +391,14 @@
 		ADC734901D68917200296449 /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		ADC734941D68917D00296449 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
 		ADC734981D68918500296449 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = Carthage/Build/iOS/Onboard.framework; sourceTree = "<group>"; };
+		ADD177151DC0DB560007F53F /* DateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		ADD177161DC0DB560007F53F /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		ADD177171DC0DB560007F53F /* Koyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Koyomi.swift; sourceTree = "<group>"; };
+		ADD177181DC0DB560007F53F /* KoyomiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoyomiCell.swift; sourceTree = "<group>"; };
+		ADD177191DC0DB560007F53F /* KoyomiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoyomiLayout.swift; sourceTree = "<group>"; };
+		ADD1771A1DC0DB560007F53F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		ADD1771B1DC0DB560007F53F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		ADD1771C1DC0DB560007F53F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADF767581D7C5E3D00B6C0B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		ADF767591D7C5E4000B6C0B4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -420,6 +444,7 @@
 				AD2161891DBCE064009801B9 /* DGElasticPullToRefresh */,
 				AD21618F1DBCE064009801B9 /* DGRunkeeperSwitch.swift */,
 				AD2161901DBCE064009801B9 /* Localize.swift */,
+				ADD177141DC0DB560007F53F /* Koyomi */,
 				AD2161911DBCE064009801B9 /* NVActivityIndicatorView */,
 				AD2161B81DBCE064009801B9 /* PermissionScope */,
 				AD2161BE1DBCE064009801B9 /* SCLAlertView */,
@@ -427,7 +452,8 @@
 				AD2161CB1DBCE064009801B9 /* SwiftyJSON.swift */,
 				AD21621C1DBCE162009801B9 /* VHUD */,
 			);
-			path = External;
+			name = External;
+			path = "tpg offline/App/External";
 			sourceTree = "<group>";
 		};
 		AD2161891DBCE064009801B9 /* DGElasticPullToRefresh */ = {
@@ -549,6 +575,7 @@
 		ADC733831D68908F00296449 = {
 			isa = PBXGroup;
 			children = (
+				AD2161741DBCE064009801B9 /* External */,
 				ADC7338E1D68908F00296449 /* tpg offline */,
 				ADC733A31D68908F00296449 /* tpg offline UITests */,
 				ADC734651D6890EF00296449 /* tpg offline Watch */,
@@ -600,7 +627,6 @@
 		ADC733AF1D6890C500296449 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				AD2161741DBCE064009801B9 /* External */,
 				ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */,
 				ADC733B11D6890C500296449 /* AppValues.swift */,
 				ADC733B71D6890C500296449 /* Departures.swift */,
@@ -750,6 +776,7 @@
 				AD62DD3D1D7C6A8100B2CA86 /* DeparturesRowController.swift */,
 				AD62DD3F1D7C6A8100B2CA86 /* StopsInterfaceController.swift */,
 				AD62DD401D7C6A8100B2CA86 /* StopsRowController.swift */,
+				ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */,
 				ADC7347D1D6890EF00296449 /* Assets.xcassets */,
 				ADC7347F1D6890EF00296449 /* Info.plist */,
 				ADC734751D6890EF00296449 /* Supporting Files */,
@@ -777,6 +804,22 @@
 				ADC734981D68918500296449 /* Onboard.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADD177141DC0DB560007F53F /* Koyomi */ = {
+			isa = PBXGroup;
+			children = (
+				ADD177151DC0DB560007F53F /* DateModel.swift */,
+				ADD177161DC0DB560007F53F /* DictionaryExtension.swift */,
+				ADD177171DC0DB560007F53F /* Koyomi.swift */,
+				ADD177181DC0DB560007F53F /* KoyomiCell.swift */,
+				ADD177191DC0DB560007F53F /* KoyomiLayout.swift */,
+				ADD1771A1DC0DB560007F53F /* NSDateExtension.swift */,
+				ADD1771B1DC0DB560007F53F /* UIColorExtension.swift */,
+				ADD1771C1DC0DB560007F53F /* UIViewExtension.swift */,
+			);
+			name = Koyomi;
+			path = NVActivityIndicatorView/Koyomi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -863,7 +906,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Rémy DA COSTA FARO";
 				TargetAttributes = {
 					ADC7338B1D68908F00296449 = {
@@ -957,6 +1000,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC7347E1D6890EF00296449 /* Assets.xcassets in Resources */,
+				AD087F8A1DC1F90500E51CB1 /* Localizable.strings in Resources */,
 				AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */,
 				AD4F2EBE1DBA6F66008DE615 /* colorLines.json in Resources */,
 			);
@@ -1029,6 +1073,7 @@
 				AD2162271DBCE162009801B9 /* VHUD.swift in Sources */,
 				ADC7342C1D6890C500296449 /* LoadingCellTableViewCell.swift in Sources */,
 				AD2162051DBCE064009801B9 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
+				ADD177201DC0DB560007F53F /* KoyomiCell.swift in Sources */,
 				AD2161EF1DBCE064009801B9 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				AD2161DE1DBCE064009801B9 /* Async.swift in Sources */,
 				ADC734311D6890C500296449 /* ThemeCollectionViewCell.swift in Sources */,
@@ -1053,10 +1098,12 @@
 				ADC7341F1D6890C500296449 /* Perturbations.swift in Sources */,
 				ADC734491D6890C500296449 /* MapViewController.swift in Sources */,
 				AD2161E61DBCE064009801B9 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
+				ADD177241DC0DB560007F53F /* UIViewExtension.swift in Sources */,
 				AD21620A1DBCE064009801B9 /* NVActivityIndicatorViewable.swift in Sources */,
 				AD2162251DBCE162009801B9 /* ProgressView.swift in Sources */,
 				AD2161FD1DBCE064009801B9 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				AD2161EE1DBCE064009801B9 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
+				ADD177221DC0DB560007F53F /* NSDateExtension.swift in Sources */,
 				AD2161F41DBCE064009801B9 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				AD2162241DBCE162009801B9 /* DisplayLink.swift in Sources */,
 				AD2161ED1DBCE064009801B9 /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
@@ -1067,10 +1114,13 @@
 				AD21622A1DBCE162009801B9 /* VHUDWindow.swift in Sources */,
 				AD21620B1DBCE064009801B9 /* Constants.swift in Sources */,
 				AD2162001DBCE064009801B9 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
+				ADD1771D1DC0DB560007F53F /* DateModel.swift in Sources */,
 				AD2161FE1DBCE064009801B9 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				ADC734561D6890C500296449 /* TimeSelectionViewController.swift in Sources */,
 				ADC734591D6890C500296449 /* SelectDefaultTabBarItem.swift in Sources */,
 				ADC7342A1D6890C500296449 /* DetailRouteTableViewCell.swift in Sources */,
+				ADD177231DC0DB560007F53F /* UIColorExtension.swift in Sources */,
+				ADD177211DC0DB560007F53F /* KoyomiLayout.swift in Sources */,
 				ADC734201D6890C500296449 /* Route.swift in Sources */,
 				AD2162281DBCE162009801B9 /* VHUDView.swift in Sources */,
 				ADC734331D6890C500296449 /* RouteToStopViewController.swift in Sources */,
@@ -1080,12 +1130,14 @@
 				AD2161F51DBCE064009801B9 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				AD21620D1DBCE064009801B9 /* Permissions.swift in Sources */,
 				AD2161E11DBCE064009801B9 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
+				ADD1771E1DC0DB560007F53F /* DictionaryExtension.swift in Sources */,
 				ADC734261D6890C500296449 /* WatchSessionManager.swift in Sources */,
 				AD21620F1DBCE064009801B9 /* Structs.swift in Sources */,
 				ADC734391D6890C500296449 /* UIKitExtension.swift in Sources */,
 				AD2162031DBCE064009801B9 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				ADC734481D6890C500296449 /* MapsListTableViewController.swift in Sources */,
 				AD2162141DBCE064009801B9 /* BeaconsManager.swift in Sources */,
+				ADD1771F1DC0DB560007F53F /* Koyomi.swift in Sources */,
 				AD2162161DBCE064009801B9 /* GeoRegionRequest.swift in Sources */,
 				AD2162261DBCE162009801B9 /* UIView+AutoLayout.swift in Sources */,
 				ADC7345B1D6890C500296449 /* ThemesCollectionViewController.swift in Sources */,
@@ -1155,12 +1207,16 @@
 				ADC7347C1D6890EF00296449 /* NotificationController.swift in Sources */,
 				AD62DD431D7C6A8100B2CA86 /* StopsInterfaceController.swift in Sources */,
 				AD62DD461D7C6B1900B2CA86 /* WatchSessionManager.swift in Sources */,
+				ADD177131DC0D9F60007F53F /* SwiftyJSON.swift in Sources */,
 				AD62DD421D7C6A8100B2CA86 /* DeparturesRowController.swift in Sources */,
+				AD087F8B1DC1FA7800E51CB1 /* Localize.swift in Sources */,
 				AD62DD441D7C6A8100B2CA86 /* StopsRowController.swift in Sources */,
 				AD62DD4A1D7C6B5100B2CA86 /* Departures.swift in Sources */,
 				AD62DD481D7C6B4200B2CA86 /* AppValues.swift in Sources */,
 				ADC7347A1D6890EF00296449 /* ExtensionDelegate.swift in Sources */,
+				AD087F8E1DC2010800E51CB1 /* Async.swift in Sources */,
 				AD62DD491D7C6B4900B2CA86 /* Stop.swift in Sources */,
+				ADBA28711DC0ABA8002E28AD /* ReminderInterfaceController.swift in Sources */,
 				AD62DD411D7C6A8100B2CA86 /* DeparturesInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1236,6 +1292,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADC734671D6890EF00296449 /* Base */,
+				AD087F8C1DC1FAC100E51CB1 /* en */,
+				AD087F8D1DC1FAC300E51CB1 /* fr */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -1247,6 +1305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1261,6 +1320,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1297,6 +1357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1311,6 +1372,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

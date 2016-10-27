@@ -394,7 +394,7 @@ class ThermometerTableViewController: UITableViewController {
                     }
                 }
                 else {
-                    print(response.result.error)
+                    print(response.result.error!)
                     self.thermometerList = []
                     self.tableView.allowsSelection = false
                     self.loading = false

@@ -10,7 +10,6 @@
 import WatchKit
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 class DeparturesInterfaceController: WKInterfaceController {
     
@@ -174,6 +173,9 @@ class DeparturesInterfaceController: WKInterfaceController {
                 }
             }
         }
-        
+    }
+    
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+        return (departuresTable.rowController(at: rowIndex) as! DeparturesRowController).departure
     }
 }

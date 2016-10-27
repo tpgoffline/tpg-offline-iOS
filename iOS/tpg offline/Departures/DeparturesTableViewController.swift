@@ -224,7 +224,7 @@ class DeparturesTableViewController: UITableViewController {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     var time = dateFormatter.date(from: hour)
-                    time!.addTimeInterval(Double(before) * -1.0)
+                    time!.addTimeInterval(Double(before) * -60.0)
                     let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
                     
                     let cal = Calendar(identifier: Calendar.Identifier.gregorian)
@@ -259,7 +259,7 @@ class DeparturesTableViewController: UITableViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
             var time = dateFormatter.date(from: hour)
-            time!.addTimeInterval(Double(before) * -1.0)
+            time!.addTimeInterval(Double(before) * -60.0)
             let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
             
             let cal = Calendar(identifier: Calendar.Identifier.gregorian)

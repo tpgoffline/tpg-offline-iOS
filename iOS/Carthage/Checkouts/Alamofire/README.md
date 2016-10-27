@@ -130,13 +130,13 @@ If you prefer not to use either of the aforementioned dependency managers, you c
 
 - Open up Terminal, `cd` into your top-level project directory, and run the following command "if" your project is not initialized as a git repository:
 
-```bash
+  ```bash
 $ git init
 ```
 
 - Add Alamofire as a git [submodule](http://git-scm.com/docs/git-submodule) by running the following command:
 
-```bash
+  ```bash
 $ git submodule add https://github.com/Alamofire/Alamofire.git
 ```
 
@@ -158,7 +158,7 @@ $ git submodule add https://github.com/Alamofire/Alamofire.git
 
 - And that's it!
 
-> The `Alamofire.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
+  > The `Alamofire.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
 
 ---
 
@@ -623,7 +623,7 @@ let destination: DownloadRequest.DownloadFileDestination = { _, _ in
 Alamofire.download(urlString, to: destination).response { response in
     print(response)
 
-	if response.result.isSuccess, let imagePath = response.destinationURL?.path {
+	if response.error == nil, let imagePath = response.destinationURL?.path {
 	    let image = UIImage(contentsOfFile: imagePath)
 	}
 }

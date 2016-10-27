@@ -10,6 +10,8 @@ import UIKit
 import Chameleon
 import Alamofire
 import FontAwesomeKit
+import Crashlytics
+import UserNotifications
 
 class RoutesListTableViewController: UITableViewController {
     
@@ -176,7 +178,7 @@ class RoutesListTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
-                print(response.result.error)
+                print(response.result.error!)
                 self.noNetwork = true
                 self.loading = false
                 self.tableView.allowsSelection = false
@@ -362,46 +364,102 @@ class RoutesListTableViewController: UITableViewController {
             itineraireTableViewController.tableView.reloadData()
         }
     }
+    
     func scheduleNotification(_ time: Date, before: Int = 5, line: String, direction: String, arretDescente: String) {
-        let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -1))
-        
-        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
-        
-        let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: time)
-        let reminder = UILocalNotification()
-        reminder.fireDate = date
-        
-        var texte =  "Le tpg de la line ".localized
-        texte += line
-        texte += " en direction de ".localized
-        texte += direction
-        if before == 0 {
-            texte += " va partir immédiatement. ".localized
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            
+            center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                if granted {
+                    let content = UNMutableNotificationContent()
+                    if before == 0 {
+                        content.title = "Départ immédiat !".localized
+                        content.body = "Le tpg de la line ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
+                    }
+                    else {
+                        content.title = "Départ dans ".localized + String(before) + " minutes".localized
+                        var text =  "Le tpg de la line ".localized
+                        text += line
+                        text += " en direction de ".localized
+                        text += direction
+                        text += " va partir dans ".localized
+                        text += String(before)
+                        text += " minutes".localized
+                        content.body = text
+                    }
+                    content.categoryIdentifier = "departureNotifications"
+                    content.userInfo = [:]
+                    content.sound = UNNotificationSound.default()
+                    
+                    let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -1))
+                    let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+                    let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: time)
+                    
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!), repeats: false)
+                    
+                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    center.add(request, withCompletionHandler: { (error) in
+                        if error == nil {
+                            let okView = SCLAlertView()
+                            if before == 0 {
+                                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK", duration: 10)
+                            }
+                            else {
+                                var texte =  "La notification à été enregistrée et sera affichée ".localized
+                                texte += String(before)
+                                texte += " minutes avant le départ.".localized
+                                okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
+                            }
+                        } else {
+                            Crashlytics.sharedInstance().recordError(error!)
+                            SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30)
+                        }
+                    })
+                } else {
+                    SCLAlertView().showError("Notifications désactivées", subTitle: "Merci d'activer les notifications dans les réglages", closeButtonTitle: "OK", duration: 30)
+                }
+            }
         }
         else {
-            texte += " va partir dans ".localized
-            texte += String(before)
-            texte += " minutes. ".localized
-        }
-        texte += "Descendez à ".localized
-        texte += String(arretDescente)
-        
-        reminder.alertBody = texte
-        reminder.soundName = UILocalNotificationDefaultSoundName
-        
-        UIApplication.shared.scheduleLocalNotification(reminder)
-        
-        print("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
-        
-        let okView = SCLAlertView()
-        if before == 0 {
-            okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK".localized, duration: 10)
-        }
-        else {
-            var texte = "La notification à été enregistrée et sera affichée ".localized
-            texte += String(before)
-            texte += " minutes avant le départ.".localized
-            okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK".localized, duration: 10)
+            let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -1))
+            
+            let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+            
+            let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: time)
+            let reminder = UILocalNotification()
+            reminder.fireDate = date
+            
+            var texte =  "Le tpg de la line ".localized
+            texte += line
+            texte += " en direction de ".localized
+            texte += direction
+            if before == 0 {
+                texte += " va partir immédiatement. ".localized
+            }
+            else {
+                texte += " va partir dans ".localized
+                texte += String(before)
+                texte += " minutes. ".localized
+            }
+            texte += "Descendez à ".localized
+            texte += String(arretDescente)
+            reminder.alertBody = texte
+            reminder.soundName = UILocalNotificationDefaultSoundName
+            
+            UIApplication.shared.scheduleLocalNotification(reminder)
+            
+            print("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
+            
+            let okView = SCLAlertView()
+            if before == 0 {
+                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK".localized, duration: 10)
+            }
+            else {
+                var texte = "La notification à été enregistrée et sera affichée ".localized
+                texte += String(before)
+                texte += " minutes avant le départ.".localized
+                okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK".localized, duration: 10)
+            }
         }
     }
     

@@ -7,14 +7,13 @@
 //
 
 import WatchKit
-import SwiftyJSON
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         let defaults = UserDefaults.standard
         
-        var decoded = defaults.object(forKey: "arretsFavoris")
+        var decoded = defaults.object(forKey: "favoritesStops")
         if decoded != nil {
             let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [String:Stop]
             AppValues.favoritesStops = unarchivedData

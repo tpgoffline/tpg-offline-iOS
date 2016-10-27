@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
         <!--tpg offline-->
@@ -17,7 +20,7 @@
                                     <group key="rootItem" width="1" height="42" alignment="left" spacing="6" id="ioM-sr-0kn">
                                         <items>
                                             <separator height="1" heightAdjustment="-4" alignment="left" verticalAlignment="center" id="CAW-fc-aWY">
-                                                <color key="color" red="0.98922836780548096" green="0.4153139591217041" blue="0.031820401549339294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="color" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </separator>
                                             <group width="0.90000000000000002" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="pCM-q6-WEX">
                                                 <items>
@@ -63,7 +66,7 @@
                         <imageView width="100" height="100" alignment="center" image="wave_" id="KHy-yd-knr"/>
                         <table alignment="left" id="EGD-HQ-rJf">
                             <items>
-                                <tableRow identifier="DeparturesRow" selectable="NO" id="QCH-b6-eic" customClass="DeparturesRowController" customModule="tpg_offline_Watch_Extension">
+                                <tableRow identifier="DeparturesRow" id="QCH-b6-eic" customClass="DeparturesRowController" customModule="tpg_offline_Watch_Extension">
                                     <group key="rootItem" width="1" alignment="left" spacing="4" id="QLD-Am-u1p">
                                         <items>
                                             <label width="22" alignment="left" verticalAlignment="center" text="99" textAlignment="center" id="Fqu-4e-vfY">
@@ -81,6 +84,7 @@
                                         <outlet property="leftTimeLabel" destination="f5t-Yr-2AM" id="MRM-st-G4K"/>
                                         <outlet property="lineLabel" destination="Fqu-4e-vfY" id="IcN-Qq-QHW"/>
                                         <outlet property="separator" destination="Hcq-gx-Fqy" id="VGj-4B-zYn"/>
+                                        <segue destination="zu6-ar-w9Q" kind="push" id="1W4-rS-yJe"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -94,12 +98,34 @@
             </objects>
             <point key="canvasLocation" x="470" y="344"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Reminder-->
         <scene sceneID="bCX-qk-QLR">
             <objects>
-                <controller id="zu6-ar-w9Q"/>
+                <controller identifier="Reminder" id="zu6-ar-w9Q" customClass="ReminderInterfaceController" customModule="tpg_offline_Watch_Extension">
+                    <items>
+                        <group width="131" height="0.59999999999999998" alignment="center" id="k5J-V9-cL9">
+                            <items>
+                                <picker width="89" height="1" alignment="left" focusStyle="stack" id="HOh-ff-Cr4">
+                                    <connections>
+                                        <action selector="pickerChangedWithValue:" destination="zu6-ar-w9Q" id="C9l-Ik-XCW"/>
+                                    </connections>
+                                </picker>
+                                <label alignment="right" verticalAlignment="center" text="min" textAlignment="left" id="PtF-nz-qqG"/>
+                            </items>
+                        </group>
+                        <label alignment="center" text="before departure" id="5w9-tt-0RW"/>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Valider" id="vjV-kk-3d5">
+                            <connections>
+                                <action selector="setReminder" destination="zu6-ar-w9Q" id="qHz-ch-sYy"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="picker" destination="HOh-ff-Cr4" id="RaN-u2-URQ"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="695" y="347"/>
+            <point key="canvasLocation" x="693" y="345"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

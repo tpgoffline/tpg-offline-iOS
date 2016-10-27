@@ -9,71 +9,73 @@
 import UIKit
 import Chameleon
 import FontAwesomeKit
+import UserNotifications
+import Crashlytics
 
 class RouteDetailTableViewController: UITableViewController {
-	
-	var actualRoute = 0
-	let defaults = UserDefaults.standard
-	var favorite = false
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-		var itemsList: [UIBarButtonItem] = []
-		
-		for x in AppValues.favoritesRoutes {
-			if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
-				favorite = true
-				break
-			}
-		}
-		if favorite {
-			itemsList.append(UIBarButtonItem(image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
-		}
-		else {
-			itemsList.append(UIBarButtonItem(image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
-		}
-		self.navigationItem.rightBarButtonItems = itemsList
-		tableView.backgroundColor = AppValues.primaryColor
-	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		
-	}
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		refreshTheme()
-		tableView.backgroundColor = AppValues.primaryColor
-		tableView.reloadData()
-	}
-	
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
-	}
-	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return ActualRoutes.routeResult[actualRoute].connections.count
-	}
-	
-	func labelToImage(_ label: UILabel!) -> UIImage {
-		UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
-		label.layer.render(in: UIGraphicsGetCurrentContext()!)
-		
-		let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-		UIGraphicsEndImageContext()
-		return image
-	}
-	
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "itineraireCell", for: indexPath) as! DetailRouteTableViewCell
-		
-		var couleurTexte = UIColor.white
-		
-		if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].transportCategory != .walk {
-			
+    
+    var actualRoute = 0
+    let defaults = UserDefaults.standard
+    var favorite = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var itemsList: [UIBarButtonItem] = []
+        
+        for x in AppValues.favoritesRoutes {
+            if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+                favorite = true
+                break
+            }
+        }
+        if favorite {
+            itemsList.append(UIBarButtonItem(image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
+        }
+        else {
+            itemsList.append(UIBarButtonItem(image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
+        }
+        self.navigationItem.rightBarButtonItems = itemsList
+        tableView.backgroundColor = AppValues.primaryColor
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        refreshTheme()
+        tableView.backgroundColor = AppValues.primaryColor
+        tableView.reloadData()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ActualRoutes.routeResult[actualRoute].connections.count
+    }
+    
+    func labelToImage(_ label: UILabel!) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
+        label.layer.render(in: UIGraphicsGetCurrentContext()!)
+        
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itineraireCell", for: indexPath) as! DetailRouteTableViewCell
+        
+        var couleurTexte = UIColor.white
+        
+        if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].transportCategory != .walk {
+            
             if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].isSBB {
                 cell.lineLabel.text = "Train ".localized + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
             } else {
@@ -156,24 +158,24 @@ class RouteDetailTableViewController: UITableViewController {
                 attributedString.append(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].direction))
                 cell.directionLabel.attributedText = attributedString
             }
-		}
-		else {
-			let icone = FAKIonIcons.androidWalkIcon(withSize: 42)!
+        }
+        else {
+            let icone = FAKIonIcons.androidWalkIcon(withSize: 42)!
             
             icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.backgroundColor = UIColor.white
             couleurTexte = AppValues.textColor
-			
+            
             cell.departureLabel.text = ""
             cell.hourDepartureLabel.text = ""
             cell.arrivalLabel.text = ""
             cell.hourArrivalLabel.text = ""
             
-			cell.iconImageView.image = icone.image(with: CGSize(width: 42, height: 42))
-			cell.lineLabel.text = "Marche".localized
-			cell.directionLabel.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].direction
-			
-		}
+            cell.iconImageView.image = icone.image(with: CGSize(width: 42, height: 42))
+            cell.lineLabel.text = "Marche".localized
+            cell.directionLabel.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].direction
+            
+        }
         
         cell.lineLabel.textColor = couleurTexte
         cell.directionLabel.textColor = couleurTexte
@@ -199,153 +201,211 @@ class RouteDetailTableViewController: UITableViewController {
         attributedString = NSMutableAttributedString(attributedString: (icone2.attributedString())!)
         attributedString.append(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].to))
         cell.arrivalLabel.attributedText = attributedString
-		
-		return cell
-	}
-	
-	func toggleFavorite(_ sender: Any!) {
-		if AppValues.favoritesRoutes.isEmpty {
-			AppValues.favoritesRoutes = [[ActualRoutes.route.departure!, ActualRoutes.route.arrival!]]
-		}
-		else {
-			if self.favorite {
-				AppValues.favoritesRoutes = AppValues.favoritesRoutes.filter({ (arretA) -> Bool in
-					if arretA[0].fullName == ActualRoutes.route.departure?.fullName && arretA[1].fullName == ActualRoutes.route.arrival?.fullName {
-						return false
-					}
-					return true
-				})
-			}
-			else {
-				AppValues.favoritesRoutes.append([ActualRoutes.route.departure!, ActualRoutes.route.arrival!])
-			}
-		}
-		
-		self.favorite = !self.favorite
-		
-		let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppValues.favoritesRoutes)
-		defaults.set(encodedData, forKey: "itinerairesFavoris")
-		
-		var listeItems: [UIBarButtonItem] = []
-		var favoris = false
-		for x in AppValues.favoritesRoutes {
-			if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
-				favoris = true
-				break
-			}
-		}
-		if favoris {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action:#selector(RouteDetailTableViewController.toggleFavorite(_:))))
-		}
-		else {
-			listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
-		}
-		self.navigationItem.rightBarButtonItems = listeItems
+        
+        return cell
+    }
+    
+    func toggleFavorite(_ sender: Any!) {
+        if AppValues.favoritesRoutes.isEmpty {
+            AppValues.favoritesRoutes = [[ActualRoutes.route.departure!, ActualRoutes.route.arrival!]]
+        }
+        else {
+            if self.favorite {
+                AppValues.favoritesRoutes = AppValues.favoritesRoutes.filter({ (arretA) -> Bool in
+                    if arretA[0].fullName == ActualRoutes.route.departure?.fullName && arretA[1].fullName == ActualRoutes.route.arrival?.fullName {
+                        return false
+                    }
+                    return true
+                })
+            }
+            else {
+                AppValues.favoritesRoutes.append([ActualRoutes.route.departure!, ActualRoutes.route.arrival!])
+            }
+        }
+        
+        self.favorite = !self.favorite
+        
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppValues.favoritesRoutes)
+        defaults.set(encodedData, forKey: "itinerairesFavoris")
+        
+        var listeItems: [UIBarButtonItem] = []
+        var favoris = false
+        for x in AppValues.favoritesRoutes {
+            if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+                favoris = true
+                break
+            }
+        }
+        if favoris {
+            listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action:#selector(RouteDetailTableViewController.toggleFavorite(_:))))
+        }
+        else {
+            listeItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20,height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
+        }
+        self.navigationItem.rightBarButtonItems = listeItems
         let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
         if (navController.viewControllers[0].isKind(of: RoutesTableViewController.self)) {
             let itineraireTableViewController = navController.viewControllers[0] as! RoutesTableViewController
             itineraireTableViewController.tableView.reloadData()
         }
-	}
-	
+    }
+    
     func scheduleNotification(_ time: Date, before: Int = 5, ligne: String, direction: String, arretDescente: String) {
-        let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -1))
-        
-        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
-        
-        let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: time)
-        let reminder = UILocalNotification()
-        reminder.fireDate = date
-        
-        var texte =  "Le tpg de la line ".localized
-        texte += ligne
-        texte += " en direction de ".localized
-        texte += direction
-        if before == 0 {
-            texte += " va partir immédiatement. ".localized
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            
+            center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                if granted {
+                    let content = UNMutableNotificationContent()
+                    if before == 0 {
+                        content.title = "Départ immédiat !".localized
+                        content.body = "Le tpg de la line ".localized + ligne + " en direction de ".localized + direction + " va partir immédiatement. ".localized + "Descendez à ".localized + String(arretDescente)
+                    }
+                    else {
+                        content.title = "Départ dans ".localized + String(before) + " minutes".localized
+                        var text =  "Le tpg de la line ".localized
+                        text += ligne
+                        text += " en direction de ".localized
+                        text += direction
+                        text += " va partir dans ".localized
+                        text += String(before)
+                        text += " minutes. ".localized
+                        text += "Descendez à ".localized
+                        text += String(arretDescente)
+                        content.body = text
+                    }
+                    content.categoryIdentifier = "departureNotifications"
+                    content.userInfo = [:]
+                    content.sound = UNNotificationSound.default()
+                    
+                    let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -1))
+                    let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+                    let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: time)
+                    
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!), repeats: false)
+                    
+                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    center.add(request, withCompletionHandler: { (error) in
+                        if error == nil {
+                            let okView = SCLAlertView()
+                            if before == 0 {
+                                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK", duration: 10)
+                            }
+                            else {
+                                var texte =  "La notification à été enregistrée et sera affichée ".localized
+                                texte += String(before)
+                                texte += " minutes avant le départ.".localized
+                                okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
+                            }
+                        } else {
+                            Crashlytics.sharedInstance().recordError(error!)
+                            SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30)
+                        }
+                    })
+                } else {
+                    SCLAlertView().showError("Notifications désactivées", subTitle: "Merci d'activer les notifications dans les réglages", closeButtonTitle: "OK", duration: 30)
+                }
+            }
         }
         else {
-            texte += " va partir dans ".localized
-            texte += String(before)
-            texte += " minutes. ".localized
+            let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time.addingTimeInterval(Double(before * 60) * -1))
+            
+            let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+            
+            let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: time)
+            let reminder = UILocalNotification()
+            reminder.fireDate = date
+            
+            var texte =  "Le tpg de la line ".localized
+            texte += ligne
+            texte += " en direction de ".localized
+            texte += direction
+            if before == 0 {
+                texte += " va partir immédiatement. ".localized
+            }
+            else {
+                texte += " va partir dans ".localized
+                texte += String(before)
+                texte += " minutes. ".localized
+            }
+            texte += "Descendez à ".localized
+            texte += String(arretDescente)
+            reminder.alertBody = texte
+            reminder.soundName = UILocalNotificationDefaultSoundName
+            
+            UIApplication.shared.scheduleLocalNotification(reminder)
+            
+            print("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
+            
+            let okView = SCLAlertView()
+            if before == 0 {
+                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK".localized, duration: 10)
+            }
+            else {
+                var texte = "La notification à été enregistrée et sera affichée ".localized
+                texte += String(before)
+                texte += " minutes avant le départ.".localized
+                okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK".localized, duration: 10)
+            }
         }
-        texte += "Descendez à ".localized
-        texte += String(arretDescente)
-        reminder.alertBody = texte
-        reminder.soundName = UILocalNotificationDefaultSoundName
-        
-        UIApplication.shared.scheduleLocalNotification(reminder)
-        
-        print("Firing at \(now.hour):\(now.minute! - before):\(now.second)")
-        
-        let okView = SCLAlertView()
-        if before == 0 {
-            okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK".localized, duration: 10)
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].departureTimestamp)).timeIntervalSince(Date())
+        let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
+            let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
+            icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
+            icone.image(with: CGSize(width: 20, height: 20))
+            let alertView = SCLAlertView()
+            if time < 60 {
+                alertView.showWarning("Le bus arrive".localized, subTitle: "Dépêchez vous, vous allez le rater !".localized, closeButtonTitle: "OK".localized, duration: 10)
+            }
+            else {
+                alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
+                    self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                })
+                if time > 60 * 5 {
+                    alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
+                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                    })
+                }
+                if time > 60 * 10 {
+                    alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
+                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                    })
+                }
+                alertView.addButton("Autre", action: { () -> Void in
+                    alertView.hideView()
+                    let customValueAlert = SCLAlertView()
+                    let txt = customValueAlert.addTextField("Nombre de minutes".localized)
+                    txt.keyboardType = .numberPad
+                    txt.becomeFirstResponder()
+                    customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
+                        if Int(time) < Int(txt.text!)! * 60 {
+                            customValueAlert.hideView()
+                            SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK", duration: 10)
+                            
+                        }
+                        else {
+                            self.scheduleNotification(Date(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                            customValueAlert.hideView()
+                        }
+                    })
+                    customValueAlert.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+                })
+                alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
+                tableView.setEditing(false, animated: true)
+            }
+            
         }
-        else {
-            var texte = "La notification à été enregistrée et sera affichée ".localized
-            texte += String(before)
-            texte += " minutes avant le départ.".localized
-            okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK".localized, duration: 10)
-        }
-	}
-	
-	override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-		let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].departureTimestamp)).timeIntervalSince(Date())
-		let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
-			let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
-			icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
-			icone.image(with: CGSize(width: 20, height: 20))
-			let alertView = SCLAlertView()
-			if time < 60 {
-				alertView.showWarning("Le bus arrive".localized, subTitle: "Dépêchez vous, vous allez le rater !".localized, closeButtonTitle: "OK".localized, duration: 10)
-			}
-			else {
-				alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
-					self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
-				})
-				if time > 60 * 5 {
-					alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
-						self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
-					})
-				}
-				if time > 60 * 10 {
-					alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
-						self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
-					})
-				}
-				alertView.addButton("Autre", action: { () -> Void in
-					alertView.hideView()
-					let customValueAlert = SCLAlertView()
-					let txt = customValueAlert.addTextField("Nombre de minutes".localized)
-					txt.keyboardType = .numberPad
-					txt.becomeFirstResponder()
-					customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
-						if Int(time) < Int(txt.text!)! * 60 {
-							customValueAlert.hideView()
-							SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK", duration: 10)
-							
-						}
-						else {
-							self.scheduleNotification(Date(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
-							customValueAlert.hideView()
-						}
-					})
-					customValueAlert.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
-				})
-				alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: icone.image(with: CGSize(width: 20, height: 20)))
-				tableView.setEditing(false, animated: true)
-			}
-
-		}
-		timerAction.backgroundColor = UIColor.flatBlue()
-		return [timerAction]
-	}
-	
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-	}
-	
-	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-		return true
-	}
+        timerAction.backgroundColor = UIColor.flatBlue()
+        return [timerAction]
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }
