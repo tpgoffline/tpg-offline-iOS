@@ -10,6 +10,8 @@ import UIKit
 import FontAwesomeKit
 import CoreLocation
 import Chameleon
+import Fabric
+import Crashlytics
 
 class SplashScreenViewController: UIViewController {
 
