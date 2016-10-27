@@ -82,11 +82,8 @@
 		AD2162291DBCE162009801B9 /* VHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2162221DBCE162009801B9 /* VHUDViewController.swift */; };
 		AD21622A1DBCE162009801B9 /* VHUDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2162231DBCE162009801B9 /* VHUDWindow.swift */; };
 		AD21622C1DBCE4EC009801B9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD21622B1DBCE4EC009801B9 /* Alamofire.framework */; };
-		AD2162311DBCE7D6009801B9 /* Departures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162301DBCE7D6009801B9 /* Departures.storyboard */; };
 		AD2162341DBCE809009801B9 /* Incidents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162321DBCE809009801B9 /* Incidents.storyboard */; };
-		AD2162361DBCE81F009801B9 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162351DBCE81F009801B9 /* Maps.storyboard */; };
 		AD2162391DBCE8C8009801B9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162371DBCE8C8009801B9 /* Settings.storyboard */; };
-		AD21623B1DBCE8E2009801B9 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD21623A1DBCE8E2009801B9 /* Routes.storyboard */; };
 		AD4F2EBE1DBA6F66008DE615 /* colorLines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* colorLines.json */; };
 		AD4F2EC31DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
 		AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
@@ -103,6 +100,10 @@
 		AD6F20601D6898C800DEF1F0 /* FontAwesomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */; };
 		AD89249C1D84479D00F5FC20 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */; };
 		AD89249D1D84479D00F5FC20 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */; };
+		AD9A8C451DC230AE0021C7CD /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9A8C471DC230AE0021C7CD /* Routes.storyboard */; };
+		AD9A8C501DC230E90021C7CD /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9A8C521DC230E90021C7CD /* Maps.storyboard */; };
+		AD9A8C5B1DC231080021C7CD /* Departures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9A8C5D1DC231080021C7CD /* Departures.storyboard */; };
+		AD9A8C631DC2323C0021C7CD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9A8C621DC2323C0021C7CD /* Alamofire.framework */; };
 		ADBA28711DC0ABA8002E28AD /* ReminderInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */; };
 		ADC7341A1D6890C500296449 /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B11D6890C500296449 /* AppValues.swift */; };
 		ADC7341D1D6890C500296449 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B71D6890C500296449 /* Departures.swift */; };
@@ -300,11 +301,8 @@
 		AD2162221DBCE162009801B9 /* VHUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDViewController.swift; sourceTree = "<group>"; };
 		AD2162231DBCE162009801B9 /* VHUDWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDWindow.swift; sourceTree = "<group>"; };
 		AD21622B1DBCE4EC009801B9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		AD2162301DBCE7D6009801B9 /* Departures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Departures.storyboard; sourceTree = "<group>"; };
 		AD2162331DBCE809009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Incidents.storyboard; sourceTree = "<group>"; };
-		AD2162351DBCE81F009801B9 /* Maps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
 		AD2162381DBCE8C8009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
-		AD21623A1DBCE8E2009801B9 /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		AD62DD3A1D7C5E9200B2CA86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AD62DD3B1D7C5E9400B2CA86 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -320,6 +318,20 @@
 		AD8924981D84479D00F5FC20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "tpg offline UITests/Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = "tpg offline UITests/SnapshotHelper.swift"; sourceTree = SOURCE_ROOT; };
 		AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = tpg_offline_UITests.swift; path = "tpg offline UITests/tpg_offline_UITests.swift"; sourceTree = SOURCE_ROOT; };
+		AD9A8C461DC230AE0021C7CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Routes.storyboard; sourceTree = "<group>"; };
+		AD9A8C491DC230B80021C7CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Routes.strings; sourceTree = "<group>"; };
+		AD9A8C4B1DC230BC0021C7CD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Routes.strings; sourceTree = "<group>"; };
+		AD9A8C4D1DC230C80021C7CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
+		AD9A8C4F1DC230DB0021C7CD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
+		AD9A8C511DC230E90021C7CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Maps.storyboard; sourceTree = "<group>"; };
+		AD9A8C541DC230ED0021C7CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Maps.strings; sourceTree = "<group>"; };
+		AD9A8C561DC230F20021C7CD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Maps.strings; sourceTree = "<group>"; };
+		AD9A8C581DC230FD0021C7CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Incidents.strings; sourceTree = "<group>"; };
+		AD9A8C5A1DC231010021C7CD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Incidents.strings; sourceTree = "<group>"; };
+		AD9A8C5C1DC231080021C7CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Departures.storyboard; sourceTree = "<group>"; };
+		AD9A8C5F1DC2310E0021C7CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Departures.strings; sourceTree = "<group>"; };
+		AD9A8C611DC231120021C7CD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Departures.strings; sourceTree = "<group>"; };
+		AD9A8C621DC2323C0021C7CD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		ADC7338C1D68908F00296449 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC733A01D68908F00296449 /* tpg offlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offlineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -430,6 +442,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD9A8C631DC2323C0021C7CD /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,11 +758,11 @@
 				ADC7340E1D6890C500296449 /* Assets.xcassets */,
 				ADC7340F1D6890C500296449 /* LaunchScreen.storyboard */,
 				ADC734111D6890C500296449 /* Main.storyboard */,
-				AD21623A1DBCE8E2009801B9 /* Routes.storyboard */,
+				AD9A8C471DC230AE0021C7CD /* Routes.storyboard */,
 				AD2162371DBCE8C8009801B9 /* Settings.storyboard */,
-				AD2162351DBCE81F009801B9 /* Maps.storyboard */,
+				AD9A8C521DC230E90021C7CD /* Maps.storyboard */,
 				AD2162321DBCE809009801B9 /* Incidents.storyboard */,
-				AD2162301DBCE7D6009801B9 /* Departures.storyboard */,
+				AD9A8C5D1DC231080021C7CD /* Departures.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -795,6 +808,7 @@
 		ADC7348B1D68916A00296449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD9A8C621DC2323C0021C7CD /* Alamofire.framework */,
 				AD21622B1DBCE4EC009801B9 /* Alamofire.framework */,
 				ADC734901D68917200296449 /* Chameleon.framework */,
 				AD6F201D1D68958100DEF1F0 /* Crashlytics.framework */,
@@ -966,13 +980,13 @@
 				ADC7344C1D6890C500296449 /* Bel-Air.gpx in Resources */,
 				ADC7345D1D6890C500296449 /* Assets.xcassets in Resources */,
 				AD2162391DBCE8C8009801B9 /* Settings.storyboard in Resources */,
-				AD2162311DBCE7D6009801B9 /* Departures.storyboard in Resources */,
+				AD9A8C5B1DC231080021C7CD /* Departures.storyboard in Resources */,
 				ADC7345F1D6890C500296449 /* Main.storyboard in Resources */,
 				ADC734501D6890C500296449 /* tpg offline.geojson in Resources */,
 				ADC7344B1D6890C500296449 /* Localizable.strings in Resources */,
-				AD21623B1DBCE8E2009801B9 /* Routes.storyboard in Resources */,
+				AD9A8C451DC230AE0021C7CD /* Routes.storyboard in Resources */,
 				ADC7345E1D6890C500296449 /* LaunchScreen.storyboard in Resources */,
-				AD2162361DBCE81F009801B9 /* Maps.storyboard in Resources */,
+				AD9A8C501DC230E90021C7CD /* Maps.storyboard in Resources */,
 				ADC7344A1D6890C500296449 /* stops.json in Resources */,
 				ADC7344D1D6890C500296449 /* colorLines.json in Resources */,
 			);
@@ -1050,7 +1064,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/watchOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/watchOS/SwiftyJSON.framework",
 			);
 			name = "Install Carthage frameworks";
 			outputPaths = (
@@ -1246,6 +1259,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				AD2162331DBCE809009801B9 /* Base */,
+				AD9A8C581DC230FD0021C7CD /* en */,
+				AD9A8C5A1DC231010021C7CD /* fr */,
 			);
 			name = Incidents.storyboard;
 			sourceTree = "<group>";
@@ -1254,8 +1269,40 @@
 			isa = PBXVariantGroup;
 			children = (
 				AD2162381DBCE8C8009801B9 /* Base */,
+				AD9A8C4D1DC230C80021C7CD /* en */,
+				AD9A8C4F1DC230DB0021C7CD /* fr */,
 			);
 			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		AD9A8C471DC230AE0021C7CD /* Routes.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD9A8C461DC230AE0021C7CD /* Base */,
+				AD9A8C491DC230B80021C7CD /* en */,
+				AD9A8C4B1DC230BC0021C7CD /* fr */,
+			);
+			name = Routes.storyboard;
+			sourceTree = "<group>";
+		};
+		AD9A8C521DC230E90021C7CD /* Maps.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD9A8C511DC230E90021C7CD /* Base */,
+				AD9A8C541DC230ED0021C7CD /* en */,
+				AD9A8C561DC230F20021C7CD /* fr */,
+			);
+			name = Maps.storyboard;
+			sourceTree = "<group>";
+		};
+		AD9A8C5D1DC231080021C7CD /* Departures.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD9A8C5C1DC231080021C7CD /* Base */,
+				AD9A8C5F1DC2310E0021C7CD /* en */,
+				AD9A8C611DC231120021C7CD /* fr */,
+			);
+			name = Departures.storyboard;
 			sourceTree = "<group>";
 		};
 		ADC733F51D6890C500296449 /* Localizable.strings */ = {
