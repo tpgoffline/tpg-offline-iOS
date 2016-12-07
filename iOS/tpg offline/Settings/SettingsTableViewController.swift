@@ -353,8 +353,7 @@ class SettingsTableViewController: UITableViewController {
         let page10 = OnboardingContentViewController (title: "Et beaucoup d'autres choses".localized, body: "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Terminer".localized, actionBlock: { (onboardingvc) in
             self.dismiss(animated: true, completion: nil)
             if !self.defaults.bool(forKey: "tutorial") {
-                self.defaults.set(true, forKey: "tutorial")
-                self.defaults.set(true, forKey: "version4")
+                self.defaults.set(true, forKey: UserDefaultsKeys.tutorial.rawValue)
                 self.tabBarController?.selectedIndex = 0
             }
         })
@@ -390,8 +389,7 @@ class SettingsTableViewController: UITableViewController {
         onboardingVC?.skipHandler = {
             self.dismiss(animated: true, completion: nil)
             if !self.defaults.bool(forKey: "tutorial") {
-                self.defaults.set(true, forKey: "tutorial")
-                self.defaults.set(true, forKey: "version4")
+                self.defaults.set(true, forKey: UserDefaultsKeys.tutorial.rawValue)
                 self.tabBarController?.selectedIndex = 0
             }
         }

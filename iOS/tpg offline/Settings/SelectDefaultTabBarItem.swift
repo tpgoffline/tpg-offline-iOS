@@ -58,7 +58,7 @@ class SelectDefaultTabBarItem: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        defaults.set((indexPath as NSIndexPath).row, forKey: "selectedTabBar")
+        defaults.set((indexPath as NSIndexPath).row, forKey: UserDefaultsKeys.selectedTabBar.rawValue)
         rowSelected = (indexPath as NSIndexPath).row
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()

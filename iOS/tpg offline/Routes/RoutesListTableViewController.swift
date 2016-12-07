@@ -178,7 +178,12 @@ class RoutesListTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
-                print(response.result.error!)
+                #if DEBUG
+                    if let error = response.result.error {
+                        let alert = SCLAlertView()
+                        alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)")
+                    }
+                #endif
                 self.noNetwork = true
                 self.loading = false
                 self.tableView.allowsSelection = false
@@ -194,16 +199,16 @@ class RoutesListTableViewController: UITableViewController {
             cell.activityIndicator.stopAnimating()
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.backgroundColor = UIColor.flatBlue()
+                cell.backgroundColor = UIColor.flatBlue
                 cell.titleLabel?.textColor = UIColor.white
                 cell.subTitleLabel?.textColor = UIColor.white
                 cell.activityIndicator.color = UIColor.white
             }
             else {
                 cell.backgroundColor = UIColor.white
-                cell.titleLabel?.textColor = UIColor.flatBlue()
-                cell.subTitleLabel?.textColor = UIColor.flatBlue()
-                cell.activityIndicator.color = UIColor.flatBlue()
+                cell.titleLabel?.textColor = UIColor.flatBlue
+                cell.subTitleLabel?.textColor = UIColor.flatBlue
+                cell.activityIndicator.color = UIColor.flatBlue
             }
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
@@ -219,19 +224,19 @@ class RoutesListTableViewController: UITableViewController {
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.white
                 cell.detailTextLabel?.textColor = UIColor.white
-                cell.backgroundColor = UIColor.flatRedColorDark()
+                cell.backgroundColor = UIColor.flatRedDark
                 
                 let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
                 iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             else {
-                cell.textLabel?.textColor = UIColor.flatRedColorDark()
-                cell.detailTextLabel?.textColor = UIColor.flatRedColorDark()
-                cell.backgroundColor = UIColor.flatWhite()
+                cell.textLabel?.textColor = UIColor.flatRedDark
+                cell.detailTextLabel?.textColor = UIColor.flatRedDark
+                cell.backgroundColor = UIColor.flatWhite
                 
                 let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
-                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedColorDark())
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedDark)
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             
@@ -245,19 +250,19 @@ class RoutesListTableViewController: UITableViewController {
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.white
                 cell.detailTextLabel?.textColor = UIColor.white
-                cell.backgroundColor = UIColor.flatRedColorDark()
+                cell.backgroundColor = UIColor.flatRedDark
                 
                 let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
                 iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             else {
-                cell.textLabel?.textColor = UIColor.flatRedColorDark()
-                cell.detailTextLabel?.textColor = UIColor.flatRedColorDark()
-                cell.backgroundColor = UIColor.flatWhite()
+                cell.textLabel?.textColor = UIColor.flatRedDark
+                cell.detailTextLabel?.textColor = UIColor.flatRedDark
+                cell.backgroundColor = UIColor.flatWhite
                 
                 let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
-                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedColorDark())
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedDark)
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             
@@ -339,7 +344,7 @@ class RoutesListTableViewController: UITableViewController {
         self.favorite = !self.favorite
         
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppValues.favoritesRoutes)
-        defaults.set(encodedData, forKey: "itinerairesFavoris")
+        defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesRoutes.rawValue)
         
         var listeItems: [UIBarButtonItem] = []
         
@@ -512,7 +517,7 @@ class RoutesListTableViewController: UITableViewController {
             }
             
         }
-        timerAction.backgroundColor = UIColor.flatBlue()
+        timerAction.backgroundColor = UIColor.flatBlue
         return [timerAction]
     }
     

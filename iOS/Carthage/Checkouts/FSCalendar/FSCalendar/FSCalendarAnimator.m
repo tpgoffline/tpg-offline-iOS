@@ -41,6 +41,16 @@
 
 @implementation FSCalendarAnimator
 
+- (instancetype)initWithCalendar:(FSCalendar *)calendar
+{
+    self = [super init];
+    if (self) {
+        self.calendar = calendar;
+        self.collectionView = self.calendar.collectionView;
+        self.collectionViewLayout = self.calendar.collectionViewLayout;
+    }
+    return self;
+}
 
 #pragma mark - Target actions
 
@@ -187,7 +197,7 @@
             translation = MAX(0, translation);
             translation = MIN(maxTranslation, translation);
             CGFloat progress = translation/maxTranslation;
-
+            
             if (velocity >= 0) {
                 
                 [self performForwardTransition:self.transition fromProgress:progress];
@@ -303,8 +313,8 @@
 - (void)performBoundingRectTransitionFromMonth:(NSDate *)fromMonth toMonth:(NSDate *)toMonth duration:(CGFloat)duration
 {
     if (self.calendarScope != FSCalendarScopeMonth) return;
-    NSInteger lastRowCount = [self.calendar numberOfRowsInMonth:fromMonth];
-    NSInteger currentRowCount = [self.calendar numberOfRowsInMonth:toMonth];
+    NSInteger lastRowCount = [self.calendar.calculator numberOfRowsInMonth:fromMonth];
+    NSInteger currentRowCount = [self.calendar.calculator numberOfRowsInMonth:toMonth];
     if (lastRowCount != currentRowCount) {
         CGFloat animationDuration = duration;
         CGRect bounds = (CGRect){CGPointZero,[self.calendar sizeThatFits:self.calendar.frame.size scope:FSCalendarScopeMonth]};
@@ -325,7 +335,7 @@
                 [self boundingRectWillChange:bounds animated:YES];
             } completion:completion];
         }
-    
+        
     }
 }
 
@@ -344,11 +354,11 @@
                 obj.contentView.layer.opacity = 1;
             }];
             self.collectionViewLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-            self.calendar.header.scrollDirection = self.collectionViewLayout.scrollDirection;
+            self.calendar.calendarHeaderView.scrollDirection = self.collectionViewLayout.scrollDirection;
             self.calendar.needsAdjustingViewFrame = YES;
             self.calendar.needsAdjustingMonthPosition = YES;
             [self.collectionView reloadData];
-            [self.calendar.header reloadData];
+            [self.calendar.calendarHeaderView reloadData];
             break;
         }
         case FSCalendarTransitionWeekToMonth: {
@@ -382,14 +392,12 @@
             
         case FSCalendarTransitionMonthToWeek: {
             
-            if (self.calendar.focusOnSingleSelectedDate) {
-                
-                __block NSInteger focusedRowNumber = 0;
-                __block NSDate *focusedDate = self.calendar.selectedDate;
-                
+            __block NSInteger focusedRowNumber = 0;
+            __block NSDate *focusedDate = self.calendar.selectedDate;
+            
 #define kCalculateRowNumber \
                 do { \
-                    UICollectionViewLayoutAttributes *itemAttributes = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:[self.calendar indexPathForDate:focusedDate scope:FSCalendarScopeMonth]]; \
+                    UICollectionViewLayoutAttributes *itemAttributes = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:[self.calendar.calculator indexPathForDate:focusedDate scope:FSCalendarScopeMonth]]; \
                     CGPoint focuedCenter = itemAttributes.center; \
                     if (CGRectContainsPoint(self.collectionView.bounds, focuedCenter)) { \
                         switch (self.collectionViewLayout.scrollDirection) { \
@@ -406,75 +414,71 @@
                         focusedDate = nil; \
                     } \
                 } while(0);
-                
-                // Focus selected date
-                if (focusedDate) kCalculateRowNumber
+            
+            // Focus selected date
+            if (focusedDate) kCalculateRowNumber
                 // Focus today
                 if (!focusedDate) {
                     focusedDate = self.calendar.today;
                     if (focusedDate) kCalculateRowNumber
-                }
-                // Focus begining day of month
-                if (!focusedDate) {
-                    focusedDate = [self.calendar beginingOfMonth:self.calendar.currentPage];
-                    kCalculateRowNumber
-                }
-                
-                NSDate *currentPage = self.calendar.currentPage;
-                NSDate *minimumPage = [self.calendar beginingOfMonth:self.calendar.minimumDate];
-                NSInteger visibleSection = [self.calendar.gregorian components:NSCalendarUnitMonth fromDate:minimumPage toDate:currentPage options:0].month;
-                NSIndexPath *firstIndexPath = [NSIndexPath indexPathForItem:0 inSection:visibleSection];
-                NSDate *firstDate = [self.calendar dateForIndexPath:firstIndexPath scope:FSCalendarScopeMonth];
-                currentPage = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitDay value:focusedRowNumber*7 toDate:firstDate options:0];
-                
-                attributes.focusedRowNumber = focusedRowNumber;
-                attributes.focusedDate = focusedDate;
-                attributes.targetPage = currentPage;
-                
-                attributes.targetBounds = [self boundingRectForScope:FSCalendarScopeWeek page:attributes.targetPage];
-#undef kCalculateRowNumber
+                        }
+            // Focus begining day of month
+            if (!focusedDate) {
+                focusedDate = [self.calendar.gregorian fs_firstDayOfMonth:self.calendar.currentPage];
+                kCalculateRowNumber
             }
+            
+            NSDate *currentPage = self.calendar.currentPage;
+            NSIndexPath *indexPath = [self.calendar.calculator indexPathForDate:currentPage scope:FSCalendarScopeMonth];
+            NSDate *monthHead = [self.calendar.calculator monthHeadForSection:indexPath.section];
+            NSDate *targetPage = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitDay value:focusedRowNumber*7 toDate:monthHead options:0];
+            
+            attributes.focusedRowNumber = focusedRowNumber;
+            attributes.focusedDate = focusedDate;
+            attributes.targetPage = targetPage;
+            
+            attributes.targetBounds = [self boundingRectForScope:FSCalendarScopeWeek page:attributes.targetPage];
+#undef kCalculateRowNumber
+            
             break;
         }
         case FSCalendarTransitionWeekToMonth: {
             
-            if (self.calendar.focusOnSingleSelectedDate) {
-                
-                NSInteger focusedRowNumber = 0;
-                NSDate *currentPage = self.calendar.currentPage;
-                
-                NSDate *focusedDate = self.calendar.selectedDate ?: self.calendar.today;
-                if (focusedDate) {
-                    UICollectionViewLayoutAttributes *itemAttributes = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:[self.calendar indexPathForDate:focusedDate scope:FSCalendarScopeWeek]];
-                    CGPoint focuedCenter = itemAttributes.center;
-                    if (!CGRectContainsPoint(self.calendar.collectionView.bounds, focuedCenter)) {
-                        focusedDate = nil;
-                    }
+            NSInteger focusedRowNumber = 0;
+            NSDate *currentPage = self.calendar.currentPage;
+            
+            NSDate *focusedDate = self.calendar.selectedDate ?: self.calendar.today;
+            if (focusedDate) {
+                UICollectionViewLayoutAttributes *itemAttributes = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:[self.calendar.calculator indexPathForDate:focusedDate scope:FSCalendarScopeWeek]];
+                CGPoint focuedCenter = itemAttributes.center;
+                if (!CGRectContainsPoint(self.calendar.collectionView.bounds, focuedCenter)) {
+                    focusedDate = nil;
                 }
-                if (!focusedDate) {
-                    focusedDate = [self.calendar endOfWeek:currentPage];
-                }
-                
-                NSDate *firstDayOfMonth = [self.calendar beginingOfMonth:focusedDate];
-                attributes.focusedDate = focusedDate;
-                firstDayOfMonth = firstDayOfMonth ?: [self.calendar beginingOfMonth:currentPage];
-                NSInteger numberOfPlaceholdersForPrev = [self.calendar numberOfHeadPlaceholdersForMonth:firstDayOfMonth];
-                NSDate *firstDateOfPage = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitDay value:-numberOfPlaceholdersForPrev toDate:firstDayOfMonth options:0];
-                
-                for (int i = 0; i < 6; i++) {
-                    NSDate *currentRow = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitWeekOfYear value:i toDate:firstDateOfPage options:0];
-                    if ([self.calendar.gregorian isDate:currentRow inSameDayAsDate:currentPage]) {
-                        focusedRowNumber = i;
-                        currentPage = firstDayOfMonth;
-                        break;
-                    }
-                }
-                attributes.focusedRowNumber = focusedRowNumber;
-                attributes.targetPage = currentPage;
-                attributes.firstDayOfMonth = firstDayOfMonth;
-                
-                attributes.targetBounds = [self boundingRectForScope:FSCalendarScopeMonth page:attributes.targetPage];
             }
+            if (!focusedDate) {
+                focusedDate = [self.calendar.gregorian fs_lastDayOfWeek:currentPage];
+            }
+            
+            NSDate *firstDayOfMonth = [self.calendar.gregorian fs_firstDayOfMonth:focusedDate];
+            attributes.focusedDate = focusedDate;
+            firstDayOfMonth = firstDayOfMonth ?: [self.calendar.gregorian fs_firstDayOfMonth:currentPage];
+            NSInteger numberOfPlaceholdersForPrev = [self.calendar.calculator numberOfHeadPlaceholdersForMonth:firstDayOfMonth];
+            NSDate *firstDateOfPage = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitDay value:-numberOfPlaceholdersForPrev toDate:firstDayOfMonth options:0];
+            
+            for (int i = 0; i < 6; i++) {
+                NSDate *currentRow = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitWeekOfYear value:i toDate:firstDateOfPage options:0];
+                if ([self.calendar.gregorian isDate:currentRow inSameDayAsDate:currentPage]) {
+                    focusedRowNumber = i;
+                    currentPage = firstDayOfMonth;
+                    break;
+                }
+            }
+            attributes.focusedRowNumber = focusedRowNumber;
+            attributes.targetPage = currentPage;
+            attributes.firstDayOfMonth = firstDayOfMonth;
+            
+            attributes.targetBounds = [self boundingRectForScope:FSCalendarScopeMonth page:attributes.targetPage];
+            
             break;
         }
         default:
@@ -488,9 +492,7 @@
 - (void)setCalendarScope:(FSCalendarScope)calendarScope
 {
     [self.calendar willChangeValueForKey:@"scope"];
-    Ivar scopeIvar = class_getInstanceVariable(FSCalendar.class, "_scope");
-    void (*setScope)(id, Ivar, FSCalendarScope) = (void (*)(id, Ivar, FSCalendarScope))object_setIvar;
-    setScope(self.calendar, scopeIvar, calendarScope);
+    [self.calendar fs_setUnsignedIntegerVariable:calendarScope forKey:@"_scope"];
     [self.calendar didChangeValueForKey:@"scope"];
 }
 
@@ -524,7 +526,7 @@
                                          self.calendar.preferredHeaderHeight+
                                          self.calendar.preferredWeekdayHeight+
                                          self.calendar.preferredPadding*2+
-                                         ([self.calendar numberOfRowsInMonth:page]*self.calendar.preferredRowHeight)+
+                                         ([self.calendar.calculator numberOfRowsInMonth:page]*self.calendar.preferredRowHeight)+
                                          self.calendar.scopeHandle.fs_height);
             }
             break;
@@ -540,10 +542,10 @@
 - (void)boundingRectWillChange:(CGRect)targetBounds animated:(BOOL)animated
 {
 #define kChangeFrames \
-    self.calendar.scopeHandle.fs_bottom = CGRectGetMaxY(targetBounds); \
-    self.calendar.bottomBorder.fs_top = CGRectGetMaxY(targetBounds); \
-    self.calendar.contentView.fs_height = CGRectGetHeight(targetBounds)-self.calendar.scopeHandle.fs_height; \
-    self.calendar.daysContainer.fs_height = CGRectGetHeight(targetBounds)-self.calendar.preferredHeaderHeight-self.calendar.preferredWeekdayHeight-self.calendar.scopeHandle.fs_height;
+self.calendar.scopeHandle.fs_bottom = CGRectGetMaxY(targetBounds); \
+self.calendar.bottomBorder.fs_top = CGRectGetMaxY(targetBounds); \
+self.calendar.contentView.fs_height = CGRectGetHeight(targetBounds)-self.calendar.scopeHandle.fs_height; \
+self.calendar.daysContainer.fs_height = CGRectGetHeight(targetBounds)-self.calendar.preferredHeaderHeight-self.calendar.preferredWeekdayHeight-self.calendar.scopeHandle.fs_height;
     
     if (self.calendar.delegate && [self.calendar.delegate respondsToSelector:@selector(calendar:boundingRectWillChange:animated:)]) {
         kChangeFrames
@@ -589,7 +591,7 @@
         case FSCalendarTransitionWeekToMonth: {
             
             self.calendarScope = FSCalendarScopeMonth;
-
+            
             [self performAlphaAnimationFrom:progress to:1 duration:0.4 exception:attr.focusedRowNumber completion:^{
                 [self performTransitionCompletionAnimated:YES];
             }];
@@ -741,19 +743,17 @@
     self.calendar.contentView.clipsToBounds = YES;
     self.calendar.contentView.fs_height = CGRectGetHeight(self.pendingAttributes.targetBounds)-self.calendar.scopeHandle.fs_height;
     self.collectionViewLayout.scrollDirection = (UICollectionViewScrollDirection)self.calendar.scrollDirection;
-    self.calendar.header.scrollDirection = self.collectionViewLayout.scrollDirection;
+    self.calendar.calendarHeaderView.scrollDirection = self.collectionViewLayout.scrollDirection;
     self.calendar.needsAdjustingMonthPosition = YES;
     self.calendar.needsAdjustingViewFrame = YES;
     [self.calendar setNeedsLayout];
     [self.collectionView reloadData];
-    [self.calendar.header reloadData];
+    [self.calendar.calendarHeaderView reloadData];
     [self.calendar layoutIfNeeded];
-    [self.calendar.collectionView.visibleCells setValue:@YES forKey:@"needsAdjustingViewFrame"];
     [self.calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
 }
 
 @end
-
 
 @implementation FSCalendarTransitionAttributes
 

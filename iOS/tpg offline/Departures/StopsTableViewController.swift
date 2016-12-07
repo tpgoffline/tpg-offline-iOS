@@ -12,14 +12,14 @@ import Chameleon
 import FontAwesomeKit
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
 }
 
 
@@ -47,7 +47,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         // Result Search Controller
@@ -61,9 +61,9 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         searchController.searchBar.tintColor = AppValues.textColor
         tableView.tableHeaderView = self.searchController.searchBar
         
-            if(traitCollection.forceTouchCapability == .available){
-                registerForPreviewing(with: self, sourceView: view)
-            }
+        if(traitCollection.forceTouchCapability == .available){
+            registerForPreviewing(with: self, sourceView: view)
+        }
         
         if !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
             switch PermissionScope().statusNotifications() {
@@ -99,8 +99,8 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                         self.requestLocation()
                     }
                 }
-                }, cancelled: { (results) -> Void in
-                    print("thing was cancelled")
+            }, cancelled: { (results) -> Void in
+                print("thing was cancelled")
             })
             
         }
@@ -122,14 +122,14 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
             print("Localisation results: \(location)")
             
-            if self.defaults.integer(forKey: "proximityDistance") == 0 {
-                self.defaults.set(500, forKey: "proximityDistance")
+            if self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue) == 0 {
+                self.defaults.set(500, forKey: UserDefaultsKeys.proximityDistance.rawValue)
             }
             
             for x in [Stop](AppValues.stops.values) {
                 x.distance = location.distance(from: x.location)
                 
-                if ((location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: "proximityDistance"))) {
+                if ((location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue))) {
                     
                     self.localizedStops.append(x)
                     print(x.stopCode)
@@ -146,9 +146,9 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             })
             self.localisationLoading = false
             self.tableView.reloadData()
-            }) { (location, error) in
-                print("Location update failed: \(error.localizedDescription)")
-                print("Last location: \(location)")
+        }) { (location, error) in
+            print("Location update failed: \(error.localizedDescription)")
+            print("Last location: \(location)")
         }
     }
     
@@ -160,7 +160,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         
         refreshTheme()
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         if !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
@@ -375,7 +375,7 @@ extension StopsTableViewController: UIViewControllerPreviewingDelegate {
                 detailVC.stop = AppValues.stops[AppValues.stopsKeys[(indexPath as NSIndexPath).row]]
             }
         }
-            previewingContext.sourceRect = cell.frame
+        previewingContext.sourceRect = cell.frame
         return detailVC
     }
     

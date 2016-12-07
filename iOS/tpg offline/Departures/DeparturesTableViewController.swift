@@ -38,7 +38,7 @@ class DeparturesTableViewController: UITableViewController {
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         title = stop?.fullName
@@ -51,7 +51,7 @@ class DeparturesTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         refreshTheme()
@@ -95,7 +95,7 @@ class DeparturesTableViewController: UITableViewController {
             AppValues.favoritesStops = array
             
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: array)
-            defaults.set(encodedData, forKey: "favoritesStops")
+            defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesStops.rawValue)
         }
         else {
             if ((AppValues.fullNameFavoritesStops.index(of: stop!.fullName)) != nil) {
@@ -107,7 +107,7 @@ class DeparturesTableViewController: UITableViewController {
                 AppValues.fullNameFavoritesStops.append(stop!.fullName)
             }
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppValues.favoritesStops!)
-            defaults.set(encodedData, forKey: "favoritesStops")
+            defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesStops.rawValue)
         }
         
         if WCSession.isSupported() {
@@ -323,7 +323,7 @@ class DeparturesTableViewController: UITableViewController {
         self.notDownloaded = false
         self.tableView.reloadData()
         departuresList = []
-        Alamofire.request("http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": stop!.stopCode])
+        Alamofire.request("https://tpg.asmartcode.com/Departures.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": stop!.stopCode])
             .responseJSON { response in
                 if let data = response.result.value {
                     let departs = JSON(data)
@@ -334,7 +334,7 @@ class DeparturesTableViewController: UITableViewController {
                                 direction: subjson["line"]["destinationName"].string!,
                                 destinationCode: subjson["line"]["destinationCode"].string!,
                                 lineColor: UIColor.white,
-                                lineBackgroundColor: UIColor.flatGray(),
+                                lineBackgroundColor: UIColor.flatGray,
                                 
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
@@ -369,6 +369,12 @@ class DeparturesTableViewController: UITableViewController {
                     self.tableView.dg_stopLoading()
                 }
                 else {
+                    #if DEBUG
+                        if let error = response.result.error {
+                            let alert = SCLAlertView()
+                            alert.showError("DEBUG", subTitle: "DEBUG - \(error.localizedDescription)")
+                        }
+                    #endif
                     let day = Calendar.current.dateComponents([.weekday], from: Date())
                     var path: URL
                     let dir: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!)
@@ -408,7 +414,7 @@ class DeparturesTableViewController: UITableViewController {
                                     direction: subJson["destination"].string!,
                                     destinationCode: "",
                                     lineColor: UIColor.white,
-                                    lineBackgroundColor: UIColor.flatGrayColorDark(),
+                                    lineBackgroundColor: UIColor.flatGrayDark,
                                     code: nil,
                                     leftTime: "0",
                                     timestamp: subJson["timestamp"].string!
@@ -559,12 +565,12 @@ extension DeparturesTableViewController {
                 tableView.setEditing(false, animated: true)
             }
         }
-        timerAction.backgroundColor = UIColor.flatBlue()
+        timerAction.backgroundColor = UIColor.flatBlue
         
         let voirToutAction = UITableViewRowAction(style: .default, title: "Voir tout".localized) { (action, indexPath) in
             self.performSegue(withIdentifier: "showAllDepartures", sender: indexPath)
         }
-        voirToutAction.backgroundColor = UIColor.flatGreen()
+        voirToutAction.backgroundColor = UIColor.flatGreen
         return [voirToutAction, timerAction]
     }
     
@@ -600,16 +606,16 @@ extension DeparturesTableViewController {
             cell.activityIndicator.stopAnimating()
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.backgroundColor = UIColor.flatBlue()
+                cell.backgroundColor = UIColor.flatBlue
                 cell.titleLabel?.textColor = UIColor.white
                 cell.subTitleLabel?.textColor = UIColor.white
                 cell.activityIndicator.color = UIColor.white
             }
             else {
                 cell.backgroundColor = UIColor.white
-                cell.titleLabel?.textColor = UIColor.flatBlue()
-                cell.subTitleLabel?.textColor = UIColor.flatBlue()
-                cell.activityIndicator.color = UIColor.flatBlue()
+                cell.titleLabel?.textColor = UIColor.flatBlue
+                cell.subTitleLabel?.textColor = UIColor.flatBlue
+                cell.activityIndicator.color = UIColor.flatBlue
             }
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
@@ -707,7 +713,7 @@ extension DeparturesTableViewController {
                 cell.backgroundColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
             }
             else {
-                cell.backgroundColor = UIColor.flatWhite()
+                cell.backgroundColor = UIColor.flatWhite
             }
             
             cell.directionLabel.textColor = lineColor

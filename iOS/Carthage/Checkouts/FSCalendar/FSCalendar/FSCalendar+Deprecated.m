@@ -7,6 +7,7 @@
 //
 
 #import "FSCalendar.h"
+#import "FSCalendarExtensions.h"
 #import "FSCalendarDynamicHeader.h"
 
 #pragma mark - Deprecate
@@ -23,53 +24,6 @@
 - (BOOL)showsPlaceholders
 {
     return self.placeholderType == FSCalendarPlaceholderTypeFillSixRows;
-}
-
-- (void)setCurrentMonth:(NSDate *)currentMonth
-{
-    self.currentPage = currentMonth;
-}
-
-- (NSDate *)currentMonth
-{
-    return self.currentPage;
-}
-
-- (void)setFlow:(FSCalendarFlow)flow
-{
-    self.scrollDirection = (FSCalendarScrollDirection)flow;
-}
-
-- (FSCalendarFlow)flow
-{
-    return (FSCalendarFlow)self.scrollDirection;
-}
-
-- (void)setSelectedDate:(NSDate *)selectedDate
-{
-    [self selectDate:selectedDate];
-}
-
-- (void)setSelectedDate:(NSDate *)selectedDate animate:(BOOL)animate
-{
-    [self selectDate:selectedDate scrollToDate:animate];
-}
-
-- (NSString *)stringFromDate:(NSDate *)date format:(NSString *)format
-{
-    self.formatter.dateFormat = format;
-    return [self.formatter stringFromDate:date];
-}
-
-- (NSString *)stringFromDate:(NSDate *)date
-{
-    return [self stringFromDate:date format:@"yyyy-MM-dd"];
-}
-
-- (NSDate *)dateFromString:(NSString *)string format:(NSString *)format
-{
-    self.formatter.dateFormat = format;
-    return [self.formatter dateFromString:string];
 }
 
 #pragma mark - Public methods
@@ -109,30 +63,6 @@
     if (!date) return NSNotFound;
     NSDateComponents *component = [self.gregorian components:NSCalendarUnitWeekOfYear fromDate:date];
     return component.weekOfYear;
-}
-
-- (NSInteger)hourOfDate:(NSDate *)date
-{
-    if (!date) return NSNotFound;
-    NSDateComponents *component = [self.gregorian components:NSCalendarUnitHour
-                                                   fromDate:date];
-    return component.hour;
-}
-
-- (NSInteger)miniuteOfDate:(NSDate *)date
-{
-    if (!date) return NSNotFound;
-    NSDateComponents *component = [self.gregorian components:NSCalendarUnitMinute
-                                                   fromDate:date];
-    return component.minute;
-}
-
-- (NSInteger)secondOfDate:(NSDate *)date
-{
-    if (!date) return NSNotFound;
-    NSDateComponents *component = [self.gregorian components:NSCalendarUnitSecond
-                                                   fromDate:date];
-    return component.second;
 }
 
 - (NSDate *)dateByIgnoringTimeComponentsOfDate:(NSDate *)date
@@ -290,5 +220,24 @@
     return [self isDate:date equalToDate:[NSDate date] toCalendarUnit:FSCalendarUnitDay];
 }
 
+- (void)setIdentifier:(NSString *)identifier
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:identifier];
+    [self setValue:gregorian forKey:@"gregorian"];
+    [self fs_performSelector:NSSelectorFromString(@"invalidateDateTools") withObjects:nil, nil];
+    [self fs_performSelector:NSSelectorFromString(@"invalidateWeekdaySymbols") withObjects:nil, nil];
+    
+    if ([[self valueForKey:@"hasValidateVisibleLayout"] boolValue]) {
+        [self reloadData];
+    }
+    [self fs_setVariable:[self.gregorian dateBySettingHour:0 minute:0 second:0 ofDate:self.minimumDate options:0] forKey:@"_minimumDate"];
+    [self fs_setVariable:[self.gregorian dateBySettingHour:0 minute:0 second:0 ofDate:self.currentPage options:0] forKey:@"_currentPage"];
+    [self fs_performSelector:NSSelectorFromString(@"scrollToPageForDate:animated") withObjects:self.today, @NO, nil];
+}
+
+- (NSString *)identifier
+{
+    return self.gregorian.calendarIdentifier;
+}
 
 @end

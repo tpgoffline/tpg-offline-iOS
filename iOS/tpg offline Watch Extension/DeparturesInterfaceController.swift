@@ -41,7 +41,7 @@ class DeparturesInterfaceController: WKInterfaceController {
     func refreshDepartures() {
         departuresList = []
         offline = false
-        Alamofire.request("http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": stop!.stopCode]).responseJSON { response in
+        Alamofire.request("https://tpg.asmartcode.com/Departures.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": stop!.stopCode]).responseJSON { response in
                 if let data = response.result.value {
                     let departs = JSON(data)
                     for (_, subjson) in departs["departures"] {

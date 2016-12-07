@@ -138,9 +138,9 @@ class RouteDetailTableViewController: UITableViewController {
                         couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
                     }
                     else {
-                        couleurTexte = couleurTexte.darken(byPercentage: 0.2)
+                        couleurTexte = couleurTexte.darken(byPercentage: 0.2)!
                         labelPictoLigne.textColor = labelPictoLigne.textColor.darken(byPercentage: 0.2)
-                        labelPictoLigne.layer.borderColor = UIColor(cgColor: labelPictoLigne.layer.borderColor!).darken(byPercentage: 0.2).cgColor
+                        labelPictoLigne.layer.borderColor = UIColor(cgColor: labelPictoLigne.layer.borderColor!).darken(byPercentage: 0.2)?.cgColor
                     }
                     
                     let image = labelToImage(labelPictoLigne)
@@ -226,7 +226,7 @@ class RouteDetailTableViewController: UITableViewController {
         self.favorite = !self.favorite
         
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppValues.favoritesRoutes)
-        defaults.set(encodedData, forKey: "itinerairesFavoris")
+        defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesRoutes.rawValue)
         
         var listeItems: [UIBarButtonItem] = []
         var favoris = false
@@ -398,7 +398,7 @@ class RouteDetailTableViewController: UITableViewController {
             }
             
         }
-        timerAction.backgroundColor = UIColor.flatBlue()
+        timerAction.backgroundColor = UIColor.flatBlue
         return [timerAction]
     }
     

@@ -10,9 +10,6 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
@@ -24,3 +21,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 }
 
+class WindowController: NSWindowController {
+    
+    @IBOutlet weak var categoriesSegmentedControl: NSSegmentedControl!
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        dump(window)
+        window!.titleVisibility = .hidden
+        
+        let categories = ["Departures", "Incidents", "Itineraires", "Plans", "Réglages"]
+        categoriesSegmentedControl.segmentCount = categories.count
+        for (i, x) in categories.enumerated() {
+            categoriesSegmentedControl.setLabel(x, forSegment: i)
+        }
+    }
+}

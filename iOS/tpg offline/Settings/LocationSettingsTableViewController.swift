@@ -72,10 +72,10 @@ class LocationSettingsTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath as NSIndexPath).section == 0 {
-            defaults.set(values[0][(indexPath as NSIndexPath).row], forKey: "locationAccurency")
+            defaults.set(values[0][(indexPath as NSIndexPath).row], forKey: UserDefaultsKeys.locationAccurency.rawValue)
         }
         else {
-            defaults.set(values[1][(indexPath as NSIndexPath).row], forKey: "proximityDistance")
+            defaults.set(values[1][(indexPath as NSIndexPath).row], forKey: UserDefaultsKeys.proximityDistance.rawValue)
         }
         rowSelected[(indexPath as NSIndexPath).section] = (indexPath as NSIndexPath).row
         tableView.deselectRow(at: indexPath, animated: true)

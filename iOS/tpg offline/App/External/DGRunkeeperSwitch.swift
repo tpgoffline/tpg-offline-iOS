@@ -11,7 +11,7 @@ import UIKit
 // MARK: - DGRunkeeperSwitchRoundedLayer
 
 open class DGRunkeeperSwitchRoundedLayer: CALayer {
-
+    
     override open var bounds: CGRect {
         didSet { cornerRadius = bounds.height / 2.0 }
     }
@@ -150,7 +150,7 @@ open class DGRunkeeperSwitch: UIControl {
         selectedBackgroundColor = .white
         titleColor = .white
         selectedTitleColor = .black
-      
+        
         // Gestures
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
         addGestureRecognizer(tapGesture)
@@ -224,7 +224,7 @@ open class DGRunkeeperSwitch: UIControl {
             }
             UIView.animate(withDuration: animationDuration, delay: 0.0, usingSpringWithDamping: animationSpringDamping, initialSpringVelocity: animationInitialSpringVelocity, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseOut], animations: { () -> Void in
                 self.layoutSubviews()
-                }, completion: nil)
+            }, completion: nil)
         } else {
             layoutSubviews()
             sendActions(for: .valueChanged)
@@ -249,7 +249,7 @@ open class DGRunkeeperSwitch: UIControl {
             
             var size = label.sizeThatFits(CGSize(width: titleLabelMaxWidth, height: titleLabelMaxHeight))
             size.width = min(size.width, titleLabelMaxWidth)
-          
+            
             let x = floor((bounds.width / CGFloat(titleLabels.count)) * CGFloat(index) + (bounds.width / CGFloat(titleLabels.count) - size.width) / 2.0)
             let y = floor((bounds.height - size.height) / 2.0)
             let origin = CGPoint(x: x, y: y)

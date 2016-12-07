@@ -24,15 +24,17 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
      
      - parameter size:                 size of activity indicator view.
      - parameter message:              message displayed under activity indicator view.
+     - parameter messageFont:          font of message displayed under activity indicator view.
      - parameter type:                 animation type.
      - parameter color:                color of activity indicator view.
      - parameter padding:              padding of activity indicator view.
      - parameter displayTimeThreshold: display time threshold to actually display UI blocker.
      - parameter minimumDisplayTime:   minimum display time of UI blocker.
      */
-    public func startAnimating(
+    public final func startAnimating(
         _ size: CGSize? = nil,
         message: String? = nil,
+        messageFont: UIFont? = nil,
         type: NVActivityIndicatorType? = nil,
         color: UIColor? = nil,
         padding: CGFloat? = nil,
@@ -40,6 +42,7 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
         minimumDisplayTime: Int? = nil) {
         let activityData = ActivityData(size: size,
                                         message: message,
+                                        messageFont: messageFont,
                                         type: type,
                                         color: color,
                                         padding: padding,
@@ -52,7 +55,7 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
     /**
      Remove UI blocker.
      */
-    public func stopAnimating() {
+    public final func stopAnimating() {
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
 }

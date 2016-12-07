@@ -33,7 +33,7 @@ class ThermometerTableViewController: UITableViewController {
             self!.refresh()
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         self.refreshTheme()
@@ -42,7 +42,7 @@ class ThermometerTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         self.refreshTheme()
@@ -86,16 +86,16 @@ class ThermometerTableViewController: UITableViewController {
             cell.activityIndicator.stopAnimating()
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.backgroundColor = UIColor.flatBlue()
+                cell.backgroundColor = UIColor.flatBlue
                 cell.titleLabel?.textColor = UIColor.white
                 cell.subTitleLabel?.textColor = UIColor.white
                 cell.activityIndicator.color = UIColor.white
             }
             else {
                 cell.backgroundColor = UIColor.white
-                cell.titleLabel?.textColor = UIColor.flatBlue()
-                cell.subTitleLabel?.textColor = UIColor.flatBlue()
-                cell.activityIndicator.color = UIColor.flatBlue()
+                cell.titleLabel?.textColor = UIColor.flatBlue
+                cell.subTitleLabel?.textColor = UIColor.flatBlue
+                cell.activityIndicator.color = UIColor.flatBlue
             }
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
@@ -240,10 +240,10 @@ class ThermometerTableViewController: UITableViewController {
                     cell.connection4Label.textAlignment = .center
                     if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                         cell.connection4Label.textColor = UIColor.white
-                        cell.connection4Label.backgroundColor = UIColor.flatGrayColorDark()
+                        cell.connection4Label.backgroundColor = UIColor.flatGrayDark
                     }
                     else {
-                        cell.connection4Label.textColor = UIColor.flatGrayColorDark()
+                        cell.connection4Label.textColor = UIColor.flatGrayDark
                         cell.connection4Label.backgroundColor = UIColor.white
                     }
                 } else {
@@ -349,7 +349,7 @@ class ThermometerTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         tableView.reloadData()
         rowForVisible = -1
-        Alamofire.request("http://prod.ivtr-od.tpg.ch/v1/GetThermometer.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "departureCode": departure.code])
+        Alamofire.request("https://tpg.asmartcode.com/Thermometer.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "departureCode": departure.code])
             .responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)
@@ -394,7 +394,12 @@ class ThermometerTableViewController: UITableViewController {
                     }
                 }
                 else {
-                    print(response.result.error!)
+                    #if DEBUG
+                        if let error = response.result.error {
+                            let alert = SCLAlertView()
+                            alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)")
+                        }
+                    #endif
                     self.thermometerList = []
                     self.tableView.allowsSelection = false
                     self.loading = false

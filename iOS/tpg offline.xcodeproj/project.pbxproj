@@ -3,13 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		AD087F8A1DC1F90500E51CB1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F51D6890C500296449 /* Localizable.strings */; };
-		AD087F8B1DC1FA7800E51CB1 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161901DBCE064009801B9 /* Localize.swift */; };
 		AD087F8E1DC2010800E51CB1 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161881DBCE064009801B9 /* Async.swift */; };
+		AD0DFC551DE4CF1C009D4C3B /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DFC4E1DE4CF1C009D4C3B /* DisplayLink.swift */; };
+		AD0DFC561DE4CF1C009D4C3B /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DFC4F1DE4CF1C009D4C3B /* ProgressView.swift */; };
+		AD0DFC571DE4CF1C009D4C3B /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DFC501DE4CF1C009D4C3B /* UIView+AutoLayout.swift */; };
+		AD0DFC581DE4CF1C009D4C3B /* VHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DFC511DE4CF1C009D4C3B /* VHUD.swift */; };
+		AD0DFC591DE4CF1C009D4C3B /* VHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DFC521DE4CF1C009D4C3B /* VHUDView.swift */; };
+		AD0DFC5A1DE4CF1C009D4C3B /* VHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DFC531DE4CF1C009D4C3B /* VHUDViewController.swift */; };
+		AD0DFC5B1DE4CF1C009D4C3B /* VHUDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0DFC541DE4CF1C009D4C3B /* VHUDWindow.swift */; };
 		AD1BE0041DBE3222008F33A3 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1BE0031DBE3222008F33A3 /* SplashScreenViewController.swift */; };
 		AD2161CC1DBCE064009801B9 /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161751DBCE064009801B9 /* AKPickerView.swift */; };
 		AD2161DE1DBCE064009801B9 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161881DBCE064009801B9 /* Async.swift */; };
@@ -19,7 +25,6 @@
 		AD2161E21DBCE064009801B9 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21618D1DBCE064009801B9 /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
 		AD2161E31DBCE064009801B9 /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21618E1DBCE064009801B9 /* DGElasticPullToRefreshView.swift */; };
 		AD2161E41DBCE064009801B9 /* DGRunkeeperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21618F1DBCE064009801B9 /* DGRunkeeperSwitch.swift */; };
-		AD2161E51DBCE064009801B9 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161901DBCE064009801B9 /* Localize.swift */; };
 		AD2161E61DBCE064009801B9 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161931DBCE064009801B9 /* NVActivityIndicatorAnimationAudioEqualizer.swift */; };
 		AD2161E71DBCE064009801B9 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161941DBCE064009801B9 /* NVActivityIndicatorAnimationBallBeat.swift */; };
 		AD2161E81DBCE064009801B9 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161951DBCE064009801B9 /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
@@ -74,16 +79,10 @@
 		AD2162191DBCE064009801B9 /* LocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161C91DBCE064009801B9 /* LocationRequest.swift */; };
 		AD21621A1DBCE064009801B9 /* VisitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161CA1DBCE064009801B9 /* VisitRequest.swift */; };
 		AD21621B1DBCE064009801B9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161CB1DBCE064009801B9 /* SwiftyJSON.swift */; };
-		AD2162241DBCE162009801B9 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21621D1DBCE162009801B9 /* DisplayLink.swift */; };
-		AD2162251DBCE162009801B9 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21621E1DBCE162009801B9 /* ProgressView.swift */; };
-		AD2162261DBCE162009801B9 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21621F1DBCE162009801B9 /* UIView+AutoLayout.swift */; };
-		AD2162271DBCE162009801B9 /* VHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2162201DBCE162009801B9 /* VHUD.swift */; };
-		AD2162281DBCE162009801B9 /* VHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2162211DBCE162009801B9 /* VHUDView.swift */; };
-		AD2162291DBCE162009801B9 /* VHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2162221DBCE162009801B9 /* VHUDViewController.swift */; };
-		AD21622A1DBCE162009801B9 /* VHUDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2162231DBCE162009801B9 /* VHUDWindow.swift */; };
 		AD21622C1DBCE4EC009801B9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD21622B1DBCE4EC009801B9 /* Alamofire.framework */; };
 		AD2162341DBCE809009801B9 /* Incidents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162321DBCE809009801B9 /* Incidents.storyboard */; };
 		AD2162391DBCE8C8009801B9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162371DBCE8C8009801B9 /* Settings.storyboard */; };
+		AD2BB8411DE4D1350070A140 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161BA1DBCE064009801B9 /* Extensions.swift */; };
 		AD4F2EBE1DBA6F66008DE615 /* colorLines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* colorLines.json */; };
 		AD4F2EC31DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
 		AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
@@ -162,19 +161,12 @@
 		ADC7347C1D6890EF00296449 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC7347B1D6890EF00296449 /* NotificationController.swift */; };
 		ADC7347E1D6890EF00296449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADC7347D1D6890EF00296449 /* Assets.xcassets */; };
 		ADC734821D6890EF00296449 /* tpg offline Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = ADC734641D6890EF00296449 /* tpg offline Watch.app */; };
-		ADC734911D68917200296449 /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734901D68917200296449 /* Chameleon.framework */; };
 		ADC734951D68917D00296449 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734941D68917D00296449 /* FSCalendar.framework */; };
 		ADC734991D68918500296449 /* Onboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734981D68918500296449 /* Onboard.framework */; };
 		ADD177131DC0D9F60007F53F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2161CB1DBCE064009801B9 /* SwiftyJSON.swift */; };
-		ADD1771D1DC0DB560007F53F /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177151DC0DB560007F53F /* DateModel.swift */; };
-		ADD1771E1DC0DB560007F53F /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177161DC0DB560007F53F /* DictionaryExtension.swift */; };
-		ADD1771F1DC0DB560007F53F /* Koyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177171DC0DB560007F53F /* Koyomi.swift */; };
-		ADD177201DC0DB560007F53F /* KoyomiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177181DC0DB560007F53F /* KoyomiCell.swift */; };
-		ADD177211DC0DB560007F53F /* KoyomiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD177191DC0DB560007F53F /* KoyomiLayout.swift */; };
-		ADD177221DC0DB560007F53F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1771A1DC0DB560007F53F /* NSDateExtension.swift */; };
-		ADD177231DC0DB560007F53F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1771B1DC0DB560007F53F /* UIColorExtension.swift */; };
-		ADD177241DC0DB560007F53F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1771C1DC0DB560007F53F /* UIViewExtension.swift */; };
 		ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */; };
+		ADFB5E711DC2617A00BFFB10 /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFB5E701DC2617A00BFFB10 /* Chameleon.framework */; };
+		ADFCC15A1DF8734700818CB5 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCC1591DF8734700818CB5 /* UserDefaultsKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,11 +216,28 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADFB5E6F1DC2605000BFFB10 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AD087F8C1DC1FAC100E51CB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
 		AD087F8D1DC1FAC300E51CB1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Interface.strings; sourceTree = "<group>"; };
+		AD0DFC4E1DE4CF1C009D4C3B /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
+		AD0DFC4F1DE4CF1C009D4C3B /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		AD0DFC501DE4CF1C009D4C3B /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		AD0DFC511DE4CF1C009D4C3B /* VHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUD.swift; sourceTree = "<group>"; };
+		AD0DFC521DE4CF1C009D4C3B /* VHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDView.swift; sourceTree = "<group>"; };
+		AD0DFC531DE4CF1C009D4C3B /* VHUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDViewController.swift; sourceTree = "<group>"; };
+		AD0DFC541DE4CF1C009D4C3B /* VHUDWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDWindow.swift; sourceTree = "<group>"; };
 		AD1BE0031DBE3222008F33A3 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		AD2161751DBCE064009801B9 /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		AD2161881DBCE064009801B9 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -238,7 +247,6 @@
 		AD21618D1DBCE064009801B9 /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
 		AD21618E1DBCE064009801B9 /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		AD21618F1DBCE064009801B9 /* DGRunkeeperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGRunkeeperSwitch.swift; sourceTree = "<group>"; };
-		AD2161901DBCE064009801B9 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		AD2161931DBCE064009801B9 /* NVActivityIndicatorAnimationAudioEqualizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationAudioEqualizer.swift; sourceTree = "<group>"; };
 		AD2161941DBCE064009801B9 /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
 		AD2161951DBCE064009801B9 /* NVActivityIndicatorAnimationBallClipRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotate.swift; sourceTree = "<group>"; };
@@ -293,13 +301,6 @@
 		AD2161C91DBCE064009801B9 /* LocationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRequest.swift; sourceTree = "<group>"; };
 		AD2161CA1DBCE064009801B9 /* VisitRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitRequest.swift; sourceTree = "<group>"; };
 		AD2161CB1DBCE064009801B9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		AD21621D1DBCE162009801B9 /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
-		AD21621E1DBCE162009801B9 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		AD21621F1DBCE162009801B9 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		AD2162201DBCE162009801B9 /* VHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUD.swift; sourceTree = "<group>"; };
-		AD2162211DBCE162009801B9 /* VHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDView.swift; sourceTree = "<group>"; };
-		AD2162221DBCE162009801B9 /* VHUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDViewController.swift; sourceTree = "<group>"; };
-		AD2162231DBCE162009801B9 /* VHUDWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHUDWindow.swift; sourceTree = "<group>"; };
 		AD21622B1DBCE4EC009801B9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AD2162331DBCE809009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Incidents.storyboard; sourceTree = "<group>"; };
 		AD2162381DBCE8C8009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -400,20 +401,13 @@
 		ADC7347B1D6890EF00296449 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		ADC7347D1D6890EF00296449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADC7347F1D6890EF00296449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADC734901D68917200296449 /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		ADC734941D68917D00296449 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
 		ADC734981D68918500296449 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = Carthage/Build/iOS/Onboard.framework; sourceTree = "<group>"; };
-		ADD177151DC0DB560007F53F /* DateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
-		ADD177161DC0DB560007F53F /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
-		ADD177171DC0DB560007F53F /* Koyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Koyomi.swift; sourceTree = "<group>"; };
-		ADD177181DC0DB560007F53F /* KoyomiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoyomiCell.swift; sourceTree = "<group>"; };
-		ADD177191DC0DB560007F53F /* KoyomiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoyomiLayout.swift; sourceTree = "<group>"; };
-		ADD1771A1DC0DB560007F53F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
-		ADD1771B1DC0DB560007F53F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		ADD1771C1DC0DB560007F53F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADF767581D7C5E3D00B6C0B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		ADF767591D7C5E4000B6C0B4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		ADFB5E701DC2617A00BFFB10 /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
+		ADFCC1591DF8734700818CB5 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,8 +416,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD6F201F1D68958100DEF1F0 /* Crashlytics.framework in Frameworks */,
+				ADFB5E711DC2617A00BFFB10 /* Chameleon.framework in Frameworks */,
 				AD21622C1DBCE4EC009801B9 /* Alamofire.framework in Frameworks */,
-				ADC734911D68917200296449 /* Chameleon.framework in Frameworks */,
 				AD6F20601D6898C800DEF1F0 /* FontAwesomeKit.framework in Frameworks */,
 				ADC734951D68917D00296449 /* FSCalendar.framework in Frameworks */,
 				ADC734991D68918500296449 /* Onboard.framework in Frameworks */,
@@ -449,6 +443,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD0DFC4D1DE4CF1C009D4C3B /* VHUD */ = {
+			isa = PBXGroup;
+			children = (
+				AD0DFC4E1DE4CF1C009D4C3B /* DisplayLink.swift */,
+				AD0DFC4F1DE4CF1C009D4C3B /* ProgressView.swift */,
+				AD0DFC501DE4CF1C009D4C3B /* UIView+AutoLayout.swift */,
+				AD0DFC511DE4CF1C009D4C3B /* VHUD.swift */,
+				AD0DFC521DE4CF1C009D4C3B /* VHUDView.swift */,
+				AD0DFC531DE4CF1C009D4C3B /* VHUDViewController.swift */,
+				AD0DFC541DE4CF1C009D4C3B /* VHUDWindow.swift */,
+			);
+			path = VHUD;
+			sourceTree = "<group>";
+		};
 		AD2161741DBCE064009801B9 /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,14 +464,12 @@
 				AD2161881DBCE064009801B9 /* Async.swift */,
 				AD2161891DBCE064009801B9 /* DGElasticPullToRefresh */,
 				AD21618F1DBCE064009801B9 /* DGRunkeeperSwitch.swift */,
-				AD2161901DBCE064009801B9 /* Localize.swift */,
-				ADD177141DC0DB560007F53F /* Koyomi */,
 				AD2161911DBCE064009801B9 /* NVActivityIndicatorView */,
 				AD2161B81DBCE064009801B9 /* PermissionScope */,
 				AD2161BE1DBCE064009801B9 /* SCLAlertView */,
 				AD2161C11DBCE064009801B9 /* SwiftLocation */,
 				AD2161CB1DBCE064009801B9 /* SwiftyJSON.swift */,
-				AD21621C1DBCE162009801B9 /* VHUD */,
+				AD0DFC4D1DE4CF1C009D4C3B /* VHUD */,
 			);
 			name = External;
 			path = "tpg offline/App/External";
@@ -570,21 +576,6 @@
 			path = SwiftLocation;
 			sourceTree = "<group>";
 		};
-		AD21621C1DBCE162009801B9 /* VHUD */ = {
-			isa = PBXGroup;
-			children = (
-				AD21621D1DBCE162009801B9 /* DisplayLink.swift */,
-				AD21621E1DBCE162009801B9 /* ProgressView.swift */,
-				AD21621F1DBCE162009801B9 /* UIView+AutoLayout.swift */,
-				AD2162201DBCE162009801B9 /* VHUD.swift */,
-				AD2162211DBCE162009801B9 /* VHUDView.swift */,
-				AD2162221DBCE162009801B9 /* VHUDViewController.swift */,
-				AD2162231DBCE162009801B9 /* VHUDWindow.swift */,
-			);
-			name = VHUD;
-			path = Sources;
-			sourceTree = "<group>";
-		};
 		ADC733831D68908F00296449 = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +642,7 @@
 				ADC733BE1D6890C500296449 /* Thermometer.swift */,
 				ADC733C01D6890C500296449 /* WatchSessionManager.swift */,
 				AD1BE0031DBE3222008F33A3 /* SplashScreenViewController.swift */,
+				ADFCC1591DF8734700818CB5 /* UserDefaultsKeys.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -808,9 +800,9 @@
 		ADC7348B1D68916A00296449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADFB5E701DC2617A00BFFB10 /* Chameleon.framework */,
 				AD9A8C621DC2323C0021C7CD /* Alamofire.framework */,
 				AD21622B1DBCE4EC009801B9 /* Alamofire.framework */,
-				ADC734901D68917200296449 /* Chameleon.framework */,
 				AD6F201D1D68958100DEF1F0 /* Crashlytics.framework */,
 				AD6F201C1D68958100DEF1F0 /* Fabric.framework */,
 				AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */,
@@ -818,22 +810,6 @@
 				ADC734981D68918500296449 /* Onboard.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		ADD177141DC0DB560007F53F /* Koyomi */ = {
-			isa = PBXGroup;
-			children = (
-				ADD177151DC0DB560007F53F /* DateModel.swift */,
-				ADD177161DC0DB560007F53F /* DictionaryExtension.swift */,
-				ADD177171DC0DB560007F53F /* Koyomi.swift */,
-				ADD177181DC0DB560007F53F /* KoyomiCell.swift */,
-				ADD177191DC0DB560007F53F /* KoyomiLayout.swift */,
-				ADD1771A1DC0DB560007F53F /* NSDateExtension.swift */,
-				ADD1771B1DC0DB560007F53F /* UIColorExtension.swift */,
-				ADD1771C1DC0DB560007F53F /* UIViewExtension.swift */,
-			);
-			name = Koyomi;
-			path = NVActivityIndicatorView/Koyomi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -849,6 +825,7 @@
 				ADC7348A1D6890EF00296449 /* Embed Watch Content */,
 				AD6F201B1D68948E00DEF1F0 /* Install Fabric */,
 				ADC734A21D6891E700296449 /* Install Carthage frameworks */,
+				ADFB5E6F1DC2605000BFFB10 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -950,7 +927,7 @@
 				};
 			};
 			buildConfigurationList = ADC733871D68908F00296449 /* Build configuration list for PBXProject "tpg offline" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1046,9 +1023,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FSCalendar.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Onboard.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesomeKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EFCircularSlider.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
 			);
 			name = "Install Carthage frameworks";
 			outputPaths = (
@@ -1083,10 +1060,8 @@
 				AD2162011DBCE064009801B9 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				AD2162041DBCE064009801B9 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
 				ADC7345C1D6890C500296449 /* WebViewController.swift in Sources */,
-				AD2162271DBCE162009801B9 /* VHUD.swift in Sources */,
 				ADC7342C1D6890C500296449 /* LoadingCellTableViewCell.swift in Sources */,
 				AD2162051DBCE064009801B9 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
-				ADD177201DC0DB560007F53F /* KoyomiCell.swift in Sources */,
 				AD2161EF1DBCE064009801B9 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				AD2161DE1DBCE064009801B9 /* Async.swift in Sources */,
 				ADC734311D6890C500296449 /* ThemeCollectionViewCell.swift in Sources */,
@@ -1095,11 +1070,13 @@
 				ADC734221D6890C500296449 /* SearchRoute.swift in Sources */,
 				ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */,
 				ADC734531D6890C500296449 /* RoutesListTableViewController.swift in Sources */,
+				AD0DFC551DE4CF1C009D4C3B /* DisplayLink.swift in Sources */,
 				AD2161F01DBCE064009801B9 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				ADC7341A1D6890C500296449 /* AppValues.swift in Sources */,
 				AD21621B1DBCE064009801B9 /* SwiftyJSON.swift in Sources */,
 				ADC734471D6890C500296449 /* IncidentsTableViewController.swift in Sources */,
 				AD2162021DBCE064009801B9 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
+				AD0DFC591DE4CF1C009D4C3B /* VHUDView.swift in Sources */,
 				AD2162151DBCE064009801B9 /* Commons.swift in Sources */,
 				AD2161F31DBCE064009801B9 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				AD2161F61DBCE064009801B9 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
@@ -1111,48 +1088,38 @@
 				ADC7341F1D6890C500296449 /* Perturbations.swift in Sources */,
 				ADC734491D6890C500296449 /* MapViewController.swift in Sources */,
 				AD2161E61DBCE064009801B9 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
-				ADD177241DC0DB560007F53F /* UIViewExtension.swift in Sources */,
 				AD21620A1DBCE064009801B9 /* NVActivityIndicatorViewable.swift in Sources */,
-				AD2162251DBCE162009801B9 /* ProgressView.swift in Sources */,
 				AD2161FD1DBCE064009801B9 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
+				AD0DFC5B1DE4CF1C009D4C3B /* VHUDWindow.swift in Sources */,
 				AD2161EE1DBCE064009801B9 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
-				ADD177221DC0DB560007F53F /* NSDateExtension.swift in Sources */,
 				AD2161F41DBCE064009801B9 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
-				AD2162241DBCE162009801B9 /* DisplayLink.swift in Sources */,
 				AD2161ED1DBCE064009801B9 /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
 				AD2161CC1DBCE064009801B9 /* AKPickerView.swift in Sources */,
 				ADC734381D6890C500296449 /* NSUserDefaultsExtension.swift in Sources */,
 				AD2161FC1DBCE064009801B9 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
 				AD2162121DBCE064009801B9 /* BeaconAdvertiseRequest.swift in Sources */,
-				AD21622A1DBCE162009801B9 /* VHUDWindow.swift in Sources */,
 				AD21620B1DBCE064009801B9 /* Constants.swift in Sources */,
 				AD2162001DBCE064009801B9 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
-				ADD1771D1DC0DB560007F53F /* DateModel.swift in Sources */,
 				AD2161FE1DBCE064009801B9 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				ADC734561D6890C500296449 /* TimeSelectionViewController.swift in Sources */,
 				ADC734591D6890C500296449 /* SelectDefaultTabBarItem.swift in Sources */,
 				ADC7342A1D6890C500296449 /* DetailRouteTableViewCell.swift in Sources */,
-				ADD177231DC0DB560007F53F /* UIColorExtension.swift in Sources */,
-				ADD177211DC0DB560007F53F /* KoyomiLayout.swift in Sources */,
 				ADC734201D6890C500296449 /* Route.swift in Sources */,
-				AD2162281DBCE162009801B9 /* VHUDView.swift in Sources */,
 				ADC734331D6890C500296449 /* RouteToStopViewController.swift in Sources */,
 				ADC7342F1D6890C500296449 /* StopImageTableViewCell.swift in Sources */,
 				AD2162171DBCE064009801B9 /* HeadingRequest.swift in Sources */,
 				AD21620C1DBCE064009801B9 /* Extensions.swift in Sources */,
 				AD2161F51DBCE064009801B9 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				AD21620D1DBCE064009801B9 /* Permissions.swift in Sources */,
+				AD0DFC5A1DE4CF1C009D4C3B /* VHUDViewController.swift in Sources */,
 				AD2161E11DBCE064009801B9 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
-				ADD1771E1DC0DB560007F53F /* DictionaryExtension.swift in Sources */,
 				ADC734261D6890C500296449 /* WatchSessionManager.swift in Sources */,
 				AD21620F1DBCE064009801B9 /* Structs.swift in Sources */,
 				ADC734391D6890C500296449 /* UIKitExtension.swift in Sources */,
 				AD2162031DBCE064009801B9 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				ADC734481D6890C500296449 /* MapsListTableViewController.swift in Sources */,
 				AD2162141DBCE064009801B9 /* BeaconsManager.swift in Sources */,
-				ADD1771F1DC0DB560007F53F /* Koyomi.swift in Sources */,
 				AD2162161DBCE064009801B9 /* GeoRegionRequest.swift in Sources */,
-				AD2162261DBCE162009801B9 /* UIView+AutoLayout.swift in Sources */,
 				ADC7345B1D6890C500296449 /* ThemesCollectionViewController.swift in Sources */,
 				AD2161EB1DBCE064009801B9 /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
 				AD1BE0041DBE3222008F33A3 /* SplashScreenViewController.swift in Sources */,
@@ -1163,7 +1130,7 @@
 				ADC734231D6890C500296449 /* Stop.swift in Sources */,
 				AD2161E21DBCE064009801B9 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				AD2162111DBCE064009801B9 /* SCLExtensions.swift in Sources */,
-				AD2162291DBCE162009801B9 /* VHUDViewController.swift in Sources */,
+				AD0DFC571DE4CF1C009D4C3B /* UIView+AutoLayout.swift in Sources */,
 				AD2162061DBCE064009801B9 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
 				AD2161FB1DBCE064009801B9 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				AD2162081DBCE064009801B9 /* NVActivityIndicatorShape.swift in Sources */,
@@ -1171,6 +1138,7 @@
 				ADC734241D6890C500296449 /* Thermometer.swift in Sources */,
 				AD2162071DBCE064009801B9 /* NVActivityIndicatorPresenter.swift in Sources */,
 				AD2161FA1DBCE064009801B9 /* NVActivityIndicatorAnimationBlank.swift in Sources */,
+				ADFCC15A1DF8734700818CB5 /* UserDefaultsKeys.swift in Sources */,
 				AD2162101DBCE064009801B9 /* SCLAlertView.swift in Sources */,
 				ADC734341D6890C500296449 /* SeeAllDeparturesViewController.swift in Sources */,
 				AD2161F91DBCE064009801B9 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
@@ -1186,11 +1154,11 @@
 				AD2161EC1DBCE064009801B9 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
 				ADC734301D6890C500296449 /* SwitchTableViewCell.swift in Sources */,
 				AD2161F71DBCE064009801B9 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
-				AD2161E51DBCE064009801B9 /* Localize.swift in Sources */,
 				ADC7345A1D6890C500296449 /* SettingsTableViewController.swift in Sources */,
 				AD2162091DBCE064009801B9 /* NVActivityIndicatorView.swift in Sources */,
 				ADC734361D6890C500296449 /* ThermometerTableViewController.swift in Sources */,
 				ADC734571D6890C500296449 /* CreditsTableViewController.swift in Sources */,
+				AD0DFC581DE4CF1C009D4C3B /* VHUD.swift in Sources */,
 				AD2161E31DBCE064009801B9 /* DGElasticPullToRefreshView.swift in Sources */,
 				AD21621A1DBCE064009801B9 /* VisitRequest.swift in Sources */,
 				ADC734541D6890C500296449 /* RoutesStopsTableViewController.swift in Sources */,
@@ -1199,6 +1167,7 @@
 				ADC734581D6890C500296449 /* LocationSettingsTableViewController.swift in Sources */,
 				AD2161E41DBCE064009801B9 /* DGRunkeeperSwitch.swift in Sources */,
 				ADC734211D6890C500296449 /* RoutesConnections.swift in Sources */,
+				AD0DFC561DE4CF1C009D4C3B /* ProgressView.swift in Sources */,
 				ADC734321D6890C500296449 /* DeparturesTableViewController.swift in Sources */,
 				AD2161DF1DBCE064009801B9 /* DGElasticPullToRefreshConstants.swift in Sources */,
 			);
@@ -1222,7 +1191,6 @@
 				AD62DD461D7C6B1900B2CA86 /* WatchSessionManager.swift in Sources */,
 				ADD177131DC0D9F60007F53F /* SwiftyJSON.swift in Sources */,
 				AD62DD421D7C6A8100B2CA86 /* DeparturesRowController.swift in Sources */,
-				AD087F8B1DC1FA7800E51CB1 /* Localize.swift in Sources */,
 				AD62DD441D7C6A8100B2CA86 /* StopsRowController.swift in Sources */,
 				AD62DD4A1D7C6B5100B2CA86 /* Departures.swift in Sources */,
 				AD62DD481D7C6B4200B2CA86 /* AppValues.swift in Sources */,
@@ -1231,6 +1199,7 @@
 				AD62DD491D7C6B4900B2CA86 /* Stop.swift in Sources */,
 				ADBA28711DC0ABA8002E28AD /* ReminderInterfaceController.swift in Sources */,
 				AD62DD411D7C6A8100B2CA86 /* DeparturesInterfaceController.swift in Sources */,
+				AD2BB8411DE4D1350070A140 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,6 +1424,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/tpg\\ offline/App/External",
+					"$(PROJECT_DIR)/tpg\\ offline/App/External",
+					"$(PROJECT_DIR)/tpg\\ offline/App/External",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/tpg offline/Project Requirements/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1476,6 +1448,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/tpg\\ offline/App/External",
+					"$(PROJECT_DIR)/tpg\\ offline/App/External",
+					"$(PROJECT_DIR)/tpg\\ offline/App/External",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/tpg offline/Project Requirements/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

@@ -14,14 +14,14 @@ private let reuseIdentifier = "ThemesCell"
 
 class ThemesCollectionViewController: UICollectionViewController {
     let themes = [
-        "Inversé".localized : [UIColor.flatOrange(), UIColor.white],
-        "Défaut".localized : [UIColor.flatWhite(), UIColor.flatOrangeColorDark()],
-        "Nuit".localized : [UIColor.flatNavyBlue(), UIColor.flatWhite()],
-        "Bleu".localized : [UIColor.flatWhite(), UIColor.flatSkyBlue()],
-        "Vert".localized : [UIColor.flatWhite(), UIColor.flatGreenColorDark()],
-        "Noir".localized : [UIColor.flatWhite(), UIColor.flatBlackColorDark()],
-        "Forêt".localized : [UIColor.flatWhite(), UIColor.flatForestGreen()],
-        "Mauve".localized : [UIColor.flatWhite(), UIColor.flatMagenta()]
+        "Inversé".localized : [UIColor.flatOrange, UIColor.white],
+        "Défaut".localized : [UIColor.flatWhite, UIColor.flatOrangeDark],
+        "Nuit".localized : [UIColor.flatNavyBlue, UIColor.flatWhite],
+        "Bleu".localized : [UIColor.flatWhite, UIColor.flatSkyBlue],
+        "Vert".localized : [UIColor.flatWhite, UIColor.flatGreenDark],
+        "Noir".localized : [UIColor.flatWhite, UIColor.flatBlackDark],
+        "Forêt".localized : [UIColor.flatWhite, UIColor.flatForestGreen],
+        "Mauve".localized : [UIColor.flatWhite, UIColor.flatMagenta]
     ]
     
     let defaults = UserDefaults.standard
@@ -80,8 +80,8 @@ class ThemesCollectionViewController: UICollectionViewController {
         refreshTheme()
         collectionView.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
 		
-        defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")
-        defaults.setColor(AppValues.textColor, forKey: "textColor")
+        defaults.setColor(AppValues.primaryColor, forKey: UserDefaultsKeys.primaryColor.rawValue)
+        defaults.setColor(AppValues.textColor, forKey: UserDefaultsKeys.textColor.rawValue)
 		
 		setTabBar()
 		

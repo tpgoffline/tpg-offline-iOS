@@ -764,19 +764,6 @@
     },
     {
       "connections": [
-        "32"
-      ],
-      "idTransportAPI": "8592783",
-      "locationX": 46.200365,
-      "locationY": 6.142428,
-      "nameTransportAPI": "Genève, Bartholoni",
-      "stopCode": "BART",
-      "stopName": "Bartholoni",
-      "subTitleName": "",
-      "titleName": "Bartholoni"
-    },
-    {
-      "connections": [
         "96",
         "C"
       ],
@@ -1128,19 +1115,6 @@
       "stopName": "La Belotte",
       "subTitleName": "",
       "titleName": "La Belotte"
-    },
-    {
-      "connections": [
-        "32"
-      ],
-      "idTransportAPI": "8592781",
-      "locationX": 46.198576,
-      "locationY": 6.135011,
-      "nameTransportAPI": "Genève, Baillive",
-      "stopCode": "BLVE",
-      "stopName": "Baillive",
-      "subTitleName": "",
-      "titleName": "Baillive"
     },
     {
       "connections": [
@@ -2260,8 +2234,8 @@
       "locationY": 5.972819,
       "nameTransportAPI": "Challex, P+R La Halle",
       "stopCode": "CHHA",
-      "stopName": "P+R Challex La Halle",
-      "subTitleName": "P+R La Halle",
+      "stopName": "Challex La Halle",
+      "subTitleName": "La Halle",
       "titleName": "Challex"
     },
     {
@@ -2298,7 +2272,6 @@
     },
     {
       "connections": [
-        "12",
         "34"
       ],
       "idTransportAPI": "8592699",
@@ -2323,21 +2296,6 @@
       "stopName": "Centre Horticole",
       "subTitleName": "",
       "titleName": "Centre Horticole"
-    },
-    {
-      "connections": [
-        "23",
-        "42",
-        "86"
-      ],
-      "idTransportAPI": "8592977",
-      "locationX": 46.175968,
-      "locationY": 6.121213,
-      "nameTransportAPI": "Grand-Lancy, Ch. des Palettes",
-      "stopCode": "CHPA",
-      "stopName": "Chemin des Palettes",
-      "subTitleName": "",
-      "titleName": "Chemin des Palettes"
     },
     {
       "connections": [
@@ -2391,8 +2349,8 @@
       "locationY": 5.976298,
       "nameTransportAPI": "Challex, P+R Eglise",
       "stopCode": "CHSE",
-      "stopName": "P+R Challex Eglise",
-      "subTitleName": "P+R Eglise",
+      "stopName": "Challex Eglise",
+      "subTitleName": "Eglise",
       "titleName": "Challex"
     },
     {
@@ -3797,19 +3755,6 @@
     },
     {
       "connections": [
-        "35"
-      ],
-      "idTransportAPI": "8592821",
-      "locationX": 46.193668,
-      "locationY": 6.148702,
-      "nameTransportAPI": "Genève, Entrée-Hôpital",
-      "stopCode": "ENHO",
-      "stopName": "Entrée Hôpital",
-      "subTitleName": "",
-      "titleName": "Entrée Hôpital"
-    },
-    {
-      "connections": [
         "82",
         "V"
       ],
@@ -4995,6 +4940,7 @@
     },
     {
       "connections": [
+        "B",
         "E"
       ],
       "idTransportAPI": "8501239",
@@ -5003,7 +4949,7 @@
       "nameTransportAPI": "Hermance",
       "stopCode": "HERM",
       "stopName": "Hermance",
-      "subTitleName": "",
+      "subTitleName": "Village",
       "titleName": "Hermance"
     },
     {
@@ -5158,9 +5104,9 @@
       "locationY": 6.139542,
       "nameTransportAPI": "Genève, Isaac-Mercier",
       "stopCode": "ISAM",
-      "stopName": "Isaac Mercier",
+      "stopName": "Mercier",
       "subTitleName": "",
-      "titleName": "Isaac Mercier"
+      "titleName": "Mercier"
     },
     {
       "connections": [
@@ -6539,8 +6485,8 @@
       "locationY": 6.306202,
       "nameTransportAPI": "Jussy, Monniaz",
       "stopCode": "MONN",
-      "stopName": "Monniaz",
-      "subTitleName": "",
+      "stopName": "Monniaz Hameau",
+      "subTitleName": "Hameau",
       "titleName": "Monniaz"
     },
     {
@@ -6718,9 +6664,9 @@
       "locationY": 5.986474,
       "nameTransportAPI": "Avully, Martinet",
       "stopCode": "MRTI",
-      "stopName": "Martinet",
-      "subTitleName": "",
-      "titleName": "Martinet"
+      "stopName": "Avully Martinet",
+      "subTitleName": "Martinet",
+      "titleName": "Avully"
     },
     {
       "connections": [
@@ -7038,6 +6984,7 @@
     },
     {
       "connections": [
+        "P",
         "X"
       ],
       "idTransportAPI": "8593090",
@@ -7045,9 +6992,9 @@
       "locationY": 6.015994,
       "nameTransportAPI": "Russin, Noirettes",
       "stopCode": "NOIR",
-      "stopName": "Noirettes",
-      "subTitleName": "",
-      "titleName": "Noirettes"
+      "stopName": "Russin Noirettes",
+      "subTitleName": "Noirettes",
+      "titleName": "Russin"
     },
     {
       "connections": [
@@ -7077,7 +7024,9 @@
     },
     {
       "connections": [
-        "8"
+        "8",
+        "28",
+        "F"
       ],
       "idTransportAPI": "8587904",
       "locationX": 46.233436,
@@ -7133,19 +7082,6 @@
       "stopName": "Onex Marché",
       "subTitleName": "Marché",
       "titleName": "Onex"
-    },
-    {
-      "connections": [
-        "35"
-      ],
-      "idTransportAPI": "8592872",
-      "locationX": 46.191376,
-      "locationY": 6.148109,
-      "nameTransportAPI": "Genève, Ophtalmologie",
-      "stopCode": "OPHT",
-      "stopName": "Ophtalmologie",
-      "subTitleName": "",
-      "titleName": "Ophtalmologie"
     },
     {
       "connections": [
@@ -7253,6 +7189,7 @@
         "15",
         "22",
         "23",
+        "42",
         "86"
       ],
       "idTransportAPI": "8592988",
@@ -7813,8 +7750,7 @@
         "12",
         "14",
         "15",
-        "18",
-        "32"
+        "18"
       ],
       "idTransportAPI": "8587907",
       "locationX": 46.198145,
@@ -7824,19 +7760,6 @@
       "stopName": "Plainpalais",
       "subTitleName": "",
       "titleName": "Plainpalais"
-    },
-    {
-      "connections": [
-        "S"
-      ],
-      "idTransportAPI": "8592666",
-      "locationX": 46.158655,
-      "locationY": 6.057533,
-      "nameTransportAPI": "Bernex, Pré-Lauret",
-      "stopCode": "PLRT",
-      "stopName": "Pré Lauret",
-      "subTitleName": "",
-      "titleName": "Pré Lauret"
     },
     {
       "connections": [
@@ -8305,8 +8228,8 @@
       "locationY": 6.247467,
       "nameTransportAPI": "Veigy, P+R",
       "stopCode": "PRVG",
-      "stopName": "P+R Veigy",
-      "subTitleName": "P+R",
+      "stopName": "Veigy Douane",
+      "subTitleName": "Douane",
       "titleName": "Veigy"
     },
     {
@@ -9015,9 +8938,9 @@
       "locationY": 5.995948,
       "nameTransportAPI": "Avully, Route d'Epeisses",
       "stopCode": "RTEP",
-      "stopName": "Route d'Epeisses",
-      "subTitleName": "",
-      "titleName": "Route d'Epeisses"
+      "stopName": "Avully Gennecy",
+      "subTitleName": "Gennecy",
+      "titleName": "Avully"
     },
     {
       "connections": [
@@ -9223,19 +9146,6 @@
       "stopName": "Sellières",
       "subTitleName": "",
       "titleName": "Sellières"
-    },
-    {
-      "connections": [
-        "S"
-      ],
-      "idTransportAPI": "8587090",
-      "locationX": 46.164381,
-      "locationY": 6.056374,
-      "nameTransportAPI": "Bernex, Sézenove",
-      "stopCode": "SENV",
-      "stopName": "Sézenove",
-      "subTitleName": "",
-      "titleName": "Sézenove"
     },
     {
       "connections": [
@@ -10352,7 +10262,6 @@
     },
     {
       "connections": [
-        "42",
         "47",
         "85",
         "L"
@@ -10362,9 +10271,9 @@
       "locationY": 6.060877,
       "nameTransportAPI": "Bernex, Vailly",
       "stopCode": "VALY",
-      "stopName": "Vailly",
-      "subTitleName": "",
-      "titleName": "Vailly"
+      "stopName": "Bernex Vailly",
+      "subTitleName": "Vailly",
+      "titleName": "Bernex"
     },
     {
       "connections": [
@@ -10590,20 +10499,6 @@
       "stopName": "Via Monnet",
       "subTitleName": "",
       "titleName": "Via Monnet"
-    },
-    {
-      "connections": [
-        "28",
-        "F"
-      ],
-      "idTransportAPI": "8592926",
-      "locationX": 46.231477,
-      "locationY": 6.132405,
-      "nameTransportAPI": "Genève, Vy-des-Champs",
-      "stopCode": "VICH",
-      "stopName": "Vy des Champs",
-      "subTitleName": "",
-      "titleName": "Vy des Champs"
     },
     {
       "connections": [
@@ -11307,5 +11202,6 @@
       "subTitleName": "",
       "titleName": "Saint Loup"
     }
-  ]
+  ],
+  "updatedDate": "2016-12-11T06:00:00+0100"
 }

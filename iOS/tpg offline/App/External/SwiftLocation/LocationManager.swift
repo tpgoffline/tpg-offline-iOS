@@ -129,7 +129,6 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	
 	- returns: request instance. Use it to pause, resume or stop request
 	*/
-    @discardableResult
 	open func getLocation(withAccuracy accuracy: Accuracy, frequency: UpdateFrequency = .oneShot, timeout: TimeInterval? = nil, onSuccess: @escaping LocationHandlerSuccess, onError: @escaping LocationHandlerError) -> Request {
 		
 		if accuracy == .ipScan {
@@ -342,10 +341,8 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 		}
 		let urlString = "\(urlPrefix)ip-api.com/json?fields=lat,lon,status,country,countryCode,zip\(keyParam)"
 		let URLRequest = Foundation.URLRequest(url: URL(string: urlString)!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: timeout ?? DefaultTimeout)
-		
-		let sessionConfig = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfig)
-		let task = session.dataTask(with: URLRequest) { (data, response, error) in
+
+		let task = NetRequest(URLRequest, complete: { data, error in
 			if let data = data as Data? {
 				do {
 					if let resultDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
@@ -358,8 +355,8 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 					onError(nil,LocationError.locationManager(error: error))
 				}
 			}
-		}
-		task.resume()
+		})
+		task.start()
 		return task
 	}
 	
@@ -614,9 +611,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 		}
 		let APIURL = URL(string: APIURLString)
 		let APIURLRequest = URLRequest(url: APIURL!)
-		let sessionConfig = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfig)
-		let task = session.dataTask(with: APIURLRequest) { (data, response, error) in
+		let task = NetRequest(APIURLRequest, complete: { data, error in
 			if error != nil {
 				fHandler(LocationError.locationManager(error: error as NSError?))
 			} else {
@@ -633,8 +628,8 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 					}
 				}
 			}
-		}
-		task.resume()
+		})
+		task.start()
 		return task
 	}
 	
@@ -661,9 +656,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 		APIURLString = APIURLString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
 		let APIURL = URL(string: APIURLString)
 		let APIURLRequest = URLRequest(url: APIURL!)
-		let sessionConfig = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfig)
-		let task = session.dataTask(with: APIURLRequest) { (data, response, error) in
+		let task = NetRequest(APIURLRequest, complete: { data, error in
 			if error != nil {
 				fHandler(LocationError.locationManager(error: error as NSError?))
 			} else {
@@ -680,8 +673,8 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 					}
 				}
 			}
-		}
-		task.resume()
+		})
+		task.start()
 		return task
 	}
 	
@@ -693,7 +686,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 			throw LocationError.noDataReturned
 		}
 		
-		var addressDict = [String:AnyObject]()
+		var addressDict = [String:Any]()
 		addressDict[CLPlacemarkDictionaryKey.kCountry] = resultDict["country"] as! NSString
 		addressDict[CLPlacemarkDictionaryKey.kCountryCode] = resultDict["countryCode"] as! NSString
 		addressDict[CLPlacemarkDictionaryKey.kPostCodeExtension] = resultDict["zip"] as! NSString
@@ -710,7 +703,7 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 	fileprivate func parseGoogleLocationData(_ resultDict: NSDictionary) -> CLPlacemark {
 		let locationDict = (resultDict.value(forKey: "results") as! NSArray).firstObject as! NSDictionary
 		
-		var addressDict = [String:AnyObject]()
+		var addressDict = [String:Any]()
 		
 		// Parse coordinates
 		let geometry = locationDict.object(forKey: "geometry") as! NSDictionary
@@ -725,9 +718,9 @@ open class LocationManager: NSObject, CLLocationManagerDelegate {
 		addressDict[CLPlacemarkDictionaryKey.kState] = JSONComponent("administrative_area_level_1", inArray: addressComponents, ofType: "short_name")
 		addressDict[CLPlacemarkDictionaryKey.kStreet] = formattedAddressArray.first! as NSString
 		addressDict[CLPlacemarkDictionaryKey.kThoroughfare] = JSONComponent("route", inArray: addressComponents, ofType: "long_name")
-		addressDict[CLPlacemarkDictionaryKey.kFormattedAddressLines] = formattedAddressArray as AnyObject
+		addressDict[CLPlacemarkDictionaryKey.kFormattedAddressLines] = formattedAddressArray as Any
 		addressDict[CLPlacemarkDictionaryKey.kSubThoroughfare] = JSONComponent("street_number", inArray: addressComponents, ofType: "long_name")
-		addressDict[CLPlacemarkDictionaryKey.kPostCodeExtension] = "" as AnyObject
+		addressDict[CLPlacemarkDictionaryKey.kPostCodeExtension] = "" as Any
 		addressDict[CLPlacemarkDictionaryKey.kCity] = JSONComponent("locality", inArray: addressComponents, ofType: "long_name")
 		addressDict[CLPlacemarkDictionaryKey.kZIP] = JSONComponent("postal_code", inArray: addressComponents, ofType: "long_name")
 		addressDict[CLPlacemarkDictionaryKey.kCountry] = JSONComponent("country", inArray: addressComponents, ofType: "long_name")

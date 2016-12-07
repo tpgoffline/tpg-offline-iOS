@@ -20,9 +20,9 @@
                                             CGRectGetMidY(self.bounds));
     
     CGPoint centerPointOfSelfInWindow = [self convertPoint:centerPointInSelf
-                                                    toView:(UIView *)self.window];
+                                                    toView:self.window];
     
-    UIView *view = [(UIView *)self.window findTopMostViewForPoint:centerPointOfSelfInWindow];
+    UIView *view = [self.window findTopMostViewForPoint:centerPointOfSelfInWindow];
     BOOL isTopMost = view == self || [view isDescendantOfView:self];
     
     return isTopMost;

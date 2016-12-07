@@ -31,10 +31,10 @@ class IncidentsTableViewController: UITableViewController {
             
             }, loadingView: loadingView)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
-        navigationController?.navigationBar.barTintColor = UIColor.flatOrangeColorDark()
+        navigationController?.navigationBar.barTintColor = UIColor.flatOrangeDark
         navigationController?.navigationBar.tintColor = UIColor.white
         
         var barButtonsItems: [UIBarButtonItem] = []
@@ -49,7 +49,7 @@ class IncidentsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1))
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
         
         refreshTheme()
@@ -66,7 +66,7 @@ class IncidentsTableViewController: UITableViewController {
         distrubtions = []
         loading = true
         tableView.reloadData()
-        Alamofire.request("http://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"]).responseJSON { response in
+        Alamofire.request("https://tpg.asmartcode.com/Disruptions.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"]).responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)
                     if json["disruptions"].count != 0 {
@@ -83,7 +83,12 @@ class IncidentsTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
                 else {
-                    print(response.result.error!)
+                    #if DEBUG
+                        if let error = response.result.error {
+                            let alert = SCLAlertView()
+                            alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)")
+                        }
+                    #endif
                     self.error = true
                     self.tableView.reloadData()
                 }
@@ -133,16 +138,16 @@ class IncidentsTableViewController: UITableViewController {
             cell.activityIndicator.stopAnimating()
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.backgroundColor = UIColor.flatBlue()
+                cell.backgroundColor = UIColor.flatBlue
                 cell.titleLabel?.textColor = UIColor.white
                 cell.subTitleLabel?.textColor = UIColor.white
                 cell.activityIndicator.color = UIColor.white
             }
             else {
                 cell.backgroundColor = UIColor.white
-                cell.titleLabel?.textColor = UIColor.flatBlue()
-                cell.subTitleLabel?.textColor = UIColor.flatBlue()
-                cell.activityIndicator.color = UIColor.flatBlue()
+                cell.titleLabel?.textColor = UIColor.flatBlue
+                cell.subTitleLabel?.textColor = UIColor.flatBlue
+                cell.activityIndicator.color = UIColor.flatBlue
             }
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
@@ -176,19 +181,19 @@ class IncidentsTableViewController: UITableViewController {
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.black
                 cell.detailTextLabel?.textColor = UIColor.black
-                cell.backgroundColor = UIColor.flatYellow()
+                cell.backgroundColor = UIColor.flatYellow
                 
                 let iconeSmile = FAKFontAwesome.smileOIcon(withSize: 20)!
                 iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.black)
                 cell.imageView?.image = iconeSmile.image(with: CGSize(width: 25, height: 25))
             }
             else {
-                cell.textLabel?.textColor = UIColor.flatYellowColorDark()
-                cell.detailTextLabel?.textColor = UIColor.flatYellowColorDark()
-                cell.backgroundColor = UIColor.flatWhite()
+                cell.textLabel?.textColor = UIColor.flatYellowDark
+                cell.detailTextLabel?.textColor = UIColor.flatYellowDark
+                cell.backgroundColor = UIColor.flatWhite
                 
                 let iconeSmile = FAKFontAwesome.smileOIcon(withSize: 20)!
-                iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatYellowColorDark())
+                iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatYellowDark)
                 cell.imageView?.image = iconeSmile.image(with: CGSize(width: 25, height: 25))
             }
             return cell
@@ -202,19 +207,19 @@ class IncidentsTableViewController: UITableViewController {
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.textLabel?.textColor = UIColor.white
                 cell.detailTextLabel?.textColor = UIColor.white
-                cell.backgroundColor = UIColor.flatRedColorDark()
+                cell.backgroundColor = UIColor.flatYellowDark
                 
                 let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
                 iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             else {
-                cell.textLabel?.textColor = UIColor.flatRedColorDark()
-                cell.detailTextLabel?.textColor = UIColor.flatRedColorDark()
-                cell.backgroundColor = UIColor.flatWhite()
+                cell.textLabel?.textColor = UIColor.flatYellowDark
+                cell.detailTextLabel?.textColor = UIColor.flatYellowDark
+                cell.backgroundColor = UIColor.flatWhite
                 
                 let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
-                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatRedColorDark())
+                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatYellowDark)
                 cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
             }
             return cell
@@ -240,18 +245,18 @@ class IncidentsTableViewController: UITableViewController {
             }
             else {
                 if ContrastColorOf(AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!, returnFlat: true) == FlatWhite() {
-                    cell.backgroundColor = UIColor.flatWhite()
+                    cell.backgroundColor = UIColor.flatWhite
                     cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
                     cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
                     labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
                     labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]?.cgColor
                 }
                 else {
-                    cell.backgroundColor = UIColor.flatWhite()
+                    cell.backgroundColor = UIColor.flatWhite
                     cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!.darken(byPercentage: 0.2)
                     cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!.darken(byPercentage: 0.2)
                     labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!.darken(byPercentage: 0.2)
-                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]?.darken(byPercentage: 0.2).cgColor
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]?.darken(byPercentage: 0.2)?.cgColor
                 }
                 
             }

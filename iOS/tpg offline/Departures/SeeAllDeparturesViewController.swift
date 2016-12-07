@@ -119,7 +119,7 @@ class SeeAllDeparturesViewController: UIViewController {
             self.departuresList = []
             
             if self.initialDeparturesList.isEmpty {
-                Alamofire.request("http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": self.stop.stopCode, "lineCode": self.line, "destinationCode": self.destinationCode]).responseJSON { response in
+                Alamofire.request("https://tpg.asmartcode.com/AllNextDepartures.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": self.stop.stopCode, "lineCode": self.line, "destinationCode": self.destinationCode]).responseJSON { response in
                     if let data = response.result.value {
                         let departs = JSON(data)
                         for (_, subjson) in departs["departures"] {
@@ -129,7 +129,7 @@ class SeeAllDeparturesViewController: UIViewController {
                                     direction: subjson["line"]["destinationName"].string!,
                                     destinationCode: subjson["line"]["destinationCode"].string!,
                                     lineColor: UIColor.white,
-                                    lineBackgroundColor: UIColor.flatGray(),
+                                    lineBackgroundColor: UIColor.flatGray,
                                     
                                     code: String(subjson["departureCode"].int ?? 0),
                                     leftTime: subjson["waitingTime"].string!,
@@ -171,6 +171,12 @@ class SeeAllDeparturesViewController: UIViewController {
                         })
                     }
                     else {
+                        #if DEBUG
+                            if let error = response.result.error {
+                                let alert = SCLAlertView()
+                                alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)")
+                            }
+                        #endif
                         let day = Calendar.current.dateComponents([.weekday], from: Date())
                         var path: URL
                         let dir: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!)
@@ -210,7 +216,7 @@ class SeeAllDeparturesViewController: UIViewController {
                                             direction: subJson["destination"].string!,
                                             destinationCode: subJson["line"]["destinationCode"].string!,
                                             lineColor: UIColor.white,
-                                            lineBackgroundColor: UIColor.flatGrayColorDark(),
+                                            lineBackgroundColor: UIColor.flatGrayDark,
                                             code: nil,
                                             leftTime: "0",
                                             timestamp: subJson["timestamp"].string!

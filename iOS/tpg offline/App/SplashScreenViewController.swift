@@ -12,6 +12,7 @@ import CoreLocation
 import Chameleon
 import Fabric
 import Crashlytics
+import Alamofire
 
 class SplashScreenViewController: UIViewController {
 
@@ -46,7 +47,7 @@ class SplashScreenViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "startTpgOffline" {
-                self.setUpTabBar(segue.destination as! UITabBarController)
+            self.setUpTabBar(segue.destination as! UITabBarController)
         }
     }
     
@@ -99,9 +100,6 @@ class SplashScreenViewController: UIViewController {
         if !self.defaults.bool(forKey: "tutorial") && !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
             tabBarController.selectedIndex = 4
         }
-        else if !self.defaults.bool(forKey: "version4") && !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
-            tabBarController.selectedIndex = 4
-        }
         else {
             tabBarController.selectedIndex = self.defaults.integer(forKey: "selectedTabBar")
         }
@@ -112,8 +110,14 @@ class SplashScreenViewController: UIViewController {
         let group = AsyncGroup()
         
         group.background {
-            let dataArrets = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
-            let arrets = JSON(data: dataArrets!)
+            let data: Data!
+            if let data2 = self.defaults.data(forKey: UserDefaultsKeys.stops.rawValue) {
+                data = data2
+            }
+            else {
+                data = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
+            }
+            let arrets = JSON(data: data)
             for (_, subJson) in arrets["stops"] {
                 AppValues.stopCodeToStopItem[subJson["stopCode"].string!] = subJson["stopName"].string!
                 AppValues.idTransportAPIToTpgStopName[Int(subJson["idTransportAPI"].stringValue)!] = subJson["stopName"].string!
@@ -170,18 +174,18 @@ class SplashScreenViewController: UIViewController {
             let dataCouleurs = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "colorLines", ofType: "json")!))
             let couleurs = JSON(data: dataCouleurs!)
             for (_, j) in couleurs["colors"] {
-                AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string, withAlpha: 1)
-                AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string, withAlpha: 1)
+                AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!, withAlpha: 1)
+                AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!, withAlpha: 1)
             }
         }
         
         
         group.background {
-            var decoded = self.defaults.object(forKey: "itinerairesFavoris")
+            var decoded = self.defaults.object(forKey: UserDefaultsKeys.favoritesRoutes.rawValue)
             if decoded == nil {
                 decoded = []
                 let encodedData = NSKeyedArchiver.archivedData(withRootObject: [])
-                self.defaults.set(encodedData, forKey: "itinerairesFavoris")
+                self.defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesRoutes.rawValue)
             }
             else {
                 let tempUnarchivedData = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [[Any]]
@@ -193,29 +197,29 @@ class SplashScreenViewController: UIViewController {
                     else {
                         AppValues.favoritesRoutes = []
                         let encodedData = NSKeyedArchiver.archivedData(withRootObject: [])
-                        self.defaults.set(encodedData, forKey: "itinerairesFavoris")
+                        self.defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesRoutes.rawValue)
                     }
                 }
                 else {
                     AppValues.favoritesRoutes = []
                     let encodedData = NSKeyedArchiver.archivedData(withRootObject: [])
-                    self.defaults.set(encodedData, forKey: "itinerairesFavoris")
+                    self.defaults.set(encodedData, forKey: UserDefaultsKeys.textColor.rawValue)
                 }
             }
             
             
-            if self.defaults.colorForKey("primaryColor") == nil {
-                self.defaults.setColor(AppValues.primaryColor, forKey: "primaryColor")
+            if self.defaults.colorForKey(UserDefaultsKeys.primaryColor.rawValue) == nil {
+                self.defaults.setColor(AppValues.primaryColor, forKey: UserDefaultsKeys.primaryColor.rawValue)
             }
             else {
-                AppValues.primaryColor = self.defaults.colorForKey("primaryColor")
+                AppValues.primaryColor = self.defaults.colorForKey(UserDefaultsKeys.primaryColor.rawValue)
             }
             
-            if self.defaults.colorForKey("textColor") == nil {
-                self.defaults.setColor(AppValues.textColor, forKey: "textColor")
+            if self.defaults.colorForKey(UserDefaultsKeys.textColor.rawValue) == nil {
+                self.defaults.setColor(AppValues.textColor, forKey: UserDefaultsKeys.textColor.rawValue)
             }
             else {
-                AppValues.textColor = self.defaults.colorForKey("textColor")
+                AppValues.textColor = self.defaults.colorForKey(UserDefaultsKeys.textColor.rawValue)
             }
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
@@ -226,7 +230,13 @@ class SplashScreenViewController: UIViewController {
             }
         }
         
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Project%20Requirements/stops.json", method: .get).responseData { (request) in
+            if request.result.isSuccess {
+                print("a")
+                self.defaults.set(request.data!, forKey: UserDefaultsKeys.stops.rawValue)
+            }
+        }
+        
         group.wait()
-        print("ok")
     }
 }
