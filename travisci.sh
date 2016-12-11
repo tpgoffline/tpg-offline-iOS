@@ -6,6 +6,8 @@ curl -OlL "https://github.com/Carthage/Carthage/releases/download/0.18.1/Carthag
 sudo installer -pkg "Carthage.pkg" -target /
 rm "Carthage.pkg"
 
+cd iOS
+
 carthage update
 
-xcodebuild -project "iOS/tpg offline.xcodeproj" -scheme "tpg offline Travis CI" -destination "platform=iOS Simulator,name=iPhone 7" test | xcpretty -c
+xcodebuild -project "tpg offline.xcodeproj" -scheme "tpg offline Travis CI" -destination "platform=iOS Simulator,name=iPhone 7" test | xcpretty -c
