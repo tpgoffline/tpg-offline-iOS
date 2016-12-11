@@ -39,7 +39,7 @@ class A:
 		for y, x in pbar:
 			pbar.set_description("Enregistrement de l'arret %s" % y)
 			file = open(path + y + "departsLUN.json", "w", encoding='utf8')
-			file.write(json.dumps(x, sort_keys=True, indent=4,  ensure_ascii=False))
+			file.write(json.dumps(x, sort_keys=True, indent=4, ensure_ascii=False))
 			file.close()
 a = A()
 attendre = True
@@ -49,7 +49,7 @@ parser.add_argument("-dw", "--dontwait", help="Ne pas attendre 4h17 pour enregis
 parser.add_argument("-p", "--path", help="Changer l'endroit d'enregistrement des départs")
 parser.add_argument("-d", "--day", help="Changer le jour")
 args = parser.parse_args()
-path = "Departs/"
+path = "Departures/"
 day = "LUN"
 if args.dontwait:
 	attendre = False
