@@ -2,7 +2,7 @@
 
 set -e
 
-curl -OlL "https://github.com/Carthage/Carthage/releases/download/0.9.4/Carthage.pkg"
+curl -OlL "https://github.com/Carthage/Carthage/releases/download/0.18.1/Carthage.pkg"
 sudo installer -pkg "Carthage.pkg" -target /
 rm "Carthage.pkg"
 
