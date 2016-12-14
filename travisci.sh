@@ -8,6 +8,7 @@ rm "Carthage.pkg"
 
 cd iOS
 
-carthage update
+carthage update --platform "iOS"
+carthage update --platform "watchOS"
 
 xcodebuild -project "tpg offline.xcodeproj" -scheme "tpg offline Travis CI" -destination "platform=iOS Simulator,name=iPhone 7" test | xcpretty -c
