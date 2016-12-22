@@ -101,7 +101,7 @@ class SplashScreenViewController: UIViewController {
             tabBarController.selectedIndex = self.defaults.integer(forKey: "selectedTabBar")
         }
         
-        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Departs/infos.json", method: .get).responseData { (request) in
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/infos.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
                 let json = JSON(data: request.data!)
                 if json["version"].intValue != self.defaults.integer(forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue) {

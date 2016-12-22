@@ -38,8 +38,8 @@ class SettingsTableViewController: UITableViewController {
             afficherTutoriel()
         } else if AppValues.needUpdateDepartures == true {
             let alertView = SCLAlertView()
-            alertView.addButton("Télécharger", target: self, selector: #selector(downloadDepartures))
-            alertView.showInfo("Actualisation des départs hors ligne", subTitle: "", closeButtonTitle: "Télécharger".localized)
+            alertView.addButton("Télécharger".localized, target: self, selector: #selector(downloadDepartures))
+            alertView.showInfo("Actualisation des départs hors ligne".localized, subTitle: "De nouveaux départs hors-ligne sont disponibles. Voulez-vous les télécharger ?".localized, closeButtonTitle: "Pas maintenant".localized)
         }
     }
     
@@ -140,6 +140,13 @@ class SettingsTableViewController: UITableViewController {
         content.completionText = "100%"
         VHUD.show(content)
         VHUD.updateProgress(0.0)
+        
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/infos.json", method: .get).responseData { (request) in
+            if request.result.isSuccess {
+                let json = JSON(data: request.data!)
+                UserDefaults.standard.set(json["version"].intValue, forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue)
+            }
+        }
         
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/listeDeparts.json", method: .get).validate().responseJSON { response in
             switch response.result {
