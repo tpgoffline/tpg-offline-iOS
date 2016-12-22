@@ -75,7 +75,7 @@ class RoutesTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if (indexPath as NSIndexPath).section == 0 {
+		if indexPath.section == 0 {
 			
 			if (row[indexPath.row][0] as! String) == "itineraryCell" {
 				let cell = tableView.dequeueReusableCell(withIdentifier: "itineraryCell", for: indexPath)
@@ -213,8 +213,8 @@ class RoutesTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		if (indexPath as NSIndexPath).section == 1 {
-			ActualRoutes.route = SearchRoute(departure: AppValues.favoritesRoutes[(indexPath as NSIndexPath).row][0], arrival: AppValues.favoritesRoutes[(indexPath as NSIndexPath).row][1])
+		if indexPath.section == 1 {
+			ActualRoutes.route = SearchRoute(departure: AppValues.favoritesRoutes[indexPath.row][0], arrival: AppValues.favoritesRoutes[indexPath.row][1])
 			performSegue(withIdentifier: "rechercherItineraire", sender: self)
 		}
 		else if (row[indexPath.row][0] as! String) == "itineraryCell" {
@@ -254,7 +254,7 @@ class RoutesTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		if (indexPath as NSIndexPath).section == 0 {
+		if indexPath.section == 0 {
 			return 44
 		}
 		else {

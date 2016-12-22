@@ -10,8 +10,6 @@ import UIKit
 import FontAwesomeKit
 import CoreLocation
 import Chameleon
-import Fabric
-import Crashlytics
 import Alamofire
 
 class SplashScreenViewController: UIViewController {
@@ -25,7 +23,6 @@ class SplashScreenViewController: UIViewController {
             print("Debug mode")
         #else
             print("Release mode")
-            Fabric.with([Crashlytics.self])
         #endif
         
         WatchSessionManager.sharedManager.startSession()
@@ -103,10 +100,19 @@ class SplashScreenViewController: UIViewController {
         else {
             tabBarController.selectedIndex = self.defaults.integer(forKey: "selectedTabBar")
         }
+        
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Departs/infos.json", method: .get).responseData { (request) in
+            if request.result.isSuccess {
+                let json = JSON(data: request.data!)
+                if json["version"].intValue != self.defaults.integer(forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue) {
+                    AppValues.needUpdateDepartures = true
+                    tabBarController.selectedIndex = 4
+                }
+            }
+        }
     }
     
     func getDefaults() {
-        
         let group = AsyncGroup()
         
         group.background {
@@ -236,6 +242,8 @@ class SplashScreenViewController: UIViewController {
                 self.defaults.set(request.data!, forKey: UserDefaultsKeys.stops.rawValue)
             }
         }
+        
+        
         
         group.wait()
     }

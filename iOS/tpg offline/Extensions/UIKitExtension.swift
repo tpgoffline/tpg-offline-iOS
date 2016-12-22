@@ -42,32 +42,34 @@ extension UIViewController {
         let iconeHorloge = FAKIonIcons.iosClockIcon(withSize: 20)!
         iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         var iconImage = iconeHorloge.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![0].image = iconImage
-        tabBarController!.tabBar.items![0].selectedImage = iconImage
-        
-        let iconeAttention = FAKFontAwesome.warningIcon(withSize: 20)!
-        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeAttention.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![1].image = iconImage
-        tabBarController!.tabBar.items![1].selectedImage = iconImage
-        
-        let iconeItineraire = FAKFontAwesome.mapSignsIcon(withSize: 20)!
-        iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeItineraire.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![2].image = iconImage
-        tabBarController!.tabBar.items![2].selectedImage = iconImage
-        
-        let iconePlan = FAKFontAwesome.mapIcon(withSize: 20)!
-        iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconePlan.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![3].image = iconImage
-        tabBarController!.tabBar.items![3].selectedImage = iconImage
-        
-        let iconeParametre = FAKFontAwesome.cogIcon(withSize: 20)!
-        iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![4].image = iconImage
-        tabBarController!.tabBar.items![4].selectedImage = iconImage
+        if self.tabBarController != nil {
+            tabBarController!.tabBar.items![0].image = iconImage
+            tabBarController!.tabBar.items![0].selectedImage = iconImage
+            
+            let iconeAttention = FAKFontAwesome.warningIcon(withSize: 20)!
+            iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+            iconImage = iconeAttention.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+            tabBarController!.tabBar.items![1].image = iconImage
+            tabBarController!.tabBar.items![1].selectedImage = iconImage
+            
+            let iconeItineraire = FAKFontAwesome.mapSignsIcon(withSize: 20)!
+            iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+            iconImage = iconeItineraire.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+            tabBarController!.tabBar.items![2].image = iconImage
+            tabBarController!.tabBar.items![2].selectedImage = iconImage
+            
+            let iconePlan = FAKFontAwesome.mapIcon(withSize: 20)!
+            iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+            iconImage = iconePlan.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+            tabBarController!.tabBar.items![3].image = iconImage
+            tabBarController!.tabBar.items![3].selectedImage = iconImage
+            
+            let iconeParametre = FAKFontAwesome.cogIcon(withSize: 20)!
+            iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+            iconImage = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+            tabBarController!.tabBar.items![4].image = iconImage
+            tabBarController!.tabBar.items![4].selectedImage = iconImage
+        }
     }
 }
 
@@ -77,13 +79,5 @@ extension UITableViewController {
         
         tableView.backgroundColor = AppValues.primaryColor
         tableView.reloadData()
-    }
-}
-
-extension UIColor {
-    var inverted: UIColor {
-        var r: CGFloat = 0.0, g: CGFloat = 0.0, b: CGFloat = 0.0, a: CGFloat = 0.0
-        UIColor.red.getRed(&r, green: &g, blue: &b, alpha: &a)
-        return UIColor(red: (1 - r), green: (1 - g), blue: (1 - b), alpha: a) // Assuming you want the same alpha value.
     }
 }

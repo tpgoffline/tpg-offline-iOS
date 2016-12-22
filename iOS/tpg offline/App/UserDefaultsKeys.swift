@@ -18,4 +18,6 @@ enum UserDefaultsKeys: String {
     case stops = "stops"
     case primaryColor = "primaryColor"
     case textColor = "textColor"
+    case APN_Activated = "APN_Activated"
+    case offlineDeparturesVersion = "offlineDeparturesVersion"
 }

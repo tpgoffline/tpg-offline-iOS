@@ -10,7 +10,6 @@ import UIKit
 import Chameleon
 import FontAwesomeKit
 import UserNotifications
-import Crashlytics
 
 class RouteDetailTableViewController: UITableViewController {
     
@@ -74,23 +73,23 @@ class RouteDetailTableViewController: UITableViewController {
         
         var couleurTexte = UIColor.white
         
-        if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].transportCategory != .walk {
+        if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].transportCategory != .walk {
             
-            if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].isSBB {
-                cell.lineLabel.text = "Train ".localized + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
+            if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].isSBB {
+                cell.lineLabel.text = "Train ".localized + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
             } else {
-                cell.lineLabel.text = "Ligne ".localized + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
+                cell.lineLabel.text = "Ligne ".localized + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
             }
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
                 
-                if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].isTpg {
-                    cell.backgroundColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]
-                    couleurTexte = AppValues.linesColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
+                if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].isTpg {
+                    cell.backgroundColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]
+                    couleurTexte = AppValues.linesColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
                     
                     let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                    labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
+                    labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
                     labelPictoLigne.textAlignment = .center
                     labelPictoLigne.textColor = couleurTexte
                     labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
@@ -105,37 +104,37 @@ class RouteDetailTableViewController: UITableViewController {
                     cell.iconImageView.image = image
                 }
                 else {
-                    cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].getImageofType(42, color: UIColor.white)
+                    cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getImageofType(42, color: UIColor.white)
                     for x in cell.iconImageView.constraints {
                         if x.identifier == "iconeImageViewHeight" {
                             x.constant = 42
                         }
                     }
                 }
-                let attributedString = NSMutableAttributedString(attributedString: ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].getAttributedStringofType(24, color: UIColor.white))
-                attributedString.append(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].direction))
+                let attributedString = NSMutableAttributedString(attributedString: ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getAttributedStringofType(24, color: UIColor.white))
+                attributedString.append(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].direction))
                 cell.directionLabel.attributedText = attributedString
             }
             else {
                 couleurTexte = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
                 cell.backgroundColor = UIColor.white
                 
-                if ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].isTpg {
+                if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].isTpg {
                     
                     cell.backgroundColor = UIColor.white
                     
                     let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-                    labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line
+                    labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
                     labelPictoLigne.textAlignment = .center
-                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
                     labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!.cgColor
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!.cgColor
                     labelPictoLigne.layer.borderWidth = 1
                     
-                    couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
+                    couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
                     
-                    if ContrastColorOf(AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!, returnFlat: true) == FlatWhite() {
-                        couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].line]!
+                    if ContrastColorOf(AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!, returnFlat: true) == FlatWhite() {
+                        couleurTexte = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
                     }
                     else {
                         couleurTexte = couleurTexte.darken(byPercentage: 0.2)!
@@ -152,10 +151,10 @@ class RouteDetailTableViewController: UITableViewController {
                     }
                 }
                 else {
-                    cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].getImageofType(42, color: couleurTexte)
+                    cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getImageofType(42, color: couleurTexte)
                 }
-                let attributedString = NSMutableAttributedString(attributedString: ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].getAttributedStringofType(24, color: couleurTexte))
-                attributedString.append(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].direction))
+                let attributedString = NSMutableAttributedString(attributedString: ActualRoutes.routeResult[actualRoute].connections[indexPath.row].getAttributedStringofType(24, color: couleurTexte))
+                attributedString.append(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].direction))
                 cell.directionLabel.attributedText = attributedString
             }
         }
@@ -173,7 +172,7 @@ class RouteDetailTableViewController: UITableViewController {
             
             cell.iconImageView.image = icone.image(with: CGSize(width: 42, height: 42))
             cell.lineLabel.text = "Marche".localized
-            cell.directionLabel.text = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].direction
+            cell.directionLabel.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].direction
             
         }
         
@@ -190,10 +189,10 @@ class RouteDetailTableViewController: UITableViewController {
         attributedString.append(NSAttributedString(string: " " + ActualRoutes.routeResult[actualRoute].connections[indexPath.row].from))
         cell.departureLabel.attributedText = attributedString
         
-        var timestamp = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].departureTimestamp
+        var timestamp = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].departureTimestamp
         cell.hourDepartureLabel.text = DateFormatter.localizedString(from: Date(timeIntervalSince1970: Double(timestamp)), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
         
-        timestamp = ActualRoutes.routeResult[actualRoute].connections[(indexPath as NSIndexPath).row].arrivalTimestamp
+        timestamp = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].arrivalTimestamp
         cell.hourArrivalLabel.text = DateFormatter.localizedString(from: Date(timeIntervalSince1970: Double(timestamp)), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
         
         icone2 = FAKIonIcons.logInIcon(withSize: 21)!
@@ -298,7 +297,6 @@ class RouteDetailTableViewController: UITableViewController {
                                 okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
                             }
                         } else {
-                            Crashlytics.sharedInstance().recordError(error!)
                             SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30)
                         }
                     })
@@ -351,7 +349,7 @@ class RouteDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].departureTimestamp)).timeIntervalSince(Date())
+        let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].departureTimestamp)).timeIntervalSince(Date())
         let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
             let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
@@ -362,16 +360,16 @@ class RouteDetailTableViewController: UITableViewController {
             }
             else {
                 alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
-                    self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                    self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
                 })
                 if time > 60 * 5 {
                     alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
                     })
                 }
                 if time > 60 * 10 {
                     alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
                     })
                 }
                 alertView.addButton("Autre", action: { () -> Void in
@@ -387,7 +385,7 @@ class RouteDetailTableViewController: UITableViewController {
                             
                         }
                         else {
-                            self.scheduleNotification(Date(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[(indexPath as NSIndexPath).row].to)
+                            self.scheduleNotification(Date(timeIntervalSinceNow: time), before: Int(txt.text!)!, ligne: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].line, direction: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].direction, arretDescente: ActualRoutes.routeResult[self.actualRoute].connections[indexPath.row].to)
                             customValueAlert.hideView()
                         }
                     })

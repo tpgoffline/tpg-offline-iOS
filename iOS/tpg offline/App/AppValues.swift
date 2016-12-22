@@ -22,6 +22,7 @@ struct AppValues {
     static var stopsKeys: [String] = []
     static var linesBackgroundColor = [String:UIColor]()
     static var linesColor = [String:UIColor]()
+    static var needUpdateDepartures: Bool = false
     
     static func testTimeExecution(_ title: String!, block: () -> ()) {
         // Thanks to @kristopherjohnson GitHub user.

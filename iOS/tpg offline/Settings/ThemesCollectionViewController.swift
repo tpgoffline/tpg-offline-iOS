@@ -61,9 +61,9 @@ class ThemesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemeCollectionViewCell
     
-        cell.primaryColorView.backgroundColor = themes[keys[(indexPath as NSIndexPath).row]]![0]
-        cell.textColorLabel.textColor = themes[keys[(indexPath as NSIndexPath).row]]![1]
-        cell.textColorLabel.text = keys[(indexPath as NSIndexPath).row]
+        cell.primaryColorView.backgroundColor = themes[keys[indexPath.row]]![0]
+        cell.textColorLabel.textColor = themes[keys[indexPath.row]]![1]
+        cell.textColorLabel.text = keys[indexPath.row]
     
         return cell
     }
@@ -75,8 +75,8 @@ class ThemesCollectionViewController: UICollectionViewController {
 	}
 	
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        AppValues.primaryColor = themes[keys[(indexPath as NSIndexPath).row]]![0]
-        AppValues.textColor = themes[keys[(indexPath as NSIndexPath).row]]![1]
+        AppValues.primaryColor = themes[keys[indexPath.row]]![0]
+        AppValues.textColor = themes[keys[indexPath.row]]![1]
         refreshTheme()
         collectionView.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
 		

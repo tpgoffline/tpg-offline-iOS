@@ -57,8 +57,8 @@ class CreditsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "creditsCell", for: indexPath)
 
-        cell.textLabel?.text = creditsList[(indexPath as NSIndexPath).row][0]
-        cell.detailTextLabel?.text = creditsList[(indexPath as NSIndexPath).row][1]
+        cell.textLabel?.text = creditsList[indexPath.row][0]
+        cell.detailTextLabel?.text = creditsList[indexPath.row][1]
         cell.textLabel?.textColor = AppValues.textColor
         cell.detailTextLabel?.textColor = AppValues.textColor
         cell.backgroundColor = AppValues.primaryColor
@@ -71,7 +71,7 @@ class CreditsTableViewController: UITableViewController {
     }
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let safariViewController = SFSafariViewController(url: URL(string: creditsList[(tableView.indexPathForSelectedRow! as NSIndexPath).row][2])!, entersReaderIfAvailable: true)
+            let safariViewController = SFSafariViewController(url: URL(string: creditsList[tableView.indexPathForSelectedRow!.row][2])!, entersReaderIfAvailable: true)
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 safariViewController.view.tintColor = AppValues.primaryColor
             }

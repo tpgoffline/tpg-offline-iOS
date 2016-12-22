@@ -12,7 +12,6 @@ import Alamofire
 import WatchConnectivity
 import FontAwesomeKit
 import UserNotifications
-import Crashlytics
 
 class DeparturesTableViewController: UITableViewController {
     var stop: Stop? = nil
@@ -44,6 +43,10 @@ class DeparturesTableViewController: UITableViewController {
         title = stop?.fullName
         
         tableView.backgroundColor = AppValues.primaryColor
+        
+        if(traitCollection.forceTouchCapability == .available){
+            registerForPreviewing(with: self, sourceView: view)
+        }
         
         refresh()
     }
@@ -183,7 +186,7 @@ class DeparturesTableViewController: UITableViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "showLigne" && departuresList[(tableView.indexPathForSelectedRow! as NSIndexPath).row].leftTime == "no more") {
+        if (identifier == "showLigne" && departuresList[tableView.indexPathForSelectedRow!.row].leftTime == "no more") {
             return false
         }
         else {
@@ -246,7 +249,6 @@ class DeparturesTableViewController: UITableViewController {
                                 okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
                             }
                         } else {
-                            Crashlytics.sharedInstance().recordError(error!)
                             SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30)
                         }
                     })
@@ -306,15 +308,15 @@ class DeparturesTableViewController: UITableViewController {
         }
         else if segue.identifier == "showLigne" {
             let voirLigneTableViewController: ThermometerTableViewController = (segue.destination) as! ThermometerTableViewController
-            voirLigneTableViewController.departure = departuresList[((tableView.indexPathForSelectedRow as NSIndexPath?)?.row)!]
+            voirLigneTableViewController.departure = departuresList[(tableView.indexPathForSelectedRow?.row)!]
         }
         else if segue.identifier == "showAllDepartures" {
             let indexPath = sender as! IndexPath
             let voirTousLesDepartsViewController: SeeAllDeparturesViewController = (segue.destination) as! SeeAllDeparturesViewController
             voirTousLesDepartsViewController.stop = self.stop!
-            voirTousLesDepartsViewController.line = self.departuresList[(indexPath as NSIndexPath).row].line
-            voirTousLesDepartsViewController.direction = self.departuresList[(indexPath as NSIndexPath).row].direction
-            voirTousLesDepartsViewController.destinationCode = self.departuresList[(indexPath as NSIndexPath).row].destinationCode
+            voirTousLesDepartsViewController.line = self.departuresList[indexPath.row].line
+            voirTousLesDepartsViewController.direction = self.departuresList[indexPath.row].direction
+            voirTousLesDepartsViewController.destinationCode = self.departuresList[indexPath.row].destinationCode
         }
     }
     
@@ -387,7 +389,7 @@ class DeparturesTableViewController: UITableViewController {
                         break
                     default:
                         path = dir.appendingPathComponent(self.stop!.stopCode + "departsLUN.json");
-        
+                        
                         break
                     }
                     
@@ -506,13 +508,13 @@ extension DeparturesTableViewController {
         else if offline && notDownloaded {
             return 60
         }
-        else if offline && (indexPath as NSIndexPath).section == 0 {
+        else if offline && indexPath.section == 0 {
             return 60
         }
-        else if offline && (indexPath as NSIndexPath).section == 1 && noMoreTransport {
+        else if offline && indexPath.section == 1 && noMoreTransport {
             return 60
         }
-        else if !offline && (indexPath as NSIndexPath).section == 0 && noMoreTransport {
+        else if !offline && indexPath.section == 0 && noMoreTransport {
             return 60
         }
         return 44
@@ -524,22 +526,22 @@ extension DeparturesTableViewController {
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
             icone.image(with: CGSize(width: 20, height: 20))
             let alertView = SCLAlertView()
-            if self.departuresList[(indexPath as NSIndexPath).row].leftTime == "0" {
+            if self.departuresList[indexPath.row].leftTime == "0" {
                 alertView.showWarning("Le bus arrive".localized, subTitle: "Dépêchez vous, vous allez le rater !".localized, closeButtonTitle: "OK".localized, duration: 10)
             }
             else {
                 alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
-                    self.scheduleNotification(self.departuresList[(indexPath as NSIndexPath).row].timestamp, before: 0, line: self.departuresList[(indexPath as NSIndexPath).row].line, direction: self.departuresList[(indexPath as NSIndexPath).row].direction)
+                    self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: 0, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
                     
                 })
-                if Int(self.departuresList[(indexPath as NSIndexPath).row].leftTime)! > 5 {
+                if Int(self.departuresList[indexPath.row].leftTime)! > 5 {
                     alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(self.departuresList[(indexPath as NSIndexPath).row].timestamp, before: 5, line: self.departuresList[(indexPath as NSIndexPath).row].line, direction: self.departuresList[(indexPath as NSIndexPath).row].direction)
+                        self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: 5, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
                     })
                 }
-                if Int(self.departuresList[(indexPath as NSIndexPath).row].leftTime)! > 10 {
+                if Int(self.departuresList[indexPath.row].leftTime)! > 10 {
                     alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(self.departuresList[(indexPath as NSIndexPath).row].timestamp, before: 10, line: self.departuresList[(indexPath as NSIndexPath).row].line, direction: self.departuresList[(indexPath as NSIndexPath).row].direction)
+                        self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: 10, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
                     })
                 }
                 alertView.addButton("Autre".localized, action: { () -> Void in
@@ -549,13 +551,13 @@ extension DeparturesTableViewController {
                     txt.keyboardType = .numberPad
                     txt.becomeFirstResponder()
                     customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
-                        if Int(self.departuresList[(indexPath as NSIndexPath).row].leftTime)! < Int(txt.text!)! {
+                        if Int(self.departuresList[indexPath.row].leftTime)! < Int(txt.text!)! {
                             customValueAlert.hideView()
                             SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK".localized, duration: 10)
                             
                         }
                         else {
-                            self.scheduleNotification(self.departuresList[(indexPath as NSIndexPath).row].timestamp, before: Int(txt.text!)!, line: self.departuresList[(indexPath as NSIndexPath).row].line, direction: self.departuresList[(indexPath as NSIndexPath).row].direction)
+                            self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: Int(txt.text!)!, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
                             customValueAlert.hideView()
                         }
                     })
@@ -584,16 +586,16 @@ extension DeparturesTableViewController {
         else if offline && notDownloaded {
             return false
         }
-        else if offline && (indexPath as NSIndexPath).section == 0 {
+        else if offline && indexPath.section == 0 {
             return false
         }
-        else if offline && (indexPath as NSIndexPath).section == 1 && noMoreTransport {
+        else if offline && indexPath.section == 1 && noMoreTransport {
             return false
         }
-        else if !offline && (indexPath as NSIndexPath).section == 0 && noMoreTransport {
+        else if !offline && indexPath.section == 0 && noMoreTransport {
             return false
         }
-        else if departuresList[(indexPath as NSIndexPath).row].leftTime == "no more" {
+        else if departuresList[indexPath.row].leftTime == "no more" {
             return false
         }
         return true
@@ -625,7 +627,7 @@ extension DeparturesTableViewController {
             
             return cell
         }
-        else if (indexPath as NSIndexPath).section == 0 && offline {
+        else if indexPath.section == 0 && offline {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
             
             cell.backgroundColor = AppValues.primaryColor
@@ -639,7 +641,7 @@ extension DeparturesTableViewController {
             cell.accessoryView = nil
             return cell
         }
-        else if offline && notDownloaded && (indexPath as NSIndexPath).section == 1 {
+        else if offline && notDownloaded && indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
             
             cell.backgroundColor = AppValues.primaryColor
@@ -653,7 +655,7 @@ extension DeparturesTableViewController {
             cell.accessoryView = nil
             return cell
         }
-        else if offline && (indexPath as NSIndexPath).section == 1 && noMoreTransport {
+        else if offline && indexPath.section == 1 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
             
             cell.backgroundColor = AppValues.primaryColor
@@ -667,7 +669,7 @@ extension DeparturesTableViewController {
             cell.accessoryView = nil
             return cell
         }
-        else if !offline && (indexPath as NSIndexPath).section == 0 && noMoreTransport {
+        else if !offline && indexPath.section == 0 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
             
             cell.backgroundColor = AppValues.primaryColor
@@ -687,19 +689,19 @@ extension DeparturesTableViewController {
             var lineColor = AppValues.textColor
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                lineColor = departuresList[(indexPath as NSIndexPath).row].lineColor
+                lineColor = departuresList[indexPath.row].lineColor
             }
             else {
-                if ContrastColorOf(departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
-                    lineColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
+                if ContrastColorOf(departuresList[indexPath.row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
+                    lineColor = departuresList[indexPath.row].lineBackgroundColor
                 }
                 else {
-                    lineColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor.darken(byPercentage: 0.2)
+                    lineColor = departuresList[indexPath.row].lineBackgroundColor.darken(byPercentage: 0.2)
                 }
             }
             
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-            labelPictoLigne.text = departuresList[(indexPath as NSIndexPath).row].line
+            labelPictoLigne.text = departuresList[indexPath.row].line
             labelPictoLigne.textAlignment = .center
             labelPictoLigne.textColor = lineColor
             labelPictoLigne.layer.borderColor = lineColor!.cgColor
@@ -707,10 +709,10 @@ extension DeparturesTableViewController {
             labelPictoLigne.layer.borderWidth = 1
             let image = labelToImage(labelPictoLigne)
             cell.linePictogram.image = image
-            cell.directionLabel.text = departuresList[(indexPath as NSIndexPath).row].direction
+            cell.directionLabel.text = departuresList[indexPath.row].direction
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.backgroundColor = departuresList[(indexPath as NSIndexPath).row].lineBackgroundColor
+                cell.backgroundColor = departuresList[indexPath.row].lineBackgroundColor
             }
             else {
                 cell.backgroundColor = UIColor.flatWhite
@@ -722,20 +724,20 @@ extension DeparturesTableViewController {
             if offline {
                 cell.accessoryView = UIImageView(image: nil)
                 
-                if (Int(departuresList[(indexPath as NSIndexPath).row].leftTime)! >= 60) {
+                if (Int(departuresList[indexPath.row].leftTime)! >= 60) {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-                    let time = dateFormatter.date(from: self.departuresList[(indexPath as NSIndexPath).row].timestamp)
+                    let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
                     
                     cell.leftTimeLabel.text = DateFormatter.localizedString(from: time!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
                 }
-                else if (departuresList[(indexPath as NSIndexPath).row].leftTime == "0") {
+                else if (departuresList[indexPath.row].leftTime == "0") {
                     let iconeBus = FAKFontAwesome.busIcon(withSize: 20)!
                     iconeBus.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = iconeBus.attributedString()
                 }
                 else {
-                    cell.leftTimeLabel.text = departuresList[(indexPath as NSIndexPath).row].leftTime + "'"
+                    cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
                 }
             }
             else {
@@ -743,29 +745,64 @@ extension DeparturesTableViewController {
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
                 
-                if (departuresList[(indexPath as NSIndexPath).row].leftTime == "no more") {
+                if (departuresList[indexPath.row].leftTime == "no more") {
                     cell.accessoryView = UIImageView(image: nil)
                     let iconTimes = FAKFontAwesome.timesIcon(withSize: 20)!
                     iconTimes.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = iconTimes.attributedString()
                 }
-                else if (departuresList[(indexPath as NSIndexPath).row].leftTime == "&gt;1h") {
+                else if (departuresList[indexPath.row].leftTime == "&gt;1h") {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-                    let time = dateFormatter.date(from: self.departuresList[(indexPath as NSIndexPath).row].timestamp)
+                    let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
                     cell.leftTimeLabel.text = DateFormatter.localizedString(from: time!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
                 }
-                else if (departuresList[(indexPath as NSIndexPath).row].leftTime == "0") {
+                else if (departuresList[indexPath.row].leftTime == "0") {
                     let busIcon = FAKFontAwesome.busIcon(withSize: 20)!
                     busIcon.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = busIcon.attributedString()
                 }
                 else {
-                    cell.leftTimeLabel.text = departuresList[(indexPath as NSIndexPath).row].leftTime + "'"
+                    cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
                 }
             }
             
             return cell
         }
+    }
+}
+
+extension DeparturesTableViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
+        
+        if loading == true {
+            return nil
+        }
+        else if indexPath.section == 0 && offline {
+            return nil
+        }
+        else if offline && notDownloaded && indexPath.section == 1 {
+            return nil
+        }
+        else if offline && indexPath.section == 1 && noMoreTransport {
+            return nil
+        }
+        else if !offline && indexPath.section == 0 && noMoreTransport {
+            return nil
+        }
+        
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "thermometerTableViewController") as? ThermometerTableViewController else { return nil }
+        
+        detailVC.departure = departuresList[indexPath.row]
+        previewingContext.sourceRect = cell.frame
+        return detailVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
     }
 }

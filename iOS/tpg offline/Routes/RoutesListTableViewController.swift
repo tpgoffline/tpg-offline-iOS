@@ -10,7 +10,6 @@ import UIKit
 import Chameleon
 import Alamofire
 import FontAwesomeKit
-import Crashlytics
 import UserNotifications
 
 class RoutesListTableViewController: UITableViewController {
@@ -29,6 +28,10 @@ class RoutesListTableViewController: UITableViewController {
         if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
             loading = true
             refresh()
+        }
+        
+        if(traitCollection.forceTouchCapability == .available){
+            registerForPreviewing(with: self, sourceView: view)
         }
     }
     
@@ -299,11 +302,11 @@ class RoutesListTableViewController: UITableViewController {
             cell.durationLabel.attributedText = attributedString
             cell.durationLabel.textColor = AppValues.textColor
             
-            var timestamp = ActualRoutes.routeResult[(indexPath as NSIndexPath).row].departureTimestamp
+            var timestamp = ActualRoutes.routeResult[indexPath.row].departureTimestamp
             cell.hourDepartureLabel.text = DateFormatter.localizedString(from: Date(timeIntervalSince1970: Double(timestamp!)), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
             cell.hourDepartureLabel.textColor = AppValues.textColor
             
-            timestamp = ActualRoutes.routeResult[(indexPath as NSIndexPath).row].arrivalTimestamp
+            timestamp = ActualRoutes.routeResult[indexPath.row].arrivalTimestamp
             cell.hourArrivalLabel.text = DateFormatter.localizedString(from: Date(timeIntervalSince1970: Double(timestamp!)), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
             cell.hourArrivalLabel.textColor = AppValues.textColor
             
@@ -416,7 +419,6 @@ class RoutesListTableViewController: UITableViewController {
                                 okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
                             }
                         } else {
-                            Crashlytics.sharedInstance().recordError(error!)
                             SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30)
                         }
                     })
@@ -469,7 +471,7 @@ class RoutesListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[(indexPath as NSIndexPath).row].departureTimestamp)).timeIntervalSince(Date())
+        let time = Date(timeIntervalSince1970: Double(ActualRoutes.routeResult[indexPath.row].departureTimestamp)).timeIntervalSince(Date())
         let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
             let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
             icone.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
@@ -480,17 +482,17 @@ class RoutesListTableViewController: UITableViewController {
             }
             else {
                 alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
-                    self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, line: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].line, direction: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].to)
+                    self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 0, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                     
                 })
                 if time > 60 * 5 {
                     alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, line: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].line, direction: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].to)
+                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 5, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                     })
                 }
                 if time > 60 * 10 {
                     alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, line: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].line, direction: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].to)
+                        self.scheduleNotification(Date(timeIntervalSinceNow: time), before: 10, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                     })
                 }
                 alertView.addButton("Autre", action: { () -> Void in
@@ -506,7 +508,7 @@ class RoutesListTableViewController: UITableViewController {
                             
                         }
                         else {
-                            self.scheduleNotification(Date(timeIntervalSinceNow: time), before: Int(txt.text!)!, line: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].line, direction: ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[(indexPath as NSIndexPath).row].connections[0].to)
+                            self.scheduleNotification(Date(timeIntervalSinceNow: time), before: Int(txt.text!)!, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
                             customValueAlert.hideView()
                         }
                     })
@@ -531,5 +533,25 @@ class RoutesListTableViewController: UITableViewController {
         else {
             return true
         }
+    }
+}
+
+extension RoutesListTableViewController : UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
+        
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "routeDetailTableViewController") as? RouteDetailTableViewController else { return nil }
+        
+        detailVC.actualRoute = indexPath.row
+        
+        previewingContext.sourceRect = cell.frame
+        return detailVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
     }
 }

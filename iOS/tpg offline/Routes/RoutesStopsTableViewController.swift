@@ -173,7 +173,7 @@ class RoutesStopsTableViewController: UITableViewController {
             cell.textLabel?.textColor = AppValues.textColor
             cell.detailTextLabel?.textColor = AppValues.textColor
             
-            if (indexPath as NSIndexPath).section == 0 {
+            if indexPath.section == 0 {
                 if localisationLoading {
                     let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
@@ -186,22 +186,22 @@ class RoutesStopsTableViewController: UITableViewController {
                     let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.accessoryView = UIImageView(image: iconLocation.image(with: CGSize(width: 20, height: 20)))
-                    cell.textLabel?.text = localisationStops[(indexPath as NSIndexPath).row].fullName
-                    cell.detailTextLabel!.text = "~" + String(Int(localisationStops[(indexPath as NSIndexPath).row].distance!)) + "m"
+                    cell.textLabel?.text = localisationStops[indexPath.row].fullName
+                    cell.detailTextLabel!.text = "~" + String(Int(localisationStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
             }
-            else if (indexPath as NSIndexPath).section == 1 {
+            else if indexPath.section == 1 {
                 let iconFavoris = FAKFontAwesome.starIcon(withSize: 20)!
                 iconFavoris.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconFavoris.image(with: CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[(indexPath as NSIndexPath).row]]?.title
-                cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[(indexPath as NSIndexPath).row]]?.subTitle
+                cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.title
+                cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
             }
             else {
                 let iconCircle: FAKFontAwesome
-                let stop = AppValues.stops[AppValues.stopsKeys[(indexPath as NSIndexPath).row]]!
+                let stop = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!
                 if (departure == true) {
                     if ActualRoutes.route.departure?.stopCode != stop.stopCode {
                         iconCircle = FAKFontAwesome.circleOIcon(withSize: 20)
@@ -229,7 +229,7 @@ class RoutesStopsTableViewController: UITableViewController {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
             let iconCircle: FAKFontAwesome
-            let stop = filtredResults[(indexPath as NSIndexPath).row]
+            let stop = filtredResults[indexPath.row]
             
             let backgroundView = UIView()
             backgroundView.backgroundColor = AppValues.primaryColor
@@ -263,19 +263,19 @@ class RoutesStopsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var arret: Stop? = nil
         if searchController.isActive {
-            arret = filtredResults[(indexPath as NSIndexPath).row]
+            arret = filtredResults[indexPath.row]
         }
         else {
-            if (indexPath as NSIndexPath).section == 0 {
+            if indexPath.section == 0 {
                 if !localisationLoading {
-                    arret = localisationStops[(indexPath as NSIndexPath).row]
+                    arret = localisationStops[indexPath.row]
                 }
             }
-            else if (indexPath as NSIndexPath).section == 1 {
-                arret = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[(indexPath as NSIndexPath).row]]
+            else if indexPath.section == 1 {
+                arret = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
             }
             else {
-                arret = AppValues.stops[AppValues.stopsKeys[(indexPath as NSIndexPath).row]]!
+                arret = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!
             }
         }
         if arret != nil {

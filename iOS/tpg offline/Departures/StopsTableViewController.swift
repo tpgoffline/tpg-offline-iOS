@@ -220,7 +220,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if !searchController.isActive {
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
-            if (indexPath as NSIndexPath).section == 0 {
+            if indexPath.section == 0 {
                 if localisationLoading {
                     let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
@@ -233,25 +233,25 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                     let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.accessoryView = UIImageView(image: iconLocation.image(with: CGSize(width: 20, height: 20)))
-                    cell.textLabel?.text = localizedStops[(indexPath as NSIndexPath).row].fullName
-                    cell.detailTextLabel!.text = "~" + String(Int(localizedStops[(indexPath as NSIndexPath).row].distance!)) + "m"
+                    cell.textLabel?.text = localizedStops[indexPath.row].fullName
+                    cell.detailTextLabel!.text = "~" + String(Int(localizedStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
             }
-            else if (indexPath as NSIndexPath).section == 1 {
+            else if indexPath.section == 1 {
                 let iconFavoris = FAKFontAwesome.starIcon(withSize: 20)!
                 iconFavoris.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconFavoris.image(with: CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[(indexPath as NSIndexPath).row]]?.title
-                cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[(indexPath as NSIndexPath).row]]?.subTitle
+                cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.title
+                cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
             }
             else {
                 let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 15)!
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
-                cell.textLabel?.text = AppValues.stops[AppValues.stopsKeys[(indexPath as NSIndexPath).row]]!.title
-                cell.detailTextLabel!.text = AppValues.stops[AppValues.stopsKeys[(indexPath as NSIndexPath).row]]!.subTitle
+                cell.textLabel?.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.title
+                cell.detailTextLabel!.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.subTitle
                 cell.imageView?.image = nil
             }
             
@@ -273,9 +273,9 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             let backgroundView = UIView()
             backgroundView.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = backgroundView
-            cell.textLabel?.text = filtredResults[(indexPath as NSIndexPath).row].title
+            cell.textLabel?.text = filtredResults[indexPath.row].title
             cell.textLabel?.textColor = AppValues.textColor
-            cell.detailTextLabel!.text = filtredResults[(indexPath as NSIndexPath).row].subTitle
+            cell.detailTextLabel!.text = filtredResults[indexPath.row].subTitle
             cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
             cell.backgroundColor = AppValues.primaryColor
             cell.imageView?.image = nil
@@ -290,17 +290,17 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             let nav = segue.destination as! UINavigationController
             let departsArretsViewController = nav.viewControllers[0] as! DeparturesTableViewController
             if searchController.isActive {
-                departsArretsViewController.stop = filtredResults[((tableView.indexPathForSelectedRow as NSIndexPath?)?.row)!]
+                departsArretsViewController.stop = filtredResults[(tableView.indexPathForSelectedRow?.row)!]
             }
             else {
                 if (tableView.indexPathForSelectedRow! as IndexPath).section == 0 {
-                    departsArretsViewController.stop = localizedStops[(tableView.indexPathForSelectedRow! as NSIndexPath).row]
+                    departsArretsViewController.stop = localizedStops[tableView.indexPathForSelectedRow!.row]
                 }
                 else if (tableView.indexPathForSelectedRow! as IndexPath).section == 1 {
-                    departsArretsViewController.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[(tableView.indexPathForSelectedRow! as NSIndexPath).row]]
+                    departsArretsViewController.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[tableView.indexPathForSelectedRow!.row]]
                 }
                 else {
-                    departsArretsViewController.stop = AppValues.stops[AppValues.stopsKeys[((tableView.indexPathForSelectedRow as NSIndexPath?)?.row)!]]
+                    departsArretsViewController.stop = AppValues.stops[AppValues.stopsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                 }
             }
         }
@@ -355,24 +355,24 @@ extension StopsTableViewController: UIViewControllerPreviewingDelegate {
         
         guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
         
-        if (tableView.indexPathForSelectedRow! as IndexPath).section == 0 && localisationLoading && !searchController.isActive {
+        if indexPath.section == 0 && localisationLoading && !searchController.isActive {
             return nil
         }
         
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "departsArretTableViewController") as? DeparturesTableViewController else { return nil }
         
         if searchController.isActive {
-            detailVC.stop = filtredResults[(indexPath as NSIndexPath).row]
+            detailVC.stop = filtredResults[indexPath.row]
         }
         else {
-            if (indexPath as NSIndexPath).section == 0 {
-                detailVC.stop = localizedStops[(indexPath as NSIndexPath).row]
+            if indexPath.section == 0 {
+                detailVC.stop = localizedStops[indexPath.row]
             }
-            else if (indexPath as NSIndexPath).section == 1 {
-                detailVC.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[(indexPath as NSIndexPath).row]]
+            else if indexPath.section == 1 {
+                detailVC.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
             }
             else {
-                detailVC.stop = AppValues.stops[AppValues.stopsKeys[(indexPath as NSIndexPath).row]]
+                detailVC.stop = AppValues.stops[AppValues.stopsKeys[indexPath.row]]
             }
         }
         previewingContext.sourceRect = cell.frame

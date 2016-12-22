@@ -42,10 +42,10 @@ class SelectDefaultTabBarItem: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "choixTabDefaultCell", for: indexPath)
 
-        cell.imageView?.image = tabBarController!.tabBar.items![(indexPath as NSIndexPath).row].image
-        cell.textLabel?.text = tabBarController!.tabBar.items![(indexPath as NSIndexPath).row].title
+        cell.imageView?.image = tabBarController!.tabBar.items![indexPath.row].image
+        cell.textLabel?.text = tabBarController!.tabBar.items![indexPath.row].title
         cell.selectionStyle = .none
-        if (indexPath as NSIndexPath).row == rowSelected {
+        if indexPath.row == rowSelected {
             let iconOk = FAKFontAwesome.checkIcon(withSize: 20)!
             iconOk.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.accessoryView = UIImageView(image: iconOk.image(with: CGSize(width: 20, height: 20)))
@@ -58,8 +58,8 @@ class SelectDefaultTabBarItem: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        defaults.set((indexPath as NSIndexPath).row, forKey: UserDefaultsKeys.selectedTabBar.rawValue)
-        rowSelected = (indexPath as NSIndexPath).row
+        defaults.set(indexPath.row, forKey: UserDefaultsKeys.selectedTabBar.rawValue)
+        rowSelected = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }

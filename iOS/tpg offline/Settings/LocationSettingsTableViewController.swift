@@ -55,9 +55,9 @@ class LocationSettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "choixTabDefaultCell", for: indexPath)
         
-        cell.textLabel?.text = choices[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = choices[indexPath.section][indexPath.row]
         cell.selectionStyle = .none
-        if (indexPath as NSIndexPath).row == rowSelected[(indexPath as NSIndexPath).section] {
+        if indexPath.row == rowSelected[indexPath.section] {
             let iconOk = FAKFontAwesome.checkIcon(withSize: 20)!
             iconOk.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.accessoryView = UIImageView(image: iconOk.image(with: CGSize(width: 20, height: 20)))
@@ -71,13 +71,13 @@ class LocationSettingsTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 0 {
-            defaults.set(values[0][(indexPath as NSIndexPath).row], forKey: UserDefaultsKeys.locationAccurency.rawValue)
+        if indexPath.section == 0 {
+            defaults.set(values[0][indexPath.row], forKey: UserDefaultsKeys.locationAccurency.rawValue)
         }
         else {
-            defaults.set(values[1][(indexPath as NSIndexPath).row], forKey: UserDefaultsKeys.proximityDistance.rawValue)
+            defaults.set(values[1][indexPath.row], forKey: UserDefaultsKeys.proximityDistance.rawValue)
         }
-        rowSelected[(indexPath as NSIndexPath).section] = (indexPath as NSIndexPath).row
+        rowSelected[indexPath.section] = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }

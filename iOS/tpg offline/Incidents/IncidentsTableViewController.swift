@@ -226,37 +226,37 @@ class IncidentsTableViewController: UITableViewController {
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "incidentsCell", for: indexPath)
-            cell.textLabel?.text = distrubtions[(indexPath as NSIndexPath).row].title
-            cell.detailTextLabel!.text = distrubtions[(indexPath as NSIndexPath).row].subTitle
+            cell.textLabel?.text = distrubtions[indexPath.row].title
+            cell.detailTextLabel!.text = distrubtions[indexPath.row].subTitle
             
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
-            labelPictoLigne.text = distrubtions[(indexPath as NSIndexPath).row].lineCode
+            labelPictoLigne.text = distrubtions[indexPath.row].lineCode
             labelPictoLigne.textAlignment = .center
             
             labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
             labelPictoLigne.layer.borderWidth = 1
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                cell.backgroundColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
-                cell.textLabel?.textColor = AppValues.linesColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
-                cell.detailTextLabel?.textColor = AppValues.linesColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
-                labelPictoLigne.textColor = AppValues.linesColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
-                labelPictoLigne.layer.borderColor = AppValues.linesColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]?.cgColor
+                cell.backgroundColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                cell.textLabel?.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
+                cell.detailTextLabel?.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
+                labelPictoLigne.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
+                labelPictoLigne.layer.borderColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]?.cgColor
             }
             else {
-                if ContrastColorOf(AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!, returnFlat: true) == FlatWhite() {
+                if ContrastColorOf(AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!, returnFlat: true) == FlatWhite() {
                     cell.backgroundColor = UIColor.flatWhite
-                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
-                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
-                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]
-                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]?.cgColor
+                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]?.cgColor
                 }
                 else {
                     cell.backgroundColor = UIColor.flatWhite
-                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!.darken(byPercentage: 0.2)
-                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!.darken(byPercentage: 0.2)
-                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]!.darken(byPercentage: 0.2)
-                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[(indexPath as NSIndexPath).row].lineCode]?.darken(byPercentage: 0.2)?.cgColor
+                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(byPercentage: 0.2)
+                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(byPercentage: 0.2)
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(byPercentage: 0.2)
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]?.darken(byPercentage: 0.2)?.cgColor
                 }
                 
             }
