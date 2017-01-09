@@ -45,6 +45,7 @@ internal class Departures {
             tempsTimestamp.month = now.month
             tempsTimestamp.day = now.day
             tempsTimestamp.calendar = Calendar.current
+            tempsTimestamp.timeZone = now.timeZone
             
             dateCompenents = tempsTimestamp
             

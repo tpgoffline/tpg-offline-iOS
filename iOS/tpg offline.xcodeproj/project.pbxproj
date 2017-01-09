@@ -201,6 +201,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AD500A611E0C79FB00253121 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADC734861D6890EF00296449 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,16 +233,6 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADFB5E6F1DC2605000BFFB10 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -243,6 +243,7 @@
 		AD2162331DBCE809009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Incidents.storyboard; sourceTree = "<group>"; };
 		AD2162381DBCE8C8009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		AD500A521E0C79FB00253121 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		AD62DD3A1D7C5E9200B2CA86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AD62DD3B1D7C5E9400B2CA86 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AD62DD3C1D7C6A8100B2CA86 /* DeparturesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesInterfaceController.swift; sourceTree = "<group>"; };
@@ -859,6 +860,7 @@
 				AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */,
 				ADC734941D68917D00296449 /* FSCalendar.framework */,
 				ADC734981D68918500296449 /* Onboard.framework */,
+				AD500A521E0C79FB00253121 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -875,8 +877,8 @@
 				ADC7338A1D68908F00296449 /* Resources */,
 				ADC7348A1D6890EF00296449 /* Embed Watch Content */,
 				ADC734A21D6891E700296449 /* Install Carthage frameworks */,
-				ADFB5E6F1DC2605000BFFB10 /* Embed Frameworks */,
 				ADA469331E05517300FEA198 /* FirebaseCrash */,
+				AD500A611E0C79FB00253121 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -947,7 +949,7 @@
 		ADC733841D68908F00296449 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Rémy DA COSTA FARO";
 				TargetAttributes = {

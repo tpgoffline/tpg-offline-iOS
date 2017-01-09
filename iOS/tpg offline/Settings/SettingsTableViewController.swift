@@ -141,161 +141,39 @@ class SettingsTableViewController: UITableViewController {
         VHUD.show(content)
         VHUD.updateProgress(0.0)
         
-        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/infos.json", method: .get).responseData { (request) in
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/infosDeparts.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
                 let json = JSON(data: request.data!)
                 UserDefaults.standard.set(json["version"].intValue, forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue)
             }
         }
         
-        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/listeDeparts.json", method: .get).validate().responseJSON { response in
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/departs.json", method: .get).validate().responseJSON { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    var _compteur = 0
-                    var compteur: Int {
-                        get {
-                            return _compteur
-                        }
-                        set(value) {
-                            _compteur = value
-                            print("Error")
-                        }
-                    }
                     var ok = 0
+                    var errors = 0
                     let json = JSON(value)
-                    for (_, subJson) in json {
-                        let url = "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/\(subJson.stringValue)"
+    
+                    for (fileName, fileJSON) in json {
+                        let error = self.writeDataToFile(fileJSON.rawString()!, fileName: fileName)
+                        if error == nil {
+                            ok += 1
+                        } else {
+                            errors += 1
+                        }
                         
-                        Alamofire.request(url).responseString { response in
-                            switch response.result {
-                            case .failure(_):
-                                Alamofire.request(url).responseString { response in
-                                    switch response.result {
-                                    case .failure(_):
-                                        Alamofire.request(url).responseString { response in
-                                            switch response.result {
-                                            case .failure(_):
-                                                Alamofire.request(url).responseString { response in
-                                                    switch response.result {
-                                                    case .failure(_):
-                                                        Alamofire.request(url).responseString { response in
-                                                            switch response.result {
-                                                            case .failure(_):
-                                                                compteur += 1
-                                                            case .success:
-                                                                if self.writeDataToFile(response.result.value!, fileName: subJson.stringValue) == nil {
-                                                                    ok += 1
-                                                                }
-                                                                else {
-                                                                    compteur += 1
-                                                                }
-                                                                break
-                                                            }
-                                                        }
-                                                    case .success:
-                                                        if self.writeDataToFile(response.result.value!, fileName: subJson.stringValue) == nil {
-                                                            ok += 1
-                                                        }
-                                                        else {
-                                                            compteur += 1
-                                                        }
-                                                        break
-                                                    }
-                                                    var progress = Float(Int(ok + compteur) * 100)
-                                                    progress /= Float(json.count)
-                                                    progress /= Float(100)
-                                                    VHUD.updateProgress(CGFloat(progress))
-                                                    
-                                                    if compteur + ok == json.count {
-                                                        VHUD.dismiss(1.0, 1.0, "100 %", { (Void) in
-                                                            let alerte2 = SCLAlertView()
-                                                            if compteur != 0 {
-                                                                alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.".localized, closeButtonTitle: "Fermer".localized)
-                                                            }
-                                                            else {
-                                                                alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized)
-                                                            }
-                                                        })
-                                                    }
-                                                }
-                                            case .success:
-                                                if self.writeDataToFile(response.result.value!, fileName: subJson.stringValue) == nil {
-                                                    ok += 1
-                                                }
-                                                else {
-                                                    compteur += 1
-                                                }
-                                                var progress = Float(Int(ok + compteur) * 100)
-                                                progress /= Float(json.count)
-                                                progress /= Float(100)
-                                                VHUD.updateProgress(CGFloat(progress))
-                                                
-                                                if compteur + ok == json.count {
-                                                    VHUD.dismiss(1.0, 1.0, "100 %", { (Void) in
-                                                        let alerte2 = SCLAlertView()
-                                                        if compteur != 0 {
-                                                            alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.".localized, closeButtonTitle: "Fermer".localized)
-                                                        }
-                                                        else {
-                                                            alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized)
-                                                        }
-                                                    })
-                                                }
-                                                break
-                                            }
-                                        }
-                                    case .success:
-                                        if self.writeDataToFile(response.result.value!, fileName: subJson.stringValue) == nil {
-                                            ok += 1
-                                        }
-                                        else {
-                                            compteur += 1
-                                        }
-                                        var progress = Float(Int(ok + compteur) * 100)
-                                        progress /= Float(json.count)
-                                        progress /= Float(100)
-                                        VHUD.updateProgress(CGFloat(progress))
-                                        
-                                        if compteur + ok == json.count {
-                                            VHUD.dismiss(1.0, 1.0, "100 %", { (Void) in
-                                                let alerte2 = SCLAlertView()
-                                                if compteur != 0 {
-                                                    alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.".localized, closeButtonTitle: "Fermer".localized)
-                                                }
-                                                else {
-                                                    alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized)
-                                                }
-                                            })
-                                        }
-                                        break
-                                    }
-                                }
-                            case .success:
-                                if self.writeDataToFile(response.result.value!, fileName: subJson.stringValue) == nil {
-                                    ok += 1
+                        if errors + ok == json.count {
+                            VHUD.dismiss(1.0, 1.0, "100 %", { (Void) in
+                                let alerte2 = SCLAlertView()
+                                if errors != 0 {
+                                    alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(errors) arrêts.".localized, closeButtonTitle: "Fermer".localized)
                                 }
                                 else {
-                                    compteur += 1
+                                    alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized)
                                 }
-                                var progress = Float(Int(ok + compteur) * 100)
-                                progress /= Float(json.count)
-                                progress /= Float(100)
-                                VHUD.updateProgress(CGFloat(progress))
-                                
-                                if compteur + ok == json.count {
-                                    VHUD.dismiss(1.0, 1.0, "100 %", { (Void) in
-                                        let alerte2 = SCLAlertView()
-                                        if compteur != 0 {
-                                            alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(compteur) arrêts.".localized, closeButtonTitle: "Fermer".localized)
-                                        }
-                                        else {
-                                            alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized)
-                                        }
-                                    })
-                                }
-                                break
-                            }
+                            })
                         }
                     }
                 }
@@ -305,6 +183,8 @@ class SettingsTableViewController: UITableViewController {
                     alerte.showError("Pas de réseau".localized, subTitle: "Vous n'êtes pas connecté au réseau. Pour actualiser les départs, merci de vous connecter au réseau.".localized, closeButtonTitle: "Fermer".localized, duration: 10)
                 })
             }
+            }.downloadProgress { (progress) in
+                VHUD.updateProgress(CGFloat(progress.fractionCompleted / 1.1))
         }
     }
     

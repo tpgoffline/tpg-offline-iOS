@@ -30,7 +30,7 @@ class CreditsTableViewController: UITableViewController {
 		["NVActivityIndicatorView", "Projet maintenu sur GitHub par ninjaprox - Projet en licence MIT".localized, "https://github.com/ninjaprox/NVActivityIndicatorView.git"],
 		["AsyncSwift", "Projet maintenu sur GitHub par duemunk - Projet en licence MIT".localized, "https://github.com/duemunk/Async.git"],
 		["AKPickerView-Swift", "Projet maintenu sur GitHub par Akkyie - Projet en licence MIT".localized, "https://github.com/Akkyie/AKPickerView-Swift.git"],
-		["Fabric - Crashlytics", "Projet maintenu sur GitHub par Twitter - Projet en licence MIT".localized, "https://fabric.io"]
+		["Firebase", "Projet maintenu par Google".localized, "https://firebase.google.com"]
     ]
     override func viewDidLoad() {
         super.viewDidLoad()     
