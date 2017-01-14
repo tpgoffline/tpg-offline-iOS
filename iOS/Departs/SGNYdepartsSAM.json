@@ -1,1 +1,222 @@
-[{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T06:25:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T07:25:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T08:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T09:06:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T09:46:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T10:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T11:07:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T11:47:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T12:27:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T13:07:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T13:47:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T14:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T15:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T16:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T17:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T18:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T19:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T20:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T21:26:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T22:25:34+0200"},{"destination":"Gare Cornavin","ligne":"F","timestamp":"2016-04-09T23:25:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T06:36:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T07:39:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T08:38:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T09:19:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T10:00:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T10:41:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T11:22:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T12:03:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T12:45:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T13:25:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T14:14:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T15:14:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T16:15:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T17:18:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T18:17:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T19:16:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T20:15:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T20:45:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T21:13:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T21:42:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T22:41:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-09T23:41:34+0200"},{"destination":"Gex","ligne":"F","timestamp":"2016-04-10T00:41:34+0200"},{"destination":"Gex","ligne":"NE","timestamp":"2016-04-10T02:03:35+0200"},{"destination":"Gex","ligne":"NE","timestamp":"2016-04-10T03:53:35+0200"},{"destination":"Gex","ligne":"NE","timestamp":"2016-04-10T03:54:35+0200"}]
+[
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T06:26:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T07:26:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T08:26:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T09:06:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T09:47:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T10:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T11:07:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T11:47:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T12:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T13:07:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T13:47:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T14:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T15:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T16:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T17:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T18:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T19:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T20:27:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T21:26:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T22:26:36+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "F",
+        "timestamp": "2017-01-14T23:26:36+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T06:36:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T07:38:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T08:38:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T09:19:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T10:00:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T10:41:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T11:22:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T12:03:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T12:45:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T13:25:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T14:15:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T15:16:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T16:16:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T17:20:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T18:20:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T19:18:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T20:17:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T20:45:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T21:13:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T21:43:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T22:42:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-14T23:42:38+0100"
+    },
+    {
+        "destination": "Gex",
+        "ligne": "F",
+        "timestamp": "2017-01-15T00:42:38+0100"
+    }
+]

@@ -1,1 +1,337 @@
-[{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T06:19:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T06:55:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T07:55:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T08:55:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T09:56:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T10:57:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T11:37:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T12:07:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T12:37:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T13:07:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T13:37:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T14:07:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T14:37:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T15:07:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T15:38:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T16:08:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T16:38:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T17:08:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T17:38:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T18:08:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T18:38:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T19:57:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T20:57:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T21:56:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-09T22:56:42+0200"},{"destination":"Gy","ligne":"A","timestamp":"2016-04-10T00:00:42+0200"},{"destination":"Gy - Corsinge","ligne":"A","timestamp":"2016-04-09T19:17:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T05:58:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T06:48:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T07:39:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T08:39:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T09:39:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T10:40:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T11:26:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T12:11:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T12:41:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T13:12:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T13:42:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T14:12:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T14:42:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T15:12:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T15:41:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T16:11:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T16:41:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T17:11:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T17:41:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T18:11:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T18:41:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T19:11:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T19:48:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T20:46:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T21:46:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T22:46:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-09T23:45:42+0200"},{"destination":"Rive","ligne":"A","timestamp":"2016-04-10T00:45:42+0200"},{"destination":"Hermance","ligne":"NS","timestamp":"2016-04-10T02:13:42+0200"},{"destination":"Hermance","ligne":"NS","timestamp":"2016-04-10T03:27:42+0200"},{"destination":"Hermance","ligne":"NS","timestamp":"2016-04-10T03:27:42+0200"}]
+[
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T06:19:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T06:54:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T07:55:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T08:55:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T09:56:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T10:56:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T11:37:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T12:07:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T12:37:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T13:07:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T13:37:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T14:07:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T14:38:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T15:08:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T15:38:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T16:08:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T16:38:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T17:08:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T17:38:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T18:08:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T18:38:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T19:07:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T19:57:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T20:57:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T21:56:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-14T22:56:30+0100"
+    },
+    {
+        "destination": "Gy",
+        "ligne": "A",
+        "timestamp": "2017-01-15T00:00:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T05:56:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T06:48:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T07:43:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T08:43:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T09:43:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T10:43:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T11:34:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T12:11:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T12:41:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T13:11:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T13:41:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T14:11:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T14:41:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T15:11:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T15:41:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T16:11:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T16:41:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T17:11:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T17:41:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T18:11:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T18:41:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T19:12:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T19:47:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T20:44:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T21:43:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T22:43:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-14T23:43:30+0100"
+    },
+    {
+        "destination": "Rive",
+        "ligne": "A",
+        "timestamp": "2017-01-15T00:43:30+0100"
+    },
+    {
+        "destination": "Chens-sur-Léman",
+        "ligne": "B",
+        "timestamp": "2017-01-14T09:18:30+0100"
+    },
+    {
+        "destination": "Chens-sur-Léman",
+        "ligne": "B",
+        "timestamp": "2017-01-14T11:18:30+0100"
+    },
+    {
+        "destination": "Chens-sur-Léman",
+        "ligne": "B",
+        "timestamp": "2017-01-14T13:18:30+0100"
+    },
+    {
+        "destination": "Chens-sur-Léman",
+        "ligne": "B",
+        "timestamp": "2017-01-14T15:18:30+0100"
+    },
+    {
+        "destination": "Chens-sur-Léman",
+        "ligne": "B",
+        "timestamp": "2017-01-14T17:18:30+0100"
+    },
+    {
+        "destination": "Jussy meurets",
+        "ligne": "B",
+        "timestamp": "2017-01-14T10:27:32+0100"
+    },
+    {
+        "destination": "Jussy meurets",
+        "ligne": "B",
+        "timestamp": "2017-01-14T12:26:32+0100"
+    },
+    {
+        "destination": "Jussy meurets",
+        "ligne": "B",
+        "timestamp": "2017-01-14T14:26:32+0100"
+    },
+    {
+        "destination": "Jussy meurets",
+        "ligne": "B",
+        "timestamp": "2017-01-14T16:26:32+0100"
+    },
+    {
+        "destination": "Jussy meurets",
+        "ligne": "B",
+        "timestamp": "2017-01-14T18:26:32+0100"
+    },
+    {
+        "destination": "Hermance",
+        "ligne": "NS",
+        "timestamp": "2017-01-15T02:12:33+0100"
+    },
+    {
+        "destination": "Hermance",
+        "ligne": "NS",
+        "timestamp": "2017-01-15T03:27:33+0100"
+    }
+]

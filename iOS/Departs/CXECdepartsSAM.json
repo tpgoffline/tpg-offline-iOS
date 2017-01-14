@@ -1,1 +1,417 @@
-[{"destination":"Divonne-Gare","ligne":"NT","timestamp":"2016-04-10T02:18:45+0200"},{"destination":"Divonne-Gare","ligne":"NT","timestamp":"2016-04-10T03:45:45+0200"},{"destination":"Divonne-Gare","ligne":"NT","timestamp":"2016-04-10T03:46:45+0200"},{"destination":"Bois-Chatton","ligne":"Z","timestamp":"2016-04-09T12:22:45+0200"},{"destination":"Bois-Chatton","ligne":"Z","timestamp":"2016-04-09T18:53:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T06:42:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T07:42:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T08:42:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T09:42:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T10:43:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T11:43:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T12:52:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T13:23:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T13:53:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T14:23:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T14:53:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T15:23:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T15:53:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T16:23:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T16:53:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T17:23:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T17:53:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T18:23:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T19:43:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T20:43:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T21:42:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T22:41:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-09T23:41:45+0200"},{"destination":"Bossy","ligne":"Z","timestamp":"2016-04-10T00:41:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T06:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T07:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T08:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T09:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T10:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T11:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T12:09:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T12:46:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T13:16:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T13:46:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T14:16:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T14:46:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T15:16:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T15:46:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T16:16:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T16:46:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T17:16:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T17:46:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T18:16:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T18:46:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T19:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T20:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T21:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T22:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-09T23:21:45+0200"},{"destination":"Gare Cornavin","ligne":"Z","timestamp":"2016-04-10T00:21:45+0200"}]
+[
+    {
+        "destination": "Divonne-Gare",
+        "ligne": "NT",
+        "timestamp": "2017-01-15T02:20:48+0100"
+    },
+    {
+        "destination": "Divonne-Gare",
+        "ligne": "NT",
+        "timestamp": "2017-01-15T03:55:48+0100"
+    },
+    {
+        "destination": "Divonne-Gare",
+        "ligne": "NT",
+        "timestamp": "2017-01-15T04:02:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T06:36:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T07:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T08:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T09:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T10:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T11:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T12:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T13:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T14:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T15:40:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T16:57:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T17:57:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T18:57:48+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "U",
+        "timestamp": "2017-01-14T19:57:48+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T06:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T07:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T08:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T09:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T10:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T11:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T12:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T13:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T14:56:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T16:13:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T17:13:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T18:13:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T19:13:49+0100"
+    },
+    {
+        "destination": "Chavannes-des-Bois",
+        "ligne": "U",
+        "timestamp": "2017-01-14T20:13:49+0100"
+    },
+    {
+        "destination": "Bois-Chatton",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T12:23:50+0100"
+    },
+    {
+        "destination": "Bois-Chatton",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T18:53:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T06:42:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T07:42:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T08:43:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T09:43:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T10:43:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T11:43:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T12:53:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T13:23:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T13:53:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T14:23:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T14:53:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T15:23:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T15:53:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T16:23:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T16:53:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T17:23:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T17:53:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T18:23:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T19:43:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T20:43:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T21:43:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T22:42:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T23:42:50+0100"
+    },
+    {
+        "destination": "Bossy",
+        "ligne": "Z",
+        "timestamp": "2017-01-15T00:42:50+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T06:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T07:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T08:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T09:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T10:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T11:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T12:09:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T12:45:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T13:16:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T13:46:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T14:16:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T14:46:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T15:16:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T15:46:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T16:16:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T16:46:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T17:16:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T17:46:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T18:16:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T18:46:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T19:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T20:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T21:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T22:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-14T23:21:51+0100"
+    },
+    {
+        "destination": "Gare Cornavin",
+        "ligne": "Z",
+        "timestamp": "2017-01-15T00:21:51+0100"
+    }
+]

@@ -1,1 +1,292 @@
-[{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T06:04:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T07:04:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T08:04:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T09:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T10:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T11:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T12:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T12:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T13:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T13:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T14:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T14:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T15:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T15:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T16:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T16:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T17:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T17:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T18:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T18:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T19:05:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T19:35:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T20:37:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T21:38:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T22:38:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T23:38:55+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-10T00:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T05:47:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T06:47:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T07:47:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T08:47:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T09:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T10:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T11:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T12:18:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T12:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T13:18:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T13:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T14:18:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T14:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T15:18:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T15:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T16:18:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T16:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T17:18:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T17:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T18:18:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T18:48:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T19:17:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T20:19:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T21:21:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T22:21:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T23:21:55+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-10T00:21:55+0200"}]
+[
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T06:02:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T06:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T07:32:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T08:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T09:02:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T09:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T10:32:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T11:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T11:49:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T12:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T12:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T13:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T13:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T14:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T14:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T15:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T15:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T16:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T16:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T17:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T17:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T18:17:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T18:47:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T19:27:16+0100"
+    },
+    {
+        "destination": "Carouge",
+        "ligne": "42",
+        "timestamp": "2017-01-14T20:12:16+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T06:22:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T07:07:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T07:52:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T08:37:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T09:22:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T10:09:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T10:54:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T11:39:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T12:24:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T12:59:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T13:29:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T13:59:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T14:29:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T14:59:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T15:29:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T15:59:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T16:29:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T16:59:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T17:29:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T17:59:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T18:29:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T18:59:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T19:29:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T19:58:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T20:43:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T21:42:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T22:41:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-14T23:41:17+0100"
+    },
+    {
+        "destination": "P+R Bernex",
+        "ligne": "42",
+        "timestamp": "2017-01-15T00:41:17+0100"
+    },
+    {
+        "destination": "Palettes",
+        "ligne": "42",
+        "timestamp": "2017-01-14T21:02:18+0100"
+    },
+    {
+        "destination": "Palettes",
+        "ligne": "42",
+        "timestamp": "2017-01-14T22:02:18+0100"
+    },
+    {
+        "destination": "Palettes",
+        "ligne": "42",
+        "timestamp": "2017-01-14T23:02:18+0100"
+    },
+    {
+        "destination": "Palettes",
+        "ligne": "42",
+        "timestamp": "2017-01-15T00:02:18+0100"
+    }
+]

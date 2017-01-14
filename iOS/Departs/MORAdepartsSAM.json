@@ -1,1 +1,277 @@
-[{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T06:15:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T07:15:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T08:16:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T09:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T10:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T11:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T12:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T12:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T13:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T13:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T14:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T14:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T15:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T15:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T16:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T16:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T17:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T17:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T18:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T18:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T19:17:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T19:47:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T20:48:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T21:50:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T22:49:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-09T23:49:19+0200"},{"destination":"Satigny-Gare","ligne":"S","timestamp":"2016-04-10T00:59:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T05:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T06:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T07:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T08:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T09:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T10:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T11:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T12:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T12:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T13:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T13:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T14:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T14:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T15:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T15:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T16:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T16:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T17:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T17:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T18:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T18:38:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T19:08:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T20:10:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T21:12:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T22:12:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-09T23:12:19+0200"},{"destination":"S\u00e9zenove","ligne":"S","timestamp":"2016-04-10T00:12:19+0200"}]
+[
+    {
+        "destination": "Chancy-Douane",
+        "ligne": "NJ",
+        "timestamp": "2017-01-15T03:58:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T05:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T06:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T07:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T08:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T09:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T10:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T11:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T12:08:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T12:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T13:08:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T13:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T14:08:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T14:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T15:08:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T15:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T16:08:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T16:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T17:08:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T17:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T18:08:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T18:38:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T19:11:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T20:11:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T21:11:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T22:11:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-14T23:11:53+0100"
+    },
+    {
+        "destination": "Cr. Confignon",
+        "ligne": "S",
+        "timestamp": "2017-01-15T00:11:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T06:14:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T07:15:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T08:15:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T09:15:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T10:15:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T11:15:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T12:15:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T12:46:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T13:16:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T13:46:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T14:16:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T14:46:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T15:16:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T15:46:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T16:16:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T16:46:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T17:16:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T17:46:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T18:16:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T18:46:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T19:16:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T19:47:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T20:48:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T21:48:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T22:48:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-14T23:48:53+0100"
+    },
+    {
+        "destination": "Satigny-Gare",
+        "ligne": "S",
+        "timestamp": "2017-01-15T00:58:53+0100"
+    }
+]

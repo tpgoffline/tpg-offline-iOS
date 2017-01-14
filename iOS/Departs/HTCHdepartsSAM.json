@@ -1,1 +1,432 @@
-[{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T06:36:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T07:36:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T08:36:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T09:37:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T10:38:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T11:28:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T12:03:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T12:36:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T13:06:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T13:37:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T14:07:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T14:37:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T15:07:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T15:38:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T16:08:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T16:38:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T17:08:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T17:39:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T18:09:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T18:39:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T19:09:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T19:48:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T20:37:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T21:37:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T22:41:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-09T23:36:36+0200"},{"destination":"P+R Sous-Moulin","ligne":"31","timestamp":"2016-04-10T00:35:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T07:04:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T08:04:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T09:04:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T10:04:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T10:56:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T11:39:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T12:09:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T12:41:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T13:11:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T13:41:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T14:11:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T14:41:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T15:11:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T15:41:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T16:11:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T16:41:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T17:11:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T17:41:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T18:11:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T18:41:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T19:16:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T20:04:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T21:05:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T22:04:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-09T23:05:36+0200"},{"destination":"Puplinge","ligne":"31","timestamp":"2016-04-10T00:04:36+0200"},{"destination":"Jussy","ligne":"NK","timestamp":"2016-04-10T04:00:37+0200"},{"destination":"Jussy","ligne":"NK","timestamp":"2016-04-10T04:01:37+0200"},{"destination":"Monniaz","ligne":"NK","timestamp":"2016-04-10T03:45:37+0200"},{"destination":"Monniaz","ligne":"NK","timestamp":"2016-04-10T03:45:37+0200"}]
+[
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T05:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T06:34:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T07:14:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T07:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T08:34:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T09:14:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T09:55:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T10:36:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T11:17:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T11:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T12:24:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T12:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T13:24:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T13:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T14:24:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T14:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T15:24:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T15:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T16:19:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T16:43:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T17:07:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T17:31:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T17:55:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T18:19:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T18:44:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T19:14:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T19:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T20:34:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T21:14:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T21:54:23+0100"
+    },
+    {
+        "destination": "Jar.-Botanique",
+        "ligne": "1",
+        "timestamp": "2017-01-14T22:34:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T06:35:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T07:36:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T08:36:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T09:37:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T10:37:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T11:28:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T12:03:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T12:37:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T13:07:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T13:38:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T14:08:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T14:38:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T15:08:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T15:38:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T16:08:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T16:39:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T17:09:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T17:39:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T18:09:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T18:38:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T19:08:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T19:38:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T20:38:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T21:37:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T22:37:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-14T23:37:23+0100"
+    },
+    {
+        "destination": "P+R Sous-Moulin",
+        "ligne": "31",
+        "timestamp": "2017-01-15T00:36:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T07:03:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T08:03:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T09:03:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T10:05:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T11:05:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T11:39:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T12:09:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T12:40:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T13:11:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T13:41:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T14:11:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T14:41:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T15:11:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T15:41:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T16:11:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T16:41:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T17:11:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T17:41:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T18:11:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T18:41:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T19:15:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T20:05:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T21:04:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T22:04:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-14T23:03:23+0100"
+    },
+    {
+        "destination": "Puplinge",
+        "ligne": "31",
+        "timestamp": "2017-01-15T00:03:23+0100"
+    },
+    {
+        "destination": "Jussy",
+        "ligne": "NK",
+        "timestamp": "2017-01-15T04:03:24+0100"
+    },
+    {
+        "destination": "Jussy",
+        "ligne": "NK",
+        "timestamp": "2017-01-15T04:04:24+0100"
+    }
+]
