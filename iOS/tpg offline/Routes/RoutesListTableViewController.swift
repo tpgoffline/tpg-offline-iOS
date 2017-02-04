@@ -11,6 +11,8 @@ import Chameleon
 import Alamofire
 import FontAwesomeKit
 import UserNotifications
+import FirebaseCrash
+import FirebaseAnalytics
 
 class RoutesListTableViewController: UITableViewController {
     
@@ -21,6 +23,15 @@ class RoutesListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FIRCrashMessage(ActualRoutes.route.describe())
+        #if DEBUG
+        #else
+            FIRAnalytics.logEvent(withName: "departure", parameters: [
+                "departure": (ActualRoutes.route.departure?.stopCode ?? "XXXX") as NSObject,
+                "arrival": (ActualRoutes.route.arrival?.stopCode ?? "XXXX") as NSObject
+                ])
+        #endif
         
         ActualRoutes.routeResult = []
         tableView.backgroundColor = AppValues.primaryColor

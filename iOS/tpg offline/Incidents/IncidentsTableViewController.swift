@@ -10,6 +10,7 @@ import UIKit
 import Chameleon
 import FontAwesomeKit
 import Alamofire
+import FirebaseCrash
 
 class IncidentsTableViewController: UITableViewController {
     let defaults = UserDefaults.standard
@@ -20,6 +21,8 @@ class IncidentsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FIRCrashMessage("Incidents")
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = AppValues.textColor
@@ -69,6 +72,7 @@ class IncidentsTableViewController: UITableViewController {
         Alamofire.request("https://tpg.asmartcode.com/Disruptions.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"]).responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)
+                    FIRCrashMessage("\(json.rawString())")
                     if json["disruptions"].count != 0 {
                         for x in 0...json["disruptions"].count - 1 {
                             if AppValues.linesColor[json["disruptions"][x]["lineCode"].string!] != nil {
@@ -235,6 +239,8 @@ class IncidentsTableViewController: UITableViewController {
             
             labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
             labelPictoLigne.layer.borderWidth = 1
+            
+            FIRCrashMessage(distrubtions[indexPath.row].describe())
             
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]

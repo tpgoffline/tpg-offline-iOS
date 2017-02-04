@@ -31,4 +31,8 @@ internal class Route {
         self.arrivalTimestamp = 0
         self.connections = []
     }
+    
+    func describe() -> String {
+        return "[from: \(from), to: \(to), duration: \(duration), departuresTimestamp: \(departureTimestamp), arrivalTimestamp: \(arrivalTimestamp), connections: \(connections)]"
+    }
 }

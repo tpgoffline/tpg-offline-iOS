@@ -10,6 +10,7 @@
 import UIKit
 import Chameleon
 import FontAwesomeKit
+import FirebaseCrash
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
@@ -34,6 +35,8 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FIRCrashMessage("Departues")
+
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
         
@@ -303,6 +306,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                     departsArretsViewController.stop = AppValues.stops[AppValues.stopsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                 }
             }
+            FIRCrashMessage("Request \(departsArretsViewController.stop)")
         }
     }
     

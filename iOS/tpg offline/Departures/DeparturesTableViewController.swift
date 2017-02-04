@@ -12,6 +12,9 @@ import Alamofire
 import WatchConnectivity
 import FontAwesomeKit
 import UserNotifications
+import FirebaseCrash
+import FirebaseAnalytics
+
 
 class DeparturesTableViewController: UITableViewController {
     var stop: Stop? = nil
@@ -28,6 +31,13 @@ class DeparturesTableViewController: UITableViewController {
         if stop == nil {
             stop = AppValues.stops[[String](AppValues.stops.keys).sorted()[0]]
         }
+        
+        #if DEBUG
+        #else
+            FIRAnalytics.logEvent(withName: "departure", parameters: [
+                "stopCode": (stop?.stopCode ?? "XXXX") as NSObject
+                ])
+        #endif
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = AppValues.textColor
@@ -49,6 +59,8 @@ class DeparturesTableViewController: UITableViewController {
         }
         
         refresh()
+        
+        FIRCrashMessage("\(stop?.stopCode) loaded")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -329,6 +341,9 @@ class DeparturesTableViewController: UITableViewController {
             .responseJSON { response in
                 if let data = response.result.value {
                     let departs = JSON(data)
+                    FIRCrashMessage("Offline = false")
+                    FIRCrashMessage("\(departs.rawString())")
+                    
                     for (_, subjson) in departs["departures"] {
                         if AppValues.linesColor[subjson["line"]["lineCode"].string!] == nil {
                             self.departuresList.append(Departures(
@@ -371,6 +386,7 @@ class DeparturesTableViewController: UITableViewController {
                     self.tableView.dg_stopLoading()
                 }
                 else {
+                    FIRCrashMessage("Offline = true")
                     #if DEBUG
                         if let error = response.result.error {
                             let alert = SCLAlertView()
@@ -432,7 +448,13 @@ class DeparturesTableViewController: UITableViewController {
                         })
                         
                         self.departuresList.sort(by: { (depart1, depart2) -> Bool in
-                            if Int(depart1.leftTime)! < Int(depart2.leftTime)! {
+                            guard let leftTime1 = Int(depart1.leftTime) else {
+                                return false
+                            }
+                            guard let leftTime2 = Int(depart2.leftTime) else {
+                                return false
+                            }
+                            if leftTime1 < leftTime2 {
                                 return true
                             }
                             return false
@@ -700,6 +722,8 @@ extension DeparturesTableViewController {
                 }
             }
             
+            FIRCrashMessage("Departure: \(departuresList[indexPath.row].describe())")
+            
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
             labelPictoLigne.text = departuresList[indexPath.row].line
             labelPictoLigne.textAlignment = .center
@@ -755,7 +779,13 @@ extension DeparturesTableViewController {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
-                    cell.leftTimeLabel.text = DateFormatter.localizedString(from: time!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
+                    if let time = time {
+                        cell.leftTimeLabel.text = DateFormatter.localizedString(from: time, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
+                    } else {
+                        let errorIcon = FAKFontAwesome.warningIcon(withSize: 20)!
+                        errorIcon.addAttribute(NSForegroundColorAttributeName, value: lineColor)
+                        cell.leftTimeLabel.attributedText = errorIcon.attributedString()
+                    }
                 }
                 else if (departuresList[indexPath.row].leftTime == "0") {
                     let busIcon = FAKFontAwesome.busIcon(withSize: 20)!

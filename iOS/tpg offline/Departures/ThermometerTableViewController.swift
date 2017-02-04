@@ -10,6 +10,7 @@ import UIKit
 import Chameleon
 import Alamofire
 import FontAwesomeKit
+import FirebaseCrash
 
 class ThermometerTableViewController: UITableViewController {
     
@@ -358,7 +359,9 @@ class ThermometerTableViewController: UITableViewController {
                 if let data = response.result.value {
                     let json = JSON(data)
                     self.thermometerList = []
+                    FIRCrashMessage("\(json["steps"].rawString())")
                     for (index, subJSON) in json["steps"] {
+                        FIRCrashMessage("\(subJSON["stop"]["stopCode"].string)")
                         var connectionsList: [String] = []
                         for x in 0...subJSON["stop"]["connections"].count - 1 {
                             if subJSON["stop"]["connections"][x]["lineCode"].int != nil {

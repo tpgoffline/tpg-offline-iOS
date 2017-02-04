@@ -45,4 +45,8 @@ internal class SearchRoute: NSObject, NSCoding {
 		if let departure = departure { coder.encode(departure, forKey: "depart") }
 		if let arrival = arrival { coder.encode(arrival, forKey: "arrivee") }
 	}
+    
+    func describe() -> String {
+        return "[departure: \(departure?.transportAPIiD), arrival: \(arrival?.transportAPIiD), date: \(date), isArrivalDate: \(isArrivalDate)]"
+    }
 }

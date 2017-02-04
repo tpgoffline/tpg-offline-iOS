@@ -11,6 +11,7 @@ import FontAwesomeKit
 import CoreLocation
 import Chameleon
 import Alamofire
+import FirebaseAnalytics
 
 class SplashScreenViewController: UIViewController {
 
@@ -228,6 +229,12 @@ class SplashScreenViewController: UIViewController {
                 AppValues.textColor = self.defaults.colorForKey(UserDefaultsKeys.textColor.rawValue)
             }
             
+            #if DEBUG
+                print("\(AppValues.primaryColor.hexValue()) \(AppValues.textColor.hexValue())")
+            #else
+                FIRAnalytics.setUserPropertyString("\(AppValues.primaryColor.hexValue()) \(AppValues.textColor.hexValue())", forName: "theme")
+            #endif
+            
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 UIApplication.shared.statusBarStyle = .lightContent
             }
@@ -238,7 +245,6 @@ class SplashScreenViewController: UIViewController {
         
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Project%20Requirements/stops.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
-                print("a")
                 self.defaults.set(request.data!, forKey: UserDefaultsKeys.stops.rawValue)
             }
         }

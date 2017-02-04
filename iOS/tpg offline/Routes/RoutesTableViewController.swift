@@ -9,6 +9,7 @@
 import UIKit
 import Chameleon
 import FontAwesomeKit
+import FirebaseCrash
 
 struct ActualRoutes {
 	static var route: SearchRoute! = SearchRoute(departure: nil, arrival: nil, date: Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: Date()), isArrivalDate: false)
@@ -30,6 +31,8 @@ class RoutesTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        FIRCrashMessage("Routes")
         
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible

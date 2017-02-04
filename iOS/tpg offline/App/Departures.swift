@@ -57,4 +57,8 @@ internal class Departures {
             }
         }
     }
+    
+    func describe() -> String {
+        return "[line: \(line), direction: \(direction), destinationCode: \(destinationCode), lineColor: \(lineColor), lineBackgroundColor: \(lineBackgroundColor), code: \(code), leftTime: \(leftTime), timestamp: \(timestamp), dateCompenents: \(dateCompenents)]"
+    }
 }

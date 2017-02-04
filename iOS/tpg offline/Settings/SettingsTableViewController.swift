@@ -13,6 +13,7 @@ import Alamofire
 import SafariServices
 import FontAwesomeKit
 import MessageUI
+import FirebaseCrash
 
 class SettingsTableViewController: UITableViewController {
     
@@ -132,6 +133,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func downloadDepartures() {
+        FIRCrashMessage("Download departures")
         var content = VHUDContent(.loop(3.0))
         content.shape = .circle
         content.style = .light
@@ -157,6 +159,7 @@ class SettingsTableViewController: UITableViewController {
                     let json = JSON(value)
     
                     for (fileName, fileJSON) in json {
+                        FIRCrashMessage(fileName)
                         let error = self.writeDataToFile(fileJSON.rawString()!, fileName: fileName)
                         if error == nil {
                             ok += 1

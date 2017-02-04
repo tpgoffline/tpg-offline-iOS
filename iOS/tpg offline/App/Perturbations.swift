@@ -18,4 +18,8 @@ internal class Distrubtions {
         self.title = title
         self.subTitle = subTitle
     }
+    
+    func describe() -> String {
+        return "[lineCode: \(lineCode), title: \(title), subTitle: \(subTitle)]"
+    }
 }
