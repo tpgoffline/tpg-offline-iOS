@@ -30,7 +30,9 @@ class A:
 		for x in pbar:
 			pbar.set_description("Téléchargement de l'arret %s" % x["stopCode"])
 			arbre[x["stopCode"]] = []
-			for y in x["connections"]:
+			r = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetStops.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode="+ x["stopCode"])
+			m = r.json()["stops"][0]
+			for y in m["connections"]:
 				parameters = {"key" : "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode" : x["stopCode"], "lineCode" : y["lineCode"], "destinationCode" : y["destinationCode"]}
 				q = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", params=parameters)
 				for z in q.json()["departures"]:
@@ -38,7 +40,7 @@ class A:
 		pbar = tqdm(arbre.items())
 		for y, x in pbar:
 			pbar.set_description("Enregistrement de l'arret %s" % y)
-			file = open(path + y + "departsLUN.json", "w", encoding='utf8')
+			file = open(path + y + "departs" + jour + ".json", "w", encoding='utf8')
 			file.write(json.dumps(x, sort_keys=True, indent=4, ensure_ascii=False))
 			file.close()
 a = A()

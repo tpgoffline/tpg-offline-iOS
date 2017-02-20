@@ -119,7 +119,7 @@ class SeeAllDeparturesViewController: UIViewController {
             self.departuresList = []
             
             if self.initialDeparturesList.isEmpty {
-                Alamofire.request("https://tpg.asmartcode.com/AllNextDepartures.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": self.stop.stopCode, "lineCode": self.line, "destinationCode": self.destinationCode]).responseJSON { response in
+                Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": self.stop.stopCode, "lineCode": self.line, "destinationCode": self.destinationCode]).responseJSON { response in
                     if let data = response.result.value {
                         let departs = JSON(data)
                         for (_, subjson) in departs["departures"] {

@@ -69,7 +69,7 @@ class IncidentsTableViewController: UITableViewController {
         distrubtions = []
         loading = true
         tableView.reloadData()
-        Alamofire.request("https://tpg.asmartcode.com/Disruptions.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"]).responseJSON { response in
+        Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"]).responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)
                     FIRCrashMessage("\(json.rawString())")

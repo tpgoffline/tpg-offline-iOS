@@ -354,7 +354,7 @@ class ThermometerTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         tableView.reloadData()
         rowForVisible = -1
-        Alamofire.request("https://tpg.asmartcode.com/Thermometer.php", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "departureCode": departure.code])
+        Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetThermometer.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "departureCode": departure.code])
             .responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)

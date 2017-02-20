@@ -13,7 +13,7 @@ import SafariServices
 class CreditsTableViewController: UITableViewController {
 
     let creditsList = [
-        ["Open data des Transports Publics Genevois".localized, "Données fournis par la société des Transports Publics Genevois".localized, "http://www.tpg.ch/web/open-data/"],
+        ["Open data des Transports Publics Genevois".localized, "Données fournis par la société des Transports Publics Genevois".localized, "https://www.tpg.ch/web/open-data/"],
         ["Open data de Transport API".localized, "Données fournis par Opendata.ch".localized, "https://transport.opendata.ch"],
         ["SwiftyJSON", "Projet maintenu sur GitHub par SwiftyJSON - Projet en licence MIT".localized, "https://github.com/SwiftyJSON/SwiftyJSON.git"],
         ["Chameleon", "Projet maintenu sur GitHub par ViccAlexander - Projet en licence MIT".localized, "https://github.com/ViccAlexander/Chameleon.git"],
