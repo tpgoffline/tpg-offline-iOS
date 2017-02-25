@@ -10,11 +10,11 @@ import argparse
 class A:
 	def waitHour(self, path="Departs/", jour="LUN"):
 		while 1:
-			if datetime.now().time().hour == 4 and datetime.now().time().minute == 17:
+			if datetime.now().time().hour == 22 and datetime.now().time().minute == 20:
 				break
 			else:
 				print(datetime.now().time())
-				print("Attente de 4 heures 17")
+				print("Attente de 4 heures 20")
 				sleep(10)
 		self.getDepartures(path, jour)
 
@@ -32,11 +32,12 @@ class A:
 			arbre[x["stopCode"]] = []
 			r = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetStops.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode="+ x["stopCode"])
 			m = r.json()["stops"][0]
-			for y in m["connections"]:
-				parameters = {"key" : "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode" : x["stopCode"], "lineCode" : y["lineCode"], "destinationCode" : y["destinationCode"]}
-				q = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", params=parameters)
-				for z in q.json()["departures"]:
-					arbre[x["stopCode"]].append({"ligne" : z["line"]["lineCode"], "destination" : z["line"]["destinationName"], "timestamp" : z["timestamp"]})
+			if m != None:
+				for y in m["connections"]:
+					parameters = {"key" : "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode" : x["stopCode"], "lineCode" : y["lineCode"], "destinationCode" : y["destinationCode"]}
+					q = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", params=parameters)
+					for z in q.json()["departures"]:
+						arbre[x["stopCode"]].append({"ligne" : z["line"]["lineCode"], "destination" : z["line"]["destinationName"], "timestamp" : z["timestamp"]})
 		pbar = tqdm(arbre.items())
 		for y, x in pbar:
 			pbar.set_description("Enregistrement de l'arret %s" % y)
