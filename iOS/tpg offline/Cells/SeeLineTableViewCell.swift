@@ -18,7 +18,7 @@ class SeeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var connection3Label: UILabel!
     @IBOutlet weak var connection4Label: UILabel!
     @IBOutlet weak var barDirection: UIView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

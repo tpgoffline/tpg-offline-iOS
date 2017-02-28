@@ -20,13 +20,13 @@ struct AppValues {
     static var primaryColor: UIColor! = UIColor.flatWhite
     static var textColor: UIColor! = UIColor.flatOrangeDark
     static var stopsKeys: [String] = []
-    static var linesBackgroundColor = [String:UIColor]()
-    static var linesColor = [String:UIColor]()
+    static var linesBackgroundColor = [String: UIColor]()
+    static var linesColor = [String: UIColor]()
     static var needUpdateDepartures: Bool = false
-    
-    static func testTimeExecution(_ title: String!, block: () -> ()) {
+
+    static func testTimeExecution(_ title: String!, block: () -> Void) {
         // Thanks to @kristopherjohnson GitHub user.
-        
+
         let start = CACurrentMediaTime()
         block()
         let end = CACurrentMediaTime()

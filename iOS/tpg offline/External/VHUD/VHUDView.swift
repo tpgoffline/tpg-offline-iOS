@@ -9,41 +9,41 @@
 import UIKit
 
 final class VHUDView: UIView {
-    
+
     static let size: CGSize = CGSize(width: 180, height: 180)
-    
+
     var dismissalHandler: ((Void) -> Void)?
-    
+
     private static let labelFont: UIFont = UIFont(name: "HelveticaNeue-Thin", size: 26)!
     private static let labelInset: CGFloat = 44.0
-    
+
     private let label: UILabel = UILabel()
     private let progressView: ProgressView = ProgressView()
     private var blurView: UIVisualEffectView?
-    
+
     private var progressLink: DisplayLink?
     private var dismissalLink: DisplayLink?
-    
+
     private(set) var content: VHUDContent?
-    
+
     init(inView: UIView) {
         super.init(frame: inView.bounds)
-        
+
         inView.addSubview(self)
         inView.allPin(subView: self)
-        
+
         self.setup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setup() {
         self.progressView.clipsToBounds = true
         self.addSubview(self.progressView)
         self.setCenterLayoutConstraint(self.progressView)
-        
+
         self.label.textAlignment = .center
         self.label.backgroundColor = .clear
         self.label.adjustsFontSizeToFitWidth = true
@@ -54,10 +54,10 @@ final class VHUDView: UIView {
         _ = self.addPin(withView: self.label, attribute: .right, toView: self.progressView, constant: -VHUDView.labelInset)
         _ = self.addPin(withView: self.label, attribute: .bottom, toView: self.progressView, constant: -VHUDView.labelInset)
     }
-    
+
     func setContent(_ content: VHUDContent) {
         self.content = content
-        
+
         switch content.mode {
         case .loop(let interval):
             self.progressLink = DisplayLink(interval)
@@ -70,7 +70,7 @@ final class VHUDView: UIView {
         case .percentComplete:
             break
         }
-        
+
         switch content.shape {
         case .round:
             self.progressView.layer.cornerRadius = 8.0
@@ -79,7 +79,7 @@ final class VHUDView: UIView {
         case .custom(let closure):
             closure(self.progressView)
         }
-        
+
         switch content.style {
         case .dark:
             self.progressView.backgroundColor = .black
@@ -104,7 +104,7 @@ final class VHUDView: UIView {
             self.setCenterLayoutConstraint(v)
             self.blurView = v
         }
-        
+
         switch content.background {
         case .none:
             self.backgroundColor = .clear
@@ -117,10 +117,10 @@ final class VHUDView: UIView {
             self.sendSubview(toBack: v)
             self.allPin(subView: v)
         }
-        
+
         self.label.font = content.labelFont ?? VHUDView.labelFont
         self.progressView.mode = content.mode
-        
+
         self.setText(text: content.loadingText)
         let needShowProgressText = content.mode == .percentComplete
         self.progressLink?.updateDurationCallback = { [weak self] percentComplete in
@@ -129,38 +129,38 @@ final class VHUDView: UIView {
                 self?.updateProgressText(percentComplete)
             }
         }
-        
+
         self.progressLink?.start()
     }
-    
+
     func updateProgress(_ percentComplete: Double) {
         var p = percentComplete
         if p < 0.0 { p = 0.0 }
         if p > 1.0 { p = 1.0 }
         self.progressView.percentComplete = p
     }
-    
+
     func setText(text: String?) {
         self.label.text = text
     }
-    
+
     func updateProgressText(_ percentComplete: Double) {
         var p = percentComplete
         if p < 0.0 { p = 0.0 }
         if p > 1.0 { p = 1.0 }
         self.label.text = Int(p * 100).description + "%"
     }
-    
+
     private func setCenterLayoutConstraint(_ view: UIView) {
         self.pinCenter(subView: view)
         _ = view.addWidthConstraint(view: view, constant: VHUDView.size.width)
         _ = view.addHeightConstraint(view: view, constant: VHUDView.size.height)
     }
-    
+
     private func finishAllIfNeeded() {
         self.progressView.outsideMargin -= 0.14
     }
-    
+
     private func finish() {
         self.blurView?.removeFromSuperview()
         self.backgroundColor = .clear
@@ -169,13 +169,13 @@ final class VHUDView: UIView {
         self.label.text = nil
         self.removeFromSuperview()
     }
-    
+
     func dismiss(_ duration: TimeInterval, _ deley: TimeInterval? = nil, _ text: String? = nil, _ completion: ((Void) -> Void)? = nil) {
         if self.dismissalLink != nil { return }
-        
+
         self.progressLink?.reset()
         self.setText(text: text ?? self.content?.completionText)
-        
+
         if let d = deley {
             self.dismissalLink = DisplayLink(d)
             self.dismissalLink?.updateDurationCallback = { [weak self] percentComplete in

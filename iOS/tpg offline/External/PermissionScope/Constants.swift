@@ -16,16 +16,16 @@ enum Constants {
         static let dialogHeightTwoPermissions: CGFloat   = 360.0
         static let dialogHeightThreePermissions: CGFloat = 460.0
     }
-    
+
     struct NSUserDefaultsKeys {
         static let requestedInUseToAlwaysUpgrade = "PS_requestedInUseToAlwaysUpgrade"
         static let requestedBluetooth            = "PS_requestedBluetooth"
         static let requestedMotion               = "PS_requestedMotion"
         static let requestedNotifications        = "PS_requestedNotifications"
     }
-    
+
     struct InfoPlistKeys {
         static let locationWhenInUse             = "NSLocationWhenInUseUsageDescription"
         static let locationAlways                = "NSLocationAlwaysUsageDescription"
-    } 
+    }
 }

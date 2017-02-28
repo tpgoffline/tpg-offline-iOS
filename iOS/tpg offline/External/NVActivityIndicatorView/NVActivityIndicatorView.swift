@@ -237,9 +237,9 @@ public enum NVActivityIndicatorType: Int {
      - returns: Instance of NVActivityIndicatorAnimationAudioEqualizer.
      */
     case audioEqualizer
-    
-    static let allTypes = (blank.rawValue ... audioEqualizer.rawValue).map{ NVActivityIndicatorType(rawValue: $0)! }
-    
+
+    static let allTypes = (blank.rawValue ... audioEqualizer.rawValue).map { NVActivityIndicatorType(rawValue: $0)! }
+
     func animation() -> NVActivityIndicatorAnimationDelegate {
         switch self {
         case .blank:
@@ -314,31 +314,31 @@ public enum NVActivityIndicatorType: Int {
 public final class NVActivityIndicatorView: UIView {
     /// Default type. Default value is .BallSpinFadeLoader.
     public static var DEFAULT_TYPE: NVActivityIndicatorType = .ballSpinFadeLoader
-    
+
     /// Default color. Default value is UIColor.whiteColor().
     public static var DEFAULT_COLOR = UIColor.white
-    
+
     /// Default padding. Default value is 0.
     public static var DEFAULT_PADDING: CGFloat = 0
-    
+
     /// Default size of activity indicator view in UI blocker. Default value is 60x60.
     public static var DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
-    
+
     /// Default display time threshold to actually display UI blocker. Default value is 0 ms.
     public static var DEFAULT_BLOCKER_DISPLAY_TIME_THRESHOLD = 0
-    
+
     /// Default minimum display time of UI blocker. Default value is 0 ms.
     public static var DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 0
-    
+
     /// Default message displayed in UI blocker. Default value is nil.
-    public static var DEFAULT_BLOCKER_MESSAGE: String? = nil
-    
+    public static var DEFAULT_BLOCKER_MESSAGE: String?
+
     /// Default font of message displayed in UI blocker. Default value is bold system font, size 20.
     public static var DEFAULT_BLOCKER_MESSAGE_FONT = UIFont.boldSystemFont(ofSize: 20)
-    
+
     /// Animation type.
     public var type: NVActivityIndicatorType = NVActivityIndicatorView.DEFAULT_TYPE
-    
+
     @available(*, unavailable, message: "This property is reserved for Interface Builder. Use 'type' instead.")
     @IBInspectable var typeName: String {
         get {
@@ -348,20 +348,20 @@ public final class NVActivityIndicatorView: UIView {
             _setTypeName(newValue)
         }
     }
-    
+
     /// Color of activity indicator view.
     @IBInspectable public var color: UIColor = NVActivityIndicatorView.DEFAULT_COLOR
-    
+
     /// Padding of activity indicator view.
     @IBInspectable public var padding: CGFloat = NVActivityIndicatorView.DEFAULT_PADDING
-    
+
     /// Current status of animation, read-only.
     @available(*, deprecated: 3.1)
     public var animating: Bool { return isAnimating }
-    
+
     /// Current status of animation, read-only.
     public private(set) var isAnimating: Bool = false
-    
+
     /**
      Returns an object initialized from data in a given unarchiver.
      self, initialized using the data in decoder.
@@ -375,7 +375,7 @@ public final class NVActivityIndicatorView: UIView {
         backgroundColor = UIColor.clear
         isHidden = true
     }
-    
+
     /**
      Create a activity indicator view.
      
@@ -395,7 +395,7 @@ public final class NVActivityIndicatorView: UIView {
         super.init(frame: frame)
         isHidden = true
     }
-    
+
     // Fix issue #62
     // Intrinsic content size is used in autolayout
     // that causes mislayout when using with MBProgressHUD.
@@ -406,10 +406,10 @@ public final class NVActivityIndicatorView: UIView {
      
      - returns: A size indicating the natural size for the receiving view based on its intrinsic properties.
      */
-    public override var intrinsicContentSize : CGSize {
+    public override var intrinsicContentSize: CGSize {
         return CGSize(width: bounds.width, height: bounds.height)
     }
-    
+
     /**
      Start animating.
      */
@@ -419,7 +419,7 @@ public final class NVActivityIndicatorView: UIView {
         layer.speed = 1
         setUpAnimation()
     }
-    
+
     /**
      Stop animating.
      */
@@ -428,9 +428,9 @@ public final class NVActivityIndicatorView: UIView {
         isAnimating = false
         layer.sublayers?.removeAll()
     }
-    
+
     // MARK: Internal
-    
+
     func _setTypeName(_ typeName: String) {
         for item in NVActivityIndicatorType.allTypes {
             if String(describing: item).caseInsensitiveCompare(typeName) == ComparisonResult.orderedSame {
@@ -439,18 +439,18 @@ public final class NVActivityIndicatorView: UIView {
             }
         }
     }
-    
+
     func getTypeName() -> String {
         return String(describing: type)
     }
-    
+
     // MARK: Privates
-    
+
     private final func setUpAnimation() {
         let animation: NVActivityIndicatorAnimationDelegate = type.animation()
-        var animationRect = UIEdgeInsetsInsetRect(frame, UIEdgeInsetsMake(padding, padding, padding, padding))
+        var animationRect = UIEdgeInsetsInsetRect(frame, UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
         let minEdge = min(animationRect.width, animationRect.height)
-        
+
         layer.sublayers = nil
         animationRect.size = CGSize(width: minEdge, height: minEdge)
         animation.setUpAnimation(in: layer, size: animationRect.size, color: color)

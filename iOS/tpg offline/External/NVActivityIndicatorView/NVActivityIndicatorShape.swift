@@ -19,19 +19,19 @@ enum NVActivityIndicatorShape {
     case triangle
     case line
     case pacman
-    
+
     func layerWith(size: CGSize, color: UIColor) -> CALayer {
         let layer: CAShapeLayer = CAShapeLayer()
         var path: UIBezierPath = UIBezierPath()
         let lineWidth: CGFloat = 2
-        
+
         switch self {
         case .circle:
             path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: 0,
                         endAngle: CGFloat(2 * M_PI),
-                        clockwise: false);
+                        clockwise: false)
             layer.fillColor = color.cgColor
         case .circleSemi:
             path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
@@ -46,7 +46,7 @@ enum NVActivityIndicatorShape {
                         radius: size.width / 2,
                         startAngle: 0,
                         endAngle: CGFloat(2 * M_PI),
-                        clockwise: false);
+                        clockwise: false)
             layer.fillColor = nil
             layer.strokeColor = color.cgColor
             layer.lineWidth = lineWidth
@@ -103,7 +103,7 @@ enum NVActivityIndicatorShape {
             layer.fillColor = color.cgColor
         case .triangle:
             let offsetY = size.height / 4
-            
+
             path.move(to: CGPoint(x: 0, y: size.height - offsetY))
             path.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - offsetY))
             path.addLine(to: CGPoint(x: size.width, y: size.height - offsetY))
@@ -118,16 +118,16 @@ enum NVActivityIndicatorShape {
                         radius: size.width / 4,
                         startAngle: 0,
                         endAngle: CGFloat(2 * M_PI),
-                        clockwise: true);
+                        clockwise: true)
             layer.fillColor = nil
             layer.strokeColor = color.cgColor
             layer.lineWidth = size.width / 2
         }
-        
+
         layer.backgroundColor = nil
         layer.path = path.cgPath
         layer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        
+
         return layer
     }
 }

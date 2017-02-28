@@ -31,7 +31,7 @@ import CoreBluetooth
 import CoreLocation
 
 open class BeaconRegionRequest: NSObject, Request {
-	
+
 	open var UUID: String
 	open var rState: RequestState = .pending
 	fileprivate(set) var region: CLBeaconRegion
@@ -42,7 +42,7 @@ open class BeaconRegionRequest: NSObject, Request {
 	open var onStateDidChange: RegionStateDidChange?
 	open var onRangingBeacons: RegionBeaconsRanging?
 	open var onError: RegionMonitorError?
-	
+
 	init?(beacon: Beacon, monitor: Event) {
 		self.type = monitor
 		guard let proximityUUID = Foundation.UUID(uuidString: beacon.proximityUUID) else { // invalid Proximity UUID
@@ -57,21 +57,21 @@ open class BeaconRegionRequest: NSObject, Request {
 			return nil
 		}
 	}
-	
+
 	open func cancel(_ error: LocationError?) {
 		_ = Beacons.remove(request: self, error: error)
 	}
-	
+
 	open func cancel() {
 		self.cancel(nil)
 	}
-	
+
 	open func pause() {
 		if Beacons.remove(request: self) == true {
 			self.rState = .paused
 		}
 	}
-	
+
 	open func start() {
 		if self.rState.isRunning == false {
 			if Beacons.add(request: self) == true {

@@ -11,7 +11,7 @@ import Foundation
 /// Permissions currently supportes by PermissionScope
 @objc public enum PermissionType: Int, CustomStringConvertible {
     case contacts, locationAlways, locationInUse, notifications, microphone, camera, photos, reminders, events, bluetooth, motion
-    
+
     public var prettyDescription: String {
         switch self {
         case .locationAlways, .locationInUse:
@@ -20,7 +20,7 @@ import Foundation
             return "\(self)"
         }
     }
-    
+
     public var description: String {
         switch self {
         case .contacts:         return "Contacts"
@@ -36,14 +36,14 @@ import Foundation
         case .motion:           return "Motion"
         }
     }
-    
+
     static let allValues = [contacts, locationAlways, locationInUse, notifications, microphone, camera, photos, reminders, events, bluetooth, motion]
 }
 
 /// Possible statuses for a permission.
 @objc public enum PermissionStatus: Int, CustomStringConvertible {
     case authorized, unauthorized, unknown, disabled
-    
+
     public var description: String {
         switch self {
         case .authorized:   return "Authorized"
@@ -58,12 +58,12 @@ import Foundation
 @objc public class PermissionResult: NSObject {
     public let type: PermissionType
     public let status: PermissionStatus
-    
-    internal init(type:PermissionType, status:PermissionStatus) {
+
+    internal init(type: PermissionType, status: PermissionStatus) {
         self.type   = type
         self.status = status
     }
-    
+
     override public var description: String {
         return "\(type) \(status)"
     }

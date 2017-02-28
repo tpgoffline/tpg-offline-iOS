@@ -13,31 +13,27 @@ class DeparturesRowController: NSObject {
     @IBOutlet var lineLabel: WKInterfaceLabel!
     @IBOutlet var directionLabel: WKInterfaceLabel!
     @IBOutlet var leftTimeLabel: WKInterfaceLabel!
-    
+
     var departure: Departures? {
         didSet {
             if let departure = departure {
                 separator.setColor(departure.lineBackgroundColor ?? UIColor.white)
                 lineLabel.setText(departure.line)
                 directionLabel.setText(departure.direction)
-                
-                if (departure.leftTime == "no more") {
+
+                if departure.leftTime == "no more" {
                     let attrStr = NSAttributedString(string: "\u{f00d}", attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
                     leftTimeLabel.setAttributedText(attrStr)
-                }
-                else if (departure.leftTime == "offline") {
+                } else if departure.leftTime == "offline" {
                     let attrStr = NSAttributedString(string: "\u{f0ac}", attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
                     lineLabel.setAttributedText(attrStr)
                     leftTimeLabel.setHidden(true)
-                }
-                else if (departure.leftTime == "&gt;1h") {
+                } else if departure.leftTime == "&gt;1h" {
                     leftTimeLabel.setText(">1h")
-                }
-                else if (departure.leftTime == "0") {
+                } else if departure.leftTime == "0" {
                     let attrStr = NSAttributedString(string: "\u{f207}", attributes: [NSFontAttributeName: UIFont(name: "FontAwesome", size: 16)!])
                     leftTimeLabel.setAttributedText(attrStr)
-                }
-                else {
+                } else {
                     leftTimeLabel.setText(departure.leftTime + "'")
                 }
             }

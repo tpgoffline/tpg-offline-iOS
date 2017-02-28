@@ -18,53 +18,55 @@ class MapsListTableViewController: UITableViewController {
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
 	}
-	
+
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		
+
 	}
-	
+
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		
+
 		refreshTheme()
 	}
-	
+
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		
+
 		return 1
 	}
-	
+
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
+
 		return mapsList.count
 	}
-	
-	
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "plansCell", for: indexPath)
-		
+
 		cell.textLabel?.text = mapsList[indexPath.row].localized
 		cell.textLabel?.textColor = AppValues.textColor
 		cell.backgroundColor = AppValues.primaryColor
-		
+
 		return cell
 	}
-	
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showMap" {
-            let nav = segue.destination as! UINavigationController
-			let planViewController = nav.viewControllers[0] as! MapViewController
-			planViewController.mapImage = UIImage(named: mapsList[(tableView.indexPathForSelectedRow?.row)!])
+            guard let nav = segue.destination as? UINavigationController else {
+                return
+            }
+            guard let mapViewController = nav.viewControllers[0] as? MapViewController else {
+                return
+            }
+			mapViewController.mapImage = UIImage(named: mapsList[(tableView.indexPathForSelectedRow?.row)!])
 		}
 	}
-	
-	
+
 }
 
 extension MapsListTableViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }
-    
+
 }

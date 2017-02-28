@@ -14,9 +14,9 @@ class CalendarSelectionViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         refreshTheme()
-        
+
         calendar.appearance.selectionColor = AppValues.primaryColor.darken(byPercentage: 0.1)
         calendar.appearance.todayColor = AppValues.primaryColor.lighten(byPercentage: 0.2)
         calendar.backgroundColor = AppValues.primaryColor
@@ -29,16 +29,16 @@ class CalendarSelectionViewController: UIViewController {
         calendar.appearance.titleSelectionColor = AppValues.textColor
         calendar.select(Calendar(identifier: Calendar.Identifier.gregorian).date(from: ActualRoutes.route.date!)!, scrollToDate: true)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         refreshTheme()
-        
+
         calendar.appearance.selectionColor = AppValues.primaryColor.darken(byPercentage: 0.1)
         calendar.appearance.todayColor = AppValues.primaryColor.lighten(byPercentage: 0.2)
         calendar.backgroundColor = AppValues.primaryColor
@@ -59,8 +59,7 @@ extension CalendarSelectionViewController : FSCalendarDataSource, FSCalendarDele
             ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: date)
             ActualRoutes.route.date!.hour = 0
             ActualRoutes.route.date!.minute = 0
-        }
-        else {
+        } else {
             let dateCalendar = Calendar.current.dateComponents([.day, .month, .year], from: date)
             ActualRoutes.route.date!.day = dateCalendar.day!
             ActualRoutes.route.date!.month = dateCalendar.month!

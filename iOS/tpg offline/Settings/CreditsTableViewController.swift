@@ -33,14 +33,14 @@ class CreditsTableViewController: UITableViewController {
 		["Firebase", "Projet maintenu par Google".localized, "https://firebase.google.com"]
     ]
     override func viewDidLoad() {
-        super.viewDidLoad()     
+        super.viewDidLoad()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refreshTheme()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -53,7 +53,6 @@ class CreditsTableViewController: UITableViewController {
         return creditsList.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "creditsCell", for: indexPath)
 
@@ -62,20 +61,19 @@ class CreditsTableViewController: UITableViewController {
         cell.textLabel?.textColor = AppValues.textColor
         cell.detailTextLabel?.textColor = AppValues.textColor
         cell.backgroundColor = AppValues.primaryColor
-        
+
         let view = UIView()
         view.backgroundColor = AppValues.primaryColor
         cell.selectedBackgroundView = view
-        
+
         return cell
     }
-	
+
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let safariViewController = SFSafariViewController(url: URL(string: creditsList[tableView.indexPathForSelectedRow!.row][2])!, entersReaderIfAvailable: true)
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 safariViewController.view.tintColor = AppValues.primaryColor
-            }
-            else {
+            } else {
                 safariViewController.view.tintColor = AppValues.textColor
             }
             present(safariViewController, animated: true, completion: nil)

@@ -11,17 +11,19 @@ import Foundation
 import UserNotifications
 
 class ReminderInterfaceController: WKInterfaceController {
-    
+
     var value = 0.0
     @IBOutlet weak var picker: WKInterfacePicker!
-    var departure: Departures? = nil
+    var departure: Departures?
     var itemList: [(String, String)] = []
-    
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-        departure = (context as! Departures)
-        
+
+        if let a = context as? Departures {
+            departure = a
+        }
+
         if Int(departure!.leftTime) == 0 {
             let okAction = WKAlertAction(title: "OK", style: .default) {
                 Async.main {
@@ -29,18 +31,17 @@ class ReminderInterfaceController: WKInterfaceController {
                 }
             }
             self.presentAlert(withTitle: NSLocalizedString("Le bus arrive", comment: ""), message: NSLocalizedString("Dépêchez vous, vous allez le rater !", comment: ""), preferredStyle: .alert, actions: [okAction])
-        }
-        else {
-            
+        } else {
+
             var max = 60
             if Int(departure!.leftTime)! < 60 {
                 max = Int(departure!.leftTime)! - 1
             }
-            
+
             for x in 0...max {
                 itemList.append((String(x), String(x)))
             }
-            
+
             let pickerItems: [WKPickerItem] = itemList.map {
                 let pickerItem = WKPickerItem()
                 pickerItem.caption = $0.0
@@ -51,14 +52,14 @@ class ReminderInterfaceController: WKInterfaceController {
             picker.focus()
         }
     }
-    
+
     @IBAction func pickerChanged(value: Int) {
         self.value = Double(itemList[value].1)!
     }
-    
+
     @IBAction func setReminder() {
         let center = UNUserNotificationCenter.current()
-        
+
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted {
                 let content = UNMutableNotificationContent()
@@ -71,8 +72,7 @@ class ReminderInterfaceController: WKInterfaceController {
                     text += self.departure!.direction
                     text += NSLocalizedString(" va partir immédiatement", comment: "")
                     content.body = text
-                }
-                else {
+                } else {
                     content.title = NSLocalizedString("Départ dans ", comment: "") + String(Int(self.value))  + NSLocalizedString(" minutes", comment: "")
                     var text =  NSLocalizedString("Le tpg de la line ", comment: "")
                     text += self.departure!.line
@@ -86,18 +86,18 @@ class ReminderInterfaceController: WKInterfaceController {
                 content.categoryIdentifier = "departureNotifications"
                 content.userInfo = [:]
                 content.sound = UNNotificationSound.default()
-                
+
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                 var time = dateFormatter.date(from: self.departure!.timestamp)
                 time!.addTimeInterval(self.value * -60)
                 let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
-                
+
                 let cal = Calendar(identifier: Calendar.Identifier.gregorian)
                 let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
-                
+
                 let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!), repeats: false)
-                
+
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
                     if error == nil {
@@ -108,8 +108,7 @@ class ReminderInterfaceController: WKInterfaceController {
                                 }
                             }
                             self.presentAlert(withTitle: NSLocalizedString("Vous serez notifié", comment: ""), message: NSLocalizedString("La notification à été enregistrée et sera affichée à l'heure du départ.", comment: ""), preferredStyle: .alert, actions: [okAction])
-                        }
-                        else {
+                        } else {
                             var texte =  NSLocalizedString("La notification à été enregistrée et sera affichée ", comment: "")
                             texte += String(Int(self.value))
                             texte += NSLocalizedString(" minutes avant le départ.", comment: "")
@@ -139,15 +138,15 @@ class ReminderInterfaceController: WKInterfaceController {
             }
         }
     }
-    
+
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
-    
+
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-    
+
 }

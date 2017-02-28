@@ -12,16 +12,22 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         let defaults = UserDefaults.standard
-        
+
         var decoded = defaults.object(forKey: "favoritesStops")
-        if decoded != nil {
-            let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [String:Stop]
+        a: if decoded != nil {
+            guard let data = decoded as? Data else {
+                break a
+            }
+            let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String:Stop]
             AppValues.favoritesStops = unarchivedData
         }
-        
+
         decoded = defaults.object(forKey: "offlineDepartures")
-        if decoded != nil {
-            let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [String:String]
+        b: if decoded != nil {
+            guard let data = decoded as? Data else {
+                break b
+            }
+            let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String:String]
             AppValues.offlineDepartures = unarchivedData!
         }
 
@@ -31,7 +37,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!)
             AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!)
         }
-        
+
         WatchSessionManager.sharedManager.startSession()
         // Perform any final initialization of your application.
     }

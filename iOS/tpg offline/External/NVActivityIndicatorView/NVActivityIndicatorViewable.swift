@@ -16,7 +16,7 @@ import UIKit
 public protocol NVActivityIndicatorViewable { }
 
 public extension NVActivityIndicatorViewable where Self: UIViewController {
-    
+
     /**
      Display UI blocker.
      
@@ -48,10 +48,10 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
                                         padding: padding,
                                         displayTimeThreshold: displayTimeThreshold,
                                         minimumDisplayTime: minimumDisplayTime)
-        
+
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
     }
-    
+
     /**
      Remove UI blocker.
      */

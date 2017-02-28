@@ -16,8 +16,14 @@ internal class Thermometer {
     var connection3: String?
     var connection4: String?
     var stop: Stop!
-    
-    init(stop: Stop!, leftTime: String?, isDeflect:Bool!, connection1: String?, connection2: String?, connection3: String?, connection4: String?) {
+
+    init(stop: Stop!,
+         leftTime: String?,
+         isDeflect: Bool!,
+         connection1: String?,
+         connection2: String?,
+         connection3: String?,
+         connection4: String?) {
         self.stop = stop
         self.leftTime = leftTime
         self.isDeflect = isDeflect

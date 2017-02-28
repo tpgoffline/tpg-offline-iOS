@@ -21,60 +21,56 @@ class RouteToStopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+
         walkLabel.attributedText = FAKIonIcons.androidWalkIcon(withSize: 21).attributedString()
-        
+
         let pin = MKPointAnnotation()
         pin.coordinate = self.stop.location.coordinate
         pin.title = self.stop.fullName
-		
+
         map.addAnnotation(pin)
-        
+
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: (self.stop.location.coordinate), span: span)
         map.setRegion(region, animated: true)
     }
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
 		refreshTheme()
 		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
 			map.tintColor = AppValues.primaryColor
-		}
-		else {
+		} else {
 			map.tintColor = AppValues.textColor
 		}
-     
+
         timeToGoLabel.textColor = AppValues.textColor
         walkLabel.textColor = AppValues.textColor
     }
 }
 
 extension RouteToStopViewController: MKMapViewDelegate {
-    
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: directionsRoute.polyline)
-        
+
         renderer.lineWidth = 4
-		
+
 		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
 			renderer.strokeColor = AppValues.primaryColor
-		}
-		else {
+		} else {
 			renderer.strokeColor = AppValues.textColor
 		}
-		
+
         return renderer
     }
-    
+
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         let request = MKDirectionsRequest()
         request.source = MKMapItem.forCurrentLocation()
@@ -83,12 +79,12 @@ extension RouteToStopViewController: MKMapViewDelegate {
         request.transportType = .walking
 
         let directions = MKDirections(request: request)
-        
-        directions.calculate {response, error in
+
+        directions.calculate {response, _ in
             guard let route = response?.routes.first else { return }
-            
+
             self.directionsRoute = route
-            
+
             self.map.removeOverlays(mapView.overlays)
             self.map.add(route.polyline)
             self.map.setVisibleMapRect(
@@ -100,6 +96,6 @@ extension RouteToStopViewController: MKMapViewDelegate {
             self.timeToGoLabel.text = String(Int(route.expectedTravelTime / 60)) + " Minutes".localized
         }
         self.timeToGoLabel.text = "Chargement en cours".localized
-        
+
     }
 }

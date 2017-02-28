@@ -28,7 +28,7 @@
 
 import Foundation
 import CoreLocation
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -39,7 +39,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+fileprivate func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l > r
@@ -47,7 +47,6 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     return rhs < lhs
   }
 }
-
 
 open class HeadingRequest: Request {
 		/// Unique identifier of the heading request
@@ -58,35 +57,35 @@ open class HeadingRequest: Request {
 	internal var onError: HeadingHandlerError?
 		/// Authorization did change
 	open var onAuthorizationDidChange: LocationHandlerAuthDidChange?
-	
+
 		/// Last heading received
 	fileprivate(set) var lastHeading: CLHeading?
-	
+
 	internal weak var locator: LocationManager?
-	
+
 	open var rState: RequestState = .pending {
 		didSet {
 			self.locator?.updateHeadingService()
 		}
 	}
-	
+
 	/// Frequency value to receive new events
 	open var frequency: HeadingFrequency {
 		didSet {
 			self.locator?.updateHeadingService()
 		}
 	}
-	
+
 	/// The maximum deviation (measured in degrees) between the reported heading and the true geomagnetic heading.
 	open var accuracy: CLLocationDirection {
 		didSet {
 			self.locator?.updateHeadingService()
 		}
 	}
-	
+
 	/// True if system calibration tool can be opened if necessary.
 	open var allowsCalibration: Bool = true
-	
+
 	/**
 	Create a new request to receive heading values from device's motion sensors about the orientation of the device
 	
@@ -96,13 +95,13 @@ open class HeadingRequest: Request {
 	
 	- returns: the request instance you can add to the queue
 	*/
-	
+
 	internal init(withFrequency frequency: HeadingFrequency, accuracy: CLLocationDirection, allowsCalibration: Bool = true) {
 		self.frequency = frequency
 		self.accuracy = accuracy
 		self.allowsCalibration = allowsCalibration
 	}
-	
+
 	/**
 	Use this function to change the handler to call when a new heading value is received
 	
@@ -114,7 +113,7 @@ open class HeadingRequest: Request {
 		self.onReceiveUpdates = handler
 		return self
 	}
-	
+
 	/**
 	Use this function to change the handler to call when something bad occours while receiving data from server
 	
@@ -126,8 +125,7 @@ open class HeadingRequest: Request {
 		self.onError = handler
 		return self
 	}
-	
-	
+
 	/**
 	Put the request in queue and starts it
 	*/
@@ -139,7 +137,7 @@ open class HeadingRequest: Request {
 			self.rState = previousState
 		}
 	}
-	
+
 	/**
 	Temporary pause request (not removed)
 	*/
@@ -150,7 +148,7 @@ open class HeadingRequest: Request {
 			locator.updateHeadingService()
 		}
 	}
-	
+
 	/**
 	Terminate request
 	*/
@@ -160,16 +158,16 @@ open class HeadingRequest: Request {
 			self.rState = .cancelled(error: error)
 		}
 	}
-	
+
 	/**
 	Terminate request (no error passing)
 	*/
 	open func cancel() {
 		self.cancel(nil)
 	}
-	
-	//MARK: - Private
-	
+
+	// MARK: - Private
+
 	internal func didReceiveEventFromManager(_ error: NSError?, heading: CLHeading?) {
 		if error != nil {
 			let err = LocationError.locationManager(error: error!)
@@ -177,7 +175,7 @@ open class HeadingRequest: Request {
 			self.cancel(err)
 			return
 		}
-		
+
 		if self.validateHeading(heading!) == true {
 			self.lastHeading = heading
 			if self.rState.isRunning == true {
@@ -185,12 +183,12 @@ open class HeadingRequest: Request {
 			}
 		}
 	}
-	
+
 	fileprivate func validateHeading(_ heading: CLHeading) -> Bool {
 		guard let lastHeading = self.lastHeading else {
 			return true
 		}
-		
+
 		switch self.frequency {
 		case .continuous(let interval):
 			let elapsedTime = (heading.timestamp.timeIntervalSince1970 - lastHeading.timestamp.timeIntervalSince1970)

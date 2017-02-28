@@ -1,4 +1,3 @@
-
 //
 //  StopsTableViewController.swift
 //  tpg offline
@@ -12,7 +11,7 @@ import Chameleon
 import FontAwesomeKit
 import FirebaseCrash
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
         return l < r
@@ -23,7 +22,6 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-
 class StopsTableViewController: UITableViewController, UISplitViewControllerDelegate {
     var localizedStops = [Stop]()
     var filtredResults = [Stop]()
@@ -31,43 +29,43 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     let defaults = UserDefaults.standard
     let pscope = PermissionScope()
     var localisationLoading = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         FIRCrashMessage("Departues")
 
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
-        
+
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = AppValues.textColor
-        
+
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            
+
             self!.requestLocation()
             self?.tableView.dg_stopLoading()
-            
+
             }, loadingView: loadingView)
-        
+
         tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-        
+
         // Result Search Controller
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized
-        
+
         refreshTheme()
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
         tableView.tableHeaderView = self.searchController.searchBar
-        
-        if(traitCollection.forceTouchCapability == .available){
+
+        if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: view)
         }
-        
+
         if !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
             switch PermissionScope().statusNotifications() {
             case .unknown:
@@ -91,11 +89,11 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 requestLocation()
                 return
             }
-            
+
             pscope.headerLabel.text = "Bonjour".localized
             pscope.bodyLabel.text = "Nous avons besoin de quelques autorisations".localized
             pscope.closeButton.setTitle("X", for: UIControlState())
-            pscope.show({ finished, results in
+            pscope.show({ _, results in
                 print("got results \(results)")
                 for x in results {
                     if x.type == PermissionType.locationInUse {
@@ -105,35 +103,34 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             }, cancelled: { (results) -> Void in
                 print("thing was cancelled")
             })
-            
+
         }
     }
-    
+
     func requestLocation() {
         localisationLoading = true
         self.localizedStops = []
         tableView.reloadData()
-        
+
         var accuracy = Accuracy.block
         if self.defaults.integer(forKey: "locationAccurency") == 1 {
             accuracy = .house
-        }
-        else if self.defaults.integer(forKey: "locationAccurency") == 2 {
+        } else if self.defaults.integer(forKey: "locationAccurency") == 2 {
             accuracy = .room
         }
-        
-        Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
+
+        let _ = Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
             print("Localisation results: \(location)")
-            
+
             if self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue) == 0 {
                 self.defaults.set(500, forKey: UserDefaultsKeys.proximityDistance.rawValue)
             }
-            
+
             for x in [Stop](AppValues.stops.values) {
                 x.distance = location.distance(from: x.location)
-                
-                if ((location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue))) {
-                    
+
+                if (location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue)) {
+
                     self.localizedStops.append(x)
                     print(x.stopCode)
                     print(String(describing: location.distance(from: x.location)))
@@ -142,8 +139,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             self.localizedStops.sort(by: { (arret1, arret2) -> Bool in
                 if arret1.distance < arret2.distance {
                     return true
-                }
-                else {
+                } else {
                     return false
                 }
             })
@@ -154,18 +150,18 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             print("Last location: \(location)")
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         searchController.searchBar.barTintColor = AppValues.primaryColor
         searchController.searchBar.tintColor = AppValues.textColor
-        
+
         refreshTheme()
-        
+
         tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-        
+
         if !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
             switch PermissionScope().statusLocationInUse() {
             case .unauthorized, .disabled, .unknown:
@@ -175,47 +171,41 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 requestLocation()
                 return
             }
-            
+
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
+
         if searchController.isActive {
             return 1
-        }
-        else {
+        } else {
             return 3
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         if searchController.isActive {
             return self.filtredResults.count
-        }
-        else {
+        } else {
             if section == 0 {
                 if localisationLoading {
                     return 1
-                }
-                else {
+                } else {
                     return localizedStops.count
                 }
-            }
-            else if section == 1 {
-                if (AppValues.favoritesStops == nil) {
+            } else if section == 1 {
+                if AppValues.favoritesStops == nil {
                     return 0
-                }
-                else {
+                } else {
                     return AppValues.favoritesStops.count
                 }
-            }
-            else {
+            } else {
                 return AppValues.stops.count
             }
         }
@@ -231,8 +221,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                     cell.textLabel?.text = "Recherche des arrêts...".localized
                     cell.detailTextLabel?.text = ""
                     cell.accessoryView = UIView()
-                }
-                else {
+                } else {
                     let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
                     iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                     cell.accessoryView = UIImageView(image: iconLocation.image(with: CGSize(width: 20, height: 20)))
@@ -240,16 +229,14 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                     cell.detailTextLabel!.text = "~" + String(Int(localizedStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
-            }
-            else if indexPath.section == 1 {
+            } else if indexPath.section == 1 {
                 let iconFavoris = FAKFontAwesome.starIcon(withSize: 20)!
                 iconFavoris.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconFavoris.image(with: CGSize(width: 20, height: 20)))
                 cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.title
                 cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
-            }
-            else {
+            } else {
                 let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 15)!
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
@@ -257,22 +244,21 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 cell.detailTextLabel!.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.subTitle
                 cell.imageView?.image = nil
             }
-            
+
             let backgroundView = UIView()
             backgroundView.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = backgroundView
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.detailTextLabel?.textColor = AppValues.textColor
-            
+
             return cell
-            
-        }
-        else {
+
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
             let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 20)!
             iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-            
+
             let backgroundView = UIView()
             backgroundView.backgroundColor = AppValues.primaryColor
             cell.selectedBackgroundView = backgroundView
@@ -282,49 +268,49 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
             cell.backgroundColor = AppValues.primaryColor
             cell.imageView?.image = nil
-            
+
             return cell
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         searchController.searchBar.resignFirstResponder()
-        if (segue.identifier == "afficherProchainsDeparts") {
-            let nav = segue.destination as! UINavigationController
-            let departsArretsViewController = nav.viewControllers[0] as! DeparturesTableViewController
-            if searchController.isActive {
-                departsArretsViewController.stop = filtredResults[(tableView.indexPathForSelectedRow?.row)!]
+        if segue.identifier == "afficherProchainsDeparts" {
+            guard let nav = segue.destination as? UINavigationController else {
+                FIRCrashMessage("*** WARNING ***: \(#file):\(#line): Guard failed")
+                return
             }
-            else {
-                if (tableView.indexPathForSelectedRow! as IndexPath).section == 0 {
-                    departsArretsViewController.stop = localizedStops[tableView.indexPathForSelectedRow!.row]
+            if let departuresViewController = nav.viewControllers[0] as? DeparturesTableViewController {
+                if searchController.isActive {
+                    departuresViewController.stop = filtredResults[(tableView.indexPathForSelectedRow?.row)!]
+                } else {
+                    if (tableView.indexPathForSelectedRow! as IndexPath).section == 0 {
+                        departuresViewController.stop = localizedStops[tableView.indexPathForSelectedRow!.row]
+                    } else if (tableView.indexPathForSelectedRow! as IndexPath).section == 1 {
+                        departuresViewController.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[tableView.indexPathForSelectedRow!.row]]
+                    } else {
+                        departuresViewController.stop = AppValues.stops[AppValues.stopsKeys[(tableView.indexPathForSelectedRow?.row)!]]
+                    }
                 }
-                else if (tableView.indexPathForSelectedRow! as IndexPath).section == 1 {
-                    departsArretsViewController.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[tableView.indexPathForSelectedRow!.row]]
-                }
-                else {
-                    departsArretsViewController.stop = AppValues.stops[AppValues.stopsKeys[(tableView.indexPathForSelectedRow?.row)!]]
-                }
+                FIRCrashMessage("Request \(departuresViewController.stop)")
             }
-            FIRCrashMessage("Request \(departsArretsViewController.stop)")
         }
     }
-    
+
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if (tableView.indexPathForSelectedRow! as IndexPath).section == 0 && localisationLoading && !searchController.isActive {
             return false
-        }
-        else {
+        } else {
             return true
         }
     }
-    
+
     deinit {
         if let table = tableView {
             table.dg_removePullToRefresh()
         }
     }
-    
+
     func filterContentForSearchText(_ searchText: String) {
         let espacapedSearchTextString = searchText.lowercased().folding(options: NSString.CompareOptions.diacriticInsensitive, locale: Locale.current).replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "+", with: "")
         filtredResults = [Stop](AppValues.stops.values).filter { arret in
@@ -338,7 +324,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             }
             return false
         })
-        
+
         tableView.reloadData()
     }
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
@@ -354,38 +340,35 @@ extension StopsTableViewController: UISearchResultsUpdating {
 
 extension StopsTableViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
+
         guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
-        
+
         guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
-        
+
         if indexPath.section == 0 && localisationLoading && !searchController.isActive {
             return nil
         }
-        
+
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "departsArretTableViewController") as? DeparturesTableViewController else { return nil }
-        
+
         if searchController.isActive {
             detailVC.stop = filtredResults[indexPath.row]
-        }
-        else {
+        } else {
             if indexPath.section == 0 {
                 detailVC.stop = localizedStops[indexPath.row]
-            }
-            else if indexPath.section == 1 {
+            } else if indexPath.section == 1 {
                 detailVC.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
-            }
-            else {
+            } else {
                 detailVC.stop = AppValues.stops[AppValues.stopsKeys[indexPath.row]]
             }
         }
         previewingContext.sourceRect = cell.frame
         return detailVC
     }
-    
+
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        
+
         show(viewControllerToCommit, sender: self)
-        
+
     }
 }

@@ -13,44 +13,50 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
     @available(watchOS 2.2, *)
     public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
+
     }
 
-    
     static let sharedManager = WatchSessionManager()
-    
+
     fileprivate override init() {
         super.init()
     }
-    
+
     fileprivate let session: WCSession = WCSession.default()
-    
+
     func startSession() {
         session.delegate = self
         session.activate()
     }
-    
+
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        if applicationContext["favoritesStops"] != nil {
-            var favoritesStops = [String:Stop]()
-            
-            let tempUnarchive = NSKeyedUnarchiver.unarchiveObject(with: applicationContext["favoritesStops"] as! Data) as! [String:[String:Any]]
+        a: if applicationContext["favoritesStops"] != nil {
+            var favoritesStops = [String: Stop]()
+
+            guard let data = applicationContext["favoritesStops"] as? Data else {
+                break a
+            }
+            guard let tempUnarchive = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String:[String:Any]] else {
+                break a
+            }
             for (x, y) in tempUnarchive {
                 favoritesStops[x] = Stop(dictionnary: y)
             }
-            
+
             AppValues.favoritesStops = favoritesStops
-            
+
             let defaults = UserDefaults.standard
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: favoritesStops)
             defaults.set(encodedData, forKey: "favoritesStops")
         }
-        
+
         if applicationContext["offlineDepartures"] != nil {
-            let offlineDepartures = applicationContext["offlineDepartures"] as! [String: String]
-            
+            guard let offlineDepartures = applicationContext["offlineDepartures"] as? [String: String] else {
+                return
+            }
+
             AppValues.offlineDepartures = offlineDepartures
-            
+
             let defaults = UserDefaults.standard
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: offlineDepartures)
             defaults.set(encodedData, forKey: "offlineDepartures")

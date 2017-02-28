@@ -1,4 +1,3 @@
-
 //
 //  DeparturesInterfaceController.swift
 //  tpg offline
@@ -12,32 +11,32 @@ import Foundation
 import Alamofire
 
 class DeparturesInterfaceController: WKInterfaceController {
-    
-    var stop: Stop? = nil
+
+    var stop: Stop?
     var departuresList: [Departures]! = []
     var offline = false
     @IBOutlet weak var loadingImage: WKInterfaceImage!
     @IBOutlet weak var departuresTable: WKInterfaceTable!
-    
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         loadingImage.setHidden(false)
         departuresTable.setHidden(true)
-        stop = (context as! Stop)
+        stop = (context as? Stop) ?? Stop(empty: true)
         refreshDepartures()
         // Configure interface objects here.
     }
-    
+
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
-    
+
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-    
+
     func refreshDepartures() {
         departuresList = []
         offline = false
@@ -52,31 +51,29 @@ class DeparturesInterfaceController: WKInterfaceController {
                                 destinationCode: subjson["line"]["destinationCode"].string!,
                                 lineColor: UIColor.white,
                                 lineBackgroundColor: UIColor.white,
-                                
+
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
                                 timestamp: subjson["timestamp"].string
                                 ))
-                        }
-                        else {
+                        } else {
                             self.departuresList.append(Departures(
                                 line: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
                                 destinationCode: subjson["line"]["destinationCode"].string!,
                                 lineColor: AppValues.linesColor[subjson["line"]["lineCode"].string!]!,
                                 lineBackgroundColor: AppValues.linesBackgroundColor[subjson["line"]["lineCode"].string!]!,
-                                
+
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
                                 timestamp: subjson["timestamp"].string
                                 ))
                         }
                     }
-                }
-                else {
+                } else {
                     self.offline = true
                     let day: String!
-                    
+
                     switch Calendar.current.dateComponents([.weekday], from: Date()).weekday {
                     case 7?:
                         day = "SAM"
@@ -88,7 +85,7 @@ class DeparturesInterfaceController: WKInterfaceController {
                         day = "LUN"
                         break
                     }
-                    
+
                     if let departuresString = AppValues.offlineDepartures[(self.stop?.stopCode)!] {
                         var json = JSON(data: departuresString.data(using: String.Encoding.utf8)!)
                         if json[day].string != nil {
@@ -105,8 +102,7 @@ class DeparturesInterfaceController: WKInterfaceController {
                                         leftTime: "0",
                                         timestamp: subJson["timestamp"].string!
                                         ))
-                                }
-                                else {
+                                } else {
                                     self.departuresList.append(Departures(
                                         line: subJson["ligne"].string!,
                                         direction: subJson["destination"].string!,
@@ -120,14 +116,14 @@ class DeparturesInterfaceController: WKInterfaceController {
                                 }
                                 self.departuresList.last?.calculerTempsRestant()
                             }
-                            
+
                             self.departuresList = self.departuresList.filter({ (depart) -> Bool in
                                 if depart.leftTime != "-1" && Int(depart.leftTime)! <= 60 {
                                     return true
                                 }
                                 return false
                             })
-                            
+
                             self.departuresList.sort(by: { (depart1, depart2) -> Bool in
                                 if Int(depart1.leftTime)! < Int(depart2.leftTime)! {
                                     return true
@@ -136,14 +132,14 @@ class DeparturesInterfaceController: WKInterfaceController {
                             })
                         }
                     }
-                    
+
                 }
                 self.refreshTable()
                 self.loadingImage.setHidden(true)
                 self.departuresTable.setHidden(false)
         }
     }
-    
+
     func refreshTable() {
         if offline {
             departuresTable.setNumberOfRows(self.departuresList.count + 1, withRowType: "DeparturesRow")
@@ -164,8 +160,7 @@ class DeparturesInterfaceController: WKInterfaceController {
                     controller.departure = departuresList[index]
                 }
             }
-        }
-        else {
+        } else {
             departuresTable.setNumberOfRows(self.departuresList.count, withRowType: "DeparturesRow")
             for index in 0..<departuresTable.numberOfRows {
                 if let controller = departuresTable.rowController(at: index) as? DeparturesRowController {
@@ -174,8 +169,11 @@ class DeparturesInterfaceController: WKInterfaceController {
             }
         }
     }
-    
+
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
-        return (departuresTable.rowController(at: rowIndex) as! DeparturesRowController).departure
+        guard let departureRowController = departuresTable.rowController(at: rowIndex) as? DeparturesRowController else {
+            return nil
+        }
+        return departureRowController.departure
     }
 }

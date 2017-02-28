@@ -10,12 +10,19 @@ import UIKit
 
 internal class Route {
     var from: String!
-    var to: String!
+    var to: String! // swiftlint:disable:this variable_name
     var duration: String!
     var departureTimestamp: Int!
     var arrivalTimestamp: Int!
     var connections: [RoutesConnections]!
-    init(from: String, to: String, duration: String, departureTimestamp: Int!, arrivalTimestamp: Int!, connections: [RoutesConnections]) {
+
+    // swiftlint:disable variable_name
+    init(from: String,
+         to: String,
+         duration: String,
+         departureTimestamp: Int!,
+         arrivalTimestamp: Int!,
+         connections: [RoutesConnections]) {
         self.from = from
         self.to = to
         self.duration = duration
@@ -31,7 +38,7 @@ internal class Route {
         self.arrivalTimestamp = 0
         self.connections = []
     }
-    
+
     func describe() -> String {
         return "[from: \(from), to: \(to), duration: \(duration), departuresTimestamp: \(departureTimestamp), arrivalTimestamp: \(arrivalTimestamp), connections: \(connections)]"
     }

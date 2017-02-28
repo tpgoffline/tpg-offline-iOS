@@ -13,7 +13,7 @@ class StopsRowController: NSObject {
     //@IBOutlet var typeImage: WKInterfaceImage!
     @IBOutlet var stopTitleLabel: WKInterfaceLabel!
     @IBOutlet var stopSubTitleLabel: WKInterfaceLabel!
-    
+
     var stop: Stop? {
         didSet {
             if let stop = stop {

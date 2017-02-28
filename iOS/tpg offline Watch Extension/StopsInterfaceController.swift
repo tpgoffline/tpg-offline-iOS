@@ -14,14 +14,13 @@ class StopsInterfaceController: WKInterfaceController {
 
     @IBOutlet weak var stopsTable: WKInterfaceTable!
     @IBOutlet weak var noFavoritesLabel: WKInterfaceLabel!
-    
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         if AppValues.favoritesStops.count == 0 {
             noFavoritesLabel.setHidden(false)
             stopsTable.setHidden(true)
-        }
-        else {
+        } else {
             noFavoritesLabel.setHidden(true)
             stopsTable.setHidden(false)
             refresh()
@@ -30,25 +29,24 @@ class StopsInterfaceController: WKInterfaceController {
 
     override func willActivate() {
         super.willActivate()
-        
+
     }
 
     override func didDeactivate() {
         super.didDeactivate()
     }
-    
+
     @IBAction func reloadButtonTaped(_ sender: AnyObject!) {
         if AppValues.favoritesStops.count == 0 {
             noFavoritesLabel.setHidden(false)
             stopsTable.setHidden(true)
-        }
-        else {
+        } else {
             noFavoritesLabel.setHidden(true)
             stopsTable.setHidden(false)
             refresh()
         }
     }
-    
+
     func refresh() {
         stopsTable.setNumberOfRows(AppValues.favoritesStops.count, withRowType: "StopsRow")
         var favoritesStopsKeys = Array(AppValues.favoritesStops.keys)
@@ -69,6 +67,9 @@ class StopsInterfaceController: WKInterfaceController {
     }
 
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        pushController(withName: "Departures", context: (stopsTable.rowController(at: rowIndex) as! StopsRowController).stop)
+        guard let stop = stopsTable.rowController(at: rowIndex) as? StopsRowController else {
+            return
+        }
+        pushController(withName: "Departures", context: stop.stop)
     }
 }

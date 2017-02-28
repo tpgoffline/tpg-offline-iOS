@@ -26,20 +26,20 @@ func snapshot(_ name: String, waitForLoadingIndicator: Bool = true) {
 }
 
 open class Snapshot: NSObject {
-    
+
     open class func setupSnapshot(_ app: XCUIApplication) {
         setLanguage(app)
         setLocale(app)
         setLaunchArguments(app)
     }
-    
+
     class func setLanguage(_ app: XCUIApplication) {
         guard let prefix = pathPrefix() else {
             return
         }
-        
+
         let path = prefix.appendingPathComponent("language.txt")
-        
+
         do {
             let trimCharacterSet = CharacterSet.whitespacesAndNewlines
             deviceLanguage = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).trimmingCharacters(in: trimCharacterSet) as String
@@ -48,14 +48,14 @@ open class Snapshot: NSObject {
             print("Couldn't detect/set language...")
         }
     }
-    
+
     class func setLocale(_ app: XCUIApplication) {
         guard let prefix = pathPrefix() else {
             return
         }
-        
+
         let path = prefix.appendingPathComponent("locale.txt")
-        
+
         do {
             let trimCharacterSet = CharacterSet.whitespacesAndNewlines
             locale = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).trimmingCharacters(in: trimCharacterSet) as String
@@ -67,15 +67,15 @@ open class Snapshot: NSObject {
         }
         app.launchArguments += ["-AppleLocale", "\"\(locale)\""]
     }
-    
+
     class func setLaunchArguments(_ app: XCUIApplication) {
         guard let prefix = pathPrefix() else {
             return
         }
-        
+
         let path = prefix.appendingPathComponent("snapshot-launch_arguments.txt")
         app.launchArguments += ["-FASTLANE_SNAPSHOT", "YES", "-ui_testing"]
-        
+
         do {
             let launchArguments = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue) as String
             let regex = try NSRegularExpression(pattern: "(\\\".+?\\\"|\\S+)", options: [])
@@ -88,36 +88,36 @@ open class Snapshot: NSObject {
             print("Couldn't detect/set launch_arguments...")
         }
     }
-    
+
     open class func snapshot(_ name: String, waitForLoadingIndicator: Bool = true) {
         if waitForLoadingIndicator {
             waitForLoadingIndicatorToDisappear()
         }
-        
+
         print("snapshot: \(name)") // more information about this, check out https://github.com/fastlane/fastlane/tree/master/snapshot#how-does-it-work
-        
+
         sleep(1) // Waiting for the animation to be finished (kind of)
-        
+
         #if os(tvOS)
             XCUIApplication().childrenMatchingType(.Browser).count
         #else
             XCUIDevice.shared().orientation = .unknown
         #endif
     }
-    
+
     class func waitForLoadingIndicatorToDisappear() {
         #if os(tvOS)
             return
         #endif
-        
+
         let query = XCUIApplication().statusBars.children(matching: .other).element(boundBy: 1).children(matching: .other)
-        
+
         while (0..<query.count).map({ query.element(boundBy: $0) }).contains(where: { $0.isLoadingIndicator }) {
             sleep(1)
             print("Waiting for loading indicator to disappear...")
         }
     }
-    
+
     class func pathPrefix() -> NSString? {
         if let path = ProcessInfo().environment["SIMULATOR_HOST_HOME"] as NSString? {
             return path.appendingPathComponent("Library/Caches/tools.fastlane") as NSString?

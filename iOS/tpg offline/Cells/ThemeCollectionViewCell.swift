@@ -11,9 +11,9 @@ import UIKit
 class ThemeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var primaryColorView: UIView!
     @IBOutlet weak var textColorLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
 }

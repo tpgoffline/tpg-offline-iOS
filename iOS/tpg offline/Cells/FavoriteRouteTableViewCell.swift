@@ -9,23 +9,22 @@
 import UIKit
 
 class FavoriteRouteTableViewCell: UITableViewCell {
-	
+
 	@IBOutlet weak var iconView: UIView!
 	@IBOutlet weak var iconImageView: UIImageView!
 	@IBOutlet weak var accessoryImage: UIImageView!
-	
+
 	@IBOutlet weak var departureLabel: UILabel!
 	@IBOutlet weak var arrivalLabel: UILabel!
-	
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		
+
 	}
-	
+
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
-		
-		
+
 	}
-	
+
 }

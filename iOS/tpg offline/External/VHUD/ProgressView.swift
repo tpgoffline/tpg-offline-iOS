@@ -11,57 +11,57 @@ import UIKit
 import QuartzCore
 
 final class ProgressView: UIView {
-    
+
     private static let startAngle: Double = 90
     private static let endAngle: Double = 270
-    
+
     var mode: Mode?
-    
+
     var defaultColor: UIColor = .black
     var elapsedColor: UIColor = .lightGray
-    
+
     var lineWidth: CGFloat = 30.0 {
         didSet { setNeedsDisplay() }
     }
-    
+
     var loopLineWidth: Double = 25.0 {
         didSet { setNeedsDisplay() }
     }
-    
+
     var radius: CGFloat {
         return (self.bounds.width * 0.5) - (self.lineWidth * 0.5) - self.outsideMargin
     }
-    
+
     var outsideMargin: CGFloat = 10.0 {
         didSet { setNeedsDisplay() }
     }
-    
+
     var percentComplete: Double = 0 {
         didSet { setNeedsDisplay() }
     }
-  
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
     }
-    
+
     private func setup() {
         self.backgroundColor = .clear
     }
-    
+
     func finish() {
         self.mode = nil
     }
-    
+
     private func convertAngle(percentComplete: Double) -> Double {
         return percentComplete * 360 - ProgressView.startAngle
     }
-    
+
     private func drawPath(startAngle: Double, endAngle: Double, strokeColor: UIColor) {
         let s = CGFloat(startAngle * M_PI / 180.0)
         let e = CGFloat(endAngle * M_PI / 180.0)
@@ -74,10 +74,10 @@ final class ProgressView: UIView {
         strokeColor.setStroke()
         art.stroke()
     }
-    
+
     private func draw(percentComplete: Double) {
         guard let m = self.mode else { return }
-        
+
         if case Mode.loop = m {
             let current = self.convertAngle(percentComplete: percentComplete)
             let start = current - self.loopLineWidth
@@ -94,10 +94,10 @@ final class ProgressView: UIView {
             }
         }
     }
-    
+
     override public func draw(_ rect: CGRect) {
         super.draw(rect)
-        
+
         self.draw(percentComplete: percentComplete)
     }
 }

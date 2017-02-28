@@ -14,22 +14,22 @@ private let reuseIdentifier = "ThemesCell"
 
 class ThemesCollectionViewController: UICollectionViewController {
     let themes = [
-        "Inversé".localized : [UIColor.flatOrange, UIColor.white],
-        "Défaut".localized : [UIColor.flatWhite, UIColor.flatOrangeDark],
-        "Nuit".localized : [UIColor.flatNavyBlue, UIColor.flatWhite],
-        "Bleu".localized : [UIColor.flatWhite, UIColor.flatSkyBlue],
-        "Vert".localized : [UIColor.flatWhite, UIColor.flatGreenDark],
-        "Noir".localized : [UIColor.flatWhite, UIColor.flatBlackDark],
-        "Forêt".localized : [UIColor.flatWhite, UIColor.flatForestGreen],
-        "Mauve".localized : [UIColor.flatWhite, UIColor.flatMagenta]
+        "Inversé".localized: [UIColor.flatOrange, UIColor.white],
+        "Défaut".localized: [UIColor.flatWhite, UIColor.flatOrangeDark],
+        "Nuit".localized: [UIColor.flatNavyBlue, UIColor.flatWhite],
+        "Bleu".localized: [UIColor.flatWhite, UIColor.flatSkyBlue],
+        "Vert".localized: [UIColor.flatWhite, UIColor.flatGreenDark],
+        "Noir".localized: [UIColor.flatWhite, UIColor.flatBlackDark],
+        "Forêt".localized: [UIColor.flatWhite, UIColor.flatForestGreen],
+        "Mauve".localized: [UIColor.flatWhite, UIColor.flatMagenta]
     ]
-    
+
     let defaults = UserDefaults.standard
     var keys = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         keys = themes.keys.sorted(by: { (key1, key2) -> Bool in
             if key1.lowercased() < key2.lowercased() {
                 return true
@@ -50,7 +50,7 @@ class ThemesCollectionViewController: UICollectionViewController {
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		
+
         collectionView?.reloadData()
 	}
 
@@ -59,85 +59,84 @@ class ThemesCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemeCollectionViewCell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemeCollectionViewCell // swiftlint:disable:this force_cast
+
         cell.primaryColorView.backgroundColor = themes[keys[indexPath.row]]![0]
         cell.textColorLabel.textColor = themes[keys[indexPath.row]]![1]
         cell.textColorLabel.text = keys[indexPath.row]
-    
+
         return cell
     }
 
 	func collectionView(_ collectionView: UICollectionView,
-	     layout collectionViewLayout: UICollectionViewLayout,
-	            sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+	                    layout collectionViewLayout: UICollectionViewLayout,
+	                    sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
 		return CGSize(width: UIScreen.main.bounds.width / 2 - 15, height: 100)
 	}
-	
+
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         AppValues.primaryColor = themes[keys[indexPath.row]]![0]
         AppValues.textColor = themes[keys[indexPath.row]]![1]
         refreshTheme()
         collectionView.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-		
+
         defaults.setColor(AppValues.primaryColor, forKey: UserDefaultsKeys.primaryColor.rawValue)
         defaults.setColor(AppValues.textColor, forKey: UserDefaultsKeys.textColor.rawValue)
-		
+
 		setTabBar()
-		
+
 		refreshTheme()
     }
 
 	func setTabBar() {
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : AppValues.textColor], for: UIControlState())
-        
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: UIControlState())
+
         tabBarController!.tabBar.tintColor = AppValues.textColor
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
-        
+
         tabBarController!.tabBar.barTintColor = AppValues.primaryColor
         view.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.05)
-        
+
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         tabBarController!.tabBar.selectionIndicatorImage = image
-        
+
         let iconeHorloge = FAKIonIcons.iosClockIcon(withSize: 20)!
         iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         var iconImage = iconeHorloge.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         tabBarController!.tabBar.items![0].image = iconImage
         tabBarController!.tabBar.items![0].selectedImage = iconImage
-        
+
         let iconeAttention = FAKFontAwesome.warningIcon(withSize: 20)!
         iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         iconImage = iconeAttention.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         tabBarController!.tabBar.items![1].image = iconImage
         tabBarController!.tabBar.items![1].selectedImage = iconImage
-        
+
         let iconeItineraire = FAKFontAwesome.mapSignsIcon(withSize: 20)!
         iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         iconImage = iconeItineraire.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         tabBarController!.tabBar.items![2].image = iconImage
         tabBarController!.tabBar.items![2].selectedImage = iconImage
-        
+
         let iconePlan = FAKFontAwesome.mapIcon(withSize: 20)!
         iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         iconImage = iconePlan.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         tabBarController!.tabBar.items![3].image = iconImage
         tabBarController!.tabBar.items![3].selectedImage = iconImage
-        
+
         let iconeParametre = FAKFontAwesome.cogIcon(withSize: 20)!
         iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
         iconImage = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         tabBarController!.tabBar.items![4].image = iconImage
         tabBarController!.tabBar.items![4].selectedImage = iconImage
-        
+
         if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
             UIApplication.shared.statusBarStyle = .lightContent
-        }
-        else {
+        } else {
             UIApplication.shared.statusBarStyle = .default
         }
     }

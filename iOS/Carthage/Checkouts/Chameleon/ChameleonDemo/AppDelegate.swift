@@ -19,10 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Chameleon.setGlobalThemeUsingPrimaryColor(.flatPlum,
             withSecondaryColor: .flatBlue,
             andContentStyle: .contrast)
-        
+
         return true
     }
 
-
 }
-

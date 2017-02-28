@@ -18,21 +18,55 @@ internal class Stop: NSObject, NSCoding {
     var distance: Double?
     var transportAPIiD: String!
     var connections: [String]!
-	
+
     override init() {
         super.init()
     }
     required convenience init(coder decoder: NSCoder) {
         self.init()
-        fullName = decoder.decodeObject(forKey: "fullName") as! String
-        title = decoder.decodeObject(forKey: "title") as! String
-        subTitle = decoder.decodeObject(forKey: "subTitle") as! String
-        stopCode = decoder.decodeObject(forKey: "stopCode") as! String
-        transportAPIiD = decoder.decodeObject(forKey: "transportAPIiD") as! String
-        location = decoder.decodeObject(forKey: "location") as! CLLocation
-        connections = decoder.decodeObject(forKey: "connections") as? [String] ?? []
+        if let fullName: String = decoder.decodeObject(forKey: "fullName") as? String {
+            self.fullName = fullName
+        } else {
+            self.fullName = ""
+        }
+
+        if let title: String = decoder.decodeObject(forKey: "title") as? String {
+            self.title = title
+        } else {
+            self.title = ""
+        }
+
+        if let subTitle: String = decoder.decodeObject(forKey: "subTitle") as? String {
+            self.subTitle = subTitle
+        } else {
+            self.subTitle = ""
+        }
+
+        if let transportAPIiD: String = decoder.decodeObject(forKey: "transportAPIiD") as? String {
+            self.transportAPIiD = transportAPIiD
+        } else {
+            self.transportAPIiD = ""
+        }
+
+        if let location: CLLocation = decoder.decodeObject(forKey: "location") as? CLLocation {
+            self.location = location
+        } else {
+            self.location = CLLocation(latitude: -79.225543, longitude: 63.462335)
+        }
+
+        if let connections: [String] = decoder.decodeObject(forKey: "connections") as? [String] {
+            self.connections = connections
+        } else {
+            self.connections = []
+        }
     }
-    convenience init(fullName: String, title: String, subTitle: String, stopCode: String, location: CLLocation, transportAPIiD: String, connections: [String]) {
+    convenience init(fullName: String,
+                     title: String,
+                     subTitle: String,
+                     stopCode: String,
+                     location: CLLocation,
+                     transportAPIiD: String,
+                     connections: [String]) {
         self.init()
         self.fullName = fullName
         self.title = title
@@ -52,7 +86,17 @@ internal class Stop: NSObject, NSCoding {
         if let transportAPIiD = transportAPIiD { coder.encode(transportAPIiD, forKey: "transportAPIiD") }
         if let connections = connections { coder.encode(connections, forKey: "connections") }
     }
-    
+
+    init(empty: Bool = true) {
+        self.fullName = ""
+        self.title = ""
+        self.subTitle = ""
+        self.stopCode = ""
+        self.location = CLLocation(latitude: -79.225543, longitude: 63.462335)
+        self.transportAPIiD = "000000000"
+        self.connections = []
+    }
+
     init(dictionnary: [String:Any]) {
         fullName = dictionnary["fullName"] as? String ?? ""
         title = dictionnary["title"] as? String ?? ""
@@ -62,7 +106,7 @@ internal class Stop: NSObject, NSCoding {
         transportAPIiD = dictionnary["transportAPIiD"] as? String ?? ""
         connections = dictionnary["connections"] as? [String] ?? []
     }
-    
+
     func toDictionnary() -> [String:Any] {
         let attributes = [
             "fullName": fullName,

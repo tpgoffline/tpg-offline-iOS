@@ -12,13 +12,13 @@ internal class Distrubtions {
     var lineCode: String!
     var title: String!
     var subTitle: String!
-    
+
     init(lineCode: String!, title: String!, subTitle: String!) {
         self.lineCode = lineCode
         self.title = title
         self.subTitle = subTitle
     }
-    
+
     func describe() -> String {
         return "[lineCode: \(lineCode), title: \(title), subTitle: \(subTitle)]"
     }

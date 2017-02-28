@@ -30,7 +30,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
-open class LocationRequest: Request  {
+open class LocationRequest: Request {
 		/// Handler called on error
 	internal var onErrorHandler: LocationHandlerError?
 		/// Handler called on success
@@ -43,9 +43,9 @@ open class LocationRequest: Request  {
 	open var UUID: String = Foundation.UUID().uuidString
 	/// Authorization did change
 	open var onAuthorizationDidChange: LocationHandlerAuthDidChange?
-	
+
 	open weak var locator: LocationManager?
-	
+
 	open var rState: RequestState = .pending {
 		didSet {
 			switch rState {
@@ -56,7 +56,7 @@ open class LocationRequest: Request  {
 			}
 		}
 	}
-	
+
 	/// Type of activity to monitor.
 	/// The location manager uses the information in this property as a cue to determine when location updates may be automatically paused
 	open var activityType: CLActivityType = .other {
@@ -64,7 +64,7 @@ open class LocationRequest: Request  {
 			locator?.updateLocationUpdateService()
 		}
 	}
-	
+
 		/// Interval of time before a request is removed from the queue.
 		/// Timeout timer starts when a location manager authorization appears on screen
 		/// and when a request receive a new update. If no new updates are received inside this interval
@@ -77,27 +77,27 @@ open class LocationRequest: Request  {
 			self.setTimeoutTimer(active: (timeout != nil))
 		}
 	}
-	
+
 		/// This is the last location matching the requested accuracy received for this request. Maybe nil if any valid request is received yet.
 	fileprivate(set) var lastValidLocation: CLLocation?
-    
+
         /// This is the last location received for this request which might not match requested accuracy. Maybe nil if any valid request is received yet.
     fileprivate(set) var lastLocation: CLLocation?
-	
+
 		/// This is the frequency internval you want to receive updates about this monitor session
 	open var frequency: UpdateFrequency = .continuous {
 		didSet {
 			locator?.updateLocationUpdateService()
 		}
 	}
-	
+
 		/// This is the accuracy of location you consider valid for this monitor session
 	open var accuracy: Accuracy = .city {
 		didSet {
 			locator?.updateLocationUpdateService()
 		}
 	}
-	
+
 	/**
 	Initialize a new request with desidered accuracy and frequency. Request must be added to the queue to be valid.
 	
@@ -110,7 +110,7 @@ open class LocationRequest: Request  {
 		self.accuracy = accuracy
 		self.frequency = frequency
 	}
-	
+
 	/**
 	Chainable function you can use to set the error handler to execute when something goes wrong while receiving updates from location manager
 	
@@ -122,7 +122,7 @@ open class LocationRequest: Request  {
 		self.onErrorHandler = err
 		return self
 	}
-	
+
 	/**
 	Chainable function you use to set the success handler to execute when a new location has been found
 	
@@ -134,7 +134,7 @@ open class LocationRequest: Request  {
 		self.onSuccessHandler = succ
 		return self
 	}
-	
+
 	/**
 	Chainable function you can use to set the handler called when location manager pauses location updates in order to keep low
 	battery usage (you should set the activityType to allow the system to know when it's time to pause the location manager updates because
@@ -158,11 +158,11 @@ open class LocationRequest: Request  {
 			self.rState = .cancelled(error:error)
 		}
 	}
-	
+
 	open func cancel() {
 		self.cancel(nil)
 	}
-	
+
 	/**
 	Temporary pauses receiving updates for this request. Request is not removed from the queue and you can resume it using start()
 	*/
@@ -173,7 +173,7 @@ open class LocationRequest: Request  {
 			locator.updateLocationUpdateService()
 		}
 	}
-	
+
 	/**
 	Start (or restart) a request
 	*/
@@ -185,32 +185,32 @@ open class LocationRequest: Request  {
 			self.rState = previousState
 		}
 	}
-	
-	//MARK: - Private Methods
-	
+
+	// MARK: - Private Methods
+
 	internal func setTimeoutTimer(active shouldStart: Bool) {
         self.timeoutTimer?.invalidate()
         self.timeoutTimer = nil
-        
-		guard let interval = self.timeout , shouldStart else {
+
+		guard let interval = self.timeout, shouldStart else {
 			return
 		}
 		self.timeoutTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timeoutTimerFired), userInfo: nil, repeats: false)
 	}
-	
+
 	@objc func timeoutTimerFired() {
 		let err = LocationError.requestTimeout
         self.onErrorHandler?(self.lastLocation, err)
         self.cancel(err)
 	}
-	
+
 	internal func didReceiveEventFromLocationManager(error: LocationError?, location: CLLocation?) -> Bool {
 		if let error = error {
 			self.onErrorHandler?(location, error)
 			self.cancel(error)
 			return true
 		}
-		
+
 		if let location = location {
 			if self.isValidLocation(location) == false {
 				return false
@@ -219,10 +219,10 @@ open class LocationRequest: Request  {
 			self.onSuccessHandler?(self.lastValidLocation!)
 			if self.frequency == .oneShot {
 				self.cancel(nil)
-            }else if self.frequency == .continuous {
+            } else if self.frequency == .continuous {
                 // if location is valid and is required in continuous frequency
 				self.setTimeoutTimer(active: true)
-            }else{
+            } else {
                 // if location is required to be updated by distance interval or by significant distance,
                 // don't use timeout as no one can predict when the distance will change and thus canceling the request would
                 // prevent any future move to trigger the update.
@@ -231,20 +231,20 @@ open class LocationRequest: Request  {
                 // So timeout timer is only used until the first update. Then it's canceled.
 				self.setTimeoutTimer(active: false)
             }
-            
+
 			return true
 		}
-		
+
 		return false
 	}
-	
+
 	internal func isValidLocation(_ loc: CLLocation) -> Bool {
         self.lastLocation = loc
-        
+
 		if self.accuracy.isLocationValidForAccuracy(loc) == false {
 			return false
 		}
-		
+
 		if let lastValidLocation = self.lastValidLocation {
 			if case .byDistanceIntervals(let meters) = self.frequency {
 				let distanceSinceLastReport = lastValidLocation.distance(from: loc)
@@ -253,13 +253,13 @@ open class LocationRequest: Request  {
 				}
 			}
 		}
-		
+
 		let afterLastValidLocation = (self.lastValidLocation == nil ? true : loc.timestamp.timeIntervalSince1970 >= self.lastValidLocation!.timestamp.timeIntervalSince1970)
 		if afterLastValidLocation == false {
 			return false
 		}
-		
+
 		return true
 	}
-	
+
 }

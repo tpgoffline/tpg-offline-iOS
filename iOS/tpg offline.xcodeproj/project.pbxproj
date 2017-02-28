@@ -882,6 +882,7 @@
 				ADC733891D68908F00296449 /* Frameworks */,
 				ADC7338A1D68908F00296449 /* Resources */,
 				ADC7348A1D6890EF00296449 /* Embed Watch Content */,
+				AD8F053C1E64DEE70039A71F /* ShellScript */,
 				ADC734A21D6891E700296449 /* Install Carthage frameworks */,
 				ADA469331E05517300FEA198 /* FirebaseCrash */,
 				AD500A611E0C79FB00253121 /* Embed App Extensions */,
@@ -1067,6 +1068,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		AD8F053C1E64DEE70039A71F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		ADA469331E05517300FEA198 /* FirebaseCrash */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;

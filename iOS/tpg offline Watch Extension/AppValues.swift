@@ -10,8 +10,8 @@ import WatchKit
 
 struct AppValues {
     static var favoritesStops: [String:Stop]! = [:]
-    static var linesBackgroundColor = [String:UIColor]()
-    static var linesColor = [String:UIColor]()
-    
+    static var linesBackgroundColor = [String: UIColor]()
+    static var linesColor = [String: UIColor]()
+
     static var offlineDepartures: [String: String] = [:]
 }

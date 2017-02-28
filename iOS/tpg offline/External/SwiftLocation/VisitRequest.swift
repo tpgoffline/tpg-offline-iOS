@@ -26,7 +26,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 import Foundation
 import CoreLocation
 
@@ -40,11 +39,11 @@ open class VisitRequest: Request {
 
 		/// Private vars
 	open var UUID: String = Foundation.UUID().uuidString
-	
+
 	open var rState: RequestState = .pending
 
 	internal weak var locator: LocationManager?
-	
+
 	/**
 	Create a new request with an associated handler to call
 	
@@ -55,7 +54,7 @@ open class VisitRequest: Request {
 	public init(onDidVisit: VisitHandler?) {
 		self.onDidVisitPlace = onDidVisit
 	}
-	
+
 	/**
 	This method allows you set the the handler you want to be called when a new place is visited
 	
@@ -67,7 +66,7 @@ open class VisitRequest: Request {
 		self.onDidVisitPlace = handler
 		return self
 	}
-	
+
 	/**
 	Start a new visit request
 	*/
@@ -79,7 +78,7 @@ open class VisitRequest: Request {
 			self.rState = previousState
 		}
 	}
-	
+
 	/**
 	Stop a visit request and remove it from the queue
 	*/
@@ -91,11 +90,11 @@ open class VisitRequest: Request {
 			}
 		}
 	}
-	
+
 	open func cancel() {
 		self.cancel(nil)
 	}
-	
+
 	open func pause() {
 		if self.rState.isRunning {
 			self.rState = .paused

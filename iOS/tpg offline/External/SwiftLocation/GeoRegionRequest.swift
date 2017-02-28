@@ -30,13 +30,13 @@ import Foundation
 import CoreLocation
 
 open class GeoRegionRequest: NSObject, Request {
-	
+
 	open var UUID: String
-	
+
 	open var coordinates: CLLocationCoordinate2D {
 		return region.center
 	}
-	
+
 	open var radius: CLLocationDistance {
 		return region.radius
 	}
@@ -47,30 +47,30 @@ open class GeoRegionRequest: NSObject, Request {
 
 	open var onStateDidChange: RegionStateDidChange?
 	open var onError: RegionMonitorError?
-	
+
 	open var rState: RequestState = .pending
-	
+
 	public init(coordinates: CLLocationCoordinate2D, radius: CLLocationDistance) {
 		self.UUID = Foundation.UUID().uuidString
 		self.region = CLCircularRegion(center: coordinates, radius: radius, identifier: self.UUID)
 	}
-	
+
 	open func cancel(_ error: LocationError?) {
 		_ = Beacons.remove(request: self, error: error)
 	}
-	
+
 	open func cancel() {
 		self.cancel(nil)
 	}
-	
+
 	open func pause() {
 		if Beacons.remove(request: self) == true {
 			self.rState = .paused
 		}
 	}
-	
+
 	open func start() {
 		_ = Beacons.add(request: self)
 	}
-	
+
 }

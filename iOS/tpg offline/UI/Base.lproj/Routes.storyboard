@@ -524,7 +524,7 @@
                                     <segue destination="c4w-XN-uGa" kind="show" identifier="voirItineraire" id="uJL-FT-5V9"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="sbh-gI-vyG" customClass="loadingCellTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="sbh-gI-vyG" customClass="LoadingCellTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="127" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbh-gI-vyG" id="0Gt-OC-APf">

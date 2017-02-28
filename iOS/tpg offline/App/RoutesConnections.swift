@@ -23,12 +23,17 @@ internal class RoutesConnections {
     var isSBB: Bool
     var transportCategory: RoutesTransportCategory
     var from: String
-    var to: String
+    var to: String // swiftlint:disable:this variable_name
     var direction: String
     var departureTimestamp: Int
     var arrivalTimestamp: Int
 
-    init(isWalk: Bool = true, from: String, to: String, departureTimestamp: Int, arrivalTimestamp: Int, direction: String) {
+    init(isWalk: Bool = true,
+         from: String,
+         to: String, // swiftlint:disable:this variable_name
+         departureTimestamp: Int,
+         arrivalTimestamp: Int,
+         direction: String) {
         self.line = ""
         self.isTpg = false
         self.isSBB = false
@@ -39,8 +44,16 @@ internal class RoutesConnections {
         self.arrivalTimestamp = arrivalTimestamp
         self.direction = direction
     }
-    
-    init(line: String, isTpg: Bool, isSBB: Bool, transportCategory: Int, from: String, to: String, direction: String, departureTimestamp: Int, arrivalTimestamp: Int) {
+
+    init(line: String,
+         isTpg: Bool,
+         isSBB: Bool,
+         transportCategory: Int,
+         from: String,
+         to: String, // swiftlint:disable:this variable_name
+         direction: String,
+         departureTimestamp: Int,
+         arrivalTimestamp: Int) {
         self.line = line
         self.isTpg = isTpg
         self.isSBB = isSBB
@@ -48,15 +61,15 @@ internal class RoutesConnections {
         case 6:
             self.transportCategory = .bus
             break
-            
+
         case 4:
             self.transportCategory = .boat
             break
-            
+
         case 9:
             self.transportCategory = .subway
             break
-            
+
         default:
             self.transportCategory = .train
         }
@@ -66,26 +79,26 @@ internal class RoutesConnections {
         self.departureTimestamp = departureTimestamp
         self.arrivalTimestamp = arrivalTimestamp
     }
-    
+
     func getImageofType(_ size: CGFloat! = 24, color: UIColor! = UIColor.white) -> UIImage! {
         var icon: FAKIonIcons!
         switch transportCategory {
         case .bus:
             icon = FAKIonIcons.androidBusIcon(withSize: size)
             break
-            
+
         case .boat:
             icon = FAKIonIcons.androidBoatIcon(withSize: size)
             break
-            
+
         case .subway:
             icon = FAKIonIcons.androidSubwayIcon(withSize: size)
             break
-            
+
         case .walk:
             icon = FAKIonIcons.androidWalkIcon(withSize: size)
             break
-            
+
         case .train:
             icon = FAKIonIcons.androidTrainIcon(withSize: size)
             break
@@ -93,26 +106,26 @@ internal class RoutesConnections {
         icon.addAttribute(NSForegroundColorAttributeName, value: color)
         return icon.image(with: CGSize(width: size, height: size))
     }
-    
+
     func getAttributedStringofType(_ size: CGFloat! = 24, color: UIColor! = UIColor.white) -> NSAttributedString! {
         var icon: FAKIonIcons!
         switch transportCategory {
         case .bus:
             icon = FAKIonIcons.androidBusIcon(withSize: size)
             break
-            
+
         case .boat:
             icon = FAKIonIcons.androidBoatIcon(withSize: size)
             break
-            
+
         case .subway:
             icon = FAKIonIcons.androidSubwayIcon(withSize: size)
             break
-            
+
         case .walk:
             icon = FAKIonIcons.androidWalkIcon(withSize: size)
             break
-            
+
         case .train:
             icon = FAKIonIcons.androidTrainIcon(withSize: size)
             break

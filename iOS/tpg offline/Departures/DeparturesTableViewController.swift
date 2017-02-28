@@ -15,116 +15,128 @@ import UserNotifications
 import FirebaseCrash
 import FirebaseAnalytics
 
-
 class DeparturesTableViewController: UITableViewController {
-    var stop: Stop? = nil
+    var stop: Stop?
     var departuresList: [Departures]! = []
     let defaults = UserDefaults.standard
     var offline = false
     var noMoreTransport = false
     var loading: Bool = false
     var notDownloaded: Bool = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if stop == nil {
             stop = AppValues.stops[[String](AppValues.stops.keys).sorted()[0]]
         }
-        
+
         #if DEBUG
         #else
             FIRAnalytics.logEvent(withName: "departure", parameters: [
                 "stopCode": (stop?.stopCode ?? "XXXX") as NSObject
                 ])
         #endif
-        
+
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = AppValues.textColor
-        
+
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self!.refresh()
-            
+
             }, loadingView: loadingView)
-        
+
         tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-        
+
         title = stop?.fullName
-        
+
         tableView.backgroundColor = AppValues.primaryColor
-        
-        if(traitCollection.forceTouchCapability == .available){
+
+        if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: view)
         }
-        
+
         refresh()
-        
+
         FIRCrashMessage("\(stop?.stopCode) loaded")
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-        
+
         refreshTheme()
-        
+
         if stop != nil {
             var barButtonsItems: [UIBarButtonItem] = []
-            
-            if ((AppValues.fullNameFavoritesStops.index(of: stop!.fullName)) != nil) {
-                barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(DeparturesTableViewController.toggleFavorite(_:))))
+
+            if (AppValues.fullNameFavoritesStops.index(of: stop!.fullName)) != nil {
+                barButtonsItems.append(UIBarButtonItem(
+                    image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                    style: UIBarButtonItemStyle.done,
+                    target: self,
+                    action: #selector(DeparturesTableViewController.toggleFavorite(_:))))
+            } else {
+                barButtonsItems.append(UIBarButtonItem(
+                    image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                    style: UIBarButtonItemStyle.done,
+                    target: self,
+                    action:#selector(DeparturesTableViewController.toggleFavorite(_:))))
             }
-            else {
-                barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action:#selector(DeparturesTableViewController.toggleFavorite(_:))))
-            }
-            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(DeparturesTableViewController.showItinerary(_:))))
-            barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(DeparturesTableViewController.refresh)))
-            
+            barButtonsItems.append(
+                UIBarButtonItem(image: FAKIonIcons.androidWalkIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                                style: UIBarButtonItemStyle.done,
+                                target: self,
+                                action: #selector(DeparturesTableViewController.showItinerary(_:))))
+            barButtonsItems.append(
+                UIBarButtonItem(image: FAKIonIcons.refreshIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                                style: UIBarButtonItemStyle.done,
+                                target: self,
+                                action: #selector(DeparturesTableViewController.refresh)))
+
             self.navigationItem.rightBarButtonItems = barButtonsItems
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     deinit {
         tableView?.dg_removePullToRefresh()
     }
-    
+
     func labelToImage(_ label: UILabel!) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
         label.layer.render(in: UIGraphicsGetCurrentContext()!)
-        
+
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }
-    
+
     func toggleFavorite(_ sender: Any!) {
         if AppValues.favoritesStops.isEmpty {
             let array: [String:Stop] = [stop!.fullName: stop!]
             AppValues.fullNameFavoritesStops.append(stop!.fullName)
             AppValues.favoritesStops = array
-            
+
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: array)
             defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesStops.rawValue)
-        }
-        else {
-            if ((AppValues.fullNameFavoritesStops.index(of: stop!.fullName)) != nil) {
+        } else {
+            if (AppValues.fullNameFavoritesStops.index(of: stop!.fullName)) != nil {
                 AppValues.favoritesStops.removeValue(forKey: stop!.fullName)
                 AppValues.fullNameFavoritesStops.remove(at: AppValues.fullNameFavoritesStops.index(of: stop!.fullName)!)
-            }
-            else {
+            } else {
                 AppValues.favoritesStops![stop!.fullName] = stop
                 AppValues.fullNameFavoritesStops.append(stop!.fullName)
             }
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppValues.favoritesStops!)
             defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesStops.rawValue)
         }
-        
+
         if WCSession.isSupported() {
             do {
                 var a: [String:[String:Any]] = [:]
@@ -138,7 +150,7 @@ class DeparturesTableViewController: UITableViewController {
                     var departuresArray: [String:String] = [:]
                     let dir: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!)
                     path = dir.appendingPathComponent(y.stopCode + "departsSAM.json").absoluteString
-                    
+
                     if FileManager.default.fileExists(atPath: path) {
                         do {
                             try departuresArray["SAM"] = String(contentsOfFile: path)
@@ -146,9 +158,9 @@ class DeparturesTableViewController: UITableViewController {
                             print("Reading of \(path) is failed")
                         }
                     }
-                    
+
                     path = dir.appendingPathComponent(y.stopCode + "departsDIM.json").absoluteString
-                    
+
                     if FileManager.default.fileExists(atPath: path) {
                         do {
                             try departuresArray["DIM"] = String(contentsOfFile: path)
@@ -156,9 +168,9 @@ class DeparturesTableViewController: UITableViewController {
                             print("Reading of \(path) is failed")
                         }
                     }
-                    
+
                     path = dir.appendingPathComponent(y.stopCode + "departsLUN.json").absoluteString
-                    
+
                     if FileManager.default.fileExists(atPath: path) {
                         do {
                             try departuresArray["LUN"] = String(contentsOfFile: path)
@@ -166,62 +178,79 @@ class DeparturesTableViewController: UITableViewController {
                             print("Reading of \(path) is failed")
                         }
                     }
-                    
+
                     json.dictionaryObject = departuresArray
                     offlineDepartures[y.stopCode] = json.rawString() ?? ""
-                    
+
                 }
-                try WatchSessionManager.sharedManager.updateApplicationContext(["favoritesStops": NSKeyedArchiver.archivedData(withRootObject: a) as Any, "offlineDepartures": offlineDepartures as Any])
-                
+                try WatchSessionManager.sharedManager.updateApplicationContext([
+                    "favoritesStops": NSKeyedArchiver.archivedData(withRootObject: a) as Any,
+                    "offlineDepartures": offlineDepartures as Any])
+
             } catch {
                 print("Update WatchConnectivity with application context failed")
             }
         }
-        
+
         var barButtonsItems: [UIBarButtonItem] = []
-        
-        if ((AppValues.fullNameFavoritesStops.index(of: stop!.fullName)) != nil) {
-            barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(DeparturesTableViewController.toggleFavorite(_:))))
+
+        if AppValues.fullNameFavoritesStops.index(of: stop!.fullName) != nil {
+            barButtonsItems.append(
+                UIBarButtonItem(image: FAKFontAwesome.starIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                                style: UIBarButtonItemStyle.done,
+                                target: self,
+                                action: #selector(DeparturesTableViewController.toggleFavorite(_:))))
+        } else {
+            barButtonsItems.append(
+                UIBarButtonItem(image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                                style: UIBarButtonItemStyle.done,
+                                target: self,
+                                action: #selector(DeparturesTableViewController.toggleFavorite(_:))))
         }
-        else {
-            barButtonsItems.append(UIBarButtonItem(image: FAKFontAwesome.starOIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(DeparturesTableViewController.toggleFavorite(_:))))
-        }
-        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.androidWalkIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(DeparturesTableViewController.showItinerary(_:))))
-        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(DeparturesTableViewController.refresh)))
-        
+        barButtonsItems.append(
+            UIBarButtonItem(image: FAKIonIcons.androidWalkIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                            style: UIBarButtonItemStyle.done,
+                            target: self,
+                            action: #selector(DeparturesTableViewController.showItinerary(_:))))
+        barButtonsItems.append(
+            UIBarButtonItem(image: FAKIonIcons.refreshIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)),
+                            style: UIBarButtonItemStyle.done,
+                            target: self,
+                            action: #selector(DeparturesTableViewController.refresh)))
+
         self.navigationItem.rightBarButtonItems = barButtonsItems
-        let navController = self.splitViewController?.viewControllers[0] as! UINavigationController
-        if (navController.viewControllers[0].isKind(of: StopsTableViewController.self)) {
-            let arretTableViewController = navController.viewControllers[0] as! StopsTableViewController
-            arretTableViewController.tableView.reloadData()
+        guard let navController = self.splitViewController?.viewControllers[0] as? UINavigationController else {
+            return
         }
+        guard let arretTableViewController = navController.viewControllers[0] as? StopsTableViewController else {
+            return
+        }
+        arretTableViewController.tableView.reloadData()
     }
-    
+
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "showLigne" && departuresList[tableView.indexPathForSelectedRow!.row].leftTime == "no more") {
+        if identifier == "showLigne" && departuresList[tableView.indexPathForSelectedRow!.row].leftTime == "no more" {
             return false
-        }
-        else {
+        } else {
             return true
         }
     }
-    
+
     func showItinerary(_ sender: Any!) {
         performSegue(withIdentifier: "showItinerary", sender: self)
     }
-    
+
     func scheduleNotification(_ hour: String, before: Int, line: String, direction: String) {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
-            
+
             center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
                 if granted {
                     let content = UNMutableNotificationContent()
                     if before == 0 {
                         content.title = "Départ immédiat !".localized
                         content.body = "Le tpg de la line ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
-                    }
-                    else {
+                    } else {
                         content.title = "Départ dans ".localized + String(before) + " minutes".localized
                         var text =  "Le tpg de la line ".localized
                         text += line
@@ -235,56 +264,76 @@ class DeparturesTableViewController: UITableViewController {
                     content.categoryIdentifier = "departureNotifications"
                     content.userInfo = [:]
                     content.sound = UNNotificationSound.default()
-                    
+
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     var time = dateFormatter.date(from: hour)
                     time!.addTimeInterval(Double(before) * -60.0)
                     let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
-                    
+
                     let cal = Calendar(identifier: Calendar.Identifier.gregorian)
                     let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
-                    
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!), repeats: false)
-                    
+
+                    let trigger = UNCalendarNotificationTrigger(
+                        dateMatching: Calendar.current.dateComponents([.year,
+                                                                       .month,
+                                                                       .day,
+                                                                       .hour,
+                                                                       .minute,
+                                                                       .second],
+                                                                      from: date!),
+                        repeats: false)
+
                     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                     center.add(request, withCompletionHandler: { (error) in
                         if error == nil {
                             let okView = SCLAlertView()
                             if before == 0 {
-                                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK", duration: 10)
-                            }
-                            else {
+                                okView.showSuccess(
+                                    "Vous serez notifié".localized,
+                                    subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized,
+                                    closeButtonTitle: "OK",
+                                    duration: 10)
+                            } else {
                                 var texte =  "La notification à été enregistrée et sera affichée ".localized
                                 texte += String(before)
                                 texte += " minutes avant le départ.".localized
-                                okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10)
+                                okView.showSuccess(
+                                    "Vous serez notifié".localized,
+                                    subTitle: texte,
+                                    closeButtonTitle: "OK",
+                                    duration: 10)
                             }
                         } else {
-                            SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30)
+                            SCLAlertView().showError(
+                                "Impossible d'enregistrer la notification",
+                                subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.",
+                                closeButtonTitle: "OK", duration: 30)
                         }
                     })
                 } else {
-                    SCLAlertView().showError("Notifications désactivées", subTitle: "Merci d'activer les notifications dans les réglages", closeButtonTitle: "OK", duration: 30)
+                    SCLAlertView().showError(
+                        "Notifications désactivées",
+                        subTitle: "Merci d'activer les notifications dans les réglages",
+                        closeButtonTitle: "OK",
+                        duration: 30)
                 }
             }
-        }
-        else {
+        } else {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
             var time = dateFormatter.date(from: hour)
             time!.addTimeInterval(Double(before) * -60.0)
             let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
-            
+
             let cal = Calendar(identifier: Calendar.Identifier.gregorian)
             let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
             let reminder = UILocalNotification()
             reminder.fireDate = date
             reminder.soundName = UILocalNotificationDefaultSoundName
             if before == 0 {
-                reminder.alertBody = "Le tpg de la line ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
-            }
-            else {
+                reminder.alertBody = "\("Le tpg de la line ".localized)\(line)\(" en direction de ".localized)\(direction)\(" va partir immédiatement".localized)"
+            } else {
                 var texte =  "Le tpg de la line ".localized
                 texte += line
                 texte += " en direction de ".localized
@@ -294,16 +343,18 @@ class DeparturesTableViewController: UITableViewController {
                 texte += " minutes".localized
                 reminder.alertBody = texte
             }
-            
+
             UIApplication.shared.scheduleLocalNotification(reminder)
-            
+
             print("Firing at \(now.hour):\(now.minute!-before):\(now.second)")
-            
+
             let okView = SCLAlertView()
             if before == 0 {
-                okView.showSuccess("Vous serez notifié".localized, subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized, closeButtonTitle: "OK", duration: 10)
-            }
-            else {
+                okView.showSuccess(
+                    "Vous serez notifié".localized,
+                    subTitle: "La notification à été enregistrée et sera affichée à l'heure du départ.".localized,
+                    closeButtonTitle: "OK", duration: 10)
+            } else {
                 var texte =  "La notification à été enregistrée et sera affichée ".localized
                 texte += String(before)
                 texte += " minutes avant le départ.".localized
@@ -311,27 +362,33 @@ class DeparturesTableViewController: UITableViewController {
             }
         }
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showItinerary" {
-            let routeViewController: RouteToStopViewController = (segue.destination) as! RouteToStopViewController
-            routeViewController.stop = self.stop
-        }
-        else if segue.identifier == "showLigne" {
-            let voirLigneTableViewController: ThermometerTableViewController = (segue.destination) as! ThermometerTableViewController
-            voirLigneTableViewController.departure = departuresList[(tableView.indexPathForSelectedRow?.row)!]
-        }
-        else if segue.identifier == "showAllDepartures" {
-            let indexPath = sender as! IndexPath
-            let voirTousLesDepartsViewController: SeeAllDeparturesViewController = (segue.destination) as! SeeAllDeparturesViewController
-            voirTousLesDepartsViewController.stop = self.stop!
-            voirTousLesDepartsViewController.line = self.departuresList[indexPath.row].line
-            voirTousLesDepartsViewController.direction = self.departuresList[indexPath.row].direction
-            voirTousLesDepartsViewController.destinationCode = self.departuresList[indexPath.row].destinationCode
+            if let routeViewController = (segue.destination) as? RouteToStopViewController {
+                routeViewController.stop = self.stop
+            }
+        } else if segue.identifier == "showLigne" {
+            if let thermometerViewController = (segue.destination) as? ThermometerTableViewController {
+                thermometerViewController.departure = departuresList[(tableView.indexPathForSelectedRow?.row)!]
+            }
+        } else if segue.identifier == "showAllDepartures" {
+            let indexPath: IndexPath
+            if sender as? IndexPath != nil {
+                // The force cast error was disabled due to pre-verification check that occured before
+                indexPath = sender as! IndexPath // swiftlint:disable:this force_cast
+            } else {
+                indexPath = IndexPath(row: 0, section: 0)
+            }
+            if let seeAllDeparturesViewController = (segue.destination) as? SeeAllDeparturesViewController {
+                seeAllDeparturesViewController.stop = self.stop!
+                seeAllDeparturesViewController.line = self.departuresList[indexPath.row].line
+                seeAllDeparturesViewController.direction = self.departuresList[indexPath.row].direction
+                seeAllDeparturesViewController.destinationCode = self.departuresList[indexPath.row].destinationCode
+            }
         }
     }
-    
+
     func refresh() {
         self.loading = true
         self.notDownloaded = false
@@ -343,7 +400,7 @@ class DeparturesTableViewController: UITableViewController {
                     let departs = JSON(data)
                     FIRCrashMessage("Offline = false")
                     FIRCrashMessage("\(departs.rawString())")
-                    
+
                     for (_, subjson) in departs["departures"] {
                         if AppValues.linesColor[subjson["line"]["lineCode"].string!] == nil {
                             self.departuresList.append(Departures(
@@ -352,20 +409,19 @@ class DeparturesTableViewController: UITableViewController {
                                 destinationCode: subjson["line"]["destinationCode"].string!,
                                 lineColor: UIColor.white,
                                 lineBackgroundColor: UIColor.flatGray,
-                                
+
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
                                 timestamp: subjson["timestamp"].string
                             ))
-                        }
-                        else {
+                        } else {
                             self.departuresList.append(Departures(
                                 line: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
                                 destinationCode: subjson["line"]["destinationCode"].string!,
                                 lineColor: AppValues.linesColor[subjson["line"]["lineCode"].string!]!,
                                 lineBackgroundColor: AppValues.linesBackgroundColor[subjson["line"]["lineCode"].string!]!,
-                                
+
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
                                 timestamp: subjson["timestamp"].string
@@ -374,18 +430,16 @@ class DeparturesTableViewController: UITableViewController {
                     }
                     self.offline = false
                     self.tableView.allowsSelection = true
-                    
+
                     if self.departuresList.count == 0 {
                         self.noMoreTransport = true
-                    }
-                    else {
+                    } else {
                         self.noMoreTransport = false
                     }
                     self.loading = false
                     self.tableView.reloadData()
                     self.tableView.dg_stopLoading()
-                }
-                else {
+                } else {
                     FIRCrashMessage("Offline = true")
                     #if DEBUG
                         if let error = response.result.error {
@@ -401,17 +455,17 @@ class DeparturesTableViewController: UITableViewController {
                         path = dir.appendingPathComponent(self.stop!.stopCode + "departsSAM.json")
                         break
                     case 1:
-                        path = dir.appendingPathComponent(self.stop!.stopCode + "departsDIM.json");
+                        path = dir.appendingPathComponent(self.stop!.stopCode + "departsDIM.json")
                         break
                     default:
-                        path = dir.appendingPathComponent(self.stop!.stopCode + "departsLUN.json");
-                        
+                        path = dir.appendingPathComponent(self.stop!.stopCode + "departsLUN.json")
+
                         break
                     }
-                    
+
                     do {
                         let departuresJSONString = try NSString(contentsOf: path, encoding: String.Encoding.utf8.rawValue)
-                        
+
                         let departs = JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
                         for (_, subJson) in departs {
                             if AppValues.linesColor[subJson["ligne"].string!] != nil {
@@ -425,8 +479,7 @@ class DeparturesTableViewController: UITableViewController {
                                     leftTime: "0",
                                     timestamp: subJson["timestamp"].string!
                                 ))
-                            }
-                            else {
+                            } else {
                                 self.departuresList.append(Departures(
                                     line: subJson["ligne"].string!,
                                     direction: subJson["destination"].string!,
@@ -446,7 +499,7 @@ class DeparturesTableViewController: UITableViewController {
                             }
                             return false
                         })
-                        
+
                         self.departuresList.sort(by: { (depart1, depart2) -> Bool in
                             guard let leftTime1 = Int(depart1.leftTime) else {
                                 return false
@@ -459,22 +512,20 @@ class DeparturesTableViewController: UITableViewController {
                             }
                             return false
                         })
-                        
+
                         self.offline = true
-                        
+
                         if self.departuresList.count == 0 {
                             self.noMoreTransport = true
-                        }
-                        else {
+                        } else {
                             self.noMoreTransport = false
                         }
                         self.loading = false
-                        
+
                         self.tableView.allowsSelection = false
                         self.tableView.reloadData()
                         self.tableView.dg_stopLoading()
-                    }
-                    catch {
+                    } catch {
                         self.offline = true
                         self.tableView.allowsSelection = false
                         self.departuresList = []
@@ -491,57 +542,47 @@ class DeparturesTableViewController: UITableViewController {
 
 extension DeparturesTableViewController {
     // MARK: tableView
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         if loading == true {
             return 1
-        }
-        else if offline || notDownloaded {
+        } else if offline || notDownloaded {
             return 2
         }
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if loading == true {
             return 1
-        }
-        else if offline && notDownloaded {
+        } else if offline && notDownloaded {
             return 1
-        }
-        else if offline && section == 0 {
+        } else if offline && section == 0 {
             return 1
-        }
-        else if offline && section == 1 && noMoreTransport {
+        } else if offline && section == 1 && noMoreTransport {
             return 1
-        }
-        else if !offline && section == 0 && noMoreTransport {
+        } else if !offline && section == 0 && noMoreTransport {
             return 1
-        }
-        else {
+        } else {
             return departuresList.count
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if loading == true {
             return 60
-        }
-        else if offline && notDownloaded {
+        } else if offline && notDownloaded {
             return 60
-        }
-        else if offline && indexPath.section == 0 {
+        } else if offline && indexPath.section == 0 {
             return 60
-        }
-        else if offline && indexPath.section == 1 && noMoreTransport {
+        } else if offline && indexPath.section == 1 && noMoreTransport {
             return 60
-        }
-        else if !offline && indexPath.section == 0 && noMoreTransport {
+        } else if !offline && indexPath.section == 0 && noMoreTransport {
             return 60
         }
         return 44
     }
-    
+
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
             let icone = FAKIonIcons.iosClockIcon(withSize: 20)!
@@ -549,21 +590,36 @@ extension DeparturesTableViewController {
             icone.image(with: CGSize(width: 20, height: 20))
             let alertView = SCLAlertView()
             if self.departuresList[indexPath.row].leftTime == "0" {
-                alertView.showWarning("Le bus arrive".localized, subTitle: "Dépêchez vous, vous allez le rater !".localized, closeButtonTitle: "OK".localized, duration: 10)
-            }
-            else {
+                alertView.showWarning(
+                    "Le bus arrive".localized,
+                    subTitle: "Dépêchez vous, vous allez le rater !".localized,
+                    closeButtonTitle: "OK".localized,
+                    duration: 10)
+            } else {
                 alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
-                    self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: 0, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
-                    
+                    self.scheduleNotification(
+                        self.departuresList[indexPath.row].timestamp,
+                        before: 0,
+                        line: self.departuresList[indexPath.row].line,
+                        direction: self.departuresList[indexPath.row].direction)
+
                 })
                 if Int(self.departuresList[indexPath.row].leftTime)! > 5 {
                     alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: 5, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
+                        self.scheduleNotification(
+                            self.departuresList[indexPath.row].timestamp,
+                            before: 5,
+                            line: self.departuresList[indexPath.row].line,
+                            direction: self.departuresList[indexPath.row].direction)
                     })
                 }
                 if Int(self.departuresList[indexPath.row].leftTime)! > 10 {
                     alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: 10, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
+                        self.scheduleNotification(
+                            self.departuresList[indexPath.row].timestamp,
+                            before: 10,
+                            line: self.departuresList[indexPath.row].line,
+                            direction: self.departuresList[indexPath.row].direction)
                     })
                 }
                 alertView.addButton("Autre".localized, action: { () -> Void in
@@ -575,10 +631,12 @@ extension DeparturesTableViewController {
                     customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
                         if Int(self.departuresList[indexPath.row].leftTime)! < Int(txt.text!)! {
                             customValueAlert.hideView()
-                            SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK".localized, duration: 10)
-                            
-                        }
-                        else {
+                            SCLAlertView().showError("Il y a un problème".localized,
+                                                     subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized,
+                                                     closeButtonTitle: "OK".localized,
+                                                     duration: 10)
+
+                        } else {
                             self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: Int(txt.text!)!, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
                             customValueAlert.hideView()
                         }
@@ -590,52 +648,46 @@ extension DeparturesTableViewController {
             }
         }
         timerAction.backgroundColor = UIColor.flatBlue
-        
-        let voirToutAction = UITableViewRowAction(style: .default, title: "Voir tout".localized) { (action, indexPath) in
+
+        let voirToutAction = UITableViewRowAction(style: .default, title: "Voir tout".localized) { (_, indexPath) in
             self.performSegue(withIdentifier: "showAllDepartures", sender: indexPath)
         }
         voirToutAction.backgroundColor = UIColor.flatGreen
         return [voirToutAction, timerAction]
     }
-    
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
-    
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if loading == true {
             return false
-        }
-        else if offline && notDownloaded {
+        } else if offline && notDownloaded {
             return false
-        }
-        else if offline && indexPath.section == 0 {
+        } else if offline && indexPath.section == 0 {
             return false
-        }
-        else if offline && indexPath.section == 1 && noMoreTransport {
+        } else if offline && indexPath.section == 1 && noMoreTransport {
             return false
-        }
-        else if !offline && indexPath.section == 0 && noMoreTransport {
+        } else if !offline && indexPath.section == 0 && noMoreTransport {
             return false
-        }
-        else if departuresList[indexPath.row].leftTime == "no more" {
+        } else if departuresList[indexPath.row].leftTime == "no more" {
             return false
         }
         return true
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if loading == true {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! loadingCellTableViewCell
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingCellTableViewCell // swiftlint:disable:this force_cast
+
             cell.activityIndicator.stopAnimating()
-            
+
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = UIColor.flatBlue
                 cell.titleLabel?.textColor = UIColor.white
                 cell.subTitleLabel?.textColor = UIColor.white
                 cell.activityIndicator.color = UIColor.white
-            }
-            else {
+            } else {
                 cell.backgroundColor = UIColor.white
                 cell.titleLabel?.textColor = UIColor.flatBlue
                 cell.subTitleLabel?.textColor = UIColor.flatBlue
@@ -644,14 +696,13 @@ extension DeparturesTableViewController {
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
             cell.accessoryView = nil
-            
+
             cell.activityIndicator.startAnimating()
-            
+
             return cell
-        }
-        else if indexPath.section == 0 && offline {
+        } else if indexPath.section == 0 && offline {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Mode offline".localized
@@ -662,10 +713,9 @@ extension DeparturesTableViewController {
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
-        }
-        else if offline && notDownloaded && indexPath.section == 1 {
+        } else if offline && notDownloaded && indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Non téléchargé".localized
@@ -676,10 +726,9 @@ extension DeparturesTableViewController {
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
-        }
-        else if offline && indexPath.section == 1 && noMoreTransport {
+        } else if offline && indexPath.section == 1 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Service terminé".localized
@@ -690,10 +739,9 @@ extension DeparturesTableViewController {
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
-        }
-        else if !offline && indexPath.section == 0 && noMoreTransport {
+        } else if !offline && indexPath.section == 0 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Service terminé".localized
@@ -704,26 +752,23 @@ extension DeparturesTableViewController {
             cell.imageView?.image = icone.image(with: CGSize(width: 50, height: 50))
             cell.accessoryView = nil
             return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "departArretCell", for: indexPath) as! DeparturesTableViewCell
-            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "departArretCell", for: indexPath) as! DeparturesTableViewCell // swiftlint:disable:this force_cast
+
             var lineColor = AppValues.textColor
-            
+
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 lineColor = departuresList[indexPath.row].lineColor
-            }
-            else {
+            } else {
                 if ContrastColorOf(departuresList[indexPath.row].lineBackgroundColor, returnFlat: true) == FlatWhite() {
                     lineColor = departuresList[indexPath.row].lineBackgroundColor
-                }
-                else {
+                } else {
                     lineColor = departuresList[indexPath.row].lineBackgroundColor.darken(byPercentage: 0.2)
                 }
             }
-            
+
             FIRCrashMessage("Departure: \(departuresList[indexPath.row].describe())")
-            
+
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
             labelPictoLigne.text = departuresList[indexPath.row].line
             labelPictoLigne.textAlignment = .center
@@ -734,69 +779,68 @@ extension DeparturesTableViewController {
             let image = labelToImage(labelPictoLigne)
             cell.linePictogram.image = image
             cell.directionLabel.text = departuresList[indexPath.row].direction
-            
+
             if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
                 cell.backgroundColor = departuresList[indexPath.row].lineBackgroundColor
-            }
-            else {
+            } else {
                 cell.backgroundColor = UIColor.flatWhite
             }
-            
+
             cell.directionLabel.textColor = lineColor
             cell.leftTimeLabel.textColor = lineColor
-            
+
             if offline {
                 cell.accessoryView = UIImageView(image: nil)
-                
-                if (Int(departuresList[indexPath.row].leftTime)! >= 60) {
+
+                if Int(departuresList[indexPath.row].leftTime)! >= 60 {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
-                    
-                    cell.leftTimeLabel.text = DateFormatter.localizedString(from: time!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
-                }
-                else if (departuresList[indexPath.row].leftTime == "0") {
+
+                    cell.leftTimeLabel.text = DateFormatter.localizedString(
+                        from: time!,
+                        dateStyle: DateFormatter.Style.none,
+                        timeStyle: DateFormatter.Style.short)
+                } else if departuresList[indexPath.row].leftTime == "0" {
                     let iconeBus = FAKFontAwesome.busIcon(withSize: 20)!
                     iconeBus.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = iconeBus.attributedString()
-                }
-                else {
+                } else {
                     cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
                 }
-            }
-            else {
+            } else {
                 let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 15)!
                 iconCheveron.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                 cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
-                
-                if (departuresList[indexPath.row].leftTime == "no more") {
+
+                if departuresList[indexPath.row].leftTime == "no more" {
                     cell.accessoryView = UIImageView(image: nil)
                     let iconTimes = FAKFontAwesome.timesIcon(withSize: 20)!
                     iconTimes.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = iconTimes.attributedString()
-                }
-                else if (departuresList[indexPath.row].leftTime == "&gt;1h") {
+                } else if departuresList[indexPath.row].leftTime == "&gt;1h" {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
                     if let time = time {
-                        cell.leftTimeLabel.text = DateFormatter.localizedString(from: time, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
+                        cell.leftTimeLabel.text = DateFormatter.localizedString(
+                            from: time,
+                            dateStyle: DateFormatter.Style.none,
+                            timeStyle: DateFormatter.Style.short)
                     } else {
                         let errorIcon = FAKFontAwesome.warningIcon(withSize: 20)!
                         errorIcon.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                         cell.leftTimeLabel.attributedText = errorIcon.attributedString()
                     }
-                }
-                else if (departuresList[indexPath.row].leftTime == "0") {
+                } else if departuresList[indexPath.row].leftTime == "0" {
                     let busIcon = FAKFontAwesome.busIcon(withSize: 20)!
                     busIcon.addAttribute(NSForegroundColorAttributeName, value: lineColor)
                     cell.leftTimeLabel.attributedText = busIcon.attributedString()
-                }
-                else {
+                } else {
                     cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
                 }
             }
-            
+
             return cell
         }
     }
@@ -804,34 +848,30 @@ extension DeparturesTableViewController {
 
 extension DeparturesTableViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
+
         guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
-        
+
         guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
-        
+
         if loading == true {
             return nil
-        }
-        else if indexPath.section == 0 && offline {
+        } else if indexPath.section == 0 && offline {
+            return nil
+        } else if offline && notDownloaded && indexPath.section == 1 {
+            return nil
+        } else if offline && indexPath.section == 1 && noMoreTransport {
+            return nil
+        } else if !offline && indexPath.section == 0 && noMoreTransport {
             return nil
         }
-        else if offline && notDownloaded && indexPath.section == 1 {
-            return nil
-        }
-        else if offline && indexPath.section == 1 && noMoreTransport {
-            return nil
-        }
-        else if !offline && indexPath.section == 0 && noMoreTransport {
-            return nil
-        }
-        
+
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "thermometerTableViewController") as? ThermometerTableViewController else { return nil }
-        
+
         detailVC.departure = departuresList[indexPath.row]
         previewingContext.sourceRect = cell.frame
         return detailVC
     }
-    
+
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         show(viewControllerToCommit, sender: self)
     }

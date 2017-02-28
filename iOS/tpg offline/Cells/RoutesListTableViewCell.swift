@@ -12,21 +12,20 @@ class RoutesListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var departureLabel: UILabel!
     @IBOutlet weak var hourDepartureLabel: UILabel!
-    
+
     @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var hourArrivalLabel: UILabel!
-    
+
     @IBOutlet weak var durationLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        
     }
 
 }

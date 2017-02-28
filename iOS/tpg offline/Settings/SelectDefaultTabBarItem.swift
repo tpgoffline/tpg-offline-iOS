@@ -18,17 +18,17 @@ class SelectDefaultTabBarItem: UITableViewController {
         super.viewDidLoad()
         rowSelected = defaults.integer(forKey: "selectedTabBar")
         tableView.backgroundColor = AppValues.primaryColor
-     
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refreshTheme()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,8 +49,7 @@ class SelectDefaultTabBarItem: UITableViewController {
             let iconOk = FAKFontAwesome.checkIcon(withSize: 20)!
             iconOk.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
             cell.accessoryView = UIImageView(image: iconOk.image(with: CGSize(width: 20, height: 20)))
-        }
-        else {
+        } else {
             cell.accessoryView = nil
         }
         cell.textLabel?.textColor = AppValues.textColor

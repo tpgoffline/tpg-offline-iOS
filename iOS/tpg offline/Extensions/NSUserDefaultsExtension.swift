@@ -9,7 +9,7 @@
 import UIKit
 
 extension UserDefaults {
-    
+
     func colorForKey(_ key: String) -> UIColor? {
         var color: UIColor?
         if let colorData = data(forKey: key) {
@@ -17,7 +17,7 @@ extension UserDefaults {
         }
         return color
     }
-    
+
     func setColor(_ color: UIColor?, forKey key: String) {
         var colorData: Data?
         if let color = color {
@@ -32,7 +32,7 @@ extension UserDefaults {
         }
         return stringArray
     }
-    
+
     func setStringArraySwift(_ string: [String]?, forKey key: String) {
         var stringData: Data?
         if let string = string {
@@ -47,7 +47,7 @@ extension UserDefaults {
         }
         return stringArray
     }
-    
+
     func setStringDictionnarySwift(_ string: [String: String]?, forKey key: String) {
         var stringData: Data?
         if let string = string {
@@ -55,7 +55,7 @@ extension UserDefaults {
         }
         set(stringData, forKey: key)
     }
-    
+
     func arretArrayForKey(_ key: String) -> [Stop]? {
         var arrayValue: [Stop]?
         if let arrayData = data(forKey: key) {
@@ -63,7 +63,7 @@ extension UserDefaults {
         }
         return arrayValue
     }
-    
+
     func setArretArray(_ array: [Stop]?, forKey key: String) {
         var arrayData: Data?
         if let array = array {

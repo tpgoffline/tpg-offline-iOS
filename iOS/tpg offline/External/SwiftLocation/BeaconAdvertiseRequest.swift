@@ -31,8 +31,7 @@ import CoreBluetooth
 import CoreLocation
 
 open class BeaconAdvertiseRequest: NSObject, Request {
-	
-	
+
 	open var UUID: String
 	open var rState: RequestState = .pending
 	fileprivate(set) var region: CLBeaconRegion
@@ -40,7 +39,7 @@ open class BeaconAdvertiseRequest: NSObject, Request {
 	fileprivate(set) var name: String
 	/// Authorization did change
 	open var onAuthorizationDidChange: LocationHandlerAuthDidChange?
-	
+
 	init?(name: String, proximityUUID: String, major: CLBeaconMajorValue? = nil, minor: CLBeaconMinorValue? = nil) {
 		self.name = name
 		guard let proximityUUID = Foundation.UUID(uuidString: proximityUUID) else { // invalid Proximity UUID
@@ -55,36 +54,36 @@ open class BeaconAdvertiseRequest: NSObject, Request {
 			return nil
 		}
 	}
-	
+
 	open func cancel(_ error: LocationError?) {
 		if self.rState.isRunning == true {
 			_ = Beacons.stopAdvertise(self.name, error: error)
 		}
 	}
-	
+
 	open func cancel() {
 		self.cancel(nil)
 	}
-	
+
 	open func pause() {
 		if self.rState.isRunning == true {
 			_ = Beacons.stopAdvertise(self.name, error: nil)
 			self.rState = .paused
 		}
 	}
-	
+
 	open func start() {
 		if self.rState.canStart == true {
 			self.rState = .running
 			Beacons.updateBeaconAdvertise()
 		}
 	}
-	
+
 	internal func dataToAdvertise() -> [String:Any] {
 		let data: [String:Any] = [
-			CBAdvertisementDataLocalNameKey : self.name as ImplicitlyUnwrappedOptional<Any>,
-			CBAdvertisementDataManufacturerDataKey : self.region.peripheralData(withMeasuredPower: self.RSSIPower),
-			CBAdvertisementDataServiceUUIDsKey : self.UUID]
+			CBAdvertisementDataLocalNameKey: self.name as ImplicitlyUnwrappedOptional<Any>,
+			CBAdvertisementDataManufacturerDataKey: self.region.peripheralData(withMeasuredPower: self.RSSIPower),
+			CBAdvertisementDataServiceUUIDsKey: self.UUID]
 		return data
 	}
 

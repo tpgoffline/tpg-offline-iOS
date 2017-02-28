@@ -44,18 +44,17 @@ public enum RegionState {
 /**
 *  This option set define the type of events you can monitor via BeaconManager class's monitor() func
 */
-public struct Event : OptionSet {
+public struct Event: OptionSet {
 	public let rawValue: UInt8
 	public init(rawValue: UInt8) { self.rawValue = rawValue }
-	
+
 	/// Monitor a region cross boundary event (enter and exit from the region)
 	public static let RegionBoundary = Event(rawValue: 1 << 0)
 	/// Monitor beacon ranging
 	public static let Ranging = Event(rawValue: 1 << 1)
 	/// Monitor both region cross boundary and beacon ranging events
-	public static let All : Event = [RegionBoundary, Ranging]
+	public static let All: Event = [RegionBoundary, Ranging]
 }
-
 
 /**
 *  This structure define a beacon object
@@ -64,7 +63,7 @@ public struct Beacon {
 	public var proximityUUID: String
 	public var major: CLBeaconMajorValue?
 	public var minor: CLBeaconMinorValue?
-	
+
 	/**
 	Initializa a new beacon to monitor
 	
@@ -98,7 +97,7 @@ public enum RequestState {
 	case running
 	case waitingUserAuth
 	case undetermined
-	
+
 	/// Request is running
 	public var isRunning: Bool {
 		switch self {
@@ -108,7 +107,7 @@ public enum RequestState {
 			return false
 		}
 	}
-	
+
 	/// Request is not running but can be started anytime
 	public var canStart: Bool {
 		switch self {
@@ -118,7 +117,7 @@ public enum RequestState {
 			return false
 		}
 	}
-	
+
 	/// Request is on queue but it's in pause state
 	public var isPending: Bool {
 		switch self {
@@ -128,7 +127,7 @@ public enum RequestState {
 			return false
 		}
 	}
-	
+
 	/// Request is on queue but it's in pause state
 	public var isCancelled: Bool {
 		switch self {
@@ -143,31 +142,31 @@ public enum RequestState {
 // MARK: - Support for Request protocol in CLGeocoder object
 
 extension CLGeocoder: Request {
-	
+
 	public func cancel(_ error: LocationError?) {
 		cancelGeocode()
 	}
-	
+
 	public func cancel() {
 		cancelGeocode()
 	}
-	
+
 	public func pause() {
 		// not available
 	}
-	
+
 	public func start() {
 		// not available
 	}
-	
+
 	public var UUID: String {
 		return "\(self.hash)"
 	}
-	
+
 	public var rState: RequestState {
 		return .undetermined
 	}
-	
+
 	public var onAuthorizationDidChange: LocationHandlerAuthDidChange? {
 		// not supported
 		get { return nil }
@@ -180,45 +179,45 @@ extension CLGeocoder: Request {
 public class NetRequest: Request {
 
 	private var task: URLSessionDataTask
-	
+
 	public init(_ APIURLRequest: URLRequest, complete: @escaping ((Data?, Error?) -> Void)) {
 		let sessionConfig = URLSessionConfiguration.default
 		let session = URLSession(configuration: sessionConfig)
-		self.task = session.dataTask(with: APIURLRequest, completionHandler: { data, response, error in
-			complete(data,error)
+		self.task = session.dataTask(with: APIURLRequest, completionHandler: { data, _, error in
+			complete(data, error)
 		})
 	}
-	
+
 	public func cancel() {
 		task.cancel()
 	}
-	
+
 	public func pause() {
 		task.suspend()
 	}
-	
+
 	public func start() {
 		task.resume()
 	}
-	
+
 	public var UUID: String {
 		return "\(task.hash)"
 	}
-	
+
 	public func cancel(_ error: LocationError?) {
 		task.cancel()
 	}
-	
+
 	public var rState: RequestState {
 		return .undetermined
 	}
-	
+
 	public var onAuthorizationDidChange: LocationHandlerAuthDidChange? {
 		// not supported
 		get { return nil }
 		set { }
 	}
-	
+
 }
 
 /**
@@ -231,28 +230,28 @@ public protocol Request {
 	- parameter error: optional error to cancel the request
 	*/
 	func cancel(_ error: LocationError?)
-	
+
 	/**
 	Cancel a running request without passing an error
 	*/
 	func cancel()
-	
+
 	/**
 	Pause a running request
 	*/
 	func pause()
-	
+
 	/**
 	Start a request by adding it to the relative queue
 	*/
 	func start()
-	
+
 	/// Unique identifier of the request
 	var UUID: String { get }
-	
+
 	/// State of the request
 	var rState: RequestState { get }
-	
+
 	//  You can observe for authorization changes in CLLocationManager
 	var onAuthorizationDidChange: LocationHandlerAuthDidChange? { get set }
 }
@@ -345,7 +344,7 @@ public enum LocationError: Error, CustomStringConvertible {
 	case noDataReturned
 	case notSupported
 	case invalidBeaconData
-	
+
 	public var description: String {
 		switch self {
 		case .missingAuthorizationInPlist:
@@ -389,10 +388,10 @@ public enum LocationServiceState: Equatable {
 }
 
 public func == (lhs: LocationServiceState, rhs: LocationServiceState) -> Bool {
-	switch (lhs,rhs) {
+	switch (lhs, rhs) {
 	case (.authorized(let a1), .authorized(let a2)):
 		return a1 == a2
-	case (.disabled,.disabled), (.undetermined,.undetermined), (.denied,.denied), (.restricted,.restricted):
+	case (.disabled, .disabled), (.undetermined, .undetermined), (.denied, .denied), (.restricted, .restricted):
 		return true
 	default:
 		return false
@@ -415,7 +414,7 @@ public enum LocationAuthType {
 // MARK: - CLLocationManager
 
 extension CLLocationManager {
-	
+
 		/// This var return the current status of the location manager authorization session
 	public static var locationAuthStatus: LocationServiceState {
 		get {
@@ -438,7 +437,7 @@ extension CLLocationManager {
 			}
 		}
 	}
-	
+
 		/// This var return the current status of the application's configuration
 		/// Since iOS8 you must specify a key which define the usage type of the location manager; you can use
 		/// NSLocationAlwaysUsageDescription if your app can uses location manager both in background and foreground or
@@ -448,14 +447,14 @@ extension CLLocationManager {
 	internal static var bundleLocationAuthType: LocationAuthType {
 		let hasAlwaysAuth = (Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") != nil)
 		let hasInUseAuth = (Bundle.main.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") != nil)
-		
+
 		if hasAlwaysAuth == true { return .always }
 		if hasInUseAuth == true { return .onlyInUse }
 		return .none
 	}
 }
 
-//MARK: Accuracy
+// MARK: Accuracy
 
 /**
 Allows you to specify the accuracy you want to achieve with a request.
@@ -484,7 +483,7 @@ public enum Accuracy: Int {
 	case house = 5
 	case room = 6
 	case navigation = 7
-	
+
 	public var meters: Double {
 		switch self {
 		case .any:			return Double.infinity
@@ -498,7 +497,7 @@ public enum Accuracy: Int {
 		case .ipScan:		return Double.infinity // Not used
 		}
 	}
-	
+
 	/**
 	Validate a provided location against current value of the accuracy
 	
@@ -516,7 +515,7 @@ public enum Accuracy: Int {
 	}
 }
 
-//MARK: UpdateFrequency
+// MARK: UpdateFrequency
 
 /**
 This enum specify the type of frequency you want to receive updates about location when subscription
@@ -535,10 +534,10 @@ public enum UpdateFrequency: Equatable, Comparable {
 }
 
 public func == (lhs: UpdateFrequency, rhs: UpdateFrequency) -> Bool {
-	switch (lhs,rhs) {
+	switch (lhs, rhs) {
 	case (.byDistanceIntervals(let d1), .byDistanceIntervals(let d2)) where d1 == d2:
 		return true
-	case (.continuous,.continuous), (.oneShot, .oneShot), (.significant, .significant):
+	case (.continuous, .continuous), (.oneShot, .oneShot), (.significant, .significant):
 		return true
 	default:
 		return false
@@ -565,7 +564,7 @@ private func u_lowerThan(includeEqual e: Bool, lhs: UpdateFrequency, rhs: Update
 	switch (lhs, rhs) {
 	case (.continuous, _), (.oneShot, _):
 		return true
-	case (.byDistanceIntervals(let d1),.byDistanceIntervals(let d2)):
+	case (.byDistanceIntervals(let d1), .byDistanceIntervals(let d2)):
 		return (e == true ? d1 <= d2 : d1 < d2)
 	case (.significant, .significant):
 		return true
@@ -578,7 +577,7 @@ private func u_graterThan(includeEqual e: Bool, lhs: UpdateFrequency, rhs: Updat
 	switch (lhs, rhs) {
 	case (.significant, _):
 		return true
-	case (.byDistanceIntervals(let d1),.byDistanceIntervals(let d2)):
+	case (.byDistanceIntervals(let d1), .byDistanceIntervals(let d2)):
 		return (e == true ? d1 >= d2 : d1 > d2)
 	default:
 		return false
