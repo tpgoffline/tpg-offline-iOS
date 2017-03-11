@@ -273,8 +273,8 @@
                     <connections>
                         <segue destination="Zx6-rd-Kh0" kind="show" identifier="rechercherItineraire" id="dRV-Ke-e42"/>
                         <segue destination="VKI-Lo-KNa" kind="show" identifier="voirArretsItineraire" id="lE2-t4-9ry"/>
-                        <segue destination="x1B-B3-nPQ" kind="show" identifier="selectDate" id="YuG-vw-a4H"/>
-                        <segue destination="r4u-eM-Zyd" kind="show" identifier="selectHour" id="nbW-4R-Mkf"/>
+                        <segue destination="x1B-B3-nPQ" kind="show" identifier="selectHour" id="YuG-vw-a4H"/>
+                        <segue destination="r4u-eM-Zyd" kind="show" identifier="selectDate" id="nbW-4R-Mkf"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ew-ou-fpi" userLabel="First Responder" sceneMemberID="firstResponder"/>
