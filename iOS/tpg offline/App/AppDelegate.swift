@@ -86,10 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FIRMessaging.messaging().connect { (error) in
             if error != nil {
-                print("Unable to connect with FCM. \(error)")
+                print("Unable to connect with FCM. \(String(describing: error))")
             } else {
                 print("Connected to FCM.")
-                print("Token: \(FIRInstanceID.instanceID().token())")
+                print("Token: \(String(describing: FIRInstanceID.instanceID().token()))")
             }
         }
     }

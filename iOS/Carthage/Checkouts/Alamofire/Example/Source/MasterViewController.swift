@@ -29,7 +29,7 @@ class MasterViewController: UITableViewController {
 
     @IBOutlet weak var titleImageView: UIImageView!
 
-    var detailViewController: DetailViewController?
+    var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
 
     // MARK: - View Lifecycle
@@ -94,3 +94,4 @@ class MasterViewController: UITableViewController {
         }
     }
 }
+

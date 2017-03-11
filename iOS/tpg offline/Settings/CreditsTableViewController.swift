@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Chameleon
 import SafariServices
 
 class CreditsTableViewController: UITableViewController {
@@ -16,19 +15,15 @@ class CreditsTableViewController: UITableViewController {
         ["Open data des Transports Publics Genevois".localized, "Données fournis par la société des Transports Publics Genevois".localized, "https://www.tpg.ch/web/open-data/"],
         ["Open data de Transport API".localized, "Données fournis par Opendata.ch".localized, "https://transport.opendata.ch"],
         ["SwiftyJSON", "Projet maintenu sur GitHub par SwiftyJSON - Projet en licence MIT".localized, "https://github.com/SwiftyJSON/SwiftyJSON.git"],
-        ["Chameleon", "Projet maintenu sur GitHub par ViccAlexander - Projet en licence MIT".localized, "https://github.com/ViccAlexander/Chameleon.git"],
-        ["FontAwesomeKit", "Projet maintenu sur GitHub par PrideChung - Projet en licence MIT".localized, "https://github.com/benguild/BGTableViewRowActionWithImage.git"],
         ["SCLAlertView-Swift", "Projet maintenu sur GitHub par vikmeup - Projet en licence MIT".localized, "https://github.com/Pevika/SCLAlertView-Swift.git"],
         ["FSCalendar", "Projet maintenu sur GitHub par WenchaoIOS - Projet en licence MIT".localized, "https://github.com/WenchaoIOS/FSCalendar.git"],
         ["DGRunkeeperSwitch", "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT".localized, "https://github.com/gontovnik/DGRunkeeperSwitch.git"],
-		["PermissionScope", "Projet maintenu sur GitHub par nickoneill - Projet en licence MIT".localized, "https://github.com/nickoneill/PermissionScope.git"],
 		["DGElasticPullToRefresh", "Projet maintenu sur GitHub par gontovnik - Projet en licence MIT".localized, "https://github.com/gontovnik/DGElasticPullToRefresh.git"],
 		["VHUD", "Projet maintenu sur GitHub par xxxAIRINxxx - Projet en licence MIT".localized, "https://github.com/xxxAIRINxxx/VHUD"],
 		["Onboard", "Projet maintenu sur GitHub par mamaral - Projet en licence MIT".localized, "https://github.com/mamaral/Onboard.git"],
 		["Alamofire", "Projet maintenu sur GitHub par Alamofire - Projet en licence MIT".localized, "https://github.com/Alamofire/Alamofire.git"],
 		["EFCircularSlider", "Projet maintenu sur GitHub par eliotfowler et modifié par RemyDCF - Projet en licence MIT".localized, "https://github.com/RemyDCF/EFCircularSlider.git"],
 		["NVActivityIndicatorView", "Projet maintenu sur GitHub par ninjaprox - Projet en licence MIT".localized, "https://github.com/ninjaprox/NVActivityIndicatorView.git"],
-		["AsyncSwift", "Projet maintenu sur GitHub par duemunk - Projet en licence MIT".localized, "https://github.com/duemunk/Async.git"],
 		["AKPickerView-Swift", "Projet maintenu sur GitHub par Akkyie - Projet en licence MIT".localized, "https://github.com/Akkyie/AKPickerView-Swift.git"],
 		["Firebase", "Projet maintenu par Google".localized, "https://firebase.google.com"]
     ]
@@ -71,7 +66,7 @@ class CreditsTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let safariViewController = SFSafariViewController(url: URL(string: creditsList[tableView.indexPathForSelectedRow!.row][2])!, entersReaderIfAvailable: true)
-            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            if AppValues.primaryColor.contrast == .white {
                 safariViewController.view.tintColor = AppValues.primaryColor
             } else {
                 safariViewController.view.tintColor = AppValues.textColor

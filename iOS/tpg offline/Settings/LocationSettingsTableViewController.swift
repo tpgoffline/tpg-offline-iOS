@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FontAwesomeKit
-import Chameleon
 
 class LocationSettingsTableViewController: UITableViewController {
 
@@ -58,9 +56,7 @@ class LocationSettingsTableViewController: UITableViewController {
         cell.textLabel?.text = choices[indexPath.section][indexPath.row]
         cell.selectionStyle = .none
         if indexPath.row == rowSelected[indexPath.section] {
-            let iconOk = FAKFontAwesome.checkIcon(withSize: 20)!
-            iconOk.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-            cell.accessoryView = UIImageView(image: iconOk.image(with: CGSize(width: 20, height: 20)))
+            cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "tick").maskWithColor(color: AppValues.textColor))
         } else {
             cell.accessoryView = nil
         }
@@ -81,7 +77,7 @@ class LocationSettingsTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView()
-        returnedView.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.05)
+        returnedView.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
 
         let label = UILabel(frame: CGRect(x: 20, y: 5, width: 500, height: 30))
         label.text = headers[section]

@@ -7,6 +7,7 @@
 //
 
 import WatchKit
+import SwiftyJSON
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 

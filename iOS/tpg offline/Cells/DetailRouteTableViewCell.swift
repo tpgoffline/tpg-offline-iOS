@@ -18,6 +18,10 @@ class DetailRouteTableViewCell: UITableViewCell {
     @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var hourArrivalLabel: UILabel!
 
+    @IBOutlet weak var directionImageView: UIImageView!
+    @IBOutlet weak var departureImageView: UIImageView!
+    @IBOutlet weak var arrivalImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
 

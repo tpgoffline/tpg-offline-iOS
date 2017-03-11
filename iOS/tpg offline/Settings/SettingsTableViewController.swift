@@ -7,25 +7,26 @@
 //
 
 import UIKit
-import Chameleon
 import Onboard
 import Alamofire
 import SafariServices
-import FontAwesomeKit
 import MessageUI
 import FirebaseCrash
+import SCLAlertView
+import VHUD
+import SwiftyJSON
 
 class SettingsTableViewController: UITableViewController {
 
     var rowsList = [
-        [FAKFontAwesome.barsIcon(withSize: 20)!, "Choix du menu par défaut".localized, "showChoixDuMenuParDefault"],
-        [FAKFontAwesome.locationArrowIcon(withSize: 20)!, "Localisation".localized, "showLocationMenu"],
-        [FAKFontAwesome.graduationCapIcon(withSize: 20)!, "Revoir le tutoriel".localized, "showTutoriel"],
-        [FAKFontAwesome.paintBrushIcon(withSize: 20)!, "Thèmes".localized, "showThemesMenu"],
-        [FAKFontAwesome.refreshIcon(withSize: 20)!, "Actualiser les départs (Offline)".localized, "actualiserDeparts"],
-        [FAKFontAwesome.infoCircleIcon(withSize: 20)!, "Crédits".localized, "showCredits"],
-        [FAKFontAwesome.commentIcon(withSize: 20)!, "Donnez votre avis !".localized, "sendEmail"],
-        [FAKFontAwesome.githubIcon(withSize: 20)!, "Page GitHub du projet".localized, "showGitHub"]
+        [#imageLiteral(resourceName: "menu"), "Choix du menu par défaut".localized, "showChoixDuMenuParDefault"],
+        [#imageLiteral(resourceName: "location"), "Localisation".localized, "showLocationMenu"],
+        [#imageLiteral(resourceName: "tutorial"), "Revoir le tutoriel".localized, "showTutoriel"],
+        [#imageLiteral(resourceName: "paintbrush"), "Thèmes".localized, "showThemesMenu"],
+        [#imageLiteral(resourceName: "reload"), "Actualiser les départs (Offline)".localized, "actualiserDeparts"],
+        [#imageLiteral(resourceName: "info"), "Crédits".localized, "showCredits"],
+        [#imageLiteral(resourceName: "comment"), "Donnez votre avis !".localized, "sendEmail"],
+        [#imageLiteral(resourceName: "github"), "Page GitHub du projet".localized, "showGitHub"]
     ]
 
     let defaults = UserDefaults.standard
@@ -68,13 +69,13 @@ class SettingsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "parametresCell", for: indexPath)
 
         cell.textLabel!.text = (rowsList[indexPath.row][1] as? String ?? "")
-        let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 15)!
-        iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
-        if let icone = rowsList[indexPath.row][0] as? FAKFontAwesome {
-            icone.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-            cell.imageView?.image = icone.image(with: CGSize(width: 20, height: 20))
+        cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
+        guard let icon = rowsList[indexPath.row][0] as? UIImage else {
+            FIRCrashMessage("ERROR: rowsList[indexPath.row][0] is not an UIImage")
+            abort()
         }
+        cell.imageView?.image = icon.withRenderingMode(.alwaysTemplate)
+        cell.imageView?.tintColor = AppValues.textColor
         cell.backgroundColor = AppValues.primaryColor
         cell.textLabel?.textColor = AppValues.textColor
 
@@ -93,8 +94,8 @@ class SettingsTableViewController: UITableViewController {
         } else if rowsList[indexPath.row][2] as? String ?? "" == "sendEmail" {
             sendEmail()
         } else if rowsList[indexPath.row][2] as? String ?? "" == "showGitHub" {
-            let safariViewController = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: true)
-            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            let safariViewController = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: false)
+            if AppValues.primaryColor.contrast == .white {
                 safariViewController.view.tintColor = AppValues.primaryColor
             } else {
                 safariViewController.view.tintColor = AppValues.textColor
@@ -116,7 +117,7 @@ class SettingsTableViewController: UITableViewController {
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
-            SCLAlertView().showError("Vous ne pouvez pas envoyer d'emails".localized, subTitle: "Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages".localized, closeButtonTitle: "OK", duration: 30)
+            SCLAlertView().showError("Vous ne pouvez pas envoyer d'emails".localized, subTitle: "Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages".localized, closeButtonTitle: "OK", duration: 30, feedbackType: .notificationError)
         }
     }
 
@@ -166,9 +167,9 @@ class SettingsTableViewController: UITableViewController {
                             VHUD.dismiss(1.0, 1.0, "100 %", { (_) in
                                 let alerte2 = SCLAlertView()
                                 if errors != 0 {
-                                    alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(errors) arrêts.".localized, closeButtonTitle: "Fermer".localized)
+                                    alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(errors) arrêts.".localized, closeButtonTitle: "Fermer".localized, feedbackType: .notificationWarning)
                                 } else {
-                                    alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized)
+                                    alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized, feedbackType: .notificationSuccess)
                                 }
                             })
                         }
@@ -177,7 +178,7 @@ class SettingsTableViewController: UITableViewController {
             case .failure( _):
                 VHUD.dismiss(1.0, 1.0, "Erreur".localized, { (_) in
                     let alerte = SCLAlertView()
-                    alerte.showError("Pas de réseau".localized, subTitle: "Vous n'êtes pas connecté au réseau. Pour actualiser les départs, merci de vous connecter au réseau.".localized, closeButtonTitle: "Fermer".localized, duration: 10)
+                    alerte.showError("Pas de réseau".localized, subTitle: "Vous n'êtes pas connecté au réseau. Pour actualiser les départs, merci de vous connecter au réseau.".localized, closeButtonTitle: "Fermer".localized, duration: 10, feedbackType: .notificationError)
                 })
             }
             }.downloadProgress { (progress) in
@@ -213,34 +214,23 @@ class SettingsTableViewController: UITableViewController {
 
         let page1 = OnboardingContentViewController (title: "Bienvenue dans tpg offline".localized, body: "tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
 
-        let iconeI = FAKIonIcons.iosClockIcon(withSize: 50)!
-        iconeI.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page2 = OnboardingContentViewController (title: "Départs".localized, body: "Le menu Départs vous informe des prochains départs pour un arrêt.".localized, image: iconeI.image(with: CGSize(width: 50, height: 50)), buttonText: "Continuer".localized, actionBlock: nil)
-        var iconeF = FAKFontAwesome.globeIcon(withSize: 50)!
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page3 = OnboardingContentViewController (title: "Mode offline".localized, body: "Le Mode offline vous permet de connaitre les horaires à un arrêt même si vous n’avez pas de réseau.".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Continuer".localized, actionBlock: nil)
-        iconeF = FAKFontAwesome.warningIcon(withSize: 50)!
+        let page2 = OnboardingContentViewController (title: "Départs".localized, body: "Le menu Départs vous informe des prochains départs pour un arrêt.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
 
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page4 = OnboardingContentViewController (title: "Avertissement".localized, body: "Sans réseau, tpg offline ne permet pas d’avoir des horaires garantis ni de connaitre les possibles perturbations du réseau. \rtpg offline ne peut aucunement être tenu pour responsable en cas de retard, d’avance, ni de connection manquée.".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "J'ai compris, continuer".localized, actionBlock: nil)
-        iconeF = FAKFontAwesome.mapSignsIcon(withSize: 50)!
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page5 = OnboardingContentViewController (title: "Itinéraires".localized, body: "l’application propose un menu Itinéraires. Vous pouvez vous déplacer très facilement grâce à cette fonction.".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Continuer".localized, actionBlock: nil)
-        iconeF = FAKFontAwesome.mapIcon(withSize: 50)!
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page6 = OnboardingContentViewController (title: "Plans".localized, body: "Tous les plans des tpg sont disponibles dans le menu Plans.".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Continuer".localized, actionBlock: nil)
-        iconeF = FAKFontAwesome.warningIcon(withSize: 50)!
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page7 = OnboardingContentViewController (title: "Incidents".localized, body: "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Continuer".localized, actionBlock: nil)
-        iconeF = FAKFontAwesome.bellOIcon(withSize: 50)!
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page8 = OnboardingContentViewController (title: "Rappels".localized, body: "Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection.".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Continuer".localized, actionBlock: nil)
-        iconeF = FAKFontAwesome.githubIcon(withSize: 50)!
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page9 = OnboardingContentViewController (title: "Open Source", body: "tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Continuer".localized, actionBlock: nil)
-        iconeF = FAKFontAwesome.ellipsisHIcon(withSize: 50)!
-        iconeF.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        let page10 = OnboardingContentViewController (title: "Et beaucoup d'autres choses".localized, body: "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !".localized, image: iconeF.image(with: CGSize(width: 50, height: 50)), buttonText: "Terminer".localized, actionBlock: { (_) in
+        let page3 = OnboardingContentViewController (title: "Mode offline".localized, body: "Le Mode offline vous permet de connaitre les horaires à un arrêt même si vous n’avez pas de réseau.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
+
+        let page4 = OnboardingContentViewController (title: "Avertissement".localized, body: "Sans réseau, tpg offline ne permet pas d’avoir des horaires garantis ni de connaitre les possibles perturbations du réseau. \rtpg offline ne peut aucunement être tenu pour responsable en cas de retard, d’avance, ni de connection manquée.".localized, image: nil, buttonText: "J'ai compris, continuer".localized, actionBlock: nil)
+
+        let page5 = OnboardingContentViewController (title: "Itinéraires".localized, body: "l’application propose un menu Itinéraires. Vous pouvez vous déplacer très facilement grâce à cette fonction.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
+
+        let page6 = OnboardingContentViewController (title: "Plans".localized, body: "Tous les plans des tpg sont disponibles dans le menu Plans.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
+
+        let page7 = OnboardingContentViewController (title: "Incidents".localized, body: "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
+
+        let page8 = OnboardingContentViewController (title: "Rappels".localized, body: "Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
+
+        let page9 = OnboardingContentViewController (title: "Open Source", body: "tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
+
+        let page10 = OnboardingContentViewController (title: "Et beaucoup d'autres choses".localized, body: "D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !".localized, image: nil, buttonText: "Terminer".localized, actionBlock: { (_) in
             self.dismiss(animated: true, completion: nil)
             if !self.defaults.bool(forKey: "tutorial") {
                 self.defaults.set(true, forKey: UserDefaultsKeys.tutorial.rawValue)
@@ -269,7 +259,7 @@ class SettingsTableViewController: UITableViewController {
         }
 
         let onboardingVC = OnboardingViewController(backgroundImage: image, contents: pages)
-        onboardingVC?.pageControl.pageIndicatorTintColor = AppValues.primaryColor.darken(byPercentage: 0.1)
+        onboardingVC?.pageControl.pageIndicatorTintColor = AppValues.primaryColor.darken(percentage: 0.1)
         onboardingVC?.pageControl.currentPageIndicatorTintColor = AppValues.textColor
         onboardingVC?.skipButton.setTitleColor(AppValues.textColor, for: .normal)
         onboardingVC?.shouldMaskBackground = false

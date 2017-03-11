@@ -10,12 +10,15 @@ import UIKit
 
 class RoutesListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var departureImageView: UIImageView!
     @IBOutlet weak var departureLabel: UILabel!
     @IBOutlet weak var hourDepartureLabel: UILabel!
 
+    @IBOutlet weak var arrivalImageView: UIImageView!
     @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var hourArrivalLabel: UILabel!
 
+    @IBOutlet weak var durationImageView: UIImageView!
     @IBOutlet weak var durationLabel: UILabel!
 
     override func awakeFromNib() {

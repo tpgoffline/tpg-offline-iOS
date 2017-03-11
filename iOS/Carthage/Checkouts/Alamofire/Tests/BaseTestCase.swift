@@ -29,9 +29,7 @@ import XCTest
 class BaseTestCase: XCTestCase {
     let timeout: TimeInterval = 30.0
 
-    static var testDirectoryURL: URL {
-        return FileManager.temporaryDirectoryURL.appendingPathComponent("org.alamofire.tests")
-    }
+    static var testDirectoryURL: URL { return FileManager.temporaryDirectoryURL.appendingPathComponent("org.alamofire.tests") }
     var testDirectoryURL: URL { return BaseTestCase.testDirectoryURL }
 
     override func setUp() {

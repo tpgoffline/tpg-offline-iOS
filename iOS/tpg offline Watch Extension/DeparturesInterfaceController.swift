@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class DeparturesInterfaceController: WKInterfaceController {
 

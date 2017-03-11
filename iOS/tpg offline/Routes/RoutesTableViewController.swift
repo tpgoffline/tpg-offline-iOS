@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Chameleon
-import FontAwesomeKit
 import FirebaseCrash
+import DGRunkeeperSwitch
+import SCLAlertView
 
 struct ActualRoutes {
 	static var route: SearchRoute! = SearchRoute(departure: nil, arrival: nil, date: Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: Date()), isArrivalDate: false)
@@ -17,17 +17,20 @@ struct ActualRoutes {
     static var routeResult: [Route]! = []
 }
 
-class RoutesTableViewController: UITableViewController {
+class RoutesCollectionViewController: UICollectionViewController {
 
 	let row = [
-        ["itineraryCell", FAKIonIcons.logOutIcon(withSize: 20)!, "Départ".localized, "voirArretsItineraire"],
-        ["itineraryCell", FAKIonIcons.logInIcon(withSize: 20)!, "Arrivée".localized, "voirArretsItineraire"],
-        ["itineraryCell", FAKIonIcons.calendarIcon(withSize: 20)!, "Date".localized, "selectDate"],
-        ["itineraryCell", FAKIonIcons.clockIcon(withSize: 20)!, "Heure".localized, "selectHour"],
+        ["itineraryCell", #imageLiteral(resourceName: "logOut"), "Départ".localized, "voirArretsItineraire"],
+        ["itineraryCell", #imageLiteral(resourceName: "logIn"), "Arrivée".localized, "voirArretsItineraire"],
+        ["itineraryCell", #imageLiteral(resourceName: "calendar"), "Date".localized, "selectDate"],
+        ["itineraryCell", #imageLiteral(resourceName: "clock"), "Heure".localized, "selectHour"],
         ["switchCell", "Heure de départ".localized, "Heure d'arrivée".localized],
         ["buttonCell", "Rechercher".localized]]
 
 	let headers = ["Recherche".localized, "Favoris".localized]
+    let imagesHeaders = [#imageLiteral(resourceName: "search"), #imageLiteral(resourceName: "starNavbar")]
+
+    fileprivate let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,9 +40,11 @@ class RoutesTableViewController: UITableViewController {
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
 
+        collectionView?.backgroundColor = AppValues.primaryColor
+        title = "Itinéraires".localized
+
         var barButtonsItems: [UIBarButtonItem] = []
-        let exchangeIcon = FAKFontAwesome.exchangeIcon(withSize: 20)!
-        barButtonsItems.append(UIBarButtonItem(image: exchangeIcon.image(with: CGSize(width: 20, height: 20)), style: .done, target: self, action: #selector(RoutesTableViewController.echangerArrets)))
+        barButtonsItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "exchangeNavBar"), style: .done, target: self, action: #selector(echangerArrets)))
         navigationItem.leftBarButtonItems = barButtonsItems
 	}
 	override func viewDidAppear(_ animated: Bool) {
@@ -58,69 +63,72 @@ class RoutesTableViewController: UITableViewController {
         let arretArrivee = ActualRoutes.route.arrival
         ActualRoutes.route.departure = arretArrivee
         ActualRoutes.route.arrival = arretDepart
-        tableView.reloadData()
+        collectionView!.reloadData()
     }
 
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		if AppValues.favoritesRoutes.count == 0 {
-			return 1
-		}
-		return 2
-	}
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if AppValues.favoritesRoutes.count == 0 {
+            return 1
+        }
+        return 2
+    }
 
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 0 {
-			return row.count
-		} else {
-			return AppValues.favoritesRoutes.count
-		}
-	}
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return row.count
+        } else {
+            return AppValues.favoritesRoutes.count
+        }
+    }
 
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.section == 0 {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 {
+            if (row[indexPath.row][0] as? String ?? "") == "itineraryCell" {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itineraryCell", for: indexPath) as! ItineraryCellCollectionViewCell // swiftlint:disable:this force_cast
 
-			if (row[indexPath.row][0] as? String ?? "") == "itineraryCell" {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "itineraryCell", for: indexPath)
+                cell.title?.text = (row[indexPath.row][2] as? String ?? "")
 
-				cell.textLabel?.text = (row[indexPath.row][2] as? String ?? "")
-
-                if let image = row[indexPath.row][1] as? FAKIonIcons {
-				image.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-				cell.imageView?.image = image.image(with: CGSize(width: 20, height: 20))
+                guard let image = row[indexPath.row][1] as? UIImage else {
+                    FIRCrashMessage("ERROR: row[indexPath.row][1] does not match with UIImage")
+                    abort()
                 }
 
-				let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 15)!
-				iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-				cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
+                cell.imageView?.image = image.maskWithColor(color: AppValues.textColor)
 
-				if (row[indexPath.row][2] as? String ?? "") == "Départ".localized {
-					cell.detailTextLabel?.text = ActualRoutes.route.departure?.fullName
-				} else if (row[indexPath.row][2] as? String ?? "") == "Arrivée".localized {
-					cell.detailTextLabel?.text = ActualRoutes.route.arrival?.fullName
-				} else if (row[indexPath.row][2] as? String ?? "") == "Date".localized && ActualRoutes.route.date != nil {
-					cell.detailTextLabel?.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
-				} else if (row[indexPath.row][2] as? String ?? "") == "Heure".localized && ActualRoutes.route.date != nil {
-					cell.detailTextLabel?.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
-				} else {
-					cell.detailTextLabel?.text = ""
-				}
-				cell.textLabel?.textColor = AppValues.textColor
-				cell.detailTextLabel?.textColor = AppValues.textColor
-				cell.backgroundColor = AppValues.primaryColor
-
-				let view = UIView()
-				view.backgroundColor = AppValues.primaryColor
-				cell.selectedBackgroundView = view
-				return cell
-			} else if (row[indexPath.row][0] as? String ?? "") == "switchCell" {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! SwitchTableViewCell // swiftlint:disable:this force_cast
-                cell.switchObject.titles = [row[indexPath.row][1] as? String ?? "", row[indexPath.row][2] as? String ?? ""]
-                if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
-                    cell.switchObject.backgroundColor = AppValues.primaryColor.lighten(byPercentage: 0.1)
-                    cell.switchObject.selectedBackgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
+                if (row[indexPath.row][2] as? String ?? "") == "Départ".localized {
+                    cell.subTitle?.text = ActualRoutes.route.departure?.fullName != "" ? ActualRoutes.route.departure?.fullName : "-"
+                } else if (row[indexPath.row][2] as? String ?? "") == "Arrivée".localized {
+                    cell.subTitle?.text = ActualRoutes.route.arrival?.fullName != "" ? ActualRoutes.route.arrival?.fullName : "-"
+                } else if (row[indexPath.row][2] as? String ?? "") == "Date".localized && ActualRoutes.route.date != nil {
+                    cell.subTitle?.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
+                } else if (row[indexPath.row][2] as? String ?? "") == "Heure".localized && ActualRoutes.route.date != nil {
+                    cell.subTitle?.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
                 } else {
-                    cell.switchObject.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-                    cell.switchObject.selectedBackgroundColor = AppValues.primaryColor.lighten(byPercentage: 0.1)
+                    cell.subTitle?.text = "-"
+                }
+                cell.title?.textColor = AppValues.textColor
+                cell.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
+                cell.subTitle?.textColor = AppValues.textColor
+                cell.subTitle?.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
+                cell.title?.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
+
+                let view = UIView()
+                view.backgroundColor = AppValues.primaryColor
+                cell.selectedBackgroundView = view
+
+                cell.layer.masksToBounds = true
+                cell.layer.cornerRadius = 10
+
+                return cell
+            } else if (row[indexPath.row][0] as? String ?? "") == "switchCell" {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "switchCell", for: indexPath) as! SwitchCollectionViewCell // swiftlint:disable:this force_cast
+                cell.switchObject.titles = [row[indexPath.row][1] as? String ?? "", row[indexPath.row][2] as? String ?? ""]
+                if AppValues.primaryColor.contrast == .white {
+                    cell.switchObject.backgroundColor = AppValues.primaryColor.lighten(percentage: 0.1)
+                    cell.switchObject.selectedBackgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
+                } else {
+                    cell.switchObject.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
+                    cell.switchObject.selectedBackgroundColor = AppValues.primaryColor.lighten(percentage: 0.1)
                 }
 
                 cell.switchObject.titleColor = AppValues.textColor
@@ -131,65 +139,55 @@ class RoutesTableViewController: UITableViewController {
                     cell.switchObject.setSelectedIndex(0, animated: false)
                 }
                 cell.switchObject.autoresizingMask = [.flexibleWidth]
-				cell.switchObject.addTarget(self, action:#selector(RoutesTableViewController.dateArriveeChange(_:)), for: .valueChanged)
-				cell.backgroundColor = AppValues.primaryColor
-				let view = UIView()
-				view.backgroundColor = AppValues.primaryColor
-				cell.selectedBackgroundView = view
-				return cell
-			} else {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as! ButtonTableViewCell // swiftlint:disable:this force_cast
-				cell.button.setTitle((row[indexPath.row][1] as? String ?? ""), for: .normal)
-				cell.button.backgroundColor = AppValues.primaryColor
-				cell.button.tintColor = AppValues.textColor
-				cell.button.addTarget(self, action: #selector(RoutesTableViewController.rechercher(_:)), for: .touchUpInside)
+                cell.switchObject.addTarget(self, action:#selector(dateArriveeChange(_:)), for: .valueChanged)
                 cell.backgroundColor = AppValues.primaryColor
-				let view = UIView()
-				view.backgroundColor = AppValues.primaryColor
-				cell.selectedBackgroundView = view
-				return cell
-			}
-		} else {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "favorisCell", for: indexPath) as! FavoriteRouteTableViewCell // swiftlint:disable:this force_cast
-			cell.iconView.backgroundColor = AppValues.primaryColor
+                let view = UIView()
+                view.backgroundColor = AppValues.primaryColor
+                cell.selectedBackgroundView = view
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "buttonCell", for: indexPath) as! ButtonCollectionViewCell // swiftlint:disable:this force_cast
+                cell.button.setTitle((row[indexPath.row][1] as? String ?? ""), for: .normal)
+                cell.button.tintColor = AppValues.textColor
+                cell.button.addTarget(self, action: #selector(self.rechercher(_:)), for: .touchUpInside)
+                cell.backgroundColor = AppValues.primaryColor
+                let view = UIView()
+                view.backgroundColor = AppValues.primaryColor
+                cell.selectedBackgroundView = view
 
-			let starIcon = FAKFontAwesome.starIcon(withSize: 20)!
-			starIcon.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-			cell.iconImageView.image = starIcon.image(with: CGSize(width: 20, height: 20))
+                cell.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
+                cell.layer.masksToBounds = true
+                cell.layer.cornerRadius = 25
+                return cell
+            }
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favorisCell", for: indexPath) as! FavoriteRouteCollectionViewCell // swiftlint:disable:this force_cast
 
-			var icon = FAKIonIcons.logOutIcon(withSize: 21)!
-			icon.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-			var attributedString = NSMutableAttributedString(attributedString: (icon.attributedString())!)
-			attributedString.append(NSAttributedString(string: " " + (AppValues.favoritesRoutes![indexPath.row][0].fullName)))
-			cell.departureLabel.attributedText = attributedString
-			cell.departureLabel.textColor = AppValues.textColor
-			cell.departureLabel.backgroundColor = AppValues.primaryColor
+            cell.departureLabel.text = AppValues.favoritesRoutes![indexPath.row][0].fullName
+            cell.departureLabel.textColor = AppValues.textColor
+            cell.departureLabel.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
 
-			let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 20)!
-			iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-			cell.accessoryImage.image = iconCheveron.image(with: CGSize(width: 20, height: 20))
+            cell.accessoryImage.image = #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor)
 
-			icon = FAKIonIcons.logInIcon(withSize: 21)!
-			icon.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-			attributedString = NSMutableAttributedString(attributedString: (icon.attributedString())!)
-			attributedString.append(NSAttributedString(string: " " + (AppValues.favoritesRoutes![indexPath.row][1].fullName)))
-			cell.arrivalLabel.attributedText = attributedString
-			cell.arrivalLabel.textColor = AppValues.textColor
-			cell.arrivalLabel.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
+            cell.arrivalLabel.text = AppValues.favoritesRoutes![indexPath.row][1].fullName
+            cell.arrivalLabel.textColor = AppValues.textColor
+            cell.arrivalLabel.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
 
-			cell.selectionStyle = .none
+            cell.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
 
-			return cell
-		}
-	}
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 25
+
+            return cell
+        }
+    }
 
 	func rechercher(_ sender: Any) {
 		if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
-
 			performSegue(withIdentifier: "rechercherItineraire", sender: self)
 		} else {
 			let alert = SCLAlertView()
-			alert.showWarning("Information manquante".localized, subTitle: "Il manque une information pour rechercher un itinéraire".localized, closeButtonTitle: "OK".localized, duration: 10)
+            alert.showWarning("Information manquante".localized, subTitle: "Il manque une information pour rechercher un itinéraire".localized, closeButtonTitle: "OK".localized, duration: 10, feedbackType: .notificationWarning)
 		}
 	}
 
@@ -204,56 +202,95 @@ class RoutesTableViewController: UITableViewController {
         } else {
             print("The selected index of DGRunkeeperSwitch object is unknow")
         }
-	}
+    }
 
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		if indexPath.section == 1 {
-			ActualRoutes.route = SearchRoute(departure: AppValues.favoritesRoutes[indexPath.row][0], arrival: AppValues.favoritesRoutes[indexPath.row][1])
-			performSegue(withIdentifier: "rechercherItineraire", sender: self)
-		} else if (row[indexPath.row][0] as? String ?? "") == "itineraryCell" {
-			performSegue(withIdentifier: row[indexPath.row][3] as? String ?? "", sender: self)
-		} else {
-			tableView.deselectRow(at: indexPath, animated: false)
-		}
-	}
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                             withReuseIdentifier: "routesHeader",
+                                                                             for: indexPath) as! HeaderCollectionView // swiftlint:disable:this force_cast
+            headerView.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
+            headerView.title.text = headers[indexPath.section]
+            headerView.icon.image = imagesHeaders[indexPath.section].maskWithColor(color: AppValues.textColor)
+            headerView.title.textColor = AppValues.textColor
+            return headerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
 
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let returnedView = UIView()
-		returnedView.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-
-		let label = UILabel(frame: CGRect(x: 20, y: 5, width: 500, height: 30))
-		label.text = headers[section]
-		label.textColor = AppValues.textColor
-		returnedView.addSubview(label)
-
-		return returnedView
-	}
-
-	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return 40
-	}
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "voirArretsItineraire" {
 			let destinationViewController = segue.destination as! RoutesStopsTableViewController // swiftlint:disable:this force_cast
-			if tableView.cellForRow(at: tableView.indexPathForSelectedRow!)?.textLabel?.text == "Départ".localized {
+
+			if (collectionView?.cellForItem(at: (collectionView?.indexPathsForSelectedItems![0])!) as! ItineraryCellCollectionViewCell).title?.text == "Départ".localized { // swiftlint:disable:this force_cast
 				destinationViewController.departure = true
 			} else {
 				destinationViewController.departure = false
 			}
+            collectionView?.deselectItem(at: (collectionView?.indexPathsForSelectedItems![0])!, animated: false)
 		}
 	}
 
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		if indexPath.section == 0 {
-			return 44
-		} else {
-			return 88
-		}
-	}
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            ActualRoutes.route = SearchRoute(departure: AppValues.favoritesRoutes[indexPath.row][0], arrival: AppValues.favoritesRoutes[indexPath.row][1])
+            performSegue(withIdentifier: "rechercherItineraire", sender: self)
+        } else if (row[indexPath.row][0] as? String ?? "") == "itineraryCell" {
+            performSegue(withIdentifier: row[indexPath.row][3] as? String ?? "", sender: self)
+        } else {
+            collectionView.deselectItem(at: indexPath, animated: false)
+        }
+    }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.reloadData()
+    }
 }
 
-extension RoutesTableViewController: UISplitViewControllerDelegate {
+extension RoutesCollectionViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemsPerRowArray: [CGFloat]
+        if UIDevice.current.orientation.isLandscape {
+            itemsPerRowArray = [3, 3, 3, 3, 1.5, 1]
+        } else {
+            itemsPerRowArray = [2, 2, 2, 2, 1, 1]
+        }
+        let heightArray: [CGFloat] = [100, 100, 100, 100, 50, 50]
+        let itemsPerRow: CGFloat
+        let height: CGFloat
+        if indexPath.section == 0 {
+            itemsPerRow = itemsPerRowArray[indexPath.row]
+            height = heightArray[indexPath.row]
+        } else {
+            itemsPerRow = 1
+            height = 100
+        }
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth: CGFloat = UIScreen.main.bounds.width - paddingSpace
+
+        let widthPerItem = availableWidth / itemsPerRow
+
+        return CGSize(width: widthPerItem, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+}
+
+extension RoutesCollectionViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }

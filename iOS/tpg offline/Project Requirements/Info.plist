@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItemType</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string></string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string></string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string></string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>fr_FR</string>
 	<key>CFBundleDocumentTypes</key>
@@ -26,7 +37,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>9</string>
+	<string>10</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -40,22 +51,10 @@
 		<string>MKDirectionsModeSubway</string>
 		<string>MKDirectionsModeTrain</string>
 	</array>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Hello World</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Hello World</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Hello World</string>
 	<key>NSLocationUsageDescription</key>
 	<string>tpg offline a besoin de votre localisation pour afficher les arrets à proximité.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>tpg offline a besoin de votre localisation pour afficher les arrets à proximité.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Hello World</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Hello World</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Hello World</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>

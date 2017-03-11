@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Chameleon
 import EFCircularSlider
 
 class TimeSelectionViewController: UIViewController {
@@ -38,10 +37,10 @@ class TimeSelectionViewController: UIViewController {
             labelHeure.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
         }
 
-        minuteSlider.unfilledColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-        minuteSlider.filledColor = AppValues.primaryColor.lighten(byPercentage: 0.2)
-        hourSlider.unfilledColor = AppValues.primaryColor.lighten(byPercentage: 0.1)
-        hourSlider.filledColor = AppValues.primaryColor.darken(byPercentage: 0.2)
+        minuteSlider.unfilledColor = AppValues.primaryColor.darken(percentage: 0.1)
+        minuteSlider.filledColor = AppValues.primaryColor.darken(percentage: 0.2)
+        hourSlider.unfilledColor = AppValues.primaryColor.darken(percentage: 0.1)
+        hourSlider.filledColor = AppValues.primaryColor.darken(percentage: 0.2)
         hourSlider.labelColor = AppValues.textColor
         minuteSlider.labelColor = AppValues.textColor
         view.backgroundColor = AppValues.primaryColor
@@ -49,7 +48,7 @@ class TimeSelectionViewController: UIViewController {
         minuteSlider.handleColor = minuteSlider.filledColor
         hourSlider.handleColor = hourSlider.filledColor
 
-        boutonValider.backgroundColor = AppValues.primaryColor.lighten(byPercentage: 0.1)
+        boutonValider.backgroundColor = AppValues.primaryColor.lighten(percentage: 0.1)
         boutonValider.setTitle("Valider", for: UIControlState())
         boutonValider.setTitleColor(AppValues.textColor, for: UIControlState())
     }
@@ -62,12 +61,12 @@ class TimeSelectionViewController: UIViewController {
         super.viewDidAppear(animated)
 
         refreshTheme()
-        boutonValider.backgroundColor = AppValues.primaryColor.lighten(byPercentage: 0.1)
+        boutonValider.backgroundColor = AppValues.primaryColor.lighten(percentage: 0.1)
         boutonValider.setTitleColor(AppValues.textColor, for: UIControlState())
-        minuteSlider.unfilledColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-        minuteSlider.filledColor = AppValues.primaryColor.lighten(byPercentage: 0.2)
-        hourSlider.unfilledColor = AppValues.primaryColor.lighten(byPercentage: 0.1)
-        hourSlider.filledColor = AppValues.primaryColor.darken(byPercentage: 0.2)
+        minuteSlider.unfilledColor = AppValues.primaryColor.darken(percentage: 0.1)
+        minuteSlider.filledColor = AppValues.primaryColor.darken(percentage: 0.2)
+        hourSlider.unfilledColor = AppValues.primaryColor.darken(percentage: 0.1)
+        hourSlider.filledColor = AppValues.primaryColor.darken(percentage: 0.2)
         hourSlider.labelColor = AppValues.textColor
         minuteSlider.labelColor = AppValues.textColor
         view.backgroundColor = AppValues.primaryColor
@@ -75,11 +74,15 @@ class TimeSelectionViewController: UIViewController {
         minuteSlider.handleColor = minuteSlider.filledColor
         hourSlider.handleColor = hourSlider.filledColor
     }
+
     func minuteChanged(_ sender: Any!) {
         labelHeure.text = DateFormatter.localizedString(from: Calendar.current.date(from: ActualRoutes.route.date! as DateComponents)!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
         if ActualRoutes.route.date == nil {
             ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: Date())
             ActualRoutes.route.date!.hour = 0
+        }
+        if #available(iOS 10.0, *), ActualRoutes.route.date!.minute != Int(minuteSlider.currentValue) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
         ActualRoutes.route.date!.minute = Int(minuteSlider.currentValue)
     }
@@ -88,6 +91,9 @@ class TimeSelectionViewController: UIViewController {
         if ActualRoutes.route.date == nil {
             ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: Date())
             ActualRoutes.route.date!.minute = 0
+        }
+        if #available(iOS 10.0, *), ActualRoutes.route.date!.hour != Int(hourSlider.currentValue) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
         ActualRoutes.route.date!.hour = Int(hourSlider.currentValue)
     }

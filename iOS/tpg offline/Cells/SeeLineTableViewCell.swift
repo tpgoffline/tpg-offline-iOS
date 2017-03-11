@@ -11,6 +11,7 @@ import UIKit
 class SeeLineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leftTimeLabel: UILabel!
+    @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var connection1Label: UILabel!

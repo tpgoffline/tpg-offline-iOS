@@ -184,7 +184,8 @@ class CacheTestCase: BaseTestCase {
         cachePolicy: NSURLRequest.CachePolicy = .useProtocolCachePolicy,
         queue: DispatchQueue = DispatchQueue.main,
         completion: @escaping (URLRequest?, HTTPURLResponse?) -> Void)
-        -> URLRequest {
+        -> URLRequest
+    {
         let urlRequest = self.urlRequest(cacheControl: cacheControl, cachePolicy: cachePolicy)
         let request = manager.request(urlRequest)
 
@@ -203,7 +204,8 @@ class CacheTestCase: BaseTestCase {
     func executeTest(
         cachePolicy: NSURLRequest.CachePolicy,
         cacheControl: String,
-        shouldReturnCachedResponse: Bool) {
+        shouldReturnCachedResponse: Bool)
+    {
         // Given
         let expectation = self.expectation(description: "GET request to httpbin")
         var response: HTTPURLResponse?

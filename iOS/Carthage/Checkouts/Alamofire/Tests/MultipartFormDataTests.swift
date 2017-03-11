@@ -682,6 +682,7 @@ class MultipartFormDataWriteEncodedDataToDiskTestCase: BaseTestCase {
             mimeType: "image/jpeg"
         )
 
+
         var encodingError: Error?
 
         // When

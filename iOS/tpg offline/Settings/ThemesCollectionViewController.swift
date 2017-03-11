@@ -7,25 +7,26 @@
 //
 
 import UIKit
-import Chameleon
-import FontAwesomeKit
 
 private let reuseIdentifier = "ThemesCell"
 
 class ThemesCollectionViewController: UICollectionViewController {
-    let themes = [
-        "Inversé".localized: [UIColor.flatOrange, UIColor.white],
-        "Défaut".localized: [UIColor.flatWhite, UIColor.flatOrangeDark],
-        "Nuit".localized: [UIColor.flatNavyBlue, UIColor.flatWhite],
-        "Bleu".localized: [UIColor.flatWhite, UIColor.flatSkyBlue],
-        "Vert".localized: [UIColor.flatWhite, UIColor.flatGreenDark],
-        "Noir".localized: [UIColor.flatWhite, UIColor.flatBlackDark],
-        "Forêt".localized: [UIColor.flatWhite, UIColor.flatForestGreen],
-        "Mauve".localized: [UIColor.flatWhite, UIColor.flatMagenta]
+    let themes: [String: [UIColor]] = [
+        "Inversé".localized: [.flatOrange, .white],
+        "Défaut".localized: [.white, .flatOrangeDark],
+        "Nuit".localized: [.flatNavyBlue, .flatWhite],
+        "Bleu".localized: [.white, .flatSkyBlue],
+        "Vert".localized: [.white, .flatGreenDark],
+        "Noir".localized: [.white, .black],
+        "Forêt".localized: [.white, .flatForestGreen],
+        "Mauve".localized: [.white, .flatMagenta]
     ]
 
     let defaults = UserDefaults.standard
     var keys = [String]()
+
+    fileprivate let itemsPerRow: CGFloat = 2
+    fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,8 @@ class ThemesCollectionViewController: UICollectionViewController {
             return false
         })
 
-        collectionView!.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-	}
+        collectionView!.backgroundColor = AppValues.primaryColor
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,11 +49,11 @@ class ThemesCollectionViewController: UICollectionViewController {
         return 1
     }
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         collectionView?.reloadData()
-	}
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return themes.count
@@ -68,76 +69,115 @@ class ThemesCollectionViewController: UICollectionViewController {
         return cell
     }
 
-	func collectionView(_ collectionView: UICollectionView,
-	                    layout collectionViewLayout: UICollectionViewLayout,
-	                    sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-		return CGSize(width: UIScreen.main.bounds.width / 2 - 15, height: 100)
-	}
-
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         AppValues.primaryColor = themes[keys[indexPath.row]]![0]
         AppValues.textColor = themes[keys[indexPath.row]]![1]
         refreshTheme()
-        collectionView.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.1)
+        collectionView.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
 
         defaults.setColor(AppValues.primaryColor, forKey: UserDefaultsKeys.primaryColor.rawValue)
         defaults.setColor(AppValues.textColor, forKey: UserDefaultsKeys.textColor.rawValue)
 
-		setTabBar()
+        setTabBar()
 
-		refreshTheme()
+        refreshTheme()
     }
 
-	func setTabBar() {
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: UIControlState())
+    func setTabBar() {
+        if AppValues.primaryColor.contrast == .white {
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: UIControlState())
+        } else {
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for: UIControlState())
+        }
 
         tabBarController!.tabBar.tintColor = AppValues.textColor
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
 
         tabBarController!.tabBar.barTintColor = AppValues.primaryColor
-        view.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.05)
+        view.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
 
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        tabBarController!.tabBar.selectionIndicatorImage = image
+        if AppValues.primaryColor.contrast == .white {
+            UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            tabBarController!.tabBar.selectionIndicatorImage = image
+        } else {
+            tabBarController!.tabBar.selectionIndicatorImage = nil
+        }
 
-        let iconeHorloge = FAKIonIcons.iosClockIcon(withSize: 20)!
-        iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        var iconImage = iconeHorloge.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![0].image = iconImage
-        tabBarController!.tabBar.items![0].selectedImage = iconImage
+        if AppValues.primaryColor.contrast == .white {
+            var iconImage = #imageLiteral(resourceName: "clock").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![0].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![0].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconeAttention = FAKFontAwesome.warningIcon(withSize: 20)!
-        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeAttention.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![1].image = iconImage
-        tabBarController!.tabBar.items![1].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "warning").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![1].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![1].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconeItineraire = FAKFontAwesome.mapSignsIcon(withSize: 20)!
-        iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeItineraire.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![2].image = iconImage
-        tabBarController!.tabBar.items![2].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "routes").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![2].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![2].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconePlan = FAKFontAwesome.mapIcon(withSize: 20)!
-        iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconePlan.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![3].image = iconImage
-        tabBarController!.tabBar.items![3].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "map").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![3].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![3].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconeParametre = FAKFontAwesome.cogIcon(withSize: 20)!
-        iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController!.tabBar.items![4].image = iconImage
-        tabBarController!.tabBar.items![4].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "cog").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![4].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![4].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
+        } else {
+            var iconImage = #imageLiteral(resourceName: "clock").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![0].image = iconImage
+            tabBarController!.tabBar.items![0].selectedImage = iconImage
 
-        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            iconImage = #imageLiteral(resourceName: "warning").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![1].image = iconImage
+            tabBarController!.tabBar.items![1].selectedImage = iconImage
+
+            iconImage = #imageLiteral(resourceName: "routes").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![2].image = iconImage
+            tabBarController!.tabBar.items![2].selectedImage = iconImage
+
+            iconImage = #imageLiteral(resourceName: "map").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![3].image = iconImage
+            tabBarController!.tabBar.items![3].selectedImage = iconImage
+
+            iconImage = #imageLiteral(resourceName: "cog").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![4].image = iconImage
+            tabBarController!.tabBar.items![4].selectedImage = iconImage
+        }
+
+        if AppValues.primaryColor.contrast == .white {
             UIApplication.shared.statusBarStyle = .lightContent
         } else {
             UIApplication.shared.statusBarStyle = .default
         }
+    }
+}
+
+extension ThemesCollectionViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+
+        return CGSize(width: widthPerItem, height: 100)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
 }

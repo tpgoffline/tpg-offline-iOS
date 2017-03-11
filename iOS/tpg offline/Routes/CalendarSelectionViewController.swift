@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Chameleon
 import FSCalendar
 
 class CalendarSelectionViewController: UIViewController {
@@ -17,8 +16,8 @@ class CalendarSelectionViewController: UIViewController {
 
         refreshTheme()
 
-        calendar.appearance.selectionColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-        calendar.appearance.todayColor = AppValues.primaryColor.lighten(byPercentage: 0.2)
+        calendar.appearance.selectionColor = AppValues.primaryColor.darken(percentage: 0.1)
+        calendar.appearance.todayColor = AppValues.primaryColor.lighten(percentage: 0.2)
         calendar.backgroundColor = AppValues.primaryColor
         calendar.tintColor = AppValues.textColor
         calendar.appearance.headerTitleColor = AppValues.textColor
@@ -39,8 +38,8 @@ class CalendarSelectionViewController: UIViewController {
 
         refreshTheme()
 
-        calendar.appearance.selectionColor = AppValues.primaryColor.darken(byPercentage: 0.1)
-        calendar.appearance.todayColor = AppValues.primaryColor.lighten(byPercentage: 0.2)
+        calendar.appearance.selectionColor = AppValues.primaryColor.darken(percentage: 0.1)
+        calendar.appearance.todayColor = AppValues.primaryColor.lighten(percentage: 0.2)
         calendar.backgroundColor = AppValues.primaryColor
         calendar.tintColor = AppValues.textColor
         calendar.appearance.headerTitleColor = AppValues.textColor

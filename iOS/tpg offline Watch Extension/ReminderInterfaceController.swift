@@ -26,7 +26,7 @@ class ReminderInterfaceController: WKInterfaceController {
 
         if Int(departure!.leftTime) == 0 {
             let okAction = WKAlertAction(title: "OK", style: .default) {
-                Async.main {
+                DispatchQueue.main.sync {
                     self.pop()
                 }
             }
@@ -100,37 +100,39 @@ class ReminderInterfaceController: WKInterfaceController {
 
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                 center.add(request, withCompletionHandler: { (error) in
-                    if error == nil {
-                        if Int(self.value) == 0 {
-                            let okAction = WKAlertAction(title: "OK", style: .default) {
-                                Async.main {
-                                    self.pop()
+                    DispatchQueue.main.sync {
+                        if error == nil {
+                            if Int(self.value) == 0 {
+                                let okAction = WKAlertAction(title: "OK", style: .default) {
+                                    DispatchQueue.main.sync {
+                                        self.pop()
+                                    }
                                 }
+                                self.presentAlert(withTitle: NSLocalizedString("Vous serez notifié", comment: ""), message: NSLocalizedString("La notification à été enregistrée et sera affichée à l'heure du départ.", comment: ""), preferredStyle: .alert, actions: [okAction])
+                            } else {
+                                var texte =  NSLocalizedString("La notification à été enregistrée et sera affichée ", comment: "")
+                                texte += String(Int(self.value))
+                                texte += NSLocalizedString(" minutes avant le départ.", comment: "")
+                                let okAction = WKAlertAction(title: "OK", style: .default) {
+                                    DispatchQueue.main.sync {
+                                        self.pop()
+                                    }
+                                }
+                                self.presentAlert(withTitle: NSLocalizedString("Vous serez notifié", comment: ""), message: texte, preferredStyle: .alert, actions: [okAction])
                             }
-                            self.presentAlert(withTitle: NSLocalizedString("Vous serez notifié", comment: ""), message: NSLocalizedString("La notification à été enregistrée et sera affichée à l'heure du départ.", comment: ""), preferredStyle: .alert, actions: [okAction])
                         } else {
-                            var texte =  NSLocalizedString("La notification à été enregistrée et sera affichée ", comment: "")
-                            texte += String(Int(self.value))
-                            texte += NSLocalizedString(" minutes avant le départ.", comment: "")
                             let okAction = WKAlertAction(title: "OK", style: .default) {
-                                Async.main {
+                                DispatchQueue.main.sync {
                                     self.pop()
                                 }
                             }
-                            self.presentAlert(withTitle: NSLocalizedString("Vous serez notifié", comment: ""), message: texte, preferredStyle: .alert, actions: [okAction])
+                            self.presentAlert(withTitle: NSLocalizedString("Impossible d'enregistrer la notification", comment: ""), message: NSLocalizedString("L'erreur a été reportée au développeur. Merci de réessayer.", comment: ""), preferredStyle: .alert, actions: [okAction])
                         }
-                    } else {
-                        let okAction = WKAlertAction(title: "OK", style: .default) {
-                            Async.main {
-                                self.pop()
-                            }
-                        }
-                        self.presentAlert(withTitle: NSLocalizedString("Impossible d'enregistrer la notification", comment: ""), message: NSLocalizedString("L'erreur a été reportée au développeur. Merci de réessayer.", comment: ""), preferredStyle: .alert, actions: [okAction])
                     }
                 })
             } else {
                 let okAction = WKAlertAction(title: "OK", style: .default) {
-                    Async.main {
+                    DispatchQueue.main.sync {
                         self.pop()
                     }
                 }

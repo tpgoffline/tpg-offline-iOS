@@ -359,7 +359,8 @@ class ContentTypeValidationTestCase: BaseTestCase {
             override func download(
                 _ urlRequest: URLRequestConvertible,
                 to destination: DownloadRequest.DownloadFileDestination? = nil)
-                -> DownloadRequest {
+                -> DownloadRequest
+            {
                 do {
                     let originalRequest = try urlRequest.asURLRequest()
                     let originalTask = DownloadRequest.Downloadable.request(originalRequest)
@@ -772,7 +773,7 @@ private enum ValidationError: Error {
 
 extension DataRequest {
     func validateDataExists() -> Self {
-        return validate { _, _, data in
+        return validate { request, response, data in
             guard data != nil else { return .failure(ValidationError.missingData) }
             return .success
         }
@@ -785,7 +786,7 @@ extension DataRequest {
 
 extension DownloadRequest {
     func validateDataExists() -> Self {
-        return validate { _, _, _, _ in
+        return validate { request, response, _, _ in
             let fileURL = self.downloadDelegate.fileURL
 
             guard let validFileURL = fileURL else { return .failure(ValidationError.missingFile) }
@@ -819,7 +820,7 @@ class CustomValidationTestCase: BaseTestCase {
 
         // When
         Alamofire.request(urlString)
-            .validate { _, _, data in
+            .validate { request, response, data in
                 guard data != nil else { return .failure(ValidationError.missingData) }
                 return .success
             }
@@ -829,7 +830,7 @@ class CustomValidationTestCase: BaseTestCase {
             }
 
         Alamofire.download(urlString)
-            .validate { _, _, temporaryURL, _ in
+            .validate { request, response, temporaryURL, destinationURL in
                 guard let fileURL = temporaryURL else { return .failure(ValidationError.missingFile) }
 
                 do {

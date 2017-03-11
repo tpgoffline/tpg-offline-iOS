@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import Chameleon
-import FontAwesomeKit
 import FirebaseCrash
+import StoreKit
+import DGElasticPullToRefresh
+import SwiftLocation
 
 fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
@@ -27,13 +28,12 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     var filtredResults = [Stop]()
     let searchController = UISearchController(searchResultsController: nil)
     let defaults = UserDefaults.standard
-    let pscope = PermissionScope()
     var localisationLoading = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRCrashMessage("Departues")
+        FIRCrashMessage("Departures")
 
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
@@ -48,7 +48,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
 
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         // Result Search Controller
@@ -66,44 +66,10 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             registerForPreviewing(with: self, sourceView: view)
         }
 
-        if !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
-            switch PermissionScope().statusNotifications() {
-            case .unknown:
-                // ask
-                pscope.addPermission(NotificationsPermission(notificationCategories: nil), message: "Cette autorisation sert à envoyer des rappels.".localized)
-            case .unauthorized, .disabled:
-                // bummer
-                return
-            case .authorized:
-                // thanks!
-                return
-            }
-            switch PermissionScope().statusLocationInUse() {
-            case .unknown:
-                // ask
-                pscope.addPermission(LocationWhileInUsePermission(), message: "Cette autorisation sert à indiquer les arrets les plus proches.".localized)
-            case .unauthorized, .disabled:
-                // bummer
-                return
-            case .authorized:
-                requestLocation()
-                return
-            }
+        requestLocation()
 
-            pscope.headerLabel.text = "Bonjour".localized
-            pscope.bodyLabel.text = "Nous avons besoin de quelques autorisations".localized
-            pscope.closeButton.setTitle("X", for: UIControlState())
-            pscope.show({ _, results in
-                print("got results \(results)")
-                for x in results {
-                    if x.type == PermissionType.locationInUse {
-                        self.requestLocation()
-                    }
-                }
-            }, cancelled: { (results) -> Void in
-                print("thing was cancelled")
-            })
-
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
         }
     }
 
@@ -119,7 +85,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             accuracy = .room
         }
 
-        let _ = Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
+        Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (request, location) -> (Void) in
             print("Localisation results: \(location)")
 
             if self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue) == 0 {
@@ -143,11 +109,12 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                     return false
                 }
             })
+            self.localizedStops = Array(self.localizedStops.prefix(5))
             self.localisationLoading = false
             self.tableView.reloadData()
-        }) { (location, error) in
+        }) { (request, location, error) -> (Void) in
             print("Location update failed: \(error.localizedDescription)")
-            print("Last location: \(location)")
+            print("Last location: \(String(describing: location))")
         }
     }
 
@@ -159,20 +126,10 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
 
         refreshTheme()
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
-        if !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
-            switch PermissionScope().statusLocationInUse() {
-            case .unauthorized, .disabled, .unknown:
-                // bummer
-                return
-            case .authorized:
-                requestLocation()
-                return
-            }
-
-        }
+        requestLocation()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -215,31 +172,23 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
             if indexPath.section == 0 {
                 if localisationLoading {
-                    let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
-                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                    cell.imageView?.image = iconLocation.image(with: CGSize(width: 20, height: 20))
+                    cell.imageView?.image = #imageLiteral(resourceName: "location").maskWithColor(color: AppValues.textColor)
                     cell.textLabel?.text = "Recherche des arrêts...".localized
                     cell.detailTextLabel?.text = ""
                     cell.accessoryView = UIView()
                 } else {
-                    let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
-                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                    cell.accessoryView = UIImageView(image: iconLocation.image(with: CGSize(width: 20, height: 20)))
+                    cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "location").maskWithColor(color: AppValues.textColor))
                     cell.textLabel?.text = localizedStops[indexPath.row].fullName
                     cell.detailTextLabel!.text = "~" + String(Int(localizedStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
             } else if indexPath.section == 1 {
-                let iconFavoris = FAKFontAwesome.starIcon(withSize: 20)!
-                iconFavoris.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                cell.accessoryView = UIImageView(image: iconFavoris.image(with: CGSize(width: 20, height: 20)))
+                cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "starNavbar").maskWithColor(color: AppValues.textColor))
                 cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.title
                 cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
             } else {
-                let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 15)!
-                iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
+                cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
                 cell.textLabel?.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.title
                 cell.detailTextLabel!.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.subTitle
                 cell.imageView?.image = nil
@@ -256,8 +205,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
 
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
-            let iconCheveron = FAKFontAwesome.chevronRightIcon(withSize: 20)!
-            iconCheveron.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
+            cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
 
             let backgroundView = UIView()
             backgroundView.backgroundColor = AppValues.primaryColor
@@ -265,7 +213,6 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             cell.textLabel?.text = filtredResults[indexPath.row].title
             cell.textLabel?.textColor = AppValues.textColor
             cell.detailTextLabel!.text = filtredResults[indexPath.row].subTitle
-            cell.accessoryView = UIImageView(image: iconCheveron.image(with: CGSize(width: 20, height: 20)))
             cell.backgroundColor = AppValues.primaryColor
             cell.imageView?.image = nil
 
@@ -292,7 +239,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                         departuresViewController.stop = AppValues.stops[AppValues.stopsKeys[(tableView.indexPathForSelectedRow?.row)!]]
                     }
                 }
-                FIRCrashMessage("Request \(departuresViewController.stop)")
+                FIRCrashMessage("Request \(String(describing: departuresViewController.stop))")
             }
         }
     }

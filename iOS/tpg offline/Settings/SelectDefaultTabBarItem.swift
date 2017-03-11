@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Chameleon
-import FontAwesomeKit
 
 class SelectDefaultTabBarItem: UITableViewController {
     let defaults = UserDefaults.standard
@@ -46,9 +44,7 @@ class SelectDefaultTabBarItem: UITableViewController {
         cell.textLabel?.text = tabBarController!.tabBar.items![indexPath.row].title
         cell.selectionStyle = .none
         if indexPath.row == rowSelected {
-            let iconOk = FAKFontAwesome.checkIcon(withSize: 20)!
-            iconOk.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-            cell.accessoryView = UIImageView(image: iconOk.image(with: CGSize(width: 20, height: 20)))
+            cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "tick").maskWithColor(color: AppValues.textColor))
         } else {
             cell.accessoryView = nil
         }

@@ -56,6 +56,6 @@ internal class SearchRoute: NSObject, NSCoding {
 	}
 
     func describe() -> String {
-        return "[departure: \(departure?.transportAPIiD), arrival: \(arrival?.transportAPIiD), date: \(date), isArrivalDate: \(isArrivalDate)]"
+        return "[departure: \(String(describing: departure?.transportAPIiD)), arrival: \(String(describing: arrival?.transportAPIiD)), date: \(String(describing: date)), isArrivalDate: \(isArrivalDate)]"
     }
 }

@@ -42,6 +42,12 @@ internal class Stop: NSObject, NSCoding {
             self.subTitle = ""
         }
 
+        if let stopCode: String = decoder.decodeObject(forKey: "stopCode") as? String {
+            self.stopCode = stopCode
+        } else {
+            self.stopCode = ""
+        }
+
         if let transportAPIiD: String = decoder.decodeObject(forKey: "transportAPIiD") as? String {
             self.transportAPIiD = transportAPIiD
         } else {
@@ -81,7 +87,9 @@ internal class Stop: NSObject, NSCoding {
         if let fullName = fullName { coder.encode(fullName, forKey: "fullName") }
         if let title = title { coder.encode(title, forKey: "title") }
         if let subTitle = subTitle { coder.encode(subTitle, forKey: "subTitle") }
-        if let stopCode = stopCode { coder.encode(stopCode, forKey: "stopCode") }
+        if let stopCode = stopCode {
+            coder.encode(stopCode, forKey: "stopCode")
+        }
         if let location = location { coder.encode(location, forKey: "location") }
         if let transportAPIiD = transportAPIiD { coder.encode(transportAPIiD, forKey: "transportAPIiD") }
         if let connections = connections { coder.encode(connections, forKey: "connections") }

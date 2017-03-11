@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Chameleon
 
 class MapsListTableViewController: UITableViewController {
 

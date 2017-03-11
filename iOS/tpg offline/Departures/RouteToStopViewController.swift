@@ -9,20 +9,18 @@
 import UIKit
 import CoreLocation
 import MapKit
-import Chameleon
-import FontAwesomeKit
 
 class RouteToStopViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var timeToGoLabel: UILabel!
-    @IBOutlet weak var walkLabel: UILabel!
+    @IBOutlet weak var walkImageView: UIImageView!
     var stop: Stop!
     var directionsRoute: MKRoute!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        walkLabel.attributedText = FAKIonIcons.androidWalkIcon(withSize: 21).attributedString()
+        walkImageView.image = #imageLiteral(resourceName: "walking").maskWithColor(color: AppValues.textColor)
 
         let pin = MKPointAnnotation()
         pin.coordinate = self.stop.location.coordinate
@@ -44,14 +42,14 @@ class RouteToStopViewController: UIViewController {
         super.viewDidAppear(animated)
 
 		refreshTheme()
-		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+		if AppValues.primaryColor.contrast == .white {
 			map.tintColor = AppValues.primaryColor
 		} else {
 			map.tintColor = AppValues.textColor
 		}
 
         timeToGoLabel.textColor = AppValues.textColor
-        walkLabel.textColor = AppValues.textColor
+        walkImageView.tintColor = AppValues.textColor
     }
 }
 
@@ -62,7 +60,7 @@ extension RouteToStopViewController: MKMapViewDelegate {
 
         renderer.lineWidth = 4
 
-		if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+		if AppValues.primaryColor.contrast == .white {
 			renderer.strokeColor = AppValues.primaryColor
 		} else {
 			renderer.strokeColor = AppValues.textColor

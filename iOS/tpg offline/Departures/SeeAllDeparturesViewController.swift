@@ -8,7 +8,9 @@
 
 import UIKit
 import Alamofire
-import Chameleon
+import AKPickerView
+import SCLAlertView
+import SwiftyJSON
 
 class SeeAllDeparturesViewController: UIViewController {
 
@@ -32,24 +34,24 @@ class SeeAllDeparturesViewController: UIViewController {
         lineLabel.text = line
         directionLabel.text = direction
 
-        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+        if AppValues.primaryColor.contrast == .white {
             lineLabel.textColor = AppValues.linesColor[line]
             lineLabel.backgroundColor = AppValues.linesBackgroundColor[line]
 
             directionLabel.textColor = AppValues.linesColor[line]
             directionLabel.backgroundColor = AppValues.linesBackgroundColor[line]
         } else {
-            if ContrastColorOf(AppValues.linesBackgroundColor[line]!, returnFlat: true) == FlatWhite() {
+            if AppValues.linesBackgroundColor[line]!.contrast == .white {
                 lineLabel.textColor = AppValues.linesBackgroundColor[line]
                 lineLabel.backgroundColor = AppValues.primaryColor
 
                 directionLabel.textColor = AppValues.linesBackgroundColor[line]
                 directionLabel.backgroundColor = AppValues.primaryColor
             } else {
-                lineLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(byPercentage: 0.2)
+                lineLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(percentage: 0.2)
                 lineLabel.backgroundColor = AppValues.primaryColor
 
-                directionLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(byPercentage: 0.2)
+                directionLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(percentage: 0.2)
                 directionLabel.backgroundColor = AppValues.primaryColor
             }
 
@@ -73,24 +75,24 @@ class SeeAllDeparturesViewController: UIViewController {
         super.viewDidAppear(animated)
         refreshTheme()
 
-        if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+        if AppValues.primaryColor.contrast == .white {
             lineLabel.textColor = AppValues.linesColor[line]
             lineLabel.backgroundColor = AppValues.linesBackgroundColor[line]
 
             directionLabel.textColor = AppValues.linesColor[line]
             directionLabel.backgroundColor = AppValues.linesBackgroundColor[line]
         } else {
-            if ContrastColorOf(AppValues.linesBackgroundColor[line]!, returnFlat: true) == FlatWhite() {
+            if AppValues.linesBackgroundColor[line]!.contrast == .white {
                 lineLabel.textColor = AppValues.linesBackgroundColor[line]
                 lineLabel.backgroundColor = AppValues.primaryColor
 
                 directionLabel.textColor = AppValues.linesBackgroundColor[line]
                 directionLabel.backgroundColor = AppValues.primaryColor
             } else {
-                lineLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(byPercentage: 0.2)
+                lineLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(percentage: 0.2)
                 lineLabel.backgroundColor = AppValues.primaryColor
 
-                directionLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(byPercentage: 0.2)
+                directionLabel.textColor = AppValues.linesBackgroundColor[line]!.darken(percentage: 0.2)
                 directionLabel.backgroundColor = AppValues.primaryColor
             }
 
@@ -111,7 +113,7 @@ class SeeAllDeparturesViewController: UIViewController {
     }
 
     func refresh() {
-        Async.background {
+        DispatchQueue.main.async {
             self.departuresList = []
 
             if self.initialDeparturesList.isEmpty {
@@ -168,7 +170,7 @@ class SeeAllDeparturesViewController: UIViewController {
                         #if DEBUG
                             if let error = response.result.error {
                                 let alert = SCLAlertView()
-                                alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)")
+                                alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)", feedbackType: .impactMedium)
                             }
                         #endif
                         let day = Calendar.current.dateComponents([.weekday], from: Date())
@@ -237,9 +239,10 @@ class SeeAllDeparturesViewController: UIViewController {
                                     SCLAlertView().showError(
                                         "Pas de réseau",
                                         subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet",
-                                        closeButtonTitle: "OK").setDismissBlock({
-                                          _ = self.navigationController?.popViewController(animated: true)
-                                    })
+                                        closeButtonTitle: "OK",
+                                        feedbackType: .notificationError).setDismissBlock({
+                                            _ = self.navigationController?.popViewController(animated: true)
+                                        })
                                 } else {
                                     self.actualHour = self.hoursList[0]
                                 }
@@ -255,9 +258,10 @@ class SeeAllDeparturesViewController: UIViewController {
                             SCLAlertView().showError(
                                 "Pas de réseau",
                                 subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet",
-                                closeButtonTitle: "OK").setDismissBlock({
-                                _ = self.navigationController?.popViewController(animated: true)
-                            })
+                                closeButtonTitle: "OK",
+                                feedbackType: .notificationError).setDismissBlock({
+                                    _ = self.navigationController?.popViewController(animated: true)
+                                })
                         }
                     }
                 }
@@ -269,9 +273,10 @@ class SeeAllDeparturesViewController: UIViewController {
                     return false
                 })
             }
-            }.main {
+            DispatchQueue.main.sync {
                 self.hourPicker.reloadData()
                 self.departuresCollectionView.reloadData()
+            }
         }
     }
 }
@@ -291,7 +296,7 @@ extension SeeAllDeparturesViewController: UICollectionViewDelegate, UICollection
 
         cell.title.text = DateFormatter.localizedString(from: date!, dateStyle: .none, timeStyle: .short)
         cell.title.textColor = AppValues.textColor
-        cell.backgroundColor = AppValues.primaryColor.lighten(byPercentage: 0.1)
+        cell.backgroundColor = AppValues.primaryColor.lighten(percentage: 0.1)
 
         return cell
     }

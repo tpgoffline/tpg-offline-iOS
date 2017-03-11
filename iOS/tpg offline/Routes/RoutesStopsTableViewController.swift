@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Chameleon
-import FontAwesomeKit
+import DGElasticPullToRefresh
+import SwiftLocation
 
 class RoutesStopsTableViewController: UITableViewController {
     var departure: Bool!
@@ -31,7 +31,7 @@ class RoutesStopsTableViewController: UITableViewController {
 
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         // Result Search Controller
@@ -39,13 +39,14 @@ class RoutesStopsTableViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Rechercher parmi les arrêts".localized
+        searchController.searchBar.barTintColor = AppValues.primaryColor
+        searchController.searchBar.backgroundColor = AppValues.primaryColor
+        searchController.searchBar.tintColor = AppValues.textColor
 
         navigationController?.navigationBar.barTintColor = AppValues.primaryColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: AppValues.textColor]
         navigationController?.navigationBar.tintColor = AppValues.textColor
         tableView.backgroundColor = AppValues.primaryColor
-        searchController.searchBar.barTintColor = AppValues.primaryColor
-        searchController.searchBar.tintColor = AppValues.textColor
         tableView.tableHeaderView = self.searchController.searchBar
 
         requestLocation()
@@ -54,7 +55,7 @@ class RoutesStopsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         refreshTheme()
@@ -121,7 +122,7 @@ class RoutesStopsTableViewController: UITableViewController {
             accuracy = .room
         }
 
-        let _ = Location.getLocation(withAccuracy: accuracy, frequency: .oneShot, timeout: 60, onSuccess: { (location) in
+        Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (request, location) -> (Void) in
             print("Localisation results: \(location)")
 
             if self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue) == 0 {
@@ -145,11 +146,12 @@ class RoutesStopsTableViewController: UITableViewController {
                     return false
                 }
             })
+            self.localisationStops = Array(self.localisationStops.prefix(5))
             self.localisationLoading = false
             self.tableView.reloadData()
-        }) { (location, error) in
+        }) { (request, location, error) -> (Void) in
             print("Location update failed: \(error.localizedDescription)")
-            print("Last location: \(location)")
+            print("Last location: \(String(describing: location))")
         }
     }
 
@@ -166,45 +168,38 @@ class RoutesStopsTableViewController: UITableViewController {
 
             if indexPath.section == 0 {
                 if localisationLoading {
-                    let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
-                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                    cell.imageView?.image = iconLocation.image(with: CGSize(width: 20, height: 20))
+                    cell.imageView?.image = #imageLiteral(resourceName: "location").maskWithColor(color: AppValues.textColor)
                     cell.textLabel?.text = "Recherche des arrêts..."
                     cell.detailTextLabel?.text = ""
                     cell.accessoryView = UIView()
                 } else {
-                    let iconLocation = FAKFontAwesome.locationArrowIcon(withSize: 20)!
-                    iconLocation.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                    cell.accessoryView = UIImageView(image: iconLocation.image(with: CGSize(width: 20, height: 20)))
+                    cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "location").maskWithColor(color: AppValues.textColor))
                     cell.textLabel?.text = localisationStops[indexPath.row].fullName
                     cell.detailTextLabel!.text = "~" + String(Int(localisationStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
             } else if indexPath.section == 1 {
-                let iconFavoris = FAKFontAwesome.starIcon(withSize: 20)!
-                iconFavoris.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                cell.accessoryView = UIImageView(image: iconFavoris.image(with: CGSize(width: 20, height: 20)))
+                cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "starNavbar").maskWithColor(color: AppValues.textColor))
                 cell.textLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.title
                 cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
             } else {
-                let iconCircle: FAKFontAwesome
+                let image: UIImage
                 let stop = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!
                 if departure == true {
                     if ActualRoutes.route.departure?.stopCode != stop.stopCode {
-                        iconCircle = FAKFontAwesome.circleOIcon(withSize: 20)
+                        image = #imageLiteral(resourceName: "circleEmpty")
                     } else {
-                        iconCircle = FAKFontAwesome.checkCircleOIcon(withSize: 20)
+                        image = #imageLiteral(resourceName: "circle")
                     }
                 } else {
                     if ActualRoutes.route.arrival?.stopCode != stop.stopCode {
-                        iconCircle = FAKFontAwesome.circleOIcon(withSize: 20)
+                        image = #imageLiteral(resourceName: "circleEmpty")
                     } else {
-                        iconCircle = FAKFontAwesome.checkCircleOIcon(withSize: 20)
+                        image = #imageLiteral(resourceName: "circle")
                     }
                 }
-                iconCircle.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-                cell.accessoryView = UIImageView(image: iconCircle.image(with: CGSize(width: 20, height: 20)))
+                cell.accessoryView = UIImageView(image: image.maskWithColor(color: AppValues.textColor))
                 cell.textLabel?.text = stop.title
                 cell.detailTextLabel!.text = stop.subTitle
                 cell.imageView?.image = nil
@@ -214,7 +209,7 @@ class RoutesStopsTableViewController: UITableViewController {
 
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
-            let iconCircle: FAKFontAwesome
+            let image: UIImage
             let stop = filtredResults[indexPath.row]
 
             let backgroundView = UIView()
@@ -226,19 +221,18 @@ class RoutesStopsTableViewController: UITableViewController {
 
             if departure == true {
                 if ActualRoutes.route.departure?.stopCode != stop.stopCode {
-                    iconCircle = FAKFontAwesome.circleOIcon(withSize: 20)
+                    image = #imageLiteral(resourceName: "circleEmpty")
                 } else {
-                    iconCircle = FAKFontAwesome.checkCircleOIcon(withSize: 20)
+                    image = #imageLiteral(resourceName: "circle")
                 }
             } else {
                 if ActualRoutes.route.arrival?.stopCode != stop.stopCode {
-                    iconCircle = FAKFontAwesome.circleOIcon(withSize: 20)
+                    image = #imageLiteral(resourceName: "circleEmpty")
                 } else {
-                    iconCircle = FAKFontAwesome.checkCircleOIcon(withSize: 20)
+                    image = #imageLiteral(resourceName: "circle")
                 }
             }
-            iconCircle.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-            cell.accessoryView = UIImageView(image: iconCircle.image(with: CGSize(width: 20, height: 20)))
+            cell.accessoryView = UIImageView(image: image.maskWithColor(color: AppValues.textColor))
 
             return cell
         }

@@ -8,10 +8,8 @@
 
 import UIKit
 
-class FavoriteRouteTableViewCell: UITableViewCell {
+class FavoriteRouteCollectionViewCell: UICollectionViewCell {
 
-	@IBOutlet weak var iconView: UIView!
-	@IBOutlet weak var iconImageView: UIImageView!
 	@IBOutlet weak var accessoryImage: UIImageView!
 
 	@IBOutlet weak var departureLabel: UILabel!
@@ -21,10 +19,4 @@ class FavoriteRouteTableViewCell: UITableViewCell {
 		super.awakeFromNib()
 
 	}
-
-	override func setSelected(_ selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
-
-	}
-
 }

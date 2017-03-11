@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Eliot Fowler. All rights reserved.
 //
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 #import "EFCircularSlider.h"
 #import <QuartzCore/QuartzCore.h>
 #import "EFCircularTrig.h"
@@ -161,7 +163,7 @@ static const CGFloat kFitFrameRadius = -1.0;
 {
     NSAssert(currentValue <= self.maximumValue && currentValue >= self.minimumValue,
              @"currentValue (%.2f) must be between self.minimuValue (%.2f) and self.maximumValue (%.2f)",
-              currentValue, self.minimumValue, self.maximumValue);
+             currentValue, self.minimumValue, self.maximumValue);
     
     // Update the angleFromNorth to match this newly set value
     self.angleFromNorth = (currentValue * 360)/(self.maximumValue - self.minimumValue);
@@ -282,7 +284,7 @@ static const CGFloat kFitFrameRadius = -1.0;
 {
     // Labels should be moved far enough to clear the line itself plus a fixed offset (relative to radius).
     int distanceToMoveInwards  = 0.1 * -(self.radius) - 0.5 * self.lineWidth;
-        distanceToMoveInwards -= 0.5 * self.labelFont.pointSize; // Also account for variable font size.
+    distanceToMoveInwards -= 0.5 * self.labelFont.pointSize; // Also account for variable font size.
     return distanceToMoveInwards;
 }
 
@@ -361,10 +363,10 @@ static const CGFloat kFitFrameRadius = -1.0;
     // Draw an unfilled circle (this shows what can be filled)
     [self.unfilledColor set];
     [EFCircularTrig drawUnfilledCircleInContext:ctx
-                               center:self.centerPoint
-                               radius:self.radius
-                            lineWidth:self.lineWidth];
-
+                                         center:self.centerPoint
+                                         radius:self.radius
+                                      lineWidth:self.lineWidth];
+    
     // Draw an unfilled arc up to the currently filled point
     [self.filledColor set];
     
@@ -389,8 +391,8 @@ static const CGFloat kFitFrameRadius = -1.0;
         case CircularSliderHandleTypeBigCircle:
         {
             [EFCircularTrig drawFilledCircleInContext:ctx
-                                     center:handleCenter
-                                     radius:0.5 * self.handleWidth];
+                                               center:handleCenter
+                                               radius:0.5 * self.handleWidth];
             break;
         }
         case CircularSliderHandleTypeDoubleCircleWithClosedCenter:
@@ -400,10 +402,10 @@ static const CGFloat kFitFrameRadius = -1.0;
             
             // Draw unfilled outer circle
             [EFCircularTrig drawUnfilledCircleInContext:ctx
-                                       center:CGPointMake(handleCenter.x,
-                                                          handleCenter.y)
-                                       radius:self.radiusForDoubleCircleOuterCircle
-                                    lineWidth:self.lineWidthForDoubleCircleOuterCircle];
+                                                 center:CGPointMake(handleCenter.x,
+                                                                    handleCenter.y)
+                                                 radius:self.radiusForDoubleCircleOuterCircle
+                                              lineWidth:self.lineWidthForDoubleCircleOuterCircle];
             
             if (self.handleType == CircularSliderHandleTypeDoubleCircleWithClosedCenter)
             {
@@ -486,7 +488,7 @@ static const CGFloat kFitFrameRadius = -1.0;
 -(CGRect)contextCoordinatesForLabelAtIndex:(NSInteger)index
 {
     NSString *label = self.innerMarkingLabels[index];
-
+    
     // Determine how many degrees around the full circle this label should go
     CGFloat percentageAlongCircle    = (index + 1) / (float)self.innerMarkingLabels.count;
     CGFloat degreesFromNorthForLabel = percentageAlongCircle * 360;
@@ -494,7 +496,7 @@ static const CGFloat kFitFrameRadius = -1.0;
     
     CGSize  labelSize        = [self sizeOfString:label withFont:self.labelFont];
     CGPoint offsetFromCircle = [self offsetFromCircleForLabelAtIndex:index withSize:labelSize];
-
+    
     return CGRectMake(pointOnCircle.x + offsetFromCircle.x, pointOnCircle.y + offsetFromCircle.y, labelSize.width, labelSize.height);
 }
 
@@ -506,7 +508,7 @@ static const CGFloat kFitFrameRadius = -1.0;
     
     CGFloat radialDistance = self.innerLabelRadialDistanceFromCircumference + self.labelDisplacement;
     CGPoint inwardOffset   = [EFCircularTrig pointOnRadius:radialDistance
-                                            atAngleFromNorth:degreesFromNorthForLabel];
+                                          atAngleFromNorth:degreesFromNorthForLabel];
     
     return CGPointMake(-labelSize.width * 0.5 + inwardOffset.x, -labelSize.height * 0.5 + inwardOffset.y);
 }
@@ -544,7 +546,7 @@ static const CGFloat kFitFrameRadius = -1.0;
             }
         }
         self.angleFromNorth = floor([EFCircularTrig angleRelativeToNorthFromPoint:self.centerPoint
-                                                                             toPoint:bestGuessPoint]);
+                                                                          toPoint:bestGuessPoint]);
         [self setNeedsDisplay];
     }
 }
@@ -552,7 +554,7 @@ static const CGFloat kFitFrameRadius = -1.0;
 -(void)moveHandle:(CGPoint)point
 {
     self.angleFromNorth = floor([EFCircularTrig angleRelativeToNorthFromPoint:self.centerPoint
-                                                                        toPoint:point]);;
+                                                                      toPoint:point]);;
     [self setNeedsDisplay];
 }
 

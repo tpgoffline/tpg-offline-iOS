@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import Chameleon
-import FontAwesomeKit
 import Alamofire
 import FirebaseCrash
+import DGElasticPullToRefresh
+import SCLAlertView
+import SwiftyJSON
 
 class IncidentsTableViewController: UITableViewController {
     let defaults = UserDefaults.standard
@@ -34,7 +35,7 @@ class IncidentsTableViewController: UITableViewController {
 
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         navigationController?.navigationBar.barTintColor = UIColor.flatOrangeDark
@@ -42,7 +43,7 @@ class IncidentsTableViewController: UITableViewController {
 
         var barButtonsItems: [UIBarButtonItem] = []
 
-        barButtonsItems.append(UIBarButtonItem(image: FAKIonIcons.refreshIcon(withSize: 20)!.image(with: CGSize(width: 20, height: 20)), style: UIBarButtonItemStyle.done, target: self, action: #selector(IncidentsTableViewController.refresh(_:))))
+        barButtonsItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"), style: UIBarButtonItemStyle.done, target: self, action: #selector(IncidentsTableViewController.refresh(_:))))
 
         self.navigationItem.rightBarButtonItems = barButtonsItems
 
@@ -52,7 +53,7 @@ class IncidentsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(byPercentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         refreshTheme()
@@ -71,7 +72,7 @@ class IncidentsTableViewController: UITableViewController {
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"]).responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)
-                    FIRCrashMessage("\(json.rawString())")
+                    FIRCrashMessage("\(String(describing: json.rawString()))")
                     if json["disruptions"].count != 0 {
                         for x in 0...json["disruptions"].count - 1 {
                             if AppValues.linesColor[json["disruptions"][x]["lineCode"].string!] != nil {
@@ -87,14 +88,13 @@ class IncidentsTableViewController: UITableViewController {
                     #if DEBUG
                         if let error = response.result.error {
                             let alert = SCLAlertView()
-                            alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)")
+                            alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)", feedbackType: .impactMedium)
                         }
                     #endif
                     self.error = true
                     self.tableView.reloadData()
                 }
         }
-
         tableView.reloadData()
     }
 
@@ -135,7 +135,7 @@ class IncidentsTableViewController: UITableViewController {
 
             cell.activityIndicator.stopAnimating()
 
-            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            if AppValues.primaryColor.contrast == .white {
                 cell.backgroundColor = UIColor.flatBlue
                 cell.titleLabel?.textColor = UIColor.white
                 cell.subTitleLabel?.textColor = UIColor.white
@@ -170,22 +170,18 @@ class IncidentsTableViewController: UITableViewController {
                 cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized
             }
 
-            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            if AppValues.primaryColor.contrast == .white {
                 cell.textLabel?.textColor = UIColor.black
                 cell.detailTextLabel?.textColor = UIColor.black
                 cell.backgroundColor = UIColor.flatYellow
 
-                let iconeSmile = FAKFontAwesome.smileOIcon(withSize: 20)!
-                iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.black)
-                cell.imageView?.image = iconeSmile.image(with: CGSize(width: 25, height: 25))
+                cell.imageView?.image = #imageLiteral(resourceName: "smile").maskWithColor(color: .black)
             } else {
                 cell.textLabel?.textColor = UIColor.flatYellowDark
                 cell.detailTextLabel?.textColor = UIColor.flatYellowDark
-                cell.backgroundColor = UIColor.flatWhite
+                cell.backgroundColor = UIColor.white
 
-                let iconeSmile = FAKFontAwesome.smileOIcon(withSize: 20)!
-                iconeSmile.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatYellowDark)
-                cell.imageView?.image = iconeSmile.image(with: CGSize(width: 25, height: 25))
+                cell.imageView?.image = #imageLiteral(resourceName: "smile").maskWithColor(color: .flatYellowDark)
             }
             return cell
         } else if error {
@@ -194,22 +190,18 @@ class IncidentsTableViewController: UITableViewController {
 
             cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.".localized
 
-            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            if AppValues.primaryColor.contrast == .white {
                 cell.textLabel?.textColor = UIColor.white
                 cell.detailTextLabel?.textColor = UIColor.white
                 cell.backgroundColor = UIColor.flatYellowDark
 
-                let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
-                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
-                cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
+                cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .white)
             } else {
                 cell.textLabel?.textColor = UIColor.flatYellowDark
                 cell.detailTextLabel?.textColor = UIColor.flatYellowDark
                 cell.backgroundColor = UIColor.flatWhite
 
-                let iconeError = FAKFontAwesome.timesCircleIcon(withSize: 20)!
-                iconeError.addAttribute(NSForegroundColorAttributeName, value: UIColor.flatYellowDark)
-                cell.imageView?.image = iconeError.image(with: CGSize(width: 25, height: 25))
+                cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .flatYellowDark)
             }
             return cell
         } else {
@@ -226,25 +218,25 @@ class IncidentsTableViewController: UITableViewController {
 
             FIRCrashMessage(distrubtions[indexPath.row].describe())
 
-            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            if AppValues.primaryColor.contrast == .white {
                 cell.backgroundColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
                 cell.textLabel?.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
                 cell.detailTextLabel?.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
                 labelPictoLigne.textColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]
                 labelPictoLigne.layer.borderColor = AppValues.linesColor[distrubtions[indexPath.row].lineCode]?.cgColor
             } else {
-                if ContrastColorOf(AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!, returnFlat: true) == FlatWhite() {
-                    cell.backgroundColor = UIColor.flatWhite
+                if AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.contrast == .white {
+                    cell.backgroundColor = .white
                     cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
                     cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
                     labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]
                     labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]?.cgColor
                 } else {
-                    cell.backgroundColor = UIColor.flatWhite
-                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(byPercentage: 0.2)
-                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(byPercentage: 0.2)
-                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(byPercentage: 0.2)
-                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]?.darken(byPercentage: 0.2)?.cgColor
+                    cell.backgroundColor = .white
+                    cell.textLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(percentage: 0.2)
+                    cell.detailTextLabel?.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(percentage: 0.2)
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]!.darken(percentage: 0.2)
+                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]?.darken(percentage: 0.2)?.cgColor
                 }
 
             }

@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import FontAwesomeKit
 import CoreLocation
-import Chameleon
 import Alamofire
 import FirebaseAnalytics
+import SwiftyJSON
 
 class SplashScreenViewController: UIViewController {
 
@@ -30,7 +29,7 @@ class SplashScreenViewController: UIViewController {
 
         getDefaults()
 
-        Async.main {
+        DispatchQueue.main.async {
             self.performSegue(withIdentifier: "startTpgOffline", sender: nil)
         }
 
@@ -52,50 +51,66 @@ class SplashScreenViewController: UIViewController {
     }
 
     func setUpTabBar(_ tabBarController: UITabBarController!) {
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: UIControlState())
+        if AppValues.primaryColor.contrast == .white {
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: AppValues.textColor], for: UIControlState())
+        }
 
         tabBarController.tabBar.tintColor = AppValues.textColor
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 49))
 
         tabBarController.tabBar.barTintColor = AppValues.primaryColor
-        view.backgroundColor = AppValues.primaryColor.darken(byPercentage: 0.05)
+        view.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
 
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        tabBarController.tabBar.selectionIndicatorImage = image
+        if AppValues.primaryColor.contrast == .white {
+            UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            tabBarController.tabBar.selectionIndicatorImage = image
+        }
 
-        let iconeHorloge = FAKIonIcons.iosClockIcon(withSize: 20)!
-        iconeHorloge.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        var iconImage = iconeHorloge.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal) // swiftlint:disable:this variable_name
-        tabBarController.tabBar.items![0].image = iconImage
-        tabBarController.tabBar.items![0].selectedImage = iconImage
+        if AppValues.primaryColor.contrast == .white {
+            var iconImage = #imageLiteral(resourceName: "clock").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![0].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![0].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconeAttention = FAKFontAwesome.warningIcon(withSize: 20)!
-        iconeAttention.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeAttention.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal) // swiftlint:disable:this variable_name
-        tabBarController.tabBar.items![1].image = iconImage
-        tabBarController.tabBar.items![1].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "warning").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![1].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![1].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconeItineraire = FAKFontAwesome.mapSignsIcon(withSize: 20)!
-        iconeItineraire.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeItineraire.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal) // swiftlint:disable:this variable_name
-        tabBarController.tabBar.items![2].image = iconImage
-        tabBarController.tabBar.items![2].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "routes").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![2].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![2].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconePlan = FAKFontAwesome.mapIcon(withSize: 20)!
-        iconePlan.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconePlan.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController.tabBar.items![3].image = iconImage
-        tabBarController.tabBar.items![3].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "map").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![3].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![3].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
 
-        let iconeParametre = FAKFontAwesome.cogIcon(withSize: 20)!
-        iconeParametre.addAttribute(NSForegroundColorAttributeName, value: AppValues.textColor)
-        iconImage = iconeParametre.image(with: CGSize(width: 20, height: 20)).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        tabBarController.tabBar.items![4].image = iconImage
-        tabBarController.tabBar.items![4].selectedImage = iconImage
+            iconImage = #imageLiteral(resourceName: "cog").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![4].image = iconImage.withRenderingMode(.alwaysOriginal)
+            tabBarController!.tabBar.items![4].selectedImage = iconImage.withRenderingMode(.alwaysOriginal)
+        } else {
+            var iconImage = #imageLiteral(resourceName: "clock").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![0].image = iconImage
+            tabBarController!.tabBar.items![0].selectedImage = iconImage
+
+            iconImage = #imageLiteral(resourceName: "warning").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![1].image = iconImage
+            tabBarController!.tabBar.items![1].selectedImage = iconImage
+
+            iconImage = #imageLiteral(resourceName: "routes").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![2].image = iconImage
+            tabBarController!.tabBar.items![2].selectedImage = iconImage
+
+            iconImage = #imageLiteral(resourceName: "map").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![3].image = iconImage
+            tabBarController!.tabBar.items![3].selectedImage = iconImage
+
+            iconImage = #imageLiteral(resourceName: "cog").maskWithColor(color: AppValues.textColor)
+            tabBarController!.tabBar.items![4].image = iconImage
+            tabBarController!.tabBar.items![4].selectedImage = iconImage
+        }
 
         if !self.defaults.bool(forKey: "tutorial") && !(ProcessInfo.processInfo.arguments.contains("-donotask")) {
             tabBarController.selectedIndex = 4
@@ -115,9 +130,11 @@ class SplashScreenViewController: UIViewController {
     }
 
     func getDefaults() {
-        let group = AsyncGroup()
-
-        group.background {
+        /*let group = DispatchGroup()
+        let queue = DispatchQueue(label: "com.dacostafaro.tpgoffline.gcd.splashscreen", attributes: .concurrent, target: .global())
+        
+        group.enter()
+        queue.async(group: group) {*/
             let data: Data!
             if let data2 = self.defaults.data(forKey: UserDefaultsKeys.stops.rawValue) {
                 data = data2
@@ -152,9 +169,11 @@ class SplashScreenViewController: UIViewController {
                 }
                 return false
             })
+            /*group.leave()
         }
-
-        group.background {
+        
+        group.enter()
+        queue.async(group: group) {*/
             if self.defaults.object(forKey: "favoritesStops") == nil {
                 AppValues.favoritesStops = [:]
             } else {
@@ -175,18 +194,22 @@ class SplashScreenViewController: UIViewController {
                     }
                 })
             }
+            /*group.leave()
         }
-
-        group.background {
+        
+        group.enter()
+        queue.async(group: group) {*/
             let dataCouleurs = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "colorLines", ofType: "json")!))
             let couleurs = JSON(data: dataCouleurs!)
             for (_, j) in couleurs["colors"] {
-                AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!, withAlpha: 1)
-                AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!, withAlpha: 1)
+                AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!)
+                AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!)
             }
+            /*group.leave()
         }
-
-        group.background {
+        
+        group.enter()
+        queue.async(group: group) {*/
             var decoded = self.defaults.object(forKey: UserDefaultsKeys.favoritesRoutes.rawValue)
             if decoded == nil {
                 decoded = []
@@ -225,17 +248,18 @@ class SplashScreenViewController: UIViewController {
             }
 
             #if DEBUG
-                print("\(AppValues.primaryColor.hexValue()) \(AppValues.textColor.hexValue())")
+                print("\(AppValues.primaryColor.hexValue) \(AppValues.textColor.hexValue)")
             #else
-                FIRAnalytics.setUserPropertyString("\(AppValues.primaryColor.hexValue()) \(AppValues.textColor.hexValue())", forName: "theme")
+                FIRAnalytics.setUserPropertyString("\(AppValues.primaryColor.hexValue) \(AppValues.textColor.hexValue)", forName: "theme")
             #endif
 
-            if ContrastColorOf(AppValues.primaryColor, returnFlat: true) == FlatWhite() {
+            if AppValues.primaryColor.contrast == .white {
                 UIApplication.shared.statusBarStyle = .lightContent
             } else {
                 UIApplication.shared.statusBarStyle = .default
             }
-        }
+            /*group.leave()
+        }*/
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Project%20Requirements/stops.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
@@ -243,6 +267,6 @@ class SplashScreenViewController: UIViewController {
             }
         }
 
-        group.wait()
+        //group.wait()
     }
 }

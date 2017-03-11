@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FontAwesomeKit
 
 enum RoutesTransportCategory {
     case bus
@@ -27,6 +26,31 @@ internal class RoutesConnections {
     var direction: String
     var departureTimestamp: Int
     var arrivalTimestamp: Int
+    var image: UIImage {
+        var icon: UIImage!
+        switch transportCategory {
+        case .bus:
+            icon = #imageLiteral(resourceName: "bus")
+            break
+
+        case .boat:
+            icon = #imageLiteral(resourceName: "boat")
+            break
+
+        case .subway:
+            icon = #imageLiteral(resourceName: "subway")
+            break
+
+        case .walk:
+            icon = #imageLiteral(resourceName: "walking")
+            break
+
+        case .train:
+            icon = #imageLiteral(resourceName: "train")
+            break
+        }
+        return icon
+    }
 
     init(isWalk: Bool = true,
          from: String,
@@ -78,59 +102,5 @@ internal class RoutesConnections {
         self.direction = direction
         self.departureTimestamp = departureTimestamp
         self.arrivalTimestamp = arrivalTimestamp
-    }
-
-    func getImageofType(_ size: CGFloat! = 24, color: UIColor! = UIColor.white) -> UIImage! {
-        var icon: FAKIonIcons!
-        switch transportCategory {
-        case .bus:
-            icon = FAKIonIcons.androidBusIcon(withSize: size)
-            break
-
-        case .boat:
-            icon = FAKIonIcons.androidBoatIcon(withSize: size)
-            break
-
-        case .subway:
-            icon = FAKIonIcons.androidSubwayIcon(withSize: size)
-            break
-
-        case .walk:
-            icon = FAKIonIcons.androidWalkIcon(withSize: size)
-            break
-
-        case .train:
-            icon = FAKIonIcons.androidTrainIcon(withSize: size)
-            break
-        }
-        icon.addAttribute(NSForegroundColorAttributeName, value: color)
-        return icon.image(with: CGSize(width: size, height: size))
-    }
-
-    func getAttributedStringofType(_ size: CGFloat! = 24, color: UIColor! = UIColor.white) -> NSAttributedString! {
-        var icon: FAKIonIcons!
-        switch transportCategory {
-        case .bus:
-            icon = FAKIonIcons.androidBusIcon(withSize: size)
-            break
-
-        case .boat:
-            icon = FAKIonIcons.androidBoatIcon(withSize: size)
-            break
-
-        case .subway:
-            icon = FAKIonIcons.androidSubwayIcon(withSize: size)
-            break
-
-        case .walk:
-            icon = FAKIonIcons.androidWalkIcon(withSize: size)
-            break
-
-        case .train:
-            icon = FAKIonIcons.androidTrainIcon(withSize: size)
-            break
-        }
-        icon.addAttribute(NSForegroundColorAttributeName, value: color)
-        return icon.attributedString()
     }
 }
