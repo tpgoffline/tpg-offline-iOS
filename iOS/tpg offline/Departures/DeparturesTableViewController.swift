@@ -251,6 +251,8 @@ class DeparturesTableViewController: UITableViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "showLigne" && departuresList[tableView.indexPathForSelectedRow!.row].leftTime == "no more" {
             return false
+        } else if offline && tableView.indexPathForSelectedRow!.section == 1 {
+            return false
         } else {
             return true
         }
@@ -419,6 +421,8 @@ class DeparturesTableViewController: UITableViewController {
         self.notDownloaded = false
         self.tableView.reloadData()
         departuresList = []
+        initialDeparturesList = []
+        StopLinesList.linesList = []
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": stop!.stopCode])
             .responseJSON { response in
                 if let data = response.result.value {
@@ -467,7 +471,6 @@ class DeparturesTableViewController: UITableViewController {
                         return false
                     }
                     self.offline = false
-                    self.tableView.allowsSelection = true
 
                     if self.departuresList.count == 0 {
                         self.noMoreTransport = true
@@ -533,16 +536,34 @@ class DeparturesTableViewController: UITableViewController {
                             if StopLinesList.linesList.index(of: subJson["ligne"].string!) == nil {
                                 StopLinesList.linesList.append(subJson["ligne"].string!)
                             }
-                            self.departuresList.last?.calculerTempsRestant()
+                            self.initialDeparturesList.last?.calculerTempsRestant()
                         }
+                        self.initialDeparturesList = self.initialDeparturesList.filter({ (departure) -> Bool in
+                            if departure.leftTime != "-1" {
+                                return true
+                            }
+                            return false
+                        })
+                        self.initialDeparturesList.sort(by: { (depart1, depart2) -> Bool in
+                            guard let leftTime1 = Int(depart1.leftTime) else {
+                                return false
+                            }
+                            guard let leftTime2 = Int(depart2.leftTime) else {
+                                return false
+                            }
+                            if leftTime1 < leftTime2 {
+                                return true
+                            }
+                            return false
+                        })
                         self.departuresList = self.initialDeparturesList.filter({ (departure) -> Bool in
                             if StopLinesList.filterNoMore && departure.leftTime == "no more" {
                                 return false
                             }
-                            if departure.leftTime != "-1" && StopLinesList.linesDisabled.index(of: departure.line) == nil {
-                                return true
+                            if StopLinesList.linesDisabled.index(of: departure.line) != nil {
+                                return false
                             }
-                            return false
+                            return true
                         })
 
                         self.departuresList.sort(by: { (depart1, depart2) -> Bool in
@@ -567,12 +588,10 @@ class DeparturesTableViewController: UITableViewController {
                         }
                         self.loading = false
 
-                        self.tableView.allowsSelection = false
                         self.tableView.reloadData()
                         self.tableView.dg_stopLoading()
                     } catch {
                         self.offline = true
-                        self.tableView.allowsSelection = false
                         self.departuresList = []
                         self.noMoreTransport = false
                         self.loading = false

@@ -124,7 +124,7 @@ class FilterDeparturesTableViewController: UITableViewController {
         if aSwitch.tag == 0 {
             StopLinesList.filterNoMore = !StopLinesList.filterNoMore
         } else {
-            let line = StopLinesList.linesList[aSwitch.tag]
+            let line = StopLinesList.linesList[aSwitch.tag - 1]
             if let index = StopLinesList.linesDisabled.index(of: line) {
                 StopLinesList.linesDisabled.remove(at: index)
             } else {
