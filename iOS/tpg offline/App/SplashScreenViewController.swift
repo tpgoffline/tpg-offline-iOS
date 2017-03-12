@@ -161,11 +161,11 @@ class SplashScreenViewController: UIViewController {
     }
 
     func getDefaults() {
-        /*let group = DispatchGroup()
+        let group = DispatchGroup()
         let queue = DispatchQueue(label: "com.dacostafaro.tpgoffline.gcd.splashscreen", attributes: .concurrent, target: .global())
-        
+
         group.enter()
-        queue.async(group: group) {*/
+        queue.async(group: group) {
             let data: Data!
             if let data2 = self.defaults.data(forKey: UserDefaultsKeys.stops.rawValue) {
                 data = data2
@@ -200,11 +200,11 @@ class SplashScreenViewController: UIViewController {
                 }
                 return false
             })
-            /*group.leave()
+            group.leave()
         }
-        
+
         group.enter()
-        queue.async(group: group) {*/
+        queue.async(group: group) {
             if self.defaults.object(forKey: "favoritesStops") == nil {
                 AppValues.favoritesStops = [:]
             } else {
@@ -225,22 +225,22 @@ class SplashScreenViewController: UIViewController {
                     }
                 })
             }
-            /*group.leave()
+            group.leave()
         }
-        
+
         group.enter()
-        queue.async(group: group) {*/
+        queue.async(group: group) {
             let dataCouleurs = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "colorLines", ofType: "json")!))
             let couleurs = JSON(data: dataCouleurs!)
             for (_, j) in couleurs["colors"] {
                 AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!)
                 AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!)
             }
-            /*group.leave()
+            group.leave()
         }
-        
+
         group.enter()
-        queue.async(group: group) {*/
+        queue.async(group: group) {
             var decoded = self.defaults.object(forKey: UserDefaultsKeys.favoritesRoutes.rawValue)
             if decoded == nil {
                 decoded = []
@@ -272,6 +272,11 @@ class SplashScreenViewController: UIViewController {
                 AppValues.primaryColor = self.defaults.colorForKey(UserDefaultsKeys.primaryColor.rawValue)
             }
 
+            if AppValues.primaryColor.contrast != .white && AppValues.primaryColor != .white {
+                AppValues.primaryColor = .white
+                self.defaults.setColor(.white, forKey: UserDefaultsKeys.primaryColor.rawValue)
+            }
+
             if self.defaults.colorForKey(UserDefaultsKeys.textColor.rawValue) == nil {
                 self.defaults.setColor(AppValues.textColor, forKey: UserDefaultsKeys.textColor.rawValue)
             } else {
@@ -289,8 +294,8 @@ class SplashScreenViewController: UIViewController {
             } else {
                 UIApplication.shared.statusBarStyle = .default
             }
-            /*group.leave()
-        }*/
+            group.leave()
+        }
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Project%20Requirements/stops.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
@@ -298,6 +303,6 @@ class SplashScreenViewController: UIViewController {
             }
         }
 
-        //group.wait()
+        group.wait()
     }
 }

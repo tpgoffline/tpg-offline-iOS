@@ -16,6 +16,8 @@ class MapsListTableViewController: UITableViewController {
 		super.viewDidLoad()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
+
+        refreshTheme()
 	}
 
 	override func didReceiveMemoryWarning() {

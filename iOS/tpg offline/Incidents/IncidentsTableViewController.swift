@@ -30,7 +30,7 @@ class IncidentsTableViewController: UITableViewController {
 
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
 
-            self!.refresh(loadingView)
+            self!.refresh()
             self?.tableView.dg_stopLoading()
 
             }, loadingView: loadingView)
@@ -43,11 +43,13 @@ class IncidentsTableViewController: UITableViewController {
 
         var barButtonsItems: [UIBarButtonItem] = []
 
-        barButtonsItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"), style: UIBarButtonItemStyle.done, target: self, action: #selector(IncidentsTableViewController.refresh(_:))))
+        barButtonsItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"), style: UIBarButtonItemStyle.done, target: self, action: #selector(IncidentsTableViewController.refresh)))
 
         self.navigationItem.rightBarButtonItems = barButtonsItems
 
-        refresh(self)
+        refresh()
+
+        refreshTheme()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -68,7 +70,7 @@ class IncidentsTableViewController: UITableViewController {
 
     }
 
-    func refresh(_ sender: AnyObject) {
+    func refresh() {
         noDistrubtions = false
         error = false
         distrubtions = []

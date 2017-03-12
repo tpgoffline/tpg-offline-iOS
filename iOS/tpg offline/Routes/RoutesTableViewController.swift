@@ -46,6 +46,8 @@ class RoutesCollectionViewController: UICollectionViewController {
         var barButtonsItems: [UIBarButtonItem] = []
         barButtonsItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "exchangeNavBar"), style: .done, target: self, action: #selector(echangerArrets)))
         navigationItem.leftBarButtonItems = barButtonsItems
+
+        refreshTheme()
 	}
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
