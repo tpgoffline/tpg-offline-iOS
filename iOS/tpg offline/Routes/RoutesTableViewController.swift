@@ -219,6 +219,7 @@ class RoutesCollectionViewController: UICollectionViewController {
             return headerView
         default:
             assert(false, "Unexpected element kind")
+            abort()
         }
     }
 

@@ -136,20 +136,22 @@ class RoutesListTableViewController: UITableViewController {
                     var connections: [RoutesConnections] = []
                     for (_, subJSON2) in subJSON["sections"] {
                         if subJSON2["walk"].type == .null {
-                            let from = AppValues.idTransportAPIToTpgStopName[Int(subJSON2["departure"]["station"]["id"].stringValue)!] ?? (AppValues.nameTransportAPIToTpgStopName[subJSON2["departure"]["station"]["name"].stringValue] ?? subJSON2["departure"]["station"]["name"].stringValue)
-                            let to = AppValues.idTransportAPIToTpgStopName[Int(subJSON2["arrival"]["station"]["id"].stringValue)!] ?? (AppValues.nameTransportAPIToTpgStopName[subJSON2["arrival"]["station"]["name"].stringValue] ?? subJSON2["arrival"]["station"]["name"].stringValue)
+                            if subJSON2["journey"].type != .null {
+                                let from = AppValues.idTransportAPIToTpgStopName[Int(subJSON2["departure"]["station"]["id"].stringValue)!] ?? (AppValues.nameTransportAPIToTpgStopName[subJSON2["departure"]["station"]["name"].stringValue] ?? subJSON2["departure"]["station"]["name"].stringValue)
+                                let to = AppValues.idTransportAPIToTpgStopName[Int(subJSON2["arrival"]["station"]["id"].stringValue)!] ?? (AppValues.nameTransportAPIToTpgStopName[subJSON2["arrival"]["station"]["name"].stringValue] ?? subJSON2["arrival"]["station"]["name"].stringValue)
 
-                            connections.append(RoutesConnections(
-                                line: subJSON2["journey"]["name"].stringValue.characters.split(separator: " ").map(String.init)[1],
-                                isTpg: (subJSON2["journey"]["operator"].stringValue == "TPG"),
-                                isSBB: (subJSON2["journey"]["operator"].stringValue == "SBB"),
-                                transportCategory: subJSON2["journey"]["categoryCode"].intValue,
-                                from: from,
-                                to: to,
-                                direction: AppValues.nameTransportAPIToTpgStopName[subJSON2["journey"]["to"].stringValue] ?? subJSON2["journey"]["to"].stringValue,
-                                departureTimestamp: subJSON2["departure"]["departureTimestamp"].intValue,
-                                arrivalTimestamp: subJSON2["arrival"]["arrivalTimestamp"].intValue
-                            ))
+                                connections.append(RoutesConnections(
+                                    line: subJSON2["journey"]["name"].stringValue.characters.split(separator: " ").map(String.init)[1],
+                                    isTpg: (subJSON2["journey"]["operator"].stringValue == "TPG"),
+                                    isSBB: (subJSON2["journey"]["operator"].stringValue == "SBB"),
+                                    transportCategory: subJSON2["journey"]["categoryCode"].intValue,
+                                    from: from,
+                                    to: to,
+                                    direction: AppValues.nameTransportAPIToTpgStopName[subJSON2["journey"]["to"].stringValue] ?? subJSON2["journey"]["to"].stringValue,
+                                    departureTimestamp: subJSON2["departure"]["departureTimestamp"].intValue,
+                                    arrivalTimestamp: subJSON2["arrival"]["arrivalTimestamp"].intValue
+                                ))
+                            }
                         } else {
                             connections.append(
                                 RoutesConnections(

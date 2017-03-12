@@ -120,12 +120,12 @@ class RouteDetailTableViewController: UITableViewController {
                     let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
                     labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
                     labelPictoLigne.textAlignment = .center
-                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
+                    labelPictoLigne.textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line] ?? AppValues.textColor
                     labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
-                    labelPictoLigne.layer.borderColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!.cgColor
+                    labelPictoLigne.layer.borderColor = (AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line] ?? AppValues.textColor).cgColor
                     labelPictoLigne.layer.borderWidth = 1
 
-                    textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
+                    textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line] ?? AppValues.textColor
 
                     if AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]?.contrast == .white {
                         textColor = AppValues.linesBackgroundColor[ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line]!
