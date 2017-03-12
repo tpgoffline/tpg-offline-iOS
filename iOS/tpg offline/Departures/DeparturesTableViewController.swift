@@ -16,8 +16,15 @@ import DGElasticPullToRefresh
 import SCLAlertView
 import SwiftyJSON
 
+struct StopLinesList {
+    static var linesList: [String] = []
+    static var linesDisabled: [String] = []
+    static var filterNoMore: Bool = false
+}
+
 class DeparturesTableViewController: UITableViewController {
     var stop: Stop?
+    var initialDeparturesList: [Departures]! = []
     var departuresList: [Departures]! = []
     let defaults = UserDefaults.standard
     var offline = false
@@ -31,6 +38,8 @@ class DeparturesTableViewController: UITableViewController {
         if stop == nil {
             stop = AppValues.stops[[String](AppValues.stops.keys).sorted()[0]]
         }
+
+        StopLinesList.linesList = []
 
         #if DEBUG
         #else
@@ -69,8 +78,6 @@ class DeparturesTableViewController: UITableViewController {
         tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
-        refreshTheme()
-
         if stop != nil {
             var barButtonsItems: [UIBarButtonItem] = []
 
@@ -100,6 +107,18 @@ class DeparturesTableViewController: UITableViewController {
 
             self.navigationItem.rightBarButtonItems = barButtonsItems
         }
+
+        departuresList = initialDeparturesList.filter { (departure) -> Bool in
+            if StopLinesList.filterNoMore && departure.leftTime == "no more" {
+                return false
+            }
+            if StopLinesList.linesDisabled.index(of: departure.line) == nil {
+                return true
+            }
+            return false
+        }
+
+        refreshTheme()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -409,7 +428,7 @@ class DeparturesTableViewController: UITableViewController {
 
                     for (_, subjson) in departs["departures"] {
                         if AppValues.linesColor[subjson["line"]["lineCode"].string!] == nil {
-                            self.departuresList.append(Departures(
+                            self.initialDeparturesList.append(Departures(
                                 line: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
                                 destinationCode: subjson["line"]["destinationCode"].string!,
@@ -421,7 +440,7 @@ class DeparturesTableViewController: UITableViewController {
                                 timestamp: subjson["timestamp"].string
                             ))
                         } else {
-                            self.departuresList.append(Departures(
+                            self.initialDeparturesList.append(Departures(
                                 line: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
                                 destinationCode: subjson["line"]["destinationCode"].string!,
@@ -433,6 +452,19 @@ class DeparturesTableViewController: UITableViewController {
                                 timestamp: subjson["timestamp"].string
                             ))
                         }
+                        if StopLinesList.linesList.index(of: subjson["line"]["lineCode"].string!) == nil {
+                            StopLinesList.linesList.append(subjson["line"]["lineCode"].string!)
+                        }
+                    }
+
+                    self.departuresList = self.initialDeparturesList.filter { (departure) -> Bool in
+                        if StopLinesList.filterNoMore && departure.leftTime == "no more" {
+                            return false
+                        }
+                        if StopLinesList.linesDisabled.index(of: departure.line) == nil {
+                            return true
+                        }
+                        return false
                     }
                     self.offline = false
                     self.tableView.allowsSelection = true
@@ -475,7 +507,7 @@ class DeparturesTableViewController: UITableViewController {
                         let departs = JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
                         for (_, subJson) in departs {
                             if AppValues.linesColor[subJson["ligne"].string!] != nil {
-                                self.departuresList.append(Departures(
+                                self.initialDeparturesList.append(Departures(
                                     line: subJson["ligne"].string!,
                                     direction: subJson["destination"].string!,
                                     destinationCode: "",
@@ -485,22 +517,29 @@ class DeparturesTableViewController: UITableViewController {
                                     leftTime: "0",
                                     timestamp: subJson["timestamp"].string!
                                 ))
+
                             } else {
-                                self.departuresList.append(Departures(
+                                self.initialDeparturesList.append(Departures(
                                     line: subJson["ligne"].string!,
                                     direction: subJson["destination"].string!,
                                     destinationCode: "",
                                     lineColor: UIColor.white,
-                                    lineBackgroundColor: UIColor.flatGrayDark,
+                                    lineBackgroundColor: UIColor.flatGray,
                                     code: nil,
                                     leftTime: "0",
                                     timestamp: subJson["timestamp"].string!
                                 ))
                             }
+                            if StopLinesList.linesList.index(of: subJson["ligne"].string!) == nil {
+                                StopLinesList.linesList.append(subJson["ligne"].string!)
+                            }
                             self.departuresList.last?.calculerTempsRestant()
                         }
-                        self.departuresList = self.departuresList.filter({ (depart) -> Bool in
-                            if depart.leftTime != "-1" {
+                        self.departuresList = self.initialDeparturesList.filter({ (departure) -> Bool in
+                            if StopLinesList.filterNoMore && departure.leftTime == "no more" {
+                                return false
+                            }
+                            if departure.leftTime != "-1" && StopLinesList.linesDisabled.index(of: departure.line) == nil {
                                 return true
                             }
                             return false
@@ -553,9 +592,9 @@ extension DeparturesTableViewController {
         if loading == true {
             return 1
         } else if offline || notDownloaded {
-            return 2
+            return 3
         }
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -568,6 +607,8 @@ extension DeparturesTableViewController {
         } else if offline && section == 1 && noMoreTransport {
             return 1
         } else if !offline && section == 0 && noMoreTransport {
+            return 1
+        } else if (offline && section == 1 ) || (!offline && section == 0) {
             return 1
         } else {
             return departuresList.count
@@ -664,6 +705,11 @@ extension DeparturesTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (offline && indexPath.section == 1) || (!offline && indexPath.section == 0) {
+            performSegue(withIdentifier: "showFilterDepartures", sender: self)
+        }
+    }
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if loading == true {
             return false
@@ -675,7 +721,11 @@ extension DeparturesTableViewController {
             return false
         } else if !offline && indexPath.section == 0 && noMoreTransport {
             return false
+        } else if departuresList.count == 0 {
+            return false
         } else if departuresList[indexPath.row].leftTime == "no more" {
+            return false
+        } else if (offline && indexPath.section == 1 ) || (!offline && indexPath.section == 0) {
             return false
         }
         return true
@@ -737,6 +787,17 @@ extension DeparturesTableViewController {
             cell.detailTextLabel?.text = "Plus aucun départ n'est prévu pour la totalité des lignes desservants cet arrêt.".localized
             cell.imageView?.image = #imageLiteral(resourceName: "bus").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = nil
+            return cell
+        } else if (offline && indexPath.section == 1) || (!offline && indexPath.section == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath) // swiftlint:disable:this force_cast
+
+            cell.backgroundColor = AppValues.primaryColor
+            cell.textLabel?.textColor = AppValues.textColor
+            cell.textLabel?.text = "Filtrer".localized
+            cell.detailTextLabel?.textColor = AppValues.textColor
+            cell.detailTextLabel?.text = ""
+            cell.imageView?.image = #imageLiteral(resourceName: "filter").maskWithColor(color: AppValues.textColor)
+            cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
             return cell
         } else if !offline && indexPath.section == 0 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
@@ -803,6 +864,7 @@ extension DeparturesTableViewController {
                     cell.leftImage.image = #imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!)
                 } else {
                     cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
+                    cell.leftImage.image = nil
                 }
             } else {
                 cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: lineColor!))
@@ -829,6 +891,7 @@ extension DeparturesTableViewController {
                     cell.leftImage.image = #imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!)
                 } else {
                     cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
+                    cell.leftImage.image = nil
                 }
             }
 
@@ -846,13 +909,9 @@ extension DeparturesTableViewController: UIViewControllerPreviewingDelegate {
 
         if loading == true {
             return nil
-        } else if indexPath.section == 0 && offline {
+        } else if offline {
             return nil
-        } else if offline && notDownloaded && indexPath.section == 1 {
-            return nil
-        } else if offline && indexPath.section == 1 && noMoreTransport {
-            return nil
-        } else if !offline && indexPath.section == 0 && noMoreTransport {
+        } else if !offline && indexPath.section == 0 {
             return nil
         }
 

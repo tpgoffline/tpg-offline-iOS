@@ -81,7 +81,12 @@ extension UIViewController {
                 tabBarController!.tabBar.items![4].image = iconImage
                 tabBarController!.tabBar.items![4].selectedImage = iconImage
             }
+            if BeforeStarting.predefinedTabBarItem != -1 {
+                tabBarController?.selectedIndex = BeforeStarting.predefinedTabBarItem
+                BeforeStarting.predefinedTabBarItem = -1
+            }
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTheme), name: .UIApplicationDidBecomeActive, object: nil)
     }
 }
 

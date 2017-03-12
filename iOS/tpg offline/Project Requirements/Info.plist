@@ -2,17 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItemType</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string></string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string></string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string></string>
-		</dict>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>fr_FR</string>
 	<key>CFBundleDocumentTypes</key>
@@ -59,6 +48,41 @@
 	<array>
 		<string>Roboto-Light.ttf</string>
 		<string>Roboto-Thin.ttf</string>
+	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.dacostafaro.3Dtouch.maps</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Plans</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>map3DTouch</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.dacostafaro.3Dtouch.routes</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Itinéraires</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>routes3DTouch</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.dacostafaro.3Dtouch.incidents</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Incidents</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>warning3DTouch</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>clock3DTouch</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Départs</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.dacostafaro.3Dtouch.departures</string>
+		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

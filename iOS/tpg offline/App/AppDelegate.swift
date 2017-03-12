@@ -47,6 +47,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                name: .firInstanceIDTokenRefresh,
                                                object: nil)
 
+        if let shortcutItem =
+            launchOptions?[.shortcutItem]
+                as? UIApplicationShortcutItem {
+
+            let _ = handleShortcut(shortcutItem)
+            return false
+        }
+        return true
+    }
+
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortcut(shortcutItem))
+    }
+
+    private func handleShortcut(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
+        let shortcutType = shortcutItem.type
+        guard let shortcutIdentifier = ShortcutIdentifier(fullIdentifier: shortcutType) else {
+            return false
+        }
+        guard let numberOfTab = shortcutIdentifier.getNumberOfTab() else {
+            return false
+        }
+        BeforeStarting.predefinedTabBarItem = numberOfTab
         return true
     }
 

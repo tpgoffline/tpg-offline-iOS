@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 import FirebaseCrash
 import StoreKit
 import DGElasticPullToRefresh
@@ -33,7 +34,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRCrashMessage("Departures")
+        FIRAnalytics.logEvent(withName: "stopsViewController", parameters: [:])
 
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible

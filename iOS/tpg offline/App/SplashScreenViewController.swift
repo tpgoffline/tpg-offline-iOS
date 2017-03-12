@@ -12,6 +12,37 @@ import Alamofire
 import FirebaseAnalytics
 import SwiftyJSON
 
+enum ShortcutIdentifier: String {
+    case departures = "departures"
+    case incidents = "incidents"
+    case routes = "routes"
+    case maps = "maps"
+
+    init?(fullIdentifier: String) {
+        guard let shortIdentifier = fullIdentifier.components(separatedBy: ".").last else {
+            return nil
+        }
+        self.init(rawValue: shortIdentifier)
+    }
+
+    func getNumberOfTab() -> Int? {
+        switch self {
+        case .departures:
+            return 0
+        case .incidents:
+            return 1
+        case .routes:
+            return 2
+        case .maps:
+            return 3
+        }
+    }
+}
+
+struct BeforeStarting {
+    static var predefinedTabBarItem: Int = -1
+}
+
 class SplashScreenViewController: UIViewController {
 
     let defaults = UserDefaults.standard

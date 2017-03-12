@@ -12,6 +12,7 @@
 		AD21622C1DBCE4EC009801B9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD21622B1DBCE4EC009801B9 /* Alamofire.framework */; };
 		AD2162341DBCE809009801B9 /* Incidents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162321DBCE809009801B9 /* Incidents.storyboard */; };
 		AD2162391DBCE8C8009801B9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2162371DBCE8C8009801B9 /* Settings.storyboard */; };
+		AD38A6761E74EE360022C6F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD38A6781E74EE360022C6F2 /* InfoPlist.strings */; };
 		AD4F2EBE1DBA6F66008DE615 /* colorLines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* colorLines.json */; };
 		AD4F2EC31DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
 		AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
@@ -31,7 +32,7 @@
 		AD63838E1E74869500213C48 /* SwiftLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63838D1E74869500213C48 /* SwiftLocation.framework */; };
 		AD6383901E7486B200213C48 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63838F1E7486B200213C48 /* SwiftyJSON.framework */; };
 		AD6383921E74896300213C48 /* VHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD6383911E74896300213C48 /* VHUD.framework */; };
-		AD6383981E7492D900213C48 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD6383971E7492D900213C48 /* Info.plist */; };
+		AD63839A1E74BA3300213C48 /* FilterDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6383991E74BA3200213C48 /* FilterDeparturesTableViewController.swift */; };
 		AD834B2A1E6E0DAE0028C38D /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD834B291E6E0DAE0028C38D /* SCLAlertView.framework */; };
 		AD89249C1D84479D00F5FC20 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */; };
 		AD89249D1D84479D00F5FC20 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */; };
@@ -183,6 +184,10 @@
 		AD21622B1DBCE4EC009801B9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AD2162331DBCE809009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Incidents.storyboard; sourceTree = "<group>"; };
 		AD2162381DBCE8C8009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		AD38A66B1E74D0EF0022C6F2 /* TKSwitcherCollection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TKSwitcherCollection.framework; path = Carthage/Build/iOS/TKSwitcherCollection.framework; sourceTree = "<group>"; };
+		AD38A6771E74EE360022C6F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD38A6791E74EE3A0022C6F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD38A67A1E74EE3B0022C6F2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		AD500A521E0C79FB00253121 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		AD5268251E6CA76B00A27F84 /* AKPickerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AKPickerView.framework; path = Carthage/Build/iOS/AKPickerView.framework; sourceTree = "<group>"; };
@@ -202,6 +207,7 @@
 		AD63838F1E7486B200213C48 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		AD6383911E74896300213C48 /* VHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VHUD.framework; path = Carthage/Build/iOS/VHUD.framework; sourceTree = "<group>"; };
 		AD6383971E7492D900213C48 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD6383991E74BA3200213C48 /* FilterDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDeparturesTableViewController.swift; sourceTree = "<group>"; };
 		AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesomeKit.framework; path = Carthage/Build/iOS/FontAwesomeKit.framework; sourceTree = "<group>"; };
 		AD834B291E6E0DAE0028C38D /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		AD8924981D84479D00F5FC20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "tpg offline UITests/Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -475,6 +481,7 @@
 				ADC733D01D6890C500296449 /* SeeAllDeparturesViewController.swift */,
 				ADC733D11D6890C500296449 /* StopsTableViewController.swift */,
 				ADC733D21D6890C500296449 /* ThermometerTableViewController.swift */,
+				AD6383991E74BA3200213C48 /* FilterDeparturesTableViewController.swift */,
 			);
 			path = Departures;
 			sourceTree = "<group>";
@@ -521,6 +528,7 @@
 				ADC733FC1D6890C500296449 /* ionicons.ttf */,
 				ADC733FD1D6890C500296449 /* tpg offline-Bridging-Header.h */,
 				ADC733FE1D6890C500296449 /* tpg offline.geojson */,
+				AD38A6781E74EE360022C6F2 /* InfoPlist.strings */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -607,6 +615,7 @@
 		ADC7348B1D68916A00296449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD38A66B1E74D0EF0022C6F2 /* TKSwitcherCollection.framework */,
 				AD6383911E74896300213C48 /* VHUD.framework */,
 				AD63838F1E7486B200213C48 /* SwiftyJSON.framework */,
 				AD63838D1E74869500213C48 /* SwiftLocation.framework */,
@@ -781,12 +790,12 @@
 				ADC7345D1D6890C500296449 /* Assets.xcassets in Resources */,
 				AD2162391DBCE8C8009801B9 /* Settings.storyboard in Resources */,
 				AD9A8C5B1DC231080021C7CD /* Departures.storyboard in Resources */,
+				AD38A6761E74EE360022C6F2 /* InfoPlist.strings in Resources */,
 				ADC7345F1D6890C500296449 /* Main.storyboard in Resources */,
 				AD90EA351E2462120015D735 /* Roboto-Light.ttf in Resources */,
 				ADC734501D6890C500296449 /* tpg offline.geojson in Resources */,
 				ADC7344B1D6890C500296449 /* Localizable.strings in Resources */,
 				AD90EA331E2461BC0015D735 /* Roboto-Thin.ttf in Resources */,
-				AD6383981E7492D900213C48 /* Info.plist in Resources */,
 				AD9A8C451DC230AE0021C7CD /* Routes.storyboard in Resources */,
 				ADC7345E1D6890C500296449 /* LaunchScreen.storyboard in Resources */,
 				AD9A8C501DC230E90021C7CD /* Maps.storyboard in Resources */,
@@ -839,7 +848,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		ADA469331E05517300FEA198 /* FirebaseCrash */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -873,6 +882,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftLocation.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/VHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TKSwitcherCollection.framework",
 			);
 			name = "Install Carthage frameworks";
 			outputPaths = (
@@ -904,6 +914,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD63839A1E74BA3300213C48 /* FilterDeparturesTableViewController.swift in Sources */,
 				ADC7345C1D6890C500296449 /* WebViewController.swift in Sources */,
 				ADC7342C1D6890C500296449 /* LoadingCellTableViewCell.swift in Sources */,
 				ADC734311D6890C500296449 /* ThemeCollectionViewCell.swift in Sources */,
@@ -1020,6 +1031,16 @@
 				AD9A8C4F1DC230DB0021C7CD /* fr */,
 			);
 			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		AD38A6781E74EE360022C6F2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD38A6771E74EE360022C6F2 /* Base */,
+				AD38A6791E74EE3A0022C6F2 /* en */,
+				AD38A67A1E74EE3B0022C6F2 /* fr */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		AD9A8C471DC230AE0021C7CD /* Routes.storyboard */ = {
@@ -1204,6 +1225,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_ENTITLEMENTS = "tpg offline/tpg offline.entitlements";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
@@ -1229,6 +1251,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_ENTITLEMENTS = "tpg offline/tpg offline.entitlements";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
@@ -1282,6 +1305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1303,6 +1327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1325,6 +1350,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
 				IBSC_MODULE = tpg_offline_Watch_Extension;
 				INFOPLIST_FILE = "tpg offline Watch/Info.plist";
@@ -1343,6 +1369,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
 				IBSC_MODULE = tpg_offline_Watch_Extension;
 				INFOPLIST_FILE = "tpg offline Watch/Info.plist";
