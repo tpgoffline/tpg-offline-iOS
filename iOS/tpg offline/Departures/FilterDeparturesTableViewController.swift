@@ -133,6 +133,15 @@ class FilterDeparturesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        guard let aSwitch = cell.accessoryView as? UISwitch else {
+            return
+        }
+
+        aSwitch.setOn(!aSwitch.isOn, animated: true)
+        toogleStateOfLine(aSwitch: aSwitch)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

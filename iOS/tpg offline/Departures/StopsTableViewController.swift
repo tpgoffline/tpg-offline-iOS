@@ -247,12 +247,14 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 if searchController.isActive {
                     departuresViewController.stop = filtredResults[(tableView.indexPathForSelectedRow?.row)!]
                 } else {
-                    if (tableView.indexPathForSelectedRow! as IndexPath).section == 0 {
-                        departuresViewController.stop = localizedStops[tableView.indexPathForSelectedRow!.row]
-                    } else if (tableView.indexPathForSelectedRow! as IndexPath).section == 1 {
-                        departuresViewController.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[tableView.indexPathForSelectedRow!.row]]
+                    let indexPath = tableView.indexPathForSelectedRow! as IndexPath
+                    if indexPath.section == 0 {
+                        departuresViewController.stop = localizedStops[indexPath.row]
+                    } else if indexPath.section == 1 {
+                        departuresViewController.stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
                     } else {
-                        departuresViewController.stop = AppValues.stops[AppValues.stopsKeys[(tableView.indexPathForSelectedRow?.row)!]]
+                        let letterContent = AppValues.stopsABC[[String](AppValues.stopsABC.keys).sorted()[indexPath.section - 2]] ?? ["Error"]
+                        departuresViewController.stop = AppValues.stops[letterContent[indexPath.row]]!
                     }
                 }
                 FIRCrashMessage("Request \(String(describing: departuresViewController.stop))")

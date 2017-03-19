@@ -13,7 +13,7 @@
         <scene sceneID="3Zi-9b-scy">
             <objects>
                 <collectionViewController id="DUZ-6Y-oRk" customClass="MapsListTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="3qw-MN-0ki">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3qw-MN-0ki">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,7 +58,7 @@
                                 <connections>
                                     <outlet property="mapsImage" destination="zM9-lT-gQp" id="CCz-nw-ItA"/>
                                     <outlet property="titleLabel" destination="UkT-e0-bMQ" id="4JQ-eG-J68"/>
-                                    <segue destination="Dek-6s-JOS" kind="show" identifier="showMap" id="Txs-Op-cqm"/>
+                                    <segue destination="Dek-6s-JOS" kind="showDetail" identifier="showMap" id="Txs-Op-cqm"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -84,7 +84,7 @@
                     </simulatedTabBarMetrics>
                     <connections>
                         <segue destination="a7I-7x-a0E" kind="relationship" relationship="masterViewController" id="ZWp-Pv-oqU"/>
-                        <segue destination="Dek-6s-JOS" kind="relationship" relationship="detailViewController" id="0bU-xM-9jp"/>
+                        <segue destination="Dek-6s-JOS" kind="relationship" relationship="detailViewController" id="E1U-BQ-1BO"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMG-8T-PTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -99,7 +99,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JZG-7a-j65">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JZG-7a-j65">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -142,7 +142,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5DE-mU-7Ko">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5DE-mU-7Ko">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

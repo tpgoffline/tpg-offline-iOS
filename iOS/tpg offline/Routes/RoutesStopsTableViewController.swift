@@ -242,25 +242,26 @@ class RoutesStopsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var arret: Stop? = nil
+        var stop: Stop? = nil
         if searchController.isActive {
-            arret = filtredResults[indexPath.row]
+            stop = filtredResults[indexPath.row]
         } else {
             if indexPath.section == 0 {
                 if !localisationLoading {
-                    arret = localizedStops[indexPath.row]
+                    stop = localizedStops[indexPath.row]
                 }
             } else if indexPath.section == 1 {
-                arret = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
+                stop = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
             } else {
-                arret = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!
+                let letterContent = AppValues.stopsABC[[String](AppValues.stopsABC.keys).sorted()[indexPath.section - 2]] ?? ["Error"]
+                stop = AppValues.stops[letterContent[indexPath.row]]!
             }
         }
-        if arret != nil {
+        if stop != nil {
             if departure == true {
-                ActualRoutes.route.departure = arret!
+                ActualRoutes.route.departure = stop!
             } else {
-                ActualRoutes.route.arrival = arret!
+                ActualRoutes.route.arrival = stop!
             }
             _ = self.navigationController?.popViewController(animated: true)
         } else {

@@ -272,7 +272,7 @@ extension RoutesCollectionViewController : UICollectionViewDelegateFlowLayout {
             height = 100
         }
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth: CGFloat = UIScreen.main.bounds.width - paddingSpace
+        let availableWidth: CGFloat = view.bounds.width - paddingSpace
 
         let widthPerItem = availableWidth / itemsPerRow
 
@@ -296,5 +296,4 @@ extension RoutesCollectionViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }
-
 }
