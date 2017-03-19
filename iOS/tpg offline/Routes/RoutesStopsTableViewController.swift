@@ -12,7 +12,7 @@ import SwiftLocation
 
 class RoutesStopsTableViewController: UITableViewController {
     var departure: Bool!
-    var localisationStops = [Stop]()
+    var localizedStops = [Stop]()
     var filtredResults = [Stop]()
     let searchController = UISearchController(searchResultsController: nil)
     let defaults = UserDefaults.standard
@@ -79,11 +79,10 @@ class RoutesStopsTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         if searchController.isActive {
             return 1
         } else {
-            return 3
+            return [String](AppValues.stopsABC.keys).count + 2
         }
     }
 
@@ -93,10 +92,10 @@ class RoutesStopsTableViewController: UITableViewController {
             return self.filtredResults.count
         } else {
             if section == 0 {
-                if localisationLoading == true {
+                if localisationLoading {
                     return 1
                 } else {
-                    return localisationStops.count
+                    return localizedStops.count
                 }
             } else if section == 1 {
                 if AppValues.favoritesStops == nil {
@@ -105,14 +104,14 @@ class RoutesStopsTableViewController: UITableViewController {
                     return AppValues.favoritesStops.count
                 }
             } else {
-                return AppValues.stops.count
+                return (AppValues.stopsABC[[String](AppValues.stopsABC.keys).sorted()[section - 2]]?.count)!
             }
         }
     }
 
     func requestLocation() {
         localisationLoading = true
-        self.localisationStops = []
+        self.localizedStops = []
         tableView.reloadData()
 
         var accuracy = Accuracy.block
@@ -134,19 +133,19 @@ class RoutesStopsTableViewController: UITableViewController {
 
                 if (location.distance(from: x.location)) <= Double(self.defaults.integer(forKey: "proximityDistance")) {
 
-                    self.localisationStops.append(x)
+                    self.localizedStops.append(x)
                     print(x.stopCode)
                     print(String(describing: location.distance(from: x.location)))
                 }
             }
-            self.localisationStops.sort(by: { (arret1, arret2) -> Bool in
+            self.localizedStops.sort(by: { (arret1, arret2) -> Bool in
                 if arret1.distance! < arret2.distance! {
                     return true
                 } else {
                     return false
                 }
             })
-            self.localisationStops = Array(self.localisationStops.prefix(5))
+            self.localizedStops = Array(self.localizedStops.prefix(5))
             self.localisationLoading = false
             self.tableView.reloadData()
         }) { (request, location, error) -> (Void) in
@@ -174,8 +173,8 @@ class RoutesStopsTableViewController: UITableViewController {
                     cell.accessoryView = UIView()
                 } else {
                     cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "location").maskWithColor(color: AppValues.textColor))
-                    cell.textLabel?.text = localisationStops[indexPath.row].fullName
-                    cell.detailTextLabel!.text = "~" + String(Int(localisationStops[indexPath.row].distance!)) + "m"
+                    cell.textLabel?.text = localizedStops[indexPath.row].fullName
+                    cell.detailTextLabel!.text = "~" + String(Int(localizedStops[indexPath.row].distance!)) + "m"
                     cell.imageView?.image = nil
                 }
             } else if indexPath.section == 1 {
@@ -199,9 +198,10 @@ class RoutesStopsTableViewController: UITableViewController {
                         image = #imageLiteral(resourceName: "circle")
                     }
                 }
+                let letterContent = AppValues.stopsABC[[String](AppValues.stopsABC.keys).sorted()[indexPath.section - 2]] ?? ["Error"]
                 cell.accessoryView = UIImageView(image: image.maskWithColor(color: AppValues.textColor))
-                cell.textLabel?.text = stop.title
-                cell.detailTextLabel!.text = stop.subTitle
+                cell.textLabel?.text = AppValues.stops[letterContent[indexPath.row]]!.title
+                cell.detailTextLabel!.text = AppValues.stops[letterContent[indexPath.row]]!.subTitle
                 cell.imageView?.image = nil
             }
 
@@ -246,7 +246,7 @@ class RoutesStopsTableViewController: UITableViewController {
         } else {
             if indexPath.section == 0 {
                 if !localisationLoading {
-                    arret = localisationStops[indexPath.row]
+                    arret = localizedStops[indexPath.row]
                 }
             } else if indexPath.section == 1 {
                 arret = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]
@@ -264,6 +264,17 @@ class RoutesStopsTableViewController: UITableViewController {
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index + 2
+    }
+
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if searchController.isActive {
+            return []
+        }
+        return [String](AppValues.stopsABC.keys).sorted()
     }
 
     func filterContentForSearchText(_ searchText: String) {

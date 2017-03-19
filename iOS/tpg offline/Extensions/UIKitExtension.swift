@@ -94,6 +94,8 @@ extension UITableViewController {
     override func refreshTheme() {
         super.refreshTheme()
 
+        tableView.sectionIndexColor = AppValues.textColor
+        tableView.sectionIndexBackgroundColor = AppValues.primaryColor
         tableView.backgroundColor = AppValues.primaryColor
         tableView.reloadData()
     }

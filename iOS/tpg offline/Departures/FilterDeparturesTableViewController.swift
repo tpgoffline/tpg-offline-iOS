@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TKSwitcherCollection
 import FirebaseAnalytics
 
 class FilterDeparturesTableViewController: UITableViewController {

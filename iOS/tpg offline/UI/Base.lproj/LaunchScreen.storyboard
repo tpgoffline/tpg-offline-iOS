@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12117" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12117" systemVersion="16E191a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,9 +49,18 @@
                                 <color key="textColor" red="0.98823529409999999" green="0.44705882349999998" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="M5E-B0-Emp">
+                                <rect key="frame" x="137" y="547" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="N1A-Oe-Rft"/>
+                                    <constraint firstAttribute="height" constant="100" id="zlV-fg-l0z"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="M5E-B0-Emp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1Vb-gl-TFE"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="M5E-B0-Emp" secondAttribute="bottom" constant="20" id="U37-5U-caG"/>
                             <constraint firstItem="pWu-Ei-MSX" firstAttribute="top" secondItem="c4L-2Y-u9d" secondAttribute="bottom" constant="8" id="aqE-Em-l34"/>
                             <constraint firstItem="pWu-Ei-MSX" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="hcT-Cq-7e3"/>
                             <constraint firstItem="c4L-2Y-u9d" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lcK-em-HdB"/>
@@ -65,4 +74,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="1000" height="1000"/>
+    </resources>
 </document>

@@ -12,6 +12,7 @@ struct AppValues {
     static var stops: [String:Stop] = [:]
     static var favoritesStops: [String:Stop]!  = [:]
     static var fullNameFavoritesStops: [String]!  = []
+    static var stopsABC: [String: [String]] = [:]
     static var idTransportAPIToTpgStopName: [Int: String]!  = [:]
     static var nameTransportAPIToTpgStopName: [String: String]!  = [:]
     static var favoritesRoutes: [[Stop]]! = []

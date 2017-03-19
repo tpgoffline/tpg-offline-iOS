@@ -25,8 +25,8 @@ fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 class StopsTableViewController: UITableViewController, UISplitViewControllerDelegate {
-    var localizedStops = [Stop]()
-    var filtredResults = [Stop]()
+    var localizedStops: [Stop] = []
+    var filtredResults: [Stop] = []
     let searchController = UISearchController(searchResultsController: nil)
     let defaults = UserDefaults.standard
     var localisationLoading = false
@@ -142,7 +142,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         if searchController.isActive {
             return 1
         } else {
-            return 3
+            return [String](AppValues.stopsABC.keys).count + 2
         }
     }
 
@@ -164,10 +164,11 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                     return AppValues.favoritesStops.count
                 }
             } else {
-                return AppValues.stops.count
+                return (AppValues.stopsABC[[String](AppValues.stopsABC.keys).sorted()[section - 2]]?.count)!
             }
         }
     }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if !searchController.isActive {
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
@@ -189,9 +190,10 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 cell.detailTextLabel?.text = AppValues.favoritesStops[AppValues.fullNameFavoritesStops[indexPath.row]]?.subTitle
                 cell.imageView?.image = nil
             } else {
+                let letterContent = AppValues.stopsABC[[String](AppValues.stopsABC.keys).sorted()[indexPath.section - 2]] ?? ["Error"]
                 cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
-                cell.textLabel?.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.title
-                cell.detailTextLabel!.text = AppValues.stops[AppValues.stopsKeys[indexPath.row]]!.subTitle
+                cell.textLabel?.text = AppValues.stops[letterContent[indexPath.row]]!.title
+                cell.detailTextLabel!.text = AppValues.stops[letterContent[indexPath.row]]!.subTitle
                 cell.imageView?.image = nil
             }
 
@@ -219,6 +221,17 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
 
             return cell
         }
+    }
+
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index + 2
+    }
+
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if searchController.isActive {
+            return []
+        }
+        return [String](AppValues.stopsABC.keys).sorted()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

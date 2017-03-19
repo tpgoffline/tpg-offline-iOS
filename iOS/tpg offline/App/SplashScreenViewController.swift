@@ -189,6 +189,11 @@ class SplashScreenViewController: UIViewController {
                     transportAPIiD: subJson["idTransportAPI"].string!,
                     connections: subJson["connections"].arrayObject as? [String] ?? []
                 )
+                let letter = String(subJson["stopName"].string![subJson["stopName"].string!.startIndex]).uppercased()
+                if AppValues.stopsABC[letter] == nil {
+                    AppValues.stopsABC[letter] = []
+                }
+                AppValues.stopsABC[letter]!.append(subJson["stopName"].string!)
             }
 
             AppValues.stopsKeys = [String](AppValues.stops.keys)

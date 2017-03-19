@@ -882,7 +882,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftLocation.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/VHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/TKSwitcherCollection.framework",
 			);
 			name = "Install Carthage frameworks";
 			outputPaths = (
