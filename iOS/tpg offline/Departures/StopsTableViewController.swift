@@ -93,6 +93,8 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                 self.defaults.set(500, forKey: UserDefaultsKeys.proximityDistance.rawValue)
             }
 
+            self.localizedStops = []
+
             for x in [Stop](AppValues.stops.values) {
                 x.distance = location.distance(from: x.location)
 

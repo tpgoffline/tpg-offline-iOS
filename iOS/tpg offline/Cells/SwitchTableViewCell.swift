@@ -15,5 +15,4 @@ class SwitchCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
     }
-
 }

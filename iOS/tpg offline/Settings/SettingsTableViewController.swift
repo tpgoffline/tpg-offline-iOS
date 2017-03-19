@@ -110,14 +110,12 @@ class SettingsTableViewController: UITableViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
 
-        mailComposerVC.setToRecipients(["support@dacostafaro.com"])
+        mailComposerVC.setToRecipients(["support@asmartcode.com"])
         mailComposerVC.setSubject("tpg offline")
         mailComposerVC.setMessageBody("", isHTML: false)
 
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposerVC, animated: true, completion: nil)
-        } else {
-            SCLAlertView().showError("Vous ne pouvez pas envoyer d'emails".localized, subTitle: "Nous sommes désolés, mais vous ne pouvez pas envoyer d'emails. Vérifiez que un compte email est configuré dans les réglages".localized, closeButtonTitle: "OK", duration: 30, feedbackType: .notificationError)
         }
     }
 

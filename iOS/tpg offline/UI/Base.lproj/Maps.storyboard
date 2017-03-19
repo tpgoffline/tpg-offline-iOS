@@ -1,55 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XSY-Fw-XMR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12117" systemVersion="16E191a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XSY-Fw-XMR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12084"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Plans-->
-        <scene sceneID="BT5-9w-SUb">
+        <!--Maps-->
+        <scene sceneID="3Zi-9b-scy">
             <objects>
-                <tableViewController id="4xY-4v-1mH" customClass="MapsListTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="u2y-t7-BCg">
+                <collectionViewController id="DUZ-6Y-oRk" customClass="MapsListTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="3qw-MN-0ki">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.85262101889999997" green="0.42218321559999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="plansCell" textLabel="jMP-R6-5rx" style="IBUITableViewCellStyleDefault" id="uiQ-Zz-dDg">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uiQ-Zz-dDg" id="uQm-Jw-TBE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CDM-02-1gr">
+                            <size key="itemSize" width="239" height="133"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapsCell" id="5NH-f7-Yun" customClass="MapsCollectionViewCell" customModule="tpg_offline" customModuleProvider="target">
+                                <rect key="frame" x="68" y="0.0" width="239" height="133"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="239" height="133"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jMP-R6-5rx">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zM9-lT-gQp">
+                                            <rect key="frame" x="0.0" y="0.0" width="239" height="133"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkT-e0-bMQ">
+                                            <rect key="frame" x="0.0" y="98" width="239" height="35"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.89818992077464788" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="0p2-eE-CTs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.85262101888656616" green="0.42218321561813354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="zM9-lT-gQp" firstAttribute="leading" secondItem="5NH-f7-Yun" secondAttribute="leading" id="1po-DO-NbI"/>
+                                    <constraint firstAttribute="trailing" secondItem="zM9-lT-gQp" secondAttribute="trailing" id="3yi-Jk-4yO"/>
+                                    <constraint firstItem="zM9-lT-gQp" firstAttribute="top" secondItem="5NH-f7-Yun" secondAttribute="top" id="82C-6G-rAY"/>
+                                    <constraint firstAttribute="bottom" secondItem="zM9-lT-gQp" secondAttribute="bottom" id="OIt-Yg-CjB"/>
+                                    <constraint firstItem="UkT-e0-bMQ" firstAttribute="leading" secondItem="5NH-f7-Yun" secondAttribute="leading" id="OQe-l5-YlE"/>
+                                    <constraint firstAttribute="trailing" secondItem="UkT-e0-bMQ" secondAttribute="trailing" id="XdK-LA-Uwv"/>
+                                    <constraint firstAttribute="bottom" secondItem="UkT-e0-bMQ" secondAttribute="bottom" id="noW-bB-VGG"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="Dek-6s-JOS" kind="showDetail" identifier="showMap" id="LGn-c4-Goa"/>
+                                    <outlet property="mapsImage" destination="zM9-lT-gQp" id="CCz-nw-ItA"/>
+                                    <outlet property="titleLabel" destination="UkT-e0-bMQ" id="4JQ-eG-J68"/>
+                                    <segue destination="Dek-6s-JOS" kind="show" identifier="showMap" id="Txs-Op-cqm"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="4xY-4v-1mH" id="TxU-Ap-86L"/>
-                            <outlet property="delegate" destination="4xY-4v-1mH" id="9Rt-mG-WpE"/>
+                            <outlet property="dataSource" destination="DUZ-6Y-oRk" id="0bC-Xi-BUu"/>
+                            <outlet property="delegate" destination="DUZ-6Y-oRk" id="Vw5-95-xko"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Plans" id="LDC-RT-4tQ"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YuC-Qv-sTq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Maps" id="S3y-Ba-tfQ"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1h-Jj-mZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2468" y="2013"/>
+            <point key="canvasLocation" x="2545" y="2013"/>
         </scene>
         <!--Plans-->
         <scene sceneID="iMr-I2-3Ap">
@@ -81,14 +103,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="4xY-4v-1mH" kind="relationship" relationship="rootViewController" id="04n-T3-zBS"/>
+                        <segue destination="DUZ-6Y-oRk" kind="relationship" relationship="rootViewController" id="UZv-O9-kJm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hw2-cS-lUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,7 +157,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0bU-xM-9jp"/>
+        <segue reference="Txs-Op-cqm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

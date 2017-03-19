@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD0211AF1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0211AE1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift */; };
 		AD087F8A1DC1F90500E51CB1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F51D6890C500296449 /* Localizable.strings */; };
 		AD1BE0041DBE3222008F33A3 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1BE0031DBE3222008F33A3 /* SplashScreenViewController.swift */; };
 		AD21622C1DBCE4EC009801B9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD21622B1DBCE4EC009801B9 /* Alamofire.framework */; };
@@ -81,7 +82,7 @@
 		ADC734381D6890C500296449 /* NSUserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733D61D6890C500296449 /* NSUserDefaultsExtension.swift */; };
 		ADC734391D6890C500296449 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733D71D6890C500296449 /* UIKitExtension.swift */; };
 		ADC734471D6890C500296449 /* IncidentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733EF1D6890C500296449 /* IncidentsTableViewController.swift */; };
-		ADC734481D6890C500296449 /* MapsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733F11D6890C500296449 /* MapsListTableViewController.swift */; };
+		ADC734481D6890C500296449 /* MapsListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733F11D6890C500296449 /* MapsListCollectionViewController.swift */; };
 		ADC734491D6890C500296449 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733F21D6890C500296449 /* MapViewController.swift */; };
 		ADC7344A1D6890C500296449 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F41D6890C500296449 /* stops.json */; };
 		ADC7344B1D6890C500296449 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F51D6890C500296449 /* Localizable.strings */; };
@@ -92,7 +93,7 @@
 		ADC734521D6890C500296449 /* RouteDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734011D6890C500296449 /* RouteDetailTableViewController.swift */; };
 		ADC734531D6890C500296449 /* RoutesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734021D6890C500296449 /* RoutesListTableViewController.swift */; };
 		ADC734541D6890C500296449 /* RoutesStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734031D6890C500296449 /* RoutesStopsTableViewController.swift */; };
-		ADC734551D6890C500296449 /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734041D6890C500296449 /* RoutesTableViewController.swift */; };
+		ADC734551D6890C500296449 /* RoutesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734041D6890C500296449 /* RoutesCollectionViewController.swift */; };
 		ADC734561D6890C500296449 /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734051D6890C500296449 /* TimeSelectionViewController.swift */; };
 		ADC734571D6890C500296449 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734071D6890C500296449 /* CreditsTableViewController.swift */; };
 		ADC734581D6890C500296449 /* LocationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC734081D6890C500296449 /* LocationSettingsTableViewController.swift */; };
@@ -178,6 +179,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD0211AE1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD087F8C1DC1FAC100E51CB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Interface.strings; sourceTree = "<group>"; };
 		AD087F8D1DC1FAC300E51CB1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Interface.strings; sourceTree = "<group>"; };
 		AD1BE0031DBE3222008F33A3 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +275,7 @@
 		ADC733D61D6890C500296449 /* NSUserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsExtension.swift; sourceTree = "<group>"; };
 		ADC733D71D6890C500296449 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		ADC733EF1D6890C500296449 /* IncidentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncidentsTableViewController.swift; sourceTree = "<group>"; };
-		ADC733F11D6890C500296449 /* MapsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsListTableViewController.swift; sourceTree = "<group>"; };
+		ADC733F11D6890C500296449 /* MapsListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsListCollectionViewController.swift; sourceTree = "<group>"; };
 		ADC733F21D6890C500296449 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		ADC733F41D6890C500296449 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stops.json; sourceTree = "<group>"; };
 		ADC733F61D6890C500296449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -288,7 +290,7 @@
 		ADC734011D6890C500296449 /* RouteDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailTableViewController.swift; sourceTree = "<group>"; };
 		ADC734021D6890C500296449 /* RoutesListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesListTableViewController.swift; sourceTree = "<group>"; };
 		ADC734031D6890C500296449 /* RoutesStopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesStopsTableViewController.swift; sourceTree = "<group>"; };
-		ADC734041D6890C500296449 /* RoutesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
+		ADC734041D6890C500296449 /* RoutesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesCollectionViewController.swift; sourceTree = "<group>"; };
 		ADC734051D6890C500296449 /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewController.swift; sourceTree = "<group>"; };
 		ADC734071D6890C500296449 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
 		ADC734081D6890C500296449 /* LocationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				ADC733CC1D6890C500296449 /* ThemeCollectionViewCell.swift */,
 				ADFAA28F1E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift */,
 				ADFAA2911E723CF200C85F87 /* HeaderCollectionView.swift */,
+				AD0211AE1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -506,7 +509,7 @@
 		ADC733F01D6890C500296449 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				ADC733F11D6890C500296449 /* MapsListTableViewController.swift */,
+				ADC733F11D6890C500296449 /* MapsListCollectionViewController.swift */,
 				ADC733F21D6890C500296449 /* MapViewController.swift */,
 			);
 			path = Maps;
@@ -540,7 +543,7 @@
 				ADC734011D6890C500296449 /* RouteDetailTableViewController.swift */,
 				ADC734021D6890C500296449 /* RoutesListTableViewController.swift */,
 				ADC734031D6890C500296449 /* RoutesStopsTableViewController.swift */,
-				ADC734041D6890C500296449 /* RoutesTableViewController.swift */,
+				ADC734041D6890C500296449 /* RoutesCollectionViewController.swift */,
 				ADC734051D6890C500296449 /* TimeSelectionViewController.swift */,
 			);
 			path = Routes;
@@ -938,7 +941,8 @@
 				ADC7342F1D6890C500296449 /* StopImageTableViewCell.swift in Sources */,
 				ADC734261D6890C500296449 /* WatchSessionManager.swift in Sources */,
 				ADC734391D6890C500296449 /* UIKitExtension.swift in Sources */,
-				ADC734481D6890C500296449 /* MapsListTableViewController.swift in Sources */,
+				ADC734481D6890C500296449 /* MapsListCollectionViewController.swift in Sources */,
+				AD0211AF1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift in Sources */,
 				ADC7345B1D6890C500296449 /* ThemesCollectionViewController.swift in Sources */,
 				ADFAA2921E723CF200C85F87 /* HeaderCollectionView.swift in Sources */,
 				AD1BE0041DBE3222008F33A3 /* SplashScreenViewController.swift in Sources */,
@@ -950,7 +954,7 @@
 				ADFCC15A1DF8734700818CB5 /* UserDefaultsKeys.swift in Sources */,
 				ADC734341D6890C500296449 /* SeeAllDeparturesViewController.swift in Sources */,
 				ADC734281D6890C500296449 /* ButtonCollectionViewCell.swift in Sources */,
-				ADC734551D6890C500296449 /* RoutesTableViewController.swift in Sources */,
+				ADC734551D6890C500296449 /* RoutesCollectionViewController.swift in Sources */,
 				ADC734301D6890C500296449 /* SwitchTableViewCell.swift in Sources */,
 				ADC7345A1D6890C500296449 /* SettingsTableViewController.swift in Sources */,
 				ADC734361D6890C500296449 /* ThermometerTableViewController.swift in Sources */,

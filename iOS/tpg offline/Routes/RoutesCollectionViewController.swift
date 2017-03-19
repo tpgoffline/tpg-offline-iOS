@@ -40,7 +40,6 @@ class RoutesCollectionViewController: UICollectionViewController {
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
 
-        collectionView?.backgroundColor = AppValues.primaryColor
         title = "Itinéraires".localized
 
         var barButtonsItems: [UIBarButtonItem] = []
