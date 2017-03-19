@@ -12,14 +12,14 @@ import DGRunkeeperSwitch
 import SCLAlertView
 
 struct ActualRoutes {
-	static var route: SearchRoute! = SearchRoute(departure: nil, arrival: nil, date: Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: Date()), isArrivalDate: false)
-	static var canFavorite: Bool! = false
+    static var route: SearchRoute! = SearchRoute(departure: nil, arrival: nil, date: Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: Date()), isArrivalDate: false)
+    static var canFavorite: Bool! = false
     static var routeResult: [Route]! = []
 }
 
 class RoutesCollectionViewController: UICollectionViewController {
 
-	let row = [
+    let row = [
         ["itineraryCell", #imageLiteral(resourceName: "logOut"), "Départ".localized, "voirArretsItineraire"],
         ["itineraryCell", #imageLiteral(resourceName: "logIn"), "Arrivée".localized, "voirArretsItineraire"],
         ["itineraryCell", #imageLiteral(resourceName: "calendar"), "Date".localized, "selectDate"],
@@ -27,13 +27,13 @@ class RoutesCollectionViewController: UICollectionViewController {
         ["switchCell", "Heure de départ".localized, "Heure d'arrivée".localized],
         ["buttonCell", "Rechercher".localized]]
 
-	let headers = ["Recherche".localized, "Favoris".localized]
+    let headers = ["Recherche".localized, "Favoris".localized]
     let imagesHeaders = [#imageLiteral(resourceName: "search"), #imageLiteral(resourceName: "starNavbar")]
 
     fileprivate let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         FIRCrashMessage("Routes")
 
@@ -47,17 +47,16 @@ class RoutesCollectionViewController: UICollectionViewController {
         navigationItem.leftBarButtonItems = barButtonsItems
 
         refreshTheme()
-	}
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		refreshTheme()
-		ActualRoutes.canFavorite = true
-		refreshTheme()
-	}
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ActualRoutes.canFavorite = true
+        refreshTheme()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
 
-	}
+    }
 
     func echangerArrets() {
         let arretDepart = ActualRoutes.route.departure
@@ -183,14 +182,14 @@ class RoutesCollectionViewController: UICollectionViewController {
         }
     }
 
-	func rechercher(_ sender: Any) {
-		if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
-			performSegue(withIdentifier: "rechercherItineraire", sender: self)
-		} else {
-			let alert = SCLAlertView()
+    func rechercher(_ sender: Any) {
+        if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
+            performSegue(withIdentifier: "rechercherItineraire", sender: self)
+        } else {
+            let alert = SCLAlertView()
             alert.showWarning("Information manquante".localized, subTitle: "Il manque une information pour rechercher un itinéraire".localized, closeButtonTitle: "OK".localized, duration: 10, feedbackType: .notificationWarning)
-		}
-	}
+        }
+    }
 
     func dateArriveeChange(_ sender: Any) {
         guard let switchArrivalDate = sender as? DGRunkeeperSwitch else {
@@ -222,18 +221,18 @@ class RoutesCollectionViewController: UICollectionViewController {
         }
     }
 
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "voirArretsItineraire" {
-			let destinationViewController = segue.destination as! RoutesStopsTableViewController // swiftlint:disable:this force_cast
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "voirArretsItineraire" {
+            let destinationViewController = segue.destination as! RoutesStopsTableViewController // swiftlint:disable:this force_cast
 
-			if (collectionView?.cellForItem(at: (collectionView?.indexPathsForSelectedItems![0])!) as! ItineraryCellCollectionViewCell).title?.text == "Départ".localized { // swiftlint:disable:this force_cast
-				destinationViewController.departure = true
-			} else {
-				destinationViewController.departure = false
-			}
+            if (collectionView?.cellForItem(at: (collectionView?.indexPathsForSelectedItems![0])!) as! ItineraryCellCollectionViewCell).title?.text == "Départ".localized { // swiftlint:disable:this force_cast
+                destinationViewController.departure = true
+            } else {
+                destinationViewController.departure = false
+            }
             collectionView?.deselectItem(at: (collectionView?.indexPathsForSelectedItems![0])!, animated: false)
-		}
-	}
+        }
+    }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 {
@@ -247,7 +246,12 @@ class RoutesCollectionViewController: UICollectionViewController {
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView?.reloadData()
+        // The timer here allow the view to rotate first and let the time to refresh view size values
+        Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(refreshCollectionView), userInfo: nil, repeats: false)
+    }
+
+    func refreshCollectionView() {
+        self.collectionView?.reloadData()
     }
 }
 
@@ -256,7 +260,13 @@ extension RoutesCollectionViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemsPerRowArray: [CGFloat]
-        if UIDevice.current.orientation.isLandscape {
+
+        print(UIScreen.main.bounds.width)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            itemsPerRowArray = [2, 2, 2, 2, 1, 1]
+        } else if UIScreen.main.bounds.width > 720.0 {
+            itemsPerRowArray = [2, 2, 2, 2, 1, 1]
+        } else if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             itemsPerRowArray = [3, 3, 3, 3, 1.5, 1]
         } else {
             itemsPerRowArray = [2, 2, 2, 2, 1, 1]
@@ -272,9 +282,10 @@ extension RoutesCollectionViewController : UICollectionViewDelegateFlowLayout {
             height = 100
         }
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth: CGFloat = view.bounds.width - paddingSpace
+        let availableWidth: CGFloat
+            availableWidth = view.bounds.width - paddingSpace
 
-        let widthPerItem = availableWidth / itemsPerRow
+        let widthPerItem = (availableWidth / itemsPerRow) - 1
 
         return CGSize(width: widthPerItem, height: height)
     }

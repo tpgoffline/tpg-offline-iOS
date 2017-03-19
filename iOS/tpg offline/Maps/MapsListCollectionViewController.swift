@@ -12,7 +12,7 @@ class MapsListTableViewController: UICollectionViewController {
 
 	let mapsList = ["Plan urbain", "Plan régional", "Plan Noctambus urbain", "Plan Noctambus régional"]
     fileprivate let itemsPerRow: CGFloat = 1
-    fileprivate let sectionInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -31,6 +31,7 @@ class MapsListTableViewController: UICollectionViewController {
 		super.viewDidAppear(animated)
 
 		refreshTheme()
+        view.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
 	}
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -47,8 +48,10 @@ class MapsListTableViewController: UICollectionViewController {
         cell.mapsImage.image = UIImage(named: mapsList[indexPath.row])
         cell.titleLabel.text = mapsList[indexPath.row].localized
         cell.titleLabel.textColor = AppValues.textColor
-        cell.titleLabel.backgroundColor = AppValues.primaryColor.withAlphaComponent(0.8)
+        cell.titleLabel.backgroundColor = AppValues.primaryColor.withAlphaComponent(0.9)
         cell.backgroundColor = .white
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 15
 
         return cell
     }
@@ -65,6 +68,14 @@ class MapsListTableViewController: UICollectionViewController {
 		}
 	}
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        // The timer here allow the view to rotate first and let the time to refresh view size values
+        Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(refreshCollectionView), userInfo: nil, repeats: false)
+    }
+
+    func refreshCollectionView() {
+        self.collectionView?.reloadData()
+    }
 }
 
 extension MapsListTableViewController: UISplitViewControllerDelegate {
@@ -79,7 +90,7 @@ extension MapsListTableViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
+        let availableWidth: CGFloat = view.bounds.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
 
         return CGSize(width: widthPerItem, height: 200)

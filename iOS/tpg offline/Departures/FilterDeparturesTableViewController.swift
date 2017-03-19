@@ -59,18 +59,19 @@ class FilterDeparturesTableViewController: UITableViewController {
         if indexPath.row == 0 {
             cell.imageView?.image = #imageLiteral(resourceName: "cross").maskWithColor(color: AppValues.textColor)
             aSwitch.isOn = !StopLinesList.filterNoMore
+
+            let view = UIView()
             if AppValues.primaryColor.contrast == .white {
                 aSwitch.onTintColor = AppValues.primaryColor.darken(percentage: 0.05)
+                cell.backgroundColor = AppValues.primaryColor
+                view.backgroundColor = AppValues.primaryColor.darken(percentage: 0.1)
             } else {
                 aSwitch.onTintColor = AppValues.textColor
-            }
-
-            if AppValues.primaryColor.contrast == .white {
-                cell.backgroundColor = AppValues.primaryColor
-            } else {
                 cell.backgroundColor = UIColor.white
+                view.backgroundColor = UIColor.white.darken(percentage: 0.1)
             }
 
+            cell.selectedBackgroundView = view
             cell.textLabel?.text = "No more service"
             cell.textLabel?.textColor = AppValues.textColor
         } else {
@@ -90,11 +91,15 @@ class FilterDeparturesTableViewController: UITableViewController {
             cell.textLabel?.text = "\("Ligne".localized) \(line)"
             cell.textLabel?.textColor = textColor
 
+            let view = UIView()
             if AppValues.primaryColor.contrast == .white {
                 cell.backgroundColor = AppValues.linesBackgroundColor[line]
+                view.backgroundColor = AppValues.linesBackgroundColor[line]?.darken(percentage: 0.1)
             } else {
                 cell.backgroundColor = UIColor.white
+                view.backgroundColor = UIColor.white.darken(percentage: 0.1)
             }
+            cell.selectedBackgroundView = view
 
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
             labelPictoLigne.text = line
