@@ -1,5 +1,7 @@
 "Bonjour" = "Hello";
 
+"Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet" = "We can't load all departures because you don't download them and you are not connected to internet";
+
 
 /*
  * ./tpg offline/RouteToStopViewController.swift
@@ -132,7 +134,7 @@
 
 
 
-
+ 
 
 /*
  * ./tpg offline/RouteDetailTableViewController.swift

@@ -157,7 +157,11 @@ class SeeAllDeparturesViewController: UIViewController {
                             }
 
                             self.hourPicker.reloadData()
-                            self.actualHour = self.hoursList[0]
+                            if self.hoursList.isEmpty {
+                                self.actualHour = -1
+                            } else {
+                                self.actualHour = self.hoursList[0]
+                            }
                         }
 
                         self.departuresList = self.initialDeparturesList.filter({ (depart) -> Bool in
@@ -237,8 +241,8 @@ class SeeAllDeparturesViewController: UIViewController {
 
                                 if self.hoursList.isEmpty {
                                     SCLAlertView().showError(
-                                        "Pas de réseau",
-                                        subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet",
+                                        "Pas de réseau".localized,
+                                        subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet".localized,
                                         closeButtonTitle: "OK",
                                         feedbackType: .notificationError).setDismissBlock({
                                             _ = self.navigationController?.popViewController(animated: true)
@@ -256,8 +260,8 @@ class SeeAllDeparturesViewController: UIViewController {
                             })
                         } else {
                             SCLAlertView().showError(
-                                "Pas de réseau",
-                                subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet",
+                                "Pas de réseau".localized,
+                                subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet".localized,
                                 closeButtonTitle: "OK",
                                 feedbackType: .notificationError).setDismissBlock({
                                     _ = self.navigationController?.popViewController(animated: true)
@@ -273,10 +277,8 @@ class SeeAllDeparturesViewController: UIViewController {
                     return false
                 })
             }
-            DispatchQueue.main.sync {
-                self.hourPicker.reloadData()
-                self.departuresCollectionView.reloadData()
-            }
+            self.hourPicker.reloadData()
+            self.departuresCollectionView.reloadData()
         }
     }
 }
