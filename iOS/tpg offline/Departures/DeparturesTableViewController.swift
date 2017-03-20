@@ -15,6 +15,7 @@ import FirebaseAnalytics
 import DGElasticPullToRefresh
 import SCLAlertView
 import SwiftyJSON
+import MapKit
 
 struct StopLinesList {
     static var linesList: [String] = []
@@ -31,6 +32,11 @@ class DeparturesTableViewController: UITableViewController {
     var noMoreTransport = false
     var loading: Bool = false
     var notDownloaded: Bool = false
+    var timeToGo: Int = -1
+    var route: MKRoute?
+    var routeArea: MKMapRect?
+    var routeActivated: Bool = false
+    var recenterMap: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,11 +100,6 @@ class DeparturesTableViewController: UITableViewController {
                     target: self,
                     action:#selector(DeparturesTableViewController.toggleFavorite(_:))))
             }
-            barButtonsItems.append(
-                UIBarButtonItem(image: #imageLiteral(resourceName: "walking"),
-                                style: UIBarButtonItemStyle.done,
-                                target: self,
-                                action: #selector(DeparturesTableViewController.showItinerary(_:))))
             barButtonsItems.append(
                 UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                                 style: UIBarButtonItemStyle.done,
@@ -228,11 +229,6 @@ class DeparturesTableViewController: UITableViewController {
                                 action: #selector(DeparturesTableViewController.toggleFavorite(_:))))
         }
         barButtonsItems.append(
-            UIBarButtonItem(image: #imageLiteral(resourceName: "walking"),
-                            style: UIBarButtonItemStyle.done,
-                            target: self,
-                            action: #selector(DeparturesTableViewController.showItinerary(_:))))
-        barButtonsItems.append(
             UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                             style: UIBarButtonItemStyle.done,
                             target: self,
@@ -251,15 +247,11 @@ class DeparturesTableViewController: UITableViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "showLigne" && departuresList[tableView.indexPathForSelectedRow!.row].leftTime == "no more" {
             return false
-        } else if offline && tableView.indexPathForSelectedRow!.section == 1 {
+        } else if offline && tableView.indexPathForSelectedRow!.section == 2 {
             return false
         } else {
             return true
         }
-    }
-
-    func showItinerary(_ sender: Any!) {
-        performSegue(withIdentifier: "showItinerary", sender: self)
     }
 
     func scheduleNotification(_ hour: String, before: Int, line: String, direction: String) {
@@ -391,11 +383,7 @@ class DeparturesTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showItinerary" {
-            if let routeViewController = (segue.destination) as? RouteToStopViewController {
-                routeViewController.stop = self.stop
-            }
-        } else if segue.identifier == "showLigne" {
+        if segue.identifier == "showLigne" {
             if let thermometerViewController = (segue.destination) as? ThermometerTableViewController {
                 thermometerViewController.departure = departuresList[(tableView.indexPathForSelectedRow?.row)!]
             }
@@ -609,25 +597,27 @@ extension DeparturesTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if loading == true {
-            return 1
+            return 2
         } else if offline || notDownloaded {
-            return 3
+            return 4
         }
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if loading == true {
+        if section == 0 {
+            return 1
+        } else if loading == true {
             return 1
         } else if offline && notDownloaded {
             return 1
-        } else if offline && section == 0 {
+        } else if offline && section == 1 {
             return 1
-        } else if offline && section == 1 && noMoreTransport {
+        } else if offline && section == 2 && noMoreTransport {
             return 1
-        } else if !offline && section == 0 && noMoreTransport {
+        } else if !offline && section == 1 && noMoreTransport {
             return 1
-        } else if (offline && section == 1 ) || (!offline && section == 0) {
+        } else if (offline && section == 2) || (!offline && section == 1) {
             return 1
         } else {
             return departuresList.count
@@ -635,7 +625,11 @@ extension DeparturesTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if loading == true {
+        if indexPath.section == 0 && routeActivated {
+            return 300
+        } else if indexPath.section == 0 {
+            return 150
+        } else if loading == true {
             return 60
         } else if offline && notDownloaded {
             return 60
@@ -725,7 +719,7 @@ extension DeparturesTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (offline && indexPath.section == 1) || (!offline && indexPath.section == 0) {
+        if (offline && indexPath.section == 2) || (!offline && indexPath.section == 1) {
             performSegue(withIdentifier: "showFilterDepartures", sender: self)
         }
     }
@@ -751,7 +745,49 @@ extension DeparturesTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if loading == true {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "descriptionStopCell", for: indexPath) as! DescriptionStopTableViewCell // swiftlint:disable:this force_cast
+
+            cell.coordinate = stop!.location.coordinate
+
+            let pin = MKPointAnnotation()
+            pin.coordinate = self.stop!.location.coordinate
+            pin.title = self.stop!.fullName ?? "Carotte ?"
+            cell.mapView.addAnnotation(pin)
+            cell.mapView.delegate = self
+
+            if AppValues.primaryColor.contrast == .white {
+                cell.mapView.tintColor = AppValues.primaryColor
+            } else {
+                cell.mapView.tintColor = AppValues.textColor
+            }
+            cell.titleLabel.text = stop?.fullName ?? ""
+
+            cell.centerButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1003521127)
+            cell.centerButton.layer.cornerRadius = cell.centerButton.bounds.height / 2
+            cell.centerButton.addTarget(cell, action: #selector(cell.centerMap), for: .touchUpInside)
+
+            cell.routeButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1003521127)
+            cell.routeButton.addTarget(self, action: #selector(showRoute), for: .touchUpInside)
+            cell.routeButton.layer.cornerRadius = cell.routeButton.bounds.height / 2
+
+            cell.mapView.removeOverlays(cell.mapView.overlays)
+            if routeActivated, let route = self.route, let routeArea = self.routeArea {
+                cell.mapView.add(route.polyline)
+                cell.mapView.setVisibleMapRect(routeArea, animated: true)
+                recenterMap = false
+            }
+            if recenterMap {
+                cell.centerMap()
+                recenterMap = false
+            }
+
+            if timeToGo != -1 {
+                cell.routeButton.setTitle("\(timeToGo) min", for: .normal)
+            }
+
+            return cell
+        } else if loading == true {
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingCellTableViewCell // swiftlint:disable:this force_cast
 
             cell.activityIndicator.stopAnimating()
@@ -774,7 +810,7 @@ extension DeparturesTableViewController {
             cell.activityIndicator.startAnimating()
 
             return cell
-        } else if indexPath.section == 0 && offline {
+        } else if indexPath.section == 1 && offline {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
 
             cell.backgroundColor = AppValues.primaryColor
@@ -785,7 +821,7 @@ extension DeparturesTableViewController {
             cell.imageView?.image = #imageLiteral(resourceName: "globe").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = nil
             return cell
-        } else if offline && notDownloaded && indexPath.section == 1 {
+        } else if offline && notDownloaded && indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
 
             cell.backgroundColor = AppValues.primaryColor
@@ -796,7 +832,7 @@ extension DeparturesTableViewController {
             cell.imageView?.image = #imageLiteral(resourceName: "cloudWarning").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = nil
             return cell
-        } else if offline && indexPath.section == 1 && noMoreTransport {
+        } else if offline && indexPath.section == 2 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
 
             cell.backgroundColor = AppValues.primaryColor
@@ -807,7 +843,7 @@ extension DeparturesTableViewController {
             cell.imageView?.image = #imageLiteral(resourceName: "bus").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = nil
             return cell
-        } else if (offline && indexPath.section == 1) || (!offline && indexPath.section == 0) {
+        } else if (offline && indexPath.section == 2) || (!offline && indexPath.section == 1) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath) // swiftlint:disable:this force_cast
 
             cell.backgroundColor = AppValues.primaryColor
@@ -818,7 +854,7 @@ extension DeparturesTableViewController {
             cell.imageView?.image = #imageLiteral(resourceName: "filter").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
             return cell
-        } else if !offline && indexPath.section == 0 && noMoreTransport {
+        } else if !offline && indexPath.section == 1 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
 
             cell.backgroundColor = AppValues.primaryColor
@@ -917,6 +953,12 @@ extension DeparturesTableViewController {
             return cell
         }
     }
+
+    func showRoute() {
+        recenterMap = true
+        routeActivated = !routeActivated
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    }
 }
 
 extension DeparturesTableViewController: UIViewControllerPreviewingDelegate {
@@ -943,5 +985,45 @@ extension DeparturesTableViewController: UIViewControllerPreviewingDelegate {
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         show(viewControllerToCommit, sender: self)
+    }
+}
+
+extension DeparturesTableViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let route = self.route else {
+            return MKPolylineRenderer()
+        }
+        let renderer = MKPolylineRenderer(polyline: route.polyline)
+
+        renderer.lineWidth = 4
+
+        if AppValues.primaryColor.contrast == .white {
+            renderer.strokeColor = AppValues.primaryColor
+        } else {
+            renderer.strokeColor = AppValues.textColor
+        }
+
+        return renderer
+    }
+
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stop!.location.coordinate, addressDictionary: nil))
+        request.requestsAlternateRoutes = false
+        request.transportType = .walking
+
+        let directions = MKDirections(request: request)
+
+        directions.calculate {response, _ in
+            guard let route = response?.routes.first else { return }
+
+            self.route = route
+
+            self.timeToGo = Int(userLocation.location!.distance(from: self.stop!.location) / 5000 * 60)
+            self.routeArea = route.polyline.boundingMapRect
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        }
     }
 }

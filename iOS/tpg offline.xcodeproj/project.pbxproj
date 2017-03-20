@@ -75,7 +75,6 @@
 		ADC734301D6890C500296449 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733CB1D6890C500296449 /* SwitchTableViewCell.swift */; };
 		ADC734311D6890C500296449 /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733CC1D6890C500296449 /* ThemeCollectionViewCell.swift */; };
 		ADC734321D6890C500296449 /* DeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733CE1D6890C500296449 /* DeparturesTableViewController.swift */; };
-		ADC734331D6890C500296449 /* RouteToStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733CF1D6890C500296449 /* RouteToStopViewController.swift */; };
 		ADC734341D6890C500296449 /* SeeAllDeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733D01D6890C500296449 /* SeeAllDeparturesViewController.swift */; };
 		ADC734351D6890C500296449 /* StopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733D11D6890C500296449 /* StopsTableViewController.swift */; };
 		ADC734361D6890C500296449 /* ThermometerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733D21D6890C500296449 /* ThermometerTableViewController.swift */; };
@@ -114,6 +113,7 @@
 		ADC734951D68917D00296449 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734941D68917D00296449 /* FSCalendar.framework */; };
 		ADC734991D68918500296449 /* Onboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734981D68918500296449 /* Onboard.framework */; };
 		ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */; };
+		ADE62F571E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE62F561E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift */; };
 		ADFAA2901E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA28F1E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift */; };
 		ADFAA2921E723CF200C85F87 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA2911E723CF200C85F87 /* HeaderCollectionView.swift */; };
 		ADFCC15A1DF8734700818CB5 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCC1591DF8734700818CB5 /* UserDefaultsKeys.swift */; };
@@ -186,7 +186,6 @@
 		AD21622B1DBCE4EC009801B9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AD2162331DBCE809009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Incidents.storyboard; sourceTree = "<group>"; };
 		AD2162381DBCE8C8009801B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
-		AD38A66B1E74D0EF0022C6F2 /* TKSwitcherCollection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TKSwitcherCollection.framework; path = Carthage/Build/iOS/TKSwitcherCollection.framework; sourceTree = "<group>"; };
 		AD38A6771E74EE360022C6F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD38A6791E74EE3A0022C6F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD38A67A1E74EE3B0022C6F2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -210,7 +209,6 @@
 		AD6383911E74896300213C48 /* VHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VHUD.framework; path = Carthage/Build/iOS/VHUD.framework; sourceTree = "<group>"; };
 		AD6383971E7492D900213C48 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD6383991E74BA3200213C48 /* FilterDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDeparturesTableViewController.swift; sourceTree = "<group>"; };
-		AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesomeKit.framework; path = Carthage/Build/iOS/FontAwesomeKit.framework; sourceTree = "<group>"; };
 		AD834B291E6E0DAE0028C38D /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		AD8924981D84479D00F5FC20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "tpg offline UITests/Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = "tpg offline UITests/SnapshotHelper.swift"; sourceTree = SOURCE_ROOT; };
@@ -268,7 +266,6 @@
 		ADC733CB1D6890C500296449 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		ADC733CC1D6890C500296449 /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADC733CE1D6890C500296449 /* DeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeparturesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		ADC733CF1D6890C500296449 /* RouteToStopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteToStopViewController.swift; sourceTree = "<group>"; };
 		ADC733D01D6890C500296449 /* SeeAllDeparturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllDeparturesViewController.swift; sourceTree = "<group>"; };
 		ADC733D11D6890C500296449 /* StopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
 		ADC733D21D6890C500296449 /* ThermometerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermometerTableViewController.swift; sourceTree = "<group>"; };
@@ -314,11 +311,11 @@
 		ADC734941D68917D00296449 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
 		ADC734981D68918500296449 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = Carthage/Build/iOS/Onboard.framework; sourceTree = "<group>"; };
 		ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		ADE62F561E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionStopTableViewCell.swift; sourceTree = "<group>"; };
 		ADF767581D7C5E3D00B6C0B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		ADF767591D7C5E4000B6C0B4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		ADFAA28F1E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADFAA2911E723CF200C85F87 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
-		ADFB5E701DC2617A00BFFB10 /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		ADFCC1591DF8734700818CB5 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -472,6 +469,7 @@
 				ADFAA28F1E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift */,
 				ADFAA2911E723CF200C85F87 /* HeaderCollectionView.swift */,
 				AD0211AE1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift */,
+				ADE62F561E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -480,7 +478,6 @@
 			isa = PBXGroup;
 			children = (
 				ADC733CE1D6890C500296449 /* DeparturesTableViewController.swift */,
-				ADC733CF1D6890C500296449 /* RouteToStopViewController.swift */,
 				ADC733D01D6890C500296449 /* SeeAllDeparturesViewController.swift */,
 				ADC733D11D6890C500296449 /* StopsTableViewController.swift */,
 				ADC733D21D6890C500296449 /* ThermometerTableViewController.swift */,
@@ -618,23 +615,20 @@
 		ADC7348B1D68916A00296449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD38A66B1E74D0EF0022C6F2 /* TKSwitcherCollection.framework */,
 				AD6383911E74896300213C48 /* VHUD.framework */,
 				AD63838F1E7486B200213C48 /* SwiftyJSON.framework */,
 				AD63838D1E74869500213C48 /* SwiftLocation.framework */,
 				AD63838B1E7485E000213C48 /* SwiftyJSON.framework */,
 				AD834B291E6E0DAE0028C38D /* SCLAlertView.framework */,
+				ADC734941D68917D00296449 /* FSCalendar.framework */,
 				AD52682B1E6CAF2D00A27F84 /* NVActivityIndicatorView.framework */,
 				AD5268291E6CAA6E00A27F84 /* DGRunkeeperSwitch.framework */,
 				AD5268271E6CA78A00A27F84 /* DGElasticPullToRefresh.framework */,
 				AD5268251E6CA76B00A27F84 /* AKPickerView.framework */,
 				ADA469441E0556E700FEA198 /* libicucore.tbd */,
 				ADA4688C1E054FB500FEA198 /* Firebase */,
-				ADFB5E701DC2617A00BFFB10 /* Chameleon.framework */,
 				AD9A8C621DC2323C0021C7CD /* Alamofire.framework */,
 				AD21622B1DBCE4EC009801B9 /* Alamofire.framework */,
-				AD6F205F1D6898C800DEF1F0 /* FontAwesomeKit.framework */,
-				ADC734941D68917D00296449 /* FSCalendar.framework */,
 				ADC734981D68918500296449 /* Onboard.framework */,
 				AD500A521E0C79FB00253121 /* NotificationCenter.framework */,
 			);
@@ -937,7 +931,7 @@
 				ADC734591D6890C500296449 /* SelectDefaultTabBarItem.swift in Sources */,
 				ADC7342A1D6890C500296449 /* DetailRouteTableViewCell.swift in Sources */,
 				ADC734201D6890C500296449 /* Route.swift in Sources */,
-				ADC734331D6890C500296449 /* RouteToStopViewController.swift in Sources */,
+				ADE62F571E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift in Sources */,
 				ADC7342F1D6890C500296449 /* StopImageTableViewCell.swift in Sources */,
 				ADC734261D6890C500296449 /* WatchSessionManager.swift in Sources */,
 				ADC734391D6890C500296449 /* UIKitExtension.swift in Sources */,

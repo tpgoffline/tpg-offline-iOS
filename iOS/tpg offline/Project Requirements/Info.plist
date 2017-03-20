@@ -28,7 +28,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>10</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -52,28 +52,28 @@
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.dacostafaro.3Dtouch.maps</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Plans</string>
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>map3DTouch</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Plans</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.dacostafaro.3Dtouch.maps</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.dacostafaro.3Dtouch.routes</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Itinéraires</string>
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>routes3DTouch</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Itinéraires</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.dacostafaro.3Dtouch.routes</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.dacostafaro.3Dtouch.incidents</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Incidents</string>
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>warning3DTouch</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Incidents</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.dacostafaro.3Dtouch.incidents</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>

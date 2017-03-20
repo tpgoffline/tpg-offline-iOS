@@ -9,12 +9,11 @@
 import UIKit
 
 class MapsCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapsImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
     }
-
 }
