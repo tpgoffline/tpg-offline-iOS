@@ -18,6 +18,7 @@ class SeeAllDeparturesViewController: UIViewController {
     @IBOutlet weak var departuresCollectionView: UICollectionView!
     @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var noDeparturesLabel: UILabel!
 
     var line = "1"
     var direction = "Jar.-Botanique"
@@ -67,6 +68,8 @@ class SeeAllDeparturesViewController: UIViewController {
         hourPicker.delegate = self
         hourPicker.dataSource = self
 
+        self.noDeparturesLabel.isHidden = true
+
         refresh()
         refreshTheme()
     }
@@ -106,6 +109,11 @@ class SeeAllDeparturesViewController: UIViewController {
         hourPicker.textColor = AppValues.textColor
         hourPicker.highlightedTextColor = AppValues.textColor
         hourPicker.reloadData()
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
+                                                                 style: UIBarButtonItemStyle.done,
+                                                                 target: self,
+                                                                 action: #selector(refresh))
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,6 +121,9 @@ class SeeAllDeparturesViewController: UIViewController {
     }
 
     func refresh() {
+        self.departuresCollectionView.isHidden = false
+        self.noDeparturesLabel.isHidden = true
+
         DispatchQueue.main.async {
             self.departuresList = []
 
@@ -268,6 +279,13 @@ class SeeAllDeparturesViewController: UIViewController {
                                 })
                         }
                     }
+                    self.hourPicker.reloadData()
+                    self.departuresCollectionView.reloadData()
+                    if self.hoursList.isEmpty {
+                        self.departuresCollectionView.isHidden = true
+                        self.noDeparturesLabel.isHidden = false
+                        self.noDeparturesLabel.textColor = AppValues.textColor
+                    }
                 }
             } else {
                 self.departuresList = self.initialDeparturesList.filter({ (depart) -> Bool in
@@ -276,9 +294,14 @@ class SeeAllDeparturesViewController: UIViewController {
                     }
                     return false
                 })
+                self.hourPicker.reloadData()
+                self.departuresCollectionView.reloadData()
+                if self.hoursList.isEmpty {
+                    self.departuresCollectionView.isHidden = true
+                    self.noDeparturesLabel.isHidden = false
+                    self.noDeparturesLabel.textColor = AppValues.textColor
+                }
             }
-            self.hourPicker.reloadData()
-            self.departuresCollectionView.reloadData()
         }
     }
 }

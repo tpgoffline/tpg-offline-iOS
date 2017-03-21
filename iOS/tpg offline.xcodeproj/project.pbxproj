@@ -34,6 +34,7 @@
 		AD6383901E7486B200213C48 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63838F1E7486B200213C48 /* SwiftyJSON.framework */; };
 		AD6383921E74896300213C48 /* VHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD6383911E74896300213C48 /* VHUD.framework */; };
 		AD63839A1E74BA3300213C48 /* FilterDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6383991E74BA3200213C48 /* FilterDeparturesTableViewController.swift */; };
+		AD7331D51E80AD600087D944 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7331D41E80AD600087D944 /* DepartureTableViewCell.swift */; };
 		AD834B2A1E6E0DAE0028C38D /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD834B291E6E0DAE0028C38D /* SCLAlertView.framework */; };
 		AD89249C1D84479D00F5FC20 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */; };
 		AD89249D1D84479D00F5FC20 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89249A1D84479D00F5FC20 /* tpg_offline_UITests.swift */; };
@@ -65,7 +66,6 @@
 		ADC734261D6890C500296449 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733C01D6890C500296449 /* WatchSessionManager.swift */; };
 		ADC734271D6890C500296449 /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733C21D6890C500296449 /* AllDeparturesCollectionViewCell.swift */; };
 		ADC734281D6890C500296449 /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733C31D6890C500296449 /* ButtonCollectionViewCell.swift */; };
-		ADC734291D6890C500296449 /* DeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733C41D6890C500296449 /* DeparturesTableViewCell.swift */; };
 		ADC7342A1D6890C500296449 /* DetailRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733C51D6890C500296449 /* DetailRouteTableViewCell.swift */; };
 		ADC7342B1D6890C500296449 /* FavoriteRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733C61D6890C500296449 /* FavoriteRouteTableViewCell.swift */; };
 		ADC7342C1D6890C500296449 /* LoadingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733C71D6890C500296449 /* LoadingCellTableViewCell.swift */; };
@@ -209,6 +209,7 @@
 		AD6383911E74896300213C48 /* VHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VHUD.framework; path = Carthage/Build/iOS/VHUD.framework; sourceTree = "<group>"; };
 		AD6383971E7492D900213C48 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD6383991E74BA3200213C48 /* FilterDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDeparturesTableViewController.swift; sourceTree = "<group>"; };
+		AD7331D41E80AD600087D944 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		AD834B291E6E0DAE0028C38D /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		AD8924981D84479D00F5FC20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "tpg offline UITests/Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD8924991D84479D00F5FC20 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = "tpg offline UITests/SnapshotHelper.swift"; sourceTree = SOURCE_ROOT; };
@@ -256,7 +257,6 @@
 		ADC733C01D6890C500296449 /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		ADC733C21D6890C500296449 /* AllDeparturesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADC733C31D6890C500296449 /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
-		ADC733C41D6890C500296449 /* DeparturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesTableViewCell.swift; sourceTree = "<group>"; };
 		ADC733C51D6890C500296449 /* DetailRouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailRouteTableViewCell.swift; sourceTree = "<group>"; };
 		ADC733C61D6890C500296449 /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
 		ADC733C71D6890C500296449 /* LoadingCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -457,7 +457,6 @@
 			children = (
 				ADC733C21D6890C500296449 /* AllDeparturesCollectionViewCell.swift */,
 				ADC733C31D6890C500296449 /* ButtonCollectionViewCell.swift */,
-				ADC733C41D6890C500296449 /* DeparturesTableViewCell.swift */,
 				ADC733C51D6890C500296449 /* DetailRouteTableViewCell.swift */,
 				ADC733C61D6890C500296449 /* FavoriteRouteTableViewCell.swift */,
 				ADC733C71D6890C500296449 /* LoadingCellTableViewCell.swift */,
@@ -470,6 +469,7 @@
 				ADFAA2911E723CF200C85F87 /* HeaderCollectionView.swift */,
 				AD0211AE1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift */,
 				ADE62F561E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift */,
+				AD7331D41E80AD600087D944 /* DepartureTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -942,9 +942,9 @@
 				AD1BE0041DBE3222008F33A3 /* SplashScreenViewController.swift in Sources */,
 				ADC7342D1D6890C500296449 /* RoutesListTableViewCell.swift in Sources */,
 				ADC734521D6890C500296449 /* RouteDetailTableViewController.swift in Sources */,
-				ADC734291D6890C500296449 /* DeparturesTableViewCell.swift in Sources */,
 				ADC734231D6890C500296449 /* Stop.swift in Sources */,
 				ADC734241D6890C500296449 /* Thermometer.swift in Sources */,
+				AD7331D51E80AD600087D944 /* DepartureTableViewCell.swift in Sources */,
 				ADFCC15A1DF8734700818CB5 /* UserDefaultsKeys.swift in Sources */,
 				ADC734341D6890C500296449 /* SeeAllDeparturesViewController.swift in Sources */,
 				ADC734281D6890C500296449 /* ButtonCollectionViewCell.swift in Sources */,

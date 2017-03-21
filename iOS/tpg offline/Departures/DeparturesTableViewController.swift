@@ -37,6 +37,7 @@ class DeparturesTableViewController: UITableViewController {
     var routeArea: MKMapRect?
     var routeActivated: Bool = false
     var recenterMap: Bool = true
+    var selectedIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -245,9 +246,9 @@ class DeparturesTableViewController: UITableViewController {
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "showLigne" && departuresList[tableView.indexPathForSelectedRow!.row].leftTime == "no more" {
+        if identifier == "showLine" && departuresList[selectedIndexPath!.row].leftTime == "no more" {
             return false
-        } else if offline && tableView.indexPathForSelectedRow!.section == 2 {
+        } else if offline && selectedIndexPath!.section == 2 {
             return false
         } else {
             return true
@@ -383,18 +384,12 @@ class DeparturesTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showLigne" {
+        if segue.identifier == "showLine" {
             if let thermometerViewController = (segue.destination) as? ThermometerTableViewController {
-                thermometerViewController.departure = departuresList[(tableView.indexPathForSelectedRow?.row)!]
+                thermometerViewController.departure = departuresList[(selectedIndexPath?.row)!]
             }
         } else if segue.identifier == "showAllDepartures" {
-            let indexPath: IndexPath
-            if sender as? IndexPath != nil {
-                // The force cast error was disabled due to pre-verification check that occured before
-                indexPath = sender as! IndexPath // swiftlint:disable:this force_cast
-            } else {
-                indexPath = IndexPath(row: 0, section: 0)
-            }
+            let indexPath = selectedIndexPath ?? IndexPath(row: 0, section: 0)
             if let seeAllDeparturesViewController = (segue.destination) as? SeeAllDeparturesViewController {
                 seeAllDeparturesViewController.stop = self.stop!
                 seeAllDeparturesViewController.line = self.departuresList[indexPath.row].line
@@ -407,6 +402,7 @@ class DeparturesTableViewController: UITableViewController {
     func refresh() {
         self.loading = true
         self.notDownloaded = false
+        self.selectedIndexPath = nil
         self.tableView.reloadData()
         departuresList = []
         initialDeparturesList = []
@@ -625,105 +621,100 @@ extension DeparturesTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && routeActivated {
+        if selectedIndexPath == indexPath {
+            return 176
+        } else if indexPath.section == 0 && routeActivated {
             return 300
         } else if indexPath.section == 0 {
             return 150
-        } else if loading == true {
-            return 60
-        } else if offline && notDownloaded {
-            return 60
-        } else if offline && indexPath.section == 0 {
-            return 60
-        } else if offline && indexPath.section == 1 && noMoreTransport {
-            return 60
-        } else if !offline && indexPath.section == 0 && noMoreTransport {
-            return 60
         }
         return 44
-    }
-
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let timerAction = UITableViewRowAction(style: .default, title: "Rappeler".localized) { (action, indexPath) in
-            let alertView = SCLAlertView()
-            if self.departuresList[indexPath.row].leftTime == "0" {
-                alertView.showWarning(
-                    "Le bus arrive".localized,
-                    subTitle: "Dépêchez vous, vous allez le rater !".localized,
-                    closeButtonTitle: "OK".localized,
-                    duration: 10,
-                    feedbackType: .notificationWarning)
-            } else {
-                alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
-                    self.scheduleNotification(
-                        self.departuresList[indexPath.row].timestamp,
-                        before: 0,
-                        line: self.departuresList[indexPath.row].line,
-                        direction: self.departuresList[indexPath.row].direction)
-
-                })
-                if Int(self.departuresList[indexPath.row].leftTime)! > 5 {
-                    alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(
-                            self.departuresList[indexPath.row].timestamp,
-                            before: 5,
-                            line: self.departuresList[indexPath.row].line,
-                            direction: self.departuresList[indexPath.row].direction)
-                    })
-                }
-                if Int(self.departuresList[indexPath.row].leftTime)! > 10 {
-                    alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
-                        self.scheduleNotification(
-                            self.departuresList[indexPath.row].timestamp,
-                            before: 10,
-                            line: self.departuresList[indexPath.row].line,
-                            direction: self.departuresList[indexPath.row].direction)
-                    })
-                }
-                alertView.addButton("Autre".localized, action: { () -> Void in
-                    alertView.hideView()
-                    let customValueAlert = SCLAlertView()
-                    let txt = customValueAlert.addTextField("Nombre de minutes".localized)
-                    txt.keyboardType = .numberPad
-                    txt.becomeFirstResponder()
-                    customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
-                        if Int(self.departuresList[indexPath.row].leftTime)! < Int(txt.text!)! {
-                            customValueAlert.hideView()
-                            SCLAlertView().showError("Il y a un problème".localized,
-                                                     subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized,
-                                                     closeButtonTitle: "OK".localized,
-                                                     duration: 10,
-                                                     feedbackType: .notificationError)
-
-                        } else {
-                            self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: Int(txt.text!)!, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
-                            customValueAlert.hideView()
-                        }
-                    })
-                    customValueAlert.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: #imageLiteral(resourceName: "clock").maskWithColor(color: .white))
-                })
-                alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: #imageLiteral(resourceName: "clock").maskWithColor(color: .white))
-                tableView.setEditing(false, animated: true)
-            }
-        }
-        timerAction.backgroundColor = UIColor.flatBlue
-
-        let voirToutAction = UITableViewRowAction(style: .default, title: "Voir tout".localized) { (_, indexPath) in
-            self.performSegue(withIdentifier: "showAllDepartures", sender: indexPath)
-        }
-        voirToutAction.backgroundColor = UIColor.flatGreen
-        return [voirToutAction, timerAction]
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (offline && indexPath.section == 2) || (!offline && indexPath.section == 1) {
             performSegue(withIdentifier: "showFilterDepartures", sender: self)
+        } else if canSelect(indexPath: indexPath) {
+            let previousIndexPath = selectedIndexPath
+            if selectedIndexPath == indexPath {
+                selectedIndexPath = nil
+            } else {
+                selectedIndexPath = indexPath
+            }
+            if let previousIndexPath = previousIndexPath {
+                tableView.reloadRows(at: [previousIndexPath, indexPath], with: .automatic)
+            } else {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         }
     }
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+    func askForReminder() {
+        guard let indexPath = selectedIndexPath else {
+            return
+        }
+        let alertView = SCLAlertView()
+        if self.departuresList[indexPath.row].leftTime == "0" {
+            alertView.showWarning(
+                "Le bus arrive".localized,
+                subTitle: "Dépêchez vous, vous allez le rater !".localized,
+                closeButtonTitle: "OK".localized,
+                duration: 10,
+                feedbackType: .notificationWarning)
+        } else {
+            alertView.addButton("A l'heure du départ".localized, action: { () -> Void in
+                self.scheduleNotification(
+                    self.departuresList[indexPath.row].timestamp,
+                    before: 0,
+                    line: self.departuresList[indexPath.row].line,
+                    direction: self.departuresList[indexPath.row].direction)
+
+            })
+            if Int(self.departuresList[indexPath.row].leftTime)! > 5 {
+                alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
+                    self.scheduleNotification(
+                        self.departuresList[indexPath.row].timestamp,
+                        before: 5,
+                        line: self.departuresList[indexPath.row].line,
+                        direction: self.departuresList[indexPath.row].direction)
+                })
+            }
+            if Int(self.departuresList[indexPath.row].leftTime)! > 10 {
+                alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
+                    self.scheduleNotification(
+                        self.departuresList[indexPath.row].timestamp,
+                        before: 10,
+                        line: self.departuresList[indexPath.row].line,
+                        direction: self.departuresList[indexPath.row].direction)
+                })
+            }
+            alertView.addButton("Autre".localized, action: { () -> Void in
+                alertView.hideView()
+                let customValueAlert = SCLAlertView()
+                let txt = customValueAlert.addTextField("Nombre de minutes".localized)
+                txt.keyboardType = .numberPad
+                txt.becomeFirstResponder()
+                customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
+                    if Int(self.departuresList[indexPath.row].leftTime)! < Int(txt.text!)! {
+                        customValueAlert.hideView()
+                        SCLAlertView().showError("Il y a un problème".localized,
+                                                 subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized,
+                                                 closeButtonTitle: "OK".localized,
+                                                 duration: 10,
+                                                 feedbackType: .notificationError)
+
+                    } else {
+                        self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: Int(txt.text!)!, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
+                        customValueAlert.hideView()
+                    }
+                })
+                customValueAlert.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: #imageLiteral(resourceName: "clock").maskWithColor(color: .white))
+            })
+            alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: #imageLiteral(resourceName: "clock").maskWithColor(color: .white))
+        }
+    }
+
+    func canSelect(indexPath: IndexPath) -> Bool! {
         if loading == true {
             return false
         } else if offline && notDownloaded {
@@ -866,7 +857,13 @@ extension DeparturesTableViewController {
             cell.accessoryView = nil
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "departArretCell", for: indexPath) as! DeparturesTableViewCell // swiftlint:disable:this force_cast
+            let cell = tableView.dequeueReusableCell(withIdentifier: "departureCell", for: indexPath) as! DepartureTableViewCell // swiftlint:disable:this force_cast
+
+            if AppValues.primaryColor.contrast == .white {
+                cell.backgroundColor = departuresList[indexPath.row].lineBackgroundColor
+            } else {
+                cell.backgroundColor = UIColor.white
+            }
 
             var lineColor = AppValues.textColor
 
@@ -880,6 +877,17 @@ extension DeparturesTableViewController {
                 }
             }
 
+            for imageView in cell.nextImages {
+                imageView.image = UIImage(named: "next")?.maskWithColor(color: lineColor!)
+            }
+            cell.buttonReminder.setTitleColor(lineColor, for: .normal)
+            cell.buttonReminder.addTarget(self, action: #selector(askForReminder), for: .touchUpInside)
+            cell.buttonFollowTrack.setTitleColor(lineColor, for: .normal)
+            cell.buttonSeeAllDepartures.setTitleColor(lineColor, for: .normal)
+            cell.buttonReminder.setImage(#imageLiteral(resourceName: "bell").maskWithColor(color: lineColor!), for: .normal)
+            cell.buttonFollowTrack.setImage(#imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!), for: .normal)
+            cell.buttonSeeAllDepartures.setImage(#imageLiteral(resourceName: "clockSmall").maskWithColor(color: lineColor!), for: .normal)
+
             FIRCrashMessage("Departure: \(departuresList[indexPath.row].describe())")
 
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
@@ -892,12 +900,6 @@ extension DeparturesTableViewController {
             let image = labelToImage(labelPictoLigne)
             cell.linePictogram.image = image
             cell.directionLabel.text = departuresList[indexPath.row].direction
-
-            if AppValues.primaryColor.contrast == .white {
-                cell.backgroundColor = departuresList[indexPath.row].lineBackgroundColor
-            } else {
-                cell.backgroundColor = UIColor.white
-            }
 
             cell.directionLabel.textColor = lineColor
             cell.leftTimeLabel.textColor = lineColor
@@ -948,6 +950,11 @@ extension DeparturesTableViewController {
                     cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
                     cell.leftImage.image = nil
                 }
+            }
+
+            if selectedIndexPath == indexPath {
+                cell.backgroundColor = cell.backgroundColor?.darken(percentage: 0.01)
+                cell.accessoryView = nil
             }
 
             return cell
