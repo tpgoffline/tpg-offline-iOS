@@ -50,8 +50,8 @@ class DeparturesInterfaceController: WKInterfaceController {
                                 line: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
                                 destinationCode: subjson["line"]["destinationCode"].string!,
-                                lineColor: UIColor.white,
-                                lineBackgroundColor: UIColor.white,
+                                lineColor: .white,
+                                lineBackgroundColor: .white,
 
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
@@ -108,8 +108,8 @@ class DeparturesInterfaceController: WKInterfaceController {
                                         line: subJson["ligne"].string!,
                                         direction: subJson["destination"].string!,
                                         destinationCode: "",
-                                        lineColor: UIColor.white,
-                                        lineBackgroundColor: UIColor.gray,
+                                        lineColor: .white,
+                                        lineBackgroundColor: .gray,
                                         code: nil,
                                         leftTime: "0",
                                         timestamp: subJson["timestamp"].string!
@@ -149,8 +149,8 @@ class DeparturesInterfaceController: WKInterfaceController {
                     line: "",
                     direction: NSLocalizedString("Mode hors ligne", comment: ""),
                     destinationCode: "",
-                    lineColor: UIColor.white,
-                    lineBackgroundColor: UIColor.orange,
+                    lineColor: .white,
+                    lineBackgroundColor: .orange,
                     code: nil,
                     leftTime: "offline",
                     timestamp: ""

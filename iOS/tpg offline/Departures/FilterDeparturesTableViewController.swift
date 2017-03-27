@@ -96,7 +96,7 @@ class FilterDeparturesTableViewController: UITableViewController {
                 cell.backgroundColor = AppValues.linesBackgroundColor[line]
                 view.backgroundColor = AppValues.linesBackgroundColor[line]?.darken(percentage: 0.1)
             } else {
-                cell.backgroundColor = UIColor.white
+                cell.backgroundColor = .white
                 view.backgroundColor = UIColor.white.darken(percentage: 0.1)
             }
             cell.selectedBackgroundView = view

@@ -112,10 +112,10 @@ class RouteDetailTableViewController: UITableViewController {
                 cell.directionLabel.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].direction
             } else {
                 textColor = UIColor(red:0.93, green:0, blue:0.01, alpha:1)
-                cell.backgroundColor = UIColor.white
+                cell.backgroundColor = .white
 
                 if ActualRoutes.routeResult[actualRoute].connections[indexPath.row].isTpg {
-                    cell.backgroundColor = UIColor.white
+                    cell.backgroundColor = .white
 
                     let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
                     labelPictoLigne.text = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].line
@@ -369,7 +369,7 @@ class RouteDetailTableViewController: UITableViewController {
             }
 
         }
-        timerAction.backgroundColor = UIColor.flatBlue
+        timerAction.backgroundColor = .flatBlue
         return [timerAction]
     }
 

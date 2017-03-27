@@ -420,8 +420,8 @@ class DeparturesTableViewController: UITableViewController {
                                 line: subjson["line"]["lineCode"].string!,
                                 direction: subjson["line"]["destinationName"].string!,
                                 destinationCode: subjson["line"]["destinationCode"].string!,
-                                lineColor: UIColor.white,
-                                lineBackgroundColor: UIColor.flatGray,
+                                lineColor: .white,
+                                lineBackgroundColor: .flatGray,
 
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
@@ -510,8 +510,8 @@ class DeparturesTableViewController: UITableViewController {
                                     line: subJson["ligne"].string!,
                                     direction: subJson["destination"].string!,
                                     destinationCode: "",
-                                    lineColor: UIColor.white,
-                                    lineBackgroundColor: UIColor.flatGray,
+                                    lineColor: .white,
+                                    lineBackgroundColor: .flatGray,
                                     code: nil,
                                     leftTime: "0",
                                     timestamp: subJson["timestamp"].string!
@@ -784,15 +784,15 @@ extension DeparturesTableViewController {
             cell.activityIndicator.stopAnimating()
 
             if AppValues.primaryColor.contrast == .white {
-                cell.backgroundColor = UIColor.flatBlue
-                cell.titleLabel?.textColor = UIColor.white
-                cell.subTitleLabel?.textColor = UIColor.white
-                cell.activityIndicator.color = UIColor.white
+                cell.backgroundColor = .flatBlue
+                cell.titleLabel?.textColor = .white
+                cell.subTitleLabel?.textColor = .white
+                cell.activityIndicator.color = .white
             } else {
-                cell.backgroundColor = UIColor.white
-                cell.titleLabel?.textColor = UIColor.flatBlue
-                cell.subTitleLabel?.textColor = UIColor.flatBlue
-                cell.activityIndicator.color = UIColor.flatBlue
+                cell.backgroundColor = .white
+                cell.titleLabel?.textColor = .flatBlue
+                cell.subTitleLabel?.textColor = .flatBlue
+                cell.activityIndicator.color = .flatBlue
             }
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
@@ -862,7 +862,7 @@ extension DeparturesTableViewController {
             if AppValues.primaryColor.contrast == .white {
                 cell.backgroundColor = departuresList[indexPath.row].lineBackgroundColor
             } else {
-                cell.backgroundColor = UIColor.white
+                cell.backgroundColor = .white
             }
 
             var lineColor = AppValues.textColor

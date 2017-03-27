@@ -137,8 +137,8 @@ class SeeAllDeparturesViewController: UIViewController {
                                     line: subjson["line"]["lineCode"].string!,
                                     direction: subjson["line"]["destinationName"].string!,
                                     destinationCode: subjson["line"]["destinationCode"].string!,
-                                    lineColor: UIColor.white,
-                                    lineBackgroundColor: UIColor.flatGray,
+                                    lineColor: .white,
+                                    lineBackgroundColor: .flatGray,
 
                                     code: String(subjson["departureCode"].int ?? 0),
                                     leftTime: subjson["waitingTime"].string!,
@@ -225,8 +225,8 @@ class SeeAllDeparturesViewController: UIViewController {
                                             line: subJson["ligne"].string!,
                                             direction: subJson["destination"].string!,
                                             destinationCode: subJson["line"]["destinationCode"].string!,
-                                            lineColor: UIColor.white,
-                                            lineBackgroundColor: UIColor.flatGrayDark,
+                                            lineColor: .white,
+                                            lineBackgroundColor: .flatGrayDark,
                                             code: nil,
                                             leftTime: "0",
                                             timestamp: subJson["timestamp"].string!

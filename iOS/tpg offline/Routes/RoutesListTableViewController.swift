@@ -207,15 +207,15 @@ class RoutesListTableViewController: UITableViewController {
             cell.activityIndicator.stopAnimating()
 
             if AppValues.primaryColor.contrast == .white {
-                cell.backgroundColor = UIColor.flatBlue
-                cell.titleLabel?.textColor = UIColor.white
-                cell.subTitleLabel?.textColor = UIColor.white
-                cell.activityIndicator.color = UIColor.white
+                cell.backgroundColor = .flatBlue
+                cell.titleLabel?.textColor = .white
+                cell.subTitleLabel?.textColor = .white
+                cell.activityIndicator.color = .white
             } else {
-                cell.backgroundColor = UIColor.white
-                cell.titleLabel?.textColor = UIColor.flatBlue
-                cell.subTitleLabel?.textColor = UIColor.flatBlue
-                cell.activityIndicator.color = UIColor.flatBlue
+                cell.backgroundColor = .white
+                cell.titleLabel?.textColor = .flatBlue
+                cell.subTitleLabel?.textColor = .flatBlue
+                cell.activityIndicator.color = .flatBlue
             }
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
@@ -226,35 +226,30 @@ class RoutesListTableViewController: UITableViewController {
             return cell
         } else if noNetwork {
             let cell = tableView.dequeueReusableCell(withIdentifier: "listeItineaireCell", for: indexPath) as! RoutesListTableViewCell // swiftlint:disable:this force_cast
+            cell.textLabel?.text = "Pas de réseau !".localized
+
             if AppValues.primaryColor.contrast == .white {
-                cell.textLabel?.textColor = UIColor.white
-                cell.detailTextLabel?.textColor = UIColor.white
-                cell.backgroundColor = UIColor.flatRedDark
-
+                cell.textLabel?.textColor = .white
                 cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .white)
+                cell.backgroundColor = .flatYellowDark
             } else {
-                cell.textLabel?.textColor = UIColor.flatRedDark
-                cell.detailTextLabel?.textColor = UIColor.flatRedDark
-                cell.backgroundColor = UIColor.flatWhite
-
-                cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .flatRedDark)
+                cell.textLabel?.textColor = .flatYellowDark
+                cell.backgroundColor = .white
+                cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .flatYellowDark)
             }
-
-            cell.textLabel?.text = "Pas de réseau".localized
-
             return cell
         } else if ActualRoutes.routeResult.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "listeItineaireCell", for: indexPath) as! RoutesListTableViewCell // swiftlint:disable:this force_cast
             if AppValues.primaryColor.contrast == .white {
-                cell.textLabel?.textColor = UIColor.white
-                cell.detailTextLabel?.textColor = UIColor.white
-                cell.backgroundColor = UIColor.flatRedDark
+                cell.textLabel?.textColor = .white
+                cell.detailTextLabel?.textColor = .white
+                cell.backgroundColor = .flatRedDark
 
                 cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .white)
             } else {
-                cell.textLabel?.textColor = UIColor.flatRedDark
-                cell.detailTextLabel?.textColor = UIColor.flatRedDark
-                cell.backgroundColor = UIColor.flatWhite
+                cell.textLabel?.textColor = .flatRedDark
+                cell.detailTextLabel?.textColor = .flatRedDark
+                cell.backgroundColor = .white
 
                 cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .flatRedDark)
             }
@@ -492,7 +487,7 @@ class RoutesListTableViewController: UITableViewController {
             }
 
         }
-        timerAction.backgroundColor = UIColor.flatBlue
+        timerAction.backgroundColor = .flatBlue
         return [timerAction]
     }
 

@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
 
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.delegate = self
-        scrollView.backgroundColor = UIColor.white
+        scrollView.backgroundColor = .white
         scrollView.contentSize = imageView.bounds.size
         scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         setZoomScale()
@@ -37,7 +37,7 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refreshTheme()
-		view.backgroundColor = UIColor.white
+		view.backgroundColor = .white
     }
 }
 

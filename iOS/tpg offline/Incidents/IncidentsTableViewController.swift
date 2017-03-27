@@ -38,8 +38,8 @@ class IncidentsTableViewController: UITableViewController {
         tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
-        navigationController?.navigationBar.barTintColor = UIColor.flatOrangeDark
-        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = .flatOrangeDark
+        navigationController?.navigationBar.tintColor = .white
 
         var barButtonsItems: [UIBarButtonItem] = []
 
@@ -98,6 +98,7 @@ class IncidentsTableViewController: UITableViewController {
                             alert.showError("Alamofire", subTitle: "DEBUG - \(error.localizedDescription)", feedbackType: .impactMedium)
                         }
                     #endif
+                    self.loading = false
                     self.error = true
                     self.tableView.reloadData()
                 }
@@ -143,15 +144,15 @@ class IncidentsTableViewController: UITableViewController {
             cell.activityIndicator.stopAnimating()
 
             if AppValues.primaryColor.contrast == .white {
-                cell.backgroundColor = UIColor.flatBlue
-                cell.titleLabel?.textColor = UIColor.white
-                cell.subTitleLabel?.textColor = UIColor.white
-                cell.activityIndicator.color = UIColor.white
+                cell.backgroundColor = .flatBlue
+                cell.titleLabel?.textColor = .white
+                cell.subTitleLabel?.textColor = .white
+                cell.activityIndicator.color = .white
             } else {
-                cell.backgroundColor = UIColor.white
-                cell.titleLabel?.textColor = UIColor.flatBlue
-                cell.subTitleLabel?.textColor = UIColor.flatBlue
-                cell.activityIndicator.color = UIColor.flatBlue
+                cell.backgroundColor = .white
+                cell.titleLabel?.textColor = .flatBlue
+                cell.subTitleLabel?.textColor = .flatBlue
+                cell.activityIndicator.color = .flatBlue
             }
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
@@ -178,15 +179,15 @@ class IncidentsTableViewController: UITableViewController {
             }
 
             if AppValues.primaryColor.contrast == .white {
-                cell.textLabel?.textColor = UIColor.black
-                cell.detailTextLabel?.textColor = UIColor.black
-                cell.backgroundColor = UIColor.flatYellow
+                cell.textLabel?.textColor = .black
+                cell.detailTextLabel?.textColor = .black
+                cell.backgroundColor = .flatYellow
 
                 cell.imageView?.image = #imageLiteral(resourceName: "smile").maskWithColor(color: .black)
             } else {
-                cell.textLabel?.textColor = UIColor.flatYellowDark
-                cell.detailTextLabel?.textColor = UIColor.flatYellowDark
-                cell.backgroundColor = UIColor.white
+                cell.textLabel?.textColor = .flatYellowDark
+                cell.detailTextLabel?.textColor = .flatYellowDark
+                cell.backgroundColor = .white
 
                 cell.imageView?.image = #imageLiteral(resourceName: "smile").maskWithColor(color: .flatYellowDark)
             }
@@ -198,16 +199,16 @@ class IncidentsTableViewController: UITableViewController {
             cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau. Il est impossible de charger les perturbations en cours sur le réseau tpg sans réseau.".localized
 
             if AppValues.primaryColor.contrast == .white {
-                cell.textLabel?.textColor = UIColor.white
-                cell.detailTextLabel?.textColor = UIColor.white
-                cell.backgroundColor = UIColor.flatYellowDark
+                cell.textLabel?.textColor = .white
+                cell.detailTextLabel?.textColor = .white
 
                 cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .white)
+                cell.backgroundColor = .flatYellowDark
             } else {
-                cell.textLabel?.textColor = UIColor.flatYellowDark
-                cell.detailTextLabel?.textColor = UIColor.flatYellowDark
-                cell.backgroundColor = UIColor.flatWhite
+                cell.textLabel?.textColor = .flatYellowDark
+                cell.detailTextLabel?.textColor = .flatYellowDark
 
+                cell.backgroundColor = .white
                 cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: .flatYellowDark)
             }
             return cell

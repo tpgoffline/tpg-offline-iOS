@@ -14,7 +14,7 @@ class ThemesCollectionViewController: UICollectionViewController {
     let themes: [String: [UIColor]] = [
         "Inversé".localized: [.flatOrange, .white],
         "Défaut".localized: [.white, .flatOrangeDark],
-        "Nuit".localized: [.flatNavyBlue, .flatWhite],
+        "Nuit".localized: [.flatNavyBlue, .white],
         "Bleu".localized: [.white, .flatSkyBlue],
         "Vert".localized: [.white, .flatGreenDark],
         "Noir".localized: [.white, .black],

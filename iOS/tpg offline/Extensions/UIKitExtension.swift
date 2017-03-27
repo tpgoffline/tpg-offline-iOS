@@ -113,7 +113,6 @@ extension UICollectionViewController {
 extension UIColor {
 
     // Thanks to Chameleon by ViccAlexander for colors
-    public static let flatWhite = #colorLiteral(red: 0.9254901961, green: 0.9411764706, blue: 0.9450980392, alpha: 1)
     public static let flatOrange = #colorLiteral(red: 0.9, green: 0.492, blue: 0.135, alpha: 1)
     public static let flatOrangeDark = #colorLiteral(red: 0.83, green: 0.332, blue: 0, alpha: 1)
     public static let flatBlue = #colorLiteral(red: 0.315, green: 0.399, blue: 0.63, alpha: 1)
