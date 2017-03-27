@@ -1,5 +1,5 @@
 
-![tpg offline logo](banniere.png)
+![tpg offline logo](banner.png)
 
 [![Build Status](https://travis-ci.org/RemyDCF/tpg-offline.svg?branch=master)](https://travis-ci.org/RemyDCF/tpg-offline)
 
