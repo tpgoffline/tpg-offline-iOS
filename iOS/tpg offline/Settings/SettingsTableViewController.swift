@@ -224,7 +224,7 @@ class SettingsTableViewController: UITableViewController {
 
         let page7 = OnboardingContentViewController (title: "Incidents".localized, body: "Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
 
-        let page8 = OnboardingContentViewController (title: "Rappels".localized, body: "Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
+        let page8 = OnboardingContentViewController (title: "Rappels".localized, body: "Dans les menus Départs et Itinéraires, appuyez sur un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection.".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
 
         let page9 = OnboardingContentViewController (title: "Open Source", body: "tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)".localized, image: nil, buttonText: "Continuer".localized, actionBlock: nil)
 
