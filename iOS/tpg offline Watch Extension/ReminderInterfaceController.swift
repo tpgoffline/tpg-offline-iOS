@@ -20,22 +20,24 @@ class ReminderInterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
-        if let a = context as? Departures {
-            departure = a
+        guard let departure = context as? Departures else {
+            let okAction = WKAlertAction(title: "OK", style: .default) {
+                self.pop()
+            }
+            self.presentAlert(withTitle: NSLocalizedString("Désolé", comment: ""), message: NSLocalizedString("Il n'y a plus de bus pour cette ligne.", comment: ""), preferredStyle: .alert, actions: [okAction])
+            return
         }
 
-        if Int(departure!.leftTime) == 0 {
+        if Int(departure.leftTime) == 0 {
             let okAction = WKAlertAction(title: "OK", style: .default) {
-                DispatchQueue.main.sync {
-                    self.pop()
-                }
+                self.pop()
             }
             self.presentAlert(withTitle: NSLocalizedString("Le bus arrive", comment: ""), message: NSLocalizedString("Dépêchez vous, vous allez le rater !", comment: ""), preferredStyle: .alert, actions: [okAction])
         } else {
 
             var max = 60
-            if Int(departure!.leftTime)! < 60 {
-                max = Int(departure!.leftTime)! - 1
+            if Int(departure.leftTime)! < 60 {
+                max = Int(departure.leftTime)! - 1
             }
 
             for x in 0...max {

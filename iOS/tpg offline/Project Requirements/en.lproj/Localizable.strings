@@ -1,7 +1,8 @@
 "Bonjour" = "Hello";
 
 "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet" = "We can't load all departures because you don't download them and you are not connected to internet";
-
+"Désolé" = "Sorry";
+"Il n'y a plus de bus pour cette ligne." = "There are no more bus for this line.";
 
 /*
  * ./tpg offline/RouteToStopViewController.swift
@@ -198,25 +199,25 @@
 
 "Bienvenue dans tpg offline" = "Welcome tpg offline";
 
-"tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau." = "tpg offline is an application that makes traveling with the Geneva public transport, even without network.";
+"tpg offline est une application qui facilite vos déplacements avec les transports publics genevois, même sans réseau." = "tpg offline is an application that allows you to travel in Geneva by bus and tramay without cellular data.";
 
 "Continuer" = "Next";
 
 "Départs" = "Departures";
 
-"Le menu Départs vous informe des prochains départs pour un arrêt." = "Departures menu tells you the next departures for one stop.";
+"Le menu Départs vous informe des prochains départs pour un arrêt." = "The departures menu shows you the next departures times for your chosen stop.";
 
-"Le Mode offline vous permet de connaitre les horaires à un arrêt même si vous n’avez pas de réseau." = "The offline mode allows you to know the times to a stop even if you do not have a network.";
+"Le Mode offline vous permet de connaitre les horaires à un arrêt même si vous n’avez pas de réseau." = "The offline mode allows you to know the e.t.a to your chosen stop without cellular data.";
 
 "Avertissement" = "Warning";
 
-"Sans réseau, tpg offline ne permet pas d’avoir des horaires garantis ni de connaitre les possibles perturbations du réseau. \rtpg offline ne peut aucunement être tenu pour responsable en cas de retard, d’avance, ni de connection manquée." = "Without network tpg offline does not allow to have guaranteed or to know the possible system disturbances schedules.\rtpg offline can in no way be held responsible for delays, advance, or missed connection.";
+"Sans réseau, tpg offline ne permet pas d’avoir des horaires garantis ni de connaitre les possibles perturbations du réseau. \rtpg offline ne peut aucunement être tenu pour responsable en cas de retard, d’avance, ni de connection manquée." = "Without a network connection, tpg offline does not guarantee accurate system changes.\rtpg offline can in no way be held responsible for delays, advance, or missed connection.";
 
 "J'ai compris, continuer" = "I understand, continue";
 
 "Itinéraires" = "Routes";
 
-"l’application propose un menu Itinéraires. Vous pouvez vous déplacer très facilement grâce à cette fonction." = "The application offers a menu routes. You can move very easily with this feature.";
+"l’application propose un menu Itinéraires. Vous pouvez vous déplacer très facilement grâce à cette fonction." = "The application offers a routes menu. You can move very easily with this feature.";
 
 "Plans" = "Maps";
 
@@ -224,17 +225,17 @@
 
 "Incidents" = "Incidents";
 
-"Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents." = "Be warned in case of disturbances on the network through the tpg Incidents menu.";
+"Soyez avertis en cas de perturbations sur le réseau tpg grâce au menu Incidents." = "The incidence menu logs tpg network distruptions periods.";
 
 "Rappels" = "Reminders";
 
-"Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection." = "In the departures and routes menus,you can made a slip of the proposed schedules to the left to be notified a start and avoid missing your transport or connection.";
+"Dans les menus Départs et Itinéraires, faite glisser un des horaires proposés vers la gauche pour être notifié(e) d’un départ et éviter de rater votre transport ou votre connection." = "In the departures and routes menus, you can made a swipe left to be notified of a suggested departure time so not to miss your transport or connection.";
 
-"tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)" = "tpg offline is Open Source. You can modify and improve the application if you want.\rIf you have ideas or you find a bug, please visit our project on GitHub. (https://github.com/RemyDCF/tpg-offline)";
+"tpg offline est Open Source. Vous pouvez donc modifier et améliorer l’application si vous le souhaitez.\rSi vous avez des idées ou que vous trouvez un bug, n'hésitez pas à consulter notre projet sur GitHub. (https://github.com/RemyDCF/tpg-offline)" = "tpg offline is Open Source. You can notify and improve the application by notifying us of ideas or app bugs. Please, visit our project on GitHub (https://github.com/RemyDCF/tpg-offline)";
 
 "Et beaucoup d'autres choses" = "And many other things";
 
-"D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !" = "Other surprises await you in the application. So go on an adventure and bon voyage!";
+"D'autres surprises vous attendent dans l'application. Alors, partez à l'aventure et bon voyage !" = "Other surprises await you, use the app on the adventure, bon voyage!";
 
 "Terminer" = "Finish";
 

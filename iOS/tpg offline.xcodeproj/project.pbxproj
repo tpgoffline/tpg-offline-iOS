@@ -112,6 +112,7 @@
 		ADC734821D6890EF00296449 /* tpg offline Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = ADC734641D6890EF00296449 /* tpg offline Watch.app */; };
 		ADC734951D68917D00296449 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734941D68917D00296449 /* FSCalendar.framework */; };
 		ADC734991D68918500296449 /* Onboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC734981D68918500296449 /* Onboard.framework */; };
+		ADCE04D91E89C7D400AD22A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADCE04D71E89C7D400AD22A4 /* Localizable.strings */; };
 		ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */; };
 		ADE62F571E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE62F561E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift */; };
 		ADFAA2901E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA28F1E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift */; };
@@ -310,6 +311,9 @@
 		ADC7347F1D6890EF00296449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADC734941D68917D00296449 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
 		ADC734981D68918500296449 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = Carthage/Build/iOS/Onboard.framework; sourceTree = "<group>"; };
+		ADCE04D81E89C7D400AD22A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADCE04DA1E89C7DC00AD22A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADCE04DB1E89C7DE00AD22A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		ADE62F561E7F50FE00C58F49 /* DescriptionStopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionStopTableViewCell.swift; sourceTree = "<group>"; };
 		ADF767581D7C5E3D00B6C0B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -520,11 +524,11 @@
 				ADA4686E1E054BAD00FEA198 /* GoogleService-Info.plist */,
 				ADC733F41D6890C500296449 /* stops.json */,
 				ADC733F51D6890C500296449 /* Localizable.strings */,
+				AD6383971E7492D900213C48 /* Info.plist */,
 				ADA4688A1E054E9800FEA198 /* module.modulemap */,
 				ADA4688B1E054EAE00FEA198 /* Firebase.h */,
 				ADC733F71D6890C500296449 /* Bel-Air.gpx */,
 				ADC733F81D6890C500296449 /* colorLines.json */,
-				AD6383971E7492D900213C48 /* Info.plist */,
 				ADC733FC1D6890C500296449 /* ionicons.ttf */,
 				ADC733FD1D6890C500296449 /* tpg offline-Bridging-Header.h */,
 				ADC733FE1D6890C500296449 /* tpg offline.geojson */,
@@ -595,6 +599,7 @@
 				AD62DD3C1D7C6A8100B2CA86 /* DeparturesInterfaceController.swift */,
 				AD62DD3D1D7C6A8100B2CA86 /* DeparturesRowController.swift */,
 				AD62DD3F1D7C6A8100B2CA86 /* StopsInterfaceController.swift */,
+				ADCE04D71E89C7D400AD22A4 /* Localizable.strings */,
 				AD62DD401D7C6A8100B2CA86 /* StopsRowController.swift */,
 				ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */,
 				ADC7347D1D6890EF00296449 /* Assets.xcassets */,
@@ -823,6 +828,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCE04D91E89C7D400AD22A4 /* Localizable.strings in Resources */,
 				ADC7347E1D6890EF00296449 /* Assets.xcassets in Resources */,
 				AD087F8A1DC1F90500E51CB1 /* Localizable.strings in Resources */,
 				AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */,
@@ -1108,6 +1114,16 @@
 				AD087F8D1DC1FAC300E51CB1 /* fr */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		ADCE04D71E89C7D400AD22A4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADCE04D81E89C7D400AD22A4 /* Base */,
+				ADCE04DA1E89C7DC00AD22A4 /* fr */,
+				ADCE04DB1E89C7DE00AD22A4 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

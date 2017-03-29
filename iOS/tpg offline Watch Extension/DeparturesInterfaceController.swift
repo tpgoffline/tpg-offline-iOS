@@ -175,6 +175,9 @@ class DeparturesInterfaceController: WKInterfaceController {
         guard let departureRowController = departuresTable.rowController(at: rowIndex) as? DeparturesRowController else {
             return nil
         }
+        if departureRowController.departure!.leftTime == "no more" {
+            return nil
+        }
         return departureRowController.departure
     }
 }

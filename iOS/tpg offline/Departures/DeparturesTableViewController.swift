@@ -977,9 +977,19 @@ extension DeparturesTableViewController: UIViewControllerPreviewingDelegate {
 
         if loading == true {
             return nil
-        } else if offline {
+        } else if offline && notDownloaded {
             return nil
-        } else if !offline && indexPath.section == 0 {
+        } else if offline && indexPath.section == 0 {
+            return nil
+        } else if offline && indexPath.section == 1 && noMoreTransport {
+            return nil
+        } else if !offline && indexPath.section == 0 && noMoreTransport {
+            return nil
+        } else if departuresList.count == 0 {
+            return nil
+        } else if departuresList[indexPath.row].leftTime == "no more" {
+            return nil
+        } else if (offline && indexPath.section == 1 ) || (!offline && indexPath.section == 0) {
             return nil
         }
 
