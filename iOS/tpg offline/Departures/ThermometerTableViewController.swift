@@ -403,7 +403,7 @@ class ThermometerTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLigneArret" {
-            guard let departuresViewController = (segue.destination) as? DeparturesTableViewController else {
+            guard let departuresViewController = (segue.destination) as? DeparturesViewController else {
                 return
             }
             departuresViewController.stop = thermometerList[((self.tableView.indexPathForSelectedRow as IndexPath?)?.row)!].stop
@@ -422,7 +422,7 @@ extension ThermometerTableViewController: UIViewControllerPreviewingDelegate {
             return nil
         }
 
-        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "departsArretTableViewController") as? DeparturesTableViewController else { return nil }
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "departuresViewController") as? DeparturesViewController else { return nil }
 
         detailVC.stop = thermometerList[indexPath.row].stop
         previewingContext.sourceRect = cell.frame

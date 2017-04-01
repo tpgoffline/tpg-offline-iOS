@@ -55,11 +55,9 @@ class RoutesListTableViewController: UITableViewController {
         if ActualRoutes.route.departure != nil && ActualRoutes.route.arrival != nil && ActualRoutes.route.date != nil {
             var listeItems: [UIBarButtonItem] = []
 
-            for x in AppValues.favoritesRoutes {
-                if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
-                    favorite = true
-                    break
-                }
+            for x in AppValues.favoritesRoutes where x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+                favorite = true
+                break
             }
             if favorite {
                 listeItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "starNavbar"), style: .done, target: self, action: #selector(RoutesListTableViewController.toggleFavorite(_:))))
@@ -327,11 +325,9 @@ class RoutesListTableViewController: UITableViewController {
 
         var favorite = false
 
-        for x in AppValues.favoritesRoutes {
-            if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
-                favorite = true
-                break
-            }
+        for x in AppValues.favoritesRoutes where x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+            favorite = true
+            break
         }
         if favorite {
             listeItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "starNavbar"), style: UIBarButtonItemStyle.done, target: self, action: #selector(RoutesListTableViewController.toggleFavorite(_:))))

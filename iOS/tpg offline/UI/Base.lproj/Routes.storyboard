@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E192b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1pB-eG-kok">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F43c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1pB-eG-kok">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -59,7 +59,7 @@
         <scene sceneID="ZA0-Eg-JCu">
             <objects>
                 <collectionViewController id="mSh-dx-Tht" customClass="RoutesCollectionViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rPE-Ip-1Di">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="rPE-Ip-1Di">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,16 +205,16 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1l7-o0-mSG">
-                                            <rect key="frame" x="325" y="40" width="20" height="20"/>
+                                            <rect key="frame" x="320" y="38" width="25" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="k2g-ix-ZDj"/>
-                                                <constraint firstAttribute="width" constant="20" id="qJo-ne-MuO"/>
+                                                <constraint firstAttribute="height" constant="25" id="k2g-ix-ZDj"/>
+                                                <constraint firstAttribute="width" constant="25" id="qJo-ne-MuO"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="1l7-o0-mSG" firstAttribute="centerY" secondItem="0bO-ef-JLS" secondAttribute="centerY" id="8dt-UC-TfE"/>
+                                    <constraint firstItem="1l7-o0-mSG" firstAttribute="centerY" secondItem="0bO-ef-JLS" secondAttribute="centerY" constant="0.5" id="8dt-UC-TfE"/>
                                     <constraint firstItem="Z51-2z-gkw" firstAttribute="leading" secondItem="0bO-ef-JLS" secondAttribute="leading" id="C7t-GH-WRo"/>
                                     <constraint firstAttribute="bottom" secondItem="Z51-2z-gkw" secondAttribute="bottom" id="TPP-Zg-z1U"/>
                                     <constraint firstAttribute="trailing" secondItem="z5X-13-lJK" secondAttribute="trailing" id="XzU-hY-zYo"/>
@@ -865,7 +865,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VXk-3a-p6n">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VXk-3a-p6n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -890,7 +890,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qpd-bk-IyK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qpd-bk-IyK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

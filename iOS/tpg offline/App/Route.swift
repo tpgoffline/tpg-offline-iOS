@@ -10,13 +10,13 @@ import UIKit
 
 internal class Route {
     var from: String!
-    var to: String! // swiftlint:disable:this variable_name
+    var to: String! // swiftlint:disable:this identifier_name
     var duration: String!
     var departureTimestamp: Int!
     var arrivalTimestamp: Int!
     var connections: [RoutesConnections]!
 
-    // swiftlint:disable variable_name
+    // swiftlint:disable identifier_name
     init(from: String,
          to: String,
          duration: String,

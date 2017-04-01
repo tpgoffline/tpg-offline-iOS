@@ -50,6 +50,7 @@ class MapsListTableViewController: UICollectionViewController {
         cell.titleLabel.textColor = AppValues.textColor
         cell.titleLabel.backgroundColor = AppValues.primaryColor.withAlphaComponent(0.9)
         cell.backgroundColor = .white
+
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 15
 

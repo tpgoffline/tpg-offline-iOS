@@ -167,7 +167,9 @@ class RoutesCollectionViewController: UICollectionViewController {
             cell.departureLabel.textColor = AppValues.textColor
             cell.departureLabel.backgroundColor = AppValues.primaryColor.darken(percentage: 0.05)
 
-            cell.accessoryImage.image = #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor)
+            cell.accessoryImage.backgroundColor = AppValues.primaryColor
+            cell.accessoryImage.layer.cornerRadius = cell.accessoryImage.bounds.height / 2
+            cell.accessoryImage.image = #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor).imageWithInset(UIEdgeInsets(top: 5, left: 6, bottom: 5, right: 5))
 
             cell.arrivalLabel.text = AppValues.favoritesRoutes![indexPath.row][1].fullName
             cell.arrivalLabel.textColor = AppValues.textColor

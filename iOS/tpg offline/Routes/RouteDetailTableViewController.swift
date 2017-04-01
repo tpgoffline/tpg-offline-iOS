@@ -21,11 +21,9 @@ class RouteDetailTableViewController: UITableViewController {
 
         var itemsList: [UIBarButtonItem] = []
 
-        for x in AppValues.favoritesRoutes {
-            if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+        for x in AppValues.favoritesRoutes where x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
                 favorite = true
                 break
-            }
         }
         if favorite {
             itemsList.append(UIBarButtonItem(image: #imageLiteral(resourceName: "starNavbar").maskWithColor(color: AppValues.textColor).withRenderingMode(.alwaysOriginal), style: UIBarButtonItemStyle.done, target: self, action: #selector(RouteDetailTableViewController.toggleFavorite(_:))))
@@ -94,18 +92,14 @@ class RouteDetailTableViewController: UITableViewController {
                     labelPictoLigne.layer.borderColor = textColor.cgColor
                     labelPictoLigne.layer.borderWidth = 1
                     let image = labelToImage(labelPictoLigne)
-                    for x in cell.iconImageView.constraints {
-                        if x.identifier == "iconeImageViewHeight" {
+                    for x in cell.iconImageView.constraints where x.identifier == "iconeImageViewHeight" {
                             x.constant = 24
                         }
-                    }
                     cell.iconImageView.image = image
                 } else {
                     cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].image.maskWithColor(color: .white)
-                    for x in cell.iconImageView.constraints {
-                        if x.identifier == "iconeImageViewHeight" {
+                    for x in cell.iconImageView.constraints where x.identifier == "iconeImageViewHeight" {
                             x.constant = 42
-                        }
                     }
                 }
                 cell.directionImageView.image = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].image.maskWithColor(color: textColor)
@@ -137,10 +131,8 @@ class RouteDetailTableViewController: UITableViewController {
 
                     let image = labelToImage(labelPictoLigne)
                     cell.iconImageView.image = image
-                    for x in cell.iconImageView.constraints {
-                        if x.identifier == "iconeImageViewHeight" {
+                    for x in cell.iconImageView.constraints where x.identifier == "iconeImageViewHeight" {
                             x.constant = 24
-                        }
                     }
                 } else {
                     cell.iconImageView.image = ActualRoutes.routeResult[actualRoute].connections[indexPath.row].image.maskWithColor(color: textColor)
@@ -209,11 +201,9 @@ class RouteDetailTableViewController: UITableViewController {
 
         var listeItems: [UIBarButtonItem] = []
         var favoris = false
-        for x in AppValues.favoritesRoutes {
-            if x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
+        for x in AppValues.favoritesRoutes where x[0].fullName == ActualRoutes.route.departure?.fullName && x[1].fullName == ActualRoutes.route.arrival?.fullName {
                 favoris = true
                 break
-            }
         }
         if favoris {
             listeItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "starNavbar").withRenderingMode(.alwaysOriginal), style: UIBarButtonItemStyle.done, target: self, action:#selector(RouteDetailTableViewController.toggleFavorite(_:))))

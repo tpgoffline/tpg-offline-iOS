@@ -81,10 +81,8 @@ class IncidentsTableViewController: UITableViewController {
                     let json = JSON(data)
                     FIRCrashMessage("\(String(describing: json.rawString()))")
                     if json["disruptions"].count != 0 {
-                        for x in 0...json["disruptions"].count - 1 {
-                            if AppValues.linesColor[json["disruptions"][x]["lineCode"].string!] != nil {
+                        for x in 0...json["disruptions"].count - 1 where AppValues.linesColor[json["disruptions"][x]["lineCode"].string!] != nil {
                                 self.distrubtions.append(Distrubtions(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
-                            }
                         }
                     } else {
                         self.noDistrubtions = true

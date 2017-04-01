@@ -22,7 +22,7 @@ internal class RoutesConnections {
     var isSBB: Bool
     var transportCategory: RoutesTransportCategory
     var from: String
-    var to: String // swiftlint:disable:this variable_name
+    var to: String // swiftlint:disable:this identifier_name
     var direction: String
     var departureTimestamp: Int
     var arrivalTimestamp: Int
@@ -54,7 +54,7 @@ internal class RoutesConnections {
 
     init(isWalk: Bool = true,
          from: String,
-         to: String, // swiftlint:disable:this variable_name
+         to: String, // swiftlint:disable:this identifier_name
          departureTimestamp: Int,
          arrivalTimestamp: Int,
          direction: String) {
@@ -74,7 +74,7 @@ internal class RoutesConnections {
          isSBB: Bool,
          transportCategory: Int,
          from: String,
-         to: String, // swiftlint:disable:this variable_name
+         to: String, // swiftlint:disable:this identifier_name
          direction: String,
          departureTimestamp: Int,
          arrivalTimestamp: Int) {

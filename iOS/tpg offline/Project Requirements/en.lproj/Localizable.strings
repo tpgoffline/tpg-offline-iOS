@@ -4,6 +4,8 @@
 "Désolé" = "Sorry";
 "Il n'y a plus de bus pour cette ligne." = "There are no more bus for this line.";
 
+"Filtrer" = "Filter";
+
 /*
  * ./tpg offline/RouteToStopViewController.swift
  */
@@ -248,7 +250,7 @@
 "Donnez votre avis !" = "Share your opinion !";
 
 /*
- * ./tpg offline/DeparturesTableViewController.swift
+ * ./tpg offline/DeparturesViewController.swift
  */
 
 "Le tpg de la ligne " = "The line ";
