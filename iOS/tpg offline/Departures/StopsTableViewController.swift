@@ -40,7 +40,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         self.splitViewController?.preferredDisplayMode = .allVisible
 
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = AppValues.textColor
+        loadingView.tintColor = AppValues.primaryColor
 
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
 
@@ -49,7 +49,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
 
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         // Result Search Controller
@@ -129,7 +129,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
 
         refreshTheme()
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         requestLocation()

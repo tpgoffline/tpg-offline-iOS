@@ -22,7 +22,7 @@ class RoutesStopsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = AppValues.textColor
+        loadingView.tintColor = AppValues.primaryColor
 
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
 
@@ -31,7 +31,7 @@ class RoutesStopsTableViewController: UITableViewController {
 
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         // Result Search Controller
@@ -55,7 +55,7 @@ class RoutesStopsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         refreshTheme()

@@ -65,14 +65,14 @@ class DeparturesViewController: UIViewController {
         #endif
 
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = AppValues.textColor
+        loadingView.tintColor = AppValues.primaryColor
 
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self!.refresh()
 
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         title = stop?.fullName
@@ -80,7 +80,7 @@ class DeparturesViewController: UIViewController {
         tableView.backgroundColor = AppValues.primaryColor
 
         if traitCollection.forceTouchCapability == .available {
-            registerForPreviewing(with: self, sourceView: view)
+            registerForPreviewing(with: self, sourceView: tableView)
         }
 
         refresh()
@@ -129,10 +129,15 @@ class DeparturesViewController: UIViewController {
         }
     }
 
+    override func refreshTheme() {
+        self.tableView.reloadData()
+        self.tableView.backgroundColor = AppValues.primaryColor
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         if stop != nil {
@@ -293,16 +298,6 @@ class DeparturesViewController: UIViewController {
             return
         }
         arretTableViewController.tableView.reloadData()
-    }
-
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "showLine" && departuresList[selectedIndexPath!.row].leftTime == "no more" {
-            return false
-        } else if offline && selectedIndexPath!.section == 2 {
-            return false
-        } else {
-            return true
-        }
     }
 
     func scheduleNotification(_ hour: String, before: Int, line: String, direction: String) {
@@ -641,7 +636,7 @@ class DeparturesViewController: UIViewController {
 extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource {
     // MARK: tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        if loading == true {
+        if loading {
             return 1
         } else if offline || notDownloaded {
             return 3
@@ -650,7 +645,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if loading == true {
+        if loading {
             return 1
         } else if offline && notDownloaded {
             return 1
@@ -669,13 +664,13 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedIndexPath == indexPath {
-            return 176
+            return offline ? 131 : 176
         }
         return 44
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (offline && indexPath.section == 2) || (!offline && indexPath.section == 1) {
+        if (offline && indexPath.section == 1) || (!offline && indexPath.section == 0) {
             performSegue(withIdentifier: "showFilterDepartures", sender: self)
         } else if canSelect(indexPath: indexPath) {
             let previousIndexPath = selectedIndexPath
@@ -758,7 +753,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
     }
 
     func canSelect(indexPath: IndexPath) -> Bool! {
-        if loading == true {
+        if loading {
             return false
         } else if offline && notDownloaded {
             return false
@@ -779,7 +774,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if loading == true {
+        if loading {
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingCellTableViewCell // swiftlint:disable:this force_cast
 
             cell.activityIndicator.stopAnimating()
@@ -810,7 +805,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             cell.textLabel?.text = "Mode offline".localized
             cell.detailTextLabel?.textColor = AppValues.textColor
             cell.detailTextLabel?.text = "Les horaires peuvent être sujets à modification".localized
-            cell.imageView?.image = #imageLiteral(resourceName: "globe").maskWithColor(color: AppValues.textColor)
+            cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = nil
             return cell
         } else if offline && notDownloaded && indexPath.section == 1 {
@@ -903,53 +898,53 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             cell.directionLabel.text = departuresList[indexPath.row].direction
 
             cell.directionLabel.textColor = lineColor
-            cell.leftTimeLabel.textColor = lineColor
+            cell.rightTimeLabel.textColor = lineColor
+
+            cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: lineColor!))
 
             if offline {
-                cell.accessoryView = UIImageView(image: nil)
-
                 if Int(departuresList[indexPath.row].leftTime)! >= 60 {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
 
-                    cell.leftTimeLabel.text = DateFormatter.localizedString(
+                    cell.rightTimeLabel.text = DateFormatter.localizedString(
                         from: time!,
                         dateStyle: DateFormatter.Style.none,
                         timeStyle: DateFormatter.Style.short)
+                    cell.rightImage.image = nil
                 } else if departuresList[indexPath.row].leftTime == "0" {
-                    cell.leftTimeLabel.text = ""
-                    cell.leftImage.image = #imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!)
+                    cell.rightTimeLabel.text = ""
+                    cell.rightImage.image = #imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!)
                 } else {
-                    cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
-                    cell.leftImage.image = nil
+                    cell.rightTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
+                    cell.rightImage.image = nil
                 }
             } else {
-                cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: lineColor!))
-
                 if departuresList[indexPath.row].leftTime == "no more" {
                     cell.accessoryView = UIImageView(image: nil)
-                    cell.leftTimeLabel.text = ""
-                    cell.leftImage.image = #imageLiteral(resourceName: "cross").maskWithColor(color: lineColor!)
+                    cell.rightTimeLabel.text = ""
+                    cell.rightImage.image = #imageLiteral(resourceName: "cross").maskWithColor(color: lineColor!)
                 } else if departuresList[indexPath.row].leftTime == "&gt;1h" {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
                     if let time = time {
-                        cell.leftTimeLabel.text = DateFormatter.localizedString(
+                        cell.rightTimeLabel.text = DateFormatter.localizedString(
                             from: time,
                             dateStyle: DateFormatter.Style.none,
                             timeStyle: DateFormatter.Style.short)
+                        cell.rightImage.image = nil
                     } else {
-                        cell.leftTimeLabel.text = ""
-                        cell.leftImage.image = #imageLiteral(resourceName: "warning").maskWithColor(color: lineColor!)
+                        cell.rightTimeLabel.text = ""
+                        cell.rightImage.image = #imageLiteral(resourceName: "warning").maskWithColor(color: lineColor!)
                     }
                 } else if departuresList[indexPath.row].leftTime == "0" {
-                    cell.leftTimeLabel.text = ""
-                    cell.leftImage.image = #imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!)
+                    cell.rightTimeLabel.text = ""
+                    cell.rightImage.image = #imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!)
                 } else {
-                    cell.leftTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
-                    cell.leftImage.image = nil
+                    cell.rightTimeLabel.text = departuresList[indexPath.row].leftTime + "'"
+                    cell.rightImage.image = nil
                 }
             }
 
@@ -983,23 +978,7 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
 
         guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
 
-        if loading == true {
-            return nil
-        } else if offline && notDownloaded {
-            return nil
-        } else if offline && indexPath.section == 0 {
-            return nil
-        } else if offline && indexPath.section == 1 && noMoreTransport {
-            return nil
-        } else if !offline && indexPath.section == 0 && noMoreTransport {
-            return nil
-        } else if departuresList.count == 0 {
-            return nil
-        } else if departuresList[indexPath.row].leftTime == "no more" {
-            return nil
-        } else if (offline && indexPath.section == 1 ) || (!offline && indexPath.section == 0) {
-            return nil
-        }
+        if !canSelect(indexPath: indexPath) { return nil }
 
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "thermometerTableViewController") as? ThermometerTableViewController else { return nil }
 

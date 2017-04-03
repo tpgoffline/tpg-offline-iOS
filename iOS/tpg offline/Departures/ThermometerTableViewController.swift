@@ -19,9 +19,25 @@ class ThermometerTableViewController: UITableViewController {
     var thermometerList: [Thermometer]! = []
     var loading: Bool = false
     var rowForVisible = -1
+    var lineColor: UIColor! = AppValues.textColor
+    var backColor: UIColor! = UIColor.white
+    var error: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        lineColor = AppValues.textColor
+        backColor = departure.lineBackgroundColor
+        if AppValues.primaryColor.contrast == .white {
+            lineColor = departure.lineColor
+        } else {
+            if departure.lineBackgroundColor.contrast == .white {
+                lineColor = departure.lineBackgroundColor
+            } else {
+                lineColor = departure.lineBackgroundColor.darken(percentage: 0.2)
+            }
+            backColor = .white
+        }
 
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: view)
@@ -33,30 +49,49 @@ class ThermometerTableViewController: UITableViewController {
         }
 
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = AppValues.textColor
+        loadingView.tintColor = backColor
 
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self!.refresh()
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
-        tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+        tableView.dg_setPullToRefreshFillColor(lineColor)
+        tableView.dg_setPullToRefreshBackgroundColor(backColor)
 
         self.refreshTheme()
+    }
+
+    override func refreshTheme() {
+        super.refreshTheme()
+
+        lineColor = AppValues.textColor
+        backColor = departure.lineBackgroundColor
+        if AppValues.primaryColor.contrast == .white {
+            lineColor = departure.lineColor
+        } else {
+            if departure.lineBackgroundColor.contrast == .white {
+                lineColor = departure.lineBackgroundColor
+            } else {
+                lineColor = departure.lineBackgroundColor.darken(percentage: 0.2)
+            }
+            backColor = .white
+        }
+
+        self.tableView.backgroundColor = backColor
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
-        tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
+        tableView.dg_setPullToRefreshFillColor(lineColor)
+        tableView.dg_setPullToRefreshBackgroundColor(backColor)
 
         self.refreshTheme()
         self.tableView.reloadData()
 
         var barButtonsItems: [UIBarButtonItem] = []
 
-        barButtonsItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar").maskWithColor(color: AppValues.textColor), style: UIBarButtonItemStyle.done, target: self, action: #selector(ThermometerTableViewController.refresh)))
+        barButtonsItems.append(UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar").maskWithColor(color: self.lineColor), style: UIBarButtonItemStyle.done, target: self, action: #selector(ThermometerTableViewController.refresh)))
 
         self.navigationItem.rightBarButtonItems = barButtonsItems
     }
@@ -73,7 +108,7 @@ class ThermometerTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if loading {
+        if loading || error {
             return 1
         } else {
             return thermometerList.count
@@ -85,22 +120,14 @@ class ThermometerTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if loading == true {
+        if loading {
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingCellTableViewCell // swiftlint:disable:this force_cast
 
             cell.activityIndicator.stopAnimating()
-
-            if AppValues.primaryColor.contrast == .white {
-                cell.backgroundColor = .flatBlue
-                cell.titleLabel?.textColor = .white
-                cell.subTitleLabel?.textColor = .white
-                cell.activityIndicator.color = .white
-            } else {
-                cell.backgroundColor = .white
-                cell.titleLabel?.textColor = .flatBlue
-                cell.subTitleLabel?.textColor = .flatBlue
-                cell.activityIndicator.color = .flatBlue
-            }
+            cell.backgroundColor = backColor
+            cell.titleLabel?.textColor = lineColor
+            cell.subTitleLabel?.textColor = lineColor
+            cell.activityIndicator.color = lineColor
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
             cell.accessoryView = nil
@@ -108,26 +135,24 @@ class ThermometerTableViewController: UITableViewController {
             cell.activityIndicator.startAnimating()
 
             return cell
+        } else if error {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
+
+            cell.backgroundColor = backColor
+            cell.textLabel?.textColor = lineColor
+            cell.detailTextLabel?.textColor = lineColor
+            cell.textLabel?.text = "Pas de réseau !".localized
+            cell.detailTextLabel!.text = "tpg offline n'est pas connecté au réseau.".localized
+
+            cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: lineColor)
+
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "voirLigneDepartCell", for: indexPath) as! SeeLineTableViewCell // swiftlint:disable:this force_cast
 
-            var lineColor = AppValues.textColor
-            var backColor = departure.lineBackgroundColor
-
-            if AppValues.primaryColor.contrast == .white {
-                lineColor = departure.lineColor
-                cell.backgroundColor = departure.lineBackgroundColor
-            } else {
-                if departure.lineBackgroundColor.contrast == .white {
-                    lineColor = departure.lineBackgroundColor
-                } else {
-                    lineColor = departure.lineBackgroundColor.darken(percentage: 0.2)
-                }
-                cell.backgroundColor = .white
-                backColor = .white
-            }
-
             cell.barDirection.backgroundColor = backColor
+
+            cell.backgroundColor = backColor
 
             cell.leftTimeLabel.textColor = lineColor
             if thermometerList[indexPath.row].leftTime != nil {
@@ -328,6 +353,7 @@ class ThermometerTableViewController: UITableViewController {
 
     func refresh() {
         loading = true
+        error = false
         self.tableView.allowsSelection = false
         tableView.reloadData()
         rowForVisible = -1
@@ -385,6 +411,7 @@ class ThermometerTableViewController: UITableViewController {
                     self.thermometerList = []
                     self.tableView.allowsSelection = false
                     self.loading = false
+                    self.error = true
                     self.tableView.reloadData()
                     self.tableView.dg_stopLoading()
                 }
@@ -418,7 +445,7 @@ extension ThermometerTableViewController: UIViewControllerPreviewingDelegate {
 
         guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
 
-        if loading == true {
+        if loading {
             return nil
         }
 

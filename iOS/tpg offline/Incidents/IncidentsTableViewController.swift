@@ -26,7 +26,7 @@ class IncidentsTableViewController: UITableViewController {
         FIRCrashMessage("Incidents")
 
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = AppValues.textColor
+        loadingView.tintColor = AppValues.primaryColor
 
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
 
@@ -35,7 +35,7 @@ class IncidentsTableViewController: UITableViewController {
 
             }, loadingView: loadingView)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         navigationController?.navigationBar.barTintColor = .flatOrangeDark
@@ -55,7 +55,7 @@ class IncidentsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        tableView.dg_setPullToRefreshFillColor(AppValues.primaryColor.darken(percentage: 0.1)!)
+        tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
 
         refreshTheme()
@@ -119,7 +119,7 @@ class IncidentsTableViewController: UITableViewController {
             return 1
         } else if noDistrubtions == true {
             return 1
-        } else if error == true {
+        } else if error {
             return 1
         } else {
             return distrubtions.count
@@ -136,7 +136,7 @@ class IncidentsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if loading == true {
+        if loading {
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingCellTableViewCell // swiftlint:disable:this force_cast
 
             cell.activityIndicator.stopAnimating()

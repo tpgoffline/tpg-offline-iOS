@@ -204,10 +204,11 @@ class SeeAllDeparturesViewController: UIViewController {
                             break
                         }
 
-                        if FileManager.default.fileExists(atPath: path.absoluteString) {
+                        do {
                             if self.initialDeparturesList.isEmpty {
-                                let dataDeparts = try? Data(contentsOf: URL(fileURLWithPath: path.absoluteString))
-                                let departs = JSON(data: dataDeparts!)
+                                let departuresJSONString = try NSString(contentsOf: path, encoding: String.Encoding.utf8.rawValue)
+                                let departs = JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
+
                                 for (_, subJson) in departs {
                                     if AppValues.linesColor[subJson["ligne"].string!] != nil {
                                         self.initialDeparturesList.append(Departures(
@@ -269,7 +270,7 @@ class SeeAllDeparturesViewController: UIViewController {
                                 }
                                 return false
                             })
-                        } else {
+                        } catch {
                             SCLAlertView().showError(
                                 "Pas de réseau".localized,
                                 subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet".localized,

@@ -224,40 +224,8 @@
                                                         <constraint firstItem="fEb-uK-bV8" firstAttribute="centerY" secondItem="8Sj-C5-ZrK" secondAttribute="centerY" id="mwl-E2-IgS"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7e-9V-OtW">
-                                                    <rect key="frame" x="0.0" y="88" width="375" height="44"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-sh-AgP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                                            <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                            <state key="normal" title="Follow track" image="bus">
-                                                                <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
-                                                            <connections>
-                                                                <segue destination="CGb-ea-uIX" kind="show" id="smL-Tw-vQw"/>
-                                                            </connections>
-                                                        </button>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="2vi-it-gr6">
-                                                            <rect key="frame" x="343" y="10" width="24" height="24"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="0zk-7E-CsZ"/>
-                                                                <constraint firstAttribute="width" constant="24" id="Taa-Zd-yjn"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="2vi-it-gr6" secondAttribute="trailing" constant="8" id="39E-qV-5Zt"/>
-                                                        <constraint firstItem="2vi-it-gr6" firstAttribute="centerY" secondItem="c7e-9V-OtW" secondAttribute="centerY" id="7ZS-mz-UFx"/>
-                                                        <constraint firstItem="Maf-sh-AgP" firstAttribute="top" secondItem="c7e-9V-OtW" secondAttribute="top" id="9eL-Km-Swd"/>
-                                                        <constraint firstAttribute="height" constant="44" id="ai5-cw-KQH"/>
-                                                        <constraint firstItem="Maf-sh-AgP" firstAttribute="leading" secondItem="c7e-9V-OtW" secondAttribute="leading" id="ipQ-CA-Hor"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Maf-sh-AgP" secondAttribute="trailing" id="krH-oV-Xgh"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Maf-sh-AgP" secondAttribute="bottom" id="tzE-OC-5xs"/>
-                                                    </constraints>
-                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgh-LS-I0l">
-                                                    <rect key="frame" x="0.0" y="131" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XC-ew-CWV">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -267,7 +235,7 @@
                                                                 <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
-                                                                <segue destination="xQB-G1-Yh7" kind="show" id="0LC-bs-XUb"/>
+                                                                <segue destination="xQB-G1-Yh7" kind="show" identifier="showAllDepartures" id="0LC-bs-XUb"/>
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="ZkZ-z4-2Oe">
@@ -288,6 +256,38 @@
                                                         <constraint firstItem="ZkZ-z4-2Oe" firstAttribute="centerY" secondItem="pgh-LS-I0l" secondAttribute="centerY" id="hYu-4B-3uz"/>
                                                     </constraints>
                                                 </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7e-9V-OtW">
+                                                    <rect key="frame" x="0.0" y="131" width="375" height="44"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-sh-AgP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                            <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <state key="normal" title="Follow track" image="bus">
+                                                                <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <segue destination="CGb-ea-uIX" kind="show" identifier="showLine" id="smL-Tw-vQw"/>
+                                                            </connections>
+                                                        </button>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="2vi-it-gr6">
+                                                            <rect key="frame" x="343" y="10" width="24" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="0zk-7E-CsZ"/>
+                                                                <constraint firstAttribute="width" constant="24" id="Taa-Zd-yjn"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="2vi-it-gr6" secondAttribute="trailing" constant="8" id="39E-qV-5Zt"/>
+                                                        <constraint firstItem="2vi-it-gr6" firstAttribute="centerY" secondItem="c7e-9V-OtW" secondAttribute="centerY" id="7ZS-mz-UFx"/>
+                                                        <constraint firstItem="Maf-sh-AgP" firstAttribute="top" secondItem="c7e-9V-OtW" secondAttribute="top" id="9eL-Km-Swd"/>
+                                                        <constraint firstAttribute="height" constant="44" id="ai5-cw-KQH"/>
+                                                        <constraint firstItem="Maf-sh-AgP" firstAttribute="leading" secondItem="c7e-9V-OtW" secondAttribute="leading" id="ipQ-CA-Hor"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Maf-sh-AgP" secondAttribute="trailing" id="krH-oV-Xgh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Maf-sh-AgP" secondAttribute="bottom" id="tzE-OC-5xs"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8Sj-C5-ZrK" firstAttribute="top" secondItem="W4d-MO-PqU" secondAttribute="bottom" constant="11" id="1fl-d4-Cxv"/>
@@ -297,10 +297,10 @@
                                                 <constraint firstItem="W4d-MO-PqU" firstAttribute="top" secondItem="ESM-ka-ahS" secondAttribute="top" id="KuI-it-xdR"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Sj-C5-ZrK" secondAttribute="trailing" id="MtF-Ve-ouv"/>
                                                 <constraint firstItem="8Sj-C5-ZrK" firstAttribute="top" secondItem="W4d-MO-PqU" secondAttribute="bottom" constant="11" id="Q78-E3-zsw"/>
-                                                <constraint firstItem="c7e-9V-OtW" firstAttribute="top" secondItem="8Sj-C5-ZrK" secondAttribute="bottom" id="TaR-wB-Axk"/>
+                                                <constraint firstItem="c7e-9V-OtW" firstAttribute="top" secondItem="8Sj-C5-ZrK" secondAttribute="bottom" constant="43" id="TaR-wB-Axk"/>
                                                 <constraint firstItem="66c-wE-8Cq" firstAttribute="trailing" secondItem="Xr8-Je-XuW" secondAttribute="trailingMargin" id="Ulz-HN-VR8"/>
                                                 <constraint firstItem="8Sj-C5-ZrK" firstAttribute="leading" secondItem="Xr8-Je-XuW" secondAttribute="leading" id="aSj-Pc-MzD"/>
-                                                <constraint firstItem="pgh-LS-I0l" firstAttribute="top" secondItem="8Sj-C5-ZrK" secondAttribute="bottom" constant="43" id="bvf-ui-wRT"/>
+                                                <constraint firstItem="pgh-LS-I0l" firstAttribute="top" secondItem="8Sj-C5-ZrK" secondAttribute="bottom" id="bvf-ui-wRT"/>
                                                 <constraint firstItem="W4d-MO-PqU" firstAttribute="top" secondItem="66c-wE-8Cq" secondAttribute="top" id="d7R-x4-mnT"/>
                                                 <constraint firstItem="c7e-9V-OtW" firstAttribute="leading" secondItem="Xr8-Je-XuW" secondAttribute="leading" id="kFX-Kk-mTe"/>
                                                 <constraint firstItem="W4d-MO-PqU" firstAttribute="trailing" secondItem="66c-wE-8Cq" secondAttribute="trailing" id="kfd-cb-FgQ"/>
@@ -316,9 +316,9 @@
                                             <outlet property="buttonReminder" destination="Ibm-s8-ezt" id="Bam-Yx-bQw"/>
                                             <outlet property="buttonSeeAllDepartures" destination="2XC-ew-CWV" id="c9g-5V-AOX"/>
                                             <outlet property="directionLabel" destination="ESM-ka-ahS" id="Kc9-h8-Dkv"/>
-                                            <outlet property="leftImage" destination="W4d-MO-PqU" id="Arg-oz-vK5"/>
-                                            <outlet property="leftTimeLabel" destination="66c-wE-8Cq" id="SDl-gV-RVb"/>
                                             <outlet property="linePictogram" destination="18f-G4-gAQ" id="Ym9-OG-Cci"/>
+                                            <outlet property="rightImage" destination="W4d-MO-PqU" id="kSc-oc-KWJ"/>
+                                            <outlet property="rightTimeLabel" destination="66c-wE-8Cq" id="MGp-oL-wvj"/>
                                             <outletCollection property="nextImages" destination="fEb-uK-bV8" collectionClass="NSMutableArray" id="mFC-RB-RPq"/>
                                             <outletCollection property="nextImages" destination="2vi-it-gr6" collectionClass="NSMutableArray" id="LeS-h3-Uza"/>
                                             <outletCollection property="nextImages" destination="ZkZ-z4-2Oe" collectionClass="NSMutableArray" id="ste-mC-Sdm"/>
@@ -890,7 +890,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="Moq-Ez-UCg" kind="show" identifier="showLigneArret" id="wg1-je-UDZ"/>
+                        <segue destination="Moq-Ez-UCg" kind="show" identifier="showLine" id="wg1-je-UDZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QS-ec-GgO" userLabel="First Responder" sceneMemberID="firstResponder"/>

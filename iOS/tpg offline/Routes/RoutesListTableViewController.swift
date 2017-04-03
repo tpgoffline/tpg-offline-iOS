@@ -78,7 +78,7 @@ class RoutesListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if loading == true {
+        if loading {
             return 1
         } else if ActualRoutes.route == nil {
             return 0
@@ -199,7 +199,7 @@ class RoutesListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if loading == true {
+        if loading {
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingCellTableViewCell // swiftlint:disable:this force_cast
 
             cell.activityIndicator.stopAnimating()

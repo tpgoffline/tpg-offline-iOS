@@ -18,8 +18,8 @@ class DepartureTableViewCell: UITableViewCell {
 
     @IBOutlet weak var linePictogram: UIImageView!
     @IBOutlet weak var directionLabel: UILabel!
-    @IBOutlet weak var leftTimeLabel: UILabel!
-    @IBOutlet weak var leftImage: UIImageView!
+    @IBOutlet weak var rightTimeLabel: UILabel!
+    @IBOutlet weak var rightImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
