@@ -115,7 +115,7 @@ class DeparturesInterfaceController: WKInterfaceController {
                                         timestamp: subJson["timestamp"].string!
                                         ))
                                 }
-                                self.departuresList.last?.calculerTempsRestant()
+                                self.departuresList.last?.calculateLeftTime()
                             }
 
                             self.departuresList = self.departuresList.filter({ (depart) -> Bool in

@@ -114,11 +114,6 @@ class DeparturesViewController: UIViewController {
         routeButton.layer.cornerRadius = routeButton.bounds.height / 2
 
         mapView.removeOverlays(mapView.overlays)
-        if routeActivated, let route = self.route, let routeArea = self.routeArea {
-            mapView.add(route.polyline)
-            mapView.setVisibleMapRect(routeArea, animated: true)
-            recenterMap = false
-        }
         if recenterMap {
             centerMap()
             recenterMap = false
@@ -322,6 +317,7 @@ class DeparturesViewController: UIViewController {
                         content.body = text
                     }
                     content.categoryIdentifier = "departureNotifications"
+                    content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
                     content.userInfo = [:]
                     content.sound = UNNotificationSound.default()
 
@@ -565,7 +561,7 @@ class DeparturesViewController: UIViewController {
                             if StopLinesList.linesList.index(of: subJson["ligne"].string!) == nil {
                                 StopLinesList.linesList.append(subJson["ligne"].string!)
                             }
-                            self.initialDeparturesList.last?.calculerTempsRestant()
+                            self.initialDeparturesList.last?.calculateLeftTime()
                         }
                         self.initialDeparturesList = self.initialDeparturesList.filter({ (departure) -> Bool in
                             if departure.leftTime != "-1" {
@@ -708,7 +704,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
                     direction: self.departuresList[indexPath.row].direction)
 
             })
-            if Int(self.departuresList[indexPath.row].leftTime)! > 5 {
+            if Int(self.departuresList[indexPath.row].leftTime) ?? 61 > 5 {
                 alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
                     self.scheduleNotification(
                         self.departuresList[indexPath.row].timestamp,
@@ -717,7 +713,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
                         direction: self.departuresList[indexPath.row].direction)
                 })
             }
-            if Int(self.departuresList[indexPath.row].leftTime)! > 10 {
+            if Int(self.departuresList[indexPath.row].leftTime) ?? 61 > 10 {
                 alertView.addButton("10 min avant le départ".localized, action: { () -> Void in
                     self.scheduleNotification(
                         self.departuresList[indexPath.row].timestamp,
@@ -731,7 +727,9 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
                 let customValueAlert = SCLAlertView()
                 let txt = customValueAlert.addTextField("Nombre de minutes".localized)
                 txt.keyboardType = .numberPad
-                txt.becomeFirstResponder()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    txt.becomeFirstResponder()
+                }
                 customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
                     if Int(self.departuresList[indexPath.row].leftTime)! < Int(txt.text!)! {
                         customValueAlert.hideView()
@@ -968,6 +966,14 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             }
             UIView.animate(withDuration: 0.5, animations: self.view.layoutIfNeeded)
         })
+        mapView.removeOverlays(mapView.overlays)
+        if routeActivated, let route = self.route, let routeArea = self.routeArea {
+            mapView.add(route.polyline)
+            mapView.setVisibleMapRect(routeArea, animated: true)
+            recenterMap = false
+        } else {
+            centerMap()
+        }
     }
 }
 
@@ -1026,15 +1032,14 @@ extension DeparturesViewController: MKMapViewDelegate {
             self.route = route
 
             self.timeToGo = Int(userLocation.location!.distance(from: self.stop!.location) / 5000 * 60)
+            self.routeButton.setTitle("\(self.timeToGo) min", for: .normal)
             self.routeArea = route.polyline.boundingMapRect
-            self.mapViewHeightConstraints.forEach({ (constraint) in
-                if constraint.priority < 750 {
-                    constraint.priority = 751
-                } else if constraint.priority > 750 {
-                    constraint.priority = 749
-                }
-                UIView.animate(withDuration: 0.5, animations: self.view.layoutIfNeeded)
-            })
+            mapView.removeOverlays(mapView.overlays)
+            if self.routeActivated, let route = self.route, let routeArea = self.routeArea {
+                mapView.add(route.polyline)
+                mapView.setVisibleMapRect(routeArea, animated: true)
+                self.recenterMap = false
+            }
         }
     }
 

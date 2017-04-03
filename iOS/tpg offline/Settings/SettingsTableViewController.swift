@@ -154,13 +154,18 @@ class SettingsTableViewController: UITableViewController {
 
                     for (fileName, fileJSON) in json {
                         FIRCrashMessage(fileName)
-                        let error = self.writeDataToFile(fileJSON.rawString()!, fileName: fileName)
-                        if error == nil {
-                            ok += 1
+                        if let fileContent = fileJSON.rawString() {
+                            let error = self.writeDataToFile(fileContent, fileName: fileName)
+                            if error == nil {
+                                ok += 1
+                            } else {
+                                errors += 1
+                            }
                         } else {
+                            print("*** WARNING - \(fileName) was not saved")
+                            FIRCrashMessage("*** WARNING - \(fileName) was not saved")
                             errors += 1
                         }
-
                         if errors + ok == json.count {
                             VHUD.dismiss(1.0, 1.0, "100 %", { (_) in
                                 let alerte2 = SCLAlertView()
@@ -180,7 +185,9 @@ class SettingsTableViewController: UITableViewController {
                 })
             }
             }.downloadProgress { (progress) in
-                VHUD.updateProgress(CGFloat(progress.fractionCompleted / 1.1))
+                DispatchQueue.main.async {
+                    VHUD.updateProgress(CGFloat(progress.fractionCompleted / 1.1))
+                }
         }
     }
 

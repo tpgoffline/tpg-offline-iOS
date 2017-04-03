@@ -17,7 +17,6 @@
 		AD4F2EBE1DBA6F66008DE615 /* colorLines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADC733F81D6890C500296449 /* colorLines.json */; };
 		AD4F2EC31DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
 		AD4F2EC41DBA7534008DE615 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4F2EC21DBA7534008DE615 /* FontAwesome.otf */; };
-		AD5268261E6CA76B00A27F84 /* AKPickerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5268251E6CA76B00A27F84 /* AKPickerView.framework */; };
 		AD5268281E6CA78A00A27F84 /* DGElasticPullToRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5268271E6CA78A00A27F84 /* DGElasticPullToRefresh.framework */; };
 		AD52682A1E6CAA6E00A27F84 /* DGRunkeeperSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5268291E6CAA6E00A27F84 /* DGRunkeeperSwitch.framework */; };
 		AD52682C1E6CAF2D00A27F84 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD52682B1E6CAF2D00A27F84 /* NVActivityIndicatorView.framework */; };
@@ -54,6 +53,7 @@
 		ADA469411E0556B600FEA198 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA469401E0556B600FEA198 /* GoogleSymbolUtilities.framework */; };
 		ADA469431E0556BB00FEA198 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA469421E0556BB00FEA198 /* GoogleToolboxForMac.framework */; };
 		ADA469451E0556E700FEA198 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA469441E0556E700FEA198 /* libicucore.tbd */; };
+		ADB377D61E9289E800C52428 /* AllDeparturesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB377D51E9289E800C52428 /* AllDeparturesHeader.swift */; };
 		ADBA28711DC0ABA8002E28AD /* ReminderInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */; };
 		ADC7341A1D6890C500296449 /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B11D6890C500296449 /* AppValues.swift */; };
 		ADC7341D1D6890C500296449 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC733B71D6890C500296449 /* Departures.swift */; };
@@ -243,6 +243,7 @@
 		ADA469401E0556B600FEA198 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		ADA469421E0556BB00FEA198 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		ADA469441E0556E700FEA198 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; lineEnding = 0; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; xcLanguageSpecificationIdentifier = "xcode.lang.text-based-dylib"; };
+		ADB377D51E9289E800C52428 /* AllDeparturesHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDeparturesHeader.swift; sourceTree = "<group>"; };
 		ADBA28701DC0ABA8002E28AD /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		ADC7338C1D68908F00296449 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC733A01D68908F00296449 /* tpg offlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offlineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -328,7 +329,6 @@
 			files = (
 				ADA469451E0556E700FEA198 /* libicucore.tbd in Frameworks */,
 				ADA469431E0556BB00FEA198 /* GoogleToolboxForMac.framework in Frameworks */,
-				AD5268261E6CA76B00A27F84 /* AKPickerView.framework in Frameworks */,
 				AD21622C1DBCE4EC009801B9 /* Alamofire.framework in Frameworks */,
 				ADA469351E05568C00FEA198 /* FirebaseAnalytics.framework in Frameworks */,
 				ADA4693B1E05569D00FEA198 /* FirebaseInstanceID.framework in Frameworks */,
@@ -471,6 +471,7 @@
 				ADFAA2911E723CF200C85F87 /* HeaderCollectionView.swift */,
 				AD0211AE1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift */,
 				AD7331D41E80AD600087D944 /* DepartureTableViewCell.swift */,
+				ADB377D51E9289E800C52428 /* AllDeparturesHeader.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -874,7 +875,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Onboard.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EFCircularSlider.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AKPickerView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DGElasticPullToRefresh.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DGRunkeeperSwitch.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
@@ -960,6 +960,7 @@
 				ADC734351D6890C500296449 /* StopsTableViewController.swift in Sources */,
 				ADC734581D6890C500296449 /* LocationSettingsTableViewController.swift in Sources */,
 				ADC734211D6890C500296449 /* RoutesConnections.swift in Sources */,
+				ADB377D61E9289E800C52428 /* AllDeparturesHeader.swift in Sources */,
 				ADC734321D6890C500296449 /* DeparturesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

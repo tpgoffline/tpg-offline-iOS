@@ -244,6 +244,7 @@ class RouteDetailTableViewController: UITableViewController {
                         content.body = text
                     }
                     content.categoryIdentifier = "departureNotifications"
+                    content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
                     content.userInfo = [:]
                     content.sound = UNNotificationSound.default()
 

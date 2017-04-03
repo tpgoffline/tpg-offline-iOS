@@ -196,6 +196,10 @@ class SplashScreenViewController: UIViewController {
                 AppValues.stopsABC[letter]!.append(subJson["stopName"].string!)
             }
 
+            for (key, stringArray) in AppValues.stopsABC {
+                AppValues.stopsABC[key] = stringArray.sorted()
+            }
+
             AppValues.stopsKeys = [String](AppValues.stops.keys)
             AppValues.stopsKeys.sort(by: { (string1, string2) -> Bool in
                 let stringA = String((AppValues.stops[string1]?.title)! + (AppValues.stops[string1]?.subTitle)!)

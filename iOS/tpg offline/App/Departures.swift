@@ -37,7 +37,7 @@ internal class Departures {
         self.timestamp = timestamp
     }
 
-    func calculerTempsRestant() {
+    func calculateLeftTime() {
         if timestamp == nil {
             self.leftTime = "-1"
         } else {

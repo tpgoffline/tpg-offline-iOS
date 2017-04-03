@@ -207,7 +207,6 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
             cell.detailTextLabel?.textColor = AppValues.textColor
 
             return cell
-
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "arretsCell", for: indexPath)
             cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
