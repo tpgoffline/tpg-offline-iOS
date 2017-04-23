@@ -42,7 +42,6 @@ class DeparturesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet var mapViewHeightConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var routeButton: UIButton!
     @IBOutlet weak var centerButton: UIButton!
@@ -218,7 +217,7 @@ class DeparturesViewController: UIViewController {
                 var offlineDepartures: [String:String] = [:]
                 var path = ""
                 for (_, y) in AppValues.favoritesStops {
-                    var json = JSON(data: "{}".data(using: String.Encoding.utf8)!)
+                    var json = try JSON(data: "{}".data(using: String.Encoding.utf8)!)
                     var departuresArray: [String:String] = [:]
                     let dir: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!)
                     path = dir.appendingPathComponent(y.stopCode + "departsSAM.json").absoluteString
@@ -304,10 +303,10 @@ class DeparturesViewController: UIViewController {
                     let content = UNMutableNotificationContent()
                     if before == 0 {
                         content.title = "Départ immédiat !".localized
-                        content.body = "Le tpg de la line ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
+                        content.body = "Le tpg de la ligne ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
                     } else {
                         content.title = "Départ dans ".localized + String(before) + " minutes".localized
-                        var text =  "Le tpg de la line ".localized
+                        var text =  "Le tpg de la ligne ".localized
                         text += line
                         text += " en direction de ".localized
                         text += direction
@@ -393,9 +392,9 @@ class DeparturesViewController: UIViewController {
             reminder.fireDate = date
             reminder.soundName = UILocalNotificationDefaultSoundName
             if before == 0 {
-                reminder.alertBody = "\("Le tpg de la line ".localized)\(line)\(" en direction de ".localized)\(direction)\(" va partir immédiatement".localized)"
+                reminder.alertBody = "\("Le tpg de la ligne ".localized)\(line)\(" en direction de ".localized)\(direction)\(" va partir immédiatement".localized)"
             } else {
-                var texte =  "Le tpg de la line ".localized
+                var texte =  "Le tpg de la ligne ".localized
                 texte += line
                 texte += " en direction de ".localized
                 texte += direction
@@ -425,9 +424,13 @@ class DeparturesViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        FIRCrashMessage("prepareForSegue with \(String(describing: segue.identifier)) with sender \(String(describing: sender)) to \(String(describing:segue.destination))")
         if segue.identifier == "showLine" {
             if let thermometerViewController = (segue.destination) as? ThermometerTableViewController {
                 thermometerViewController.departure = departuresList[(selectedIndexPath?.row)!]
+                FIRCrashMessage("Thermometer with \(thermometerViewController.departure.describe())")
+            } else {
+                FIRCrashMessage("Thermometer with nil")
             }
         } else if segue.identifier == "showAllDepartures" {
             let indexPath = selectedIndexPath ?? IndexPath(row: 0, section: 0)
@@ -436,6 +439,7 @@ class DeparturesViewController: UIViewController {
                 seeAllDeparturesViewController.line = self.departuresList[indexPath.row].line
                 seeAllDeparturesViewController.direction = self.departuresList[indexPath.row].direction
                 seeAllDeparturesViewController.destinationCode = self.departuresList[indexPath.row].destinationCode
+                FIRCrashMessage("Show All Departures with \(seeAllDeparturesViewController.stop.toDictionnary()) / \(seeAllDeparturesViewController.line) / \(seeAllDeparturesViewController.direction) / \(seeAllDeparturesViewController.destinationCode)")
             }
         }
     }
@@ -531,8 +535,8 @@ class DeparturesViewController: UIViewController {
 
                     do {
                         let departuresJSONString = try NSString(contentsOf: path, encoding: String.Encoding.utf8.rawValue)
+                        let departs = try JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
 
-                        let departs = JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
                         for (_, subJson) in departs {
                             if AppValues.linesColor[subJson["ligne"].string!] != nil {
                                 self.initialDeparturesList.append(Departures(
@@ -634,7 +638,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
     func numberOfSections(in tableView: UITableView) -> Int {
         if loading {
             return 1
-        } else if offline || notDownloaded {
+        } else if (offline && departuresList.count != 0) || notDownloaded {
             return 3
         }
         return 2
@@ -806,7 +810,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             cell.imageView?.image = #imageLiteral(resourceName: "internetError").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = nil
             return cell
-        } else if offline && notDownloaded && indexPath.section == 1 {
+        } else if offline && notDownloaded && indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
 
             cell.backgroundColor = AppValues.primaryColor
@@ -817,7 +821,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             cell.imageView?.image = #imageLiteral(resourceName: "cloudWarning").maskWithColor(color: AppValues.textColor)
             cell.accessoryView = nil
             return cell
-        } else if offline && indexPath.section == 1 && noMoreTransport {
+        } else if offline && indexPath.section == 2 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
 
             cell.backgroundColor = AppValues.primaryColor
@@ -958,14 +962,6 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
     func showRoute() {
         recenterMap = true
         routeActivated = !routeActivated
-        self.mapViewHeightConstraints.forEach({ (constraint) in
-            if constraint.priority < 750 {
-                constraint.priority = 751
-            } else if constraint.priority > 750 {
-                constraint.priority = 749
-            }
-            UIView.animate(withDuration: 0.5, animations: self.view.layoutIfNeeded)
-        })
         mapView.removeOverlays(mapView.overlays)
         if routeActivated, let route = self.route, let routeArea = self.routeArea {
             mapView.add(route.polyline)

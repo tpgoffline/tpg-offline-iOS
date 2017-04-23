@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
         scrollView.contentSize = imageView.bounds.size
         scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         setZoomScale()
+        scrollView.setContentOffset(CGPoint(x: (scrollView.contentSize.width - scrollView.bounds.size.width) / 2, y: (scrollView.contentSize.height - scrollView.bounds.size.height) / 2), animated: false)
 
         scrollView.addSubview(imageView)
         view.addSubview(scrollView)

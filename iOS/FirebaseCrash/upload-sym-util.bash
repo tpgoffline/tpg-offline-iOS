@@ -332,7 +332,7 @@ fcr_upload_files() {
             xcnote "Please verify the service account file."
             return 2
         elif [[ "${STATUS}" != 0 ]]; then
-            xcerror "curl exited with non-zero status ${STATUS}."
+            xcwarning "curl exited with non-zero status ${STATUS}."
             ((STATUS == 22)) && xcerror "HTTP response code is ${HTTP_STATUS}."
             return 2
         fi

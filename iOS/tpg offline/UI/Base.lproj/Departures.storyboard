@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F43c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ubN-JW-KM9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ubN-JW-KM9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KIz-ll-ZWK">
-                                <rect key="frame" x="0.0" y="189" width="375" height="478"/>
+                                <rect key="frame" x="0.0" y="365.5" width="375" height="301.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="infoArretCell" textLabel="SOs-sI-y3N" detailTextLabel="5vh-Ye-NeW" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="lI0-ld-brE" userLabel="infoArretCell">
@@ -331,14 +331,10 @@
                                 </connections>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1M-8k-Juq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="750" constant="125" id="18R-mS-uah"/>
-                                    <constraint firstAttribute="height" priority="749" constant="250" id="c7G-1q-Z04"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="64" width="375" height="301.5"/>
                             </mapView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqD-O1-HDQ">
-                                <rect key="frame" x="0.0" y="154" width="375" height="35"/>
+                                <rect key="frame" x="0.0" y="330" width="375" height="35"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kiX-1d-wKw">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,11 +393,13 @@
                             <constraint firstAttribute="trailing" secondItem="pqD-O1-HDQ" secondAttribute="trailing" id="AIA-60-u96"/>
                             <constraint firstItem="f1M-8k-Juq" firstAttribute="leading" secondItem="KNb-4j-u4D" secondAttribute="leading" id="GOW-WF-IKz"/>
                             <constraint firstAttribute="trailing" secondItem="f1M-8k-Juq" secondAttribute="trailing" id="HWd-OC-iUK"/>
-                            <constraint firstItem="Aok-VX-rWi" firstAttribute="top" secondItem="KIz-ll-ZWK" secondAttribute="bottom" id="Kzx-kl-Vfg"/>
                             <constraint firstItem="KIz-ll-ZWK" firstAttribute="leading" secondItem="KNb-4j-u4D" secondAttribute="leading" id="MRI-Ku-9M0"/>
                             <constraint firstAttribute="trailing" secondItem="KIz-ll-ZWK" secondAttribute="trailing" id="QbX-8r-mek"/>
                             <constraint firstItem="f1M-8k-Juq" firstAttribute="top" secondItem="sgX-Kw-qdS" secondAttribute="bottom" id="Sqz-BF-luK"/>
                             <constraint firstItem="KIz-ll-ZWK" firstAttribute="top" secondItem="f1M-8k-Juq" secondAttribute="bottom" id="WWh-6p-76K"/>
+                            <constraint firstItem="Aok-VX-rWi" firstAttribute="top" secondItem="KIz-ll-ZWK" secondAttribute="bottom" id="gbg-Kv-9R2"/>
+                            <constraint firstItem="f1M-8k-Juq" firstAttribute="width" secondItem="KIz-ll-ZWK" secondAttribute="width" id="m8r-1u-6du"/>
+                            <constraint firstItem="f1M-8k-Juq" firstAttribute="height" secondItem="KIz-ll-ZWK" secondAttribute="height" id="xWz-Ms-PIF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VcT-N7-ZAI"/>
@@ -411,8 +409,6 @@
                         <outlet property="routeButton" destination="SZh-Ie-Qru" id="sj9-FD-wVa"/>
                         <outlet property="tableView" destination="KIz-ll-ZWK" id="eou-8A-7sJ"/>
                         <outlet property="titleLabel" destination="HIv-GW-Vky" id="iIX-NF-DNX"/>
-                        <outletCollection property="mapViewHeightConstraints" destination="18R-mS-uah" collectionClass="NSMutableArray" id="Fwo-2W-Ok8"/>
-                        <outletCollection property="mapViewHeightConstraints" destination="c7G-1q-Z04" collectionClass="NSMutableArray" id="3sN-IX-9kr"/>
                         <segue destination="F2Z-ie-Gvp" kind="show" identifier="showFilterDepartures" id="m1B-Te-2go"/>
                     </connections>
                 </viewController>

@@ -420,7 +420,7 @@ class ThermometerTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !loading {
-            performSegue(withIdentifier: "showLigneArret", sender: self)
+            performSegue(withIdentifier: "showLine", sender: self)
         }
     }
 
@@ -429,7 +429,7 @@ class ThermometerTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showLigneArret" {
+        if segue.identifier == "showLine" {
             guard let departuresViewController = (segue.destination) as? DeparturesViewController else {
                 return
             }

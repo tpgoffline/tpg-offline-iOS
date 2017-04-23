@@ -68,7 +68,7 @@ class ReminderInterfaceController: WKInterfaceController {
                 if Int(self.value) == 0 {
                     content.title = NSLocalizedString("Départ immédiat !", comment: "")
                     var text = ""
-                    text += NSLocalizedString("Le tpg de la line ", comment: "")
+                    text += NSLocalizedString("Le tpg de la ligne ", comment: "")
                     text += self.departure!.line
                     text += NSLocalizedString(" en direction de ", comment: "")
                     text += self.departure!.direction
@@ -76,7 +76,7 @@ class ReminderInterfaceController: WKInterfaceController {
                     content.body = text
                 } else {
                     content.title = NSLocalizedString("Départ dans ", comment: "") + String(Int(self.value))  + NSLocalizedString(" minutes", comment: "")
-                    var text =  NSLocalizedString("Le tpg de la line ", comment: "")
+                    var text =  NSLocalizedString("Le tpg de la ligne ", comment: "")
                     text += self.departure!.line
                     text += NSLocalizedString(" en direction de ", comment: "")
                     text += self.departure!.direction

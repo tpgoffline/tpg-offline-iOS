@@ -151,10 +151,14 @@ class SplashScreenViewController: UIViewController {
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/Departs/infos.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
-                let json = JSON(data: request.data!)
-                if json["version"].intValue != self.defaults.integer(forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue) {
-                    AppValues.needUpdateDepartures = true
-                    tabBarController.selectedIndex = 4
+                do {
+                    let json = try JSON(data: request.data!)
+                    if json["version"].intValue != self.defaults.integer(forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue) {
+                        AppValues.needUpdateDepartures = true
+                        tabBarController.selectedIndex = 4
+                    }
+                } catch {
+
                 }
             }
         }
@@ -166,50 +170,54 @@ class SplashScreenViewController: UIViewController {
 
         group.enter()
         queue.async(group: group) {
-            let data: Data!
-            if let data2 = self.defaults.data(forKey: UserDefaultsKeys.stops.rawValue) {
-                data = data2
-            } else {
-                data = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
-            }
-            let arrets = JSON(data: data)
-            for (_, subJson) in arrets["stops"] {
-                AppValues.stopCodeToStopItem[subJson["stopCode"].string!] = subJson["stopName"].string!
-                AppValues.idTransportAPIToTpgStopName[Int(subJson["idTransportAPI"].stringValue)!] = subJson["stopName"].string!
-                AppValues.nameTransportAPIToTpgStopName[subJson["nameTransportAPI"].stringValue] = subJson["stopName"].string!
-                AppValues.stops[subJson["stopName"].string!] = Stop(
-                    fullName: subJson["stopName"].string!,
-                    title: subJson["titleName"].string!,
-                    subTitle: subJson["subTitleName"].string!,
-                    stopCode: subJson["stopCode"].string!,
-                    location: CLLocation(
-                        latitude: subJson["locationX"].double!,
-                        longitude: subJson["locationY"].double!
-                    ),
-                    transportAPIiD: subJson["idTransportAPI"].string!,
-                    connections: subJson["connections"].arrayObject as? [String] ?? []
-                )
-                let letter = String(subJson["stopName"].string![subJson["stopName"].string!.startIndex]).uppercased()
-                if AppValues.stopsABC[letter] == nil {
-                    AppValues.stopsABC[letter] = []
+            do {
+                let data: Data!
+                if let data2 = self.defaults.data(forKey: UserDefaultsKeys.stops.rawValue) {
+                    data = data2
+                } else {
+                    data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
                 }
-                AppValues.stopsABC[letter]!.append(subJson["stopName"].string!)
-            }
-
-            for (key, stringArray) in AppValues.stopsABC {
-                AppValues.stopsABC[key] = stringArray.sorted()
-            }
-
-            AppValues.stopsKeys = [String](AppValues.stops.keys)
-            AppValues.stopsKeys.sort(by: { (string1, string2) -> Bool in
-                let stringA = String((AppValues.stops[string1]?.title)! + (AppValues.stops[string1]?.subTitle)!)
-                let stringB = String((AppValues.stops[string2]?.title)! + (AppValues.stops[string2]?.subTitle)!)
-                if stringA!.lowercased() < stringB!.lowercased() {
-                    return true
+                let arrets = try JSON(data: data)
+                for (_, subJson) in arrets["stops"] {
+                    AppValues.stopCodeToStopItem[subJson["stopCode"].string!] = subJson["stopName"].string!
+                    AppValues.idTransportAPIToTpgStopName[Int(subJson["idTransportAPI"].stringValue)!] = subJson["stopName"].string!
+                    AppValues.nameTransportAPIToTpgStopName[subJson["nameTransportAPI"].stringValue] = subJson["stopName"].string!
+                    AppValues.stops[subJson["stopName"].string!] = Stop(
+                        fullName: subJson["stopName"].string!,
+                        title: subJson["titleName"].string!,
+                        subTitle: subJson["subTitleName"].string!,
+                        stopCode: subJson["stopCode"].string!,
+                        location: CLLocation(
+                            latitude: subJson["locationX"].double!,
+                            longitude: subJson["locationY"].double!
+                        ),
+                        transportAPIiD: subJson["idTransportAPI"].string!,
+                        connections: subJson["connections"].arrayObject as? [String] ?? []
+                    )
+                    let letter = String(subJson["stopName"].string![subJson["stopName"].string!.startIndex]).uppercased()
+                    if AppValues.stopsABC[letter] == nil {
+                        AppValues.stopsABC[letter] = []
+                    }
+                    AppValues.stopsABC[letter]!.append(subJson["stopName"].string!)
                 }
-                return false
-            })
-            group.leave()
+
+                for (key, stringArray) in AppValues.stopsABC {
+                    AppValues.stopsABC[key] = stringArray.sorted()
+                }
+
+                AppValues.stopsKeys = [String](AppValues.stops.keys)
+                AppValues.stopsKeys.sort(by: { (string1, string2) -> Bool in
+                    let stringA = String((AppValues.stops[string1]?.title)! + (AppValues.stops[string1]?.subTitle)!)
+                    let stringB = String((AppValues.stops[string2]?.title)! + (AppValues.stops[string2]?.subTitle)!)
+                    if stringA!.lowercased() < stringB!.lowercased() {
+                        return true
+                    }
+                    return false
+                })
+                group.leave()
+            } catch {
+
+            }
         }
 
         group.enter()
@@ -239,13 +247,20 @@ class SplashScreenViewController: UIViewController {
 
         group.enter()
         queue.async(group: group) {
-            let dataCouleurs = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "colorLines", ofType: "json")!))
-            let couleurs = JSON(data: dataCouleurs!)
-            for (_, j) in couleurs["colors"] {
-                AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!)
-                AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!)
-            }
-            group.leave()
+            do {
+                let colorsData: Data!
+                if let data2 = self.defaults.data(forKey: UserDefaultsKeys.colorLines.rawValue) {
+                    colorsData = data2
+                } else {
+                    colorsData = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "colorLines", ofType: "json")!))
+                }
+                let colors = try JSON(data: colorsData!)
+                for (_, j) in colors["colors"] {
+                    AppValues.linesBackgroundColor[j["lineCode"].string!] = UIColor(hexString: j["background"].string!)
+                    AppValues.linesColor[j["lineCode"].string!] = UIColor(hexString: j["text"].string!)
+                }
+                group.leave()
+            } catch {}
         }
 
         group.enter()
@@ -309,6 +324,12 @@ class SplashScreenViewController: UIViewController {
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Project%20Requirements/stops.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
                 self.defaults.set(request.data!, forKey: UserDefaultsKeys.stops.rawValue)
+            }
+        }
+
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/tpg%20offline/Project%20Requirements/colorLines.json", method: .get).responseData { (request) in
+            if request.result.isSuccess {
+                self.defaults.set(request.data!, forKey: UserDefaultsKeys.colorLines.rawValue)
             }
         }
 

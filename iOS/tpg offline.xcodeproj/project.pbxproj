@@ -863,7 +863,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GOOGLE_APP_ID=1:482146396466:ios:2b4d8d729bd1265d\n./FirebaseCrash/upload-sym \"./FirebaseCrash/FirebaseCrashServiceAccount.json\"";
+			shellScript = "GOOGLE_APP_ID=1:482146396466:ios:2b4d8d729bd1265d\n#./FirebaseCrash/upload-sym \"./FirebaseCrash/FirebaseCrashServiceAccount.json\"";
 		};
 		ADC734A21D6891E700296449 /* Install Carthage frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

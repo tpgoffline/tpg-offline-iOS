@@ -88,49 +88,53 @@ class DeparturesInterfaceController: WKInterfaceController {
                     }
 
                     if let departuresString = AppValues.offlineDepartures[(self.stop?.stopCode)!] {
-                        var json = JSON(data: departuresString.data(using: String.Encoding.utf8)!)
-                        if json[day].string != nil {
-                            json = JSON(data: json[day].stringValue.data(using: String.Encoding.utf8)!)
-                            for (_, subJson) in json {
-                                if AppValues.linesColor[subJson["ligne"].string!] != nil {
-                                    self.departuresList.append(Departures(
-                                        line: subJson["ligne"].string!,
-                                        direction: subJson["destination"].string!,
-                                        destinationCode: "",
-                                        lineColor: AppValues.linesColor[subJson["ligne"].string!]!,
-                                        lineBackgroundColor: AppValues.linesBackgroundColor[subJson["ligne"].string!]!,
-                                        code: nil,
-                                        leftTime: "0",
-                                        timestamp: subJson["timestamp"].string!
+                        do {
+                            var json = try JSON(data: departuresString.data(using: String.Encoding.utf8)!)
+                            if json[day].string != nil {
+                                json = try JSON(data: json[day].stringValue.data(using: String.Encoding.utf8)!)
+                                for (_, subJson) in json {
+                                    if AppValues.linesColor[subJson["ligne"].string!] != nil {
+                                        self.departuresList.append(Departures(
+                                            line: subJson["ligne"].string!,
+                                            direction: subJson["destination"].string!,
+                                            destinationCode: "",
+                                            lineColor: AppValues.linesColor[subJson["ligne"].string!]!,
+                                            lineBackgroundColor: AppValues.linesBackgroundColor[subJson["ligne"].string!]!,
+                                            code: nil,
+                                            leftTime: "0",
+                                            timestamp: subJson["timestamp"].string!
                                         ))
-                                } else {
-                                    self.departuresList.append(Departures(
-                                        line: subJson["ligne"].string!,
-                                        direction: subJson["destination"].string!,
-                                        destinationCode: "",
-                                        lineColor: .white,
-                                        lineBackgroundColor: .gray,
-                                        code: nil,
-                                        leftTime: "0",
-                                        timestamp: subJson["timestamp"].string!
+                                    } else {
+                                        self.departuresList.append(Departures(
+                                            line: subJson["ligne"].string!,
+                                            direction: subJson["destination"].string!,
+                                            destinationCode: "",
+                                            lineColor: .white,
+                                            lineBackgroundColor: .gray,
+                                            code: nil,
+                                            leftTime: "0",
+                                            timestamp: subJson["timestamp"].string!
                                         ))
+                                    }
+                                    self.departuresList.last?.calculateLeftTime()
                                 }
-                                self.departuresList.last?.calculateLeftTime()
+
+                                self.departuresList = self.departuresList.filter({ (depart) -> Bool in
+                                    if depart.leftTime != "-1" && Int(depart.leftTime)! <= 60 {
+                                        return true
+                                    }
+                                    return false
+                                })
+
+                                self.departuresList.sort(by: { (depart1, depart2) -> Bool in
+                                    if Int(depart1.leftTime)! < Int(depart2.leftTime)! {
+                                        return true
+                                    }
+                                    return false
+                                })
                             }
+                        } catch {
 
-                            self.departuresList = self.departuresList.filter({ (depart) -> Bool in
-                                if depart.leftTime != "-1" && Int(depart.leftTime)! <= 60 {
-                                    return true
-                                }
-                                return false
-                            })
-
-                            self.departuresList.sort(by: { (depart1, depart2) -> Bool in
-                                if Int(depart1.leftTime)! < Int(depart2.leftTime)! {
-                                    return true
-                                }
-                                return false
-                            })
                         }
                     }
 

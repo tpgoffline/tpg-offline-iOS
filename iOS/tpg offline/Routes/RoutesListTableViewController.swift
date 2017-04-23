@@ -354,10 +354,10 @@ class RoutesListTableViewController: UITableViewController {
                     let content = UNMutableNotificationContent()
                     if before == 0 {
                         content.title = "Départ immédiat !".localized
-                        content.body = "Le tpg de la line ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
+                        content.body = "Le tpg de la ligne ".localized + line + " en direction de ".localized + direction + " va partir immédiatement".localized
                     } else {
                         content.title = "Départ dans ".localized + String(before) + " minutes".localized
-                        var text =  "Le tpg de la line ".localized
+                        var text =  "Le tpg de la ligne ".localized
                         text += line
                         text += " en direction de ".localized
                         text += direction
@@ -408,7 +408,7 @@ class RoutesListTableViewController: UITableViewController {
             let reminder = UILocalNotification()
             reminder.fireDate = date
 
-            var texte =  "Le tpg de la line ".localized
+            var texte =  "Le tpg de la ligne ".localized
             texte += line
             texte += " en direction de ".localized
             texte += direction

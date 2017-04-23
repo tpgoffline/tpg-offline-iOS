@@ -174,7 +174,7 @@ class SeeAllDeparturesViewController: UIViewController {
 
                     do {
                         let departuresJSONString = try NSString(contentsOf: path, encoding: String.Encoding.utf8.rawValue)
-                        let departs = JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
+                        let departs = try JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
 
                         for (_, subJson) in departs {
                             let departure: Departures

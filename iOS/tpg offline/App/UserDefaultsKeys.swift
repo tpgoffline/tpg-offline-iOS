@@ -16,6 +16,7 @@ enum UserDefaultsKeys: String {
     case favoritesRoutes = "itinerairesFavoris"
     case selectedTabBar = "selectedTabBar"
     case stops = "stops"
+    case colorLines = "colorLines"
     case primaryColor = "primaryColor"
     case textColor = "textColor"
     case offlineDeparturesVersion = "offlineDeparturesVersion"

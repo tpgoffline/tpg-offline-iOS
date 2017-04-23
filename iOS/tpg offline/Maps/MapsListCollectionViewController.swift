@@ -11,6 +11,8 @@ import UIKit
 class MapsListTableViewController: UICollectionViewController {
 
 	let mapsList = ["Plan urbain", "Plan régional", "Plan Noctambus urbain", "Plan Noctambus régional"]
+    let mapNamesList = ["urb", "reg", "nocUrb", "nocReg"]
+
     fileprivate let itemsPerRow: CGFloat = 1
     fileprivate let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
@@ -45,7 +47,7 @@ class MapsListTableViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mapsCell", for: indexPath) as! MapsCollectionViewCell // swiftlint:disable:this force_cast
 
-        cell.mapsImage.image = UIImage(named: mapsList[indexPath.row])
+        cell.mapsImage.image = UIImage(named: mapNamesList[indexPath.row])
         cell.titleLabel.text = mapsList[indexPath.row].localized
         cell.titleLabel.textColor = AppValues.textColor
         cell.titleLabel.backgroundColor = AppValues.primaryColor.withAlphaComponent(0.9)
@@ -65,7 +67,7 @@ class MapsListTableViewController: UICollectionViewController {
             guard let mapViewController = nav.viewControllers[0] as? MapViewController else {
                 return
             }
-			mapViewController.mapImage = UIImage(named: mapsList[(collectionView?.indexPathsForSelectedItems?[0].row)!])
+			mapViewController.mapImage = UIImage(named: mapNamesList[(collectionView?.indexPathsForSelectedItems?[0].row)!])
 		}
 	}
 

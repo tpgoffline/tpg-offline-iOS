@@ -139,8 +139,13 @@ class SettingsTableViewController: UITableViewController {
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/infosDeparts.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
-                let json = JSON(data: request.data!)
-                UserDefaults.standard.set(json["version"].intValue, forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue)
+                do {
+                    let json = try JSON(data: request.data!)
+                    UserDefaults.standard.set(json["version"].intValue, forKey: UserDefaultsKeys.offlineDeparturesVersion.rawValue)
+                } catch {
+
+                }
+
             }
         }
 
