@@ -1024,10 +1024,12 @@ extension DeparturesViewController: MKMapViewDelegate {
 
         directions.calculate {response, _ in
             guard let route = response?.routes.first else { return }
+            guard let location = userLocation.location else { return }
+            guard let stop = self.stop else { return }
 
             self.route = route
 
-            self.timeToGo = Int(userLocation.location!.distance(from: self.stop!.location) / 5000 * 60)
+            self.timeToGo = Int(location.distance(from: stop.location) / 5000 * 60)
             self.routeButton.setTitle("\(self.timeToGo) min", for: .normal)
             self.routeArea = route.polyline.boundingMapRect
             mapView.removeOverlays(mapView.overlays)
