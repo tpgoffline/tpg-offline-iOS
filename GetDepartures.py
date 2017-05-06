@@ -8,9 +8,9 @@ import sys
 import argparse
 
 class A:
-	def waitHour(self, path="Departs/", jour="LUN"):
+	def waitHour(self, path="Departures/", jour="LUN"):
 		while 1:
-			if datetime.now().time().hour == 22 and datetime.now().time().minute == 20:
+			if datetime.now().time().hour == 4 and datetime.now().time().minute == 20:
 				break
 			else:
 				print(datetime.now().time())
@@ -18,7 +18,7 @@ class A:
 				sleep(10)
 		self.getDepartures(path, jour)
 
-	def getDepartures(self, path="Departs/", jour="LUN"):
+	def getDepartures(self, path="Departures/", jour="LUN"):
 		arbre = {}
 		while 1:
 			r = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetStops.json?key=d95be980-0830-11e5-a039-0002a5d5c51b")
@@ -36,14 +36,25 @@ class A:
 				for y in m["connections"]:
 					parameters = {"key" : "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode" : x["stopCode"], "lineCode" : y["lineCode"], "destinationCode" : y["destinationCode"]}
 					q = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", params=parameters)
-					for z in q.json()["departures"]:
-						arbre[x["stopCode"]].append({"ligne" : z["line"]["lineCode"], "destination" : z["line"]["destinationName"], "timestamp" : z["timestamp"]})
+					try:
+						for z in q.json()["departures"]:
+							arbre[x["stopCode"]].append({"ligne" : z["line"]["lineCode"], "destination" : z["line"]["destinationName"], "timestamp" : z["timestamp"]})
+					except Exception as e:
+						print("Cant't download " + q.url)
+					
 		pbar = tqdm(arbre.items())
 		for y, x in pbar:
 			pbar.set_description("Enregistrement de l'arret %s" % y)
 			file = open(path + y + "departs" + jour + ".json", "w", encoding='utf8')
 			file.write(json.dumps(x, sort_keys=True, indent=4, ensure_ascii=False))
 			file.close()
+		m = {}
+		for y, x in arbre.items():
+			m[y + "departs" + jour + ".json"] = x
+		file = open("departs.json", "w", encoding='utf8')
+		file.write(json.dumps(m, sort_keys=True, indent=4, ensure_ascii=False))
+		file.close()
+
 a = A()
 attendre = True
 parser = argparse.ArgumentParser()
