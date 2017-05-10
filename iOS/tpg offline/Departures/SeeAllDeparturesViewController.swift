@@ -209,7 +209,8 @@ class SeeAllDeparturesViewController: UIViewController {
                         }
 
                         if self.departuresList.isEmpty {
-                            SCLAlertView().showError(
+                            let alertView = SCLAlertView()
+                            alertView.showError(
                                 "Pas de réseau".localized,
                                 subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet".localized,
                                 closeButtonTitle: "OK",
@@ -222,7 +223,8 @@ class SeeAllDeparturesViewController: UIViewController {
                             self.departuresList[key] = array.sorted(by: { return ($0.dateCompenents?.hour ?? 0) < ($1.dateCompenents?.hour ?? 0) })
                         }
                     } catch {
-                        SCLAlertView().showError(
+                        let alertView = SCLAlertView()
+                        alertView.showError(
                             "Pas de réseau".localized,
                             subTitle: "Nous ne pouvons charger la totalité des départs car vous n'avez pas télécharger les départs et vous n'êtes pas connecté à internet".localized,
                             closeButtonTitle: "OK",

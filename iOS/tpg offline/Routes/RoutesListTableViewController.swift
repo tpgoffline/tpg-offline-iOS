@@ -391,12 +391,14 @@ class RoutesListTableViewController: UITableViewController {
                                     okView.showSuccess("Vous serez notifié".localized, subTitle: texte, closeButtonTitle: "OK", duration: 10, feedbackType: .notificationSuccess)
                                 }
                             } else {
-                                SCLAlertView().showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30, feedbackType: .notificationError)
+                                let alertView = SCLAlertView()
+                                alertView.showError("Impossible d'enregistrer la notification", subTitle: "L'erreur a été reportée au développeur. Merci de réessayer.", closeButtonTitle: "OK", duration: 30, feedbackType: .notificationError)
                             }
                         }
                     })
                 } else {
-                    SCLAlertView().showError("Notifications désactivées", subTitle: "Merci d'activer les notifications dans les réglages", closeButtonTitle: "OK", duration: 30, feedbackType: .notificationError)
+                    let alertView = SCLAlertView()
+                    alertView.showError("Notifications désactivées", subTitle: "Merci d'activer les notifications dans les réglages", closeButtonTitle: "OK", duration: 30, feedbackType: .notificationError)
                 }
             }
         } else {
@@ -470,7 +472,8 @@ class RoutesListTableViewController: UITableViewController {
                     customValueAlert.addButton("Rappeler".localized, action: { () -> Void in
                         if Int(time) < Int(txt.text!)! * 60 {
                             customValueAlert.hideView()
-                            SCLAlertView().showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK", duration: 10, feedbackType: .notificationError)
+                            let alertView = SCLAlertView()
+                            alertView.showError("Il y a un problème".localized, subTitle: "Merci de taper un nombre inférieur à la durée restante avant l'arrivée du tpg.".localized, closeButtonTitle: "OK", duration: 10, feedbackType: .notificationError)
 
                         } else {
                             self.scheduleNotification(Date(timeIntervalSinceNow: time), before: Int(txt.text!)!, line: ActualRoutes.routeResult[indexPath.row].connections[0].line, direction: ActualRoutes.routeResult[indexPath.row].connections[0].direction, arretDescente:  ActualRoutes.routeResult[indexPath.row].connections[0].to)
