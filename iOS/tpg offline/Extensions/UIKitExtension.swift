@@ -84,6 +84,8 @@ extension UIViewController {
             if BeforeStarting.predefinedTabBarItem != -1 {
                 tabBarController?.selectedIndex = BeforeStarting.predefinedTabBarItem
                 BeforeStarting.predefinedTabBarItem = -1
+            } else if BeforeStarting.directionsRequest != nil {
+                tabBarController?.selectedIndex = 2
             }
         }
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTheme), name: .UIApplicationDidBecomeActive, object: nil)

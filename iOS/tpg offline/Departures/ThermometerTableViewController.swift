@@ -377,18 +377,20 @@ class ThermometerTableViewController: UITableViewController {
                                 }
                             }
                         }
-                        if connectionsList.count > 4 {
-                            self.thermometerList.append(Thermometer(stop: AppValues.stops[AppValues.stopCodeToStopItem[subJSON["stop"]["stopCode"].stringValue]!], leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: connectionsList[2], connection4: "more"))
-                        } else if connectionsList.count == 4 {
-                            self.thermometerList.append(Thermometer(stop: AppValues.stops[AppValues.stopCodeToStopItem[subJSON["stop"]["stopCode"].stringValue]!], leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: connectionsList[2], connection4: connectionsList[3]))
-                        } else if connectionsList.count == 3 {
-                            self.thermometerList.append(Thermometer(stop: AppValues.stops[AppValues.stopCodeToStopItem[subJSON["stop"]["stopCode"].stringValue]!], leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: connectionsList[2], connection4: nil))
-                        } else if connectionsList.count == 2 {
-                            self.thermometerList.append(Thermometer(stop: AppValues.stops[AppValues.stopCodeToStopItem[subJSON["stop"]["stopCode"].stringValue]!], leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: nil, connection4: nil))
-                        } else if connectionsList.count == 1 {
-                            self.thermometerList.append(Thermometer(stop: AppValues.stops[AppValues.stopCodeToStopItem[subJSON["stop"]["stopCode"].stringValue]!], leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: nil, connection3: nil, connection4: nil))
-                        } else {
-                            self.thermometerList.append(Thermometer(stop: AppValues.stops[AppValues.stopCodeToStopItem[subJSON["stop"]["stopCode"].stringValue]!], leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: nil, connection2: nil, connection3: nil, connection4: nil))
+                        if let stop = AppValues.stops[AppValues.stopCodeToStopItem[subJSON["stop"]["stopCode"].stringValue]!] {
+                            if connectionsList.count > 4 {
+                                self.thermometerList.append(Thermometer(stop: stop, leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: connectionsList[2], connection4: "more"))
+                            } else if connectionsList.count == 4 {
+                                self.thermometerList.append(Thermometer(stop: stop, leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: connectionsList[2], connection4: connectionsList[3]))
+                            } else if connectionsList.count == 3 {
+                                self.thermometerList.append(Thermometer(stop: stop, leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: connectionsList[2], connection4: nil))
+                            } else if connectionsList.count == 2 {
+                                self.thermometerList.append(Thermometer(stop: stop, leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: connectionsList[1], connection3: nil, connection4: nil))
+                            } else if connectionsList.count == 1 {
+                                self.thermometerList.append(Thermometer(stop: stop, leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: connectionsList[0], connection2: nil, connection3: nil, connection4: nil))
+                            } else {
+                                self.thermometerList.append(Thermometer(stop: stop, leftTime: subJSON["arrivalTime"].string, isDeflect: subJSON["deviation"].boolValue, connection1: nil, connection2: nil, connection3: nil, connection4: nil))
+                            }
                         }
                         if subJSON["arrivalTime"].string != nil && self.rowForVisible == -1 {
                             self.rowForVisible = Int(index)!

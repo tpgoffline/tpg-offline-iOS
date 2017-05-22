@@ -165,12 +165,12 @@ class IncidentsTableViewController: UITableViewController {
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH"
-            let heure = Int(dateFormatter.string(from: Date()))
-            if heure! < 6 {
+            let heure = Int(dateFormatter.string(from: Date())) ?? 12
+            if heure < 6 {
                 cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized
-            } else if heure! < 18 {
+            } else if heure < 18 {
                 cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne journée !".localized
-            } else if heure! < 22 {
+            } else if heure < 22 {
                 cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne soirée !".localized
             } else {
                 cell.detailTextLabel!.text = "Tout va bien sur tout le réseau. Bonne nuit !".localized

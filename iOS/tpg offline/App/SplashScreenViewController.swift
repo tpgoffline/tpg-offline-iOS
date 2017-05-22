@@ -11,6 +11,7 @@ import CoreLocation
 import Alamofire
 import FirebaseAnalytics
 import SwiftyJSON
+import MapKit
 
 enum ShortcutIdentifier: String {
     case departures = "departures"
@@ -41,6 +42,7 @@ enum ShortcutIdentifier: String {
 
 struct BeforeStarting {
     static var predefinedTabBarItem: Int = -1
+    static var directionsRequest: MKDirectionsRequest?
 }
 
 class SplashScreenViewController: UIViewController {

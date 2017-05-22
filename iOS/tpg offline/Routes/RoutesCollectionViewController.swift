@@ -10,6 +10,8 @@ import UIKit
 import FirebaseCrash
 import DGRunkeeperSwitch
 import SCLAlertView
+import MapKit
+import SwiftLocation
 
 struct ActualRoutes {
     static var route: SearchRoute! = SearchRoute(departure: nil, arrival: nil, date: Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: Date()), isArrivalDate: false)
@@ -47,12 +49,83 @@ class RoutesCollectionViewController: UICollectionViewController {
         navigationItem.leftBarButtonItems = barButtonsItems
 
         refreshTheme()
+        getRoutesFromMaps()
     }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ActualRoutes.canFavorite = true
         refreshTheme()
+        getRoutesFromMaps()
     }
+
+    func getRoutesFromMaps() {
+        if let directionsRequest = BeforeStarting.directionsRequest {
+            BeforeStarting.directionsRequest = nil
+
+            if directionsRequest.source?.placemark.coordinate.latitude == 0.0 && directionsRequest.source?.placemark.coordinate.longitude == 0.0 {
+                var accuracy = Accuracy.block
+                if UserDefaults.standard.integer(forKey: "locationAccurency") == 1 {
+                    accuracy = .house
+                } else if UserDefaults.standard.integer(forKey: "locationAccurency") == 2 {
+                    accuracy = .room
+                }
+
+                Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> (Void) in
+                    ActualRoutes.route.departure = self.getNearStopFrom(location)
+                    ActualRoutes.route.arrival = self.getNearStopFrom(CLLocation(latitude: (directionsRequest.destination?.placemark.coordinate.latitude)!, longitude: (directionsRequest.destination?.placemark.coordinate.longitude)!))
+                    ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: directionsRequest.departureDate ?? Date())
+                    ActualRoutes.route.isArrivalDate = false
+                    self.rechercher(sender: self)
+                }) { (_, _, _) -> (Void) in
+                    DispatchQueue.main.sync {
+                        //TODO: Localize that
+                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry", closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
+                    }
+                }
+            } else if directionsRequest.destination?.placemark.coordinate.latitude == 0.0 && directionsRequest.destination?.placemark.coordinate.longitude == 0.0 {
+                var accuracy = Accuracy.block
+                if UserDefaults.standard.integer(forKey: "locationAccurency") == 1 {
+                    accuracy = .house
+                } else if UserDefaults.standard.integer(forKey: "locationAccurency") == 2 {
+                    accuracy = .room
+                }
+
+                Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> (Void) in
+                    ActualRoutes.route.departure = self.getNearStopFrom(CLLocation(latitude: (directionsRequest.source?.placemark.coordinate.latitude)!, longitude: (directionsRequest.source?.placemark.coordinate.longitude)!))
+                    ActualRoutes.route.arrival = self.getNearStopFrom(location)
+                    ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: directionsRequest.departureDate ?? Date())
+                    ActualRoutes.route.isArrivalDate = false
+                    self.rechercher(sender: self)
+                }) { (_, _, _) -> (Void) in
+                    DispatchQueue.main.sync {
+                        //TODO: Localize that
+                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry", closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
+                    }
+                }
+            } else {
+                ActualRoutes.route.departure = getNearStopFrom(CLLocation(latitude: (directionsRequest.source?.placemark.coordinate.latitude)!, longitude: (directionsRequest.source?.placemark.coordinate.longitude)!))
+                ActualRoutes.route.arrival = getNearStopFrom(CLLocation(latitude: (directionsRequest.destination?.placemark.coordinate.latitude)!, longitude: (directionsRequest.destination?.placemark.coordinate.longitude)!))
+                ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: directionsRequest.departureDate ?? Date())
+                ActualRoutes.route.isArrivalDate = false
+                rechercher(sender: self)
+            }
+        }
+    }
+
+    func getNearStopFrom(_ location: CLLocation) -> Stop {
+        var localizedStop: Stop = AppValues.stops[AppValues.stopsKeys[0]]!
+
+        for x in [Stop](AppValues.stops.values) {
+            x.distance = location.distance(from: x.location)
+
+            if x.distance ?? 10000 <= localizedStop.distance ?? 10000 {
+                localizedStop = x
+            }
+        }
+        return localizedStop
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 

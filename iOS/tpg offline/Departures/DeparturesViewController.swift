@@ -38,105 +38,105 @@ class DeparturesViewController: UIViewController {
     var routeActivated: Bool = false
     var recenterMap: Bool = true
     var selectedIndexPath: IndexPath?
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var routeButton: UIButton!
     @IBOutlet weak var centerButton: UIButton!
     var coordinate: CLLocationCoordinate2D?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if stop == nil {
             stop = AppValues.stops[[String](AppValues.stops.keys).sorted()[0]]
         }
-        
+
         StopLinesList.linesList = []
-        
+
         #if DEBUG
         #else
             FIRAnalytics.logEvent(withName: "departure", parameters: [
                 "stopCode": (stop?.stopCode ?? "XXXX") as NSObject
                 ])
         #endif
-        
+
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = AppValues.primaryColor
-        
+
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self!.refresh()
-            
+
             }, loadingView: loadingView)
-        
+
         tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-        
+
         title = stop?.fullName
-        
+
         tableView.backgroundColor = AppValues.primaryColor
-        
+
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
-        
+
         refresh()
         configureDescriptionOfStop()
-        
+
         FIRCrashMessage("\(String(describing: stop?.stopCode)) loaded")
     }
-    
+
     func configureDescriptionOfStop() {
         coordinate = stop!.location.coordinate
-        
+
         let pin = MKPointAnnotation()
         pin.coordinate = self.stop!.location.coordinate
         pin.title = self.stop!.fullName ?? "Carotte ?"
         mapView.addAnnotation(pin)
         mapView.delegate = self
-        
+
         if AppValues.primaryColor.contrast == .white {
             mapView.tintColor = AppValues.primaryColor
         } else {
             mapView.tintColor = AppValues.textColor
         }
         titleLabel.text = stop?.fullName ?? ""
-        
+
         centerButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1003521127)
         centerButton.layer.cornerRadius = centerButton.bounds.height / 2
         centerButton.addTarget(self, action: #selector(centerMap), for: .touchUpInside)
-        
+
         routeButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1003521127)
         routeButton.addTarget(self, action: #selector(showRoute), for: .touchUpInside)
         routeButton.layer.cornerRadius = routeButton.bounds.height / 2
-        
+
         mapView.removeOverlays(mapView.overlays)
         if recenterMap {
             centerMap()
             recenterMap = false
         }
-        
+
         if timeToGo != -1 {
             routeButton.setTitle("\(timeToGo) min", for: .normal)
         }
     }
-    
+
     override func refreshTheme() {
         self.tableView.reloadData()
         self.tableView.backgroundColor = AppValues.primaryColor
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         tableView.dg_setPullToRefreshFillColor(AppValues.textColor)
         tableView.dg_setPullToRefreshBackgroundColor(AppValues.primaryColor)
-        
+
         if stop != nil {
             var barButtonsItems: [UIBarButtonItem] = []
-            
+
             if (AppValues.fullNameFavoritesStops.index(of: stop!.fullName)) != nil {
                 barButtonsItems.append(UIBarButtonItem(
                     image: #imageLiteral(resourceName: "starNavbar"),
@@ -155,10 +155,10 @@ class DeparturesViewController: UIViewController {
                                 style: UIBarButtonItemStyle.done,
                                 target: self,
                                 action: #selector(self.refresh)))
-            
+
             self.navigationItem.rightBarButtonItems = barButtonsItems
         }
-        
+
         departuresList = initialDeparturesList.filter { (departure) -> Bool in
             if StopLinesList.filterNoMore && departure.leftTime == "no more" {
                 return false
@@ -168,32 +168,32 @@ class DeparturesViewController: UIViewController {
             }
             return false
         }
-        
+
         refreshTheme()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     deinit {
         tableView?.dg_removePullToRefresh()
     }
-    
+
     func labelToImage(_ label: UILabel!) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
         label.layer.render(in: UIGraphicsGetCurrentContext()!)
-        
+
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }
-    
+
     func toggleFavorite(_ sender: Any!) {
         if AppValues.favoritesStops.isEmpty {
             let array: [String:Stop] = [stop!.fullName: stop!]
             AppValues.fullNameFavoritesStops.append(stop!.fullName)
             AppValues.favoritesStops = array
-            
+
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: array)
             defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesStops.rawValue)
         } else {
@@ -207,7 +207,7 @@ class DeparturesViewController: UIViewController {
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppValues.favoritesStops!)
             defaults.set(encodedData, forKey: UserDefaultsKeys.favoritesStops.rawValue)
         }
-        
+
         if WCSession.isSupported() {
             do {
                 var a: [String:[String:Any]] = [:]
@@ -221,7 +221,7 @@ class DeparturesViewController: UIViewController {
                     var departuresArray: [String:String] = [:]
                     let dir: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!)
                     path = dir.appendingPathComponent(y.stopCode + "departsSAM.json").absoluteString
-                    
+
                     if FileManager.default.fileExists(atPath: path) {
                         do {
                             try departuresArray["SAM"] = String(contentsOfFile: path)
@@ -229,9 +229,9 @@ class DeparturesViewController: UIViewController {
                             print("Reading of \(path) is failed")
                         }
                     }
-                    
+
                     path = dir.appendingPathComponent(y.stopCode + "departsDIM.json").absoluteString
-                    
+
                     if FileManager.default.fileExists(atPath: path) {
                         do {
                             try departuresArray["DIM"] = String(contentsOfFile: path)
@@ -239,9 +239,9 @@ class DeparturesViewController: UIViewController {
                             print("Reading of \(path) is failed")
                         }
                     }
-                    
+
                     path = dir.appendingPathComponent(y.stopCode + "departsLUN.json").absoluteString
-                    
+
                     if FileManager.default.fileExists(atPath: path) {
                         do {
                             try departuresArray["LUN"] = String(contentsOfFile: path)
@@ -249,22 +249,22 @@ class DeparturesViewController: UIViewController {
                             print("Reading of \(path) is failed")
                         }
                     }
-                    
+
                     json.dictionaryObject = departuresArray
                     offlineDepartures[y.stopCode] = json.rawString() ?? ""
-                    
+
                 }
                 try WatchSessionManager.sharedManager.updateApplicationContext([
                     "favoritesStops": NSKeyedArchiver.archivedData(withRootObject: a) as Any,
                     "offlineDepartures": offlineDepartures as Any])
-                
+
             } catch {
                 print("Update WatchConnectivity with application context failed")
             }
         }
-        
+
         var barButtonsItems: [UIBarButtonItem] = []
-        
+
         if AppValues.fullNameFavoritesStops.index(of: stop!.fullName) != nil {
             barButtonsItems.append(
                 UIBarButtonItem(image: #imageLiteral(resourceName: "starNavbar"),
@@ -283,7 +283,7 @@ class DeparturesViewController: UIViewController {
                             style: UIBarButtonItemStyle.done,
                             target: self,
                             action: #selector(self.refresh)))
-        
+
         self.navigationItem.rightBarButtonItems = barButtonsItems
         guard let navController = self.splitViewController?.viewControllers[0] as? UINavigationController else {
             return
@@ -293,11 +293,11 @@ class DeparturesViewController: UIViewController {
         }
         arretTableViewController.tableView.reloadData()
     }
-    
+
     func scheduleNotification(_ hour: String, before: Int, line: String, direction: String) {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
-            
+
             center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
                 if granted {
                     let content = UNMutableNotificationContent()
@@ -319,16 +319,16 @@ class DeparturesViewController: UIViewController {
                     content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
                     content.userInfo = [:]
                     content.sound = UNNotificationSound.default()
-                    
+
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     var time = dateFormatter.date(from: hour)
                     time!.addTimeInterval(Double(before) * -60.0)
                     let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
-                    
+
                     let cal = Calendar(identifier: Calendar.Identifier.gregorian)
                     let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
-                    
+
                     let trigger = UNCalendarNotificationTrigger(
                         dateMatching: Calendar.current.dateComponents([.year,
                                                                        .month,
@@ -338,7 +338,7 @@ class DeparturesViewController: UIViewController {
                                                                        .second],
                                                                       from: date!),
                         repeats: false)
-                    
+
                     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                     center.add(request, withCompletionHandler: { (error) in
                         DispatchQueue.main.sync {
@@ -383,7 +383,7 @@ class DeparturesViewController: UIViewController {
                             duration: 30,
                             feedbackType: .notificationError)
                     }
-                    
+
                 }
             }
         } else {
@@ -392,7 +392,7 @@ class DeparturesViewController: UIViewController {
             var time = dateFormatter.date(from: hour)
             time!.addTimeInterval(Double(before) * -60.0)
             let now: DateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: time!)
-            
+
             let cal = Calendar(identifier: Calendar.Identifier.gregorian)
             let date = cal.date(bySettingHour: now.hour!, minute: now.minute!, second: now.second!, of: Date())
             let reminder = UILocalNotification()
@@ -410,11 +410,11 @@ class DeparturesViewController: UIViewController {
                 texte += " minutes".localized
                 reminder.alertBody = texte
             }
-            
+
             UIApplication.shared.scheduleLocalNotification(reminder)
-            
+
             print("Firing at \(String(describing: now.hour)):\(now.minute!-before):\(String(describing: now.second))")
-            
+
             let okView = SCLAlertView()
             if before == 0 {
                 okView.showSuccess(
@@ -429,7 +429,7 @@ class DeparturesViewController: UIViewController {
             }
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         FIRCrashMessage("prepareForSegue with \(String(describing: segue.identifier)) with sender \(String(describing: sender)) to \(String(describing:segue.destination))")
         if segue.identifier == "showLine" {
@@ -450,7 +450,7 @@ class DeparturesViewController: UIViewController {
             }
         }
     }
-    
+
     func refresh() {
         self.loading = true
         self.notDownloaded = false
@@ -465,7 +465,7 @@ class DeparturesViewController: UIViewController {
                     let departs = JSON(data)
                     FIRCrashMessage("Offline = false")
                     FIRCrashMessage("\(String(describing: departs.rawString()))")
-                    
+
                     for (_, subjson) in departs["departures"] {
                         if AppValues.linesColor[subjson["line"]["lineCode"].string!] == nil {
                             self.initialDeparturesList.append(Departures(
@@ -474,7 +474,7 @@ class DeparturesViewController: UIViewController {
                                 destinationCode: subjson["line"]["destinationCode"].string!,
                                 lineColor: .white,
                                 lineBackgroundColor: .flatGray,
-                                
+
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
                                 timestamp: subjson["timestamp"].string
@@ -486,7 +486,7 @@ class DeparturesViewController: UIViewController {
                                 destinationCode: subjson["line"]["destinationCode"].string!,
                                 lineColor: AppValues.linesColor[subjson["line"]["lineCode"].string!]!,
                                 lineBackgroundColor: AppValues.linesBackgroundColor[subjson["line"]["lineCode"].string!]!,
-                                
+
                                 code: String(subjson["departureCode"].int ?? 0),
                                 leftTime: subjson["waitingTime"].string!,
                                 timestamp: subjson["timestamp"].string
@@ -496,7 +496,7 @@ class DeparturesViewController: UIViewController {
                             StopLinesList.linesList.append(subjson["line"]["lineCode"].string!)
                         }
                     }
-                    
+
                     self.departuresList = self.initialDeparturesList.filter { (departure) -> Bool in
                         if StopLinesList.filterNoMore && departure.leftTime == "no more" {
                             return false
@@ -507,7 +507,7 @@ class DeparturesViewController: UIViewController {
                         return false
                     }
                     self.offline = false
-                    
+
                     if self.departuresList.count == 0 {
                         self.noMoreTransport = true
                     } else {
@@ -536,14 +536,14 @@ class DeparturesViewController: UIViewController {
                         break
                     default:
                         path = dir.appendingPathComponent(self.stop!.stopCode + "departsLUN.json")
-                        
+
                         break
                     }
-                    
+
                     do {
                         let departuresJSONString = try NSString(contentsOf: path, encoding: String.Encoding.utf8.rawValue)
                         let departs = try JSON(data: departuresJSONString.data(using: String.Encoding.utf8.rawValue)!)
-                        
+
                         for (_, subJson) in departs {
                             if AppValues.linesColor[subJson["ligne"].string!] != nil {
                                 self.initialDeparturesList.append(Departures(
@@ -556,7 +556,7 @@ class DeparturesViewController: UIViewController {
                                     leftTime: "0",
                                     timestamp: subJson["timestamp"].string!
                                 ))
-                                
+
                             } else {
                                 self.initialDeparturesList.append(Departures(
                                     line: subJson["ligne"].string!,
@@ -601,7 +601,7 @@ class DeparturesViewController: UIViewController {
                             }
                             return true
                         })
-                        
+
                         self.departuresList.sort(by: { (depart1, depart2) -> Bool in
                             guard let leftTime1 = Int(depart1.leftTime) else {
                                 return false
@@ -614,16 +614,16 @@ class DeparturesViewController: UIViewController {
                             }
                             return false
                         })
-                        
+
                         self.offline = true
-                        
+
                         if self.departuresList.count == 0 {
                             self.noMoreTransport = true
                         } else {
                             self.noMoreTransport = false
                         }
                         self.loading = false
-                        
+
                         self.tableView.reloadData()
                         self.tableView.dg_stopLoading()
                     } catch {
@@ -650,7 +650,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
         }
         return 2
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if loading {
             return 1
@@ -668,14 +668,14 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             return departuresList.count
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedIndexPath == indexPath {
             return offline ? 131 : 176
         }
         return 44
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (offline && indexPath.section == 1) || (!offline && indexPath.section == 0) {
             performSegue(withIdentifier: "showFilterDepartures", sender: self)
@@ -693,7 +693,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             }
         }
     }
-    
+
     func askForReminder() {
         guard let indexPath = selectedIndexPath else {
             return
@@ -713,7 +713,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
                     before: 0,
                     line: self.departuresList[indexPath.row].line,
                     direction: self.departuresList[indexPath.row].direction)
-                
+
             })
             if Int(self.departuresList[indexPath.row].leftTime) ?? 61 > 5 {
                 alertView.addButton("5 min avant le départ".localized, action: { () -> Void in
@@ -750,7 +750,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
                                             closeButtonTitle: "OK".localized,
                                             duration: 10,
                                             feedbackType: .notificationError)
-                        
+
                     } else {
                         self.scheduleNotification(self.departuresList[indexPath.row].timestamp, before: Int(txt.text!)!, line: self.departuresList[indexPath.row].line, direction: self.departuresList[indexPath.row].direction)
                         customValueAlert.hideView()
@@ -761,7 +761,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             alertView.showNotice("Rappeler".localized, subTitle: "Quand voulez-vous être notifié(e) ?".localized, closeButtonTitle: "Annuler".localized, circleIconImage: #imageLiteral(resourceName: "clock").maskWithColor(color: .white))
         }
     }
-    
+
     func canSelect(indexPath: IndexPath) -> Bool! {
         if loading {
             return false
@@ -782,13 +782,13 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
         }
         return true
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if loading {
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as! LoadingCellTableViewCell // swiftlint:disable:this force_cast
-            
+
             cell.activityIndicator.stopAnimating()
-            
+
             if AppValues.primaryColor.contrast == .white {
                 cell.backgroundColor = .flatBlue
                 cell.titleLabel?.textColor = .white
@@ -803,13 +803,13 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             cell.titleLabel?.text = "Chargement".localized
             cell.subTitleLabel?.text = "Merci de patienter".localized
             cell.accessoryView = nil
-            
+
             cell.activityIndicator.startAnimating()
-            
+
             return cell
         } else if indexPath.section == 0 && offline {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Mode offline".localized
@@ -820,7 +820,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             return cell
         } else if offline && notDownloaded && indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Non téléchargé".localized
@@ -831,7 +831,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             return cell
         } else if offline && indexPath.section == 2 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Service terminé".localized
@@ -842,7 +842,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             return cell
         } else if (offline && indexPath.section == 1) || (!offline && indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath) // swiftlint:disable:this force_cast
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Filtrer".localized
@@ -853,7 +853,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             return cell
         } else if !offline && indexPath.section == 0 && noMoreTransport {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoArretCell", for: indexPath)
-            
+
             cell.backgroundColor = AppValues.primaryColor
             cell.textLabel?.textColor = AppValues.textColor
             cell.textLabel?.text = "Service terminé".localized
@@ -864,15 +864,15 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "departureCell", for: indexPath) as! DepartureTableViewCell // swiftlint:disable:this force_cast
-            
+
             if AppValues.primaryColor.contrast == .white {
                 cell.backgroundColor = departuresList[indexPath.row].lineBackgroundColor
             } else {
                 cell.backgroundColor = .white
             }
-            
+
             var lineColor = AppValues.textColor
-            
+
             if AppValues.primaryColor.contrast == .white {
                 lineColor = departuresList[indexPath.row].lineColor
             } else {
@@ -882,7 +882,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
                     lineColor = self.departuresList[indexPath.row].lineBackgroundColor.darken(percentage: 0.2)
                 }
             }
-            
+
             for imageView in cell.nextImages {
                 imageView.image = UIImage(named: "next")?.maskWithColor(color: lineColor!)
             }
@@ -893,9 +893,9 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             cell.buttonReminder.setImage(#imageLiteral(resourceName: "bell").maskWithColor(color: lineColor!), for: .normal)
             cell.buttonFollowTrack.setImage(#imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!), for: .normal)
             cell.buttonSeeAllDepartures.setImage(#imageLiteral(resourceName: "clockSmall").maskWithColor(color: lineColor!), for: .normal)
-            
+
             FIRCrashMessage("Departure: \(departuresList[indexPath.row].describe())")
-            
+
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
             labelPictoLigne.text = departuresList[indexPath.row].line
             labelPictoLigne.textAlignment = .center
@@ -906,18 +906,18 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             let image = labelToImage(labelPictoLigne)
             cell.linePictogram.image = image
             cell.directionLabel.text = departuresList[indexPath.row].direction
-            
+
             cell.directionLabel.textColor = lineColor
             cell.rightTimeLabel.textColor = lineColor
-            
+
             cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: lineColor!))
-            
+
             if offline {
                 if Int(departuresList[indexPath.row].leftTime)! >= 60 {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                     let time = dateFormatter.date(from: self.departuresList[indexPath.row].timestamp)
-                    
+
                     cell.rightTimeLabel.text = DateFormatter.localizedString(
                         from: time!,
                         dateStyle: DateFormatter.Style.none,
@@ -957,16 +957,16 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
                     cell.rightImage.image = nil
                 }
             }
-            
+
             if selectedIndexPath == indexPath {
                 cell.backgroundColor = cell.backgroundColor?.darken(percentage: 0.01)
                 cell.accessoryView = nil
             }
-            
+
             return cell
         }
     }
-    
+
     func showRoute() {
         recenterMap = true
         routeActivated = !routeActivated
@@ -983,60 +983,60 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
 
 extension DeparturesViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
+
         guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
-        
+
         guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
-        
+
         if !canSelect(indexPath: indexPath) { return nil }
-        
+
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "thermometerTableViewController") as? ThermometerTableViewController else { return nil }
-        
+
         detailVC.departure = departuresList[indexPath.row]
         previewingContext.sourceRect = cell.frame
         return detailVC
     }
-    
+
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         show(viewControllerToCommit, sender: self)
     }
 }
 
 extension DeparturesViewController: MKMapViewDelegate {
-    
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let route = self.route else {
             return MKPolylineRenderer()
         }
         let renderer = MKPolylineRenderer(polyline: route.polyline)
-        
+
         renderer.lineWidth = 4
-        
+
         if AppValues.primaryColor.contrast == .white {
             renderer.strokeColor = AppValues.primaryColor
         } else {
             renderer.strokeColor = AppValues.textColor
         }
-        
+
         return renderer
     }
-    
+
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         let request = MKDirectionsRequest()
         request.source = MKMapItem.forCurrentLocation()
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stop!.location.coordinate, addressDictionary: nil))
         request.requestsAlternateRoutes = false
         request.transportType = .walking
-        
+
         let directions = MKDirections(request: request)
-        
+
         directions.calculate {response, _ in
             guard let route = response?.routes.first else { return }
             guard let location = userLocation.location else { return }
             guard let stop = self.stop else { return }
-            
+
             self.route = route
-            
+
             self.timeToGo = Int(location.distance(from: stop.location) / 5000 * 60)
             self.routeButton.setTitle("\(self.timeToGo) min", for: .normal)
             self.routeArea = route.polyline.boundingMapRect
@@ -1048,7 +1048,7 @@ extension DeparturesViewController: MKMapViewDelegate {
             }
         }
     }
-    
+
     func centerMap() {
         guard let coordinate = self.coordinate else {
             return

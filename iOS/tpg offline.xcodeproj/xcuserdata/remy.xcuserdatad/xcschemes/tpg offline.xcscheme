@@ -92,9 +92,12 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
-         referenceType = "1">
+         identifier = "../../tpg offline/Project Requirements/Bel-Air.gpx"
+         referenceType = "0">
       </LocationScenarioReference>
+      <RoutingCoverageFileReference
+         identifier = "../../tpg offline/Project Requirements/tpg offline.geojson">
+      </RoutingCoverageFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

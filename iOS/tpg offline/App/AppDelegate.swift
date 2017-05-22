@@ -13,6 +13,7 @@ import FirebaseCore
 import FirebaseMessaging
 import FirebaseInstanceID
 import FirebaseAnalytics
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,6 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = handleShortcut(shortcutItem)
             return false
         }
+        return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard MKDirectionsRequest.isDirectionsRequest(url) else {
+            return true
+        }
+        let request = MKDirectionsRequest(contentsOf: url)
+        BeforeStarting.directionsRequest = request
         return true
     }
 
