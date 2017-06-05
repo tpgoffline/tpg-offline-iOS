@@ -30,6 +30,9 @@ class SettingsTableViewController: UITableViewController {
     ]
 
     let defaults = UserDefaults.standard
+    var progress: Float = 0
+    var isDownloadingOfflineDepartures = false
+    var offlineDeparturesRowIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,18 +69,27 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "parametresCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "parametresCell", for: indexPath) as! SettingsTableViewCell // swiftlint:disable:this force_cast
 
         cell.textLabel!.text = (rowsList[indexPath.row][1] as? String ?? "")
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
         guard let icon = rowsList[indexPath.row][0] as? UIImage else {
-            FIRCrashMessage("ERROR: rowsList[indexPath.row][0] is not an UIImage")
+            FirebaseCrashMessage("ERROR: rowsList[indexPath.row][0] is not an UIImage")
             abort()
         }
         cell.imageView?.image = icon.withRenderingMode(.alwaysTemplate)
         cell.imageView?.tintColor = AppValues.textColor
         cell.backgroundColor = AppValues.primaryColor
         cell.textLabel?.textColor = AppValues.textColor
+
+        if rowsList[indexPath.row][2] as? String ?? "" == "actualiserDeparts" {
+            self.offlineDeparturesRowIndex = indexPath.row
+        if isDownloadingOfflineDepartures {
+            cell.textLabel?.text = ""
+            cell.progressView.isHidden = false
+            cell.progressView.progress = self.progress
+        }
+        }
 
         let view = UIView()
         view.backgroundColor = AppValues.primaryColor
@@ -127,15 +139,9 @@ class SettingsTableViewController: UITableViewController {
     }
 
     func downloadDepartures() {
-        FIRCrashMessage("Download departures")
-        var content = VHUDContent(.loop(3.0))
-        content.shape = .circle
-        content.style = .light
-        content.mode = .percentComplete
-        content.background = .color(#colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 0.7))
-        content.completionText = "100%"
-        VHUD.show(content)
-        VHUD.updateProgress(0.0)
+        FirebaseCrashMessage("Download departures")
+        self.isDownloadingOfflineDepartures = true
+        self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.automatic)
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/infosDeparts.json", method: .get).responseData { (request) in
             if request.result.isSuccess {
@@ -158,7 +164,7 @@ class SettingsTableViewController: UITableViewController {
                     let json = JSON(value)
 
                     for (fileName, fileJSON) in json {
-                        FIRCrashMessage(fileName)
+                        FirebaseCrashMessage(fileName)
                         if let fileContent = fileJSON.rawString() {
                             let error = self.writeDataToFile(fileContent, fileName: fileName)
                             if error == nil {
@@ -168,30 +174,36 @@ class SettingsTableViewController: UITableViewController {
                             }
                         } else {
                             print("*** WARNING - \(fileName) was not saved")
-                            FIRCrashMessage("*** WARNING - \(fileName) was not saved")
+                            FirebaseCrashMessage("*** WARNING - \(fileName) was not saved")
                             errors += 1
                         }
+                        DispatchQueue.main.async {
+                            self.progress = Float(0.5 + Double(ok / json.count / 2))
+                            self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.none)
+                        }
                         if errors + ok == json.count {
-                            VHUD.dismiss(1.0, 1.0, "100 %", { (_) in
+                            DispatchQueue.main.async {
+                                self.isDownloadingOfflineDepartures = false
+                                self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.none)
+                            }
                                 let alerte2 = SCLAlertView()
                                 if errors != 0 {
                                     alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(errors) arrêts.".localized, closeButtonTitle: "Fermer".localized, feedbackType: .notificationWarning)
                                 } else {
                                     alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized, feedbackType: .notificationSuccess)
                                 }
-                            })
                         }
                     }
                 }
             case .failure( _):
-                VHUD.dismiss(1.0, 1.0, "Erreur".localized, { (_) in
                     let alerte = SCLAlertView()
                     alerte.showError("Pas de réseau".localized, subTitle: "Vous n'êtes pas connecté au réseau. Pour actualiser les départs, merci de vous connecter au réseau.".localized, closeButtonTitle: "Fermer".localized, duration: 10, feedbackType: .notificationError)
-                })
+                self.isDownloadingOfflineDepartures = false
             }
             }.downloadProgress { (progress) in
                 DispatchQueue.main.async {
-                    VHUD.updateProgress(CGFloat(progress.fractionCompleted / 1.1))
+                    self.progress = Float(progress.fractionCompleted / 2)
+                    self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.none)
                 }
         }
     }

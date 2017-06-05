@@ -137,7 +137,7 @@ dependencies: [
 
 ### Manually
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Alamofire into your project manually.
+If you prefer not to use any of the aforementioned dependency managers, you can integrate Alamofire into your project manually.
 
 #### Embedded Framework
 
@@ -243,7 +243,7 @@ func responsePropertyList(
 
 None of the response handlers perform any validation of the `HTTPURLResponse` it gets back from the server.
 
-> For example, response status codes in the `400..<499` and `500..<599` ranges do NOT automatically trigger an `Error`. Alamofire uses [Response Validation](#response-validation) method chaining to achieve this.
+> For example, response status codes in the `400..<500` and `500..<600` ranges do NOT automatically trigger an `Error`. Alamofire uses [Response Validation](#response-validation) method chaining to achieve this.
 
 #### Response Handler
 
@@ -345,18 +345,18 @@ Alamofire.request("https://httpbin.org/get")
     .validate(statusCode: 200..<300)
     .validate(contentType: ["application/json"])
     .responseData { response in
-	    switch response.result {
-	    case .success:
-    	    print("Validation Successful")
-	    case .failure(let error):
-    	    print(error)
-	    }
+        switch response.result {
+        case .success:
+            print("Validation Successful")
+        case .failure(let error):
+            print(error)
+        }
     }
 ```
 
 #### Automatic Validation
 
-Automatically validates status code within `200...299` range, and that the `Content-Type` header of the response matches the `Accept` header of the request, if one is provided.
+Automatically validates status code within `200..<300` range, and that the `Content-Type` header of the response matches the `Accept` header of the request, if one is provided.
 
 ```swift
 Alamofire.request("https://httpbin.org/get").validate().responseJSON { response in
@@ -612,9 +612,9 @@ Requests made in Alamofire that fetch data from a server can download the data i
 
 ```swift
 Alamofire.download("https://httpbin.org/image/png").responseData { response in
-	if let data = response.result.value {
-	    let image = UIImage(data: data)
-	}
+    if let data = response.result.value {
+        let image = UIImage(data: data)
+    }
 }
 ```
 
@@ -629,8 +629,8 @@ You can also provide a `DownloadFileDestination` closure to move the file from t
 
 ```swift
 let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-	let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-	let fileURL = documentsURL.appendingPathComponent("pig.png")
+    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let fileURL = documentsURL.appendingPathComponent("pig.png")
 
     return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
 }
@@ -638,9 +638,9 @@ let destination: DownloadRequest.DownloadFileDestination = { _, _ in
 Alamofire.download(urlString, to: destination).response { response in
     print(response)
 
-	if response.error == nil, let imagePath = response.destinationURL?.path {
-	    let image = UIImage(contentsOfFile: imagePath)
-	}
+    if response.error == nil, let imagePath = response.destinationURL?.path {
+        let image = UIImage(contentsOfFile: imagePath)
+    }
 }
 ```
 
@@ -661,9 +661,9 @@ Alamofire.download("https://httpbin.org/image/png")
         print("Download Progress: \(progress.fractionCompleted)")
     }
     .responseData { response in
-    	if let data = response.result.value {
-	        let image = UIImage(data: data)
-    	}
+        if let data = response.result.value {
+            let image = UIImage(data: data)
+        }
     }
 ```
 
@@ -677,9 +677,9 @@ Alamofire.download("https://httpbin.org/image/png")
         print("Download Progress: \(progress.fractionCompleted)")
     }
     .responseData { response in
-    	if let data = response.result.value {
-	        let image = UIImage(data: data)
-    	}
+        if let data = response.result.value {
+            let image = UIImage(data: data)
+        }
     }
 ```
 
@@ -691,34 +691,34 @@ If a `DownloadRequest` is cancelled or interrupted, the underlying URL session m
 
 ```swift
 class ImageRequestor {
-	private var resumeData: Data?
-	private var image: UIImage?
+    private var resumeData: Data?
+    private var image: UIImage?
 
     func fetchImage(completion: (UIImage?) -> Void) {
-    	guard image == nil else { completion(image) ; return }
+        guard image == nil else { completion(image) ; return }
 
-		let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-			let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-			let fileURL = documentsURL.appendingPathComponent("pig.png")
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent("pig.png")
 
-		    return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-		}
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
 
-    	let request: DownloadRequest
+        let request: DownloadRequest
 
         if let resumeData = resumeData {
-			request = Alamofire.download(resumingWith: resumeData)
-		} else {
-			request = Alamofire.download("https://httpbin.org/image/png")
+            request = Alamofire.download(resumingWith: resumeData)
+        } else {
+            request = Alamofire.download("https://httpbin.org/image/png")
         }
 
         request.responseData { response in
-        	switch response.result {
-        	case .success(let data):
-		        self.image = UIImage(data: data)
-        	case .failure:
-        		self.resumeData = response.resumeData
-        	}
+            switch response.result {
+            case .success(let data):
+                self.image = UIImage(data: data)
+            case .failure:
+                self.resumeData = response.resumeData
+            }
         }
     }
 }
@@ -816,7 +816,7 @@ In iOS and tvOS 10 and macOS 10.12, Apple introduced the new [URLSessionTaskMetr
 
 ```swift
 Alamofire.request("https://httpbin.org/get").responseJSON { response in
-	print(response.metrics)
+    print(response.metrics)
 }
 ```
 
@@ -824,8 +824,8 @@ It's important to note that these APIs are only available on iOS and tvOS 10 and
 
 ```swift
 Alamofire.request("https://httpbin.org/get").responseJSON { response in
-    if #available(iOS 10.0. *) {
-		print(response.metrics)
+    if #available(iOS 10.0, *) {
+        print(response.metrics)
     }
 }
 ```
@@ -854,10 +854,10 @@ Outputs:
 
 ```bash
 $ curl -i \
-	-H "User-Agent: Alamofire/4.0.0" \
-	-H "Accept-Encoding: gzip;q=1.0, compress;q=0.5" \
-	-H "Accept-Language: en;q=1.0,fr;q=0.9,de;q=0.8,zh-Hans;q=0.7,zh-Hant;q=0.6,ja;q=0.5" \
-	"https://httpbin.org/get?foo=bar"
+    -H "User-Agent: Alamofire/4.0.0" \
+    -H "Accept-Encoding: gzip;q=1.0, compress;q=0.5" \
+    -H "Accept-Language: en;q=1.0,fr;q=0.9,de;q=0.8,zh-Hans;q=0.7,zh-Hant;q=0.6,ja;q=0.5" \
+    "https://httpbin.org/get?foo=bar"
 ```
 
 ---
@@ -1183,20 +1183,20 @@ The `RequestAdapter` protocol allows each `Request` made on a `SessionManager` t
 
 ```swift
 class AccessTokenAdapter: RequestAdapter {
-	private let accessToken: String
+    private let accessToken: String
 
-	init(accessToken: String) {
-		self.accessToken = accessToken
-	}
+    init(accessToken: String) {
+        self.accessToken = accessToken
+    }
 
-	func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-	    var urlRequest = urlRequest
+    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        var urlRequest = urlRequest
 
         if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix("https://httpbin.org") {
-		    urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
-	    }
+            urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+        }
 
-	    return urlRequest
+        return urlRequest
 	}
 }
 ```
@@ -1749,24 +1749,24 @@ If you run into this problem (high probability with self-signed certificates), y
 
 ```xml
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>example.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<!-- Optional: Specify minimum TLS version -->
-				<key>NSTemporaryExceptionMinimumTLSVersion</key>
-				<string>TLSv1.2</string>
-			</dict>
-		</dict>
-	</dict>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>example.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <false/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <!-- Optional: Specify minimum TLS version -->
+                <key>NSTemporaryExceptionMinimumTLSVersion</key>
+                <string>TLSv1.2</string>
+            </dict>
+        </dict>
+    </dict>
 </dict>
 ```
 

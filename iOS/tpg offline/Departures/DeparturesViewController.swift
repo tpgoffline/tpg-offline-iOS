@@ -12,6 +12,7 @@ import WatchConnectivity
 import UserNotifications
 import FirebaseCrash
 import FirebaseAnalytics
+import FirebasePerformance
 import DGElasticPullToRefresh
 import SCLAlertView
 import SwiftyJSON
@@ -58,7 +59,7 @@ class DeparturesViewController: UIViewController {
 
         #if DEBUG
         #else
-            FIRAnalytics.logEvent(withName: "departure", parameters: [
+            Analytics.logEvent("departure", parameters: [
                 "stopCode": (stop?.stopCode ?? "XXXX") as NSObject
                 ])
         #endif
@@ -85,7 +86,7 @@ class DeparturesViewController: UIViewController {
         refresh()
         configureDescriptionOfStop()
 
-        FIRCrashMessage("\(String(describing: stop?.stopCode)) loaded")
+        FirebaseCrashMessage("\(String(describing: stop?.stopCode)) loaded")
     }
 
     func configureDescriptionOfStop() {
@@ -431,13 +432,13 @@ class DeparturesViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        FIRCrashMessage("prepareForSegue with \(String(describing: segue.identifier)) with sender \(String(describing: sender)) to \(String(describing:segue.destination))")
+        FirebaseCrashMessage("prepareForSegue with \(String(describing: segue.identifier)) with sender \(String(describing: sender)) to \(String(describing:segue.destination))")
         if segue.identifier == "showLine" {
             if let thermometerViewController = (segue.destination) as? ThermometerTableViewController {
                 thermometerViewController.departure = departuresList[(selectedIndexPath?.row)!]
-                FIRCrashMessage("Thermometer with \(thermometerViewController.departure.describe())")
+                FirebaseCrashMessage("Thermometer with \(thermometerViewController.departure.describe())")
             } else {
-                FIRCrashMessage("Thermometer with nil")
+                FirebaseCrashMessage("Thermometer with nil")
             }
         } else if segue.identifier == "showAllDepartures" {
             let indexPath = selectedIndexPath ?? IndexPath(row: 0, section: 0)
@@ -446,7 +447,7 @@ class DeparturesViewController: UIViewController {
                 seeAllDeparturesViewController.line = self.departuresList[indexPath.row].line
                 seeAllDeparturesViewController.direction = self.departuresList[indexPath.row].direction
                 seeAllDeparturesViewController.destinationCode = self.departuresList[indexPath.row].destinationCode
-                FIRCrashMessage("Show All Departures with \(seeAllDeparturesViewController.stop.toDictionnary()) / \(seeAllDeparturesViewController.line) / \(seeAllDeparturesViewController.direction) / \(seeAllDeparturesViewController.destinationCode)")
+                FirebaseCrashMessage("Show All Departures with \(seeAllDeparturesViewController.stop.toDictionnary()) / \(seeAllDeparturesViewController.line) / \(seeAllDeparturesViewController.direction) / \(seeAllDeparturesViewController.destinationCode)")
             }
         }
     }
@@ -462,9 +463,10 @@ class DeparturesViewController: UIViewController {
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b", "stopCode": stop!.stopCode])
             .responseJSON { response in
                 if let data = response.result.value {
+                    let departuresRefreshInternetModeTrace = Performance.startTrace(name: "departuresRefreshInternetMode")
                     let departs = JSON(data)
-                    FIRCrashMessage("Offline = false")
-                    FIRCrashMessage("\(String(describing: departs.rawString()))")
+                    FirebaseCrashMessage("Offline = false")
+                    FirebaseCrashMessage("\(String(describing: departs.rawString()))")
 
                     for (_, subjson) in departs["departures"] {
                         if AppValues.linesColor[subjson["line"]["lineCode"].string!] == nil {
@@ -516,8 +518,10 @@ class DeparturesViewController: UIViewController {
                     self.loading = false
                     self.tableView.reloadData()
                     self.tableView.dg_stopLoading()
+                    departuresRefreshInternetModeTrace?.stop()
                 } else {
-                    FIRCrashMessage("Offline = true")
+                    FirebaseCrashMessage("Offline = true")
+                    let departuresRefreshOfflineModeTrace = Performance.startTrace(name: "departuresRefreshOfflineMode")
                     #if DEBUG
                         if let error = response.result.error {
                             let alert = SCLAlertView()
@@ -635,6 +639,7 @@ class DeparturesViewController: UIViewController {
                         self.tableView.reloadData()
                         self.tableView.dg_stopLoading()
                     }
+                    departuresRefreshOfflineModeTrace?.stop()
                 }
         }
     }
@@ -894,7 +899,7 @@ extension DeparturesViewController : UITableViewDelegate, UITableViewDataSource 
             cell.buttonFollowTrack.setImage(#imageLiteral(resourceName: "bus").maskWithColor(color: lineColor!), for: .normal)
             cell.buttonSeeAllDepartures.setImage(#imageLiteral(resourceName: "clockSmall").maskWithColor(color: lineColor!), for: .normal)
 
-            FIRCrashMessage("Departure: \(departuresList[indexPath.row].describe())")
+            FirebaseCrashMessage("Departure: \(departuresList[indexPath.row].describe())")
 
             let labelPictoLigne = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 24))
             labelPictoLigne.text = departuresList[indexPath.row].line

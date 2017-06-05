@@ -37,7 +37,7 @@ class RoutesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRCrashMessage("Routes")
+        FirebaseCrashMessage("Routes")
 
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
@@ -162,7 +162,7 @@ class RoutesCollectionViewController: UICollectionViewController {
                 cell.title?.text = (row[indexPath.row][2] as? String ?? "")
 
                 guard let image = row[indexPath.row][1] as? UIImage else {
-                    FIRCrashMessage("ERROR: row[indexPath.row][1] does not match with UIImage")
+                    FirebaseCrashMessage("ERROR: row[indexPath.row][1] does not match with UIImage")
                     abort()
                 }
 

@@ -23,7 +23,7 @@ class IncidentsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRCrashMessage("Incidents")
+        FirebaseCrashMessage("Incidents")
 
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = AppValues.primaryColor
@@ -79,7 +79,7 @@ class IncidentsTableViewController: UITableViewController {
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json", method: .get, parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"]).responseJSON { response in
                 if let data = response.result.value {
                     let json = JSON(data)
-                    FIRCrashMessage("\(String(describing: json.rawString()))")
+                    FirebaseCrashMessage("\(String(describing: json.rawString()))")
                     if json["disruptions"].count != 0 {
                         for x in 0...json["disruptions"].count - 1 where AppValues.linesColor[json["disruptions"][x]["lineCode"].string!] != nil {
                                 self.distrubtions.append(Distrubtions(lineCode: json["disruptions"][x]["lineCode"].string!, title: json["disruptions"][x]["nature"].string!, subTitle: json["disruptions"][x]["consequence"].string!))
@@ -222,7 +222,7 @@ class IncidentsTableViewController: UITableViewController {
             labelPictoLigne.layer.cornerRadius = labelPictoLigne.layer.bounds.height / 2
             labelPictoLigne.layer.borderWidth = 1
 
-            FIRCrashMessage(distrubtions[indexPath.row].describe())
+            FirebaseCrashMessage(distrubtions[indexPath.row].describe())
 
             if AppValues.primaryColor.contrast == .white {
                 cell.backgroundColor = AppValues.linesBackgroundColor[distrubtions[indexPath.row].lineCode]

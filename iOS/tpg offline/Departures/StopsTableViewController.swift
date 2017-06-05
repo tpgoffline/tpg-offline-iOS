@@ -34,7 +34,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRAnalytics.logEvent(withName: "stopsViewController", parameters: [:])
+        Analytics.logEvent("stopsViewController", parameters: [:])
 
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
@@ -239,7 +239,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
         searchController.searchBar.resignFirstResponder()
         if segue.identifier == "afficherProchainsDeparts" {
             guard let nav = segue.destination as? UINavigationController else {
-                FIRCrashMessage("*** WARNING ***: \(#file):\(#line): Guard failed")
+                FirebaseCrashMessage("*** WARNING ***: \(#file):\(#line): Guard failed")
                 return
             }
             if let departuresViewController = nav.viewControllers[0] as? DeparturesViewController {
@@ -256,7 +256,7 @@ class StopsTableViewController: UITableViewController, UISplitViewControllerDele
                         departuresViewController.stop = AppValues.stops[letterContent[indexPath.row]]!
                     }
                 }
-                FIRCrashMessage("Request \(String(describing: departuresViewController.stop))")
+                FirebaseCrashMessage("Request \(String(describing: departuresViewController.stop))")
             }
         }
     }

@@ -13,6 +13,7 @@ import FirebaseCore
 import FirebaseMessaging
 import FirebaseInstanceID
 import FirebaseAnalytics
+import FirebasePerformance
 import MapKit
 
 @UIApplicationMain
@@ -25,14 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
-
-            UNUserNotificationCenter.current().delegate = self
-            FIRMessaging.messaging().remoteMessageDelegate = self
-
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -41,12 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
 
-        FIRApp.configure()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.tokenRefreshNotification),
-                                               name: .firInstanceIDTokenRefresh,
-                                               object: nil)
+        FirebaseApp.configure()
 
         if let shortcutItem =
             launchOptions?[.shortcutItem]
@@ -55,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = handleShortcut(shortcutItem)
             return false
         }
+
         return true
     }
 
@@ -102,45 +97,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(UIBackgroundFetchResult.newData)
     }
 
-    func tokenRefreshNotification(_ notification: Notification) {
-        if let refreshedToken = FIRInstanceID.instanceID().token() {
-            print("InstanceID token: \(refreshedToken)")
-        }
-
-        connectToFcm()
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
     }
 
-    func connectToFcm() {
-        guard FIRInstanceID.instanceID().token() != nil else {
-            return
-        }
-
-        FIRMessaging.messaging().disconnect()
-
-        FIRMessaging.messaging().connect { (error) in
-            if error != nil {
-                print("Unable to connect with FCM. \(String(describing: error))")
-            } else {
-                print("Connected to FCM.")
-                print("Token: \(String(describing: FIRInstanceID.instanceID().token()))")
-            }
-        }
-    }
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("APNs token retrieved: \(deviceToken)")
-    }
-
     func applicationDidBecomeActive(_ application: UIApplication) {
-        connectToFcm()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        FIRMessaging.messaging().disconnect()
-        print("Disconnected from FCM.")
+    }
+
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        debugPrint("handleEventsForBackgroundURLSession: \(identifier)")
+        completionHandler()
     }
 }
 
@@ -173,11 +147,5 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
 
         completionHandler()
-    }
-}
-
-extension AppDelegate : FIRMessagingDelegate {
-    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
-        print(remoteMessage.appData)
     }
 }

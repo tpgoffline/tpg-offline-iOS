@@ -14,7 +14,7 @@ class FilterDeparturesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRAnalytics.logEvent(withName: "filterViewController", parameters: [:])
+        Analytics.logEvent("filterViewController", parameters: [:])
 
         refreshTheme()
 

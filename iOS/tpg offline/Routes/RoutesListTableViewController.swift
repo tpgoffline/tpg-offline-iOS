@@ -24,10 +24,10 @@ class RoutesListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FIRCrashMessage(ActualRoutes.route.describe())
+        FirebaseCrashMessage(ActualRoutes.route.describe())
         #if DEBUG
         #else
-            FIRAnalytics.logEvent(withName: "departure", parameters: [
+            Analytics.logEvent("departure", parameters: [
                 "departure": (ActualRoutes.route.departure?.stopCode ?? "XXXX") as NSObject,
                 "arrival": (ActualRoutes.route.arrival?.stopCode ?? "XXXX") as NSObject
                 ])

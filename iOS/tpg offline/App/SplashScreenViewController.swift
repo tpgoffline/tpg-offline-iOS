@@ -312,7 +312,7 @@ class SplashScreenViewController: UIViewController {
             #if DEBUG
                 print("\(AppValues.primaryColor.hexValue) \(AppValues.textColor.hexValue)")
             #else
-                FIRAnalytics.setUserPropertyString("\(AppValues.primaryColor.hexValue) \(AppValues.textColor.hexValue)", forName: "theme")
+                Analytics.setUserProperty("\(AppValues.primaryColor.hexValue) \(AppValues.textColor.hexValue)", forName: "theme")
             #endif
 
             if AppValues.primaryColor.contrast == .white {
