@@ -177,33 +177,27 @@ class SettingsTableViewController: UITableViewController {
                             FirebaseCrashMessage("*** WARNING - \(fileName) was not saved")
                             errors += 1
                         }
-                        DispatchQueue.main.async {
-                            self.progress = Float(0.5 + Double(ok / json.count / 2))
-                            self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.none)
-                        }
                         if errors + ok == json.count {
-                            DispatchQueue.main.async {
-                                self.isDownloadingOfflineDepartures = false
-                                self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.none)
-                            }
+                            VHUD.dismiss(1.0, 1.0, "100 %", { (_) in
                                 let alerte2 = SCLAlertView()
                                 if errors != 0 {
                                     alerte2.showWarning("Opération terminée".localized, subTitle: "L'opération est terminée. Toutrefois, nous n'avons pas pu télécharger les départs pour \(errors) arrêts.".localized, closeButtonTitle: "Fermer".localized, feedbackType: .notificationWarning)
                                 } else {
                                     alerte2.showSuccess("Opération terminée".localized, subTitle: "L'opération s'est terminée avec succès.".localized, closeButtonTitle: "Fermer".localized, feedbackType: .notificationSuccess)
                                 }
+                            })
                         }
                     }
                 }
             case .failure( _):
+                VHUD.dismiss(1.0, 1.0, "Erreur".localized, { (_) in
                     let alerte = SCLAlertView()
                     alerte.showError("Pas de réseau".localized, subTitle: "Vous n'êtes pas connecté au réseau. Pour actualiser les départs, merci de vous connecter au réseau.".localized, closeButtonTitle: "Fermer".localized, duration: 10, feedbackType: .notificationError)
-                self.isDownloadingOfflineDepartures = false
+                })
             }
             }.downloadProgress { (progress) in
                 DispatchQueue.main.async {
-                    self.progress = Float(progress.fractionCompleted / 2)
-                    self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.none)
+                    VHUD.updateProgress(CGFloat(progress.fractionCompleted / 1.1))
                 }
         }
     }
