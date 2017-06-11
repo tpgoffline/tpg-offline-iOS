@@ -79,8 +79,7 @@ class RoutesCollectionViewController: UICollectionViewController {
                     self.rechercher(sender: self)
                 }) { (_, _, _) -> (Void) in
                     DispatchQueue.main.sync {
-                        //TODO: Localize that
-                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry", closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
+                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry".localized, closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
                     }
                 }
             } else if directionsRequest.destination?.placemark.coordinate.latitude == 0.0 && directionsRequest.destination?.placemark.coordinate.longitude == 0.0 {
@@ -99,8 +98,7 @@ class RoutesCollectionViewController: UICollectionViewController {
                     self.rechercher(sender: self)
                 }) { (_, _, _) -> (Void) in
                     DispatchQueue.main.sync {
-                        //TODO: Localize that
-                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry", closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
+                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry".localized, closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
                     }
                 }
             } else {

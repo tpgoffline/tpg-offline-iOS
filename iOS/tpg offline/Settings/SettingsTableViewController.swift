@@ -30,9 +30,6 @@ class SettingsTableViewController: UITableViewController {
     ]
 
     let defaults = UserDefaults.standard
-    var progress: Float = 0
-    var isDownloadingOfflineDepartures = false
-    var offlineDeparturesRowIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +66,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "parametresCell", for: indexPath) as! SettingsTableViewCell // swiftlint:disable:this force_cast
+        let cell = tableView.dequeueReusableCell(withIdentifier: "parametresCell", for: indexPath)
 
         cell.textLabel!.text = (rowsList[indexPath.row][1] as? String ?? "")
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWithColor(color: AppValues.textColor))
@@ -81,15 +78,6 @@ class SettingsTableViewController: UITableViewController {
         cell.imageView?.tintColor = AppValues.textColor
         cell.backgroundColor = AppValues.primaryColor
         cell.textLabel?.textColor = AppValues.textColor
-
-        if rowsList[indexPath.row][2] as? String ?? "" == "actualiserDeparts" {
-            self.offlineDeparturesRowIndex = indexPath.row
-        if isDownloadingOfflineDepartures {
-            cell.textLabel?.text = ""
-            cell.progressView.isHidden = false
-            cell.progressView.progress = self.progress
-        }
-        }
 
         let view = UIView()
         view.backgroundColor = AppValues.primaryColor
@@ -140,8 +128,14 @@ class SettingsTableViewController: UITableViewController {
 
     func downloadDepartures() {
         FirebaseCrashMessage("Download departures")
-        self.isDownloadingOfflineDepartures = true
-        self.tableView.reloadRows(at: [IndexPath(row: self.offlineDeparturesRowIndex, section: 0)], with: UITableViewRowAnimation.automatic)
+        var content = VHUDContent(.loop(3.0))
+        content.shape = .circle
+        content.style = .light
+        content.mode = .percentComplete
+        content.background = .color(#colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 0.7))
+        content.completionText = "100%"
+        VHUD.show(content)
+        VHUD.updateProgress(0.0)
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/infosDeparts.json", method: .get).responseData { (request) in
             if request.result.isSuccess {

@@ -117,7 +117,6 @@
 		ADDCECAF1ED8738000B5B687 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDCECA21ED8738000B5B687 /* GTMSessionFetcher.framework */; };
 		ADDCECB01ED8738000B5B687 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDCECA31ED8738000B5B687 /* Protobuf.framework */; };
 		ADE240C41DB7BA6D0040EBE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */; };
-		ADEB14151ED9BC9C00B73686 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB14141ED9BC9C00B73686 /* SettingsTableViewCell.swift */; };
 		ADFAA2901E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA28F1E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift */; };
 		ADFAA2921E723CF200C85F87 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA2911E723CF200C85F87 /* HeaderCollectionView.swift */; };
 		ADFCC15A1DF8734700818CB5 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCC1591DF8734700818CB5 /* UserDefaultsKeys.swift */; };
@@ -320,7 +319,6 @@
 		ADDCECA21ED8738000B5B687 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Firebase/GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		ADDCECA31ED8738000B5B687 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Firebase/Protobuf.framework; sourceTree = "<group>"; };
 		ADE240C31DB7BA6D0040EBE2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		ADEB14141ED9BC9C00B73686 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		ADF767581D7C5E3D00B6C0B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		ADF767591D7C5E4000B6C0B4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		ADFAA28F1E72370A00C85F87 /* ItineraryCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -466,7 +464,6 @@
 				AD0211AE1E7ED0FA00D96FC0 /* MapsCollectionViewCell.swift */,
 				AD7331D41E80AD600087D944 /* DepartureTableViewCell.swift */,
 				ADB377D51E9289E800C52428 /* AllDeparturesHeader.swift */,
-				ADEB14141ED9BC9C00B73686 /* SettingsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -963,7 +960,6 @@
 				ADC734341D6890C500296449 /* SeeAllDeparturesViewController.swift in Sources */,
 				ADC734281D6890C500296449 /* ButtonCollectionViewCell.swift in Sources */,
 				ADC734551D6890C500296449 /* RoutesCollectionViewController.swift in Sources */,
-				ADEB14151ED9BC9C00B73686 /* SettingsTableViewCell.swift in Sources */,
 				ADC734301D6890C500296449 /* SwitchTableViewCell.swift in Sources */,
 				ADC7345A1D6890C500296449 /* SettingsTableViewController.swift in Sources */,
 				ADC734361D6890C500296449 /* ThermometerTableViewController.swift in Sources */,
@@ -1278,7 +1274,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/tpg offline/Project Requirements/";
 			};
 			name = Debug;
@@ -1305,7 +1301,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/tpg offline/Project Requirements/";
 			};
 			name = Release;
@@ -1357,7 +1353,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1380,7 +1376,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1400,7 +1396,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1420,7 +1416,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};

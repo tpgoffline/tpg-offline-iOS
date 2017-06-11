@@ -124,7 +124,7 @@ class FilterDeparturesTableViewController: UITableViewController {
         return cell
     }
 
-    func toogleStateOfLine(aSwitch: UISwitch!) {
+    @objc func toogleStateOfLine(aSwitch: UISwitch!) {
         if aSwitch.tag == 0 {
             StopLinesList.filterNoMore = !StopLinesList.filterNoMore
         } else {
