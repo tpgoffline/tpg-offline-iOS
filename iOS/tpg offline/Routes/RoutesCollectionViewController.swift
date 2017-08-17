@@ -71,16 +71,15 @@ class RoutesCollectionViewController: UICollectionViewController {
                     accuracy = .room
                 }
 
-                Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> (Void) in
+                Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> Void in
                     ActualRoutes.route.departure = self.getNearStopFrom(location)
                     ActualRoutes.route.arrival = self.getNearStopFrom(CLLocation(latitude: (directionsRequest.destination?.placemark.coordinate.latitude)!, longitude: (directionsRequest.destination?.placemark.coordinate.longitude)!))
                     ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: directionsRequest.departureDate ?? Date())
                     ActualRoutes.route.isArrivalDate = false
                     self.rechercher(sender: self)
-                }) { (_, _, _) -> (Void) in
+                }) { (_, _, _) -> Void in
                     DispatchQueue.main.sync {
-                        //TODO: Localize that
-                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry", closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
+                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry".localized, closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
                     }
                 }
             } else if directionsRequest.destination?.placemark.coordinate.latitude == 0.0 && directionsRequest.destination?.placemark.coordinate.longitude == 0.0 {
@@ -91,16 +90,15 @@ class RoutesCollectionViewController: UICollectionViewController {
                     accuracy = .room
                 }
 
-                Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> (Void) in
+                Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> Void in
                     ActualRoutes.route.departure = self.getNearStopFrom(CLLocation(latitude: (directionsRequest.source?.placemark.coordinate.latitude)!, longitude: (directionsRequest.source?.placemark.coordinate.longitude)!))
                     ActualRoutes.route.arrival = self.getNearStopFrom(location)
                     ActualRoutes.route.date = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: directionsRequest.departureDate ?? Date())
                     ActualRoutes.route.isArrivalDate = false
                     self.rechercher(sender: self)
-                }) { (_, _, _) -> (Void) in
+                }) { (_, _, _) -> Void in
                     DispatchQueue.main.sync {
-                        //TODO: Localize that
-                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry", closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
+                        SCLAlertView().showError("Error".localized, subTitle: "We can't make a route, because we can't access to your location. Allow the app to access to your location in settings and retry".localized, closeButtonTitle: "OK", duration: 60, feedbackType: .notificationError)
                     }
                 }
             } else {

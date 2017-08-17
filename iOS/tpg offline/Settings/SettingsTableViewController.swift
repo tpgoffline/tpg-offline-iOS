@@ -22,7 +22,7 @@ class SettingsTableViewController: UITableViewController {
         [#imageLiteral(resourceName: "menu"), "Choix du menu par défaut".localized, "showChoixDuMenuParDefault"],
         [#imageLiteral(resourceName: "location"), "Localisation".localized, "showLocationMenu"],
         [#imageLiteral(resourceName: "tutorial"), "Revoir le tutoriel".localized, "showTutoriel"],
-        [#imageLiteral(resourceName: "paintbrush"), "Thèmes".localized, "showThemesMenu"],
+        //[#imageLiteral(resourceName: "paintbrush"), "Thèmes".localized, "showThemesMenu"],
         [#imageLiteral(resourceName: "reload"), "Actualiser les départs (Offline)".localized, "actualiserDeparts"],
         [#imageLiteral(resourceName: "info"), "Crédits".localized, "showCredits"],
         [#imageLiteral(resourceName: "comment"), "Donnez votre avis !".localized, "sendEmail"],

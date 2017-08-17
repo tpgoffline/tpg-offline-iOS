@@ -102,27 +102,6 @@ class RoutesListTableViewController: UITableViewController {
         parameters["date"] = String(describing: ActualRoutes.route.date!.year!) + "-" + String(describing: ActualRoutes.route.date!.month!) + "-" + String(describing: ActualRoutes.route.date!.day!)
         parameters["time"] = String(describing: ActualRoutes.route.date!.hour!) + ":" + String(describing: ActualRoutes.route.date!.minute!)
         parameters["isArrivalTime"] = String(describing: ActualRoutes.route.isArrivalDate.hashValue)
-        parameters["fields"] = [
-            "connections/duration",
-            "connections/from/station/id",
-            "connections/from/station/name",
-            "connections/from/departureTimestamp",
-            "connections/to/station/id",
-            "connections/to/station/name",
-            "connections/to/arrivalTimestamp",
-            "connections/sections/walk",
-            "connections/sections/journey/name",
-            "connections/sections/journey/operator",
-            "connections/sections/journey/categoryCode",
-            "connections/sections/journey/walk/duration",
-            "connections/sections/journey/to",
-            "connections/sections/departure/station/name",
-            "connections/sections/departure/station/id",
-            "connections/sections/departure/departureTimestamp",
-            "connections/sections/arrival/station/name",
-            "connections/sections/arrival/station/id",
-            "connections/sections/arrival/arrivalTimestamp"
-        ]
         parameters["limit"] = 6
 
         ActualRoutes.routeResult = []
@@ -139,7 +118,7 @@ class RoutesListTableViewController: UITableViewController {
                                 let to = AppValues.idTransportAPIToTpgStopName[Int(subJSON2["arrival"]["station"]["id"].stringValue)!] ?? (AppValues.nameTransportAPIToTpgStopName[subJSON2["arrival"]["station"]["name"].stringValue] ?? subJSON2["arrival"]["station"]["name"].stringValue)
 
                                 connections.append(RoutesConnections(
-                                    line: subJSON2["journey"]["name"].stringValue.characters.split(separator: " ").map(String.init)[1],
+                                    line: subJSON2["journey"]["number"].string ?? "?#!",
                                     isTpg: (subJSON2["journey"]["operator"].stringValue == "TPG"),
                                     isSBB: (subJSON2["journey"]["operator"].stringValue == "SBB"),
                                     transportCategory: subJSON2["journey"]["categoryCode"].intValue,
@@ -158,7 +137,7 @@ class RoutesListTableViewController: UITableViewController {
                                     to: AppValues.idTransportAPIToTpgStopName[Int(subJSON2["arrival"]["station"]["id"].stringValue)!] ?? subJSON2["arrival"]["station"]["name"].stringValue,
                                     departureTimestamp: subJSON2["departure"]["departureTimestamp"].intValue,
                                     arrivalTimestamp: subJSON2["arrival"]["arrivalTimestamp"].intValue,
-                                    direction: subJSON2["walk"]["duration"].stringValue.characters.split(separator: ":").map(String.init)[1] + " minute(s)".localized
+                                    direction: (subJSON2["walk"]["duration"].string?.characters.split(separator: ":").map(String.init)[1] ?? "?#!") + " minute(s)".localized
                                 )
                             )
                         }

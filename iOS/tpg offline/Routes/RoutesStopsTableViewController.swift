@@ -121,7 +121,7 @@ class RoutesStopsTableViewController: UITableViewController {
             accuracy = .room
         }
 
-        Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> (Void) in
+        Location.getLocation(accuracy: accuracy, frequency: .oneShot, success: { (_, location) -> Void in
             print("Localisation results: \(location)")
 
             if self.defaults.integer(forKey: UserDefaultsKeys.proximityDistance.rawValue) == 0 {
@@ -150,7 +150,7 @@ class RoutesStopsTableViewController: UITableViewController {
             self.localizedStops = Array(self.localizedStops.prefix(5))
             self.localisationLoading = false
             self.tableView.reloadData()
-        }) { (_, location, error) -> (Void) in
+        }) { (_, location, error) -> Void in
             print("Location update failed: \(error.localizedDescription)")
             print("Last location: \(String(describing: location))")
         }
