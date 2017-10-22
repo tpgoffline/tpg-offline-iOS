@@ -1,3 +1,0 @@
-language: objective-c
-script:
-  - xctool -project Demo/Onboard.xcodeproj -sdk iphonesimulator -scheme Onboard build

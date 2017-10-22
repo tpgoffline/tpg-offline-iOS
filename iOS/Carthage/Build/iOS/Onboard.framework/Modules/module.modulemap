@@ -1,6 +1,0 @@
-framework module Onboard {
-  umbrella header "Onboard.h"
-
-  export *
-  module * { export * }
-}

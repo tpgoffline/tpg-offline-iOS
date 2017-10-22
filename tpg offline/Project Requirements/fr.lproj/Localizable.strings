@@ -1,0 +1,84 @@
+/* 
+  Localizable.strings
+  tpg offline
+ 
+  French - Français
+
+  Created by Remy on 21/10/2017.
+  Copyright © 2017 Remy. All rights reserved.
+*/
+
+"#!?" = "#!?";
+"#?!" = "#?!";
+"%@ minutes left!" = "%@ minutes restantes !";
+"%@m" = "%@m";
+"%@m (~%@ minutes)" = "%@m (~%@ minutes)";
+"0" = "0";
+"10 minutes before" = "10 minutes avant";
+"5 minutes before" = "5 minutes avant";
+"?#!" = "?#!";
+"Alamofire" = "Alamofire";
+"Are you looking for a stop ?" = "Recherchez-vous un arrêt ?";
+"Arrival at" = "Arrivée à";
+"At departure time" = "Au départ";
+"At the core of the project" = "Au cœur du projet";
+"Bus is comming" = "Le bus arrive !";
+"Cancel" = "Annuler";
+"Cédric Da Costa Faro" = "Cédric Da Costa Faro";
+"Credits" = "Crédits";
+"Data providers" = "Fournisseurs de données";
+"Departure at" = "Départ à";
+"Departures, Disruptions and Maps" = "Départs, Perturbations et Plans";
+"Design and developement" = "Conception et développement";
+"Downloading" = "Téléchargement";
+"Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire";
+"Error" = "Erreur";
+"Error - Departures not downloaded" = "Erreur - Les départs n'ont pas été téléchargés";
+"External libraries, used in this project" = "Librairies externes, utilisées dans ce projet";
+"Favorites" = "Favoris";
+"From" = "De";
+"From..." = "De...";
+"Github webpage" = "Page Github du projet";
+"Give your feedback !" = "Donnez votre avis !";
+"Let's take the bus!" = "Prenons le bus !";
+"Line %@" = "Ligne %@";
+"Line %@ - %@" = "Ligne %@-%@";
+"Loading" = "Chargement";
+"Maps" = "Plans";
+"Nearest stops" = "Arrêts les plus proches";
+"No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à arrêt.";
+"No results" = "Pas de résultats";
+"Noctambus regional map" = "Plan Noctambus régional";
+"Noctambus urban map" = "Plan Noctambus urbain";
+"OK" = "OK";
+"Offline mode" = "Mode hors-ligne";
+"Open data of Geneva public transport" = "Open data des Transports Publics Genevois";
+"Open data of Transport API" = "Open data de Transport API";
+"Other" = "Autre";
+"Processing" = "Traitement";
+"Regional map" = "Plan régional";
+"Reminder" = "Rappeler";
+"Results" = "Résultats";
+"Rémy Da Costa Faro" = "Rémy Da Costa Faro";
+"Routes" = "Itinéraires";
+"SBB %@" = "CFF %@";
+"SBB %@ - %@" = "CFF %@ - %@";
+"Select date" = "Séléctionner une date";
+"Show less" = "Afficher moins";
+"Show more" = "Afficher plus";
+"Sorry, but no results was found. Please try with other parameters." = "Désolé, mais aucun résultat n'a été trouvé. Merci d'essayer avec d'autres paramètres.";
+"Sorry, there is an error. Are you sure your are connected to internet ?" = "Désolé, mais une erreur est survenue. Êtes-vous sûr d'être connecté à internet ?";
+"Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
+"Testing" = "Test";
+"That's all for today" = "C'est tout pour aujourd'hui";
+"The bus is comming now!" = "Le bus arrive maintenant !";
+"To" = "Vers";
+"To..." = "Vers...";
+"Unknow" = "Inconnu";
+"Update departures" = "Réactualiser les départs";
+"Urban map" = "Plan urbain";
+"When do you want to be reminded?" = "Quand voulez-vous être rappelé ?";
+"You are using timetables departures. So departures are subjects to change." = "Vous êtes en mode hors-ligne. Les horaires sont donc des sujets à des modifications et sont donnés à titre indicatif.";
+"You can't set a timer for this bus, but you should run to take it." = "Vous ne pouvez pas ajouter de rappels à ce bus, mais vous devriez courir pour le prendre.";
+"You don't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet";
+
