@@ -1,15 +1,6 @@
-/* 
-  Localizable.strings
-  tpg offline
- 
-  French - Français
-
-  Created by Remy on 21/10/2017.
-  Copyright © 2017 Remy. All rights reserved.
-*/
-
 "#!?" = "#!?";
 "#?!" = "#?!";
+"%@ minutes before." = "%@ minutes avant.";
 "%@ minutes left!" = "%@ minutes restantes !";
 "%@m" = "%@m";
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)";
@@ -18,6 +9,7 @@
 "5 minutes before" = "5 minutes avant";
 "?#!" = "?#!";
 "Alamofire" = "Alamofire";
+"An error occurred" = "Une erreur est survenue";
 "Are you looking for a stop ?" = "Recherchez-vous un arrêt ?";
 "Arrival at" = "Arrivée à";
 "At departure time" = "Au départ";
@@ -42,7 +34,7 @@
 "Give your feedback !" = "Donnez votre avis !";
 "Let's take the bus!" = "Prenons le bus !";
 "Line %@" = "Ligne %@";
-"Line %@ - %@" = "Ligne %@-%@";
+"Line %@ - %@" = "Ligne %@ - %@";
 "Loading" = "Chargement";
 "Maps" = "Plans";
 "Nearest stops" = "Arrêts les plus proches";
@@ -50,6 +42,7 @@
 "No results" = "Pas de résultats";
 "Noctambus regional map" = "Plan Noctambus régional";
 "Noctambus urban map" = "Plan Noctambus urbain";
+"Number of minutes" = "Nombre de minutes";
 "OK" = "OK";
 "Offline mode" = "Mode hors-ligne";
 "Open data of Geneva public transport" = "Open data des Transports Publics Genevois";
@@ -57,6 +50,7 @@
 "Other" = "Autre";
 "Processing" = "Traitement";
 "Regional map" = "Plan régional";
+"Regional route" = "Itinéraire multizone";
 "Reminder" = "Rappeler";
 "Results" = "Résultats";
 "Rémy Da Costa Faro" = "Rémy Da Costa Faro";
@@ -66,19 +60,26 @@
 "Select date" = "Séléctionner une date";
 "Show less" = "Afficher moins";
 "Show more" = "Afficher plus";
+"Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Désolé pour cela. Pourriez-vous réessayer ou nous envoyer un mail si le problème persiste ?";
 "Sorry, but no results was found. Please try with other parameters." = "Désolé, mais aucun résultat n'a été trouvé. Merci d'essayer avec d'autres paramètres.";
 "Sorry, there is an error. Are you sure your are connected to internet ?" = "Désolé, mais une erreur est survenue. Êtes-vous sûr d'être connecté à internet ?";
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
 "Testing" = "Test";
 "That's all for today" = "C'est tout pour aujourd'hui";
 "The bus is comming now!" = "Le bus arrive maintenant !";
+"This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "Cet itinéraire traverse plusieurs zones. Vous devez donc acquérir un ticket/abonnement correspondant à ces zones :\n";
 "To" = "Vers";
 "To..." = "Vers...";
 "Unknow" = "Inconnu";
 "Update departures" = "Réactualiser les départs";
 "Urban map" = "Plan urbain";
+"Walk" = "Marcher";
+"Walk %@m" = "Marcher %@m";
+"When do you want to be reminded" = "Quand voulez-vous être rappelés";
 "When do you want to be reminded?" = "Quand voulez-vous être rappelé ?";
 "You are using timetables departures. So departures are subjects to change." = "Vous êtes en mode hors-ligne. Les horaires sont donc des sujets à des modifications et sont donnés à titre indicatif.";
 "You can't set a timer for this bus, but you should run to take it." = "Vous ne pouvez pas ajouter de rappels à ce bus, mais vous devriez courir pour le prendre.";
 "You don't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet";
-
+"You will be reminded" = "Vous serez rappelés";
+"at the time of departure." = "au départ";
+"tpg offline" = "tpg offline";

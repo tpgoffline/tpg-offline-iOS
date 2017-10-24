@@ -87,7 +87,9 @@ class RouteStepViewController: UIViewController {
     @IBAction func remind() {
         let dateA = Date(timeIntervalSince1970: TimeInterval(self.section.departure.departureTimestamp!))
         let date = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: Date(), to: dateA)
-        var alertController = UIAlertController(title: "Reminder".localized, message: "When do you want to be reminded?".localized, preferredStyle: .alert)
+        var alertController = UIAlertController(title: "Reminder".localized,
+                                                message: "When do you want to be reminded?".localized,
+                                                preferredStyle: .alert)
         if date.remainingMinutes == 0 {
             alertController.title = "Bus is comming".localized
             alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
@@ -113,7 +115,9 @@ class RouteStepViewController: UIViewController {
 
             let otherAction = UIAlertAction(title: "Other".localized, style: .default) { _ in
                 alertController.dismiss(animated: true, completion: nil)
-                alertController = UIAlertController(title: "Reminder".localized, message: "When do you want to be reminded".localized, preferredStyle: .alert)
+                alertController = UIAlertController(title: "Reminder".localized,
+                                                    message: "When do you want to be reminded".localized,
+                                                    preferredStyle: .alert)
 
                 alertController.addTextField { textField in
                     textField.placeholder = "Number of minutes".localized
@@ -162,22 +166,22 @@ class RouteStepViewController: UIViewController {
             if let error = error {
                 print("Uh oh! We had an error: \(error)")
                 let alertController = UIAlertController(title: "An error occurred".localized,
-                                                        message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized,
+                                                        message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
                                                         preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (action) in
+                alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
                     let mailComposerVC = MFMailComposeViewController()
                     mailComposerVC.mailComposeDelegate = self
-                    
+
                     mailComposerVC.setToRecipients(["support@asmartcode.com"])
                     mailComposerVC.setSubject("tpg offline - Bug report")
                     mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
-                    
+
                     if MFMailComposeViewController.canSendMail() {
                         self.present(mailComposerVC, animated: true, completion: nil)
                     }
                 }))
-                
+
                 self.present(alertController, animated: true, completion: nil)
             } else {
                 let alertController = UIAlertController(title: "You will be reminded".localized,
@@ -189,7 +193,7 @@ class RouteStepViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
+
     }
 }
 
@@ -206,10 +210,17 @@ extension RouteStepViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        titleSelected = view.annotation?.title! ?? ""
+        guard let annotation = view.annotation else {
+            return
+        }
+        titleSelected = (annotation.title ?? "") ?? ""
         if let index = self.names.index(of: titleSelected) {
             self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
         }
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(annotation.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
 
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -270,6 +281,10 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         mapView.selectAnnotation(annotiation, animated: true)
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(annotiation.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
 }
 

@@ -32,27 +32,30 @@ class SettingsTableViewController: UITableViewController {
 
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
         }
+
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
 
         self.settings.append(Setting("Update departures".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
             self.updateDepartures()
         }))
-        self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
+        self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
             self.performSegue(withIdentifier: "showCredits", sender: self)
         }))
-        self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
+        self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { (_) in
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
 
             mailComposerVC.setToRecipients(["support@asmartcode.com"])
-            mailComposerVC.setSubject("tpg offline")
+            mailComposerVC.setSubject("tpg offline".localized)
             mailComposerVC.setMessageBody("", isHTML: false)
 
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposerVC, animated: true, completion: nil)
             }
         }))
-        self.settings.append(Setting("Github webpage".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
+        self.settings.append(Setting("Github webpage".localized, icon: #imageLiteral(resourceName: "github"), action: { (_) in
             let vc = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: false)
             vc.delegate = self
 

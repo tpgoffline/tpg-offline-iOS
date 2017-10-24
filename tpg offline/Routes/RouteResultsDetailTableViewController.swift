@@ -91,9 +91,9 @@ class RouteResultsDetailTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "walkConnectionCell", for: indexPath)
                 if let duration = connection?.sections?[safe: indexPath.row]?.walk?.duration,
                     duration != 0 {
-                    cell.textLabel?.text = "Walk \(duration)m"
+                    cell.textLabel?.text = String(format: "Walk %@m".localized, duration)
                 } else {
-                    cell.textLabel?.text = "Walk"
+                    cell.textLabel?.text = "Walk".localized
                 }
                 cell.imageView?.image = #imageLiteral(resourceName: "transfer").maskWith(color: App.textColor)
                 return cell

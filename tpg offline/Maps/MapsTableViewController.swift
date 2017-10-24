@@ -70,6 +70,7 @@ class MapsTableViewController: UITableViewController {
             guard let row = tableView.cellForRow(at: indexPath) as? MapsTableViewControllerRow else { return }
             tableView.deselectRow(at: indexPath, animated: false)
             destinationViewController.mapImage = row.mapImage
+            destinationViewController.title = row.titleLabel.text
         }
     }
 }

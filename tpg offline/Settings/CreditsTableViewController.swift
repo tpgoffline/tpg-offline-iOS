@@ -48,7 +48,8 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
                 self.present(vc, animated: true)
             }])
         credits.append([
-            Credit(title: "Alamofire".localized, subTitle: "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire".localized) { (_) in
+            Credit(title: "Alamofire".localized,
+                   subTitle: "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire".localized) { (_) in
                 let vc = SFSafariViewController(url: URL(string: "https://github.com/Alamofire/Alamofire")!, entersReaderIfAvailable: false)
                 vc.delegate = self
 

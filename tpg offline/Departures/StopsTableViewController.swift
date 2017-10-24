@@ -80,6 +80,8 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
         }
+
+        self.tableView.sectionIndexBackgroundColor = .white
     }
 
     override func viewDidAppear(_ animated: Bool) {

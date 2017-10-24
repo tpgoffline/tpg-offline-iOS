@@ -47,9 +47,16 @@ class DetailDeparturesViewController: UIViewController {
             let regionRadius: CLLocationDistance = 1000
             let centerPoint: CLLocationCoordinate2D
             if busRouteGroup.steps.filter({ $0.stop.code == self.stop?.code })[0].arrivalTime == "" {
-                let nextStop = busRouteGroup.steps.filter({ $0.arrivalTime != "" })[0].stop.code
-                let stop = App.stops.filter({ $0.code == nextStop })[0]
-                centerPoint = stop.location.coordinate
+                guard let i = busRouteGroup.steps.filter({ $0.arrivalTime != "" })[safe: 0] else {
+                    let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinates.last ??
+                        CLLocationCoordinate2D(latitude: 0, longitude: 0),
+                                                                              regionRadius * 2.0, regionRadius * 2.0)
+                    mapView.setRegion(coordinateRegion, animated: true)
+                    return
+                }
+                let nextStop = i.stop.code
+                let stop = App.stops.filter({ $0.code == nextStop })[safe: 0]
+                centerPoint = stop?.location.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
             } else {
                 centerPoint = coordinates.filter({ $0 == (self.stop?.location.coordinate)! })[safe: 0] ?? coordinates[0]
             }
@@ -167,7 +174,9 @@ class DetailDeparturesViewController: UIViewController {
 
     @IBAction func remind() {
         self.departure?.calculateLeftTime()
-        var alertController = UIAlertController(title: "Reminder".localized, message: "When do you want to be reminded?".localized, preferredStyle: .alert)
+        var alertController = UIAlertController(title: "Reminder".localized,
+                                                message: "When do you want to be reminded?".localized,
+                                                preferredStyle: .alert)
         if self.departure?.leftTime == "0" {
             alertController.title = "Bus is comming".localized
             alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
@@ -241,22 +250,22 @@ class DetailDeparturesViewController: UIViewController {
             if let error = error {
                 print("Uh oh! We had an error: \(error)")
                 let alertController = UIAlertController(title: "An error occurred".localized,
-                                                        message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized,
+                                                        message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
                                                         preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (action) in
+                alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
                     let mailComposerVC = MFMailComposeViewController()
                     mailComposerVC.mailComposeDelegate = self
-                    
+
                     mailComposerVC.setToRecipients(["support@asmartcode.com"])
                     mailComposerVC.setSubject("tpg offline - Bug report")
                     mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
-                    
+
                     if MFMailComposeViewController.canSendMail() {
                         self.present(mailComposerVC, animated: true, completion: nil)
                     }
                 }))
-                
+
                 self.present(alertController, animated: true, completion: nil)
             } else {
                 let alertController = UIAlertController(title: "You will be reminded".localized,
