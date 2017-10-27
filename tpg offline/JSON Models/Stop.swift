@@ -34,6 +34,8 @@ struct Stop: Codable {
     /// The id that represent the stop in the app.
     var appId: Int
 
+    var isTAC: Bool
+
     var pricingZone: [Int]
 
     var nameTransportAPI: String
@@ -47,7 +49,8 @@ struct Stop: Codable {
                 sbbId: String,
                 appId: Int,
                 pricingZone: [Int],
-                nameTransportAPI: String) {
+                nameTransportAPI: String,
+                isTAC: Bool) {
         self.name = name
         self.title = title
         self.subTitle = subTitle
@@ -58,6 +61,7 @@ struct Stop: Codable {
         self.appId = appId
         self.pricingZone = pricingZone
         self.nameTransportAPI = nameTransportAPI
+        self.isTAC = isTAC
     }
 
     enum CodingKeys: String, CodingKey {
@@ -71,6 +75,7 @@ struct Stop: Codable {
         case appId
         case pricingZone
         case nameTransportAPI
+        case isTAC
     }
 
     init(from decoder: Decoder) throws {
@@ -86,6 +91,7 @@ struct Stop: Codable {
         let appId = try container.decode(Int.self, forKey: .appId)
         let pricingZone = try container.decode([Int].self, forKey: .pricingZone)
         let nameTransportAPI = try container.decode(String.self, forKey: .nameTransportAPI)
+        let isTAC = try container.decode(Bool.self, forKey: .isTAC)
 
         self.init(name: name,
                   title: title,
@@ -96,7 +102,8 @@ struct Stop: Codable {
                   sbbId: sbbId,
                   appId: appId,
                   pricingZone: pricingZone,
-                  nameTransportAPI: nameTransportAPI)
+                  nameTransportAPI: nameTransportAPI,
+                  isTAC: isTAC)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -112,6 +119,7 @@ struct Stop: Codable {
         try container.encode(self.appId, forKey: .appId)
         try container.encode(self.pricingZone, forKey: .pricingZone)
         try container.encode(self.nameTransportAPI, forKey: .nameTransportAPI)
+        try container.encode(self.isTAC, forKey: .isTAC)
     }
 
     static func == (lhd: Stop, rhd: Stop) -> Bool {

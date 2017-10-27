@@ -113,7 +113,10 @@ class DetailDeparturesViewController: UIViewController {
         } else {
             self.stackView.axis = .vertical
         }
-        // Do any additional setup after loading the view.
+
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: self.tableView)
+        }
     }
 
     @objc func refreshBusRoute() {
@@ -339,5 +342,27 @@ extension DetailDeparturesViewController: MKMapViewDelegate {
 extension DetailDeparturesViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension DetailDeparturesViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+
+        guard let row = tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell else { return nil }
+
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "departuresViewController") as? DeparturesViewController
+            else { return nil }
+
+        detailVC.stop = App.stops.filter({ $0.code == row.busRoute?.stop.code })[safe: 0]
+        previewingContext.sourceRect = row.frame
+        return detailVC
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+
+        show(viewControllerToCommit, sender: self)
+
     }
 }

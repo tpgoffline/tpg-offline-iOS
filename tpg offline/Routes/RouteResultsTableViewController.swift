@@ -59,6 +59,10 @@ class RouteResultsTableViewController: UITableViewController {
 
         tableView.allowsSelection = false
         tableView.refreshControl = refreshControl
+
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
     }
 
     func configureTabBarItems() {
@@ -187,4 +191,27 @@ class RouteResultsTableViewController: UITableViewController {
         }
     }
 
+}
+
+extension RouteResultsTableViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+
+        guard let row = tableView.cellForRow(at: indexPath) as? RouteResultsTableViewCell else { return nil }
+
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "routeResultsDetailTableViewController") as?
+            RouteResultsDetailTableViewController
+            else { return nil }
+
+        detailVC.connection = row.connection
+        previewingContext.sourceRect = row.frame
+        return detailVC
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+
+        show(viewControllerToCommit, sender: self)
+
+    }
 }

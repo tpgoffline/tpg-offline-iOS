@@ -64,6 +64,10 @@ class DeparturesViewController: UIViewController {
         } else {
             self.stackView.axis = .vertical
         }
+
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -157,7 +161,7 @@ class DeparturesViewController: UIViewController {
                 return
             }
             self.noInternet = true
-            self.tableView.reloadData()
+            self.requestStatus = .ok
         } catch {
             self.requestStatus = .error
             return
@@ -361,5 +365,30 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return 44
         }
+    }
+}
+
+extension DeparturesViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+
+        guard let row = tableView.cellForRow(at: indexPath) as? DeparturesTableViewCell else { return nil }
+
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detailDeparturesViewController") as?
+            DetailDeparturesViewController
+            else { return nil }
+
+        detailVC.color = App.color(for: row.departure!.line.code)
+        detailVC.departure = row.departure
+        detailVC.stop = self.stop
+        previewingContext.sourceRect = row.frame
+        return detailVC
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+
+        show(viewControllerToCommit, sender: self)
+
     }
 }

@@ -13,6 +13,26 @@ import CoreSpotlight
 import Fabric
 import Crashlytics
 
+enum TouchActions: String {
+    case departures = "departures"
+    case disruptions = "disruptions"
+    case routes = "routes"
+    case maps = "maps"
+
+    var number: Int {
+        switch self {
+        case .maps:
+            return 3
+        case .routes:
+            return 2
+        case .disruptions:
+            return 1
+        case .departures:
+            return 0
+        }
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -30,7 +50,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
+            let data: Data
+            do {
+                let dirString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first ?? ""
+                data = try Data(contentsOf: URL(fileURLWithPath: dirString).appendingPathComponent("stops.json"))
+            } catch {
+                do {
+                    data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
+                } catch {
+                    print("Can't load stops")
+                    abort()
+                }
+            }
             let decoder = JSONDecoder()
             let stops = try decoder.decode([Stop].self, from: data)
             App.stops = stops.sorted(by: { (stop1, stop2) -> Bool in
@@ -100,5 +131,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+    }
+
+    func application(_ application: UIApplication,
+                     performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        guard let type = TouchActions(rawValue: shortcutItem.type) else {
+            completionHandler(false)
+            return
+        }
+
+        let selectedIndex = type.number
+        (window?.rootViewController as? UITabBarController)?.selectedIndex = selectedIndex
+
+        completionHandler(true)
     }
 }

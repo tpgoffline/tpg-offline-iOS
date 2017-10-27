@@ -13,6 +13,7 @@
 		AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */; };
 		AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */; };
 		AD0986941F64185A00CD8403 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986931F64185A00CD8403 /* Route.swift */; };
+		AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
 		AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
 		AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */; };
 		AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7E1F41CA7F00E84220 /* DeparturesTableViewCell.swift */; };
@@ -30,7 +31,6 @@
 		AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8D1F41CA8000E84220 /* LineColor.swift */; };
 		AD37FEB91F41CD9300E84220 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8E1F41CA8000E84220 /* Stop.swift */; };
 		AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE851F41CA8000E84220 /* AppDelegate.swift */; };
-		AD37FEBC1F41CD9300E84220 /* DOAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE981F41CA8000E84220 /* DOAlertController.swift */; };
 		AD37FEBD1F41CDA300E84220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE901F41CA8000E84220 /* Assets.xcassets */; };
 		AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE9B1F41CA8000E84220 /* Departures.storyboard */; };
 		AD37FEBF1F41CDA300E84220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */; };
@@ -70,6 +70,9 @@
 		AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
 		AD0986931F64185A00CD8403 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		AD182C6E1F9C7E5500694753 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Routes.strings; sourceTree = "<group>"; };
+		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD37FE611F41CA4600E84220 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteTableViewCell.swift; sourceTree = "<group>"; };
 		AD37FE7E1F41CA7F00E84220 /* DeparturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,7 +82,6 @@
 		AD37FE821F41CA7F00E84220 /* DetailDeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDeparturesViewController.swift; sourceTree = "<group>"; };
 		AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
 		AD37FE851F41CA8000E84220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AD37FE871F41CA8000E84220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD37FE891F41CA8000E84220 /* BusRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRoute.swift; sourceTree = "<group>"; };
 		AD37FE8A1F41CA8000E84220 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AD37FE8B1F41CA8000E84220 /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
@@ -89,7 +91,6 @@
 		AD37FE901F41CA8000E84220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD37FE941F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD37FE961F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AD37FE981F41CA8000E84220 /* DOAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOAlertController.swift; sourceTree = "<group>"; };
 		AD37FE9C1F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Departures.storyboard; sourceTree = "<group>"; };
 		AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionTableViewCell.swift; sourceTree = "<group>"; };
 		AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		AD6A47A61F77990200AE1762 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		AD6A47A81F77992400AE1762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
+		AD6AD6EB1FA098D900CEA271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsTableViewCell.swift; sourceTree = "<group>"; };
 		AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -232,11 +234,12 @@
 			children = (
 				ADC5289A1F4F322400EADB0D /* tpg offline.geojson */,
 				ADC5289B1F4F329800EADB0D /* Bel-Air.gpx */,
-				AD37FE871F41CA8000E84220 /* Info.plist */,
+				AD2820081FA0E54600767462 /* Info.plist */,
 				AD6A47A61F77990200AE1762 /* App.swift */,
 				AD37FE851F41CA8000E84220 /* AppDelegate.swift */,
 				AD6A47A81F77992400AE1762 /* Extensions.swift */,
 				ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */,
+				AD28200D1FA0E5D800767462 /* InfoPlist.strings */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -263,7 +266,6 @@
 				ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */,
 				ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */,
 				AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */,
-				AD37FE981F41CA8000E84220 /* DOAlertController.swift */,
 				AD37FE901F41CA8000E84220 /* Assets.xcassets */,
 				AD37FE9B1F41CA8000E84220 /* Departures.storyboard */,
 				AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */,
@@ -365,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD37FEBD1F41CDA300E84220 /* Assets.xcassets in Resources */,
+				AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */,
 				AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */,
 				ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */,
 				ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */,
@@ -465,7 +468,6 @@
 				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,
 				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
 				AD4E56661F7416100006E861 /* RouteResultDetailTableViewCell.swift in Sources */,
-				AD37FEBC1F41CD9300E84220 /* DOAlertController.swift in Sources */,
 				AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */,
 				ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */,
 				ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */,
@@ -476,6 +478,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		AD28200D1FA0E5D800767462 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD28200C1FA0E5D800767462 /* fr */,
+				AD28200E1FA0E5DD00767462 /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -543,6 +554,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADF9C68E1F9BDFEB00AE17A4 /* fr */,
+				AD6AD6EB1FA098D900CEA271 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

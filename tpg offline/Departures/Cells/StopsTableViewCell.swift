@@ -15,13 +15,22 @@ class StopsTableViewCell: UITableViewCell {
 
     func configure(with stop: Stop) {
         self.stop = stop
-        self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: .gray))
+        self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)))
         self.backgroundColor = .white
 
-        let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+        let titleAttributes: [NSAttributedStringKey: Any]
+        let subtitleAttributes: [NSAttributedStringKey: Any]
+        if stop.subTitle != "", !isNearestStops {
+            titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
                                NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
-        let subtitleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
+            subtitleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
                                   NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
+        } else {
+            titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+                                   NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
+            subtitleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
+                                      NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
+        }
         self.textLabel?.numberOfLines = 0
         self.detailTextLabel?.numberOfLines = 0
 

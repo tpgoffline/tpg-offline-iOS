@@ -2,38 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItems</key>
+	<key>UIApplicationShorcutItems</key>
 	<array>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
+			<key>UIApplicationShortcutType</key>
 			<string>departures</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Departures</string>
-			<key>UIApplicationShortcutItemIconFile</key>
+			<key>UIApplicationShortcutTitle</key>
+			<string>Départs</string>
+			<key>UIApplicationShortcutIconFile</key>
 			<string>clock3d</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
+			<key>UIApplicationShortcutType</key>
 			<string>disruptions</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Disruptions</string>
-			<key>UIApplicationShortcutItemIconFile</key>
+			<key>UIApplicationShortcutTitle</key>
+			<string>Perturbations</string>
+			<key>UIApplicationShortcutIconFile</key>
 			<string>warning3d</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
+			<key>UIApplicationShortcutType</key>
 			<string>routes</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Routes</string>
-			<key>UIApplicationShortcutItemIconFile</key>
+			<key>UIApplicationShortcutTitle</key>
+			<string>Itinéraires</string>
+			<key>UIApplicationShortcutIconFile</key>
 			<string>routes3d</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
+			<key>UIApplicationShortcutType</key>
 			<string>maps</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Maps</string>
-			<key>UIApplicationShortcutItemIconFile</key>
+			<key>UIApplicationShortcutTitle</key>
+			<string>Plans</string>
+			<key>UIApplicationShortcutIconFile</key>
 			<string>maps3d</string>
 		</dict>
 	</array>

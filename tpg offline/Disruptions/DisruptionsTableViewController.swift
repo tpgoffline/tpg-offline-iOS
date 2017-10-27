@@ -15,18 +15,11 @@ class DisruptionsTableViewController: UITableViewController {
     var requestStatus: RequestStatus  = .loading {
         didSet {
             if requestStatus == .error {
-                let alertController = DOAlertController(title: "Error".localized,
+                let alertController = UIAlertController(title: "Error".localized,
                                                         message: "Sorry, there is an error. Are you sure your are connected to internet ?".localized,
                                                         preferredStyle: .alert)
-                let okAction = DOAlertAction(title: "OK".localized, style: .default) { _ in }
+                let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in }
                 alertController.addAction(okAction)
-                let color = #colorLiteral(red: 0.9568627451, green: 0.262745098, blue: 0.2117647059, alpha: 1)
-                alertController.alertViewBgColor = color
-                alertController.titleTextColor = color.contrast
-                alertController.messageTextColor = color.contrast
-                alertController.buttonTextColor[.default] = color.contrast
-                alertController.buttonBgColor[.default] = color.darken(by: 0.1)
-                alertController.buttonBgColorHighlighted[.default] = color
                 self.present(alertController, animated: true, completion: nil)
             }
         }

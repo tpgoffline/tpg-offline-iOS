@@ -30,6 +30,10 @@ class RouteResultsDetailTableViewController: UITableViewController {
             zones += zone
         }
         zones = zones.uniqueElements
+
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,7 +95,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "walkConnectionCell", for: indexPath)
                 if let duration = connection?.sections?[safe: indexPath.row]?.walk?.duration,
                     duration != 0 {
-                    cell.textLabel?.text = String(format: "Walk %@m".localized, duration)
+                    cell.textLabel?.text = String(format: "Walk %@m".localized, "\(duration)")
                 } else {
                     cell.textLabel?.text = "Walk".localized
                 }
@@ -107,5 +111,26 @@ class RouteResultsDetailTableViewController: UITableViewController {
             }
         }
 
+    }
+}
+
+extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+
+        guard let row = tableView.cellForRow(at: indexPath) as? RouteResultDetailTableViewCell else { return nil }
+
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "routeStepViewController") as?
+            RouteStepViewController
+            else { return nil }
+
+        detailVC.section = row.section
+        previewingContext.sourceRect = row.frame
+        return detailVC
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
     }
 }

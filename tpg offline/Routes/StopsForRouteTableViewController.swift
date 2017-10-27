@@ -11,17 +11,12 @@ import UIKit
 class StopsForRouteTableViewController: StopsTableViewController {
 
     var isFrom = true
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
+    override func viewDidLoad() {
+        self.askForRating = false
+        super.viewDidLoad()
         title = isFrom ? "From...".localized : "To...".localized
         self.searchController.searchBar.placeholder = "Are you looking for a stop ?".localized
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -39,6 +34,10 @@ class StopsForRouteTableViewController: StopsTableViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
+    override func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                                    viewControllerForLocation location: CGPoint) -> UIViewController? {
+        return nil
+    }
     /*
     // MARK: - Navigation
 

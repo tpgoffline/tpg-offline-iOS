@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 import CoreSpotlight
 import MobileCoreServices
+import StoreKit
+import Alamofire
 
 class StopsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,12 +20,15 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     let locationManager = CLLocationManager()
     var searchText = "" {
         didSet {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     var localizedStops: [Stop] = []
     var searchingForNearestStops = false
     let searchController = UISearchController(searchResultsController: nil)
+    var askForRating = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +52,10 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             navigationItem.hidesSearchBarWhenScrolling = false
         } else {
             tableView.tableHeaderView = searchController.searchBar
+        }
+
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
         }
 
         DispatchQueue.main.async {
@@ -79,6 +88,27 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                 }
             }
+            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json.md5").responseString { (response) in
+                if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
+                    Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json").responseData { (response) in
+                        if let stopsData = response.result.value {
+                            var fileURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)[0])
+                            fileURL.appendPathComponent("stops.json")
+
+                            do {
+                                try stopsData.write(to: fileURL)
+                                UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
+                            } catch (let error) {
+                                print(error)
+                            }
+                        }
+                    }
+                }
+            }
+
+            if #available(iOS 10.3, *), self.askForRating {
+                SKStoreReviewController.requestReview()
+            }
         }
 
         self.tableView.sectionIndexBackgroundColor = .white
@@ -86,10 +116,6 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidAppear(_ animated: Bool) {
         searchForNearestStops()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     func searchForNearestStops() {
@@ -109,8 +135,83 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
-    // MARK: - Table view data source
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showStop" {
+            self.searchController.searchBar.resignFirstResponder()
+            guard let destinationViewController = segue.destination as? DeparturesViewController else {
+                return
+            }
+            let indexPath = tableView.indexPathForSelectedRow!
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            destinationViewController.stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?
+                .stop
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
+        } else if segue.identifier == "manualShowStop" {
+            guard let destinationViewController = segue.destination as? DeparturesViewController else {
+                return
+            }
+            guard let stop = sender as? Stop else {
+                return
+            }
+            destinationViewController.stop = stop
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
+        }
+    }
+}
 
+extension StopsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        self.searchText = searchController.searchBar.text ?? ""
+    }
+}
+
+extension StopsTableViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations[safe: 0] {
+            self.localizedStops.removeAll()
+            for stop in App.stops {
+                var stopA = stop
+                stopA.distance = location.distance(from: stopA.location)
+                self.localizedStops.append(stopA)
+            }
+            self.localizedStops.sort(by: { $0.distance < $1.distance })
+            self.localizedStops = Array(self.localizedStops.prefix(5))
+            self.tableView.reloadData()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error")
+    }
+}
+
+extension StopsTableViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+
+        guard let row = tableView.cellForRow(at: indexPath) as? StopsTableViewCell else { return nil }
+
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "departuresViewController") as? DeparturesViewController
+            else { return nil }
+
+        detailVC.stop = row.stop
+        previewingContext.sourceRect = row.frame
+        return detailVC
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+
+        show(viewControllerToCommit, sender: self)
+
+    }
+}
+
+extension StopsTableViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         if searchText != "" {
             return 1
@@ -173,33 +274,6 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         return index + 2
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showStop" {
-            self.searchController.searchBar.resignFirstResponder()
-            guard let destinationViewController = segue.destination as? DeparturesViewController else {
-                return
-            }
-            let indexPath = tableView.indexPathForSelectedRow!
-            self.tableView.deselectRow(at: indexPath, animated: true)
-            destinationViewController.stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?
-                .stop
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            navigationItem.backBarButtonItem = backItem
-        } else if segue.identifier == "manualShowStop" {
-            guard let destinationViewController = segue.destination as? DeparturesViewController else {
-                return
-            }
-            guard let stop = sender as? Stop else {
-                return
-            }
-            destinationViewController.stop = stop
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            navigationItem.backBarButtonItem = backItem
-        }
-    }
-
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if searchText != "" {
             return 0
@@ -230,47 +304,5 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         headerCell?.textLabel?.textColor = .white
 
         return headerCell
-    }
-}
-
-/*extension StopsTableViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchText = searchText
-        self.tableView.reloadData()
-    }
-
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
-    }
-}
-*/
-extension StopsTableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        self.searchText = searchController.searchBar.text ?? ""
-    }
-}
-
-extension StopsTableViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations[safe: 0] {
-            self.localizedStops.removeAll()
-            for stop in App.stops {
-                var stopA = stop
-                stopA.distance = location.distance(from: stopA.location)
-                self.localizedStops.append(stopA)
-            }
-            self.localizedStops.sort(by: { $0.distance < $1.distance })
-            self.localizedStops = Array(self.localizedStops.prefix(5))
-            self.tableView.reloadData()
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error")
     }
 }
