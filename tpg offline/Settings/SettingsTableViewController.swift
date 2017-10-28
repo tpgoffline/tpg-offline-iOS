@@ -14,7 +14,7 @@ import MessageUI
 enum OfflineDeparturesStatus {
     case notDownloading
     case downloading
-    case processing
+    case processing(Int, Int)
     case error
 }
 
@@ -87,8 +87,8 @@ class SettingsTableViewController: UITableViewController {
                 cell.detailTextLabel?.text = "Error - Departures not downloaded".localized
             case .downloading:
                 cell.detailTextLabel?.text = "Downloading".localized
-            case .processing:
-                cell.detailTextLabel?.text = "Processing".localized
+            case .processing(let done, let total):
+                cell.detailTextLabel?.text = String(format: "Processing %@/%@".localized, "\(done)", "\(total)")
             }
         }
         cell.imageView?.image = setting.icon.maskWith(color: App.textColor)
@@ -105,28 +105,36 @@ class SettingsTableViewController: UITableViewController {
         self.offlineDeparturesStatus = .downloading
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/departuresV13.json").responseJSON { (response) in
             if let data = response.result.value as? [String: String] {
-                self.offlineDeparturesStatus = .processing
-                var index = 0
+                self.offlineDeparturesStatus = .processing(0, data.count)
+                var index: UInt = 0
+
+                let source = DispatchSource.makeUserDataAddSource(queue: .main)
+                source.setEventHandler { [unowned self] in
+                    index += source.data
+                    self.offlineDeparturesStatus = .processing(Int(index), data.count)
+                    print(index)
+                    if index == data.count {
+                        self.offlineDeparturesStatus = .notDownloading
+                    }
+                }
+                source.resume()
                 for (key, value) in data {
-                    DispatchQueue.main.async {
+                    DispatchQueue.global(qos: .utility).async {
                         var fileURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)[0])
                         fileURL.appendPathComponent(key)
-
                         do {
                             try value.write(to: fileURL, atomically: true, encoding: .utf8)
                         } catch (let error) {
                             print(error)
                         }
-                        index += 1
-                        //print(index)
-                        if index == data.count {
-                            self.offlineDeparturesStatus = .notDownloading
-                        }
+                        source.add(data: 1)
                     }
                 }
             } else {
                 self.offlineDeparturesStatus = .error
             }
+            }.downloadProgress { (progress) in
+                print(progress.fractionCompleted)
         }
     }
 }
