@@ -49,42 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        do {
-            let data: Data
-            do {
-                let dirString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first ?? ""
-                data = try Data(contentsOf: URL(fileURLWithPath: dirString).appendingPathComponent("stops.json"))
-            } catch {
-                do {
-                    data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
-                } catch {
-                    print("Can't load stops")
-                    abort()
-                }
-            }
-            let decoder = JSONDecoder()
-            let stops = try decoder.decode([Stop].self, from: data)
-            App.stops = stops.sorted(by: { (stop1, stop2) -> Bool in
-                if stop1.name < stop2.name {
-                    return true
-                }
-                return false
-            })
-            for stop in App.stops.map({ $0.name }) {
-                let character = "\(stop.first!)"
-                App.sortedStops[character, default: []].append(stop)
-            }
-            for (i, id) in App.favoritesStops.enumerated() {
-                if App.stops.filter({ $0.appId == id })[safe: 0] == nil {
-                    App.favoritesStops.remove(at: i)
-                }
-            }
-
-        } catch {
-            print("error")
-            return true
-        }
-
         window?.layer.cornerRadius = 5
         window?.clipsToBounds = true
 
@@ -94,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
 
-        return true
+        return App.loadStops()
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {

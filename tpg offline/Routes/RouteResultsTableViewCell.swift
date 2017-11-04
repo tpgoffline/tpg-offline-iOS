@@ -17,6 +17,7 @@ class RouteResultsTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var numberOfConnectionsImageView: UIImageView!
     @IBOutlet weak var numberOfConnectionsLabel: UILabel!
+    @IBOutlet weak var isWalking: UIImageView!
     @IBOutlet var images: [UIImageView]!
 
     var loading = true
@@ -60,6 +61,9 @@ class RouteResultsTableViewCell: UITableViewCell {
             numberOfConnectionsImageView.isHidden = connection.sections?.count == 1
             numberOfConnectionsLabel.isHidden = connection.sections?.count == 1
             numberOfConnectionsLabel.text = "\(connection.sections?.count ?? 0 - 1)"
+
+            isWalking.isHidden = !((connection.sections ?? [])
+                .map({ $0.walk == nil }).contains(false))
 
             loading = false
 

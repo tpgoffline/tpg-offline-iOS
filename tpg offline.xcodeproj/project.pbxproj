@@ -35,7 +35,7 @@
 		AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE9B1F41CA8000E84220 /* Departures.storyboard */; };
 		AD37FEBF1F41CDA300E84220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */; };
 		AD37FEC01F41CDA300E84220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE951F41CA8000E84220 /* Main.storyboard */; };
-		AD4E56661F7416100006E861 /* RouteResultDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E56651F7416100006E861 /* RouteResultDetailTableViewCell.swift */; };
+		AD5B340F1FAC82900061CFB3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B340E1FAC82900061CFB3 /* API.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
 		AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */; };
 		AD6A47A71F77990200AE1762 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A61F77990200AE1762 /* App.swift */; };
@@ -49,6 +49,9 @@
 		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
 		ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */; };
 		ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */; };
+		ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */; };
+		ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */; };
+		ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */; };
 		ADE9830F1F933DED0069EACA /* Maps.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE9830E1F933DED0069EACA /* Maps.xcassets */; };
 		ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */; };
 		ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976D1F657CC0004AA662 /* RouteResults.swift */; };
@@ -95,7 +98,7 @@
 		AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionTableViewCell.swift; sourceTree = "<group>"; };
 		AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
 		AD37FEA81F41CAC300E84220 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		AD4E56651F7416100006E861 /* RouteResultDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultDetailTableViewCell.swift; sourceTree = "<group>"; };
+		AD5B340E1FAC82900061CFB3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
 		AD6A47A61F77990200AE1762 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -112,6 +115,9 @@
 		ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADC5289A1F4F322400EADB0D /* tpg offline.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = "tpg offline.geojson"; sourceTree = "<group>"; };
 		ADC5289B1F4F329800EADB0D /* Bel-Air.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bel-Air.gpx"; sourceTree = "<group>"; };
+		ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailMapTableViewCell.swift; sourceTree = "<group>"; };
+		ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewCell.swift; sourceTree = "<group>"; };
+		ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
 		ADE9830E1F933DED0069EACA /* Maps.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Maps.xcassets; sourceTree = "<group>"; };
 		ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsTableViewController.swift; sourceTree = "<group>"; };
 		ADF0976D1F657CC0004AA662 /* RouteResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResults.swift; sourceTree = "<group>"; };
@@ -148,15 +154,18 @@
 		AD27098E1F49C46C002802F9 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				AD4E56651F7416100006E861 /* RouteResultDetailTableViewCell.swift */,
+				ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */,
+				ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */,
 				ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */,
 				AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */,
 				ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */,
+				AD6A47A61F77990200AE1762 /* App.swift */,
 				AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */,
 				AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */,
 				AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */,
 				AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */,
 				AD07A3671F8A6BF300E65DE7 /* RouteStepViewController.swift */,
+				ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -235,11 +244,11 @@
 				ADC5289A1F4F322400EADB0D /* tpg offline.geojson */,
 				ADC5289B1F4F329800EADB0D /* Bel-Air.gpx */,
 				AD2820081FA0E54600767462 /* Info.plist */,
-				AD6A47A61F77990200AE1762 /* App.swift */,
 				AD37FE851F41CA8000E84220 /* AppDelegate.swift */,
 				AD6A47A81F77992400AE1762 /* Extensions.swift */,
 				ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */,
 				AD28200D1FA0E5D800767462 /* InfoPlist.strings */,
+				AD5B340E1FAC82900061CFB3 /* API.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -434,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */,
 				AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */,
 				AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */,
 				AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */,
@@ -461,13 +471,15 @@
 				AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */,
 				ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */,
 				AD07A3681F8A6BF300E65DE7 /* RouteStepViewController.swift in Sources */,
+				ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */,
 				AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */,
 				AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */,
 				AD37FEB91F41CD9300E84220 /* Stop.swift in Sources */,
+				ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */,
 				AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */,
 				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,
 				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
-				AD4E56661F7416100006E861 /* RouteResultDetailTableViewCell.swift in Sources */,
+				AD5B340F1FAC82900061CFB3 /* API.swift in Sources */,
 				AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */,
 				ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */,
 				ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */,

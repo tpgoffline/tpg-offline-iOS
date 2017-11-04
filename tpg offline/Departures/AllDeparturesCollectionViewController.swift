@@ -98,7 +98,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
         loading = true
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json",
                           method: .get,
-                          parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b",
+                          parameters: ["key": API.key,
                                        "stopCode": self.stop?.code ?? "#?!",
                                        "lineCode": self.departure?.line.code ?? "#?!",
                                        "destinationCode": self.departure?.line.destinationCode ?? "#?!"])

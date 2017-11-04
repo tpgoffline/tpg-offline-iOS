@@ -48,25 +48,35 @@ class RouteResultsDetailTableViewController: UITableViewController {
             guard let selectedIndexPath = tableView.indexPathForSelectedRow else {
                 return
             }
-            guard let row = tableView.cellForRow(at: selectedIndexPath) as? RouteResultDetailTableViewCell else {
+            guard let row = tableView.cellForRow(at: selectedIndexPath) as? RouteResultDetailsTableViewCell else {
                 return
             }
             destinationViewController.section = row.section
+        } else if segue.identifier == "showMap" {
+            guard let destinationViewController = segue.destination as? RouteMapViewController else {
+                return
+            }
+            guard let connection = connection else {
+                return
+            }
+            destinationViewController.connection = connection
         }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return zones.count > 1 ? 1 : 0
-        default:
+        case 1:
             return connection?.sections?.count ?? 0
+        default:
+            return 1
         }
     }
 
@@ -87,10 +97,11 @@ class RouteResultsDetailTableViewController: UITableViewController {
             text.bold(zonesText)
             cell.detailTextLabel?.attributedText = text
             cell.detailTextLabel?.numberOfLines = 0
+            cell.selectionStyle = .none
 
             cell.backgroundColor = #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1)
             return cell
-        } else {
+        } else if indexPath.section == 1 {
             if connection?.sections?[safe: indexPath.row]?.walk != nil {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "walkConnectionCell", for: indexPath)
                 if let duration = connection?.sections?[safe: indexPath.row]?.walk?.duration,
@@ -100,17 +111,31 @@ class RouteResultsDetailTableViewController: UITableViewController {
                     cell.textLabel?.text = "Walk".localized
                 }
                 cell.imageView?.image = #imageLiteral(resourceName: "transfer").maskWith(color: App.textColor)
+                cell.selectionStyle = .none
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultDetailCell", for: indexPath)
-                    as? RouteResultDetailTableViewCell, let section = connection?.sections?[safe: indexPath.row] else {
+                    as? RouteResultDetailsTableViewCell, let section = connection?.sections?[safe: indexPath.row] else {
                     return UITableViewCell()
                 }
                 cell.section = section
                 return cell
             }
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath)
+                as? RouteResultsDetailMapTableViewCell, let connection = connection else {
+                    return UITableViewCell()
+            }
+            cell.connection = connection
+            cell.mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pushMap)))
+
+            return cell
         }
 
+    }
+
+    @objc func pushMap() {
+        performSegue(withIdentifier: "showMap", sender: self)
     }
 }
 
@@ -119,7 +144,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
 
         guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
 
-        guard let row = tableView.cellForRow(at: indexPath) as? RouteResultDetailTableViewCell else { return nil }
+        guard let row = tableView.cellForRow(at: indexPath) as? RouteResultDetailsTableViewCell else { return nil }
 
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "routeStepViewController") as?
             RouteStepViewController

@@ -59,35 +59,6 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
 
         DispatchQueue.main.async {
-            for stop in App.stops {
-                if App.indexedStops.index(of: stop.appId) == nil {
-                    let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
-                    attributeSet.title = stop.name
-                    attributeSet.contentDescription = ""
-
-                    let item = CSSearchableItem(uniqueIdentifier: "\(stop.appId)", domainIdentifier: "com.dacostafaro", attributeSet: attributeSet)
-                    item.expirationDate = Date.distantFuture
-                    CSSearchableIndex.default().indexSearchableItems([item]) { error in
-                        if let error = error {
-                            print("Indexing error: \(error.localizedDescription)")
-                        } else {
-                            print("\(stop.appId) successfully indexed!")
-                        }
-                    }
-                    App.indexedStops.append(stop.appId)
-                }
-            }
-            for id in App.indexedStops {
-                if App.stops.filter({ $0.appId == id })[safe: 0] == nil {
-                    CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["\(id)"]) { error in
-                        if let error = error {
-                            print("Deindexing error: \(error.localizedDescription)")
-                        } else {
-                            print("\(id) successfully removed!")
-                        }
-                    }
-                }
-            }
             Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json.md5").responseString { (response) in
                 if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
                     Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json").responseData { (response) in
@@ -98,6 +69,41 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                             do {
                                 try stopsData.write(to: fileURL)
                                 UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
+
+                                App.loadStops()
+
+                                for stop in App.stops {
+                                    if App.indexedStops.index(of: stop.appId) == nil {
+                                        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+                                        attributeSet.title = stop.name
+                                        attributeSet.contentDescription = ""
+
+                                        let item = CSSearchableItem(
+                                            uniqueIdentifier: "\(stop.appId)",
+                                            domainIdentifier: "com.dacostafaro",
+                                            attributeSet: attributeSet)
+                                        item.expirationDate = Date.distantFuture
+                                        CSSearchableIndex.default().indexSearchableItems([item]) { error in
+                                            if let error = error {
+                                                print("Indexing error: \(error.localizedDescription)")
+                                            } else {
+                                                print("\(stop.appId) successfully indexed!")
+                                            }
+                                        }
+                                        App.indexedStops.append(stop.appId)
+                                    }
+                                }
+                                for id in App.indexedStops {
+                                    if App.stops.filter({ $0.appId == id })[safe: 0] == nil {
+                                        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["\(id)"]) { error in
+                                            if let error = error {
+                                                print("Deindexing error: \(error.localizedDescription)")
+                                            } else {
+                                                print("\(id) successfully removed!")
+                                            }
+                                        }
+                                    }
+                                }
                             } catch (let error) {
                                 print(error)
                             }

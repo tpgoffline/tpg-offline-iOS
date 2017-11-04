@@ -11,7 +11,15 @@ import Alamofire
 
 class DisruptionsTableViewController: UITableViewController {
 
-    var disruptions: DisruptionsGroup?
+    var disruptions: DisruptionsGroup? {
+        didSet {
+            guard let disruptions = self.disruptions else { return }
+            self.keys = disruptions.disruptions.keys.sorted(by: {
+                if let a = Int($0), let b = Int($1) {
+                    return a < b
+                } else { return $0 < $1 }})
+        }
+    }
     var requestStatus: RequestStatus  = .loading {
         didSet {
             if requestStatus == .error {
@@ -24,6 +32,8 @@ class DisruptionsTableViewController: UITableViewController {
             }
         }
     }
+
+    var keys: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +78,7 @@ class DisruptionsTableViewController: UITableViewController {
         self.requestStatus = .loading
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json",
                           method: .get,
-                          parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b"])
+                          parameters: ["key": API.key])
             .responseData { (response) in
                 if let data = response.result.value {
                     let jsonDecoder = JSONDecoder()
@@ -77,8 +87,8 @@ class DisruptionsTableViewController: UITableViewController {
                     self.disruptions = json
                     self.tableView.reloadData()
                 } else {
-                    /*self.requestStatus = .error
-                    self.tableView.reloadData()*/
+                    self.requestStatus = .error
+                    self.tableView.reloadData()
                 }
                 self.refreshControl?.endRefreshing()
         }
@@ -98,7 +108,7 @@ class DisruptionsTableViewController: UITableViewController {
         if requestStatus == .loading {
             return 4
         } else {
-            return disruptions?.disruptions[disruptions!.disruptions.keys.sorted()[section]]?.count ?? 0
+            return disruptions?.disruptions[self.keys[section]]?.count ?? 0
         }
     }
 
@@ -110,7 +120,7 @@ class DisruptionsTableViewController: UITableViewController {
         }
 
         if requestStatus == .ok {
-            cell.disruption = disruptions?.disruptions[disruptions!.disruptions.keys.sorted()[indexPath.section]]?[indexPath.row]
+            cell.disruption = disruptions?.disruptions[self.keys[indexPath.section]]?[indexPath.row]
         }
 
         return cell
@@ -123,9 +133,9 @@ class DisruptionsTableViewController: UITableViewController {
         headerCell?.textLabel?.textColor = App.textColor
 
         if requestStatus != .loading && requestStatus != .noResults {
-            headerCell?.backgroundColor = App.linesColor.filter({$0.line == (disruptions!.disruptions.keys.sorted()[section])})[safe:
+            headerCell?.backgroundColor = App.linesColor.filter({$0.line == (self.keys[section])})[safe:
                 0]?.color ?? .white
-            headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(disruptions!.disruptions.keys.sorted()[section])")
+            headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section])")
             headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
         }
         return headerCell

@@ -98,7 +98,7 @@ class DeparturesViewController: UIViewController {
         self.noInternet = false
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json",
                           method: .get,
-                          parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b",
+                          parameters: ["key": API.key,
                                        "stopCode": stop!.code])
             .responseData { (response) in
                 if let data = response.result.value {

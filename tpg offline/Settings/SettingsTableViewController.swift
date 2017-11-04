@@ -97,6 +97,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
         let setting = self.settings[indexPath.row]
         setting.action(setting)
     }
@@ -133,9 +134,7 @@ class SettingsTableViewController: UITableViewController {
             } else {
                 self.offlineDeparturesStatus = .error
             }
-            }.downloadProgress { (progress) in
-                print(progress.fractionCompleted)
-        }
+            }
     }
 }
 
