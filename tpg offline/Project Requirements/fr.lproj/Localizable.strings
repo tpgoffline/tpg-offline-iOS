@@ -36,6 +36,7 @@
 "Line %@" = "Ligne %@";
 "Line %@ - %@" = "Ligne %@ - %@";
 "Loading" = "Chargement";
+"Map" = "Plan";
 "Maps" = "Plans";
 "Nearest stops" = "Arrêts les plus proches";
 "No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à arrêt.";
@@ -48,7 +49,7 @@
 "Open data of Geneva public transport" = "Open data des Transports Publics Genevois";
 "Open data of Transport API" = "Open data de Transport API";
 "Other" = "Autre";
-"Processing" = "Traitement";
+"Processing %@/%@" = "Traitement de %@/%@";
 "Regional map" = "Plan régional";
 "Regional route" = "Itinéraire multizone";
 "Reminder" = "Rappeler";
@@ -82,4 +83,4 @@
 "You don't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet";
 "You will be reminded" = "Vous serez rappelés";
 "at the time of departure." = "au départ";
-"tpg offline" = "tpg offline";
+"tpg offline" = "tpg offline"; 

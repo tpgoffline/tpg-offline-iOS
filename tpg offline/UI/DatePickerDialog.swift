@@ -187,8 +187,8 @@ open class DatePickerDialog: UIView {
         dialogContainer.addSubview(self.titleLabel)
         
         self.segmentedControl = UISegmentedControl(frame: CGRect(x: 10, y: 50, width: 330, height: 28))
-        self.segmentedControl.insertSegment(withTitle: "Departure at", at: 0, animated: false)
-        self.segmentedControl.insertSegment(withTitle: "Arrival at", at: 1, animated: false)
+        self.segmentedControl.insertSegment(withTitle: "Departure at".localized, at: 0, animated: false)
+        self.segmentedControl.insertSegment(withTitle: "Arrival at".localized, at: 1, animated: false)
         self.segmentedControl.selectedSegmentIndex = 0
         self.segmentedControl.tintColor = self.buttonColor
         dialogContainer.addSubview(self.segmentedControl)
