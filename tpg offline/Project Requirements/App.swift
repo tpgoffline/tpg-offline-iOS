@@ -58,5 +58,37 @@ struct App {
         return color
     }
 
+    @discardableResult static func loadStops() -> Bool {
+        do {
+            let data: Data
+            do {
+                let dirString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first ?? ""
+                data = try Data(contentsOf: URL(fileURLWithPath: dirString).appendingPathComponent("stops.json"))
+            } catch {
+                do {
+                    data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
+                } catch {
+                    print("Can't load stops")
+                    abort()
+                }
+            }
+            let decoder = JSONDecoder()
+            let stops = try decoder.decode([Stop].self, from: data)
+            App.stops = stops.sorted(by: { $0.name < $1.name })
+            for stop in App.stops.map({ $0.name }) {
+                let character = "\(stop.first!)"
+                App.sortedStops[character, default: []].append(stop)
+            }
+            for (i, id) in App.favoritesStops.enumerated() {
+                if App.stops.filter({ $0.appId == id })[safe: 0] == nil {
+                    App.favoritesStops.remove(at: i)
+                }
+            }
+            return true
+        } catch {
+            print("error")
+            return false
+        }
+    }
     static var textColor = #colorLiteral(red: 0.2392156863, green: 0.1960784314, blue: 0.1843137255, alpha: 1)
 }

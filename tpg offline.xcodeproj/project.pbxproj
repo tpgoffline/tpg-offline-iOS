@@ -13,6 +13,7 @@
 		AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */; };
 		AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */; };
 		AD0986941F64185A00CD8403 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986931F64185A00CD8403 /* Route.swift */; };
+		AD1E48471FADF70800596076 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48461FADF70800596076 /* App.swift */; };
 		AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
 		AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
 		AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */; };
@@ -38,7 +39,6 @@
 		AD5B340F1FAC82900061CFB3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B340E1FAC82900061CFB3 /* API.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
 		AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */; };
-		AD6A47A71F77990200AE1762 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A61F77990200AE1762 /* App.swift */; };
 		AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
 		AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */; };
 		AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */; };
@@ -73,6 +73,7 @@
 		AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
 		AD0986931F64185A00CD8403 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		AD182C6E1F9C7E5500694753 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Routes.strings; sourceTree = "<group>"; };
+		AD1E48461FADF70800596076 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		AD5B340E1FAC82900061CFB3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
-		AD6A47A61F77990200AE1762 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		AD6A47A81F77992400AE1762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
 		AD6AD6EB1FA098D900CEA271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -159,7 +159,6 @@
 				ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */,
 				AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */,
 				ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */,
-				AD6A47A61F77990200AE1762 /* App.swift */,
 				AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */,
 				AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */,
 				AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */,
@@ -249,6 +248,7 @@
 				ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */,
 				AD28200D1FA0E5D800767462 /* InfoPlist.strings */,
 				AD5B340E1FAC82900061CFB3 /* API.swift */,
+				AD1E48461FADF70800596076 /* App.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -447,7 +447,6 @@
 				AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */,
 				AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */,
 				AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */,
-				AD6A47A71F77990200AE1762 /* App.swift in Sources */,
 				AD8CF77F1F979B5100DE9CBC /* MapsTableViewController.swift in Sources */,
 				AD37FEAD1F41CD9300E84220 /* FooterDeparturesTableViewCell.swift in Sources */,
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
@@ -479,6 +478,7 @@
 				AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */,
 				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,
 				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
+				AD1E48471FADF70800596076 /* App.swift in Sources */,
 				AD5B340F1FAC82900061CFB3 /* API.swift in Sources */,
 				AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */,
 				ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */,

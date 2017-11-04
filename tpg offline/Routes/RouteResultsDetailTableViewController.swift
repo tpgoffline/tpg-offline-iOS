@@ -16,7 +16,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Result"
+        title = "Result".localized
 
         var stopsId = connection!.sections!.map({ $0.departure.station.id })
         stopsId += connection!.sections!.map({ $0.arrival.station.id })
