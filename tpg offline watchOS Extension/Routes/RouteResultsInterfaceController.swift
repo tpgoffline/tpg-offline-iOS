@@ -26,18 +26,21 @@ class RouteResultsInterfaceController: WKInterfaceController {
 
     @IBOutlet weak var tableView: WKInterfaceTable!
     @IBOutlet weak var loadingImage: WKInterfaceImage!
+    @IBOutlet weak var errorMessage: WKInterfaceLabel!
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
-        guard let route = context as? Route else { return }
+        self.errorMessage.setText("Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm".localized) // swiftlint:disable:this line_length
+        guard let route = context as? Route else { self.errorMessage.setHidden(false); return }
         self.route = route
         self.setTitle("\(route.from?.code ?? "") - \(route.to?.code ?? "")")
     }
 
     func loadRoutes() {
         self.results = nil
-        guard let route = self.route else { return }
+        guard let route = self.route else { self.errorMessage.setHidden(false); return }
+        self.errorMessage.setHidden(true)
         loadingImage.setImageNamed("loading-")
         loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
         var parameters: [String: Any] = [:]
@@ -83,10 +86,12 @@ class RouteResultsInterfaceController: WKInterfaceController {
                     self.results = results
                 } catch let error as NSError {
                     dump(error)
-                    //self.requestStatus = .error
+                    self.loadingImage.setImage(nil)
+                    self.errorMessage.setHidden(false)
                 }
             } else {
-                //self.requestStatus = .error
+                self.loadingImage.setImage(nil)
+                self.errorMessage.setHidden(false)
             }
         }
     }

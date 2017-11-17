@@ -304,8 +304,10 @@
                             </items>
                         </table>
                         <imageView alignment="center" verticalAlignment="center" image="loading" id="YGk-0Q-3Nv"/>
+                        <label alignment="center" verticalAlignment="center" text="Label" numberOfLines="0" id="axx-El-dV5"/>
                     </items>
                     <connections>
+                        <outlet property="errorMessage" destination="axx-El-dV5" id="bH4-EH-ibp"/>
                         <outlet property="loadingImage" destination="YGk-0Q-3Nv" id="Q6d-4k-Hc4"/>
                         <outlet property="tableView" destination="ugK-51-YHb" id="bEo-A7-US5"/>
                     </connections>
