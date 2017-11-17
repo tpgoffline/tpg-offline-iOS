@@ -8,7 +8,9 @@
 "10 minutes before" = "10 minutes avant";
 "5 minutes before" = "5 minutes avant";
 "?#!" = "?#!";
+"A notification will be send %@" = "Une notification sera envoyée %@";
 "Alamofire" = "Alamofire";
+"All Stops" = "Tous les arrêts";
 "An error occurred" = "Une erreur est survenue";
 "Are you looking for a stop ?" = "Recherchez-vous un arrêt ?";
 "Arrival at" = "Arrivée à";
@@ -19,9 +21,13 @@
 "Cédric Da Costa Faro" = "Cédric Da Costa Faro";
 "Credits" = "Crédits";
 "Data providers" = "Fournisseurs de données";
+"Default tab" = "Menu par défaut";
+"Default tab on startup" = "Menu par défaut au démarrage";
 "Departure at" = "Départ à";
+"Departures" = "Départs";
 "Departures, Disruptions and Maps" = "Départs, Perturbations et Plans";
 "Design and developement" = "Conception et développement";
+"Disruptions" = "Perturbations";
 "Downloading" = "Téléchargement";
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire";
 "Error" = "Erreur";
@@ -38,6 +44,7 @@
 "Loading" = "Chargement";
 "Map" = "Plan";
 "Maps" = "Plans";
+"Nearest Stops" = "Arrêts les plus proches";
 "Nearest stops" = "Arrêts les plus proches";
 "No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à arrêt.";
 "No results" = "Pas de résultats";
@@ -46,12 +53,14 @@
 "Number of minutes" = "Nombre de minutes";
 "OK" = "OK";
 "Offline mode" = "Mode hors-ligne";
+"Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, une erreur est survenue. Merci de réessayer et, en cas d'urgence, de casser la glace et déclencher l'alarme.";
 "Open data of Geneva public transport" = "Open data des Transports Publics Genevois";
 "Open data of Transport API" = "Open data de Transport API";
 "Other" = "Autre";
 "Processing %@/%@" = "Traitement de %@/%@";
 "Regional map" = "Plan régional";
 "Regional route" = "Itinéraire multizone";
+"Reload" = "Recharger";
 "Reminder" = "Rappeler";
 "Result" = "Résultat";
 "Results" = "Résultats";
@@ -85,3 +94,4 @@
 "You will be reminded" = "Vous serez rappelés";
 "at the time of departure." = "au départ";
 "tpg offline" = "tpg offline";
+

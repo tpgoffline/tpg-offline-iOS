@@ -13,7 +13,7 @@ class DefaultTabTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Default tab"
+        self.title = "Default tab".localized
     }
 
     override func didReceiveMemoryWarning() {
