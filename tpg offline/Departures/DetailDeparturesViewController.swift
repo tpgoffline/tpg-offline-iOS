@@ -272,7 +272,7 @@ class DetailDeparturesViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             } else {
                 let alertController = UIAlertController(title: "You will be reminded".localized,
-                                                        message: String(format: "A notification will be send %@",
+                                                        message: String(format: "A notification will be send %@".localized,
                                                                         (timeBefore == 0 ? "at the time of departure.".localized :
                                                                             String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
                                                         preferredStyle: .alert)

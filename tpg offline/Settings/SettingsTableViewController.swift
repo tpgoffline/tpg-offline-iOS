@@ -23,7 +23,7 @@ class SettingsTableViewController: UITableViewController {
     var settings: [Setting] = []
     var offlineDeparturesStatus: OfflineDeparturesStatus = .notDownloading {
         didSet {
-            tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
         }
     }
 

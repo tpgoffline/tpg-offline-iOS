@@ -31,38 +31,38 @@ class tpg_offline_UITests: XCTestCase {
         super.tearDown()
     }
     
-    func testOpenStop() {
-        let app = XCUIApplication()
-        app.tabBars.buttons.element(boundBy: 0).tap()
-        app.tables.staticTexts["31 Décembre"].tap()
-    }
-    
-    func testDepartures() {
-        let app = XCUIApplication()
-        app.tabBars.buttons.element(boundBy: 0).tap()
-        app.tables.staticTexts["31 Décembre"].tap()
-        
-        let navigationBar = XCUIApplication().navigationBars["31 Décembre"]
-        navigationBar.buttons["starEmpty"].tap()
-        navigationBar.buttons["star"].tap()
-        
-        let pinmapnavbarButton = navigationBar.buttons["pinMapNavBar"]
-        pinmapnavbarButton.tap()
-        pinmapnavbarButton.tap()
-        navigationBar.buttons["reloadNavBar"].tap()
-    }
- 
-//    func testScreenshot() {
+//    func testOpenStop() {
 //        let app = XCUIApplication()
 //        app.tabBars.buttons.element(boundBy: 0).tap()
-//        snapshot("stops")
 //        app.tables.staticTexts["31 Décembre"].tap()
-//        snapshot("departures")
-//        app.tabBars.buttons.element(boundBy: 1).tap()
-//        snapshot("disruptions")
-//        app.tabBars.buttons.element(boundBy: 2).tap()
-//        snapshot("routes")
-//        app.tabBars.buttons.element(boundBy: 3).tap()
-//        snapshot("maps")
 //    }
+//
+//    func testDepartures() {
+//        let app = XCUIApplication()
+//        app.tabBars.buttons.element(boundBy: 0).tap()
+//        app.tables.staticTexts["31 Décembre"].tap()
+//
+//        let navigationBar = XCUIApplication().navigationBars["31 Décembre"]
+//        navigationBar.buttons["starEmpty"].tap()
+//        navigationBar.buttons["star"].tap()
+//
+//        let pinmapnavbarButton = navigationBar.buttons["pinMapNavBar"]
+//        pinmapnavbarButton.tap()
+//        pinmapnavbarButton.tap()
+//        navigationBar.buttons["reloadNavBar"].tap()
+//    }
+//
+    func testScreenshot() {
+        let app = XCUIApplication()
+        app.tabBars.buttons.element(boundBy: 0).tap()
+        snapshot("stops")
+        app.tables.staticTexts["31 Décembre"].tap()
+        snapshot("departures")
+        app.tabBars.buttons.element(boundBy: 1).tap()
+        snapshot("disruptions")
+        app.tabBars.buttons.element(boundBy: 2).tap()
+        snapshot("routes")
+        app.tabBars.buttons.element(boundBy: 3).tap()
+        snapshot("maps")
+    }
 }
