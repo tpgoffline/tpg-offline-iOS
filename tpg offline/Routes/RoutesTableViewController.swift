@@ -148,7 +148,7 @@ class RoutesTableViewController: UITableViewController {
                                                            doneButtonTitle: "OK".localized,
                                                            cancelButtonTitle: "Cancel".localized,
                                                            defaultDate: self.route.date,
-                                                           minimumDate: Date(),
+                                                           minimumDate: nil,
                                                            maximumDate: nil,
                                                            datePickerMode: .dateAndTime,
                                                            arrivalTime: self.route.arrivalTime) { arrivalTime, date in

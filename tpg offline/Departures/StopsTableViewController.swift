@@ -61,54 +61,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         DispatchQueue.main.async {
             Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json.md5").responseString { (response) in
                 if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
-                    Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json").responseData { (response) in
-                        if let stopsData = response.result.value {
-                            var fileURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)[0])
-                            fileURL.appendPathComponent("stops.json")
-
-                            do {
-                                try stopsData.write(to: fileURL)
-                                UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
-
-                                App.loadStops()
-
-                                for stop in App.stops {
-                                    if App.indexedStops.index(of: stop.appId) == nil {
-                                        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
-                                        attributeSet.title = stop.name
-                                        attributeSet.contentDescription = ""
-
-                                        let item = CSSearchableItem(
-                                            uniqueIdentifier: "\(stop.appId)",
-                                            domainIdentifier: "com.dacostafaro",
-                                            attributeSet: attributeSet)
-                                        item.expirationDate = Date.distantFuture
-                                        CSSearchableIndex.default().indexSearchableItems([item]) { error in
-                                            if let error = error {
-                                                print("Indexing error: \(error.localizedDescription)")
-                                            } else {
-                                                print("\(stop.appId) successfully indexed!")
-                                            }
-                                        }
-                                        App.indexedStops.append(stop.appId)
-                                    }
-                                }
-                                for id in App.indexedStops {
-                                    if App.stops.filter({ $0.appId == id })[safe: 0] == nil {
-                                        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["\(id)"]) { error in
-                                            if let error = error {
-                                                print("Deindexing error: \(error.localizedDescription)")
-                                            } else {
-                                                print("\(id) successfully removed!")
-                                            }
-                                        }
-                                    }
-                                }
-                            } catch (let error) {
-                                print(error)
-                            }
-                        }
-                    }
+                    self.getNewStops(updatedMD5)
                 }
             }
 
@@ -118,6 +71,53 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
 
         self.tableView.sectionIndexBackgroundColor = .white
+    }
+
+    func getNewStops(_ updatedMD5: String) {
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json").responseData { (response) in
+            if let stopsData = response.result.value {
+                var fileURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)[0])
+                fileURL.appendPathComponent("stops.json")
+
+                do {
+                    try stopsData.write(to: fileURL)
+                    UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
+
+                    App.loadStops()
+
+                    for stop in App.stops where App.indexedStops.index(of: stop.appId) == nil {
+                        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+                        attributeSet.title = stop.name
+                        attributeSet.contentDescription = ""
+
+                        let item = CSSearchableItem(
+                            uniqueIdentifier: "\(stop.appId)",
+                            domainIdentifier: "com.dacostafaro",
+                            attributeSet: attributeSet)
+                        item.expirationDate = Date.distantFuture
+                        CSSearchableIndex.default().indexSearchableItems([item]) { error in
+                            if let error = error {
+                                print("Indexing error: \(error.localizedDescription)")
+                            } else {
+                                print("\(stop.appId) successfully indexed!")
+                            }
+                        }
+                        App.indexedStops.append(stop.appId)
+                    }
+                    for id in App.indexedStops where App.stops.filter({ $0.appId == id })[safe: 0] == nil {
+                        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["\(id)"]) { error in
+                            if let error = error {
+                                print("Deindexing error: \(error.localizedDescription)")
+                            } else {
+                                print("\(id) successfully removed!")
+                            }
+                        }
+                    }
+                } catch (let error) {
+                    print(error)
+                }
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -283,8 +283,6 @@ extension StopsTableViewController {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if searchText != "" {
             return 0
-        } else if section == 0 {
-            return self.localizedStops.isEmpty ? 0 : 28
         } else {
             return 28
         }
@@ -299,7 +297,6 @@ extension StopsTableViewController {
         if section == 0 {
             headerCell?.backgroundColor = #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1)
             headerCell?.textLabel?.text = "Nearest stops".localized
-            if self.localizedStops.isEmpty { return nil }
         } else if section == 1 {
             headerCell?.backgroundColor = #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1)
             headerCell?.textLabel?.text = "Favorites".localized

@@ -25,10 +25,7 @@ struct DisruptionsGroup: Decodable {
         let disruptions = try container.decode([Disruption].self, forKey: .disruptions)
         var a: [String: [Disruption]] = [:]
         for disruption in disruptions {
-            if a.index(forKey: disruption.line) == nil {
-                a[disruption.line] = []
-            }
-            a[disruption.line]?.append(disruption)
+            a[disruption.line, default: []].append(disruption)
         }
 
         self.init(disruptions: a)

@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 struct App {
+    #if os(iOS)
+    private static var watchSessionManager = WatchSessionManager.shared
+    #endif
     static var stops: [Stop] = []
     static var sortedStops: [String: [String]] = [:]
     static var favoritesStops: [Int] {
         get {
-            return (UserDefaults.standard.array(forKey: #function) as? [Int]) ?? []
+            return (UserDefaults.standard.object(forKey: #function) as? [Int]) ?? []
         } set {
             UserDefaults.standard.set(newValue, forKey: #function)
+            #if os(iOS)
+                watchSessionManager.sync()
+            #endif
         }
     }
     static var favoritesRoutes: [Route] {
@@ -28,6 +35,9 @@ struct App {
             let jsonEncoder = JSONEncoder()
             let jsonData = try? jsonEncoder.encode(newValue)
             UserDefaults.standard.set(jsonData, forKey: #function)
+            #if os(iOS)
+                watchSessionManager.sync()
+            #endif
         }
     }
     static var replacementsNames: [String: String] {
@@ -36,12 +46,24 @@ struct App {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: #function)
+            #if os(iOS)
+                watchSessionManager.sync()
+            #endif
         }
     }
 
     static var indexedStops: [Int] {
         get {
             return (UserDefaults.standard.array(forKey: #function) as? [Int]) ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+
+    static var defaultTab: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: #function)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: #function)
@@ -61,10 +83,9 @@ struct App {
     @discardableResult static func loadStops() -> Bool {
         do {
             let data: Data
-            do {
-                let dirString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first ?? ""
-                data = try Data(contentsOf: URL(fileURLWithPath: dirString).appendingPathComponent("stops.json"))
-            } catch {
+            if let dataA = UserDefaults.standard.data(forKey: "stops.json") {
+                data = dataA
+            } else {
                 do {
                     data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
                 } catch {

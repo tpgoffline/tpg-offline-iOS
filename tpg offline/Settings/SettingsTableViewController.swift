@@ -37,17 +37,20 @@ class SettingsTableViewController: UITableViewController {
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
 
+        self.settings.append(Setting("Default tab on startup".localized, icon: #imageLiteral(resourceName: "menuRounded"), action: { (_) in
+            self.performSegue(withIdentifier: "showDefaultTab", sender: self)
+        }))
         self.settings.append(Setting("Update departures".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
             self.updateDepartures()
         }))
         self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
             self.performSegue(withIdentifier: "showCredits", sender: self)
         }))
-        self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { (_) in
+        self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
 
-            mailComposerVC.setToRecipients(["support@asmartcode.com"])
+            mailComposerVC.setToRecipients(["helloworld@asmartcode.com"])
             mailComposerVC.setSubject("tpg offline".localized)
             mailComposerVC.setMessageBody("", isHTML: false)
 

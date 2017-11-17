@@ -6,8 +6,13 @@
 //  Copyright © 2017 Remy. All rights reserved.
 //
 
-import UIKit
 import MapKit
+
+#if os(iOS)
+    import UIKit
+#elseif os(watchOS)
+    import WatchKit
+#endif
 
 enum RequestStatus {
     case ok
@@ -38,22 +43,24 @@ extension String {
     }
 }
 
-public extension UIView {
-    @IBInspectable public var cornerRadius: CGFloat {
-        get { return self.layer.cornerRadius }
-        set { self.layer.cornerRadius = newValue }
-    }
+#if os(iOS)
+    public extension UIView {
+        @IBInspectable public var cornerRadius: CGFloat {
+            get { return self.layer.cornerRadius }
+            set { self.layer.cornerRadius = newValue }
+        }
 
-    @IBInspectable public var borderWidth: CGFloat {
-        get { return self.layer.borderWidth }
-        set { self.layer.borderWidth = newValue }
-    }
+        @IBInspectable public var borderWidth: CGFloat {
+            get { return self.layer.borderWidth }
+            set { self.layer.borderWidth = newValue }
+        }
 
-    @IBInspectable public var borderColor: UIColor {
-        get { return UIColor(cgColor: self.layer.borderColor!) }
-        set { self.layer.borderColor = newValue.cgColor }
+        @IBInspectable public var borderColor: UIColor {
+            get { return UIColor(cgColor: self.layer.borderColor!) }
+            set { self.layer.borderColor = newValue.cgColor }
+        }
     }
-}
+#endif
 
 extension UIColor {
     func darken(by percentage: CGFloat) -> UIColor? {
@@ -191,7 +198,13 @@ public extension Sequence where Iterator.Element: Equatable {
 extension UIImage {
 
     func maskWith(color: UIColor) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        #if os(iOS)
+            UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        #elseif os(watchOS)
+            UIGraphicsBeginImageContextWithOptions(self.size, false, WKInterfaceDevice.current().screenScale)
+        #else
+            println("OMG, it's that mythical new Apple product!!!")
+        #endif
         let context = UIGraphicsGetCurrentContext()
 
         color.setFill()

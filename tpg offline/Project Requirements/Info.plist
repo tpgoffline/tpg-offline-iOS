@@ -2,41 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>departures</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Departures</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>clock3d</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>disruptions</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Disruptions</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>warning3d</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>routes</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Routes</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>routes3d</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>maps</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Maps</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>maps3d</string>
-		</dict>
-	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -52,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>13</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>3</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -71,6 +38,41 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>te</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>clock3d</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Departures</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>departures</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>warning3d</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Disruptions</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>disruptions</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>routes3d</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Routes</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>routes</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>maps3d</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Maps</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>maps</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

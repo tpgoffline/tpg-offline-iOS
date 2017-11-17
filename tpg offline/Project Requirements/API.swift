@@ -9,5 +9,5 @@
 import Foundation
 
 struct API {
-    static let key = "" // Put your tpg open data API key here
+    static let key = "d95be980-0830-11e5-a039-0002a5d5c51b" // Put your tpg open data API key here
 }

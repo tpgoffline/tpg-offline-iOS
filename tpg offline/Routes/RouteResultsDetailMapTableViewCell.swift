@@ -37,7 +37,8 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
             }
 
             let regionRadius: CLLocationDistance = 1000
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(allPoints[0],
+            guard let point = allPoints[safe: 0] else { return }
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(point,
                                                                       regionRadius * 2.0, regionRadius * 2.0)
             mapView.setRegion(coordinateRegion, animated: true)
         }

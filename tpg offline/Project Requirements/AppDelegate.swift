@@ -49,14 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        window?.layer.cornerRadius = 5
-        window?.clipsToBounds = true
-
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
                 if !accepted {
                     print("Notification access denied.")
                 }
             }
+
+        if CommandLine.arguments.contains("-reset") {
+            App.loadStops()
+            App.favoritesStops = [App.stops.filter({ $0.code == "CVIN"})[0].appId]
+            App.favoritesRoutes = [Route(from: App.stops.filter({ $0.code == "31DC"})[0],
+                                         to: App.stops.filter({ $0.code == "CVIN"})[0],
+                                         date: Date(), arrivalTime: false)]
+            window?.layer.cornerRadius = 0
+            window?.clipsToBounds = true
+            return true
+        }
+
+        if let tabController = (window?.rootViewController as? UITabBarController) {
+            tabController.selectedIndex = App.defaultTab
+        }
 
         return App.loadStops()
     }
