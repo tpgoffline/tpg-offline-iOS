@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Crashlytics.self])
 
-        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/replacementsNames.json").responseJSON { (response) in
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/replacementsNames.json").responseJSON { (response) in
             if let json = response.result.value as? [String: String] {
                 App.replacementsNames = json
             }

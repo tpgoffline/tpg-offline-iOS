@@ -107,7 +107,7 @@ class SettingsTableViewController: UITableViewController {
 
     func updateDepartures() {
         self.offlineDeparturesStatus = .downloading
-        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/iOS/departuresV13.json").responseJSON { (response) in
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json").responseJSON { (response) in
             if let data = response.result.value as? [String: String] {
                 self.offlineDeparturesStatus = .processing(0, data.count)
                 var index: UInt = 0

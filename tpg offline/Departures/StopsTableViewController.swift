@@ -59,7 +59,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
 
         DispatchQueue.main.async {
-            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json.md5").responseString { (response) in
+            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/stops.json.md5").responseString { (response) in
                 if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
                     self.getNewStops(updatedMD5)
                 }
@@ -74,7 +74,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func getNewStops(_ updatedMD5: String) {
-        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/v13/JSON/stops.json").responseData { (response) in
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/stops.json").responseData { (response) in
             if let stopsData = response.result.value {
                 var fileURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)[0])
                 fileURL.appendPathComponent("stops.json")
