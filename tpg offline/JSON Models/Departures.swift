@@ -112,7 +112,7 @@ struct Departure: Decodable {
                 .day,
                 .hour,
                 .minute,
-                .second], from: time!)
+                .second], from: time ?? Date())
 
             let now = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
             timestampDateComponents.year = now.year
