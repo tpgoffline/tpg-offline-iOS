@@ -1,0 +1,1305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD0644401FBB366200E61E5A /* RoutesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06443F1FBB366200E61E5A /* RoutesInterfaceController.swift */; };
+		AD07A3651F8A60D300E65DE7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD07A3631F8A60D300E65DE7 /* Crashlytics.framework */; };
+		AD07A3661F8A60D400E65DE7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD07A3641F8A60D300E65DE7 /* Fabric.framework */; };
+		AD07A3681F8A6BF300E65DE7 /* RouteStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07A3671F8A6BF300E65DE7 /* RouteStepViewController.swift */; };
+		AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */; };
+		AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */; };
+		AD0986941F64185A00CD8403 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986931F64185A00CD8403 /* Route.swift */; };
+		AD1E48471FADF70800596076 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48461FADF70800596076 /* App.swift */; };
+		AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */; };
+		AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48561FAE06D100596076 /* SnapshotHelper.swift */; };
+		AD1E48581FAE0D0700596076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
+		AD1E48591FAE0D0A00596076 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
+		AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
+		AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
+		AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */; };
+		AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7E1F41CA7F00E84220 /* DeparturesTableViewCell.swift */; };
+		AD37FEAD1F41CD9300E84220 /* FooterDeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7F1F41CA7F00E84220 /* FooterDeparturesTableViewCell.swift */; };
+		AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE801F41CA7F00E84220 /* StopsTableViewCell.swift */; };
+		AD37FEAF1F41CD9300E84220 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE811F41CA7F00E84220 /* DeparturesViewController.swift */; };
+		AD37FEB01F41CD9300E84220 /* DetailDeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE821F41CA7F00E84220 /* DetailDeparturesViewController.swift */; };
+		AD37FEB11F41CD9300E84220 /* StopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */; };
+		AD37FEB21F41CD9300E84220 /* DisruptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */; };
+		AD37FEB31F41CD9300E84220 /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */; };
+		AD37FEB41F41CD9300E84220 /* BusRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE891F41CA8000E84220 /* BusRoute.swift */; };
+		AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8A1F41CA8000E84220 /* Connection.swift */; };
+		AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8B1F41CA8000E84220 /* Departures.swift */; };
+		AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8C1F41CA8000E84220 /* Disruptions.swift */; };
+		AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8D1F41CA8000E84220 /* LineColor.swift */; };
+		AD37FEB91F41CD9300E84220 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8E1F41CA8000E84220 /* Stop.swift */; };
+		AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE851F41CA8000E84220 /* AppDelegate.swift */; };
+		AD37FEBD1F41CDA300E84220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE901F41CA8000E84220 /* Assets.xcassets */; };
+		AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE9B1F41CA8000E84220 /* Departures.storyboard */; };
+		AD37FEBF1F41CDA300E84220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */; };
+		AD37FEC01F41CDA300E84220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE951F41CA8000E84220 /* Main.storyboard */; };
+		AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DF3AB1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift */; };
+		AD3DF3B01FB1FE8500F2AFA5 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48461FADF70800596076 /* App.swift */; };
+		AD3DF3B11FB1FF0300F2AFA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
+		AD3DF3B21FB1FFB400F2AFA5 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
+		AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */; };
+		AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A801FB73587005052F3 /* WatchSessionManager.swift */; };
+		AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */; };
+		AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */; };
+		AD5B340F1FAC82900061CFB3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B340E1FAC82900061CFB3 /* API.swift */; };
+		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
+		AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */; };
+		AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
+		AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */; };
+		AD708DAF1FB0AC420076B3AC /* BusRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE891F41CA8000E84220 /* BusRoute.swift */; };
+		AD708DB01FB0AC420076B3AC /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8A1F41CA8000E84220 /* Connection.swift */; };
+		AD708DB11FB0AC420076B3AC /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8B1F41CA8000E84220 /* Departures.swift */; };
+		AD708DB21FB0AC420076B3AC /* Disruptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8C1F41CA8000E84220 /* Disruptions.swift */; };
+		AD708DB31FB0AC420076B3AC /* LineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8D1F41CA8000E84220 /* LineColor.swift */; };
+		AD708DB41FB0AC420076B3AC /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8E1F41CA8000E84220 /* Stop.swift */; };
+		AD708DB51FB0AC420076B3AC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986931F64185A00CD8403 /* Route.swift */; };
+		AD708DB61FB0AC420076B3AC /* RouteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976D1F657CC0004AA662 /* RouteResults.swift */; };
+		AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */; };
+		AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */; };
+		AD8CF77F1F979B5100DE9CBC /* MapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */; };
+		AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */; };
+		AD92D8BF1F44E10200403258 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BE1F44E10200403258 /* Setting.swift */; };
+		AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */; };
+		AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */; };
+		AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */; };
+		ADA0D35E1FB33EBC001DAC9F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B340E1FAC82900061CFB3 /* API.swift */; };
+		ADA0D3601FB33EFF001DAC9F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */; };
+		ADA0D3631FB34E59001DAC9F /* DeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */; };
+		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
+		ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */; };
+		ADBC1C711FAF0E2700162195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C701FAF0E2700162195 /* Assets.xcassets */; };
+		ADBC1C781FAF0E2700162195 /* tpg offline watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ADBC1C7D1FAF0E2700162195 /* HomeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC1C7C1FAF0E2700162195 /* HomeInterfaceController.swift */; };
+		ADBC1C7F1FAF0E2700162195 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC1C7E1FAF0E2700162195 /* ExtensionDelegate.swift */; };
+		ADBC1C811FAF0E2700162195 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC1C801FAF0E2700162195 /* NotificationController.swift */; };
+		ADBC1C831FAF0E2700162195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C821FAF0E2700162195 /* Assets.xcassets */; };
+		ADBC1C881FAF0E2700162195 /* tpg offline watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */; };
+		ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */; };
+		ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */; };
+		ADC487D01FB1EE7600675593 /* LinesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */; };
+		ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */; };
+		ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */; };
+		ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */; };
+		ADE930751FC071DF000D703C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
+		ADE9830F1F933DED0069EACA /* Maps.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE9830E1F933DED0069EACA /* Maps.xcassets */; };
+		ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */; };
+		ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976D1F657CC0004AA662 /* RouteResults.swift */; };
+		ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */; };
+		ADF9C66D1F9B99E000AE17A4 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */; };
+		ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */; };
+		ADF9C6771F9BB3C800AE17A4 /* Disruptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */; };
+		ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */; };
+		ADF9C6811F9BB4A500AE17A4 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6831F9BB4A500AE17A4 /* Maps.storyboard */; };
+		ADF9C6861F9BB4CF00AE17A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */; };
+		ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD1E48511FADFF6A00596076 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD37FE601F41CA4600E84220;
+			remoteInfo = "tpg offline";
+		};
+		ADBC1C791FAF0E2700162195 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADBC1C761FAF0E2700162195;
+			remoteInfo = "tpg offline watchOS Extension";
+		};
+		ADBC1C861FAF0E2700162195 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADBC1C6A1FAF0E2700162195;
+			remoteInfo = "tpg offline watchOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ADBC1C8C1FAF0E2700162195 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				ADBC1C781FAF0E2700162195 /* tpg offline watchOS Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBC1C901FAF0E2700162195 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				ADBC1C881FAF0E2700162195 /* tpg offline watchOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AD06443F1FBB366200E61E5A /* RoutesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesInterfaceController.swift; sourceTree = "<group>"; };
+		AD07A3631F8A60D300E65DE7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		AD07A3641F8A60D300E65DE7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		AD07A3671F8A6BF300E65DE7 /* RouteStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStepViewController.swift; sourceTree = "<group>"; };
+		AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
+		AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
+		AD0986931F64185A00CD8403 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		AD182C6E1F9C7E5500694753 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Routes.strings; sourceTree = "<group>"; };
+		AD1E48461FADF70800596076 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UITests.swift; sourceTree = "<group>"; };
+		AD1E48501FADFF6A00596076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD1E48561FAE06D100596076 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD37FE611F41CA4600E84220 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteTableViewCell.swift; sourceTree = "<group>"; };
+		AD37FE7E1F41CA7F00E84220 /* DeparturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesTableViewCell.swift; sourceTree = "<group>"; };
+		AD37FE7F1F41CA7F00E84220 /* FooterDeparturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterDeparturesTableViewCell.swift; sourceTree = "<group>"; };
+		AD37FE801F41CA7F00E84220 /* StopsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewCell.swift; sourceTree = "<group>"; };
+		AD37FE811F41CA7F00E84220 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
+		AD37FE821F41CA7F00E84220 /* DetailDeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDeparturesViewController.swift; sourceTree = "<group>"; };
+		AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
+		AD37FE851F41CA8000E84220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AD37FE891F41CA8000E84220 /* BusRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRoute.swift; sourceTree = "<group>"; };
+		AD37FE8A1F41CA8000E84220 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		AD37FE8B1F41CA8000E84220 /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
+		AD37FE8C1F41CA8000E84220 /* Disruptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disruptions.swift; sourceTree = "<group>"; };
+		AD37FE8D1F41CA8000E84220 /* LineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineColor.swift; sourceTree = "<group>"; };
+		AD37FE8E1F41CA8000E84220 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		AD37FE901F41CA8000E84220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD37FE941F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD37FE961F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD37FE9C1F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Departures.storyboard; sourceTree = "<group>"; };
+		AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionTableViewCell.swift; sourceTree = "<group>"; };
+		AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
+		AD37FEA81F41CAC300E84220 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		AD3DF3AB1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsInterfaceController.swift; sourceTree = "<group>"; };
+		AD3DF3AD1FB1F9D100F2AFA5 /* tpg offline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "tpg offline.entitlements"; sourceTree = "<group>"; };
+		AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		AD416A801FB73587005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsInterfaceController.swift; sourceTree = "<group>"; };
+		AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsInterfaceController.swift; sourceTree = "<group>"; };
+		AD5B340E1FAC82900061CFB3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
+		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
+		AD6A47A81F77992400AE1762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
+		AD6AD6EB1FA098D900CEA271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsTableViewCell.swift; sourceTree = "<group>"; };
+		AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesOptionsInterfaceController.swift; sourceTree = "<group>"; };
+		AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsTableViewController.swift; sourceTree = "<group>"; };
+		AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		AD92D8BE1F44E10200403258 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTabTableViewController.swift; sourceTree = "<group>"; };
+		AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailInterfaceController.swift; sourceTree = "<group>"; };
+		ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
+		ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesInterfaceController.swift; sourceTree = "<group>"; };
+		ADABFA091F9CF1D200EEC8D0 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = JSON/stops.json; sourceTree = "<group>"; };
+		ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBC1C6E1FAF0E2700162195 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		ADBC1C701FAF0E2700162195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADBC1C721FAF0E2700162195 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBC1C7C1FAF0E2700162195 /* HomeInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceController.swift; sourceTree = "<group>"; };
+		ADBC1C7E1FAF0E2700162195 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		ADBC1C801FAF0E2700162195 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		ADBC1C821FAF0E2700162195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADBC1C841FAF0E2700162195 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADBC1C851FAF0E2700162195 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewController.swift; sourceTree = "<group>"; };
+		ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesInterfaceController.swift; sourceTree = "<group>"; };
+		ADC5289A1F4F322400EADB0D /* tpg offline.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = "tpg offline.geojson"; sourceTree = "<group>"; };
+		ADC5289B1F4F329800EADB0D /* Bel-Air.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bel-Air.gpx"; sourceTree = "<group>"; };
+		ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailMapTableViewCell.swift; sourceTree = "<group>"; };
+		ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewCell.swift; sourceTree = "<group>"; };
+		ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
+		ADE9830E1F933DED0069EACA /* Maps.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Maps.xcassets; sourceTree = "<group>"; };
+		ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsTableViewController.swift; sourceTree = "<group>"; };
+		ADF0976D1F657CC0004AA662 /* RouteResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResults.swift; sourceTree = "<group>"; };
+		ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewController.swift; sourceTree = "<group>"; };
+		ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
+		ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
+		ADF9C6721F9BB26400AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Departures.strings; sourceTree = "<group>"; };
+		ADF9C6731F9BB26400AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		ADF9C6741F9BB26500AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		ADF9C6781F9BB3C800AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Disruptions.storyboard; sourceTree = "<group>"; };
+		ADF9C67B1F9BB3CB00AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Disruptions.strings; sourceTree = "<group>"; };
+		ADF9C67D1F9BB40500AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Routes.storyboard; sourceTree = "<group>"; };
+		ADF9C6821F9BB4A500AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Maps.storyboard; sourceTree = "<group>"; };
+		ADF9C6851F9BB4A800AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Maps.strings; sourceTree = "<group>"; };
+		ADF9C6871F9BB4CF00AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		ADF9C68A1F9BB4D200AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
+		ADF9C68E1F9BDFEB00AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD1E48491FADFF6A00596076 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD37FE5E1F41CA4600E84220 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD07A3651F8A60D300E65DE7 /* Crashlytics.framework in Frameworks */,
+				AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */,
+				AD07A3661F8A60D400E65DE7 /* Fabric.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBC1C741FAF0E2700162195 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADA0D3601FB33EFF001DAC9F /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD0644411FBB366B00E61E5A /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				AD06443F1FBB366200E61E5A /* RoutesInterfaceController.swift */,
+				AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */,
+				AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		AD1E484D1FADFF6A00596076 /* tpg offline UITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD1E48561FAE06D100596076 /* SnapshotHelper.swift */,
+				AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */,
+				AD1E48501FADFF6A00596076 /* Info.plist */,
+			);
+			path = "tpg offline UITests";
+			sourceTree = "<group>";
+		};
+		AD27098E1F49C46C002802F9 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */,
+				ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */,
+				ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */,
+				AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */,
+				ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */,
+				AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */,
+				AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */,
+				AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */,
+				AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */,
+				AD07A3671F8A6BF300E65DE7 /* RouteStepViewController.swift */,
+				ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		AD324D271F4427AF0039B309 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
+				AD92D8BE1F44E10200403258 /* Setting.swift */,
+				ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */,
+				ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */,
+				AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AD37FE581F41CA4600E84220 = {
+			isa = PBXGroup;
+			children = (
+				ADABFA091F9CF1D200EEC8D0 /* stops.json */,
+				AD37FE631F41CA4600E84220 /* tpg offline */,
+				AD1E484D1FADFF6A00596076 /* tpg offline UITests */,
+				ADBC1C6C1FAF0E2700162195 /* tpg offline watchOS */,
+				ADBC1C7B1FAF0E2700162195 /* tpg offline watchOS Extension */,
+				AD37FEA31F41CABC00E84220 /* Frameworks */,
+				AD37FE621F41CA4600E84220 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD37FE621F41CA4600E84220 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD37FE611F41CA4600E84220 /* tpg offline.app */,
+				AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */,
+				ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */,
+				ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD37FE631F41CA4600E84220 /* tpg offline */ = {
+			isa = PBXGroup;
+			children = (
+				AD3DF3AD1FB1F9D100F2AFA5 /* tpg offline.entitlements */,
+				AD8CF77D1F979B3000DE9CBC /* Maps */,
+				AD37FE7B1F41CA7F00E84220 /* Departures */,
+				AD37FE9D1F41CA8000E84220 /* Disruptions */,
+				AD37FE881F41CA8000E84220 /* JSON Models */,
+				AD37FE841F41CA8000E84220 /* Project Requirements */,
+				AD27098E1F49C46C002802F9 /* Routes */,
+				AD324D271F4427AF0039B309 /* Settings */,
+				AD37FE8F1F41CA8000E84220 /* UI */,
+			);
+			path = "tpg offline";
+			sourceTree = "<group>";
+		};
+		AD37FE7B1F41CA7F00E84220 /* Departures */ = {
+			isa = PBXGroup;
+			children = (
+				AD37FE811F41CA7F00E84220 /* DeparturesViewController.swift */,
+				AD37FE821F41CA7F00E84220 /* DetailDeparturesViewController.swift */,
+				AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */,
+				AD37FE7C1F41CA7F00E84220 /* Cells */,
+				ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */,
+			);
+			path = Departures;
+			sourceTree = "<group>";
+		};
+		AD37FE7C1F41CA7F00E84220 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */,
+				AD37FE7E1F41CA7F00E84220 /* DeparturesTableViewCell.swift */,
+				AD37FE7F1F41CA7F00E84220 /* FooterDeparturesTableViewCell.swift */,
+				AD37FE801F41CA7F00E84220 /* StopsTableViewCell.swift */,
+				ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AD37FE841F41CA8000E84220 /* Project Requirements */ = {
+			isa = PBXGroup;
+			children = (
+				ADC5289A1F4F322400EADB0D /* tpg offline.geojson */,
+				ADC5289B1F4F329800EADB0D /* Bel-Air.gpx */,
+				AD2820081FA0E54600767462 /* Info.plist */,
+				AD37FE851F41CA8000E84220 /* AppDelegate.swift */,
+				AD6A47A81F77992400AE1762 /* Extensions.swift */,
+				ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */,
+				AD28200D1FA0E5D800767462 /* InfoPlist.strings */,
+				AD5B340E1FAC82900061CFB3 /* API.swift */,
+				AD1E48461FADF70800596076 /* App.swift */,
+				AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */,
+			);
+			path = "Project Requirements";
+			sourceTree = "<group>";
+		};
+		AD37FE881F41CA8000E84220 /* JSON Models */ = {
+			isa = PBXGroup;
+			children = (
+				AD37FE891F41CA8000E84220 /* BusRoute.swift */,
+				AD37FE8A1F41CA8000E84220 /* Connection.swift */,
+				AD37FE8B1F41CA8000E84220 /* Departures.swift */,
+				AD37FE8C1F41CA8000E84220 /* Disruptions.swift */,
+				AD37FE8D1F41CA8000E84220 /* LineColor.swift */,
+				AD37FE8E1F41CA8000E84220 /* Stop.swift */,
+				AD0986931F64185A00CD8403 /* Route.swift */,
+				ADF0976D1F657CC0004AA662 /* RouteResults.swift */,
+			);
+			path = "JSON Models";
+			sourceTree = "<group>";
+		};
+		AD37FE8F1F41CA8000E84220 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */,
+				ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */,
+				ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */,
+				AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */,
+				AD37FE901F41CA8000E84220 /* Assets.xcassets */,
+				AD37FE9B1F41CA8000E84220 /* Departures.storyboard */,
+				AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */,
+				AD37FE951F41CA8000E84220 /* Main.storyboard */,
+				ADF9C6831F9BB4A500AE17A4 /* Maps.storyboard */,
+				ADE9830E1F933DED0069EACA /* Maps.xcassets */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AD37FE9D1F41CA8000E84220 /* Disruptions */ = {
+			isa = PBXGroup;
+			children = (
+				AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */,
+				AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */,
+			);
+			path = Disruptions;
+			sourceTree = "<group>";
+		};
+		AD37FEA31F41CABC00E84220 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */,
+				AD07A3631F8A60D300E65DE7 /* Crashlytics.framework */,
+				AD07A3641F8A60D300E65DE7 /* Fabric.framework */,
+				AD37FEA81F41CAC300E84220 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD416A821FB73FD5005052F3 /* Departures */ = {
+			isa = PBXGroup;
+			children = (
+				ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */,
+				AD3DF3AB1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift */,
+				AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */,
+				ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */,
+			);
+			path = Departures;
+			sourceTree = "<group>";
+		};
+		AD416A831FB73FEA005052F3 /* Disruptions */ = {
+			isa = PBXGroup;
+			children = (
+				AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */,
+			);
+			path = Disruptions;
+			sourceTree = "<group>";
+		};
+		AD8CF77D1F979B3000DE9CBC /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */,
+				AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		ADBC1C6C1FAF0E2700162195 /* tpg offline watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */,
+				ADBC1C701FAF0E2700162195 /* Assets.xcassets */,
+				ADBC1C721FAF0E2700162195 /* Info.plist */,
+			);
+			path = "tpg offline watchOS";
+			sourceTree = "<group>";
+		};
+		ADBC1C7B1FAF0E2700162195 /* tpg offline watchOS Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AD0644411FBB366B00E61E5A /* Routes */,
+				AD416A831FB73FEA005052F3 /* Disruptions */,
+				AD416A821FB73FD5005052F3 /* Departures */,
+				ADBC1C7C1FAF0E2700162195 /* HomeInterfaceController.swift */,
+				ADBC1C7E1FAF0E2700162195 /* ExtensionDelegate.swift */,
+				ADBC1C801FAF0E2700162195 /* NotificationController.swift */,
+				ADBC1C821FAF0E2700162195 /* Assets.xcassets */,
+				ADBC1C841FAF0E2700162195 /* Info.plist */,
+				ADBC1C851FAF0E2700162195 /* PushNotificationPayload.apns */,
+				AD416A801FB73587005052F3 /* WatchSessionManager.swift */,
+			);
+			path = "tpg offline watchOS Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD1E484B1FADFF6A00596076 /* tpg offline UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD1E48551FADFF6A00596076 /* Build configuration list for PBXNativeTarget "tpg offline UITests" */;
+			buildPhases = (
+				AD1E48481FADFF6A00596076 /* Sources */,
+				AD1E48491FADFF6A00596076 /* Frameworks */,
+				AD1E484A1FADFF6A00596076 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD1E48521FADFF6A00596076 /* PBXTargetDependency */,
+			);
+			name = "tpg offline UITests";
+			productName = "tpg offline UITests";
+			productReference = AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		AD37FE601F41CA4600E84220 /* tpg offline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD37FE731F41CA4600E84220 /* Build configuration list for PBXNativeTarget "tpg offline" */;
+			buildPhases = (
+				AD37FE5D1F41CA4600E84220 /* Sources */,
+				AD37FE5E1F41CA4600E84220 /* Frameworks */,
+				AD37FE5F1F41CA4600E84220 /* Resources */,
+				AD37FEAA1F41CB0600E84220 /* Carthage */,
+				AD37FEC51F41CF1800E84220 /* SwiftLint */,
+				AD07A3621F8A60B600E65DE7 /* Fabric */,
+				ADBC1C901FAF0E2700162195 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADBC1C871FAF0E2700162195 /* PBXTargetDependency */,
+			);
+			name = "tpg offline";
+			productName = "tpg offline";
+			productReference = AD37FE611F41CA4600E84220 /* tpg offline.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ADBC1C6A1FAF0E2700162195 /* tpg offline watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADBC1C8D1FAF0E2700162195 /* Build configuration list for PBXNativeTarget "tpg offline watchOS" */;
+			buildPhases = (
+				ADBC1C691FAF0E2700162195 /* Resources */,
+				ADBC1C8C1FAF0E2700162195 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADBC1C7A1FAF0E2700162195 /* PBXTargetDependency */,
+			);
+			name = "tpg offline watchOS";
+			productName = "tpg offline watchOS";
+			productReference = ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		ADBC1C761FAF0E2700162195 /* tpg offline watchOS Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADBC1C891FAF0E2700162195 /* Build configuration list for PBXNativeTarget "tpg offline watchOS Extension" */;
+			buildPhases = (
+				ADBC1C731FAF0E2700162195 /* Sources */,
+				ADBC1C741FAF0E2700162195 /* Frameworks */,
+				ADBC1C751FAF0E2700162195 /* Resources */,
+				ADA0D3611FB33F0C001DAC9F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tpg offline watchOS Extension";
+			productName = "tpg offline watchOS Extension";
+			productReference = ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD37FE591F41CA4600E84220 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Remy;
+				TargetAttributes = {
+					AD1E484B1FADFF6A00596076 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AD37FE601F41CA4600E84220;
+					};
+					AD37FE601F41CA4600E84220 = {
+						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					ADBC1C6A1FAF0E2700162195 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					ADBC1C761FAF0E2700162195 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = AD37FE5C1F41CA4600E84220 /* Build configuration list for PBXProject "tpg offline" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				fr,
+			);
+			mainGroup = AD37FE581F41CA4600E84220;
+			productRefGroup = AD37FE621F41CA4600E84220 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD37FE601F41CA4600E84220 /* tpg offline */,
+				AD1E484B1FADFF6A00596076 /* tpg offline UITests */,
+				ADBC1C6A1FAF0E2700162195 /* tpg offline watchOS */,
+				ADBC1C761FAF0E2700162195 /* tpg offline watchOS Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD1E484A1FADFF6A00596076 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD1E48591FAE0D0A00596076 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD37FE5F1F41CA4600E84220 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD37FEBD1F41CDA300E84220 /* Assets.xcassets in Resources */,
+				AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */,
+				AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */,
+				ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */,
+				ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */,
+				AD37FEBF1F41CDA300E84220 /* LaunchScreen.storyboard in Resources */,
+				ADF9C6861F9BB4CF00AE17A4 /* Settings.storyboard in Resources */,
+				ADE9830F1F933DED0069EACA /* Maps.xcassets in Resources */,
+				AD37FEC01F41CDA300E84220 /* Main.storyboard in Resources */,
+				ADF9C6771F9BB3C800AE17A4 /* Disruptions.storyboard in Resources */,
+				ADF9C6811F9BB4A500AE17A4 /* Maps.storyboard in Resources */,
+				ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBC1C691FAF0E2700162195 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADBC1C711FAF0E2700162195 /* Assets.xcassets in Resources */,
+				ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBC1C751FAF0E2700162195 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADBC1C831FAF0E2700162195 /* Assets.xcassets in Resources */,
+				ADE930751FC071DF000D703C /* InfoPlist.strings in Resources */,
+				AD3DF3B21FB1FFB400F2AFA5 /* stops.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD07A3621F8A60B600E65DE7 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 75b8798b16086f8a41d0d9fbe73703be77a9706c 598a875e80bdece5e37bb2c05ba976b83626e6d2ac1016c6335b76beadf12eca";
+		};
+		AD37FEAA1F41CB0600E84220 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		AD37FEC51F41CF1800E84220 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		ADA0D3611FB33F0C001DAC9F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/watchOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD1E48481FADFF6A00596076 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */,
+				AD1E48581FAE0D0700596076 /* Extensions.swift in Sources */,
+				AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD37FE5D1F41CA4600E84220 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */,
+				AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */,
+				AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */,
+				AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */,
+				AD8CF77F1F979B5100DE9CBC /* MapsTableViewController.swift in Sources */,
+				AD37FEAD1F41CD9300E84220 /* FooterDeparturesTableViewCell.swift in Sources */,
+				AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */,
+				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
+				ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */,
+				AD37FEAF1F41CD9300E84220 /* DeparturesViewController.swift in Sources */,
+				AD37FEB01F41CD9300E84220 /* DetailDeparturesViewController.swift in Sources */,
+				AD37FEB11F41CD9300E84220 /* StopsTableViewController.swift in Sources */,
+				AD37FEB21F41CD9300E84220 /* DisruptionTableViewCell.swift in Sources */,
+				ADF9C66D1F9B99E000AE17A4 /* CreditsTableViewController.swift in Sources */,
+				AD37FEB31F41CD9300E84220 /* DisruptionsTableViewController.swift in Sources */,
+				AD37FEB41F41CD9300E84220 /* BusRoute.swift in Sources */,
+				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
+				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
+				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
+				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
+				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
+				AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */,
+				AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */,
+				AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */,
+				AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */,
+				AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */,
+				ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */,
+				AD07A3681F8A6BF300E65DE7 /* RouteStepViewController.swift in Sources */,
+				ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */,
+				AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */,
+				AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */,
+				AD37FEB91F41CD9300E84220 /* Stop.swift in Sources */,
+				ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */,
+				AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */,
+				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,
+				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
+				AD1E48471FADF70800596076 /* App.swift in Sources */,
+				AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */,
+				AD5B340F1FAC82900061CFB3 /* API.swift in Sources */,
+				AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */,
+				ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */,
+				ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */,
+				AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBC1C731FAF0E2700162195 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADC487D01FB1EE7600675593 /* LinesInterfaceController.swift in Sources */,
+				AD708DB11FB0AC420076B3AC /* Departures.swift in Sources */,
+				ADA0D3631FB34E59001DAC9F /* DeparturesInterfaceController.swift in Sources */,
+				AD708DB31FB0AC420076B3AC /* LineColor.swift in Sources */,
+				AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */,
+				AD3DF3B01FB1FE8500F2AFA5 /* App.swift in Sources */,
+				AD708DB41FB0AC420076B3AC /* Stop.swift in Sources */,
+				AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */,
+				AD708DB51FB0AC420076B3AC /* Route.swift in Sources */,
+				AD708DB61FB0AC420076B3AC /* RouteResults.swift in Sources */,
+				AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */,
+				AD708DB21FB0AC420076B3AC /* Disruptions.swift in Sources */,
+				AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */,
+				AD0644401FBB366200E61E5A /* RoutesInterfaceController.swift in Sources */,
+				ADBC1C811FAF0E2700162195 /* NotificationController.swift in Sources */,
+				AD3DF3B11FB1FF0300F2AFA5 /* Extensions.swift in Sources */,
+				ADBC1C7F1FAF0E2700162195 /* ExtensionDelegate.swift in Sources */,
+				AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */,
+				AD708DB01FB0AC420076B3AC /* Connection.swift in Sources */,
+				AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */,
+				AD708DAF1FB0AC420076B3AC /* BusRoute.swift in Sources */,
+				ADA0D35E1FB33EBC001DAC9F /* API.swift in Sources */,
+				ADBC1C7D1FAF0E2700162195 /* HomeInterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD1E48521FADFF6A00596076 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD37FE601F41CA4600E84220 /* tpg offline */;
+			targetProxy = AD1E48511FADFF6A00596076 /* PBXContainerItemProxy */;
+		};
+		ADBC1C7A1FAF0E2700162195 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADBC1C761FAF0E2700162195 /* tpg offline watchOS Extension */;
+			targetProxy = ADBC1C791FAF0E2700162195 /* PBXContainerItemProxy */;
+		};
+		ADBC1C871FAF0E2700162195 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADBC1C6A1FAF0E2700162195 /* tpg offline watchOS */;
+			targetProxy = ADBC1C861FAF0E2700162195 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD28200D1FA0E5D800767462 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD28200C1FA0E5D800767462 /* fr */,
+				AD28200E1FA0E5DD00767462 /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD37FE941F41CA8000E84220 /* Base */,
+				ADF9C6731F9BB26400AE17A4 /* fr */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AD37FE951F41CA8000E84220 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD37FE961F41CA8000E84220 /* Base */,
+				ADF9C6741F9BB26500AE17A4 /* fr */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AD37FE9B1F41CA8000E84220 /* Departures.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD37FE9C1F41CA8000E84220 /* Base */,
+				ADF9C6721F9BB26400AE17A4 /* fr */,
+			);
+			name = Departures.storyboard;
+			sourceTree = "<group>";
+		};
+		ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADBC1C6E1FAF0E2700162195 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADF9C6781F9BB3C800AE17A4 /* Base */,
+				ADF9C67B1F9BB3CB00AE17A4 /* fr */,
+			);
+			name = Disruptions.storyboard;
+			sourceTree = "<group>";
+		};
+		ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADF9C67D1F9BB40500AE17A4 /* Base */,
+				AD182C6E1F9C7E5500694753 /* fr */,
+			);
+			name = Routes.storyboard;
+			sourceTree = "<group>";
+		};
+		ADF9C6831F9BB4A500AE17A4 /* Maps.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADF9C6821F9BB4A500AE17A4 /* Base */,
+				ADF9C6851F9BB4A800AE17A4 /* fr */,
+			);
+			name = Maps.storyboard;
+			sourceTree = "<group>";
+		};
+		ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADF9C6871F9BB4CF00AE17A4 /* Base */,
+				ADF9C68A1F9BB4D200AE17A4 /* fr */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADF9C68E1F9BDFEB00AE17A4 /* fr */,
+				AD6AD6EB1FA098D900CEA271 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD1E48531FADFF6A00596076 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "tpg offline";
+			};
+			name = Debug;
+		};
+		AD1E48541FADFF6A00596076 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				INFOPLIST_FILE = "tpg offline UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "tpg offline";
+			};
+			name = Release;
+		};
+		AD37FE711F41CA4600E84220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AD37FE721F41CA4600E84220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD37FE741F41CA4600E84220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/tpg offline/Project Requirements/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD37FE751F41CA4600E84220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/tpg offline/Project Requirements/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ADBC1C8A1FAF0E2700162195 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "tpg offline watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		ADBC1C8B1FAF0E2700162195 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "tpg offline watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		ADBC1C8E1FAF0E2700162195 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				IBSC_MODULE = tpg_offline_watchOS_Extension;
+				INFOPLIST_FILE = "tpg offline watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		ADBC1C8F1FAF0E2700162195 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				IBSC_MODULE = tpg_offline_watchOS_Extension;
+				INFOPLIST_FILE = "tpg offline watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD1E48551FADFF6A00596076 /* Build configuration list for PBXNativeTarget "tpg offline UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD1E48531FADFF6A00596076 /* Debug */,
+				AD1E48541FADFF6A00596076 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD37FE5C1F41CA4600E84220 /* Build configuration list for PBXProject "tpg offline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD37FE711F41CA4600E84220 /* Debug */,
+				AD37FE721F41CA4600E84220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD37FE731F41CA4600E84220 /* Build configuration list for PBXNativeTarget "tpg offline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD37FE741F41CA4600E84220 /* Debug */,
+				AD37FE751F41CA4600E84220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADBC1C891FAF0E2700162195 /* Build configuration list for PBXNativeTarget "tpg offline watchOS Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADBC1C8A1FAF0E2700162195 /* Debug */,
+				ADBC1C8B1FAF0E2700162195 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADBC1C8D1FAF0E2700162195 /* Build configuration list for PBXNativeTarget "tpg offline watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADBC1C8E1FAF0E2700162195 /* Debug */,
+				ADBC1C8F1FAF0E2700162195 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD37FE591F41CA4600E84220 /* Project object */;
+}
