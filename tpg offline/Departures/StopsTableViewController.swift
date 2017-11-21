@@ -260,7 +260,9 @@ extension StopsTableViewController {
                 cell.isFavorite = true
                 cell.isNearestStops = false
             default:
-                let name = App.sortedStops[App.sortedStops.keys.sorted()[indexPath.section - 2]]![indexPath.row]
+                guard let name = App.sortedStops[App.sortedStops.keys.sorted()[indexPath.section - 2]]?[safe: indexPath.row] else {
+                    return UITableViewCell()
+                }
                 stop = App.stops.filter({$0.name == name})[0]
                 cell.isFavorite = false
                 cell.isNearestStops = false
