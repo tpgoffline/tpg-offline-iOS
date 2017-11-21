@@ -186,6 +186,7 @@ extension StopsTableViewController: CLLocationManagerDelegate {
             }
             self.localizedStops.sort(by: { $0.distance < $1.distance })
             self.localizedStops = Array(self.localizedStops.prefix(5))
+            self.localizedStops = self.localizedStops.filter({ $0.distance < 1500 })
             self.tableView.reloadData()
         }
     }
