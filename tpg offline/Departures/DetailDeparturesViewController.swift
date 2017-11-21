@@ -134,7 +134,7 @@ class DetailDeparturesViewController: UIViewController {
 
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                         self.tableView.scrollToRow(at: IndexPath(row:
-                            (self.busRouteGroup?.steps.count)! - (self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count)!, section: 0),
+                            (self.busRouteGroup?.steps.count) ?? 0 - (self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count) ?? 0, section: 0),
                                                    at: UITableViewScrollPosition.top,
                                                    animated: true)
                     }
