@@ -15,7 +15,7 @@
         <!--Departures-->
         <scene sceneID="shD-w8-0zg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2AJ-Kj-aqS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="2AJ-Kj-aqS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Departures" image="clockTabBar" id="EhG-ao-BaH"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -35,7 +35,7 @@
         <!--Departures-->
         <scene sceneID="blh-0p-cQX">
             <objects>
-                <viewController id="ree-6g-pHL" customClass="StopsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" id="ree-6g-pHL" customClass="StopsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ehx-KO-fT9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,7 +127,7 @@
         <!--Departures View Controller-->
         <scene sceneID="bRU-bp-XSs">
             <objects>
-                <viewController storyboardIdentifier="departuresViewController" id="HRP-23-FYi" customClass="DeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="departuresViewController" definesPresentationContext="YES" id="HRP-23-FYi" customClass="DeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zEc-zq-6Kw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,7 +291,7 @@
         <!--Detail Departures View Controller-->
         <scene sceneID="xgw-OB-wUj">
             <objects>
-                <viewController storyboardIdentifier="detailDeparturesViewController" id="arl-gp-ZJ7" customClass="DetailDeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailDeparturesViewController" definesPresentationContext="YES" id="arl-gp-ZJ7" customClass="DetailDeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T7r-wc-ePM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -450,7 +450,7 @@ Departures</string>
         <!--All Departures Collection View Controller-->
         <scene sceneID="6sn-zt-Zxh">
             <objects>
-                <collectionViewController id="YHu-g0-4Id" customClass="AllDeparturesCollectionViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController definesPresentationContext="YES" id="YHu-g0-4Id" customClass="AllDeparturesCollectionViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="YV7-hC-Gsn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

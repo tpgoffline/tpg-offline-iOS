@@ -1,5 +1,7 @@
 "#!?" = "#!?"; 
 "#?!" = "#?!"; 
+"%@ hours %@" = "%@ hours %@"; 
+"%@ meters, about %@ minutes to walk" = "%@ meters, about %@ minutes to walk"; 
 "%@ minutes before." = "%@ minutes before."; 
 "%@ minutes left!" = "%@ minutes left!"; 
 "%@m" = "%@m"; 
@@ -25,8 +27,14 @@
 "Default tab on startup" = "Default tab on startup"; 
 "Departure at" = "Departure at"; 
 "Departures" = "Departures"; 
+"Departures for the line %@" = "Departures for the line %@"; 
 "Departures, Disruptions and Maps" = "Departures, Disruptions and Maps"; 
 "Design and developement" = "Design and developement"; 
+"Direction %@, departure at %@" = "Direction %@, departure at %@"; 
+"Direction %@, departure in %@ minutes" = "Direction %@, departure in %@ minutes"; 
+"Direction %@, error while loading the remaining time" = "Direction %@, error while loading the remaining time"; 
+"Direction %@, leaving now" = "Direction %@, leaving now"; 
+"Direction %@, no more bus" = "Direction %@, no more bus"; 
 "Disruptions" = "Disruptions"; 
 "Downloading" = "Downloading"; 
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire"; 
@@ -44,6 +52,7 @@
 "Loading" = "Loading"; 
 "Map" = "Map"; 
 "Maps" = "Maps"; 
+"Mark this stop as favorite" = "Mark this stop as favorite"; 
 "Nearest Stops" = "Nearest Stops"; 
 "Nearest stops" = "Nearest stops"; 
 "No more bus will come to this stop today." = "No more bus will come to this stop today."; 
@@ -61,6 +70,7 @@
 "Regional map" = "Regional map"; 
 "Regional route" = "Regional route"; 
 "Reload" = "Reload"; 
+"Reload departures" = "Reload departures"; 
 "Reminder" = "Reminder"; 
 "Result" = "Result"; 
 "Results" = "Results"; 
@@ -70,6 +80,7 @@
 "SBB %@ - %@" = "SBB %@ - %@"; 
 "Select date" = "Select date"; 
 "Show less" = "Show less"; 
+"Show map" = "Show map"; 
 "Show more" = "Show more"; 
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Sorry for that. Can you try again, or send an email to us if the problem persist?"; 
 "Sorry, but no results was found. Please try with other parameters." = "Sorry, but no results was found. Please try with other parameters."; 
@@ -82,6 +93,7 @@
 "To" = "To"; 
 "To..." = "To..."; 
 "Unknow" = "Unknow"; 
+"Unmark this stop as favorite" = "Unmark this stop as favorite"; 
 "Update departures" = "Update departures"; 
 "Urban map" = "Urban map"; 
 "Walk" = "Walk"; 

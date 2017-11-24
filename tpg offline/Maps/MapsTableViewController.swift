@@ -89,7 +89,7 @@ class MapsTableViewControllerRow: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.titleLabel.textColor = .white
+        self.titleLabel.textColor = .black
 
         let view = UIView()
         view.backgroundColor = .clear

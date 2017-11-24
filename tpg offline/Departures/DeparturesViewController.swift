@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Alamofire
+import Crashlytics
 
 class DeparturesViewController: UIViewController {
 
@@ -36,6 +37,9 @@ class DeparturesViewController: UIViewController {
             self.stop = App.stops[0]
         }
 
+        Answers.logCustomEvent(withName: "Show departures",
+                                       customAttributes: ["appId":stop?.appId ?? 000])
+        
         navigationItem.title = stop?.name
         refreshDepatures()
         self.mapView.isHidden = true

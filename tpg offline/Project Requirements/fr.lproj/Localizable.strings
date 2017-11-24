@@ -1,5 +1,6 @@
 "#!?" = "#!?";
 "#?!" = "#?!";
+"%@ meters, about %@ minutes to walk" = "%@ mètres, environ %@ minutes de marche";
 "%@ minutes before." = "%@ minutes avant.";
 "%@ minutes left!" = "%@ minutes restantes !";
 "%@m" = "%@m";
@@ -25,8 +26,14 @@
 "Default tab on startup" = "Menu par défaut au démarrage";
 "Departure at" = "Départ à";
 "Departures" = "Départs";
+"Departures for the line %@" = "Départs pour la ligne %@";
 "Departures, Disruptions and Maps" = "Départs, Perturbations et Plans";
 "Design and developement" = "Conception et développement";
+"Direction %@, departure at %@" = "Direction %@, départ à %@";
+"Direction %@, departure in %@ minutes" = "Direction %@, départ dans %@ minutes";
+"Direction %@, error while loading the remaining time" = "Direction %@, erreur lors du chargement du temps restant";
+"Direction %@, leaving now" = "Direction %@, départ imminent";
+"Direction %@, no more bus" = "Direction%@, plus de bus";
 "Disruptions" = "Perturbations";
 "Downloading" = "Téléchargement";
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire";
@@ -44,6 +51,7 @@
 "Loading" = "Chargement";
 "Map" = "Plan";
 "Maps" = "Plans";
+"Mark this stop as favorite" = "Marquer cet arrêt en favoris";
 "Nearest Stops" = "Arrêts les plus proches";
 "Nearest stops" = "Arrêts les plus proches";
 "No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à arrêt.";
@@ -61,6 +69,7 @@
 "Regional map" = "Plan régional";
 "Regional route" = "Itinéraire multizone";
 "Reload" = "Recharger";
+"Reload departures" = "Recharger les départs";
 "Reminder" = "Rappeler";
 "Result" = "Résultat";
 "Results" = "Résultats";
@@ -70,6 +79,7 @@
 "SBB %@ - %@" = "CFF %@ - %@";
 "Select date" = "Séléctionner une date";
 "Show less" = "Afficher moins";
+"Show map" = "Afficher la carte";
 "Show more" = "Afficher plus";
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Désolé pour cela. Pourriez-vous réessayer ou nous envoyer un mail si le problème persiste ?";
 "Sorry, but no results was found. Please try with other parameters." = "Désolé, mais aucun résultat n'a été trouvé. Merci d'essayer avec d'autres paramètres.";
@@ -82,6 +92,7 @@
 "To" = "Vers";
 "To..." = "Vers...";
 "Unknow" = "Inconnu";
+"Unmark this stop as favorite" = "Enlever cet arrêt des favoris";
 "Update departures" = "Réactualiser les départs";
 "Urban map" = "Plan urbain";
 "Walk" = "Marcher";

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Crashlytics
 
 class DisruptionsTableViewController: UITableViewController {
 
@@ -38,6 +39,8 @@ class DisruptionsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Answers.logCustomEvent(withName: "Show disruptions", customAttributes: [:])
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
 

@@ -246,7 +246,7 @@ extension StopsTableViewController {
         }
 
         let stop: Stop
-        if searchText != "" {
+        if self.searchText.escaped != "" {
             stop = searchForStop(searchText.escaped)[indexPath.row]
             cell.isFavorite = false
             cell.isNearestStops = false
