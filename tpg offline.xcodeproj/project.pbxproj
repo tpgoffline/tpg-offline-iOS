@@ -48,6 +48,7 @@
 		AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */; };
 		AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A801FB73587005052F3 /* WatchSessionManager.swift */; };
 		AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */; };
+		AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */; };
 		AD5B340F1FAC82900061CFB3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B340E1FAC82900061CFB3 /* API.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
@@ -703,6 +704,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADBC1C831FAF0E2700162195 /* Assets.xcassets in Resources */,
+				AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */,
 				ADE930751FC071DF000D703C /* InfoPlist.strings in Resources */,
 				AD3DF3B21FB1FFB400F2AFA5 /* stops.json in Resources */,
 			);
