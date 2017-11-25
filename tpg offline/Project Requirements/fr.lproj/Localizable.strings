@@ -1,8 +1,11 @@
 "#!?" = "#!?";
 "#?!" = "#?!";
+"%@ hours %@" = "%@ heure %@";
 "%@ meters, about %@ minutes to walk" = "%@ mètres, environ %@ minutes de marche";
 "%@ minutes before." = "%@ minutes avant.";
 "%@ minutes left!" = "%@ minutes restantes !";
+"%@, departure in %@ minutes" = "%@, départ dans %@ minutes";
+"%@, stop already passed" = "%@, arrêt déjà effectué";
 "%@m" = "%@m";
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)";
 "0" = "0";
@@ -41,6 +44,7 @@
 "Error - Departures not downloaded" = "Erreur - Les départs n'ont pas été téléchargés";
 "External libraries, used in this project" = "Librairies externes, utilisées dans ce projet";
 "Favorites" = "Favoris";
+"Fortunately, there is no disruptions at this time." = "Bonne nouvelle, aucune perturbation n'a lieu en ce moment.";
 "From" = "De";
 "From..." = "De...";
 "Github webpage" = "Page Github du projet";
@@ -54,6 +58,7 @@
 "Mark this stop as favorite" = "Marquer cet arrêt en favoris";
 "Nearest Stops" = "Arrêts les plus proches";
 "Nearest stops" = "Arrêts les plus proches";
+"No disruptions" = "Pas de pertubations";
 "No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à arrêt.";
 "No results" = "Pas de résultats";
 "Noctambus regional map" = "Plan Noctambus régional";
@@ -105,4 +110,3 @@
 "You will be reminded" = "Vous serez rappelés";
 "at the time of departure." = "au départ";
 "tpg offline" = "tpg offline";
-
