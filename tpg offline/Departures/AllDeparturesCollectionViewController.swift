@@ -82,7 +82,8 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
             UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.refresh))
+                            action: #selector(self.refresh),
+                            accessbilityLabel: "Reload".localized)
         ]
 
         let refreshControl = UIRefreshControl()
@@ -188,6 +189,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                 dateFormatter.dateStyle = .none
                 dateFormatter.timeStyle = .short
                 headerView.title.text = dateFormatter.string(from: dateComponents.date ?? Date())
+                headerView.title.accessibilityLabel = dateFormatter.string(from: dateComponents.date ?? Date())
                 headerView.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
                 headerView.title.textColor = .white
 

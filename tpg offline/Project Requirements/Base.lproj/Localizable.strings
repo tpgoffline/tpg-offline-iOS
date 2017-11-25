@@ -4,6 +4,8 @@
 "%@ meters, about %@ minutes to walk" = "%@ meters, about %@ minutes to walk"; 
 "%@ minutes before." = "%@ minutes before."; 
 "%@ minutes left!" = "%@ minutes left!"; 
+"%@, departure in %@ minutes" = "%@, departure in %@ minutes"; 
+"%@, stop already passed" = "%@, stop already passed"; 
 "%@m" = "%@m"; 
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)"; 
 "0" = "0"; 
@@ -42,6 +44,7 @@
 "Error - Departures not downloaded" = "Error - Departures not downloaded"; 
 "External libraries, used in this project" = "External libraries, used in this project"; 
 "Favorites" = "Favorites"; 
+"Fortunately, there is no disruptions at this time." = "Fortunately, there is no disruptions at this time."; 
 "From" = "From"; 
 "From..." = "From..."; 
 "Github webpage" = "Github webpage"; 
@@ -55,6 +58,7 @@
 "Mark this stop as favorite" = "Mark this stop as favorite"; 
 "Nearest Stops" = "Nearest Stops"; 
 "Nearest stops" = "Nearest stops"; 
+"No disruptions" = "No disruptions"; 
 "No more bus will come to this stop today." = "No more bus will come to this stop today."; 
 "No results" = "No results"; 
 "Noctambus regional map" = "Noctambus regional map"; 

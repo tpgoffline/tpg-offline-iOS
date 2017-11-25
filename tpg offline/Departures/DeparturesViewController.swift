@@ -38,9 +38,10 @@ class DeparturesViewController: UIViewController {
         }
 
         Answers.logCustomEvent(withName: "Show departures",
-                                       customAttributes: ["appId":stop?.appId ?? 000])
-        
+                                       customAttributes: ["appId": "\(stop?.appId ?? 000)"])
+
         navigationItem.title = stop?.name
+        navigationItem.accessibilityTraits = UIAccessibilityTraitNone
         refreshDepatures()
         self.mapView.isHidden = true
 
@@ -84,15 +85,20 @@ class DeparturesViewController: UIViewController {
             UIBarButtonItem(image: App.favoritesStops.contains(stop!.appId) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.setFavorite)),
+                            action: #selector(self.setFavorite),
+                            accessbilityLabel: App.favoritesStops.contains(stop!.appId) ?
+                "Unmark this stop as favorite".localized :
+                "Mark this stop as favorite".localized),
             UIBarButtonItem(image: #imageLiteral(resourceName: "pinMapNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.showMap)),
+                            action: #selector(self.showMap),
+                            accessbilityLabel: "Show map".localized),
             UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.reload))
+                            action: #selector(self.reload),
+                            accessbilityLabel: "Reload departures".localized)
         ]
     }
 
@@ -326,8 +332,6 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             showMoreLines.append(String(button.tag))
         }
         tableView.reloadData()
-
-        // tableView.scrollToRow(at: IndexPath(row: 0, section: button.tag), at: .top, animated: true)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -346,6 +350,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         headerCell?.backgroundColor = App.linesColor.filter({$0.line == (departures?.lines[section] ?? "?#!".localized)})[safe: 0]?.color ?? .white
         headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
         headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+
+        headerCell?.accessibilityLabel = String(format: "Departures for the line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
 
         return headerCell
     }

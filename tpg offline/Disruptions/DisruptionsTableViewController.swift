@@ -40,7 +40,7 @@ class DisruptionsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         Answers.logCustomEvent(withName: "Show disruptions", customAttributes: [:])
-        
+
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
 
@@ -102,6 +102,8 @@ class DisruptionsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         if requestStatus == .loading {
             return 1
+        } else if requestStatus == .noResults {
+            return 1
         } else {
             return disruptions?.disruptions.count ?? 0
         }
@@ -110,6 +112,8 @@ class DisruptionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if requestStatus == .loading {
             return 4
+        } else if requestStatus == .noResults {
+            return 1
         } else {
             return disruptions?.disruptions[self.keys[section]]?.count ?? 0
         }
@@ -122,20 +126,35 @@ class DisruptionsTableViewController: UITableViewController {
                 return UITableViewCell()
         }
 
-        if requestStatus == .ok {
+        if requestStatus == .noResults {
+            cell.titleLabel.text = "No disruptions".localized
+            cell.descriptionLabel?.text = "Fortunately, there is no disruptions at this time.".localized
+            cell.loading = false
+            cell.titleLabel.backgroundColor = .white
+            cell.descriptionLabel.backgroundColor = .white
+            cell.titleLabel.textColor = App.textColor
+            cell.descriptionLabel.textColor = App.textColor
+        } else if requestStatus == .ok {
             cell.disruption = disruptions?.disruptions[self.keys[indexPath.section]]?[indexPath.row]
         }
 
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return requestStatus == .noResults ? 0 : 44
+    }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "disruptionsHeader")
+
+        if requestStatus == .noResults {
+            return nil
+        }
 
         headerCell?.textLabel?.text = "Loading".localized
         headerCell?.textLabel?.textColor = App.textColor
 
-        if requestStatus != .loading && requestStatus != .noResults {
+        if requestStatus != .loading {
             headerCell?.backgroundColor = App.linesColor.filter({$0.line == (self.keys[section])})[safe:
                 0]?.color ?? .white
             headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section])")

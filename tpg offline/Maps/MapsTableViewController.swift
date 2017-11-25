@@ -16,7 +16,7 @@ class MapsTableViewController: UITableViewController {
         "Noctambus urban map".localized: #imageLiteral(resourceName: "nocUrbainMap"),
         "Noctambus regional map".localized: #imageLiteral(resourceName: "nocPeriurbainMap")
     ]
-    
+
     var maps2018: [String: UIImage] = [
         "Urban map".localized: #imageLiteral(resourceName: "urbainMap2018"),
         "Regional map".localized: #imageLiteral(resourceName: "periurbainMap2018"),

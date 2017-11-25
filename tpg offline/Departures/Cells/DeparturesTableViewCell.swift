@@ -38,9 +38,13 @@ class DeparturesTableViewCell: UITableViewCell {
                         dateStyle: DateFormatter.Style.none,
                         timeStyle: DateFormatter.Style.short)
                     rightImage.image = nil
+                    self.accessibilityLabel = String(format: "Direction %@, departure at %@".localized,
+                    destinationLabel.text ?? "", rightTimeLabel.text ?? "")
                 } else {
                     rightTimeLabel.text = ""
                     rightImage.image = #imageLiteral(resourceName: "warning").maskWith(color: color)
+                    self.accessibilityLabel = String(format: "Direction %@, error while loading the remaining time".localized,
+                                                     destinationLabel.text ?? "")
                 }
                 canBeSelected = true
             case "no more":
@@ -48,14 +52,18 @@ class DeparturesTableViewCell: UITableViewCell {
                 rightImage.image = #imageLiteral(resourceName: "cross").maskWith(color: .gray)
                 destinationLabel.textColor = .gray
                 canBeSelected = false
+                self.accessibilityLabel = String(format: "Direction %@, no more bus".localized, destinationLabel.text ?? "")
             case "0":
                 rightTimeLabel.text = ""
                 rightImage.image = #imageLiteral(resourceName: "bus").maskWith(color: color)
                 canBeSelected = true
+                self.accessibilityLabel = String(format: "Direction %@, leaving now".localized, destinationLabel.text ?? "")
             default:
                 rightTimeLabel.text = "\(departure.leftTime.time)'"
                 rightImage.image = nil
                 canBeSelected = true
+                self.accessibilityLabel = String(format: "Direction %@, departure in %@ minutes".localized,
+                                                 destinationLabel.text ?? "", "\(departure.leftTime.accessibleTime)")
             }
 
             rightTimeLabel.textColor = color
