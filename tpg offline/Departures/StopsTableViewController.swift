@@ -58,6 +58,15 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
 
+            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
+                if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
+                    UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
+                    let alertController = UIAlertController(title: "New offline departures available".localized, message: "You can download them in Settings".localized, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+
             if #available(iOS 10.3, *), self.askForRating {
                 SKStoreReviewController.requestReview()
             }
