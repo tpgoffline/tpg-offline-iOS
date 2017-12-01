@@ -21,6 +21,8 @@ class DisruptionsTableViewController: UITableViewController {
                 } else { return $0 < $1 }})
         }
     }
+    
+    var devDisruptions: [String: [DevDisruption]]?
     var requestStatus: RequestStatus  = .loading {
         didSet {
             if requestStatus == .error {
@@ -86,8 +88,22 @@ class DisruptionsTableViewController: UITableViewController {
                 if let data = response.result.value {
                     let jsonDecoder = JSONDecoder()
                     let json = try? jsonDecoder.decode(DisruptionsGroup.self, from: data)
-                    self.requestStatus = json?.disruptions.count ?? 0 == 0 ? .noResults : .ok
                     self.disruptions = json
+                    self.requestStatus = json?.disruptions.count ?? 0 == 0 && self.devDisruptions?.count ?? 0 == 0 ? .noResults : .ok
+                    self.tableView.reloadData()
+                } else {
+                    self.requestStatus = .error
+                    self.tableView.reloadData()
+                }
+                self.refreshControl?.endRefreshing()
+        }
+        Alamofire.request("https://tpg.asmartcode.com/disruptions.json", method: .get)
+            .responseData { (response) in
+                if let data = response.result.value {
+                    let jsonDecoder = JSONDecoder()
+                    let json = try? jsonDecoder.decode([String: [DevDisruption]].self, from: data)
+                    self.devDisruptions = json
+                    self.requestStatus = json?.count ?? 0 == 0 && self.disruptions?.disruptions.count ?? 0 == 0 ? .noResults : .ok
                     self.tableView.reloadData()
                 } else {
                     self.requestStatus = .error
@@ -105,7 +121,7 @@ class DisruptionsTableViewController: UITableViewController {
         } else if requestStatus == .noResults {
             return 1
         } else {
-            return disruptions?.disruptions.count ?? 0
+            return (self.devDisruptions?.count ?? 0) + (disruptions?.disruptions.count ?? 0)
         }
     }
 
@@ -115,7 +131,11 @@ class DisruptionsTableViewController: UITableViewController {
         } else if requestStatus == .noResults {
             return 1
         } else {
-            return disruptions?.disruptions[self.keys[section]]?.count ?? 0
+            if section > ((self.devDisruptions?.count ?? 0) - 1) {
+                return disruptions?.disruptions[self.keys[section - (self.devDisruptions?.count ?? 0)]]?.count ?? 0
+            } else {
+                return (self.devDisruptions?[[String](self.devDisruptions!.keys)[section]]!.count)!
+            }
         }
     }
 
@@ -135,7 +155,11 @@ class DisruptionsTableViewController: UITableViewController {
             cell.titleLabel.textColor = App.textColor
             cell.descriptionLabel.textColor = App.textColor
         } else if requestStatus == .ok {
-            cell.disruption = disruptions?.disruptions[self.keys[indexPath.section]]?[indexPath.row]
+            if indexPath.section > ((self.devDisruptions?.count ?? 0) - 1) {
+                cell.disruption = disruptions?.disruptions[self.keys[indexPath.section - (self.devDisruptions?.count ?? 0)]]?[indexPath.row]
+            } else {
+                cell.devDisruption = self.devDisruptions?[[String](self.devDisruptions!.keys)[indexPath.section]]![indexPath.row]
+            }
         }
 
         return cell
@@ -155,10 +179,16 @@ class DisruptionsTableViewController: UITableViewController {
         headerCell?.textLabel?.textColor = App.textColor
 
         if requestStatus != .loading {
-            headerCell?.backgroundColor = App.linesColor.filter({$0.line == (self.keys[section])})[safe:
-                0]?.color ?? .white
-            headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section])")
-            headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+            if section > ((self.devDisruptions?.count ?? 0) - 1) {
+                headerCell?.backgroundColor = App.linesColor.filter({$0.line == (self.keys[section - (self.devDisruptions?.count ?? 0)])})[safe:
+                    0]?.color ?? .white
+                headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section - (self.devDisruptions?.count ?? 0)])")
+                headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+            } else {
+                headerCell?.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+                headerCell?.textLabel?.text = [String](self.devDisruptions!.keys)[section]
+                headerCell?.textLabel?.textColor = .white
+            }
         }
         return headerCell
     }

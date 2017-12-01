@@ -37,8 +37,9 @@ class DeparturesViewController: UIViewController {
             self.stop = App.stops[0]
         }
 
+        App.log(string: "Departures: Selected \(stop?.code ?? "XXXX")")
         Answers.logCustomEvent(withName: "Show departures",
-                                       customAttributes: ["appId": "\(stop?.appId ?? 000)"])
+                                       customAttributes: ["appId": stop?.code ?? "XXXX"])
 
         navigationItem.title = stop?.name
         navigationItem.accessibilityTraits = UIAccessibilityTraitNone
@@ -201,6 +202,7 @@ class DeparturesViewController: UIViewController {
             destinationViewController.color = App.color(for: row.departure!.line.code)
             destinationViewController.departure = row.departure
             destinationViewController.stop = self.stop
+            App.log(string: "Departures: Select \(row.departure?.line.code ?? "") - \(row.departure?.line.destination ?? "") - \(row.departure?.timestamp ?? "")") // swiftlint:disable:this line_length
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }

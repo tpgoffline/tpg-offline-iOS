@@ -257,7 +257,7 @@ extension StopsTableViewController {
                 cell.isFavorite = false
                 cell.isNearestStops = true
             case 1:
-                stop = App.stops.filter({ App.favoritesStops[indexPath.row] == $0.appId })[0]
+                stop = App.stops.filter({ (App.favoritesStops[safe: indexPath.row] ?? 0) == $0.appId })[safe: 0] ?? App.stops[0]
                 cell.isFavorite = true
                 cell.isNearestStops = false
             default:

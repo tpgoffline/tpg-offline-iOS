@@ -134,11 +134,12 @@ class DetailDeparturesViewController: UIViewController {
                     self.busRouteGroup = json
 
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                        self.tableView.scrollToRow(at: IndexPath(row:
+                        let indexPath = IndexPath(row:
                             ((self.busRouteGroup?.steps.count) ?? 0) -
-                                ((self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count) ?? 0), section: 0),
-                                                   at: UITableViewScrollPosition.top,
-                                                   animated: true)
+                                ((self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count) ?? 0), section: 0)
+                            self.tableView.scrollToRow(at: indexPath,
+                                at: UITableViewScrollPosition.top,
+                                animated: true)
                     }
 
                 }
@@ -161,6 +162,7 @@ class DetailDeparturesViewController: UIViewController {
             destinationViewController.stop = App.stops.filter({ $0.code ==
                 (tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell)?.busRoute?.stop.code })[safe: 0]
         } else if segue.identifier == "allDepartures" {
+            App.log(string: "Departures: Show all departures")
             guard let destinationViewController = segue.destination as? AllDeparturesCollectionViewController else {
                 return
             }
@@ -178,6 +180,7 @@ class DetailDeparturesViewController: UIViewController {
     }
 
     @IBAction func remind() {
+        App.log(string: "Departures: Reminder")
         self.departure?.calculateLeftTime()
         var alertController = UIAlertController(title: "Reminder".localized,
                                                 message: "When do you want to be reminded?".localized,

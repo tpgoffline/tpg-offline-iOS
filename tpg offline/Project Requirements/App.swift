@@ -8,6 +8,9 @@
 
 import UIKit
 import WatchConnectivity
+#if os(iOS)
+import Crashlytics
+#endif
 
 struct App {
     #if os(iOS)
@@ -112,4 +115,10 @@ struct App {
         }
     }
     static var textColor = #colorLiteral(red: 0.2392156863, green: 0.1960784314, blue: 0.1843137255, alpha: 1)
+
+    #if os(iOS)
+    static func log(string: String) {
+        CLSLogv("%@", getVaList([string]))
+    }
+    #endif
 }

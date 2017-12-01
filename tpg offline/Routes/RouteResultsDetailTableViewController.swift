@@ -52,6 +52,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
                 return
             }
             destinationViewController.section = row.section
+            App.log(string: "Routes: Selected \(selectedIndexPath.row) detail row")
         } else if segue.identifier == "showMap" {
             guard let destinationViewController = segue.destination as? RouteMapViewController else {
                 return
@@ -60,6 +61,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
                 return
             }
             destinationViewController.connection = connection
+            App.log(string: "Routes: Show map")
         }
     }
 
