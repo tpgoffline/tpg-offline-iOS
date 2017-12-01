@@ -60,7 +60,11 @@ class DeparturesViewController: UIViewController {
         annotation.title = stop?.name
         mapView.addAnnotation(annotation)
 
-        tableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
 
         refreshControl.addTarget(self, action: #selector(refreshDepatures), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)

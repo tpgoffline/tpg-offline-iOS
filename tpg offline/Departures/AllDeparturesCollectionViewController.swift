@@ -69,12 +69,13 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
         }
     }
 
+    var refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let flowLayout = FlowLayout()
         flowLayout.headerReferenceSize = CGSize(width: self.collectionView?.bounds.width ?? 15, height: 44)
-        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
-        self.collectionView?.collectionViewLayout = flowLayout
+        flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
 
         title = String(format: "Line %@".localized, "\(departure?.line.code ?? "#!?")")
 
@@ -86,8 +87,12 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                             accessbilityLabel: "Reload".localized)
         ]
 
-        let refreshControl = UIRefreshControl()
-        collectionView?.refreshControl = refreshControl
+        self.refreshControl = UIRefreshControl()
+        if #available(iOS 10.0, *) {
+            collectionView?.refreshControl = refreshControl
+        } else {
+            collectionView?.addSubview(refreshControl)
+        }
 
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
@@ -115,14 +120,14 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                         self.departuresList = json
                     } catch {
                         self.loading = false
-                        self.collectionView?.refreshControl?.endRefreshing()
+                        self.refreshControl.endRefreshing()
                         return
                     }
 
                     self.hours = self.departuresList?.departures.map({ $0.dateCompenents?.hour ?? 0 }).uniqueElements ?? []
                     self.hours.sort()
                     self.loading = false
-                    self.collectionView?.refreshControl?.endRefreshing()
+                    self.refreshControl.endRefreshing()
                 }
         }
     }

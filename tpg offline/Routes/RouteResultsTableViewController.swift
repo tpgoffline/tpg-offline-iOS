@@ -67,7 +67,11 @@ class RouteResultsTableViewController: UITableViewController {
         refreshControl?.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
 
         tableView.allowsSelection = false
-        tableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(self.refreshControl!)
+        }
 
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)

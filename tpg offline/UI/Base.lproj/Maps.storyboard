@@ -35,14 +35,19 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-Yi-gMY">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-Yi-gMY">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="cV1-Yi-gMY" firstAttribute="leading" secondItem="Wz1-sL-SDf" secondAttribute="leading" id="EYA-bF-ZaF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cV1-Yi-gMY" secondAttribute="bottom" id="X2e-tA-xRv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cV1-Yi-gMY" secondAttribute="trailing" id="klj-RO-NML"/>
+                                                    <constraint firstItem="cV1-Yi-gMY" firstAttribute="top" secondItem="Wz1-sL-SDf" secondAttribute="top" id="vc3-0F-Nz1"/>
+                                                </constraints>
                                             </view>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="mdO-8b-B9B"/>

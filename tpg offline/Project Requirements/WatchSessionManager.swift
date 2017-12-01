@@ -17,6 +17,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 
     }
 
+    @available(iOS 9.3, *)
     open func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 
     }

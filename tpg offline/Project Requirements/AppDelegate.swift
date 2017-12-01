@@ -53,11 +53,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
                 if !accepted {
                     print("Notification access denied.")
                 }
             }
+        } else {
+            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+            let setting = UIUserNotificationSettings(types: type, categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+        }
 
         if CommandLine.arguments.contains("-reset") {
             App.loadStops()

@@ -21,7 +21,7 @@ class DisruptionsTableViewController: UITableViewController {
                 } else { return $0 < $1 }})
         }
     }
-    
+
     var devDisruptions: [String: [DevDisruption]]?
     var requestStatus: RequestStatus  = .loading {
         didSet {
