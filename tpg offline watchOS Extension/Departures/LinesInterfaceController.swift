@@ -56,7 +56,7 @@ class LinesInterfaceController: WKInterfaceController {
         loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json",
                           method: .get,
-                          parameters: ["key": API.key,
+                          parameters: ["key": API.tpg,
                                        "stopCode": stop.code])
             .responseData { (response) in
                 if let data = response.result.value {

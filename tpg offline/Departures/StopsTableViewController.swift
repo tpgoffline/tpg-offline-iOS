@@ -15,6 +15,14 @@ import Alamofire
 
 class StopsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    enum SearchMode {
+        case stops
+        case addresses
+    }
+    
+    var searchMode = SearchMode.stops
+    var addressesRequest: DataRequest
+    
     @IBOutlet weak var tableView: UITableView!
 
     let locationManager = CLLocationManager()
@@ -39,6 +47,8 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["Stops", "Addresses"]
+        searchController.searchBar.delegate = self
 
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -176,11 +186,20 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             navigationItem.backBarButtonItem = backItem
         }
     }
+    
+    func lookForAdresses() {
+        addressesRequest.cancel()
+        addressesRequest = Alamofire.request("https://maps.googleapis.com/maps/api/geocode/json", method: <#T##HTTPMethod#>, parameters: <#T##Parameters?#>, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>)
+    }
 }
 
-extension StopsTableViewController: UISearchResultsUpdating {
+extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         self.searchText = searchController.searchBar.text ?? ""
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print(selectedScope)
     }
 }
 

@@ -61,7 +61,7 @@ class DisruptionsInterfaceController: WKInterfaceController {
         loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json",
                           method: .get,
-                          parameters: ["key": API.key])
+                          parameters: ["key": API.tpg])
             .responseData { (response) in
                 if let data = response.result.value {
                     let jsonDecoder = JSONDecoder()
