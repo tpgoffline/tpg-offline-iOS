@@ -83,7 +83,7 @@ class DisruptionsTableViewController: UITableViewController {
         self.requestStatus = .loading
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json",
                           method: .get,
-                          parameters: ["key": API.key])
+                          parameters: ["key": API.tpg])
             .responseData { (response) in
                 if let data = response.result.value {
                     let jsonDecoder = JSONDecoder()

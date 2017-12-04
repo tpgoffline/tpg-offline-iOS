@@ -104,6 +104,7 @@
 		ADF9C6811F9BB4A500AE17A4 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6831F9BB4A500AE17A4 /* Maps.storyboard */; };
 		ADF9C6861F9BB4CF00AE17A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */; };
 		ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
+		ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -256,6 +257,7 @@
 		ADF9C6871F9BB4CF00AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		ADF9C68A1F9BB4D200AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
 		ADF9C68E1F9BDFEB00AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsGeocoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -432,6 +434,7 @@
 				AD0986931F64185A00CD8403 /* Route.swift */,
 				ADF0976D1F657CC0004AA662 /* RouteResults.swift */,
 				AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */,
+				ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */,
 			);
 			path = "JSON Models";
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */,
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
 				ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */,
+				ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */,
 				AD37FEAF1F41CD9300E84220 /* DeparturesViewController.swift in Sources */,
 				AD37FEB01F41CD9300E84220 /* DetailDeparturesViewController.swift in Sources */,
 				AD37FEB11F41CD9300E84220 /* StopsTableViewController.swift in Sources */,
