@@ -55,7 +55,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = ["Bus Stops", "Address"]
+        searchController.searchBar.scopeButtonTitles = ["Bus Stop", "Address"]
         searchController.searchBar.delegate = self
 
         if #available(iOS 11.0, *) {
