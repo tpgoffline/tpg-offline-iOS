@@ -19,7 +19,7 @@ class A:
 		self.getDepartures(path, jour)
 
 	def getDepartures(self, path="Departures/", jour="LUN"):
-		arbre = {}
+		arbre = json.loads(open("departures.json", "r").read())
 		while 1:
 			r = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetStops.json?key=d95be980-0830-11e5-a039-0002a5d5c51b")
 			if r.status_code == requests.codes.ok:
@@ -29,7 +29,7 @@ class A:
 		pbar = tqdm(r.json()["stops"])
 		for x in pbar:
 			pbar.set_description("Téléchargement de l'arret %s" % x["stopCode"])
-			arbre[x["stopCode"]] = []
+			p = []
 			r = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetStops.json?key=d95be980-0830-11e5-a039-0002a5d5c51b&stopCode="+ x["stopCode"])
 			m = r.json()["stops"][0]
 			if m != None:
@@ -38,22 +38,14 @@ class A:
 					q = requests.get("http://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json", params=parameters)
 					try:
 						for z in q.json()["departures"]:
-							arbre[x["stopCode"]].append({"ligne" : z["line"]["lineCode"], "destination" : z["line"]["destinationName"], "timestamp" : z["timestamp"]})
+							p.append({"ligne" : z["line"]["lineCode"], "destination" : z["line"]["destinationName"], "timestamp" : z["timestamp"]})
 					except Exception as e:
 						print("Cant't download " + q.url)
+			arbre[x["stopCode"] + jour + ".json"] = json.dumps({"departures": p}, separators=(',', ':'), ensure_ascii=False, sort_keys=True)
 					
-		pbar = tqdm(arbre.items())
-		for y, x in pbar:
-			pbar.set_description("Enregistrement de l'arret %s" % y)
-			file = open(path + y + "departs" + jour + ".json", "w", encoding='utf8')
-			file.write(json.dumps(x, sort_keys=True, indent=4, ensure_ascii=False))
+			file = open("departures.json", "w", encoding='utf8')
+			file.write(json.dumps(arbre, sort_keys=True, indent=4, ensure_ascii=False))
 			file.close()
-		m = {}
-		for y, x in arbre.items():
-			m[y + "departs" + jour + ".json"] = x
-		file = open("departs.json", "w", encoding='utf8')
-		file.write(json.dumps(m, sort_keys=True, indent=4, ensure_ascii=False))
-		file.close()
 
 a = A()
 attendre = True
