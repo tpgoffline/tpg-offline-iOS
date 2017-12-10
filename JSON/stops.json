@@ -1040,6 +1040,22 @@
         "title": "Bois Gourmand"
     },
     {
+        "appId": 635323,
+        "code": "HOFL",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.204586,
+        "longitude": 6.150162,
+        "name": "Horloge Fleurie",
+        "nameTransportAPI": "Genève, Horloge Fleurie",
+        "pricingZone": [
+            10
+        ],
+        "sbbId": "8595019",
+        "subTitle": "",
+        "title": "Horloge Fleurie"
+    },
+    {
         "appId": 611525,
         "code": "BGRI",
         "connections": [],
@@ -1438,6 +1454,166 @@
         "sbbId": "8587035",
         "subTitle": "",
         "title": "Bossy"
+    },
+    {
+        "appId": 827398,
+        "code": "BOBO",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.352033,
+        "longitude": 6.165181,
+        "name": "Bogis-Bossey",
+        "nameTransportAPI": "Bogis-Bossey",
+        "pricingZone": [
+            90
+        ],
+        "sbbId": "8579316",
+        "subTitle": "",
+        "title": "Bogis-Bossey"
+    },
+    {
+        "appId": 236626,
+        "code": "CEGA",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.348133,
+        "longitude": 6.199636,
+        "name": "Céligny Gare",
+        "nameTransportAPI": "Céligny, gare",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8588665",
+        "subTitle": "Gare",
+        "title": "Céligny"
+    },
+    {
+        "appId": 153952,
+        "code": "CELI",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.351013,
+        "longitude": 6.195672,
+        "name": "Céligny",
+        "nameTransportAPI": "Céligny, village",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8588664",
+        "subTitle": "",
+        "title": "Céligny"
+    },
+    {
+        "appId": 236910,
+        "code": "CHGI",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.343587,
+        "longitude": 6.162118,
+        "name": "Chavannes-de-Bogis",
+        "nameTransportAPI": "Chavannes-de-Bogis, village",
+        "pricingZone": [
+            90
+        ],
+        "sbbId": "8579317",
+        "subTitle": "",
+        "title": "Chavannes-de-Bogis"
+    },
+    {
+        "appId": 523109,
+        "code": "COET",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.317396,
+        "longitude": 6.187819,
+        "name": "Coppet Bourg",
+        "nameTransportAPI": "Coppet",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8501023",
+        "subTitle": "Bourg",
+        "title": "Coppet"
+    },
+    {
+        "appId": 136290,
+        "code": "COGA",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.317428,
+        "longitude": 6.188273,
+        "name": "Coppet Gare",
+        "nameTransportAPI": "Coppet, Gare",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8587577",
+        "subTitle": "Gare",
+        "title": "Coppet"
+    },
+    {
+        "appId": 923581,
+        "code": "COMU",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.31795,
+        "longitude": 6.175328,
+        "name": "Commugny",
+        "nameTransportAPI": "Commugny, centre",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8587575",
+        "subTitle": "",
+        "title": "Commugny"
+    },
+    {
+        "appId": 235823,
+        "code": "CPBL",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.338425,
+        "longitude": 6.16637,
+        "name": "Champs-Blancs",
+        "nameTransportAPI": "Chavannes-de-B., Champs-Blancs",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8587707",
+        "subTitle": "",
+        "title": "Champs-Blancs"
+    },
+    {
+        "appId": 253910,
+        "code": "CRAN",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.358468,
+        "longitude": 6.205273,
+        "name": "Crans",
+        "nameTransportAPI": "Crans-près-Céligny, village",
+        "pricingZone": [
+            21
+        ],
+        "sbbId": "8588663",
+        "subTitle": "",
+        "title": "Crans"
+    },
+    {
+        "appId": 253910,
+        "code": "CPBL",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.358468,
+        "longitude": 6.205273,
+        "name": "Crans",
+        "nameTransportAPI": "Crans-près-Céligny, village",
+        "pricingZone": [
+            21
+        ],
+        "sbbId": "8588663",
+        "subTitle": "",
+        "title": "Crans"
     },
     {
         "appId": 118804,
@@ -3248,6 +3424,102 @@
         "title": "Courson"
     },
     {
+        "appId": 346923,
+        "code": "DEBU",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.20339,
+        "longitude": 6.259045,
+        "name": "Debussy",
+        "nameTransportAPI": "Annemasse, Debussy",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595774",
+        "subTitle": "",
+        "title": "Debussy"
+    },
+    {
+        "appId": 235923,
+        "code": "DEFO",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.195006,
+        "longitude": 6.236037,
+        "name": "Deffaugt",
+        "nameTransportAPI": "Annemasse, Deffaugt",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595360",
+        "subTitle": "",
+        "title": "Deffaugt"
+    },
+    {
+        "appId": 352963,
+        "code": "ETOL",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.194455,
+        "longitude": 6.240894,
+        "name": "Étoile",
+        "nameTransportAPI": "Annemasse, étoile",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595779",
+        "subTitle": "",
+        "title": "Étoile"
+    },
+    {
+        "appId": 374622,
+        "code": "FNEX",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.332978,
+        "longitude": 6.191863,
+        "name": "Founex",
+        "nameTransportAPI": "Founex, village",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8588667",
+        "subTitle": "",
+        "title": "Founex"
+    },
+    {
+        "appId": 356427,
+        "code": "FRIS",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.19653,
+        "longitude": 6.241496,
+        "name": "Florissant",
+        "nameTransportAPI": "Annemasse, Florissant",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595783",
+        "subTitle": "Florissant",
+        "title": "Annemasse"
+    },
+    {
+        "appId": 953281,
+        "code": "ESIN",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.380976,
+        "longitude": 6.205061,
+        "name": "Eysins",
+        "nameTransportAPI": "Eysins, centre",
+        "pricingZone": [
+            12345
+        ],
+        "sbbId": "8579309",
+        "subTitle": "",
+        "title": "Eysins"
+    },
+    {
         "appId": 605875,
         "code": "COTR",
         "connections": [],
@@ -3585,19 +3857,83 @@
     },
     {
         "appId": 457556,
-        "code": "CSSM",
+        "code": "PRSM",
         "connections": [],
         "isTAC": false,
-        "latitude": 46.189335,
-        "longitude": 6.191518,
+        "latitude": 46.190473,
+        "longitude": 6.192196,
         "name": "Sous Moulin",
-        "nameTransportAPI": "Thônex, CS Sous-Moulin",
+        "nameTransportAPI": "Thônex, P+R Sous-Moulin",
         "pricingZone": [
             10
         ],
-        "sbbId": "8593108",
+        "sbbId": "8588310",
         "subTitle": "",
         "title": "Sous Moulin"
+    },
+    {
+        "appId": 734693,
+        "code": "LBRG",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.202317,
+        "longitude": 6.251942,
+        "name": "Léon Bourgeois",
+        "nameTransportAPI": "Annemasse, Léon Bourgeois",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595809",
+        "subTitle": "",
+        "title": "Léon Bourgeois"
+    },
+    {
+        "appId": 962502,
+        "code": "LIBR",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.192653,
+        "longitude": 6.237293,
+        "name": "Libération",
+        "nameTransportAPI": "Annemasse, Libération",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595817",
+        "subTitle": "",
+        "title": "Libération"
+    },
+    {
+        "appId": 643592,
+        "code": "MICE",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.299375,
+        "longitude": 6.169204,
+        "name": "Mies Centre",
+        "nameTransportAPI": "Mies, gare",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8596097",
+        "subTitle": "Centre",
+        "title": "Mies"
+    },
+    {
+        "appId": 235910,
+        "code": "MIES",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.299375,
+        "longitude": 6.169204,
+        "name": "Mies Gare",
+        "nameTransportAPI": "Mies, gare",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8596097",
+        "subTitle": "Gare",
+        "title": "Mies"
     },
     {
         "appId": 516159,
@@ -3614,6 +3950,102 @@
         "sbbId": "8587038",
         "subTitle": "",
         "title": "Cartigny"
+    },
+    {
+        "appId": 235291,
+        "code": "NGAR",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.384852,
+        "longitude": 6.236811,
+        "name": "Nyon Gare",
+        "nameTransportAPI": "Nyon, gare",
+        "pricingZone": [
+            12345
+        ],
+        "sbbId": "8570000",
+        "subTitle": "Gare",
+        "title": "Nyon"
+    },
+    {
+        "appId": 325913,
+        "code": "ROMA",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.195718,
+        "longitude": 6.242978,
+        "name": "Romagny",
+        "nameTransportAPI": "Annemasse, Romagny",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595849",
+        "subTitle": "",
+        "title": "Romagny"
+    },
+    {
+        "appId": 235819,
+        "code": "TANN",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.309322,
+        "longitude": 6.175308,
+        "name": "Tannay",
+        "nameTransportAPI": "Tannay, village",
+        "pricingZone": [
+            22
+        ],
+        "sbbId": "8588655",
+        "subTitle": "",
+        "title": "Tannay"
+    },
+    {
+        "appId": 235911,
+        "code": "VCHA",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.199489,
+        "longitude": 6.251602,
+        "name": "Vieux Château",
+        "nameTransportAPI": "Annemasse, Vieux Château",
+        "pricingZone": [
+            82
+        ],
+        "sbbId": "8595866",
+        "subTitle": "",
+        "title": "Vieux Château"
+    },
+    {
+        "appId": 523942,
+        "code": "VIHH",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.428688,
+        "longitude": 6.249996,
+        "name": "Vich",
+        "nameTransportAPI": "Vich, poste",
+        "pricingZone": [
+            12345
+        ],
+        "sbbId": "8501857",
+        "subTitle": "",
+        "title": "Vich"
+    },
+    {
+        "appId": 352149,
+        "code": "VSNX",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.301123,
+        "longitude": 6.095316,
+        "name": "Versonnex",
+        "nameTransportAPI": "Versonnex-Village",
+        "pricingZone": [
+            87
+        ],
+        "sbbId": "8595886",
+        "subTitle": "",
+        "title": "Versonnex"
     },
     {
         "appId": 861379,
@@ -8997,6 +9429,22 @@
         "title": "P47"
     },
     {
+        "appId": 623951,
+        "code": "AE47",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "name": "Aéroport P47",
+        "nameTransportAPI": "Grand-Saconnex, Aéroport P47",
+        "pricingZone": [
+            10
+        ],
+        "sbbId": "XXX",
+        "subTitle": "P47",
+        "title": "Aéroport"
+    },
+    {
         "appId": 159817,
         "code": "PRBE",
         "connections": [],
@@ -11275,14 +11723,14 @@
         "isTAC": false,
         "latitude": 46.184508,
         "longitude": 6.094299,
-        "name": "La Traille",
+        "name": "Chemin de la Traille",
         "nameTransportAPI": "Onex, La Traille",
         "pricingZone": [
             10
         ],
         "sbbId": "8593029",
         "subTitle": "",
-        "title": "La Traille"
+        "title": "Chemin de la Traille"
     },
     {
         "appId": 608521,
@@ -11349,6 +11797,22 @@
         "title": "La Tuilière"
     },
     {
+        "appId": 963402,
+        "code": "LATU",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.149172,
+        "longitude": 6.006457,
+        "name": "La Tuilière",
+        "nameTransportAPI": "Avusy, La Tuiliere",
+        "pricingZone": [
+            10
+        ],
+        "sbbId": "8592635",
+        "subTitle": "La Tuilière",
+        "title": "Noctambus"
+    },
+    {
         "appId": 375696,
         "code": "TURA",
         "connections": [],
@@ -11371,13 +11835,13 @@
         "isTAC": false,
         "latitude": 46.189147,
         "longitude": 6.200057,
-        "name": "Thônex Vallard Douane",
+        "name": "Thônex Vallard",
         "nameTransportAPI": "Thônex, Vallard",
         "pricingZone": [
             10
         ],
         "sbbId": "8593124",
-        "subTitle": "Douane",
+        "subTitle": "",
         "title": "Thônex Vallard"
     },
     {
@@ -11907,6 +12371,22 @@
         "sbbId": "8592925",
         "subTitle": "",
         "title": "Vollandes"
+    },
+    {
+        "appId": 984879,
+        "code": "LAND",
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.144011,
+        "longitude": 6.130612,
+        "name": "Landecy",
+        "nameTransportAPI": "Bardonnex, Landecy",
+        "pricingZone": [
+            10
+        ],
+        "sbbId": "8595013",
+        "subTitle": "",
+        "title": "Landecy"
     },
     {
         "appId": 737033,
