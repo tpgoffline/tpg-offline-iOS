@@ -28,6 +28,10 @@ class BusRouteTableViewCell: UITableViewCell {
         remainingTimeLabel.textColor = color
         remainingTimeLabel.text = busRoute.arrivalTime == "" ? "" : "\(busRoute.arrivalTime)'"
 
+        self.accessibilityLabel = busRoute.arrivalTime == "" ?
+            String(format: "%@, stop already passed".localized, titleLabel.text ?? "") :
+            String(format: "%@, departure in %@ minutes".localized, titleLabel.text ?? "")
+
         var rectanglePath: UIBezierPath
 
         if busRoute.first {

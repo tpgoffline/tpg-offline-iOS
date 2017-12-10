@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Crashlytics
 
 class DisruptionsTableViewController: UITableViewController {
 
@@ -20,6 +21,8 @@ class DisruptionsTableViewController: UITableViewController {
                 } else { return $0 < $1 }})
         }
     }
+
+    var devDisruptions: [String: [DevDisruption]]?
     var requestStatus: RequestStatus  = .loading {
         didSet {
             if requestStatus == .error {
@@ -37,6 +40,8 @@ class DisruptionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        Answers.logCustomEvent(withName: "Show disruptions", customAttributes: [:])
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
@@ -78,13 +83,27 @@ class DisruptionsTableViewController: UITableViewController {
         self.requestStatus = .loading
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json",
                           method: .get,
-                          parameters: ["key": API.key])
+                          parameters: ["key": API.tpg])
             .responseData { (response) in
                 if let data = response.result.value {
                     let jsonDecoder = JSONDecoder()
                     let json = try? jsonDecoder.decode(DisruptionsGroup.self, from: data)
-                    self.requestStatus = json?.disruptions.count ?? 0 == 0 ? .noResults : .ok
                     self.disruptions = json
+                    self.requestStatus = json?.disruptions.count ?? 0 == 0 && self.devDisruptions?.count ?? 0 == 0 ? .noResults : .ok
+                    self.tableView.reloadData()
+                } else {
+                    self.requestStatus = .error
+                    self.tableView.reloadData()
+                }
+                self.refreshControl?.endRefreshing()
+        }
+        Alamofire.request("https://tpg.asmartcode.com/disruptions.json", method: .get)
+            .responseData { (response) in
+                if let data = response.result.value {
+                    let jsonDecoder = JSONDecoder()
+                    let json = try? jsonDecoder.decode([String: [DevDisruption]].self, from: data)
+                    self.devDisruptions = json
+                    self.requestStatus = json?.count ?? 0 == 0 && self.disruptions?.disruptions.count ?? 0 == 0 ? .noResults : .ok
                     self.tableView.reloadData()
                 } else {
                     self.requestStatus = .error
@@ -99,16 +118,24 @@ class DisruptionsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         if requestStatus == .loading {
             return 1
+        } else if requestStatus == .noResults {
+            return 1
         } else {
-            return disruptions?.disruptions.count ?? 0
+            return (self.devDisruptions?.count ?? 0) + (disruptions?.disruptions.count ?? 0)
         }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if requestStatus == .loading {
             return 4
+        } else if requestStatus == .noResults {
+            return 1
         } else {
-            return disruptions?.disruptions[self.keys[section]]?.count ?? 0
+            if section > ((self.devDisruptions?.count ?? 0) - 1) {
+                return disruptions?.disruptions[self.keys[section - (self.devDisruptions?.count ?? 0)]]?.count ?? 0
+            } else {
+                return (self.devDisruptions?[[String](self.devDisruptions!.keys)[section]]!.count)!
+            }
         }
     }
 
@@ -119,24 +146,49 @@ class DisruptionsTableViewController: UITableViewController {
                 return UITableViewCell()
         }
 
-        if requestStatus == .ok {
-            cell.disruption = disruptions?.disruptions[self.keys[indexPath.section]]?[indexPath.row]
+        if requestStatus == .noResults {
+            cell.titleLabel.text = "No disruptions".localized
+            cell.descriptionLabel?.text = "Fortunately, there is no disruptions at this time.".localized
+            cell.loading = false
+            cell.titleLabel.backgroundColor = .white
+            cell.descriptionLabel.backgroundColor = .white
+            cell.titleLabel.textColor = App.textColor
+            cell.descriptionLabel.textColor = App.textColor
+        } else if requestStatus == .ok {
+            if indexPath.section > ((self.devDisruptions?.count ?? 0) - 1) {
+                cell.disruption = disruptions?.disruptions[self.keys[indexPath.section - (self.devDisruptions?.count ?? 0)]]?[indexPath.row]
+            } else {
+                cell.devDisruption = self.devDisruptions?[[String](self.devDisruptions!.keys)[indexPath.section]]![indexPath.row]
+            }
         }
 
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return requestStatus == .noResults ? 0 : 44
+    }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "disruptionsHeader")
+
+        if requestStatus == .noResults {
+            return nil
+        }
 
         headerCell?.textLabel?.text = "Loading".localized
         headerCell?.textLabel?.textColor = App.textColor
 
-        if requestStatus != .loading && requestStatus != .noResults {
-            headerCell?.backgroundColor = App.linesColor.filter({$0.line == (self.keys[section])})[safe:
-                0]?.color ?? .white
-            headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section])")
-            headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+        if requestStatus != .loading {
+            if section > ((self.devDisruptions?.count ?? 0) - 1) {
+                headerCell?.backgroundColor = App.linesColor.filter({$0.line == (self.keys[section - (self.devDisruptions?.count ?? 0)])})[safe:
+                    0]?.color ?? .white
+                headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section - (self.devDisruptions?.count ?? 0)])")
+                headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+            } else {
+                headerCell?.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+                headerCell?.textLabel?.text = [String](self.devDisruptions!.keys)[section]
+                headerCell?.textLabel?.textColor = .white
+            }
         }
         return headerCell
     }

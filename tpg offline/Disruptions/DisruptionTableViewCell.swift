@@ -44,6 +44,24 @@ class DisruptionTableViewCell: UITableViewCell {
         }
     }
 
+    var devDisruption: DevDisruption? = nil {
+        didSet {
+            guard let devDisruption = devDisruption else { return }
+
+            titleLabel.backgroundColor = .white
+            descriptionLabel.backgroundColor = .white
+            titleLabel.textColor = App.textColor
+            descriptionLabel.textColor = App.textColor
+
+            titleLabel.cornerRadius = 0
+            descriptionLabel.cornerRadius = 0
+
+            titleLabel.text = devDisruption.title
+            descriptionLabel.text = devDisruption.text
+            self.loading = false
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
 

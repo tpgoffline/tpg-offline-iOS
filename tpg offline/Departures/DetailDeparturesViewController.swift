@@ -96,7 +96,11 @@ class DetailDeparturesViewController: UIViewController {
 
         refreshBusRoute()
 
-        tableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
 
         refreshControl.addTarget(self, action: #selector(refreshBusRoute), for: .valueChanged)
         refreshControl.tintColor = color
@@ -105,7 +109,8 @@ class DetailDeparturesViewController: UIViewController {
             UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.refreshBusRoute))
+                            action: #selector(self.refreshBusRoute),
+                            accessbilityLabel: "Reload".localized)
         ]
 
         if UIDevice.current.orientation.isLandscape && UIDevice.current.userInterfaceIdiom == .phone {
@@ -127,16 +132,22 @@ class DetailDeparturesViewController: UIViewController {
             .responseData { (response) in
                 if let data = response.result.value {
                     let jsonDecoder = JSONDecoder()
-                    jsonDecoder.dateDecodingStrategy = .iso8601
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                    jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
                     let json = try? jsonDecoder.decode(BusRouteGroup.self, from: data)
 
                     self.busRouteGroup = json
 
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                        self.tableView.scrollToRow(at: IndexPath(row:
-                            (self.busRouteGroup?.steps.count) ?? 0 - (self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count) ?? 0, section: 0),
+                        let indexPath = IndexPath(row:
+                            ((self.busRouteGroup?.steps.count) ?? 0) -
+                                ((self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count) ?? 0), section: 0)
+                        if self.tableView.numberOfRows(inSection: 0) > indexPath.row {
+                            self.tableView.scrollToRow(at: indexPath,
                                                    at: UITableViewScrollPosition.top,
                                                    animated: true)
+                        }
                     }
 
                 }
@@ -159,6 +170,7 @@ class DetailDeparturesViewController: UIViewController {
             destinationViewController.stop = App.stops.filter({ $0.code ==
                 (tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell)?.busRoute?.stop.code })[safe: 0]
         } else if segue.identifier == "allDepartures" {
+            App.log(string: "Departures: Show all departures")
             guard let destinationViewController = segue.destination as? AllDeparturesCollectionViewController else {
                 return
             }
@@ -176,6 +188,7 @@ class DetailDeparturesViewController: UIViewController {
     }
 
     @IBAction func remind() {
+        App.log(string: "Departures: Reminder")
         self.departure?.calculateLeftTime()
         var alertController = UIAlertController(title: "Reminder".localized,
                                                 message: "When do you want to be reminded?".localized,
@@ -240,45 +253,61 @@ class DetailDeparturesViewController: UIViewController {
         self.departure?.calculateLeftTime()
         let date = departure?.dateCompenents?.date?.addingTimeInterval(TimeInterval(timeBefore * -60))
         let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date ?? Date())
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-        let content = UNMutableNotificationContent()
+        if #available(iOS 10.0, *) {
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            let content = UNMutableNotificationContent()
 
-        content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
-        content.body = String(format: "Take the line %@ to %@".localized,
-                              "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)")
-        content.sound = UNNotificationSound.default()
-        content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
-        let request = UNNotificationRequest(identifier: "departureNotification", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) {(error) in
-            if let error = error {
-                print("Uh oh! We had an error: \(error)")
-                let alertController = UIAlertController(title: "An error occurred".localized,
-                                                        message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
-                                                        preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
-                    let mailComposerVC = MFMailComposeViewController()
-                    mailComposerVC.mailComposeDelegate = self
+            content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
+            content.body = String(format: "Take the line %@ to %@".localized,
+                                  "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)")
+            content.sound = UNNotificationSound.default()
+            content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
+            let request = UNNotificationRequest(identifier: "departureNotification", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) {(error) in
+                if let error = error {
+                    print("Uh oh! We had an error: \(error)")
+                    let alertController = UIAlertController(title: "An error occurred".localized,
+                                                            message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
+                        preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
+                        let mailComposerVC = MFMailComposeViewController()
+                        mailComposerVC.mailComposeDelegate = self
 
-                    mailComposerVC.setToRecipients(["support@asmartcode.com"])
-                    mailComposerVC.setSubject("tpg offline - Bug report")
-                    mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
+                        mailComposerVC.setToRecipients(["support@asmartcode.com"])
+                        mailComposerVC.setSubject("tpg offline - Bug report")
+                        mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
 
-                    if MFMailComposeViewController.canSendMail() {
-                        self.present(mailComposerVC, animated: true, completion: nil)
-                    }
-                }))
+                        if MFMailComposeViewController.canSendMail() {
+                            self.present(mailComposerVC, animated: true, completion: nil)
+                        }
+                    }))
 
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "You will be reminded".localized,
-                                                        message: String(format: "A notification will be send %@".localized,
-                                                                        (timeBefore == 0 ? "at the time of departure.".localized :
-                                                                            String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
-                                                        preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "You will be reminded".localized,
+                                                            message: String(format: "A notification will be send %@".localized,
+                                                                            (timeBefore == 0 ? "at the time of departure.".localized :
+                                                                                String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
+                                                            preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
+        } else {
+            let notification = UILocalNotification()
+            notification.fireDate = date ?? Date()
+            if timeBefore == 0 {
+                notification.alertBody = String(format: "Take the line %@ to %@ now".localized,
+                                                "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)")
+            } else {
+                notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized,
+                       "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)",
+                "\(timeBefore)")
+            }
+            notification.alertAction = "departureNotification"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.shared.scheduleLocalNotification(notification)
         }
     }
 }

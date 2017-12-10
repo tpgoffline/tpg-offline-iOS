@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Crashlytics
 
 class RouteResultsTableViewController: UITableViewController {
 
@@ -46,6 +47,14 @@ class RouteResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        App.log(string: "Routes: Search with D: \(route.from?.appId ?? 0)/\(route.from?.code ?? "") - A: \(route.to?.appId ?? 0)/\(route.to?.code ?? "") - H: \(dateFormatter.string(from: route.date)) - IAT: \(String(describing: route.arrivalTime.hashValue))") // swiftlint:disable:this line_length
+
+        Answers.logCustomEvent(withName: "Search route",
+                               customAttributes: ["departure": route.from?.code ?? "XXXX",
+                                                  "arrival": route.to?.code ?? "XXXX",
+                                                  "route": "\(route.from?.code ?? "XXXX")-\(route.to?.code ?? "XXXX")"])
         title = "Results".localized
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
@@ -58,7 +67,11 @@ class RouteResultsTableViewController: UITableViewController {
         refreshControl?.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
 
         tableView.allowsSelection = false
-        tableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(self.refreshControl!)
+        }
 
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
@@ -181,6 +194,7 @@ class RouteResultsTableViewController: UITableViewController {
             guard let destinationViewController = segue.destination as? RouteResultsDetailTableViewController else {
                 return
             }
+            App.log(string: "Routes: Selected \(tableView.indexPathForSelectedRow!.row) row")
             guard let cell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? RouteResultsTableViewCell else {
                 return
             }

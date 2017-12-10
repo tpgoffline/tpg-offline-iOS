@@ -14,7 +14,7 @@
         <!--Routes-->
         <scene sceneID="hTF-0H-mWW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5RJ-fW-Y8l" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="5RJ-fW-Y8l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Routes" image="routesTabBar" id="v5o-SQ-dhs"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -34,7 +34,7 @@
         <!--Routes-->
         <scene sceneID="8ld-ki-D7i">
             <objects>
-                <tableViewController id="9VX-Cm-Evt" customClass="RoutesTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController definesPresentationContext="YES" id="9VX-Cm-Evt" customClass="RoutesTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ajz-hM-poQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
         <!--Stops For Route Table View Controller-->
         <scene sceneID="Cbu-X1-0Xq">
             <objects>
-                <viewController id="l5I-rz-eeW" customClass="StopsForRouteTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" id="l5I-rz-eeW" customClass="StopsForRouteTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9nH-Kk-8Iw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,7 +292,7 @@
         <!--Route Results Table View Controller-->
         <scene sceneID="ICh-kI-26y">
             <objects>
-                <tableViewController id="4X5-mf-JeZ" customClass="RouteResultsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController definesPresentationContext="YES" id="4X5-mf-JeZ" customClass="RouteResultsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RY3-Z2-C48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -466,7 +466,7 @@
         <!--Route Results Detail Table View Controller-->
         <scene sceneID="zVa-Jp-xp3">
             <objects>
-                <tableViewController storyboardIdentifier="routeResultsDetailTableViewController" id="suM-kP-zMe" customClass="RouteResultsDetailTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="routeResultsDetailTableViewController" definesPresentationContext="YES" id="suM-kP-zMe" customClass="RouteResultsDetailTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cfu-dw-H0w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -680,7 +680,7 @@
         <!--Route Step View Controller-->
         <scene sceneID="aop-G7-8Y5">
             <objects>
-                <viewController storyboardIdentifier="routeStepViewController" id="wZo-sI-as6" customClass="RouteStepViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="routeStepViewController" definesPresentationContext="YES" id="wZo-sI-as6" customClass="RouteStepViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2G0-KN-oac">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -793,7 +793,7 @@
         <!--Route Map View Controller-->
         <scene sceneID="mR6-pA-EhC">
             <objects>
-                <viewController id="fHd-Ko-gKm" customClass="RouteMapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" id="fHd-Ko-gKm" customClass="RouteMapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I4R-e4-EXh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

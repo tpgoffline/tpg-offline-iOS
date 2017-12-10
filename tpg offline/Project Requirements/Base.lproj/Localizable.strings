@@ -1,7 +1,11 @@
 "#!?" = "#!?"; 
 "#?!" = "#?!"; 
+"%@ hours %@" = "%@ hours %@"; 
+"%@ meters, about %@ minutes to walk" = "%@ meters, about %@ minutes to walk"; 
 "%@ minutes before." = "%@ minutes before."; 
 "%@ minutes left!" = "%@ minutes left!"; 
+"%@, departure in %@ minutes" = "%@, departure in %@ minutes"; 
+"%@, stop already passed" = "%@, stop already passed"; 
 "%@m" = "%@m"; 
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)"; 
 "0" = "0"; 
@@ -25,8 +29,14 @@
 "Default tab on startup" = "Default tab on startup"; 
 "Departure at" = "Departure at"; 
 "Departures" = "Departures"; 
+"Departures for the line %@" = "Departures for the line %@"; 
 "Departures, Disruptions and Maps" = "Departures, Disruptions and Maps"; 
 "Design and developement" = "Design and developement"; 
+"Direction %@, departure at %@" = "Direction %@, departure at %@"; 
+"Direction %@, departure in %@ minutes" = "Direction %@, departure in %@ minutes"; 
+"Direction %@, error while loading the remaining time" = "Direction %@, error while loading the remaining time"; 
+"Direction %@, leaving now" = "Direction %@, leaving now"; 
+"Direction %@, no more bus" = "Direction %@, no more bus"; 
 "Disruptions" = "Disruptions"; 
 "Downloading" = "Downloading"; 
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire"; 
@@ -34,6 +44,7 @@
 "Error - Departures not downloaded" = "Error - Departures not downloaded"; 
 "External libraries, used in this project" = "External libraries, used in this project"; 
 "Favorites" = "Favorites"; 
+"Fortunately, there is no disruptions at this time." = "Fortunately, there is no disruptions at this time."; 
 "From" = "From"; 
 "From..." = "From..."; 
 "Github webpage" = "Github webpage"; 
@@ -44,8 +55,11 @@
 "Loading" = "Loading"; 
 "Map" = "Map"; 
 "Maps" = "Maps"; 
+"Mark this stop as favorite" = "Mark this stop as favorite"; 
 "Nearest Stops" = "Nearest Stops"; 
 "Nearest stops" = "Nearest stops"; 
+"New offline departures available" = "New offline departures available"; 
+"No disruptions" = "No disruptions"; 
 "No more bus will come to this stop today." = "No more bus will come to this stop today."; 
 "No results" = "No results"; 
 "Noctambus regional map" = "Noctambus regional map"; 
@@ -61,6 +75,7 @@
 "Regional map" = "Regional map"; 
 "Regional route" = "Regional route"; 
 "Reload" = "Reload"; 
+"Reload departures" = "Reload departures"; 
 "Reminder" = "Reminder"; 
 "Result" = "Result"; 
 "Results" = "Results"; 
@@ -70,11 +85,14 @@
 "SBB %@ - %@" = "SBB %@ - %@"; 
 "Select date" = "Select date"; 
 "Show less" = "Show less"; 
+"Show map" = "Show map"; 
 "Show more" = "Show more"; 
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Sorry for that. Can you try again, or send an email to us if the problem persist?"; 
 "Sorry, but no results was found. Please try with other parameters." = "Sorry, but no results was found. Please try with other parameters."; 
 "Sorry, there is an error. Are you sure your are connected to internet ?" = "Sorry, there is an error. Are you sure your are connected to internet ?"; 
 "Take the line %@ to %@" = "Take the line %@ to %@"; 
+"Take the line %@ to %@ in %@ minutes" = "Take the line %@ to %@ in %@ minutes"; 
+"Take the line %@ to %@ now" = "Take the line %@ to %@ now"; 
 "Testing" = "Testing"; 
 "That's all for today" = "That's all for today"; 
 "The bus is comming now!" = "The bus is comming now!"; 
@@ -82,6 +100,8 @@
 "To" = "To"; 
 "To..." = "To..."; 
 "Unknow" = "Unknow"; 
+"Unmark this stop as favorite" = "Unmark this stop as favorite"; 
+"Update available" = "Update available"; 
 "Update departures" = "Update departures"; 
 "Urban map" = "Urban map"; 
 "Walk" = "Walk"; 
@@ -89,6 +109,7 @@
 "When do you want to be reminded" = "When do you want to be reminded"; 
 "When do you want to be reminded?" = "When do you want to be reminded?"; 
 "You are using timetables departures. So departures are subjects to change." = "You are using timetables departures. So departures are subjects to change."; 
+"You can download them in Settings" = "You can download them in Settings"; 
 "You can't set a timer for this bus, but you should run to take it." = "You can't set a timer for this bus, but you should run to take it."; 
 "You don't downloaded offline departures, and you're not connected to internet" = "You don't downloaded offline departures, and you're not connected to internet"; 
 "You will be reminded" = "You will be reminded"; 

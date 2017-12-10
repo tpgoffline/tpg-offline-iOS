@@ -32,6 +32,16 @@ extension String {
         }
     }
 
+    var accessibleTime: String {
+        if Int(self) ?? 0 > 60 {
+            let hour = (Int(self) ?? 0) / 60
+            let minutes = (Int(self) ?? 0) % 60
+            return String(format: "%@ hours %@".localized, "\(hour)", minutes < 10 ? "0\(minutes)" : "\(minutes)")
+        } else {
+            return self
+        }
+    }
+
     var escaped: String {
         return self
             .folding(options: NSString.CompareOptions.diacriticInsensitive, locale: Locale.current)
@@ -58,6 +68,13 @@ extension String {
         @IBInspectable public var borderColor: UIColor {
             get { return UIColor(cgColor: self.layer.borderColor!) }
             set { self.layer.borderColor = newValue.cgColor }
+        }
+    }
+
+    public extension UIBarButtonItem {
+        convenience init(image: UIImage?, style: UIBarButtonItemStyle, target: Any?, action: Selector?, accessbilityLabel: String) {
+            self.init(image: image, style: style, target: target, action: action)
+            self.accessibilityLabel = accessbilityLabel
         }
     }
 #endif

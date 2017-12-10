@@ -1,7 +1,11 @@
 "#!?" = "#!?";
 "#?!" = "#?!";
+"%@ hours %@" = "%@ heure %@";
+"%@ meters, about %@ minutes to walk" = "%@ mètres, environ %@ minutes de marche";
 "%@ minutes before." = "%@ minutes avant.";
 "%@ minutes left!" = "%@ minutes restantes !";
+"%@, departure in %@ minutes" = "%@, départ dans %@ minutes";
+"%@, stop already passed" = "%@, arrêt déjà effectué";
 "%@m" = "%@m";
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)";
 "0" = "0";
@@ -25,8 +29,14 @@
 "Default tab on startup" = "Menu par défaut au démarrage";
 "Departure at" = "Départ à";
 "Departures" = "Départs";
+"Departures for the line %@" = "Départs pour la ligne %@";
 "Departures, Disruptions and Maps" = "Départs, Perturbations et Plans";
 "Design and developement" = "Conception et développement";
+"Direction %@, departure at %@" = "Direction %@, départ à %@";
+"Direction %@, departure in %@ minutes" = "Direction %@, départ dans %@ minutes";
+"Direction %@, error while loading the remaining time" = "Direction %@, erreur lors du chargement du temps restant";
+"Direction %@, leaving now" = "Direction %@, départ imminent";
+"Direction %@, no more bus" = "Direction%@, plus de bus";
 "Disruptions" = "Perturbations";
 "Downloading" = "Téléchargement";
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire";
@@ -34,6 +44,7 @@
 "Error - Departures not downloaded" = "Erreur - Les départs n'ont pas été téléchargés";
 "External libraries, used in this project" = "Librairies externes, utilisées dans ce projet";
 "Favorites" = "Favoris";
+"Fortunately, there is no disruptions at this time." = "Bonne nouvelle, aucune perturbation n'a lieu en ce moment.";
 "From" = "De";
 "From..." = "De...";
 "Github webpage" = "Page Github du projet";
@@ -44,8 +55,11 @@
 "Loading" = "Chargement";
 "Map" = "Plan";
 "Maps" = "Plans";
+"Mark this stop as favorite" = "Marquer cet arrêt en favoris";
 "Nearest Stops" = "Arrêts les plus proches";
 "Nearest stops" = "Arrêts les plus proches";
+"New offline departures available" = "Mise à jour des départs hors-ligne disponible";
+"No disruptions" = "Pas de pertubations";
 "No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à arrêt.";
 "No results" = "Pas de résultats";
 "Noctambus regional map" = "Plan Noctambus régional";
@@ -61,7 +75,8 @@
 "Regional map" = "Plan régional";
 "Regional route" = "Itinéraire multizone";
 "Reload" = "Recharger";
-"Reminder" = "Rappeler";
+"Reload departures" = "Recharger les départs";
+"Reminder" = "Rappel";
 "Result" = "Résultat";
 "Results" = "Résultats";
 "Rémy Da Costa Faro" = "Rémy Da Costa Faro";
@@ -70,11 +85,14 @@
 "SBB %@ - %@" = "CFF %@ - %@";
 "Select date" = "Séléctionner une date";
 "Show less" = "Afficher moins";
+"Show map" = "Afficher la carte";
 "Show more" = "Afficher plus";
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Désolé pour cela. Pourriez-vous réessayer ou nous envoyer un mail si le problème persiste ?";
 "Sorry, but no results was found. Please try with other parameters." = "Désolé, mais aucun résultat n'a été trouvé. Merci d'essayer avec d'autres paramètres.";
 "Sorry, there is an error. Are you sure your are connected to internet ?" = "Désolé, mais une erreur est survenue. Êtes-vous sûr d'être connecté à internet ?";
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
+"Take the line %@ to %@ in %@ minutes" = "Prenez la ligne %@ vers %@ dans %@ minutes";
+"Take the line %@ to %@ now" = "Prenez la ligne %@ vers %@ maintenant";
 "Testing" = "Test";
 "That's all for today" = "C'est tout pour aujourd'hui";
 "The bus is comming now!" = "Le bus arrive maintenant !";
@@ -82,6 +100,8 @@
 "To" = "Vers";
 "To..." = "Vers...";
 "Unknow" = "Inconnu";
+"Unmark this stop as favorite" = "Enlever cet arrêt des favoris";
+"Update available" = "Mise à jour disponible";
 "Update departures" = "Réactualiser les départs";
 "Urban map" = "Plan urbain";
 "Walk" = "Marcher";
@@ -89,9 +109,11 @@
 "When do you want to be reminded" = "Quand voulez-vous être rappelés";
 "When do you want to be reminded?" = "Quand voulez-vous être rappelé ?";
 "You are using timetables departures. So departures are subjects to change." = "Vous êtes en mode hors-ligne. Les horaires sont donc des sujets à des modifications et sont donnés à titre indicatif.";
+"You can download them in Settings" = "Vous pouvez la télécharger dans les paramètres";
 "You can't set a timer for this bus, but you should run to take it." = "Vous ne pouvez pas ajouter de rappels à ce bus, mais vous devriez courir pour le prendre.";
 "You don't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet";
 "You will be reminded" = "Vous serez rappelés";
 "at the time of departure." = "au départ";
 "tpg offline" = "tpg offline";
+
 

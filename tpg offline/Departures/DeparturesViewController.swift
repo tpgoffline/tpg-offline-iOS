@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Alamofire
+import Crashlytics
 
 class DeparturesViewController: UIViewController {
 
@@ -36,7 +37,12 @@ class DeparturesViewController: UIViewController {
             self.stop = App.stops[0]
         }
 
+        App.log(string: "Departures: Selected \(stop?.code ?? "XXXX")")
+        Answers.logCustomEvent(withName: "Show departures",
+                                       customAttributes: ["appId": stop?.code ?? "XXXX"])
+
         navigationItem.title = stop?.name
+        navigationItem.accessibilityTraits = UIAccessibilityTraitNone
         refreshDepatures()
         self.mapView.isHidden = true
 
@@ -54,7 +60,11 @@ class DeparturesViewController: UIViewController {
         annotation.title = stop?.name
         mapView.addAnnotation(annotation)
 
-        tableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
 
         refreshControl.addTarget(self, action: #selector(refreshDepatures), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
@@ -80,15 +90,20 @@ class DeparturesViewController: UIViewController {
             UIBarButtonItem(image: App.favoritesStops.contains(stop!.appId) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.setFavorite)),
+                            action: #selector(self.setFavorite),
+                            accessbilityLabel: App.favoritesStops.contains(stop!.appId) ?
+                "Unmark this stop as favorite".localized :
+                "Mark this stop as favorite".localized),
             UIBarButtonItem(image: #imageLiteral(resourceName: "pinMapNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.showMap)),
+                            action: #selector(self.showMap),
+                            accessbilityLabel: "Show map".localized),
             UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.reload))
+                            action: #selector(self.reload),
+                            accessbilityLabel: "Reload departures".localized)
         ]
     }
 
@@ -98,7 +113,7 @@ class DeparturesViewController: UIViewController {
         self.noInternet = false
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json",
                           method: .get,
-                          parameters: ["key": API.key,
+                          parameters: ["key": API.tpg,
                                        "stopCode": stop!.code])
             .responseData { (response) in
                 if let data = response.result.value {
@@ -191,6 +206,7 @@ class DeparturesViewController: UIViewController {
             destinationViewController.color = App.color(for: row.departure!.line.code)
             destinationViewController.departure = row.departure
             destinationViewController.stop = self.stop
+            App.log(string: "Departures: Select \(row.departure?.line.code ?? "") - \(row.departure?.line.destination ?? "") - \(row.departure?.timestamp ?? "")") // swiftlint:disable:this line_length
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -322,8 +338,6 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             showMoreLines.append(String(button.tag))
         }
         tableView.reloadData()
-
-        // tableView.scrollToRow(at: IndexPath(row: 0, section: button.tag), at: .top, animated: true)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -342,6 +356,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         headerCell?.backgroundColor = App.linesColor.filter({$0.line == (departures?.lines[section] ?? "?#!".localized)})[safe: 0]?.color ?? .white
         headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
         headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+
+        headerCell?.accessibilityLabel = String(format: "Departures for the line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
 
         return headerCell
     }

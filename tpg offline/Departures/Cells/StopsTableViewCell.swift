@@ -43,6 +43,9 @@ class StopsTableViewCell: UITableViewCell {
             let walkDurationString = walkDuration == 0 ? String(format: "%@m".localized, "\(Int(stop.distance))"):
                 String(format: "%@m (~%@ minutes)".localized, "\(Int(stop.distance))", "\(walkDuration)")
             self.detailTextLabel?.attributedText = NSAttributedString(string: walkDurationString, attributes: subtitleAttributes)
+            self.detailTextLabel?.accessibilityLabel = walkDuration == 0 ?
+                String(format: "%@m".localized, "\(Int(stop.distance))"):
+                String(format: "%@ meters, about %@ minutes to walk".localized, "\(Int(stop.distance))", "\(walkDuration)")
         }
     }
 }

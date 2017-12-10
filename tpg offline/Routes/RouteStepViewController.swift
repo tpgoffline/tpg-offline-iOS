@@ -150,50 +150,64 @@ class RouteStepViewController: UIViewController {
         let date = Date(timeIntervalSince1970: TimeInterval(self.section.departure.departureTimestamp!))
             .addingTimeInterval(TimeInterval(timeBefore * -60))
         let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-        let content = UNMutableNotificationContent()
-
-        content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
 
         let destinationName = App.stops.filter({$0.nameTransportAPI == section.journey?.to})[safe: 0]?.name
             ?? (section.journey?.to ?? "#?!")
 
-        content.body = String(format: "Take the line %@ to %@".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName)
-        content.sound = UNNotificationSound.default()
-        content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
-        let request = UNNotificationRequest(identifier: "departureNotification", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) {(error) in
-            if let error = error {
-                print("Uh oh! We had an error: \(error)")
-                let alertController = UIAlertController(title: "An error occurred".localized,
-                                                        message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
-                                                        preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
-                    let mailComposerVC = MFMailComposeViewController()
-                    mailComposerVC.mailComposeDelegate = self
+        if #available(iOS 10.0, *) {
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            let content = UNMutableNotificationContent()
 
-                    mailComposerVC.setToRecipients(["support@asmartcode.com"])
-                    mailComposerVC.setSubject("tpg offline - Bug report")
-                    mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
+            content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
 
-                    if MFMailComposeViewController.canSendMail() {
-                        self.present(mailComposerVC, animated: true, completion: nil)
-                    }
-                }))
+            content.body = String(format: "Take the line %@ to %@".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName)
+            content.sound = UNNotificationSound.default()
+            content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
+            let request = UNNotificationRequest(identifier: "departureNotification", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) {(error) in
+                if let error = error {
+                    print("Uh oh! We had an error: \(error)")
+                    let alertController = UIAlertController(title: "An error occurred".localized,
+                                                            message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
+                        preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
+                        let mailComposerVC = MFMailComposeViewController()
+                        mailComposerVC.mailComposeDelegate = self
 
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "You will be reminded".localized,
-                                                        message: String(format: "A notification will be send %@",
-                                                                        (timeBefore == 0 ? "at the time of departure.".localized :
-                                                                            String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
-                                                        preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+                        mailComposerVC.setToRecipients(["support@asmartcode.com"])
+                        mailComposerVC.setSubject("tpg offline - Bug report")
+                        mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
+
+                        if MFMailComposeViewController.canSendMail() {
+                            self.present(mailComposerVC, animated: true, completion: nil)
+                        }
+                    }))
+
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "You will be reminded".localized,
+                                                            message: String(format: "A notification will be send %@",
+                                                                            (timeBefore == 0 ? "at the time of departure.".localized :
+                                                                                String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
+                                                            preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
+        } else {
+            let notification = UILocalNotification()
+            notification.fireDate = date
+            if timeBefore == 0 {
+                notification.alertBody = String(format: "Take the line %@ to %@ now".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName)
+            } else {
+                notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName,
+                    "\(timeBefore)")
+            }
+            notification.alertAction = "departureNotification"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.shared.scheduleLocalNotification(notification)
         }
-
     }
 }
 

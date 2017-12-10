@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Z82-x4-MhX">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LRf-1P-BjL" customClass="TabBarViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="LRf-1P-BjL" customClass="TabBarController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="ZGQ-JB-uYW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

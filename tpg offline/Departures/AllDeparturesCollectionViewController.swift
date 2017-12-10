@@ -69,12 +69,13 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
         }
     }
 
+    var refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let flowLayout = FlowLayout()
         flowLayout.headerReferenceSize = CGSize(width: self.collectionView?.bounds.width ?? 15, height: 44)
-        flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
-        self.collectionView?.collectionViewLayout = flowLayout
+        flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
 
         title = String(format: "Line %@".localized, "\(departure?.line.code ?? "#!?")")
 
@@ -82,11 +83,16 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
             UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.refresh))
+                            action: #selector(self.refresh),
+                            accessbilityLabel: "Reload".localized)
         ]
 
-        let refreshControl = UIRefreshControl()
-        collectionView?.refreshControl = refreshControl
+        self.refreshControl = UIRefreshControl()
+        if #available(iOS 10.0, *) {
+            collectionView?.refreshControl = refreshControl
+        } else {
+            collectionView?.addSubview(refreshControl)
+        }
 
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
@@ -98,7 +104,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
         loading = true
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json",
                           method: .get,
-                          parameters: ["key": API.key,
+                          parameters: ["key": API.tpg,
                                        "stopCode": self.stop?.code ?? "#?!",
                                        "lineCode": self.departure?.line.code ?? "#?!",
                                        "destinationCode": self.departure?.line.destinationCode ?? "#?!"])
@@ -114,14 +120,14 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                         self.departuresList = json
                     } catch {
                         self.loading = false
-                        self.collectionView?.refreshControl?.endRefreshing()
+                        self.refreshControl.endRefreshing()
                         return
                     }
 
                     self.hours = self.departuresList?.departures.map({ $0.dateCompenents?.hour ?? 0 }).uniqueElements ?? []
                     self.hours.sort()
                     self.loading = false
-                    self.collectionView?.refreshControl?.endRefreshing()
+                    self.refreshControl.endRefreshing()
                 }
         }
     }
@@ -188,6 +194,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                 dateFormatter.dateStyle = .none
                 dateFormatter.timeStyle = .short
                 headerView.title.text = dateFormatter.string(from: dateComponents.date ?? Date())
+                headerView.title.accessibilityLabel = dateFormatter.string(from: dateComponents.date ?? Date())
                 headerView.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
                 headerView.title.textColor = .white
 

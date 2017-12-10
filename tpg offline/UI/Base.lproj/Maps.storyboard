@@ -13,7 +13,7 @@
         <!--Maps Table View Controller-->
         <scene sceneID="dff-Gx-ozX">
             <objects>
-                <tableViewController id="IyF-vh-5qj" customClass="MapsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController definesPresentationContext="YES" id="IyF-vh-5qj" customClass="MapsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QSe-hO-VqI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,27 +27,42 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nocPeriurbainMap" translatesAutoresizingMaskIntoConstraints="NO" id="stT-Rd-HHs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-Yi-gMY">
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJd-bz-f8b">
                                             <rect key="frame" x="0.0" y="157" width="375" height="32"/>
-                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75298195422535219" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wz1-sL-SDf">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-Yi-gMY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="cV1-Yi-gMY" firstAttribute="leading" secondItem="Wz1-sL-SDf" secondAttribute="leading" id="EYA-bF-ZaF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cV1-Yi-gMY" secondAttribute="bottom" id="X2e-tA-xRv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cV1-Yi-gMY" secondAttribute="trailing" id="klj-RO-NML"/>
+                                                    <constraint firstItem="cV1-Yi-gMY" firstAttribute="top" secondItem="Wz1-sL-SDf" secondAttribute="top" id="vc3-0F-Nz1"/>
+                                                </constraints>
+                                            </view>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="Toh-4z-Weo"/>
+                                                <constraint firstAttribute="height" constant="32" id="mdO-8b-B9B"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="iJd-bz-f8b" secondAttribute="trailing" id="6W4-jZ-a5Y"/>
                                         <constraint firstItem="stT-Rd-HHs" firstAttribute="leading" secondItem="gVI-PS-ShH" secondAttribute="leading" id="9uz-hP-7RO"/>
-                                        <constraint firstItem="cV1-Yi-gMY" firstAttribute="leading" secondItem="gVI-PS-ShH" secondAttribute="leading" id="EvV-tf-Wk2"/>
                                         <constraint firstAttribute="trailing" secondItem="stT-Rd-HHs" secondAttribute="trailing" id="FyL-CW-Jbm"/>
-                                        <constraint firstAttribute="trailing" secondItem="cV1-Yi-gMY" secondAttribute="trailing" id="OpY-Oj-lKW"/>
+                                        <constraint firstAttribute="bottom" secondItem="iJd-bz-f8b" secondAttribute="bottom" id="K2w-y2-rff"/>
                                         <constraint firstAttribute="bottom" secondItem="stT-Rd-HHs" secondAttribute="bottom" id="Qqb-gn-FLf"/>
                                         <constraint firstItem="stT-Rd-HHs" firstAttribute="top" secondItem="gVI-PS-ShH" secondAttribute="top" id="bbC-BC-Va5"/>
-                                        <constraint firstAttribute="bottom" secondItem="cV1-Yi-gMY" secondAttribute="bottom" id="lW0-H5-0F5"/>
+                                        <constraint firstItem="iJd-bz-f8b" firstAttribute="leading" secondItem="gVI-PS-ShH" secondAttribute="leading" id="cDo-W1-9ig"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -71,7 +86,7 @@
         <!--Map View Controller-->
         <scene sceneID="0ye-ve-9fQ">
             <objects>
-                <viewController id="10S-gQ-ZXi" customClass="MapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" id="10S-gQ-ZXi" customClass="MapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MNg-lt-q8l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,7 +118,7 @@
         <!--Maps-->
         <scene sceneID="A9E-7r-2cz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eBY-aW-3fT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="eBY-aW-3fT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Maps" image="mapTabBar" id="bYE-uv-jiM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

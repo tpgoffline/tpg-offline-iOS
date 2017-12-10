@@ -41,12 +41,14 @@ class SettingsTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "showDefaultTab", sender: self)
         }))
         self.settings.append(Setting("Update departures".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
+            App.log(string: "Settings: Update Departures")
             self.updateDepartures()
         }))
         self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
             self.performSegue(withIdentifier: "showCredits", sender: self)
         }))
         self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
+            App.log(string: "Settings: Give feedback")
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
 
@@ -85,7 +87,8 @@ class SettingsTableViewController: UITableViewController {
         if setting.title == "Update departures".localized {
             switch self.offlineDeparturesStatus {
             case .notDownloading:
-                cell.detailTextLabel?.text = ""
+                cell.detailTextLabel?.text = UserDefaults.standard.bool(forKey: "offlineDeparturesUpdateAvailable") ?
+                    "Update available".localized : ""
             case .error:
                 cell.detailTextLabel?.text = "Error - Departures not downloaded".localized
             case .downloading:
@@ -137,7 +140,13 @@ class SettingsTableViewController: UITableViewController {
             } else {
                 self.offlineDeparturesStatus = .error
             }
+        }
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
+            if let updatedMD5 = response.result.value {
+                UserDefaults.standard.set(updatedMD5, forKey: "departures.json.md5")
+                UserDefaults.standard.set(false, forKey: "offlineDeparturesUpdateAvailable")
             }
+        }
     }
 }
 

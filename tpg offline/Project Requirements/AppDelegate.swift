@@ -41,7 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        Fabric.with([Crashlytics.self])
+        #if DEBUG
+            print("WARNING: Debug mode, Crashlytics desactivated")
+        #else
+            Fabric.with([Crashlytics.self])
+        #endif
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/replacementsNames.json").responseJSON { (response) in
             if let json = response.result.value as? [String: String] {
@@ -49,11 +53,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
                 if !accepted {
                     print("Notification access denied.")
                 }
             }
+        } else {
+            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+            let setting = UIUserNotificationSettings(types: type, categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+        }
 
         if CommandLine.arguments.contains("-reset") {
             App.loadStops()

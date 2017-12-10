@@ -13,7 +13,19 @@ import MobileCoreServices
 import StoreKit
 import Alamofire
 
+struct GoogleMapsGeocodingSearch {
+    var address: String
+    var stops: [Stop]
+}
+
 class StopsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    enum SearchMode {
+        case stops
+        case addresses
+    }
+
+    var searchMode = SearchMode.stops
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -25,6 +37,10 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
+
+    var addressSearch: GoogleMapsGeocodingSearch?
+    var addressRequest: DataRequest?
+
     var localizedStops: [Stop] = []
     var searchingForNearestStops = false
     let searchController = UISearchController(searchResultsController: nil)
@@ -39,6 +55,8 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["Bus Stop", "Address"]
+        searchController.searchBar.delegate = self
 
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -55,6 +73,15 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/stops.json.md5").responseString { (response) in
                 if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
                     self.getNewStops(updatedMD5)
+                }
+            }
+
+            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
+                if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
+                    UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
+                    let alertController = UIAlertController(title: "New offline departures available".localized, message: "You can download them in Settings".localized, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
 
@@ -167,11 +194,71 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             navigationItem.backBarButtonItem = backItem
         }
     }
+
+    func lookForAdresses() {
+        self.addressRequest?.cancel()
+        let requestParameters = [
+            "address": searchController.searchBar.text ?? "",
+            "key": API.googleMaps,
+            "bounds": "46.074183321902574,5.873565673828125|46.37630675382684,6.403656005859375",
+            "region": "ch"
+        ]
+        self.addressRequest = Alamofire.request("https://maps.googleapis.com/maps/api/geocode/json", method: .get, parameters: requestParameters).responseData(completionHandler: { (response) in
+            if let data = response.data {
+                let jsonDecoder = JSONDecoder()
+
+                do {
+                    let json = try jsonDecoder.decode(GoogleMapsGeocoding.self, from: data)
+                    guard let result = json.results[safe: 0] else {
+                        return
+                    }
+                    var localizedStops: [Stop] = []
+                    for stop in App.stops {
+                        var stopA = stop
+                        stopA.distance = result.geometry.location.location.distance(from: stopA.location)
+                        localizedStops.append(stopA)
+                    }
+                    localizedStops.sort(by: { $0.distance < $1.distance })
+                    localizedStops = Array(localizedStops.prefix(5))
+                    localizedStops = localizedStops.filter({ $0.distance < 1500 })
+                    self.addressSearch = GoogleMapsGeocodingSearch(address: result.formattedAddress, stops: localizedStops)
+                    self.tableView.reloadData()
+                } catch {
+                    return
+                }
+            }
+        })
+    }
+
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showStop", searchMode == .addresses, searchText != "", tableView.indexPathForSelectedRow?.row == 0 {
+            return false
+        }
+        return true
+    }
 }
 
-extension StopsTableViewController: UISearchResultsUpdating {
+extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         self.searchText = searchController.searchBar.text ?? ""
+        if self.searchMode == .addresses {
+            lookForAdresses()
+        }
+    }
+
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+            self.searchMode = .stops
+        case 1:
+            self.searchMode = .addresses
+        default:
+            return
+        }
+        if self.searchMode == .addresses {
+            lookForAdresses()
+        }
+        self.tableView.reloadData()
     }
 }
 
@@ -228,7 +315,13 @@ extension StopsTableViewController {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchText != "" {
-            return searchForStop(searchText.escaped).count
+            switch self.searchMode {
+            case .stops:
+                return searchForStop(searchText.escaped).count
+            case .addresses:
+                return (self.addressSearch?.stops.count ?? 0) + 1
+            }
+
         }
         switch section {
         case 0:
@@ -241,15 +334,43 @@ extension StopsTableViewController {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if self.searchText.escaped != "", searchMode == .addresses, indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "stopsCell", for: indexPath)
+
+            let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
+                               NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
+            let subtitleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+                                  NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
+            cell.textLabel?.numberOfLines = 0
+            cell.detailTextLabel?.numberOfLines = 0
+
+            cell.textLabel?.attributedText = NSAttributedString(string: "Nearest stops from", attributes: titleAttributes)
+            cell.detailTextLabel?.attributedText = NSAttributedString(string: addressSearch?.address ?? "", attributes: subtitleAttributes)
+            cell.accessoryView = nil
+
+            return cell
+        }
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "stopsCell", for: indexPath) as? StopsTableViewCell else {
             return UITableViewCell()
         }
 
         let stop: Stop
-        if searchText != "" {
-            stop = searchForStop(searchText.escaped)[indexPath.row]
-            cell.isFavorite = false
-            cell.isNearestStops = false
+        if self.searchText.escaped != "" {
+            switch self.searchMode {
+            case .stops:
+                stop = searchForStop(searchText.escaped)[indexPath.row]
+                cell.isFavorite = false
+                cell.isNearestStops = false
+            case .addresses:
+                guard let a = self.addressSearch?.stops[safe: indexPath.row - 1] else {
+                    return UITableViewCell()
+                }
+                stop = a
+                cell.isFavorite = false
+                cell.isNearestStops = true
+            }
         } else {
             switch indexPath.section {
             case 0:
@@ -257,7 +378,10 @@ extension StopsTableViewController {
                 cell.isFavorite = false
                 cell.isNearestStops = true
             case 1:
-                stop = App.stops.filter({ App.favoritesStops[indexPath.row] == $0.appId })[0]
+                guard let a = App.stops.filter({ (App.favoritesStops[safe: indexPath.row] ?? 0) == $0.appId })[safe: 0] else {
+                    return UITableViewCell()
+                }
+                stop = a
                 cell.isFavorite = true
                 cell.isNearestStops = false
             default:
