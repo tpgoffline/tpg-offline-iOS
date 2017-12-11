@@ -50,7 +50,6 @@
 		AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */; };
 		AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */; };
-		AD5B340F1FAC82900061CFB3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B340E1FAC82900061CFB3 /* API.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
 		AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */; };
 		AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
@@ -74,10 +73,11 @@
 		AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */; };
 		AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */; };
 		AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */; };
-		ADA0D35E1FB33EBC001DAC9F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5B340E1FAC82900061CFB3 /* API.swift */; };
 		ADA0D3601FB33EFF001DAC9F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */; };
 		ADA0D3631FB34E59001DAC9F /* DeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */; };
 		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
+		ADBB0CE81FDE845200210902 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB0CE71FDE845200210902 /* API.swift */; };
+		ADBB0CE91FDE84A800210902 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB0CE71FDE845200210902 /* API.swift */; };
 		ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */; };
 		ADBC1C711FAF0E2700162195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C701FAF0E2700162195 /* Assets.xcassets */; };
 		ADBC1C781FAF0E2700162195 /* tpg offline watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -201,7 +201,6 @@
 		AD416A801FB73587005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsInterfaceController.swift; sourceTree = "<group>"; };
 		AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsInterfaceController.swift; sourceTree = "<group>"; };
-		AD5B340E1FAC82900061CFB3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
 		AD6A47A81F77992400AE1762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 		ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesInterfaceController.swift; sourceTree = "<group>"; };
 		ADABFA091F9CF1D200EEC8D0 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = JSON/stops.json; sourceTree = "<group>"; };
+		ADBB0CE71FDE845200210902 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBC1C6E1FAF0E2700162195 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		ADBC1C701FAF0E2700162195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -414,7 +414,7 @@
 				AD6A47A81F77992400AE1762 /* Extensions.swift */,
 				ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */,
 				AD28200D1FA0E5D800767462 /* InfoPlist.strings */,
-				AD5B340E1FAC82900061CFB3 /* API.swift */,
+				ADBB0CE71FDE845200210902 /* API.swift */,
 				AD1E48461FADF70800596076 /* App.swift */,
 				AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */,
 				AD7B47E01FD155D400F8DA23 /* TabBarController.swift */,
@@ -828,6 +828,7 @@
 				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
 				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
 				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
+				ADBB0CE81FDE845200210902 /* API.swift in Sources */,
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
 				AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */,
@@ -847,7 +848,6 @@
 				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
 				AD1E48471FADF70800596076 /* App.swift in Sources */,
 				AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */,
-				AD5B340F1FAC82900061CFB3 /* API.swift in Sources */,
 				AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */,
 				ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */,
 				ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */,
@@ -874,13 +874,13 @@
 				AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */,
 				AD0644401FBB366200E61E5A /* RoutesInterfaceController.swift in Sources */,
 				ADBC1C811FAF0E2700162195 /* NotificationController.swift in Sources */,
+				ADBB0CE91FDE84A800210902 /* API.swift in Sources */,
 				AD3DF3B11FB1FF0300F2AFA5 /* Extensions.swift in Sources */,
 				ADBC1C7F1FAF0E2700162195 /* ExtensionDelegate.swift in Sources */,
 				AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */,
 				AD708DB01FB0AC420076B3AC /* Connection.swift in Sources */,
 				AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */,
 				AD708DAF1FB0AC420076B3AC /* BusRoute.swift in Sources */,
-				ADA0D35E1FB33EBC001DAC9F /* API.swift in Sources */,
 				ADBC1C7D1FAF0E2700162195 /* HomeInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

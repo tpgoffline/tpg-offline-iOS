@@ -17,13 +17,6 @@ class MapsTableViewController: UITableViewController {
         "Noctambus regional map".localized: #imageLiteral(resourceName: "nocPeriurbainMap")
     ]
 
-    var maps2018: [String: UIImage] = [
-        "Urban map".localized: #imageLiteral(resourceName: "urbainMap2018"),
-        "Regional map".localized: #imageLiteral(resourceName: "periurbainMap2018"),
-        "Noctambus urban map".localized: #imageLiteral(resourceName: "nocUrbainMap2018"),
-        "Noctambus regional map".localized: #imageLiteral(resourceName: "nocPeriurbainMap2018")
-    ]
-
     var titles = [
         "Urban map".localized,
         "Regional map".localized,
@@ -61,11 +54,7 @@ class MapsTableViewController: UITableViewController {
         }
 
         cell.titleLabel.text = titles[indexPath.row]
-        if Date().timeIntervalSince1970 < 1512860400 {
-            cell.mapImage = self.maps[titles[indexPath.row]]
-        } else {
-            cell.mapImage = self.maps2018[titles[indexPath.row]]
-        }
+        cell.mapImage = self.maps[titles[indexPath.row]]
 
         return cell
     }

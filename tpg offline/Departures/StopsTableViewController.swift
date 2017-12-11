@@ -55,7 +55,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = ["Bus Stop", "Address"]
+        searchController.searchBar.scopeButtonTitles = ["Bus Stop".localized, "Address".localized]
         searchController.searchBar.delegate = self
 
         if #available(iOS 11.0, *) {
@@ -106,8 +106,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 var fileURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)[0])
                 fileURL.appendPathComponent("stops.json")
 
-                do {
-                    try stopsData.write(to: fileURL)
+                    UserDefaults.standard.set(stopsData, forKey: "stops.json")
                     UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
 
                     App.loadStops()
@@ -140,9 +139,6 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                             }
                         }
                     }
-                } catch (let error) {
-                    print(error)
-                }
             }
         }
     }
@@ -201,7 +197,8 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             "address": searchController.searchBar.text ?? "",
             "key": API.googleMaps,
             "bounds": "46.074183321902574,5.873565673828125|46.37630675382684,6.403656005859375",
-            "region": "ch"
+            "region": "ch",
+            "language": Locale.preferredLanguages[0]
         ]
         self.addressRequest = Alamofire.request("https://maps.googleapis.com/maps/api/geocode/json", method: .get, parameters: requestParameters).responseData(completionHandler: { (response) in
             if let data = response.data {
@@ -345,7 +342,7 @@ extension StopsTableViewController {
             cell.textLabel?.numberOfLines = 0
             cell.detailTextLabel?.numberOfLines = 0
 
-            cell.textLabel?.attributedText = NSAttributedString(string: "Nearest stops from", attributes: titleAttributes)
+            cell.textLabel?.attributedText = NSAttributedString(string: "Nearest stops from".localized, attributes: titleAttributes)
             cell.detailTextLabel?.attributedText = NSAttributedString(string: addressSearch?.address ?? "", attributes: subtitleAttributes)
             cell.accessoryView = nil
 

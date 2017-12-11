@@ -150,6 +150,8 @@ class DeparturesViewController: UIViewController {
         }
         let dir = URL(fileURLWithPath: dirString)
         switch day.weekday! {
+        case 6:
+            path = dir.appendingPathComponent(self.stop!.code + "VEN.json")
         case 7:
             path = dir.appendingPathComponent(self.stop!.code + "SAM.json")
         case 1:
