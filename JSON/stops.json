@@ -5914,14 +5914,14 @@
         "isTAC": false,
         "latitude": 46.199727,
         "longitude": 6.076258,
-        "name": "Hameau Chèvres",
+        "name": "Hameau de Chèvres",
         "nameTransportAPI": "Bernex, Chèvres",
         "pricingZone": [
             10
         ],
         "sbbId": "8592654",
         "subTitle": "",
-        "title": "Hameau Chèvres"
+        "title": "Hameau de Chèvres"
     },
     {
         "appId": 729752,
@@ -13685,22 +13685,6 @@
         "title": "Machilly"
     },
     {
-        "appId": 130934,
-        "code": "MEAU",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.206623,
-        "longitude": 6.278399,
-        "name": "Maison de l'Eau",
-        "nameTransportAPI": "Annemasse, Maison de l'eau",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595825",
-        "subTitle": "",
-        "title": "Maison de l'Eau"
-    },
-    {
         "appId": 305439,
         "code": "MONB",
         "connections": [],
@@ -13811,117 +13795,5 @@
         "sbbId": "8595844",
         "subTitle": "Prairie",
         "title": "Annemasse"
-    },
-    {
-        "appId": 316342,
-        "code": "REPU",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.201113,
-        "longitude": 6.244324,
-        "name": "République",
-        "nameTransportAPI": "Annemasse, République",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595846",
-        "subTitle": "",
-        "title": "République"
-    },
-    {
-        "appId": 71739,
-        "code": "RESI",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.196602,
-        "longitude": 6.255111,
-        "name": "Résistance",
-        "nameTransportAPI": "Annemasse, Résistance",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595847",
-        "subTitle": "",
-        "title": "Résistance"
-    },
-    {
-        "appId": 158653,
-        "code": "SCAS",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.194734,
-        "longitude": 6.251148,
-        "name": "Sous-Cassan",
-        "nameTransportAPI": "Annemasse, Sous-Cassan",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595856",
-        "subTitle": "",
-        "title": "Sous-Cassan"
-    },
-    {
-        "appId": 197187,
-        "code": "TERR",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.24026,
-        "longitude": 6.324839,
-        "name": "Terret",
-        "nameTransportAPI": "Annemasse, Terret",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595858",
-        "subTitle": "",
-        "title": "Terret"
-    },
-    {
-        "appId": 595148,
-        "code": "VERD",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.186568,
-        "longitude": 6.242868,
-        "name": "Verdun",
-        "nameTransportAPI": "Annemasse, Verdun",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595862",
-        "subTitle": "",
-        "title": "Verdun"
-    },
-    {
-        "appId": 907012,
-        "code": "VGEG",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.203294,
-        "longitude": 6.248967,
-        "name": "Ville-la-Grand Église",
-        "nameTransportAPI": "Annemasse, Ville-la-Grand Egli",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595867",
-        "subTitle": "Église",
-        "title": "Ville-la-Grand"
-    },
-    {
-        "appId": 511770,
-        "code": "VORO",
-        "connections": [],
-        "isTAC": true,
-        "latitude": 46.201035,
-        "longitude": 6.263527,
-        "name": "Voirons",
-        "nameTransportAPI": "Annemasse, Voirons",
-        "pricingZone": [
-            82
-        ],
-        "sbbId": "8595868",
-        "subTitle": "",
-        "title": "Voirons"
     }
 ]
