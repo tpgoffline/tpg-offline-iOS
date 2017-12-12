@@ -89,6 +89,37 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 SKStoreReviewController.requestReview()
             }
         }
+        
+        DispatchQueue.main.async {
+            for stop in App.stops where App.indexedStops.index(of: stop.appId) == nil {
+                let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+                attributeSet.title = stop.name
+                attributeSet.contentDescription = ""
+                
+                let item = CSSearchableItem(
+                    uniqueIdentifier: "\(stop.appId)",
+                    domainIdentifier: "com.dacostafaro",
+                    attributeSet: attributeSet)
+                item.expirationDate = Date.distantFuture
+                CSSearchableIndex.default().indexSearchableItems([item]) { error in
+                    if let error = error {
+                        print("Indexing error: \(error.localizedDescription)")
+                    } else {
+                        print("\(stop.appId) successfully indexed!")
+                    }
+                }
+                App.indexedStops.append(stop.appId)
+            }
+            for id in App.indexedStops where App.stops.filter({ $0.appId == id })[safe: 0] == nil {
+                CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["\(id)"]) { error in
+                    if let error = error {
+                        print("Deindexing error: \(error.localizedDescription)")
+                    } else {
+                        print("\(id) successfully removed!")
+                    }
+                }
+            }
+        }
 
         self.tableView.sectionIndexBackgroundColor = .white
 
@@ -108,37 +139,6 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
                     UserDefaults.standard.set(stopsData, forKey: "stops.json")
                     UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
-
-                    App.loadStops()
-
-                    for stop in App.stops where App.indexedStops.index(of: stop.appId) == nil {
-                        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
-                        attributeSet.title = stop.name
-                        attributeSet.contentDescription = ""
-
-                        let item = CSSearchableItem(
-                            uniqueIdentifier: "\(stop.appId)",
-                            domainIdentifier: "com.dacostafaro",
-                            attributeSet: attributeSet)
-                        item.expirationDate = Date.distantFuture
-                        CSSearchableIndex.default().indexSearchableItems([item]) { error in
-                            if let error = error {
-                                print("Indexing error: \(error.localizedDescription)")
-                            } else {
-                                print("\(stop.appId) successfully indexed!")
-                            }
-                        }
-                        App.indexedStops.append(stop.appId)
-                    }
-                    for id in App.indexedStops where App.stops.filter({ $0.appId == id })[safe: 0] == nil {
-                        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["\(id)"]) { error in
-                            if let error = error {
-                                print("Deindexing error: \(error.localizedDescription)")
-                            } else {
-                                print("\(id) successfully removed!")
-                            }
-                        }
-                    }
             }
         }
     }
