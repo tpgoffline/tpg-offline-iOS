@@ -16,6 +16,7 @@ struct App {
     #if os(iOS)
     private static var watchSessionManager = WatchSessionManager.shared
     #endif
+    static var lines: [Line] = []
     static var stops: [Stop] = []
     static var sortedStops: [String: [String]] = [:]
     static var favoritesStops: [Int] {
@@ -115,6 +116,32 @@ struct App {
         }
     }
     static var textColor = #colorLiteral(red: 0.2392156863, green: 0.1960784314, blue: 0.1843137255, alpha: 1)
+
+    @discardableResult static func loadLines() -> Bool {
+        do {
+            let data: Data
+            if let dataA = UserDefaults.standard.data(forKey: "lines.json") {
+                data = dataA
+            } else {
+                do {
+                    data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "lines", ofType: "json")!))
+                } catch {
+                    print("Can't load lines")
+                    abort()
+                }
+            }
+            let decoder = JSONDecoder()
+            let lines = try decoder.decode([Line].self, from: data)
+            App.lines = lines.sorted(by: {
+                if let a = Int($0.line), let b = Int($1.line) {
+                    return a < b
+                } else { return $0.line < $1.line }})
+            return true
+        } catch {
+            print("error")
+            return false
+        }
+    }
 
     #if os(iOS)
     static func log(string: String) {

@@ -80,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabController.selectedIndex = App.defaultTab
         }
 
+        App.loadLines()
         return App.loadStops()
     }
 

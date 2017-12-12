@@ -44,23 +44,39 @@ class MapsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return maps.count
+        return section == 0 ? maps.count  : App.lines.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath) as? MapsTableViewControllerRow else {
-            return UITableViewCell()
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath) as? MapsTableViewControllerRow else {
+                return UITableViewCell()
+            }
+
+            cell.titleLabel.text = titles[indexPath.row]
+            cell.mapImage = self.maps[titles[indexPath.row]]
+
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "lineCell", for: indexPath) as? LineTableViewControllerRow else {
+                return UITableViewCell()
+            }
+            cell.line = App.lines[indexPath.row]
+            return cell
         }
-
-        cell.titleLabel.text = titles[indexPath.row]
-        cell.mapImage = self.maps[titles[indexPath.row]]
-
-        return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
+        if indexPath.section == 0 {
+            return 190
+        } else {
+            return UITableViewAutomaticDimension
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,6 +106,25 @@ class MapsTableViewControllerRow: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.titleLabel.textColor = .black
+
+        let view = UIView()
+        view.backgroundColor = .clear
+        self.selectedBackgroundView = view
+    }
+}
+
+class LineTableViewControllerRow: UITableViewCell {
+    var line: Line? {
+        didSet {
+            guard let line = self.line else { return }
+            self.textLabel?.text = String(format: "Line %@", line.line)
+            self.backgroundColor = App.color(for: line.line)
+            self.textLabel?.textColor = App.color(for: line.line).contrast
+        }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
 
         let view = UIView()
         view.backgroundColor = .clear

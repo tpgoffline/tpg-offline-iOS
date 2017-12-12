@@ -238,6 +238,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         self.searchText = searchController.searchBar.text ?? ""
+        App.log(string: "Stops: Search: \(self.searchText) - \(self.searchMode)")
         if self.searchMode == .addresses {
             lookForAdresses()
         }
@@ -252,6 +253,7 @@ extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate
         default:
             return
         }
+        App.log(string: "Stops: Search: \(self.searchText) - \(self.searchMode)")
         if self.searchMode == .addresses {
             lookForAdresses()
         }
@@ -382,7 +384,10 @@ extension StopsTableViewController {
                 cell.isFavorite = true
                 cell.isNearestStops = false
             default:
-                guard let name = App.sortedStops[App.sortedStops.keys.sorted()[indexPath.section - 2]]?[safe: indexPath.row] else {
+                guard let key = App.sortedStops.keys.sorted()[safe: indexPath.section - 2] else {
+                    return UITableViewCell()
+                }
+                guard let name = App.sortedStops[key]?[safe: indexPath.row] else {
                     return UITableViewCell()
                 }
                 stop = App.stops.filter({$0.name == name})[0]
