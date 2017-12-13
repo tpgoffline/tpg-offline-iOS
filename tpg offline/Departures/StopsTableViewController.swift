@@ -76,26 +76,29 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
 
-            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
-                if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
-                    UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
-                    let alertController = UIAlertController(title: "New offline departures available".localized, message: "You can download them in Settings".localized, preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
-                    self.present(alertController, animated: true, completion: nil)
-                }
+            if !(UserDefaults.standard.bool(forKey: "notFirstLaunch")) {
+                App.log(string: "First launch !!!")
             }
-
             if #available(iOS 10.3, *), self.askForRating {
                 SKStoreReviewController.requestReview()
+
+                Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
+                    if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
+                        UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
+                        let alertController = UIAlertController(title: "New offline departures available".localized, message: "You can download them in Settings".localized, preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
             }
         }
-        
+
         DispatchQueue.main.async {
             for stop in App.stops where App.indexedStops.index(of: stop.appId) == nil {
                 let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
                 attributeSet.title = stop.name
                 attributeSet.contentDescription = ""
-                
+
                 let item = CSSearchableItem(
                     uniqueIdentifier: "\(stop.appId)",
                     domainIdentifier: "com.dacostafaro",
