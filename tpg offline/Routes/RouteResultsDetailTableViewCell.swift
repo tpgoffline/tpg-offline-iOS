@@ -28,16 +28,18 @@ class RouteResultDetailsTableViewCell: UITableViewCell {
 
             self.lineLabel.text = String(format: "Line %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)", "\(destinationName)")
             if section.journey?.compagny == "TPG" {
-                self.lineBackgroundView.backgroundColor = App.color(for: section.journey?.lineCode ?? "")
-                self.lineLabel.textColor = App.color(for: section.journey?.lineCode ?? "").contrast
+                self.lineBackgroundView.backgroundColor = App.darkMode ? App.cellBackgroundColor :
+                    App.color(for: section.journey?.lineCode ?? "")
+                self.lineLabel.textColor = App.darkMode ? App.color(for: section.journey?.lineCode ?? "") :
+                    App.color(for: section.journey?.lineCode ?? "").contrast
             } else if section.journey?.compagny == "SBB" {
                 self.lineLabel.text = String(format: "SBB %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)",
                     "\(destinationName)")
-                self.lineBackgroundView.backgroundColor = .red
-                self.lineLabel.textColor = .white
+                self.lineBackgroundView.backgroundColor = App.darkMode ? App.cellBackgroundColor : .red
+                self.lineLabel.textColor = App.darkMode ? .red : .white
             } else {
-                self.lineBackgroundView.backgroundColor = .black
-                self.lineLabel.textColor = .white
+                self.lineBackgroundView.backgroundColor = App.darkMode ? .black : .white
+                self.lineLabel.textColor = App.darkMode ? .white : .black
             }
 
             let dateFormatter = DateFormatter()
@@ -56,6 +58,8 @@ class RouteResultDetailsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.backgroundColor = App.cellBackgroundColor
 
         selectionStyle = .none
         departureStopLabel.textColor = App.textColor

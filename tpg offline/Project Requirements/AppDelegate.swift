@@ -17,11 +17,11 @@ enum TouchActions: String {
     case departures = "departures"
     case disruptions = "disruptions"
     case routes = "routes"
-    case maps = "maps"
+    case orientation = "orientation"
 
     var number: Int {
         switch self {
-        case .maps:
+        case .orientation:
             return 3
         case .routes:
             return 2
@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             Fabric.with([Crashlytics.self])
         #endif
+
+        App.darkMode = UserDefaults.standard.bool(forKey: "darkMode")
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/replacementsNames.json").responseJSON { (response) in
             if let json = response.result.value as? [String: String] {
@@ -80,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabController.selectedIndex = App.defaultTab
         }
 
+        UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
         App.loadLines()
         return App.loadStops()
     }

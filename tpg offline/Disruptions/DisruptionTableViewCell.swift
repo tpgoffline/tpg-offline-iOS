@@ -21,14 +21,10 @@ class DisruptionTableViewCell: UITableViewCell {
     var disruption: Disruption? = nil {
         didSet {
             guard let disruption = disruption else { return }
-            self.color = App.linesColor.filter({ $0.line == disruption.line })[safe: 0]?.color ?? .black
+            self.color = App.color(for: disruption.line)
 
-            if self.color.contrast != .white {
-                self.color = self.color.darken(by: 0.2)!
-            }
-
-            titleLabel.backgroundColor = .white
-            descriptionLabel.backgroundColor = .white
+            titleLabel.backgroundColor = App.cellBackgroundColor
+            descriptionLabel.backgroundColor = App.cellBackgroundColor
             titleLabel.textColor = color
             descriptionLabel.textColor = color
 
@@ -48,8 +44,8 @@ class DisruptionTableViewCell: UITableViewCell {
         didSet {
             guard let devDisruption = devDisruption else { return }
 
-            titleLabel.backgroundColor = .white
-            descriptionLabel.backgroundColor = .white
+            titleLabel.backgroundColor = App.cellBackgroundColor
+            descriptionLabel.backgroundColor = App.cellBackgroundColor
             titleLabel.textColor = App.textColor
             descriptionLabel.textColor = App.textColor
 
@@ -65,6 +61,7 @@ class DisruptionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        self.backgroundColor = App.cellBackgroundColor
         titleLabel.backgroundColor = .gray
         descriptionLabel.backgroundColor = .gray
         titleLabel.text = "   "

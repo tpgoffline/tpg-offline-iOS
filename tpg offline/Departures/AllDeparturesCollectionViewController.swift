@@ -97,6 +97,10 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
 
+        if App.darkMode {
+            collectionView?.backgroundColor = App.cellBackgroundColor
+        }
+
         refresh()
     }
 
@@ -176,7 +180,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                                                                                    for: indexPath) as? AllDeparturesHeader else {
                                                                                     return UICollectionViewCell()
             }
-            headerView.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+            headerView.backgroundColor = App.darkMode ? .black : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
             headerView.title.text = ""
             return headerView
         } else {
@@ -195,7 +199,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                 dateFormatter.timeStyle = .short
                 headerView.title.text = dateFormatter.string(from: dateComponents.date ?? Date())
                 headerView.title.accessibilityLabel = dateFormatter.string(from: dateComponents.date ?? Date())
-                headerView.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+                headerView.backgroundColor = App.darkMode ? .black : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
                 headerView.title.textColor = .white
 
                 return headerView

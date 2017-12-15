@@ -80,36 +80,25 @@ extension String {
 #endif
 
 extension UIColor {
-    func darken(by percentage: CGFloat) -> UIColor? {
-        var h: CGFloat = 0
-        var s: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-
-        if getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
-            if percentage > 0 {
-                b = min(b - percentage, 1.0)
-            }
-            return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
-        }
-
-        return nil
+    func lighten(by percentage: CGFloat=0.3) -> UIColor {
+        return self.adjust(by: abs(percentage) )
     }
 
-    func lighten(by percentage: CGFloat) -> UIColor? {
-        var h: CGFloat = 0
-        var s: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
+    func darken(by percentage: CGFloat=0.3) -> UIColor {
+        return self.adjust(by: -1 * abs(percentage) )
+    }
 
-        if getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
-            if percentage > 0 {
-                b = min(b + percentage, 1.0)
-            }
-            return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
+    func adjust(by percentage: CGFloat=0.3) -> UIColor {
+        var r: CGFloat=0, g: CGFloat=0, b: CGFloat=0, a: CGFloat=0
+        if (self.getRed(&r, green: &g, blue: &b, alpha: &a)) {
+            return UIColor(red: min(r + percentage, 1.0),
+                           green: min(g + percentage, 1.0),
+                           blue: min(b + percentage, 1.0),
+                           alpha: a)
+        } else {
+            print("Color adjustement failed")
+            return self
         }
-
-        return nil
     }
 
     public var contrast: UIColor {
@@ -287,14 +276,16 @@ extension UIColor {
 
 extension NSMutableAttributedString {
     @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
-        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+                     NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor] as [NSAttributedStringKey: Any]
         let boldString = NSMutableAttributedString(string: "\(text)", attributes: attrs)
         self.append(boldString)
         return self
     }
 
     @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
-        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body),
+                     NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor] as [NSAttributedStringKey: Any]
         let normal = NSAttributedString(string: text, attributes: attrs)
         self.append(normal)
         return self

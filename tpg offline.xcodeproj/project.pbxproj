@@ -20,6 +20,7 @@
 		AD1E48581FAE0D0700596076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
 		AD1E48591FAE0D0A00596076 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
+		AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */; };
 		AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
 		AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */; };
 		AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7E1F41CA7F00E84220 /* DeparturesTableViewCell.swift */; };
@@ -104,7 +105,7 @@
 		ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */; };
 		ADF9C6771F9BB3C800AE17A4 /* Disruptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */; };
 		ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */; };
-		ADF9C6811F9BB4A500AE17A4 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6831F9BB4A500AE17A4 /* Maps.storyboard */; };
+		ADF9C6811F9BB4A500AE17A4 /* Orientation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6831F9BB4A500AE17A4 /* Orientation.storyboard */; };
 		ADF9C6861F9BB4CF00AE17A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */; };
 		ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */; };
@@ -176,6 +177,7 @@
 		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewController.swift; sourceTree = "<group>"; };
 		AD37FE611F41CA4600E84220 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteTableViewCell.swift; sourceTree = "<group>"; };
 		AD37FE7E1F41CA7F00E84220 /* DeparturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesTableViewCell.swift; sourceTree = "<group>"; };
@@ -257,8 +259,8 @@
 		ADF9C6781F9BB3C800AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Disruptions.storyboard; sourceTree = "<group>"; };
 		ADF9C67B1F9BB3CB00AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Disruptions.strings; sourceTree = "<group>"; };
 		ADF9C67D1F9BB40500AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Routes.storyboard; sourceTree = "<group>"; };
-		ADF9C6821F9BB4A500AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Maps.storyboard; sourceTree = "<group>"; };
-		ADF9C6851F9BB4A800AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Maps.strings; sourceTree = "<group>"; };
+		ADF9C6821F9BB4A500AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Orientation.storyboard; sourceTree = "<group>"; };
+		ADF9C6851F9BB4A800AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Orientation.strings; sourceTree = "<group>"; };
 		ADF9C6871F9BB4CF00AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		ADF9C68A1F9BB4D200AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
 		ADF9C68E1F9BDFEB00AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -374,7 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				AD3DF3AD1FB1F9D100F2AFA5 /* tpg offline.entitlements */,
-				AD8CF77D1F979B3000DE9CBC /* Maps */,
+				AD8CF77D1F979B3000DE9CBC /* Orientation */,
 				AD37FE7B1F41CA7F00E84220 /* Departures */,
 				AD37FE9D1F41CA8000E84220 /* Disruptions */,
 				AD37FE881F41CA8000E84220 /* JSON Models */,
@@ -392,8 +394,8 @@
 				AD37FE811F41CA7F00E84220 /* DeparturesViewController.swift */,
 				AD37FE821F41CA7F00E84220 /* DetailDeparturesViewController.swift */,
 				AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */,
-				AD37FE7C1F41CA7F00E84220 /* Cells */,
 				ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */,
+				AD37FE7C1F41CA7F00E84220 /* Cells */,
 			);
 			path = Departures;
 			sourceTree = "<group>";
@@ -457,7 +459,7 @@
 				AD37FE9B1F41CA8000E84220 /* Departures.storyboard */,
 				AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */,
 				AD37FE951F41CA8000E84220 /* Main.storyboard */,
-				ADF9C6831F9BB4A500AE17A4 /* Maps.storyboard */,
+				ADF9C6831F9BB4A500AE17A4 /* Orientation.storyboard */,
 				ADE9830E1F933DED0069EACA /* Maps.xcassets */,
 			);
 			path = UI;
@@ -503,13 +505,14 @@
 			path = Disruptions;
 			sourceTree = "<group>";
 		};
-		AD8CF77D1F979B3000DE9CBC /* Maps */ = {
+		AD8CF77D1F979B3000DE9CBC /* Orientation */ = {
 			isa = PBXGroup;
 			children = (
 				AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */,
 				AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */,
+				AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */,
 			);
-			path = Maps;
+			path = Orientation;
 			sourceTree = "<group>";
 		};
 		ADBC1C6C1FAF0E2700162195 /* tpg offline watchOS */ = {
@@ -711,7 +714,7 @@
 				ADE9830F1F933DED0069EACA /* Maps.xcassets in Resources */,
 				AD37FEC01F41CDA300E84220 /* Main.storyboard in Resources */,
 				ADF9C6771F9BB3C800AE17A4 /* Disruptions.storyboard in Resources */,
-				ADF9C6811F9BB4A500AE17A4 /* Maps.storyboard in Resources */,
+				ADF9C6811F9BB4A500AE17A4 /* Orientation.storyboard in Resources */,
 				ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */,
 				ADA14E641FDEC4E100945249 /* lines.json in Resources */,
 			);
@@ -840,6 +843,7 @@
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
 				ADA14E661FDEC4FE00945249 /* Line.swift in Sources */,
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
+				AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */,
 				AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */,
 				AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */,
 				AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */,
@@ -978,13 +982,13 @@
 			name = Routes.storyboard;
 			sourceTree = "<group>";
 		};
-		ADF9C6831F9BB4A500AE17A4 /* Maps.storyboard */ = {
+		ADF9C6831F9BB4A500AE17A4 /* Orientation.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				ADF9C6821F9BB4A500AE17A4 /* Base */,
 				ADF9C6851F9BB4A800AE17A4 /* fr */,
 			);
-			name = Maps.storyboard;
+			name = Orientation.storyboard;
 			sourceTree = "<group>";
 		};
 		ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */ = {

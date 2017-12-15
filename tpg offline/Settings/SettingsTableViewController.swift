@@ -47,6 +47,9 @@ class SettingsTableViewController: UITableViewController {
         self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
             self.performSegue(withIdentifier: "showCredits", sender: self)
         }))
+        self.settings.append(Setting("Dark Mode", icon: #imageLiteral(resourceName: "moon"), action: { (_) in
+            self.darkMode()
+        }))
         self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
             App.log(string: "Settings: Give feedback")
             let mailComposerVC = MFMailComposeViewController()
@@ -62,10 +65,19 @@ class SettingsTableViewController: UITableViewController {
         }))
         self.settings.append(Setting("Github webpage".localized, icon: #imageLiteral(resourceName: "github"), action: { (_) in
             let vc = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: false)
+            if App.darkMode, #available(iOS 10.0, *) {
+                vc.preferredBarTintColor = .black
+            }
             vc.delegate = self
 
             self.present(vc, animated: true)
         }))
+
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+            self.navigationController?.navigationBar.barStyle = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,6 +96,7 @@ class SettingsTableViewController: UITableViewController {
         cell.textLabel?.textColor = App.textColor
         cell.detailTextLabel?.text = ""
         cell.detailTextLabel?.textColor = App.textColor
+        cell.backgroundColor = App.cellBackgroundColor
         if setting.title == "Update departures".localized {
             switch self.offlineDeparturesStatus {
             case .notDownloading:
@@ -97,9 +110,29 @@ class SettingsTableViewController: UITableViewController {
                 cell.detailTextLabel?.text = String(format: "Processing %@/%@".localized, "\(done)", "\(total)")
             }
         }
+        if setting.title == "Dark Mode".localized {
+            let lightSwitch = UISwitch(frame: CGRect.zero) as UISwitch
+            lightSwitch.isOn = UserDefaults.standard.bool(forKey: "darkMode")
+            lightSwitch.addTarget(self, action: #selector(self.darkMode), for: .valueChanged)
+            cell.accessoryView = lightSwitch
+            if UserDefaults.standard.bool(forKey: "darkMode") != App.darkMode {
+                cell.detailTextLabel?.text = "App restart needed".localized
+            }
+        }
         cell.imageView?.image = setting.icon.maskWith(color: App.textColor)
 
+        if App.darkMode {
+            let selectedView = UIView()
+            selectedView.backgroundColor = .black
+            cell.selectedBackgroundView = selectedView
+        }
+
         return cell
+    }
+
+    @objc func darkMode() {
+        UserDefaults.standard.set(!(UserDefaults.standard.bool(forKey: "darkMode")), forKey: "darkMode")
+        self.tableView.reloadRows(at: [IndexPath(row: 3, section: 0)], with: .automatic)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -84,6 +84,8 @@ class DeparturesTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        self.backgroundColor = App.cellBackgroundColor
+
         destinationLabel.text = "---"
         rightTimeLabel.text = "--'"
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.changeOpacity), userInfo: nil, repeats: true)

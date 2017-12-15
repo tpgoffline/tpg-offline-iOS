@@ -57,6 +57,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.scopeButtonTitles = ["Bus Stop".localized, "Address".localized]
         searchController.searchBar.delegate = self
+        searchController.searchBar.keyboardAppearance = App.darkMode ? .dark : .light
 
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -78,6 +79,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
             if !(UserDefaults.standard.bool(forKey: "notFirstLaunch")) {
                 App.log(string: "First launch !!!")
+                UserDefaults.standard.set(true, forKey: "notFirstLaunch")
             }
             if #available(iOS 10.3, *), self.askForRating {
                 SKStoreReviewController.requestReview()
@@ -132,6 +134,12 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
+
+        if App.darkMode {
+            self.tableView.sectionIndexBackgroundColor = App.cellBackgroundColor
+            self.navigationController?.navigationBar.barStyle = .black
+            self.tableView.backgroundColor = .black
+        }
     }
 
     func getNewStops(_ updatedMD5: String) {
@@ -203,7 +211,10 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             "region": "ch",
             "language": Locale.preferredLanguages[0]
         ]
-        self.addressRequest = Alamofire.request("https://maps.googleapis.com/maps/api/geocode/json", method: .get, parameters: requestParameters).responseData(completionHandler: { (response) in
+        self.addressRequest = Alamofire.request("https://maps.googleapis.com/maps/api/geocode/json",
+                                                method: .get,
+                                                parameters: requestParameters)
+            .responseData(completionHandler: { (response) in
             if let data = response.data {
                 let jsonDecoder = JSONDecoder()
 
@@ -427,16 +438,24 @@ extension StopsTableViewController {
             return nil
         }
         if section == 0 {
-            headerCell?.backgroundColor = #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1)
-            headerCell?.textLabel?.text = "Nearest stops".localized
+            headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1)
+            let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+                                   NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1) : UIColor.white] as [NSAttributedStringKey: Any]
+            headerCell?.textLabel?.attributedText = NSAttributedString(string: "Nearest stops".localized, attributes: titleAttributes)
+
         } else if section == 1 {
-            headerCell?.backgroundColor = #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1)
+            headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1)
             headerCell?.textLabel?.text = "Favorites".localized
+            let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+                                   NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1) : UIColor.white] as [NSAttributedStringKey: Any]
+            headerCell?.textLabel?.attributedText = NSAttributedString(string: "Favorites".localized, attributes: titleAttributes)
         } else {
-            headerCell?.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-            headerCell?.textLabel?.text = App.sortedStops.keys.sorted()[section - 2]
+            headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+            let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+                                   NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : UIColor.white] as [NSAttributedStringKey: Any]
+            headerCell?.textLabel?.attributedText =
+                NSAttributedString(string: App.sortedStops.keys.sorted()[section - 2], attributes: titleAttributes)
         }
-        headerCell?.textLabel?.textColor = .white
 
         return headerCell
     }

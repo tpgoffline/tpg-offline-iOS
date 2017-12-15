@@ -72,6 +72,11 @@ class DisruptionsTableViewController: UITableViewController {
                             target: self,
                             action: #selector(self.refreshDisruptions))
         ]
+        if App.darkMode {
+            self.navigationController?.navigationBar.barStyle = .black
+            self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -180,14 +185,15 @@ class DisruptionsTableViewController: UITableViewController {
 
         if requestStatus != .loading {
             if section > ((self.devDisruptions?.count ?? 0) - 1) {
-                headerCell?.backgroundColor = App.linesColor.filter({$0.line == (self.keys[section - (self.devDisruptions?.count ?? 0)])})[safe:
-                    0]?.color ?? .white
+                let lineColor = App.color(for: (self.keys[section - (self.devDisruptions?.count ?? 0)]))
+                headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : lineColor
                 headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section - (self.devDisruptions?.count ?? 0)])")
-                headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+                headerCell?.textLabel?.textColor = App.darkMode ? lineColor :
+                    headerCell?.backgroundColor?.contrast
             } else {
-                headerCell?.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+                headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
                 headerCell?.textLabel?.text = [String](self.devDisruptions!.keys)[section]
-                headerCell?.textLabel?.textColor = .white
+                headerCell?.textLabel?.textColor = App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white
             }
         }
         return headerCell

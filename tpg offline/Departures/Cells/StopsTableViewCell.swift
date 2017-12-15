@@ -18,6 +18,14 @@ class StopsTableViewCell: UITableViewCell {
         self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)))
         self.backgroundColor = .white
 
+        if App.darkMode {
+            self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: .white))
+            self.backgroundColor = App.cellBackgroundColor
+            let selectedView = UIView()
+            selectedView.backgroundColor = .black
+            self.selectedBackgroundView = selectedView
+        }
+
         let titleAttributes: [NSAttributedStringKey: Any]
         let subtitleAttributes: [NSAttributedStringKey: Any]
         if stop.subTitle != "", !isNearestStops {

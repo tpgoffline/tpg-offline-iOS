@@ -76,6 +76,11 @@ class RouteResultsTableViewController: UITableViewController {
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
+
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
     }
 
     func configureTabBarItems() {

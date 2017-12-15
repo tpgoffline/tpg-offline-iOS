@@ -15,6 +15,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
         self.delegate = self
         self.tabBar.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+        self.tabBar.barStyle = App.darkMode ? .black : .default
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

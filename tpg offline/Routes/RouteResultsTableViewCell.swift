@@ -76,6 +76,14 @@ class RouteResultsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        self.backgroundColor = App.cellBackgroundColor
+
+        if App.darkMode {
+            let selectedView = UIView()
+            selectedView.backgroundColor = .black
+            self.selectedBackgroundView = selectedView
+        }
+
         numberOfConnectionsLabel.text = "--"
         departureHourLabel.text = "--:--"
         arrivalHourLabel.text = "--:--"

@@ -55,6 +55,9 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
 
                 self.present(vc, animated: true)
             }])
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,6 +82,7 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "creditCell", for: indexPath)
 
+        cell.backgroundColor = App.cellBackgroundColor
         cell.textLabel?.textColor = App.textColor
         cell.detailTextLabel?.textColor = App.textColor
         cell.textLabel?.numberOfLines = 0
@@ -95,9 +99,9 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-        headerCell?.backgroundColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+        headerCell?.backgroundColor = App.darkMode ? .black : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
         headerCell?.textLabel?.text = titles[section]
-        headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+        headerCell?.textLabel?.textColor = App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : headerCell?.backgroundColor?.contrast
 
         return headerCell
     }

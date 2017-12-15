@@ -12,4 +12,7 @@ struct Line: Codable {
     var courses: [[Int]]
     var snotpgURL: String
     var line: String
+    var departureName: String
+    var arrivalName: String
+    var textFR: String?
 }

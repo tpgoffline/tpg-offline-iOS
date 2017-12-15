@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MapsTableViewController: UITableViewController {
+class OrientationTableViewController: UITableViewController {
 
     var maps: [String: UIImage] = [
         "Urban map".localized: #imageLiteral(resourceName: "urbainMap"),
@@ -27,19 +27,35 @@ class MapsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Maps".localized
+        title = "Orientation".localized
+        if App.darkMode {
+            self.navigationController?.navigationBar.barStyle = .black
+            self.tableView.backgroundColor = .black
+        } else {
+            self.navigationController?.navigationBar.barStyle = .default
+        }
+    }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
         }
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if App.darkMode {
+            self.navigationController?.navigationBar.barStyle = .black
+            self.tableView.backgroundColor = .black
+        } else {
+            self.navigationController?.navigationBar.barStyle = .default
+            self.navigationController?.navigationBar.barTintColor = nil
+        }
     }
 
     // MARK: - Table view data source
@@ -87,6 +103,12 @@ class MapsTableViewController: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: false)
             destinationViewController.mapImage = row.mapImage
             destinationViewController.title = row.titleLabel.text
+        } else if segue.identifier == "showLine" {
+            guard let destinationViewController = segue.destination as? LineViewController else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            guard let row = tableView.cellForRow(at: indexPath) as? LineTableViewControllerRow else { return }
+            tableView.deselectRow(at: indexPath, animated: false)
+            destinationViewController.line = row.line
         }
     }
 }
@@ -94,6 +116,7 @@ class MapsTableViewController: UITableViewController {
 class MapsTableViewControllerRow: UITableViewCell {
     @IBOutlet private weak var mapImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
 
     var mapImage: UIImage? {
         get {
@@ -105,8 +128,8 @@ class MapsTableViewControllerRow: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.titleLabel.textColor = .black
-
+        self.titleLabel.textColor = App.textColor
+        self.visualEffectView.effect = UIBlurEffect(style: App.darkMode ? .dark : .light)
         let view = UIView()
         view.backgroundColor = .clear
         self.selectedBackgroundView = view
@@ -118,8 +141,13 @@ class LineTableViewControllerRow: UITableViewCell {
         didSet {
             guard let line = self.line else { return }
             self.textLabel?.text = String(format: "Line %@", line.line)
-            self.backgroundColor = App.color(for: line.line)
-            self.textLabel?.textColor = App.color(for: line.line).contrast
+            if App.darkMode {
+                self.backgroundColor = App.cellBackgroundColor
+                self.textLabel?.textColor = App.color(for: line.line)
+            } else {
+                self.backgroundColor = App.color(for: line.line)
+                self.textLabel?.textColor = App.color(for: line.line).contrast
+            }
         }
     }
 

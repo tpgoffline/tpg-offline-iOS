@@ -34,6 +34,11 @@ class RouteResultsDetailTableViewController: UITableViewController {
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
+
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,7 +92,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "warningCell", for: indexPath)
 
             let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-                                   NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
+                                   NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor] as [NSAttributedStringKey: Any]
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.attributedText = NSAttributedString(string: "Regional route".localized, attributes: titleAttributes)
             var zonesText = ""
@@ -101,7 +106,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
             cell.detailTextLabel?.numberOfLines = 0
             cell.selectionStyle = .none
 
-            cell.backgroundColor = #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1)
+            cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1)
             return cell
         } else if indexPath.section == 1 {
             if connection?.sections?[safe: indexPath.row]?.walk != nil {
@@ -112,8 +117,10 @@ class RouteResultsDetailTableViewController: UITableViewController {
                 } else {
                     cell.textLabel?.text = "Walk".localized
                 }
+                cell.textLabel?.textColor = App.textColor
                 cell.imageView?.image = #imageLiteral(resourceName: "transfer").maskWith(color: App.textColor)
                 cell.selectionStyle = .none
+                cell.backgroundColor = App.cellBackgroundColor
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultDetailCell", for: indexPath)

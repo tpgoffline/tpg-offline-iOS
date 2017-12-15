@@ -17,6 +17,7 @@ class RouteStepViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var reminderButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var buttonBackgroundView: UIView!
 
     var section: RouteConnection.Sections!
     var color: UIColor = .black
@@ -70,6 +71,12 @@ class RouteStepViewController: UIViewController {
         } else {
             self.stackView.axis = .vertical
         }
+
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+            self.buttonBackgroundView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,6 +129,7 @@ class RouteStepViewController: UIViewController {
                 alertController.addTextField { textField in
                     textField.placeholder = "Number of minutes".localized
                     textField.keyboardType = .numberPad
+                    textField.keyboardAppearance = App.darkMode ? .dark : .light
                 }
 
                 let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in
@@ -202,7 +210,7 @@ class RouteStepViewController: UIViewController {
                 notification.alertBody = String(format: "Take the line %@ to %@ now".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName)
             } else {
                 notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName,
-                    "\(timeBefore)")
+                                                "\(timeBefore)")
             }
             notification.alertAction = "departureNotification"
             notification.soundName = UILocalNotificationDefaultSoundName
@@ -263,11 +271,17 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
             ?? (routeResultsStop?.station.name ?? "")
 
         if titleSelected == name {
-            cell.backgroundColor = self.color
-            titleAttributes[.foregroundColor] = self.color.contrast
-            subtitleAttributes[.foregroundColor] = self.color.contrast
+            if App.darkMode {
+                cell.backgroundColor = App.cellBackgroundColor
+                titleAttributes[.foregroundColor] = self.color
+                subtitleAttributes[.foregroundColor] = self.color
+            } else {
+                cell.backgroundColor = self.color
+                titleAttributes[.foregroundColor] = self.color.contrast
+                subtitleAttributes[.foregroundColor] = self.color.contrast
+            }
         } else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = App.cellBackgroundColor
         }
 
         cell.textLabel?.attributedText = NSAttributedString(string: name,
@@ -284,6 +298,12 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.detailTextLabel?.attributedText = NSAttributedString(string: dateFormatter.string(from: hour),
                                                                   attributes: subtitleAttributes)
+
+        if App.darkMode {
+            let selectedView = UIView()
+            selectedView.backgroundColor = .black
+            cell.selectedBackgroundView = selectedView
+        }
 
         return cell
     }

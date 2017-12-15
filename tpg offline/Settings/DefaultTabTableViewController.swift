@@ -14,6 +14,9 @@ class DefaultTabTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.title = "Default tab".localized
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +34,7 @@ class DefaultTabTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
+        cell.backgroundColor = App.cellBackgroundColor
         cell.imageView?.image = tab.image?.maskWith(color: App.textColor)
         cell.textLabel?.text = tab.title
         cell.textLabel?.textColor = App.textColor

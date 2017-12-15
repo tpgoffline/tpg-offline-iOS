@@ -19,6 +19,7 @@ class DetailDeparturesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var buttonsView: UIView!
 
     var departure: Departure?
     var busRouteGroup: BusRouteGroup? {
@@ -82,15 +83,21 @@ class DetailDeparturesViewController: UIViewController {
 
         title = String(format: "Line %@".localized, "\(departure?.line.code ?? "?#!".localized)")
 
-        if let color = self.color {
-            self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: color.contrast), for: .normal)
-            self.allDeparturesButton.setImage(#imageLiteral(resourceName: "clockTabBar").maskWith(color: color.contrast), for: .normal)
+        if App.darkMode {
+            self.buttonsView.backgroundColor = .black
+            self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
 
-            self.reminderButton.setTitleColor(color.contrast, for: .normal)
-            self.reminderButton.backgroundColor = color
+        if let color = self.color {
+            self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+            self.allDeparturesButton.setImage(#imageLiteral(resourceName: "clockTabBar").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+
+            self.reminderButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            self.reminderButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
             self.reminderButton.cornerRadius = 5
-            self.allDeparturesButton.setTitleColor(color.contrast, for: .normal)
-            self.allDeparturesButton.backgroundColor = color
+            self.allDeparturesButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            self.allDeparturesButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
             self.allDeparturesButton.cornerRadius = 5
         }
 
@@ -225,6 +232,7 @@ class DetailDeparturesViewController: UIViewController {
                 alertController.addTextField { textField in
                     textField.placeholder = "Number of minutes".localized
                     textField.keyboardType = .numberPad
+                    textField.keyboardAppearance = App.darkMode ? .dark : .light
                 }
 
                 let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in

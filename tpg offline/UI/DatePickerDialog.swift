@@ -37,11 +37,14 @@ open class DatePickerDialog: UIView {
     // MARK: - Dialog initialization
     public init(textColor: UIColor = UIColor.black, buttonColor: UIColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1), font: UIFont = .boldSystemFont(ofSize: 15), locale: Locale? = nil, showCancelButton:Bool = true) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-        self.textColor = textColor
         self.buttonColor = buttonColor
         self.font = font
         self.showCancelButton = showCancelButton
         self.locale = locale
+        
+        if App.darkMode {
+            self.textColor = .white
+        }
         setupView()
     }
     
@@ -165,7 +168,11 @@ open class DatePickerDialog: UIView {
         gradient.colors = [UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor,
                            UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1).cgColor,
                            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor]
-        
+        if App.darkMode {
+            gradient.colors = [UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1).cgColor,
+                               UIColor(red: 22/255, green: 22/255, blue: 22/255, alpha: 1).cgColor,
+                               UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1).cgColor]
+        }
         let cornerRadius = kDatePickerDialogCornerRadius
         gradient.cornerRadius = cornerRadius
         dialogContainer.layer.insertSublayer(gradient, at: 0)
@@ -177,6 +184,10 @@ open class DatePickerDialog: UIView {
         // There is a line above the button
         let lineView = UIView(frame: CGRect(x: 0, y: dialogContainer.bounds.size.height - kDatePickerDialogDefaultButtonHeight - kDatePickerDialogDefaultButtonSpacerHeight, width: dialogContainer.bounds.size.width, height: kDatePickerDialogDefaultButtonSpacerHeight))
         lineView.backgroundColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1)
+        if App.darkMode {
+            dialogContainer.layer.borderColor = UIColor(red: 57/255, green: 57/255, blue: 57/255, alpha: 1).cgColor
+            lineView.backgroundColor = UIColor(red: 57/255, green: 57/255, blue: 57/255, alpha: 1)
+        }
         dialogContainer.addSubview(lineView)
         
         //Title

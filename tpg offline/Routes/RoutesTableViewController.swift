@@ -32,6 +32,12 @@ class RoutesTableViewController: UITableViewController {
         }
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
+
+        if App.darkMode {
+            self.navigationController?.navigationBar.barStyle = .black
+            self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
     }
 
     @objc func reverseStops() {
@@ -64,6 +70,9 @@ class RoutesTableViewController: UITableViewController {
             if indexPath.row == 3 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "routesButtonCell", for: indexPath) as? SearchButtonTableViewCell
                     else { return UITableViewCell() }
+                cell.backgroundColor = App.cellBackgroundColor
+                cell.button.backgroundColor = App.darkMode ? App.cellBackgroundColor.darken(by: 0.1) :  #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+                cell.button.setTitleColor(App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white, for: .normal)
                 cell.button.addTarget(self, action: #selector(self.search), for: .touchUpInside)
                 return cell
             } else {
@@ -74,6 +83,13 @@ class RoutesTableViewController: UITableViewController {
                 cell.textLabel?.textColor = App.textColor
                 cell.detailTextLabel?.numberOfLines = 0
                 cell.detailTextLabel?.textColor = App.textColor
+                cell.backgroundColor = App.cellBackgroundColor
+
+                if App.darkMode {
+                    let selectedView = UIView()
+                    selectedView.backgroundColor = .black
+                    cell.selectedBackgroundView = selectedView
+                }
 
                 switch indexPath.row {
                 case 0:

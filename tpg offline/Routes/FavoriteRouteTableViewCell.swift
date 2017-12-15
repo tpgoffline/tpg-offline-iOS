@@ -28,6 +28,7 @@ class FavoriteRouteTableViewCell: UITableViewCell {
 
         fromLabel.textColor = App.textColor
         toLabel.textColor = App.textColor
+        self.backgroundColor = App.cellBackgroundColor
 
         for image in images {
             image.image = image.image?.maskWith(color: App.textColor)

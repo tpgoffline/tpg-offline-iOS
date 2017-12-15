@@ -78,6 +78,11 @@ class DeparturesViewController: UIViewController {
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
+
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -318,16 +323,16 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         if count > 5 {
             guard let footerCell = tableView.dequeueReusableCell(withIdentifier: "footerCell") as? FooterDeparturesTableViewCell
                 else { return nil }
-            let color = App.linesColor.filter({$0.line == (departures?.lines[section] ?? "?#!")})[safe: 0]?.color ?? .white
+            let color = App.color(for: departures?.lines[section] ?? "?#!")
             if showMoreLines.contains(String(section)) {
                 footerCell.button.setTitle("Show less".localized, for: .normal)
             } else {
                 footerCell.button.setTitle("Show more".localized, for: .normal)
             }
-            footerCell.button.setTitleColor(color.contrast, for: .normal)
+            footerCell.button.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
             footerCell.button.tag = section
             footerCell.button.addTarget(self, action: #selector(self.addRemoveFromShowMore(button:)), for: .touchUpInside)
-            footerCell.button.backgroundColor = color
+            footerCell.button.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
             return footerCell
         }
         return nil
@@ -345,7 +350,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if self.requestStatus == .loading {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-            headerCell?.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+            headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
             headerCell?.textLabel?.text = ""
             return headerCell
         } else if self.requestStatus == any(of: .error, .noResults) {
@@ -355,9 +360,10 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         }
         let section = section - (self.noInternet ? 1 : 0)
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-        headerCell?.backgroundColor = App.linesColor.filter({$0.line == (departures?.lines[section] ?? "?#!".localized)})[safe: 0]?.color ?? .white
+        let color = App.color(for: departures?.lines[section] ?? "?#!".localized)
+        headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
         headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
-        headerCell?.textLabel?.textColor = headerCell?.backgroundColor?.contrast
+        headerCell?.textLabel?.textColor = App.darkMode ? color : color.contrast
 
         headerCell?.accessibilityLabel = String(format: "Departures for the line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
 
