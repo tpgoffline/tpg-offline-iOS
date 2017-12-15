@@ -89,6 +89,8 @@ class BusRouteTableViewCell: UITableViewCell {
             return
         }
 
+        self.stop = stop
+
         var color = color
 
         if color.contrast == .black {

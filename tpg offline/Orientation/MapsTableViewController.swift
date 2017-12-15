@@ -54,8 +54,8 @@ class OrientationTableViewController: UITableViewController {
             self.tableView.backgroundColor = .black
         } else {
             self.navigationController?.navigationBar.barStyle = .default
-            self.navigationController?.navigationBar.barTintColor = nil
         }
+        self.navigationController?.navigationBar.barTintColor = nil
     }
 
     // MARK: - Table view data source

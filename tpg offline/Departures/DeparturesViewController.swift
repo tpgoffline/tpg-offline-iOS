@@ -82,6 +82,7 @@ class DeparturesViewController: UIViewController {
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
+            self.view.backgroundColor = .black
         }
     }
 

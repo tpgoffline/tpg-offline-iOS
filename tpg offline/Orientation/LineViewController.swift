@@ -13,13 +13,11 @@ class LineViewController: UIViewController {
 
     @IBOutlet weak var departureLabel: UILabel!
     @IBOutlet weak var arrivalLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var waybackMachineButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
 
     @IBOutlet weak var arrowsImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
 
     var line: Line?
@@ -55,12 +53,10 @@ class LineViewController: UIViewController {
         self.departureLabel.textColor = App.textColor
         self.arrivalLabel.text = line.arrivalName
         self.arrivalLabel.textColor = App.textColor
-        self.descriptionLabel.text = line.textFR
-        self.descriptionLabel.textColor = App.textColor
 
         self.view.backgroundColor = App.cellBackgroundColor
         self.arrowsImageView.image = #imageLiteral(resourceName: "reverse").maskWith(color: App.textColor)
-        
+
         if line.snotpgURL != "" {
             waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: App.color(for: line.line)), for: .normal)
             waybackMachineButton.setTitle("Wayback Machine".localized, for: .normal)
@@ -78,10 +74,10 @@ class LineViewController: UIViewController {
             vc.preferredBarTintColor = .black
         }
         vc.delegate = self
-        
+
         self.present(vc, animated: true)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let line = self.line else { return }
@@ -102,7 +98,7 @@ class LineViewController: UIViewController {
             }
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if #available(iOS 11.0, *) {
@@ -116,6 +112,7 @@ class LineViewController: UIViewController {
         } else {
             self.navigationController?.navigationBar.barStyle = .default
         }
+        self.navigationController?.navigationBar.barTintColor = nil
         UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
     }
 
@@ -131,6 +128,17 @@ class LineViewController: UIViewController {
         } else {
             self.stackView.axis = .vertical
             self.stackView.distribution = .fill
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDepartures" {
+            guard let destinationViewController = segue.destination as? DeparturesViewController else {
+                return
+            }
+            let indexPath = tableView.indexPathForSelectedRow!
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            destinationViewController.stop = (tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell)?.stop
         }
     }
 }
