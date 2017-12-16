@@ -16,6 +16,7 @@ class DefaultTabTableViewController: UITableViewController {
         self.title = "Default tab".localized
         if App.darkMode {
             self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
         }
     }
 

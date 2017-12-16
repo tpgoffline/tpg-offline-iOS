@@ -47,7 +47,7 @@ class SettingsTableViewController: UITableViewController {
         self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
             self.performSegue(withIdentifier: "showCredits", sender: self)
         }))
-        self.settings.append(Setting("Dark Mode", icon: #imageLiteral(resourceName: "moon"), action: { (_) in
+        self.settings.append(Setting("Dark Mode".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
             self.darkMode()
         }))
         self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
