@@ -26,6 +26,7 @@ class StopsForRouteTableViewController: StopsTableViewController {
         self.tableView.deselectRow(at: indexPath, animated: true)
         self.searchController.searchBar.resignFirstResponder()
         let stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop
+        App.log(string: "Selected \(stop?.code ?? "#!?") stop")
         if isFrom {
             viewController.route.from = stop
         } else {

@@ -56,6 +56,8 @@ struct App {
         }
     }
 
+    static var apnsToken: String = ""
+
     static var darkMode: Bool = false
 
     static var indexedStops: [Int] {

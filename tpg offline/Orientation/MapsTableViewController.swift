@@ -140,7 +140,7 @@ class LineTableViewControllerRow: UITableViewCell {
     var line: Line? {
         didSet {
             guard let line = self.line else { return }
-            self.textLabel?.text = String(format: "Line %@", line.line)
+            self.textLabel?.text = String(format: "Line %@".localized, line.line)
             if App.darkMode {
                 self.backgroundColor = App.cellBackgroundColor
                 self.textLabel?.textColor = App.color(for: line.line)

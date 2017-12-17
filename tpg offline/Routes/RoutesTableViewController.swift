@@ -156,10 +156,13 @@ class RoutesTableViewController: UITableViewController {
         }
         switch indexPath.row {
         case 0:
+            App.log(string: "Selected from stop select")
             performSegue(withIdentifier: "showStopsForRoute", sender: indexPath)
         case 1:
+            App.log(string: "Selected to stop select")
             performSegue(withIdentifier: "showStopsForRoute", sender: indexPath)
         case 2:
+            App.log(string: "Selected date select")
             DatePickerDialog(showCancelButton: false).show("Select date".localized,
                                                            doneButtonTitle: "OK".localized,
                                                            cancelButtonTitle: "Cancel".localized,

@@ -45,6 +45,7 @@ class DisruptionsTableViewController: UITableViewController {
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
+        tableView.allowsSelection = false
 
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -67,21 +68,32 @@ class DisruptionsTableViewController: UITableViewController {
         refreshControl?.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
 
         navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: #imageLiteral(resourceName: "binoculars"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(self.pushDisruptionsMonitoring),
+                            accessbilityLabel: "Disruptions monitoring".localized),
             UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
-                            action: #selector(self.refreshDisruptions))
+                            action: #selector(self.refreshDisruptions),
+                            accessbilityLabel: "Reload departures".localized)
         ]
         if App.darkMode {
             self.navigationController?.navigationBar.barStyle = .black
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
         }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @objc func pushDisruptionsMonitoring() {
+        performSegue(withIdentifier: "pushDisruptionsMonitoring", sender: self)
     }
 
     @objc func refreshDisruptions() {

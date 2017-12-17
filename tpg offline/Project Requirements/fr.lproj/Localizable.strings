@@ -4,8 +4,6 @@
 "%@ meters, about %@ minutes to walk" = "%@ mètres, environ %@ minutes de marche";
 "%@ minutes before." = "%@ minutes avant.";
 "%@ minutes left!" = "%@ minutes restantes !";
-"%@, departure in %@ minutes" = "%@, départ dans %@ minutes";
-"%@, stop already passed" = "%@, arrêt déjà effectué";
 "%@m" = "%@m";
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)";
 "0" = "0";
@@ -13,6 +11,7 @@
 "5 minutes before" = "5 minutes avant";
 "?#!" = "?#!";
 "A notification will be send %@" = "Une notification sera envoyée %@";
+"Add new" = "Ajout";
 "Address" = "Adresses";
 "Alamofire" = "Alamofire";
 "All Stops" = "Tous les arrêts";
@@ -42,6 +41,7 @@
 "Direction %@, leaving now" = "Direction %@, départ imminent";
 "Direction %@, no more bus" = "Direction%@, plus de bus";
 "Disruptions" = "Perturbations";
+"Disruptions monitoring" = "Surveillance des perturbations";
 "Downloading" = "Téléchargement";
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire";
 "Error" = "Erreur";
@@ -49,6 +49,7 @@
 "External libraries, used in this project" = "Librairies externes, utilisées dans ce projet";
 "Favorites" = "Favoris";
 "Fortunately, there is no disruptions at this time." = "Bonne nouvelle, aucune perturbation n'a lieu en ce moment.";
+"Friday" = "Vendredi";
 "From" = "De";
 "From..." = "De...";
 "Github webpage" = "Page Github du projet";
@@ -56,9 +57,13 @@
 "Let's take the bus!" = "Prenons le bus !";
 "Line %@" = "Ligne %@";
 "Line %@ - %@" = "Ligne %@ - %@";
+"Lines history and moral and material support" = "Histoires des lignes et soutient moral et matériel";
 "Loading" = "Chargement";
+"Make a donation" = "Faire un don";
 "Map" = "Plan";
 "Mark this stop as favorite" = "Marquer cet arrêt en favoris";
+"Monday" = "Lundi";
+"Monitoring" = "Surveillance";
 "Nearest Stops" = "Arrêts les plus proches";
 "Nearest stops" = "Arrêts les plus proches";
 "Nearest stops from" = "Arrêts les plus proches de";
@@ -70,6 +75,7 @@
 "Noctambus urban map" = "Plan Noctambus urbain";
 "Number of minutes" = "Nombre de minutes";
 "OK" = "OK";
+"OK, thanks" = "OK, merci";
 "Offline mode" = "Mode hors-ligne";
 "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, une erreur est survenue. Merci de réessayer et, en cas d'urgence, de casser la glace et déclencher l'alarme.";
 "Open data of Geneva public transport" = "Open data des Transports Publics Genevois";
@@ -88,13 +94,19 @@
 "Routes" = "Itinéraires";
 "SBB %@" = "CFF %@";
 "SBB %@ - %@" = "CFF %@ - %@";
+"SNOTPG" = "SNOTPG";
+"Saturday" = "Samedi";
 "Select date" = "Séléctionner une date";
 "Show less" = "Afficher moins";
 "Show map" = "Afficher la carte";
 "Show more" = "Afficher plus";
+"Sorry" = "Désolé";
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Désolé pour cela. Pourriez-vous réessayer ou nous envoyer un mail si le problème persiste ?";
 "Sorry, but no results was found. Please try with other parameters." = "Désolé, mais aucun résultat n'a été trouvé. Merci d'essayer avec d'autres paramètres.";
+"Sorry, but we were not able to add your monitoring request. Are you sure you are connected to internet?" = "Désolé, mais nous n'avons pas pu ajouter votre requête. Êtes vous sûr d'être connecté à internet.";
 "Sorry, there is an error. Are you sure your are connected to internet ?" = "Désolé, mais une erreur est survenue. Êtes-vous sûr d'être connecté à internet ?";
+"Special thanks" = "Remerciement spéciaux";
+"Sunday" = "Dimanche";
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
 "Take the line %@ to %@ in %@ minutes" = "Prenez la ligne %@ vers %@ dans %@ minutes";
 "Take the line %@ to %@ now" = "Prenez la ligne %@ vers %@ maintenant";
@@ -102,8 +114,10 @@
 "That's all for today" = "C'est tout pour aujourd'hui";
 "The bus is comming now!" = "Le bus arrive maintenant !";
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "Cet itinéraire traverse plusieurs zones. Vous devez donc acquérir un ticket/abonnement correspondant à ces zones :\n";
+"Thursday" = "Jeudi";
 "To" = "Vers";
 "To..." = "Vers...";
+"Tuesday" = "Mardi";
 "Unknow" = "Inconnu";
 "Unmark this stop as favorite" = "Enlever cet arrêt des favoris";
 "Update available" = "Mise à jour disponible";
@@ -112,12 +126,16 @@
 "Walk" = "Marcher";
 "Walk %@m" = "Marcher %@m";
 "Wayback Machine" = "Remonter le temps";
+"Wednesday" = "Mercredi";
 "When do you want to be reminded" = "Quand voulez-vous être rappelés";
 "When do you want to be reminded?" = "Quand voulez-vous être rappelé ?";
 "You are using timetables departures. So departures are subjects to change." = "Vous êtes en mode hors-ligne. Les horaires sont donc des sujets à des modifications et sont donnés à titre indicatif.";
 "You can download them in Settings" = "Vous pouvez la télécharger dans les paramètres";
 "You can't set a timer for this bus, but you should run to take it." = "Vous ne pouvez pas ajouter de rappels à ce bus, mais vous devriez courir pour le prendre.";
 "You don't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet";
+"You need to be connected to internet to manage disruptions monitoring." = "Vous devez être connecté à internet pour gérer les surveillances des perturbations.";
 "You will be reminded" = "Vous serez rappelés";
 "at the time of departure." = "au départ";
 "tpg offline" = "tpg offline";
+"Line %@" = "Ligne %@";
+

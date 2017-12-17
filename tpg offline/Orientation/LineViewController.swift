@@ -43,7 +43,7 @@ class LineViewController: UIViewController {
             }
         }
 
-        self.title = "Line \(line.line)"
+        self.title = String(format: "Line %@".localized, line.line)
         if !App.darkMode {
             UIApplication.shared.statusBarStyle = App.color(for: line.line).contrast == .white ?
                 .lightContent : .default

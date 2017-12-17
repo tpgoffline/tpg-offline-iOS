@@ -4,8 +4,6 @@
 "%@ meters, about %@ minutes to walk" = "%@ meters, about %@ minutes to walk"; 
 "%@ minutes before." = "%@ minutes before."; 
 "%@ minutes left!" = "%@ minutes left!"; 
-"%@, departure in %@ minutes" = "%@, departure in %@ minutes"; 
-"%@, stop already passed" = "%@, stop already passed"; 
 "%@m" = "%@m"; 
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)"; 
 "0" = "0"; 
@@ -13,6 +11,7 @@
 "5 minutes before" = "5 minutes before"; 
 "?#!" = "?#!"; 
 "A notification will be send %@" = "A notification will be send %@"; 
+"Add new" = "Add new"; 
 "Address" = "Address"; 
 "Alamofire" = "Alamofire"; 
 "All Stops" = "All Stops"; 
@@ -42,6 +41,7 @@
 "Direction %@, leaving now" = "Direction %@, leaving now"; 
 "Direction %@, no more bus" = "Direction %@, no more bus"; 
 "Disruptions" = "Disruptions"; 
+"Disruptions monitoring" = "Disruptions monitoring"; 
 "Downloading" = "Downloading"; 
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire"; 
 "Error" = "Error"; 
@@ -49,6 +49,7 @@
 "External libraries, used in this project" = "External libraries, used in this project"; 
 "Favorites" = "Favorites"; 
 "Fortunately, there is no disruptions at this time." = "Fortunately, there is no disruptions at this time."; 
+"Friday" = "Friday"; 
 "From" = "From"; 
 "From..." = "From..."; 
 "Github webpage" = "Github webpage"; 
@@ -56,9 +57,13 @@
 "Let's take the bus!" = "Let's take the bus!"; 
 "Line %@" = "Line %@"; 
 "Line %@ - %@" = "Line %@ - %@"; 
+"Lines history and moral and material support" = "Lines history and moral and material support"; 
 "Loading" = "Loading"; 
+"Make a donation" = "Make a donation"; 
 "Map" = "Map"; 
 "Mark this stop as favorite" = "Mark this stop as favorite"; 
+"Monday" = "Monday"; 
+"Monitoring" = "Monitoring"; 
 "Nearest Stops" = "Nearest Stops"; 
 "Nearest stops" = "Nearest stops"; 
 "Nearest stops from" = "Nearest stops from"; 
@@ -70,6 +75,7 @@
 "Noctambus urban map" = "Noctambus urban map"; 
 "Number of minutes" = "Number of minutes"; 
 "OK" = "OK"; 
+"OK, thanks" = "OK, thanks"; 
 "Offline mode" = "Offline mode"; 
 "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm"; 
 "Open data of Geneva public transport" = "Open data of Geneva public transport"; 
@@ -88,13 +94,19 @@
 "Routes" = "Routes"; 
 "SBB %@" = "SBB %@"; 
 "SBB %@ - %@" = "SBB %@ - %@"; 
+"SNOTPG" = "SNOTPG"; 
+"Saturday" = "Saturday"; 
 "Select date" = "Select date"; 
 "Show less" = "Show less"; 
 "Show map" = "Show map"; 
 "Show more" = "Show more"; 
+"Sorry" = "Sorry"; 
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Sorry for that. Can you try again, or send an email to us if the problem persist?"; 
 "Sorry, but no results was found. Please try with other parameters." = "Sorry, but no results was found. Please try with other parameters."; 
+"Sorry, but we were not able to add your monitoring request. Are you sure you are connected to internet?" = "Sorry, but we were not able to add your monitoring request. Are you sure you are connected to internet?"; 
 "Sorry, there is an error. Are you sure your are connected to internet ?" = "Sorry, there is an error. Are you sure your are connected to internet ?"; 
+"Special thanks" = "Special thanks"; 
+"Sunday" = "Sunday"; 
 "Take the line %@ to %@" = "Take the line %@ to %@"; 
 "Take the line %@ to %@ in %@ minutes" = "Take the line %@ to %@ in %@ minutes"; 
 "Take the line %@ to %@ now" = "Take the line %@ to %@ now"; 
@@ -102,8 +114,10 @@
 "That's all for today" = "That's all for today"; 
 "The bus is comming now!" = "The bus is comming now!"; 
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n"; 
+"Thursday" = "Thursday"; 
 "To" = "To"; 
 "To..." = "To..."; 
+"Tuesday" = "Tuesday"; 
 "Unknow" = "Unknow"; 
 "Unmark this stop as favorite" = "Unmark this stop as favorite"; 
 "Update available" = "Update available"; 
@@ -112,13 +126,15 @@
 "Walk" = "Walk"; 
 "Walk %@m" = "Walk %@m"; 
 "Wayback Machine" = "Wayback Machine"; 
+"Wednesday" = "Wednesday"; 
 "When do you want to be reminded" = "When do you want to be reminded"; 
 "When do you want to be reminded?" = "When do you want to be reminded?"; 
 "You are using timetables departures. So departures are subjects to change." = "You are using timetables departures. So departures are subjects to change."; 
 "You can download them in Settings" = "You can download them in Settings"; 
 "You can't set a timer for this bus, but you should run to take it." = "You can't set a timer for this bus, but you should run to take it."; 
 "You don't downloaded offline departures, and you're not connected to internet" = "You don't downloaded offline departures, and you're not connected to internet"; 
+"You need to be connected to internet to manage disruptions monitoring." = "You need to be connected to internet to manage disruptions monitoring."; 
 "You will be reminded" = "You will be reminded"; 
 "at the time of departure." = "at the time of departure."; 
 "tpg offline" = "tpg offline"; 
-
+"Line %@" = "Line %@";

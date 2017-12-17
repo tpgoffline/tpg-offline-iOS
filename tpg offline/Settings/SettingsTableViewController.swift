@@ -72,6 +72,15 @@ class SettingsTableViewController: UITableViewController {
 
             self.present(vc, animated: true)
         }))
+        self.settings.append(Setting("Make a donation".localized, icon: #imageLiteral(resourceName: "dollar"), action: { (_) in
+            let vc = SFSafariViewController(url: URL(string: "https://www.paypal.me/remydcf")!, entersReaderIfAvailable: false)
+            if App.darkMode, #available(iOS 10.0, *) {
+                vc.preferredBarTintColor = .black
+            }
+            vc.delegate = self
+
+            self.present(vc, animated: true)
+        }))
 
         if App.darkMode {
             self.tableView.backgroundColor = .black

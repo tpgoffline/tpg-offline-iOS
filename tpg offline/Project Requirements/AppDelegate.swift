@@ -67,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.shared.registerUserNotificationSettings(setting)
         }
 
+        UIApplication.shared.registerForRemoteNotifications()
+
         if CommandLine.arguments.contains("-reset") {
             App.loadStops()
             App.favoritesStops = [App.stops.filter({ $0.code == "CVIN"})[0].appId]
@@ -85,6 +87,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
         App.loadLines()
         return App.loadStops()
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print(token)
+        App.apnsToken = token
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
