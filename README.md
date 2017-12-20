@@ -11,7 +11,7 @@ This project was built in Swift 4, so you will need Xcode 9, and Carthage.
 
 Also, be sure to add somewhere in your code this struct, with your API keys:
 
-```
+```swift
 struct API {
     static let googleMaps = "" // Put your Google Maps Geocoding API key here
     static let tpg = "" // Put your tpg API key here
