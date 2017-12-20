@@ -29,6 +29,12 @@ class FavoriteRouteTableViewCell: UITableViewCell {
         fromLabel.textColor = App.textColor
         toLabel.textColor = App.textColor
         self.backgroundColor = App.cellBackgroundColor
+        
+        if App.darkMode {
+            let selectedView = UIView()
+            selectedView.backgroundColor = .black
+            self.selectedBackgroundView = selectedView
+        }
 
         for image in images {
             image.image = image.image?.maskWith(color: App.textColor)

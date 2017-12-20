@@ -61,7 +61,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
 
         if firstOpeningOfDisruptionsMonitoring == true, App.apnsToken != "" {
             firstOpeningOfDisruptionsMonitoring = false
-            let alertController = UIAlertController(title: "Disruptions monitoring".localized, message: "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Disruptions monitoring".localized, message: "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification.".localized, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK, thanks".localized, style: .default, handler: nil))
             present(alertController, animated: true) {
                 self.navigationController?.popViewController(animated: true)

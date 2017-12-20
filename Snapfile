@@ -2,6 +2,7 @@
 
 #A list of devices you want to take the screenshots from
 devices([
+   "iPhone 4s",
    "iPhone 8",
    "iPhone 8 Plus",
    "iPhone 5s",

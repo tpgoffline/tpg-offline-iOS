@@ -51,7 +51,6 @@
 		AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */; };
 		AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A801FB73587005052F3 /* WatchSessionManager.swift */; };
 		AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */; };
-		AD4B179D1FE5669C00BBBCE1 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4B179C1FE5669C00BBBCE1 /* OneSignal.framework */; };
 		AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
@@ -296,7 +295,6 @@
 				AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */,
 				AD7B47E31FD1570000F8DA23 /* MapKit.framework in Frameworks */,
 				AD07A3661F8A60D400E65DE7 /* Fabric.framework in Frameworks */,
-				AD4B179D1FE5669C00BBBCE1 /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,7 +792,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/OneSignal.framework",
 			);
 			name = Carthage;
 			outputPaths = (
