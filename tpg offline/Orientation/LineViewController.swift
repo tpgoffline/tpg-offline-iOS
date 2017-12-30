@@ -26,22 +26,6 @@ class LineViewController: UIViewController {
         super.viewDidLoad()
 
         guard let line = self.line else { return }
-        if App.darkMode {
-            self.navigationController?.navigationBar.tintColor = App.color(for: line.line)
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.color(for: line.line)]
-            if #available(iOS 11.0, *) {
-                self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.color(for: line.line)]
-            }
-            self.tableView.backgroundColor = .black
-        } else {
-            self.navigationController?.navigationBar.barTintColor = App.color(for: line.line)
-            self.navigationController?.navigationBar.tintColor = App.color(for: line.line).contrast
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.color(for: line.line).contrast]
-            if #available(iOS 11.0, *) {
-                self.navigationController?.navigationBar.largeTitleTextAttributes =
-                    [NSAttributedStringKey.foregroundColor: App.color(for: line.line).contrast]
-            }
-        }
 
         self.title = String(format: "Line %@".localized, line.line)
         if !App.darkMode {
@@ -55,15 +39,29 @@ class LineViewController: UIViewController {
         self.arrivalLabel.textColor = App.textColor
 
         self.view.backgroundColor = App.cellBackgroundColor
-        self.arrowsImageView.image = #imageLiteral(resourceName: "reverse").maskWith(color: App.textColor)
+        self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
+
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
 
         if line.snotpgURL != "" {
-            waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: App.color(for: line.line)), for: .normal)
+            let color = App.color(for: line.line)
+            waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
             waybackMachineButton.setTitle("Wayback Machine".localized, for: .normal)
-            waybackMachineButton.setTitleColor(App.color(for: line.line), for: .normal)
+            waybackMachineButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
             waybackMachineButton.addTarget(self, action: #selector(self.showSnotpgPage), for: .touchUpInside)
+            waybackMachineButton.backgroundColor = App.darkMode ? .black : App.color(for: line.line)
+            waybackMachineButton.cornerRadius = waybackMachineButton.bounds.height / 2
+            waybackMachineButton.clipsToBounds = true
         } else {
             self.buttonHeightConstraint.constant = 0
+        }
+
+        if App.darkMode {
+            self.tableView.sectionIndexBackgroundColor = App.cellBackgroundColor
+            self.navigationController?.navigationBar.barStyle = .black
+            self.tableView.backgroundColor = .black
         }
     }
 
@@ -76,45 +74,6 @@ class LineViewController: UIViewController {
         vc.delegate = self
 
         self.present(vc, animated: true)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        guard let line = self.line else { return }
-        if App.darkMode {
-            self.navigationController?.navigationBar.tintColor = App.color(for: line.line)
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.color(for: line.line)]
-            if #available(iOS 11.0, *) {
-                self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.color(for: line.line)]
-            }
-            self.tableView.backgroundColor = .black
-        } else {
-            self.navigationController?.navigationBar.barTintColor = App.color(for: line.line)
-            self.navigationController?.navigationBar.tintColor = App.color(for: line.line).contrast
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.color(for: line.line).contrast]
-            if #available(iOS 11.0, *) {
-                self.navigationController?.navigationBar.largeTitleTextAttributes =
-                    [NSAttributedStringKey.foregroundColor: App.color(for: line.line).contrast]
-            }
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
-        }
-
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
-        navigationController?.navigationBar.tintColor = App.darkMode ? App.textColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-        if App.darkMode {
-            self.navigationController?.navigationBar.barStyle = .black
-        } else {
-            self.navigationController?.navigationBar.barStyle = .default
-        }
-        self.navigationController?.navigationBar.barTintColor = nil
-        UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
     }
 
     override func didReceiveMemoryWarning() {
@@ -190,5 +149,27 @@ extension LineViewController: UITableViewDelegate, UITableViewDataSource {
 extension LineViewController: SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         dismiss(animated: true)
+    }
+}
+
+extension LineViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+
+        guard let row = tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell else { return nil }
+
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "departuresViewController") as? DeparturesViewController
+            else { return nil }
+
+        detailVC.stop = row.stop
+        previewingContext.sourceRect = row.frame
+        return detailVC
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+
+        show(viewControllerToCommit, sender: self)
+
     }
 }

@@ -100,12 +100,18 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
 
+            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/lines").responseString { (response) in
+                if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "lines.json.md5") {
+                    self.getNewLines(updatedMD5)
+                }
+            }
+
             if !(UserDefaults.standard.bool(forKey: "notFirstLaunch")) {
                 App.log(string: "First launch !!!")
                 UserDefaults.standard.set(true, forKey: "notFirstLaunch")
             }
             if #available(iOS 10.3, *), self.askForRating {
-                //SKStoreReviewController.requestReview()
+                SKStoreReviewController.requestReview()
 
                 Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
                     if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5"),
@@ -174,11 +180,17 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     func getNewStops(_ updatedMD5: String) {
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/stops.json").responseData { (response) in
             if let stopsData = response.result.value {
-                var fileURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)[0])
-                fileURL.appendPathComponent("stops.json")
+                UserDefaults.standard.set(stopsData, forKey: "stops.json")
+                UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
+            }
+        }
+    }
 
-                    UserDefaults.standard.set(stopsData, forKey: "stops.json")
-                    UserDefaults.standard.set(updatedMD5, forKey: "stops.json.md5")
+    func getNewLines(_ updatedMD5: String) {
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/lines.json").responseData { (response) in
+            if let stopsData = response.result.value {
+                UserDefaults.standard.set(stopsData, forKey: "lines.json")
+                UserDefaults.standard.set(updatedMD5, forKey: "lines.json.md5")
             }
         }
     }

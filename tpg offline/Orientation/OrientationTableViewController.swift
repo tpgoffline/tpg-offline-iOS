@@ -34,6 +34,10 @@ class OrientationTableViewController: UITableViewController {
         } else {
             self.navigationController?.navigationBar.barStyle = .default
         }
+
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,19 +47,6 @@ class OrientationTableViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
-        }
-
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
-        if App.darkMode {
-            self.navigationController?.navigationBar.barStyle = .black
-            self.tableView.backgroundColor = .black
-        } else {
-            self.navigationController?.navigationBar.barStyle = .default
-        }
-        self.navigationController?.navigationBar.barTintColor = nil
     }
 
     // MARK: - Table view data source
@@ -93,6 +84,27 @@ class OrientationTableViewController: UITableViewController {
         } else {
             return UITableViewAutomaticDimension
         }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "orientationHeader")
+
+        let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+                               NSAttributedStringKey.foregroundColor: App.textColor] as [NSAttributedStringKey: Any]
+
+        if section == 0 {
+            headerCell?.textLabel?.attributedText = NSAttributedString(string: "Maps".localized, attributes: titleAttributes)
+        } else {
+            headerCell?.textLabel?.attributedText = NSAttributedString(string: "Lines".localized, attributes: titleAttributes)
+        }
+
+        headerCell?.backgroundColor = App.cellBackgroundColor
+
+        return headerCell
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -157,5 +169,35 @@ class LineTableViewControllerRow: UITableViewCell {
         let view = UIView()
         view.backgroundColor = .clear
         self.selectedBackgroundView = view
+    }
+}
+
+extension OrientationTableViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+
+        if indexPath.section == 0 {
+            guard let row = tableView.cellForRow(at: indexPath) as? MapsTableViewControllerRow else { return nil }
+            guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "mapViewController") as? MapViewController
+                else { return nil }
+            detailVC.mapImage = row.mapImage
+            detailVC.title = row.titleLabel.text
+            previewingContext.sourceRect = row.frame
+            return detailVC
+        } else {
+            guard let row = tableView.cellForRow(at: indexPath) as? LineTableViewControllerRow else { return nil }
+            guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "lineViewController") as? LineViewController
+                else { return nil }
+            detailVC.line = row.line
+            previewingContext.sourceRect = row.frame
+            return detailVC
+        }
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+
+        show(viewControllerToCommit, sender: self)
+
     }
 }

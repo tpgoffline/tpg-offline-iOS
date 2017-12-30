@@ -73,7 +73,7 @@
 		AD7B47E51FD16A1600F8DA23 /* DevDisruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */; };
 		AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */; };
 		AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */; };
-		AD8CF77F1F979B5100DE9CBC /* MapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */; };
+		AD8CF77F1F979B5100DE9CBC /* OrientationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */; };
 		AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */; };
 		AD92D8BF1F44E10200403258 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BE1F44E10200403258 /* Setting.swift */; };
 		AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */; };
@@ -230,7 +230,7 @@
 		AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDisruption.swift; sourceTree = "<group>"; };
 		AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesOptionsInterfaceController.swift; sourceTree = "<group>"; };
 		AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
-		AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsTableViewController.swift; sourceTree = "<group>"; };
+		AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BE1F44E10200403258 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -533,7 +533,7 @@
 		AD8CF77D1F979B3000DE9CBC /* Orientation */ = {
 			isa = PBXGroup;
 			children = (
-				AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */,
+				AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */,
 				AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */,
 				AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */,
 			);
@@ -856,7 +856,7 @@
 				AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */,
 				AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */,
 				AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */,
-				AD8CF77F1F979B5100DE9CBC /* MapsTableViewController.swift in Sources */,
+				AD8CF77F1F979B5100DE9CBC /* OrientationTableViewController.swift in Sources */,
 				AD37FEAD1F41CD9300E84220 /* FooterDeparturesTableViewCell.swift in Sources */,
 				AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */,
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,

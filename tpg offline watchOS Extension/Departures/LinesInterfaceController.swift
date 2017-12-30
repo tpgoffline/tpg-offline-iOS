@@ -115,12 +115,12 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
         self.stop = option
         self.setTitle(self.stop?.code)
         self.addMenuItem(with: WKMenuItemIcon.resume, title: "Reload".localized, action: #selector(self.refreshDepartures))
-        self.errorLabel.setText("".localized)
+        self.errorLabel.setText("")
     }
 
     @objc func refreshDepartures() {
         self.departures = nil
-        self.errorLabel.setText("".localized)
+        self.errorLabel.setText("")
         loadingImage.setImageNamed("loading-")
         loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
         DeparturesManager.sharedManager.refreshDepartures()
