@@ -83,6 +83,7 @@ class StopsInterfaceController: WKInterfaceController, AppDataChangedDelegate {
     }
 
     override func didDeactivate() {
+        super.didDeactivate()
         WatchSessionManager.sharedManager.removeAppDataChangedDelegate(delegate: self)
     }
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RouteSelectionDelegate: class {
+    func routeSelected(_ newRoute: Route)
+}
+
 class RoutesTableViewController: UITableViewController {
 
     public var route = Route() {
@@ -16,8 +20,13 @@ class RoutesTableViewController: UITableViewController {
         }
     }
 
+    weak var delegate: RouteSelectionDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.splitViewController?.delegate = self
+        self.splitViewController?.preferredDisplayMode = .allVisible
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
@@ -38,6 +47,10 @@ class RoutesTableViewController: UITableViewController {
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
         }
+
+        guard let rightNavController = self.splitViewController?.viewControllers.last as? UINavigationController,
+            let detailViewController = rightNavController.topViewController as? RouteResultsTableViewController else { return }
+        self.delegate = detailViewController
     }
 
     @objc func reverseStops() {
@@ -124,13 +137,14 @@ class RoutesTableViewController: UITableViewController {
 
     @objc func search() {
         if route.validRoute {
-            performSegue(withIdentifier: "showResults", sender: self)
+            self.delegate?.routeSelected(self.route)
+            if let detailViewController = delegate as? RouteResultsTableViewController,
+                let detailNavigationController = detailViewController.navigationController {
+                splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+                detailNavigationController.popToRootViewController(animated: false)
+            }
         }
     }
-
-    /*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 3 && indexPath.section == 0 ? 60 : 44
-    }*/
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showStopsForRoute" {
@@ -139,11 +153,6 @@ class RoutesTableViewController: UITableViewController {
                 return
             }
             destinationViewController.isFrom = indexPath.row == 0
-        } else if segue.identifier == "showResults" {
-            guard let destinationViewController = segue.destination as? RouteResultsTableViewController else {
-                return
-            }
-            destinationViewController.route = self.route
         }
     }
 
@@ -182,5 +191,13 @@ class RoutesTableViewController: UITableViewController {
         default:
             break
         }
+    }
+}
+
+extension RoutesTableViewController: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
     }
 }

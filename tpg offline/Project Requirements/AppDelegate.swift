@@ -69,6 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UIApplication.shared.registerForRemoteNotifications()
 
+        window?.layer.cornerRadius = 5
+        window?.clipsToBounds = true
+
         if CommandLine.arguments.contains("-reset") {
             App.loadStops()
             App.favoritesStops = [App.stops.filter({ $0.code == "CVIN"})[0].appId]
@@ -76,12 +79,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                          to: App.stops.filter({ $0.code == "CVIN"})[0],
                                          date: Date(), arrivalTime: false)]
             window?.layer.cornerRadius = 0
-            window?.clipsToBounds = true
             return true
         }
 
         if let tabController = (window?.rootViewController as? UITabBarController) {
             tabController.selectedIndex = App.defaultTab
+
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                version != UserDefaults.standard.string(forKey: "lastVersion") {
+                tabController.selectedIndex = 4
+            }
+
+            tabController.tabBar.items![0].image = #imageLiteral(resourceName: "clockTabBar")
+            tabController.tabBar.items![0].selectedImage = #imageLiteral(resourceName: "clockTabBar")
+            tabController.tabBar.items![0].title = "Departures".localized
+            tabController.tabBar.items![1].image = #imageLiteral(resourceName: "warningTabBar")
+            tabController.tabBar.items![1].selectedImage = #imageLiteral(resourceName: "warningTabBar")
+            tabController.tabBar.items![1].title = "Disruptions".localized
+            tabController.tabBar.items![2].image = #imageLiteral(resourceName: "routesTabBar")
+            tabController.tabBar.items![2].selectedImage = #imageLiteral(resourceName: "routesTabBar")
+            tabController.tabBar.items![2].title = "Routes".localized
+            tabController.tabBar.items![3].image = #imageLiteral(resourceName: "orientationTabBar")
+            tabController.tabBar.items![3].selectedImage = #imageLiteral(resourceName: "orientationTabBar")
+            tabController.tabBar.items![3].title = "Orientation".localized
+            tabController.tabBar.items![4].image = #imageLiteral(resourceName: "settingsTabBar")
+            tabController.tabBar.items![4].selectedImage = #imageLiteral(resourceName: "settingsTabBar")
+            tabController.tabBar.items![4].title = "Settings".localized
         }
 
         UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
@@ -100,7 +123,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let id = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
                 if let tabController = (window?.rootViewController as? UITabBarController) {
                     tabController.selectedIndex = 0
-                    if let navigationController = tabController.viewControllers?[0] as? UINavigationController {
+                    if let splitViewController = tabController.viewControllers?.first as? UISplitViewController,
+                        let navigationController = splitViewController.viewControllers.first as? UINavigationController {
                         navigationController.popToRootViewController(animated: false)
                         if let viewController = navigationController.topViewController as? StopsTableViewController {
                             guard let stop = App.stops.filter({ $0.appId == Int(id) })[safe: 0] else {

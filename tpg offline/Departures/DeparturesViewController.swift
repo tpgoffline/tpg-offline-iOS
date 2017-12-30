@@ -17,14 +17,38 @@ class DeparturesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
 
-    var stop: Stop?
+    var stop: Stop? {
+        didSet {
+            App.log(string: "Departures: Selected \(stop?.code ?? "XXXX")")
+            Answers.logCustomEvent(withName: "Show departures",
+                                   customAttributes: ["appId": stop?.code ?? "XXXX"])
+
+            navigationItem.title = stop?.name
+            navigationItem.accessibilityTraits = UIAccessibilityTraitNone
+            refreshDepatures()
+
+            configureTabBarItems()
+
+            guard let mapView = self.mapView else { return }
+
+            let regionRadius: CLLocationDistance = 1000
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(stop!.location.coordinate,
+                                                                      regionRadius * 2.0, regionRadius * 2.0)
+            mapView.setRegion(coordinateRegion, animated: true)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = stop!.location.coordinate
+            annotation.title = stop?.name
+            mapView.addAnnotation(annotation)
+        }
+    }
     var departures: DeparturesGroup?
     var showMoreLines: [String] = []
     var noInternet = false
     var requestStatus: RequestStatus = .loading {
         didSet {
-            self.tableView.allowsSelection = requestStatus == .ok
-            self.tableView.reloadData()
+            guard let tableView = self.tableView else { return }
+            tableView.allowsSelection = requestStatus == .ok
+            tableView.reloadData()
         }
     }
 
@@ -37,29 +61,6 @@ class DeparturesViewController: UIViewController {
             self.stop = App.stops[0]
         }
 
-        App.log(string: "Departures: Selected \(stop?.code ?? "XXXX")")
-        Answers.logCustomEvent(withName: "Show departures",
-                                       customAttributes: ["appId": stop?.code ?? "XXXX"])
-
-        navigationItem.title = stop?.name
-        navigationItem.accessibilityTraits = UIAccessibilityTraitNone
-        refreshDepatures()
-        self.mapView.isHidden = true
-
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 62
-
-        configureTabBarItems()
-
-        let regionRadius: CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(stop!.location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = stop!.location.coordinate
-        annotation.title = stop?.name
-        mapView.addAnnotation(annotation)
-
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
@@ -68,6 +69,11 @@ class DeparturesViewController: UIViewController {
 
         refreshControl.addTarget(self, action: #selector(refreshDepatures), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+
+        self.mapView.isHidden = true
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 62
 
         if self.view.traitCollection.verticalSizeClass == .compact && UIDevice.current.userInterfaceIdiom == .phone {
             self.stackView.axis = .horizontal
@@ -226,8 +232,8 @@ class DeparturesViewController: UIViewController {
             App.favoritesStops.append(stop!.appId)
         }
         configureTabBarItems()
-        guard let vc = (navigationController?.viewControllers[0]
-            as? StopsTableViewController) else {
+        guard let vc = ((splitViewController?.viewControllers.first
+            as? UINavigationController)?.topViewController as? StopsTableViewController) else {
                 return
         }
         vc.tableView.reloadData()
@@ -279,6 +285,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
                 as? DeparturesTableViewCell else {
                     return UITableViewCell()
             }
+            cell.departure = nil
             return cell
         } else if self.requestStatus == .error {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell", for: indexPath)
@@ -306,7 +313,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         let departure = departures?.departures.filter({$0.line.code == (self.departures?.lines[section] ?? "")})[indexPath.row]
-        cell.departure = departure!
+        cell.departure = departure
 
         return cell
     }
@@ -415,5 +422,11 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
 
         show(viewControllerToCommit, sender: self)
 
+    }
+}
+
+extension DeparturesViewController: StopSelectionDelegate {
+    func stopSelected(_ newStop: Stop) {
+        self.stop = newStop
     }
 }

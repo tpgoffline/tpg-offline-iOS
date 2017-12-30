@@ -9,11 +9,14 @@
 import WatchKit
 import Foundation
 
-class DeparturesInterfaceController: WKInterfaceController {
-
+class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
     var departures: DeparturesGroup? = nil {
         didSet {
-            guard let a = self.departures else { return }
+            loadingImage.setImage(nil)
+            guard let a = self.departures else {
+                tableView.setNumberOfRows(0, withRowType: "departureCell")
+                return
+            }
             let departures = a.departures.filter({ $0.line.code == self.line })
             tableView.setNumberOfRows(departures.count, withRowType: "departureCell")
 
@@ -28,9 +31,12 @@ class DeparturesInterfaceController: WKInterfaceController {
     var line: String = ""
 
     @IBOutlet weak var tableView: WKInterfaceTable!
+    @IBOutlet weak var loadingImage: WKInterfaceImage!
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+
+        DeparturesManager.sharedManager.addDeparturesDelegate(delegate: self)
 
         guard let option = context as? [Any] else {
             print("Context is not in a valid format")
@@ -47,6 +53,14 @@ class DeparturesInterfaceController: WKInterfaceController {
         self.line = line
         self.departures = departures
         self.setTitle(String(format: "Line %@".localized, self.line))
+        self.addMenuItem(with: WKMenuItemIcon.resume, title: "Reload".localized, action: #selector(self.refreshDepartures))
+    }
+
+    @objc func refreshDepartures() {
+        self.departures = nil
+        loadingImage.setImageNamed("loading-")
+        loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
+        DeparturesManager.sharedManager.refreshDepartures()
     }
 
     override func willActivate() {
@@ -54,11 +68,13 @@ class DeparturesInterfaceController: WKInterfaceController {
         super.willActivate()
     }
 
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    deinit {
+        DeparturesManager.sharedManager.removeDeparturesDelegate(delegate: self)
     }
 
+    func departuresDidUpdate() {
+        self.departures = DeparturesManager.sharedManager.departures
+    }
 }
 
 class DepartureRowController: NSObject {

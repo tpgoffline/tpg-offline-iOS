@@ -12,7 +12,22 @@ import Crashlytics
 
 class RouteResultsTableViewController: UITableViewController {
 
-    var route: Route! = nil
+    var route: Route? = nil {
+        didSet {
+            guard let route = self.route else { return }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            App.log(string: "Routes: Search with D: \(route.from?.appId ?? 0)/\(route.from?.code ?? "") - A: \(route.to?.appId ?? 0)/\(route.to?.code ?? "") - H: \(dateFormatter.string(from: route.date)) - IAT: \(String(describing: route.arrivalTime.hashValue))") // swiftlint:disable:this line_length
+
+            Answers.logCustomEvent(withName: "Search route",
+                                   customAttributes: ["departure": route.from?.code ?? "XXXX",
+                                                      "arrival": route.to?.code ?? "XXXX",
+                                                      "route": "\(route.from?.code ?? "XXXX")-\(route.to?.code ?? "XXXX")"])
+
+            configureTabBarItems()
+            refresh()
+        }
+    }
     var results: RouteResults? = nil {
         didSet {
             self.tableView.allowsSelection = self.results != nil
@@ -47,19 +62,9 @@ class RouteResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        App.log(string: "Routes: Search with D: \(route.from?.appId ?? 0)/\(route.from?.code ?? "") - A: \(route.to?.appId ?? 0)/\(route.to?.code ?? "") - H: \(dateFormatter.string(from: route.date)) - IAT: \(String(describing: route.arrivalTime.hashValue))") // swiftlint:disable:this line_length
-
-        Answers.logCustomEvent(withName: "Search route",
-                               customAttributes: ["departure": route.from?.code ?? "XXXX",
-                                                  "arrival": route.to?.code ?? "XXXX",
-                                                  "route": "\(route.from?.code ?? "XXXX")-\(route.to?.code ?? "XXXX")"])
         title = "Results".localized
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
-        configureTabBarItems()
-        refresh()
 
         self.refreshControl = UIRefreshControl()
 
@@ -97,20 +102,22 @@ class RouteResultsTableViewController: UITableViewController {
     }
 
     @objc func setFavorite() {
-        if let route = App.favoritesRoutes.index(of: self.route) {
+        guard let route = self.route else { return }
+        if let route = App.favoritesRoutes.index(of: route) {
             App.favoritesRoutes.remove(at: route)
         } else {
-            App.favoritesRoutes.append(self.route)
+            App.favoritesRoutes.append(route)
         }
         configureTabBarItems()
-        guard let vc = (navigationController?.viewControllers[0]
-            as? RoutesTableViewController) else {
+        guard let vc = ((splitViewController?.viewControllers.first
+            as? UINavigationController)?.topViewController as? RoutesTableViewController) else {
                 return
         }
         vc.tableView.reloadData()
     }
 
     @objc func refresh() {
+        guard let route = self.route else { return }
         self.requestStatus = .loading
         self.results = nil
         var parameters: [String: Any] = [:]
@@ -175,7 +182,7 @@ class RouteResultsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.requestStatus == any(of: .ok, .loading) {
-            return self.results?.connections.count ?? 6
+            return self.results?.connections.count ?? (self.route == nil ? 0 : 6)
         } else { return 0 }
     }
 
@@ -232,5 +239,11 @@ extension RouteResultsTableViewController: UIViewControllerPreviewingDelegate {
 
         show(viewControllerToCommit, sender: self)
 
+    }
+}
+
+extension RouteResultsTableViewController: RouteSelectionDelegate {
+    func routeSelected(_ newRoute: Route) {
+        self.route = newRoute
     }
 }

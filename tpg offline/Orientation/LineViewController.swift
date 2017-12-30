@@ -107,6 +107,7 @@ class LineViewController: UIViewController {
         }
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
+        navigationController?.navigationBar.tintColor = App.darkMode ? App.textColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
         if App.darkMode {
             self.navigationController?.navigationBar.barStyle = .black
         } else {

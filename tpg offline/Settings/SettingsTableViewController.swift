@@ -35,6 +35,11 @@ class SettingsTableViewController: UITableViewController {
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
         }
 
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+            version != UserDefaults.standard.string(forKey: "lastVersion") {
+            self.performSegue(withIdentifier: "showNewFeatures", sender: self)
+        }
+
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
 
         self.settings.append(Setting("Default tab on startup".localized, icon: #imageLiteral(resourceName: "menuRounded"), action: { (_) in
@@ -46,6 +51,12 @@ class SettingsTableViewController: UITableViewController {
         }))
         self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
             self.performSegue(withIdentifier: "showCredits", sender: self)
+        }))
+        self.settings.append(Setting("Privacy".localized, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
+            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+        }))
+        self.settings.append(Setting("Last features".localized, icon: #imageLiteral(resourceName: "flag"), action: { (_) in
+            self.performSegue(withIdentifier: "showNewFeatures", sender: self)
         }))
         self.settings.append(Setting("Dark Mode".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
             self.darkMode()
@@ -132,7 +143,7 @@ class SettingsTableViewController: UITableViewController {
 
     @objc func darkMode() {
         UserDefaults.standard.set(!(UserDefaults.standard.bool(forKey: "darkMode")), forKey: "darkMode")
-        self.tableView.reloadRows(at: [IndexPath(row: 3, section: 0)], with: .automatic)
+        self.tableView.reloadRows(at: [IndexPath(row: 5, section: 0)], with: .automatic)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -164,7 +175,7 @@ class SettingsTableViewController: UITableViewController {
                         fileURL.appendPathComponent(key)
                         do {
                             try value.write(to: fileURL, atomically: true, encoding: .utf8)
-                        } catch (let error) {
+                        } catch let error {
                             print(error)
                         }
                         source.add(data: 1)
@@ -178,6 +189,7 @@ class SettingsTableViewController: UITableViewController {
             if let updatedMD5 = response.result.value {
                 UserDefaults.standard.set(updatedMD5, forKey: "departures.json.md5")
                 UserDefaults.standard.set(false, forKey: "offlineDeparturesUpdateAvailable")
+                UserDefaults.standard.set(false, forKey: "remindUpdate")
             }
         }
     }

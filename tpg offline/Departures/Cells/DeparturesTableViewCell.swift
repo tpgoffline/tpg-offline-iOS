@@ -21,7 +21,19 @@ class DeparturesTableViewCell: UITableViewCell {
     var canBeSelected: Bool = true
     var departure: Departure? {
         didSet {
-            guard let departure = self.departure else { return }
+            guard let departure = self.departure else {
+                destinationLabel.text = "---"
+                rightTimeLabel.text = "--'"
+                destinationLabel.textColor = App.textColor
+                rightTimeLabel.textColor = App.textColor
+                accessoryType = .none
+                isUserInteractionEnabled = false
+                rightImage.image = nil
+                canBeSelected = false
+                loading = true
+                timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.changeOpacity), userInfo: nil, repeats: true)
+                return
+            }
             let color = App.color(for: departure.line.code)
 
             destinationLabel.text = App.replacementsNames[departure.line.destination] ?? departure.line.destination

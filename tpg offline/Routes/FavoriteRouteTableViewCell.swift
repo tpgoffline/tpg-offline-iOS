@@ -29,7 +29,7 @@ class FavoriteRouteTableViewCell: UITableViewCell {
         fromLabel.textColor = App.textColor
         toLabel.textColor = App.textColor
         self.backgroundColor = App.cellBackgroundColor
-        
+
         if App.darkMode {
             let selectedView = UIView()
             selectedView.backgroundColor = .black

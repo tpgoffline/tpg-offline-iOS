@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13770" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
@@ -182,8 +182,10 @@
                             </items>
                         </table>
                         <imageView width="1" alignment="left" verticalAlignment="center" image="loading" contentMode="center" id="snt-VH-g7G"/>
+                        <label alignment="center" verticalAlignment="center" text="Label" numberOfLines="0" id="8L8-ET-gaz"/>
                     </items>
                     <connections>
+                        <outlet property="errorLabel" destination="8L8-ET-gaz" id="4Ea-qd-bgO"/>
                         <outlet property="loadingImage" destination="snt-VH-g7G" id="cXk-BB-MCR"/>
                         <outlet property="tableView" destination="0Vq-tJ-wAr" id="2yq-ba-w4X"/>
                     </connections>
@@ -213,8 +215,10 @@
                                 </tableRow>
                             </items>
                         </table>
+                        <imageView alignment="center" verticalAlignment="center" image="loading" id="Gkf-cL-QgF"/>
                     </items>
                     <connections>
+                        <outlet property="loadingImage" destination="Gkf-cL-QgF" id="zaW-qo-fv6"/>
                         <outlet property="tableView" destination="akZ-Vr-d9I" id="e4a-Pw-eAv"/>
                     </connections>
                 </controller>

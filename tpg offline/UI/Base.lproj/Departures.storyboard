@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2AJ-Kj-aqS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eY-jO-IU1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,15 +12,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Departures-->
+        <!--Navigation Controller-->
         <scene sceneID="shD-w8-0zg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="2AJ-Kj-aqS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Departures" image="clockTabBar" id="EhG-ao-BaH"/>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="2AJ-Kj-aqS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nVB-Uf-4dD">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" largeTitles="YES" id="nVB-Uf-4dD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -30,18 +29,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CkN-wa-RAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="622" y="138"/>
+            <point key="canvasLocation" x="1542" y="-588"/>
         </scene>
         <!--Departures-->
         <scene sceneID="blh-0p-cQX">
             <objects>
-                <viewController definesPresentationContext="YES" id="ree-6g-pHL" customClass="StopsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="ree-6g-pHL" customClass="StopsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ehx-KO-fT9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="RJv-31-DYC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="RJv-31-DYC">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stopsCell" textLabel="vRc-7h-75D" detailTextLabel="XgX-zv-J2I" style="IBUITableViewCellStyleSubtitle" id="CNu-vE-WNf" customClass="StopsTableViewCell" customModule="tpg_offline" customModuleProvider="target">
@@ -68,11 +67,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                        <connections>
-                                            <segue destination="HRP-23-FYi" kind="show" identifier="showStop" id="qpl-nA-7SC">
-                                                <nil key="action"/>
-                                            </segue>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stopsHeader" id="qhX-QT-b1C" customClass="StopsTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
@@ -117,23 +111,35 @@
                     <navigationItem key="navigationItem" title="Departures" id="Uub-HZ-G6v"/>
                     <connections>
                         <outlet property="tableView" destination="RJv-31-DYC" id="MW7-QL-sJi"/>
-                        <segue destination="HRP-23-FYi" kind="show" identifier="manualShowStop" id="zHL-dX-2Ob"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPp-nc-Rsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="137.18140929535232"/>
+            <point key="canvasLocation" x="2212" y="-588"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="NHl-gz-Td4">
+            <objects>
+                <splitViewController extendedLayoutIncludesOpaqueBars="YES" id="8eY-jO-IU1" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="2AJ-Kj-aqS" kind="relationship" relationship="masterViewController" id="Age-zy-bjj"/>
+                        <segue destination="jc4-Uh-cUh" kind="relationship" relationship="detailViewController" id="ZpO-JC-lPy"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tMi-HW-V0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="-208"/>
         </scene>
         <!--Departures View Controller-->
         <scene sceneID="bRU-bp-XSs">
             <objects>
-                <viewController storyboardIdentifier="departuresViewController" definesPresentationContext="YES" id="HRP-23-FYi" customClass="DeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="departuresViewController" extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="HRP-23-FYi" customClass="DeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zEc-zq-6Kw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yhT-mP-nhs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-ap-owa">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
@@ -278,6 +284,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eCY-Au-DhW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oCa-RD-dtP"/>
                     <connections>
                         <outlet property="mapView" destination="T5h-ap-owa" id="9yS-7K-fYX"/>
                         <outlet property="stackView" destination="yhT-mP-nhs" id="fgv-CN-yfj"/>
@@ -286,18 +293,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ue9-wx-wFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973.5999999999999" y="137.18140929535232"/>
+            <point key="canvasLocation" x="2312.8000000000002" y="137.18140929535232"/>
         </scene>
         <!--Detail Departures View Controller-->
         <scene sceneID="xgw-OB-wUj">
             <objects>
-                <viewController storyboardIdentifier="detailDeparturesViewController" definesPresentationContext="YES" id="arl-gp-ZJ7" customClass="DetailDeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailDeparturesViewController" extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="arl-gp-ZJ7" customClass="DetailDeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T7r-wc-ePM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4QV-eH-iJI">
-                                <rect key="frame" x="0.0" y="488" width="375" height="66"/>
+                                <rect key="frame" x="0.0" y="601" width="375" height="66"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMa-dB-KF2">
                                         <rect key="frame" x="8" y="8" width="175.5" height="50"/>
@@ -355,16 +362,16 @@ Departures</string>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OYL-lr-Byh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-42-CO3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="244"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300.5"/>
                                         <connections>
                                             <outlet property="delegate" destination="arl-gp-ZJ7" id="myd-qz-4Jt"/>
                                         </connections>
                                     </mapView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AoP-Jw-VKZ">
-                                        <rect key="frame" x="0.0" y="244" width="375" height="244"/>
+                                        <rect key="frame" x="0.0" y="300.5" width="375" height="300.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="busRouteCell" rowHeight="44" id="iY4-gX-B2R" customClass="BusRouteTableViewCell" customModule="tpg_offline" customModuleProvider="target">
@@ -410,7 +417,7 @@ Departures</string>
                                                     <outlet property="busTrackView" destination="Nst-61-SZT" id="HH0-nF-2nY"/>
                                                     <outlet property="remainingTimeLabel" destination="B3Y-PJ-W9g" id="tiu-dB-c1F"/>
                                                     <outlet property="titleLabel" destination="E97-I9-cmo" id="odq-xp-hVK"/>
-                                                    <segue destination="HRP-23-FYi" kind="show" identifier="showStopFromBusRoute" id="rgI-HO-SWF"/>
+                                                    <segue destination="HRP-23-FYi" kind="show" identifier="showStopFromBusRoute" id="Gud-b6-ejT"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -445,14 +452,14 @@ Departures</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Az4-5Q-xT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2740" y="136.28185907046478"/>
+            <point key="canvasLocation" x="3079.1999999999998" y="136.28185907046478"/>
         </scene>
         <!--All Departures Collection View Controller-->
         <scene sceneID="6sn-zt-Zxh">
             <objects>
-                <collectionViewController definesPresentationContext="YES" id="YHu-g0-4Id" customClass="AllDeparturesCollectionViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="YHu-g0-4Id" customClass="AllDeparturesCollectionViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="YV7-hC-Gsn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lEJ-jz-bRV">
@@ -517,14 +524,29 @@ Departures</string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sY-QE-uYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3416.8000000000002" y="136.28185907046478"/>
+            <point key="canvasLocation" x="3756" y="136.28185907046478"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QNn-BT-TWe">
+            <objects>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="jc4-Uh-cUh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iFR-75-9FR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HRP-23-FYi" kind="relationship" relationship="rootViewController" id="cL6-ae-O6d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hbU-mS-l6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1542" y="136"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="clockTabBar" width="32" height="32"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qpl-nA-7SC"/>
+        <segue reference="cL6-ae-O6d"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

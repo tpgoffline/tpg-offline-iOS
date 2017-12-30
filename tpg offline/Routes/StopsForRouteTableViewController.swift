@@ -19,7 +19,7 @@ class StopsForRouteTableViewController: StopsTableViewController {
         self.searchController.searchBar.placeholder = "Are you looking for a stop ?".localized
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let viewController = self.navigationController?.viewControllers[0] as? RoutesTableViewController else {
             return
         }

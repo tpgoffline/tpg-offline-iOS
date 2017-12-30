@@ -19,7 +19,9 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
             self.tableView.reloadData()
 
             if requestStatus == .error {
-                let alertController = UIAlertController(title: "Sorry".localized, message: "You need to be connected to internet to manage disruptions monitoring.".localized, preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Sorry".localized,
+                                                        message: "You need to be connected to internet to manage disruptions monitoring.".localized,
+                                                        preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -52,7 +54,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
         ]
 
         if App.apnsToken == "" {
-            let alertController = UIAlertController(title: "Sorry", message: "We need your unique identifier to send you notifications. Check if notifications are allowed.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Sorry".localized, message: "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed.".localized, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
             present(alertController, animated: true) {
                 self.navigationController?.popViewController(animated: true)
@@ -133,7 +135,8 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "disruptionsMonitoringCell", for: indexPath) as? DisruptionsMonitoringTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "disruptionsMonitoringCell", for: indexPath)
+            as? DisruptionsMonitoringTableViewCell else {
             return UITableViewCell()
         }
 

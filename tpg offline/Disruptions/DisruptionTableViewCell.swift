@@ -92,3 +92,13 @@ class DisruptionTableViewCell: UITableViewCell {
         }
     }
 }
+
+class DisruptionCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var lineLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.clipsToBounds = true
+    }
+}

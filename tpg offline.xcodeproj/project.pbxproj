@@ -30,7 +30,6 @@
 		AD37FEB01F41CD9300E84220 /* DetailDeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE821F41CA7F00E84220 /* DetailDeparturesViewController.swift */; };
 		AD37FEB11F41CD9300E84220 /* StopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */; };
 		AD37FEB21F41CD9300E84220 /* DisruptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */; };
-		AD37FEB31F41CD9300E84220 /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */; };
 		AD37FEB41F41CD9300E84220 /* BusRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE891F41CA8000E84220 /* BusRoute.swift */; };
 		AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8A1F41CA8000E84220 /* Connection.swift */; };
 		AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8B1F41CA8000E84220 /* Departures.swift */; };
@@ -73,6 +72,7 @@
 		AD7B47E31FD1570000F8DA23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B47E21FD1570000F8DA23 /* MapKit.framework */; };
 		AD7B47E51FD16A1600F8DA23 /* DevDisruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */; };
 		AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */; };
+		AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */; };
 		AD8CF77F1F979B5100DE9CBC /* MapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */; };
 		AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */; };
 		AD92D8BF1F44E10200403258 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BE1F44E10200403258 /* Setting.swift */; };
@@ -85,6 +85,8 @@
 		ADA14E661FDEC4FE00945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADA14E681FDEC5D300945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
+		ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */; };
+		ADB9278E1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */; };
 		ADBB0CE81FDE845200210902 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB0CE71FDE845200210902 /* API.swift */; };
 		ADBB0CE91FDE84A800210902 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB0CE71FDE845200210902 /* API.swift */; };
 		ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */; };
@@ -203,7 +205,6 @@
 		AD37FE961F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD37FE9C1F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Departures.storyboard; sourceTree = "<group>"; };
 		AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionTableViewCell.swift; sourceTree = "<group>"; };
-		AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
 		AD37FEA81F41CAC300E84220 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AD3DF3AB1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsInterfaceController.swift; sourceTree = "<group>"; };
 		AD3DF3AD1FB1F9D100F2AFA5 /* tpg offline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "tpg offline.entitlements"; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 		AD7B47E21FD1570000F8DA23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDisruption.swift; sourceTree = "<group>"; };
 		AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesOptionsInterfaceController.swift; sourceTree = "<group>"; };
+		AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
 		AD8CF77E1F979B5100DE9CBC /* MapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BE1F44E10200403258 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -239,6 +241,8 @@
 		ADA14E631FDEC4E100945249 /* lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lines.json; path = JSON/lines.json; sourceTree = "<group>"; };
 		ADA14E651FDEC4FE00945249 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		ADABFA091F9CF1D200EEC8D0 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = JSON/stops.json; sourceTree = "<group>"; };
+		ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesViewController.swift; sourceTree = "<group>"; };
+		ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesTableViewCell.swift; sourceTree = "<group>"; };
 		ADBB0CE71FDE845200210902 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBC1C6E1FAF0E2700162195 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -350,11 +354,13 @@
 		AD324D271F4427AF0039B309 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */,
 				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
 				AD92D8BE1F44E10200403258 /* Setting.swift */,
 				ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */,
 				ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */,
-				AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */,
+				ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */,
+				ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -465,11 +471,11 @@
 			isa = PBXGroup;
 			children = (
 				ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */,
+				AD37FE9B1F41CA8000E84220 /* Departures.storyboard */,
 				ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */,
 				ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */,
 				AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */,
 				AD37FE901F41CA8000E84220 /* Assets.xcassets */,
-				AD37FE9B1F41CA8000E84220 /* Departures.storyboard */,
 				AD37FE931F41CA8000E84220 /* LaunchScreen.storyboard */,
 				AD37FE951F41CA8000E84220 /* Main.storyboard */,
 				ADF9C6831F9BB4A500AE17A4 /* Orientation.storyboard */,
@@ -481,7 +487,7 @@
 		AD37FE9D1F41CA8000E84220 /* Disruptions */ = {
 			isa = PBXGroup;
 			children = (
-				AD37FEA01F41CA8000E84220 /* DisruptionsTableViewController.swift */,
+				AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */,
 				AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */,
 				AD3EB1661FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift */,
 				AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */,
@@ -863,16 +869,17 @@
 				AD37FEB21F41CD9300E84220 /* DisruptionTableViewCell.swift in Sources */,
 				AD7B47E11FD155D400F8DA23 /* TabBarController.swift in Sources */,
 				ADF9C66D1F9B99E000AE17A4 /* CreditsTableViewController.swift in Sources */,
-				AD37FEB31F41CD9300E84220 /* DisruptionsTableViewController.swift in Sources */,
 				AD37FEB41F41CD9300E84220 /* BusRoute.swift in Sources */,
 				AD3EB1691FE6BE1200F74261 /* DisruptionMonitoring.swift in Sources */,
 				AD7B47E51FD16A1600F8DA23 /* DevDisruption.swift in Sources */,
 				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
 				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
+				AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */,
 				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
 				ADBB0CE81FDE845200210902 /* API.swift in Sources */,
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
 				ADA14E661FDEC4FE00945249 /* Line.swift in Sources */,
+				ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */,
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
 				AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */,
 				AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */,
@@ -888,6 +895,7 @@
 				AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */,
 				AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */,
 				AD37FEB91F41CD9300E84220 /* Stop.swift in Sources */,
+				ADB9278E1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift in Sources */,
 				ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */,
 				AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */,
 				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,

@@ -9,53 +9,6 @@
 import UIKit
 import Alamofire
 
-class FlowLayout: UICollectionViewFlowLayout {
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-
-        let attributes = super.layoutAttributesForElements(in: rect)
-
-        var leftMargin = sectionInset.left
-        var maxY: CGFloat = 2.0
-
-        let horizontalSpacing: CGFloat = 5
-
-        attributes?.forEach { layoutAttribute in
-            if layoutAttribute.frame.origin.y >= maxY
-                || layoutAttribute.frame.origin.x == sectionInset.left {
-                leftMargin = sectionInset.left
-            }
-
-            if layoutAttribute.frame.origin.x == sectionInset.left {
-                leftMargin = sectionInset.left
-            } else {
-                layoutAttribute.frame.origin.x = leftMargin
-            }
-
-            leftMargin += layoutAttribute.frame.width + horizontalSpacing
-            maxY = max(layoutAttribute.frame.maxY, maxY)
-        }
-
-        return attributes
-    }
-
-    override open func invalidationContext(forPreferredLayoutAttributes preferred: UICollectionViewLayoutAttributes,
-                                           withOriginalAttributes original: UICollectionViewLayoutAttributes)
-        -> UICollectionViewLayoutInvalidationContext {
-            let context: UICollectionViewLayoutInvalidationContext = super.invalidationContext(
-                forPreferredLayoutAttributes: preferred,
-                withOriginalAttributes: original
-            )
-
-            let indexPath = preferred.indexPath
-
-            if indexPath.item == 0 {
-                context.invalidateSupplementaryElements(ofKind: UICollectionElementKindSectionHeader, at: [indexPath])
-            }
-
-            return context
-    }
-}
-
 class AllDeparturesCollectionViewController: UICollectionViewController {
 
     var departure: Departure?
@@ -73,9 +26,6 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let flowLayout = FlowLayout()
-        flowLayout.headerReferenceSize = CGSize(width: self.collectionView?.bounds.width ?? 15, height: 44)
-        flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
 
         title = String(format: "Line %@".localized, "\(departure?.line.code ?? "#!?")")
 

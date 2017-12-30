@@ -18,6 +18,10 @@ struct GoogleMapsGeocodingSearch {
     var stops: [Stop]
 }
 
+protocol StopSelectionDelegate: class {
+    func stopSelected(_ newStop: Stop)
+}
+
 class StopsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     enum SearchMode {
@@ -25,16 +29,31 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         case addresses
     }
 
-    var searchMode = SearchMode.stops
+    var searchMode: SearchMode = SearchMode.stops
+
+    weak var delegate: StopSelectionDelegate?
 
     @IBOutlet weak var tableView: UITableView!
 
     let locationManager = CLLocationManager()
-    var searchText = "" {
+    var searchText: String! = "" {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            self.searchRequest?.cancel()
+            self.searchRequest = DispatchWorkItem(flags: .inheritQoS) {
+                if let stopCode = App.stops.filter({ $0.code.escaped == self.searchText.escaped })[safe: 0] {
+                    self.stopsSearched = [stopCode]
+                } else {
+                    self.stopsSearched =  App.stops.filter({ $0.name.escaped.contains(self.searchText.escaped) })
+                }
             }
+            DispatchQueue.main.async(execute: self.searchRequest!)
+        }
+    }
+
+    var searchRequest: DispatchWorkItem?
+    var stopsSearched: [Stop] = [] {
+        didSet {
+            self.tableView.reloadData()
         }
     }
 
@@ -49,6 +68,9 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.splitViewController?.delegate = self
+        self.splitViewController?.preferredDisplayMode = .allVisible
+
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         searchController.searchBar.placeholder = "Let's take the bus!".localized
@@ -62,6 +84,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
+            searchController.hidesNavigationBarDuringPresentation = false
         } else {
             tableView.tableHeaderView = searchController.searchBar
         }
@@ -82,11 +105,13 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 UserDefaults.standard.set(true, forKey: "notFirstLaunch")
             }
             if #available(iOS 10.3, *), self.askForRating {
-                SKStoreReviewController.requestReview()
+                //SKStoreReviewController.requestReview()
 
                 Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
-                    if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
+                    if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5"),
+                        UserDefaults.standard.bool(forKey: "remindUpdate") == false {
                         UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
+                        UserDefaults.standard.set(true, forKey: "remindUpdate")
                         let alertController = UIAlertController(title: "New offline departures available".localized, message: "You can download them in Settings".localized, preferredStyle: .alert)
                         alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
                         self.present(alertController, animated: true, completion: nil)
@@ -140,6 +165,10 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             self.navigationController?.navigationBar.barStyle = .black
             self.tableView.backgroundColor = .black
         }
+
+        guard let rightNavController = self.splitViewController?.viewControllers.last as? UINavigationController,
+            let detailViewController = rightNavController.topViewController as? DeparturesViewController else { return }
+        self.delegate = detailViewController
     }
 
     func getNewStops(_ updatedMD5: String) {
@@ -164,41 +193,15 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func presentStopFromAppDelegate(stop: Stop) {
-        performSegue(withIdentifier: "manualShowStop", sender: stop)
-    }
+        self.delegate?.stopSelected(stop)
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
 
-    func searchForStop(_ fromText: String) -> [Stop] {
-        if let stopCode = App.stops.filter({ $0.code.escaped == searchText.escaped })[safe: 0] {
-            return [stopCode]
-        } else {
-            return App.stops.filter({ $0.name.escaped.contains(searchText.escaped) })
-        }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showStop" {
-            self.searchController.searchBar.resignFirstResponder()
-            guard let destinationViewController = segue.destination as? DeparturesViewController else {
-                return
-            }
-            let indexPath = tableView.indexPathForSelectedRow!
-            self.tableView.deselectRow(at: indexPath, animated: true)
-            destinationViewController.stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?
-                .stop
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            navigationItem.backBarButtonItem = backItem
-        } else if segue.identifier == "manualShowStop" {
-            guard let destinationViewController = segue.destination as? DeparturesViewController else {
-                return
-            }
-            guard let stop = sender as? Stop else {
-                return
-            }
-            destinationViewController.stop = stop
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            navigationItem.backBarButtonItem = backItem
+        if let detailViewController = delegate as? DeparturesViewController,
+            let detailNavigationController = detailViewController.navigationController {
+            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+            detailNavigationController.popToRootViewController(animated: false)
         }
     }
 
@@ -251,8 +254,8 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
 extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        self.searchText = searchController.searchBar.text ?? ""
         App.log(string: "Stops: Search: \(self.searchText) - \(self.searchMode)")
+        self.searchText = searchController.searchBar.text ?? ""
         if self.searchMode == .addresses {
             lookForAdresses()
         }
@@ -330,7 +333,7 @@ extension StopsTableViewController {
         if searchText != "" {
             switch self.searchMode {
             case .stops:
-                return searchForStop(searchText.escaped).count
+                return stopsSearched.count
             case .addresses:
                 return (self.addressSearch?.stops.count ?? 0) + 1
             }
@@ -348,7 +351,7 @@ extension StopsTableViewController {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if self.searchText.escaped != "", searchMode == .addresses, indexPath.row == 0 {
+        if self.searchText.escaped != "", self.searchMode == .addresses, indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "stopsCell", for: indexPath)
 
             let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
@@ -373,7 +376,7 @@ extension StopsTableViewController {
         if self.searchText.escaped != "" {
             switch self.searchMode {
             case .stops:
-                stop = searchForStop(searchText.escaped)[indexPath.row]
+                stop = stopsSearched[indexPath.row]
                 cell.isFavorite = false
                 cell.isNearestStops = false
             case .addresses:
@@ -458,5 +461,32 @@ extension StopsTableViewController {
         }
 
         return headerCell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.searchController.searchBar.resignFirstResponder()
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        guard let stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
+            return
+        }
+        self.delegate?.stopSelected(stop)
+
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+
+        if let detailViewController = delegate as? DeparturesViewController,
+            let detailNavigationController = detailViewController.navigationController {
+            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+            detailNavigationController.popToRootViewController(animated: false)
+        }
+    }
+}
+
+extension StopsTableViewController: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
     }
 }
