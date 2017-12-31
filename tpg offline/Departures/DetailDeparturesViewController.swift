@@ -177,7 +177,7 @@ class DetailDeparturesViewController: UIViewController {
             destinationViewController.stop = App.stops.filter({ $0.code ==
                 (tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell)?.busRoute?.stop.code })[safe: 0]
         } else if segue.identifier == "allDepartures" {
-            App.log(string: "Departures: Show all departures")
+            App.log( "Departures: Show all departures")
             guard let destinationViewController = segue.destination as? AllDeparturesCollectionViewController else {
                 return
             }
@@ -195,7 +195,7 @@ class DetailDeparturesViewController: UIViewController {
     }
 
     @IBAction func remind() {
-        App.log(string: "Departures: Reminder")
+        App.log( "Departures: Reminder")
         self.departure?.calculateLeftTime()
         var alertController = UIAlertController(title: "Reminder".localized,
                                                 message: "When do you want to be reminded?".localized,

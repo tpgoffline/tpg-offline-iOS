@@ -15,4 +15,5 @@ struct Line: Codable {
     var departureName: String
     var arrivalName: String
     var textFR: String?
+    var textEN: String?
 }

@@ -20,6 +20,9 @@ class LineViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabelTopConstraint: NSLayoutConstraint!
+
     var line: Line?
 
     override func viewDidLoad() {
@@ -28,21 +31,27 @@ class LineViewController: UIViewController {
         guard let line = self.line else { return }
 
         self.title = String(format: "Line %@".localized, line.line)
-        if !App.darkMode {
-            UIApplication.shared.statusBarStyle = App.color(for: line.line).contrast == .white ?
-                .lightContent : .default
-        }
 
         self.departureLabel.text = line.departureName
         self.departureLabel.textColor = App.textColor
         self.arrivalLabel.text = line.arrivalName
         self.arrivalLabel.textColor = App.textColor
+        self.descriptionLabel.textColor = App.textColor
 
         self.view.backgroundColor = App.cellBackgroundColor
         self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
 
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
+        }
+
+        if Locale.current.languageCode == "fr", let descriptionFR = line.textFR {
+            self.descriptionLabel.text = descriptionFR
+        } else if let descriptionEN = line.textEN {
+            self.descriptionLabel.text = descriptionEN
+        } else {
+            self.descriptionLabel.text = ""
+            descriptionLabelTopConstraint.constant = 0
         }
 
         if line.snotpgURL != "" {

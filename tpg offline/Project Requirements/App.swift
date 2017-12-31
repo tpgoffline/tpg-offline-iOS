@@ -161,7 +161,7 @@ struct App {
     }
 
     #if os(iOS)
-    static func log(string: String) {
+    static func log(_ string: String) {
         CLSLogv("%@", getVaList([string]))
     }
     #endif

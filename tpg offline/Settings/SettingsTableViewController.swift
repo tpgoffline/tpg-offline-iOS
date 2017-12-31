@@ -46,7 +46,7 @@ class SettingsTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "showDefaultTab", sender: self)
         }))
         self.settings.append(Setting("Update departures".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
-            App.log(string: "Settings: Update Departures")
+            App.log( "Settings: Update Departures")
             self.updateDepartures()
         }))
         self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
@@ -62,7 +62,7 @@ class SettingsTableViewController: UITableViewController {
             self.darkMode()
         }))
         self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
-            App.log(string: "Settings: Give feedback")
+            App.log( "Settings: Give feedback")
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
 

@@ -16,7 +16,21 @@ protocol DeparturesDelegate: class {
 class DeparturesManager: NSObject {
 
     static let sharedManager = DeparturesManager()
-    var departures: DeparturesGroup?
+    var departures: DeparturesGroup? {
+        didSet {
+            DispatchQueue.main.async {
+                self.departuresDelegate.forEach { $0.departuresDidUpdate() }
+            }
+        }
+    }
+    var status = RequestStatus.noResults {
+        didSet {
+            DispatchQueue.main.async {
+                self.departuresDelegate.forEach { $0.departuresDidUpdate() }
+            }
+        }
+    }
+
     var stop: Stop?
 
     fileprivate override init() {
@@ -39,7 +53,11 @@ class DeparturesManager: NSObject {
     }
 
     func refreshDepartures() {
-        guard let stop = self.stop else { return }
+        self.status = .loading
+        guard let stop = self.stop else {
+            self.status = .error
+            return
+        }
         self.departures = nil
         Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json",
                           method: .get,
@@ -55,6 +73,7 @@ class DeparturesManager: NSObject {
                     do {
                         let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
                         self.departures = json
+                        self.status = .ok
                     } catch {
                         print("No Internet")
                         return
@@ -62,12 +81,11 @@ class DeparturesManager: NSObject {
 
                     if self.departures?.lines.count == 0 {
                         self.departures = nil
+                        self.status = .noResults
                     }
                 } else {
                     self.departures = nil
-                }
-                DispatchQueue.main.async {
-                    self.departuresDelegate.forEach { $0.departuresDidUpdate() }
+                    self.status = .error
                 }
         }
     }
@@ -88,7 +106,13 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
         didSet {
             loadingImage.setImage(nil)
             guard let departures = departures else {
-                self.errorLabel.setText("Sorry, we can't fetch new departures. Please, try again.".localized)
+                self.errorLabel.setText("")
+                if DeparturesManager.sharedManager.status == .error {
+                    self.errorLabel.setText("Sorry, we can't fetch new departures. Please, try again.".localized)
+                } else if DeparturesManager.sharedManager.status == .loading {
+                    loadingImage.setImageNamed("loading-")
+                    loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
+                }
                 tableView.setNumberOfRows(0, withRowType: "linesRow")
                 return
             }
@@ -119,10 +143,6 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
     }
 
     @objc func refreshDepartures() {
-        self.departures = nil
-        self.errorLabel.setText("")
-        loadingImage.setImageNamed("loading-")
-        loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
         DeparturesManager.sharedManager.refreshDepartures()
     }
 

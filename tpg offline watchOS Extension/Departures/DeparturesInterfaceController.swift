@@ -14,7 +14,11 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
         didSet {
             loadingImage.setImage(nil)
             guard let a = self.departures else {
-                tableView.setNumberOfRows(0, withRowType: "departureCell")
+                if DeparturesManager.sharedManager.status == .loading {
+                    loadingImage.setImageNamed("loading-")
+                    loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
+                }
+                tableView.setNumberOfRows(0, withRowType: "linesRow")
                 return
             }
             let departures = a.departures.filter({ $0.line.code == self.line })
@@ -57,7 +61,7 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
     }
 
     @objc func refreshDepartures() {
-        self.departures = nil
+        DeparturesManager.sharedManager.departures = nil
         loadingImage.setImageNamed("loading-")
         loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
         DeparturesManager.sharedManager.refreshDepartures()

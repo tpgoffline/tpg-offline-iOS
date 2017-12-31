@@ -81,6 +81,8 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = App.darkMode ? .dark : .light
 
+        App.log("Favorites stops: \(App.favoritesStops)")
+
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
@@ -107,7 +109,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             }
 
             if !(UserDefaults.standard.bool(forKey: "notFirstLaunch")) {
-                App.log(string: "First launch !!!")
+                App.log( "First launch !!!")
                 UserDefaults.standard.set(true, forKey: "notFirstLaunch")
             }
             if #available(iOS 10.3, *), self.askForRating {
@@ -266,7 +268,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
 extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        App.log(string: "Stops: Search: \(self.searchText) - \(self.searchMode)")
+        App.log( "Stops: Search: \(self.searchText) - \(self.searchMode)")
         self.searchText = searchController.searchBar.text ?? ""
         if self.searchMode == .addresses {
             lookForAdresses()
@@ -282,7 +284,7 @@ extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate
         default:
             return
         }
-        App.log(string: "Stops: Search: \(self.searchText) - \(self.searchMode)")
+        App.log( "Stops: Search: \(self.searchText) - \(self.searchMode)")
         if self.searchMode == .addresses {
             lookForAdresses()
         }

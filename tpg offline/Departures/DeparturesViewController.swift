@@ -19,7 +19,7 @@ class DeparturesViewController: UIViewController {
 
     var stop: Stop? {
         didSet {
-            App.log(string: "Departures: Selected \(stop?.code ?? "XXXX")")
+            App.log("Departures: Selected \(stop?.code ?? "XXXX")")
             Answers.logCustomEvent(withName: "Show departures",
                                    customAttributes: ["appId": stop?.code ?? "XXXX"])
 
@@ -104,8 +104,8 @@ class DeparturesViewController: UIViewController {
                             target: self,
                             action: #selector(self.setFavorite),
                             accessbilityLabel: App.favoritesStops.contains(stop!.appId) ?
-                "Unmark this stop as favorite".localized :
-                "Mark this stop as favorite".localized),
+                                "Unmark this stop as favorite".localized :
+                                "Mark this stop as favorite".localized),
             UIBarButtonItem(image: #imageLiteral(resourceName: "pinMapNavBar"),
                             style: UIBarButtonItemStyle.plain,
                             target: self,
@@ -220,7 +220,7 @@ class DeparturesViewController: UIViewController {
             destinationViewController.color = App.color(for: row.departure!.line.code)
             destinationViewController.departure = row.departure
             destinationViewController.stop = self.stop
-            App.log(string: "Departures: Select \(row.departure?.line.code ?? "") - \(row.departure?.line.destination ?? "") - \(row.departure?.timestamp ?? "")") // swiftlint:disable:this line_length
+            App.log( "Departures: Select \(row.departure?.line.code ?? "") - \(row.departure?.line.destination ?? "") - \(row.departure?.timestamp ?? "")") // swiftlint:disable:this line_length
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -228,8 +228,10 @@ class DeparturesViewController: UIViewController {
     @objc func setFavorite() {
         if let index = App.favoritesStops.index(of: stop!.appId) {
             App.favoritesStops.remove(at: index)
+            App.log("Removed \(stop!.appId) from favorites")
         } else {
             App.favoritesStops.append(stop!.appId)
+            App.log("Added \(stop!.appId) from favorites")
         }
         configureTabBarItems()
         guard let vc = ((splitViewController?.viewControllers.first
@@ -241,10 +243,10 @@ class DeparturesViewController: UIViewController {
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if self.view.traitCollection.verticalSizeClass == .compact && UIDevice.current.userInterfaceIdiom == .phone {
-        self.stackView.axis = .horizontal
+            self.stackView.axis = .horizontal
         } else {
-         self.stackView.axis = .vertical
-         }
+            self.stackView.axis = .vertical
+        }
     }
 }
 
@@ -419,9 +421,7 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-
         show(viewControllerToCommit, sender: self)
-
     }
 }
 
