@@ -102,7 +102,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
 
-            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/lines").responseString { (response) in
+            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/lines.json").responseString { (response) in
                 if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "lines.json.md5") {
                     self.getNewLines(updatedMD5)
                 }
