@@ -64,7 +64,9 @@ class DisruptionTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         self.backgroundColor = App.cellBackgroundColor
-        titleLabel.text = "---"
+        titleLabel.backgroundColor = .gray
+        descriptionLabel.backgroundColor = .gray
+        titleLabel.text = "   "
         descriptionLabel.text = "\n\n\n"
         titleLabel.cornerRadius = 10
         descriptionLabel.cornerRadius = 10

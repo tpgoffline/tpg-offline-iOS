@@ -171,6 +171,9 @@ class DisruptionsTableViewController: UITableViewController {
             cell.descriptionLabel.backgroundColor = App.cellBackgroundColor
             cell.titleLabel.textColor = App.textColor
             cell.descriptionLabel.textColor = App.textColor
+            cell.backgroundColor = App.cellBackgroundColor
+            
+            return cell
         } else if requestStatus == .ok {
             if indexPath.section > ((self.devDisruptions?.count ?? 0) - 1) {
                 cell.disruption = disruptions?.disruptions[self.keys[indexPath.section - (self.devDisruptions?.count ?? 0)]]?[indexPath.row]

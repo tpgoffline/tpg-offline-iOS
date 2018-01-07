@@ -250,7 +250,7 @@ class DetailDeparturesViewController: UIViewController {
             let configuration = NEHotspotConfiguration(ssid: "tpg-freeWiFi")
             configuration.joinOnce = false
             NEHotspotConfigurationManager.shared.apply(configuration, completionHandler: { (error) in
-                print(error)
+                print(error ?? "")
             })
         } else {
             print("How did you end here ?")

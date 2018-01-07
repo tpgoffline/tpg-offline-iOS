@@ -30,6 +30,7 @@ class DeparturesTableViewCell: UITableViewCell {
                 accessoryType = .none
                 isUserInteractionEnabled = false
                 rightImage.image = nil
+                wifiImage.image = nil
                 canBeSelected = false
                 loading = true
                 timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.changeOpacity), userInfo: nil, repeats: true)
