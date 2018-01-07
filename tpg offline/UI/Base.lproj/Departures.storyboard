@@ -159,7 +159,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUq-Ad-VMk">
-                                                            <rect key="frame" x="15" y="21" width="260" height="20.5"/>
+                                                            <rect key="frame" x="15" y="21" width="252" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -172,7 +172,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p3Y-zt-CS4">
-                                                            <rect key="frame" x="283" y="18" width="25" height="25"/>
+                                                            <rect key="frame" x="275" y="18" width="25" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="25" id="d19-cT-RZo"/>
                                                                 <constraint firstAttribute="height" constant="25" id="e6Q-04-sy7"/>
@@ -190,7 +190,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="eIU-ZB-Mbl" firstAttribute="centerY" secondItem="ljG-2s-964" secondAttribute="centerY" id="04w-9i-eyn"/>
-                                                        <constraint firstItem="eIU-ZB-Mbl" firstAttribute="leading" secondItem="p3Y-zt-CS4" secondAttribute="trailing" constant="8" id="D8m-GK-rm6"/>
+                                                        <constraint firstItem="eIU-ZB-Mbl" firstAttribute="leading" secondItem="p3Y-zt-CS4" secondAttribute="trailing" constant="16" id="D8m-GK-rm6"/>
                                                         <constraint firstItem="DSI-ZB-4Cw" firstAttribute="centerY" secondItem="ljG-2s-964" secondAttribute="centerY" id="NIj-SP-NJe"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="eIU-ZB-Mbl" secondAttribute="trailing" id="TIO-gJ-zoR"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="NUq-Ad-VMk" secondAttribute="bottom" constant="10" id="bJC-w7-NR6"/>
@@ -593,6 +593,7 @@ Departures</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="9YM-oy-Uje"/>
         <segue reference="Gud-b6-ejT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

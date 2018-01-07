@@ -69,7 +69,7 @@ class DeparturesViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    
+
     private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {

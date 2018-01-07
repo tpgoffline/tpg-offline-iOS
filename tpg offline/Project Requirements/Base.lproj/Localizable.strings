@@ -18,7 +18,7 @@
 "An error occurred" = "An error occurred"; 
 "Are you looking for a stop ?" = "Are you looking for a stop ?"; 
 "Arrival at" = "Arrival at"; 
-"As always, this version improve stability and removes bugs. If you have been confront with one of them, we have a special offer. For the price of an update, we offer you a second update!" = "As always, this version improve stability and removes bugs. If you have been confront with one of them, we have a special offer. For the price of an update, we offer you a second update!"; 
+"As always, this version improve stability and removes bugs." = "As always, this version improve stability and removes bugs."; 
 "At departure time" = "At departure time"; 
 "At the core of the project" = "At the core of the project"; 
 "Bus Stop" = "Bus Stop"; 
@@ -49,13 +49,17 @@
 "Error - Departures not downloaded" = "Error - Departures not downloaded"; 
 "External libraries, used in this project" = "External libraries, used in this project"; 
 "Favorites" = "Favorites"; 
+"Filter" = "Filter"; 
+"Filter favorites lines" = "Filter favorites lines"; 
 "Fortunately, there is no disruptions at this time." = "Fortunately, there is no disruptions at this time."; 
 "Friday" = "Friday"; 
 "From" = "From"; 
 "From..." = "From..."; 
 "Github webpage" = "Github webpage"; 
 "Give your feedback !" = "Give your feedback !"; 
+"Have you seen this logo?" = "Have you seen this logo?"; 
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification."; 
+"If you are lost in all these lines, you can now put some in favorites and filter them." = "If you are lost in all these lines, you can now put some in favorites and filter them."; 
 "Last features" = "Last features"; 
 "Let's take the bus!" = "Let's take the bus!"; 
 "Line %@" = "Line %@"; 
@@ -68,7 +72,6 @@
 "Mark this stop as favorite" = "Mark this stop as favorite"; 
 "Monday" = "Monday"; 
 "Monitoring" = "Monitoring"; 
-"NINJA!" = "NINJA!"; 
 "Nearest Stops" = "Nearest Stops"; 
 "Nearest stops" = "Nearest stops"; 
 "Nearest stops from" = "Nearest stops from"; 
@@ -78,7 +81,7 @@
 "No results" = "No results"; 
 "Noctambus regional map" = "Noctambus regional map"; 
 "Noctambus urban map" = "Noctambus urban map"; 
-"Now you can monitor disruptions. In other words, you can define times when you will receive notification of disruptions on the lines of your choice by Express Notification®. This way, no more bad surprises at the connections (well, you still have some bad surprises, but at least you will not be warned at the last moment. This gives you the opportunity to think about the rest of your journey). The binoculars in the Disruptions tab is the access point." = "Now you can monitor disruptions. In other words, you can define times when you will receive notification of disruptions on the lines of your choice by Express Notification®. This way, no more bad surprises at the connections (well, you still have some bad surprises, but at least you will not be warned at the last moment. This gives you the opportunity to think about the rest of your journey). The binoculars in the Disruptions tab is the access point."; 
+"Now dark mode is available without restarting the application." = "Now dark mode is available without restarting the application."; 
 "Number of minutes" = "Number of minutes"; 
 "OK" = "OK"; 
 "OK, thanks" = "OK, thanks"; 
@@ -102,7 +105,6 @@
 "SBB %@" = "SBB %@"; 
 "SBB %@ - %@" = "SBB %@ - %@"; 
 "SNOTPG" = "SNOTPG"; 
-"SNOTPG and Orientation" = "SNOTPG and Orientation"; 
 "Saturday" = "Saturday"; 
 "Select date" = "Select date"; 
 "Settings" = "Settings"; 
@@ -123,9 +125,8 @@
 "Take the line %@ to %@ now" = "Take the line %@ to %@ now"; 
 "Testing" = "Testing"; 
 "That's all for today" = "That's all for today"; 
-"The Maps tab is no longer. Long live the Orientation tab! You will find the plans, as well as the routes and certain information of the lines. Speaking of lines, you can now take the wayback machine, and browse the great work of SNOTPG on the history of tpg." = "The Maps tab is no longer. Long live the Orientation tab! You will find the plans, as well as the routes and certain information of the lines. Speaking of lines, you can now take the wayback machine, and browse the great work of SNOTPG on the history of tpg."; 
 "The bus is comming now!" = "The bus is comming now!"; 
-"The dark mode of iOS would be a feature that makes you dream? Do you appreciate the black depths of the iPhone X? Or you just want to see the fusion between a japanese monster and an evil intergalactic emperor? From now on, tpg offline offers you a dark mode, and it’s easy to activate. Just switch the switch in the settings. We asked for an expert opinion with an independent commission, and the president, a man named Bruce Wayne, said that this mode is sublime." = "The dark mode of iOS would be a feature that makes you dream? Do you appreciate the black depths of the iPhone X? Or you just want to see the fusion between a japanese monster and an evil intergalactic emperor? From now on, tpg offline offers you a dark mode, and it’s easy to activate. Just switch the switch in the settings. We asked for an expert opinion with an independent commission, and the president, a man named Bruce Wayne, said that this mode is sublime."; 
+"The tpg have equipped 43 vehicles with Wi-Fi. They will be indicated by this logo in the departures, and, if you are on iOS 11 or higher, you can even connect to it by going into the details of a departure, then in Wi-Fi." = "The tpg have equipped 43 vehicles with Wi-Fi. They will be indicated by this logo in the departures, and, if you are on iOS 11 or higher, you can even connect to it by going into the details of a departure, then in Wi-Fi."; 
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n"; 
 "Thursday" = "Thursday"; 
 "To" = "To"; 

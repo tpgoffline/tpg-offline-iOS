@@ -102,7 +102,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
 
-            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/lines.json").responseString { (response) in
+            Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/lines.json.md5").responseString { (response) in
                 if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "lines.json.md5") {
                     self.getNewLines(updatedMD5)
                 }
@@ -201,6 +201,10 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidAppear(_ animated: Bool) {
         searchForNearestStops()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
     }
 
     func searchForNearestStops() {

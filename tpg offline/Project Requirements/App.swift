@@ -87,7 +87,7 @@ struct App {
             UserDefaults.standard.set(newValue, forKey: #function)
         }
     }
-    
+
     static var filterFavoritesLines: Bool {
         get {
             return UserDefaults.standard.bool(forKey: #function)

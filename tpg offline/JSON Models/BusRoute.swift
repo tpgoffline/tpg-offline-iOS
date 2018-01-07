@@ -18,8 +18,10 @@ struct BusRouteGroup: Codable {
         self.lineCode = lineCode
         self.destination = destination
 
-        self.steps[0].first = true
-        self.steps[steps.endIndex - 1].last = true
+        if !(self.steps.isEmpty) {
+            self.steps[0].first = true
+            self.steps[steps.endIndex - 1].last = true
+        }
     }
 
     enum CodingKeys: String, CodingKey {

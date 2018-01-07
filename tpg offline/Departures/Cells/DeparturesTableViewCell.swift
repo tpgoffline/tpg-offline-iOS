@@ -69,7 +69,7 @@ class DeparturesTableViewCell: UITableViewCell {
                 canBeSelected = false
                 self.accessibilityLabel = String(format: "Direction %@, no more bus".localized, destinationLabel.text ?? "")
             case "0":
-                rightTimeLabel.text = ""
+                rightTimeLabel.text = "     "
                 rightImage.image = #imageLiteral(resourceName: "bus").maskWith(color: color)
                 canBeSelected = true
                 self.accessibilityLabel = String(format: "Direction %@, leaving now".localized, destinationLabel.text ?? "")
