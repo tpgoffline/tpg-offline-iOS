@@ -27,11 +27,8 @@ class AddMonitoringLinesTableViewController: UITableViewController {
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
         }
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        ColorModeManager.shared.addColorModeDelegate(self)
     }
 
     // MARK: - Table view data source
@@ -47,6 +44,10 @@ class AddMonitoringLinesTableViewController: UITableViewController {
         cell.line = App.lines[indexPath.row]
 
         return cell
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

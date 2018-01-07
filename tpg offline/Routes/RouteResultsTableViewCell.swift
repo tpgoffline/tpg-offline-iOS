@@ -42,6 +42,7 @@ class RouteResultsTableViewCell: UITableViewCell {
                                                   repeats: true)
                 return
             }
+            self.backgroundColor = App.cellBackgroundColor
             departureStopLabel.text = (App.stops.filter({$0.sbbId == connection.from.station.id})[safe: 0]?.name)
                 ?? connection.from.station.name
             let dateFormatter = DateFormatter()

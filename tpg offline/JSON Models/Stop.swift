@@ -10,6 +10,46 @@ import Foundation
 import CoreLocation
 
 struct Stop: Codable {
+    struct Localisations: Codable {
+        struct Destinations: Codable {
+            var line: String
+            var destination: String
+        }
+
+        var location: CLLocation
+        var destinations: [Destinations]
+
+        public init(location: CLLocation, destinations: [Destinations]) {
+            self.location = location
+            self.destinations = destinations
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case latitude
+            case longitude
+            case destinations
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            let latitude = try container.decode(Double.self, forKey: .latitude)
+            let longitude = try container.decode(Double.self, forKey: .longitude)
+            let destinations = try container.decode([Destinations].self, forKey: .destinations)
+
+            self.init(location: CLLocation(latitude: latitude, longitude: longitude),
+                      destinations: destinations)
+        }
+
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+
+            try container.encode(self.location.coordinate.latitude, forKey: .latitude)
+            try container.encode(self.location.coordinate.longitude, forKey: .longitude)
+            try container.encode(self.destinations, forKey: .destinations)
+        }
+    }
+
     /// The name of the stop
     var name: String
 
@@ -40,6 +80,8 @@ struct Stop: Codable {
 
     var nameTransportAPI: String
 
+    var localisations: [Localisations]
+
     public init(name: String,
                 title: String,
                 subTitle: String,
@@ -50,7 +92,8 @@ struct Stop: Codable {
                 appId: Int,
                 pricingZone: [Int],
                 nameTransportAPI: String,
-                isTAC: Bool) {
+                isTAC: Bool,
+                localisations: [Localisations]) {
         self.name = name
         self.title = title
         self.subTitle = subTitle
@@ -62,6 +105,7 @@ struct Stop: Codable {
         self.pricingZone = pricingZone
         self.nameTransportAPI = nameTransportAPI
         self.isTAC = isTAC
+        self.localisations = localisations
     }
 
     enum CodingKeys: String, CodingKey {
@@ -76,6 +120,7 @@ struct Stop: Codable {
         case pricingZone
         case nameTransportAPI
         case isTAC
+        case localisations
     }
 
     init(from decoder: Decoder) throws {
@@ -92,6 +137,7 @@ struct Stop: Codable {
         let pricingZone = try container.decode([Int].self, forKey: .pricingZone)
         let nameTransportAPI = try container.decode(String.self, forKey: .nameTransportAPI)
         let isTAC = try container.decode(Bool.self, forKey: .isTAC)
+        let localisations = try container.decode([Localisations].self, forKey: .localisations)
 
         self.init(name: name,
                   title: title,
@@ -103,7 +149,8 @@ struct Stop: Codable {
                   appId: appId,
                   pricingZone: pricingZone,
                   nameTransportAPI: nameTransportAPI,
-                  isTAC: isTAC)
+                  isTAC: isTAC,
+                  localisations: localisations)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -120,6 +167,7 @@ struct Stop: Codable {
         try container.encode(self.pricingZone, forKey: .pricingZone)
         try container.encode(self.nameTransportAPI, forKey: .nameTransportAPI)
         try container.encode(self.isTAC, forKey: .isTAC)
+        try container.encode(self.localisations, forKey: .localisations)
     }
 
     static func == (lhd: Stop, rhd: Stop) -> Bool {

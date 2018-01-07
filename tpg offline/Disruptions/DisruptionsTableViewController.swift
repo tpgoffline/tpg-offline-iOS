@@ -85,11 +85,7 @@ class DisruptionsTableViewController: UITableViewController {
             self.tableView.separatorColor = App.separatorColor
         }
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        ColorModeManager.shared.addColorModeDelegate(self)
     }
 
     @objc func pushDisruptionsMonitoring() {
@@ -130,6 +126,10 @@ class DisruptionsTableViewController: UITableViewController {
         }
     }
 
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -167,8 +167,8 @@ class DisruptionsTableViewController: UITableViewController {
             cell.titleLabel.text = "No disruptions".localized
             cell.descriptionLabel?.text = "Fortunately, there is no disruptions at this time.".localized
             cell.loading = false
-            cell.titleLabel.backgroundColor = .white
-            cell.descriptionLabel.backgroundColor = .white
+            cell.titleLabel.backgroundColor = App.cellBackgroundColor
+            cell.descriptionLabel.backgroundColor = App.cellBackgroundColor
             cell.titleLabel.textColor = App.textColor
             cell.descriptionLabel.textColor = App.textColor
         } else if requestStatus == .ok {

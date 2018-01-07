@@ -54,6 +54,48 @@ extension String {
 }
 
 #if os(iOS)
+    extension UIViewController: ColorModeDelegate {
+        @objc func colorModeDidUpdated() {
+            UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
+
+            if #available(iOS 11.0, *) {
+                navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
+            }
+
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
+
+            if App.darkMode {
+                self.navigationController?.navigationBar.barStyle = .black
+            } else {
+                self.navigationController?.navigationBar.barStyle = .default
+            }
+
+            self.view.backgroundColor = App.darkMode ? .black : .white
+
+            if let tabBarController = self.tabBarController {
+                tabBarController.tabBar.barStyle = App.darkMode ? .black : .default
+            }
+        }
+    }
+
+    extension UITableViewController {
+        override func colorModeDidUpdated() {
+            super.colorModeDidUpdated()
+            self.tableView.backgroundColor = App.darkMode ? .black : .white
+            self.tableView.sectionIndexBackgroundColor = App.darkMode ? .black : .white
+            self.tableView.separatorColor = App.separatorColor
+            self.tableView.reloadData()
+        }
+    }
+
+    extension UICollectionViewController {
+        override func colorModeDidUpdated() {
+            super.colorModeDidUpdated()
+            self.collectionView?.backgroundColor = App.darkMode ? .black : .white
+            self.collectionView?.reloadData()
+        }
+    }
+
     public extension UIView {
         @IBInspectable public var cornerRadius: CGFloat {
             get { return self.layer.cornerRadius }

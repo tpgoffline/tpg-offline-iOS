@@ -82,9 +82,17 @@ class RouteResultsTableViewController: UITableViewController {
             registerForPreviewing(with: self, sourceView: tableView)
         }
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if self.traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
         }
     }
 
@@ -160,7 +168,6 @@ class RouteResultsTableViewController: UITableViewController {
             if let data = response.result.value {
                 do {
                     let results = try JSONDecoder().decode(RouteResults.self, from: data)
-                    print(results)
                     self.requestStatus = results.connections.count == 0 ? .noResults : .ok
                     self.results = results
                 } catch let error as NSError {
@@ -169,7 +176,6 @@ class RouteResultsTableViewController: UITableViewController {
                 }
             } else {
                 self.requestStatus = .error
-
             }
             self.refreshControl?.endRefreshing()
         }
@@ -199,6 +205,10 @@ class RouteResultsTableViewController: UITableViewController {
         }
 
         return cell
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

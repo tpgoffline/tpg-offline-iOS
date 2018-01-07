@@ -11,10 +11,12 @@ import UIKit
 struct BusRouteGroup: Codable {
     var steps: [BusRoute]
     var lineCode: String
+    var destination: String
 
-    public init(steps: [BusRoute], lineCode: String) {
+    public init(steps: [BusRoute], lineCode: String, destination: String) {
         self.steps = steps
         self.lineCode = lineCode
+        self.destination = destination
 
         self.steps[0].first = true
         self.steps[steps.endIndex - 1].last = true
@@ -23,14 +25,16 @@ struct BusRouteGroup: Codable {
     enum CodingKeys: String, CodingKey {
         case steps
         case lineCode
+        case destination = "destinationName"
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let steps = try container.decode([BusRoute].self, forKey: .steps)
         let lineCode = try container.decode(String.self, forKey: .lineCode)
+        let destination = try container.decode(String.self, forKey: .destination)
 
-        self.init(steps: steps, lineCode: lineCode)
+        self.init(steps: steps, lineCode: lineCode, destination: destination)
     }
 }
 

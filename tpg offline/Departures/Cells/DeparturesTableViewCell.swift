@@ -13,6 +13,7 @@ class DeparturesTableViewCell: UITableViewCell {
     @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var rightTimeLabel: UILabel!
     @IBOutlet weak var rightImage: UIImageView!
+    @IBOutlet weak var wifiImage: UIImageView!
 
     var loading = true
     var timer: Timer?
@@ -34,7 +35,7 @@ class DeparturesTableViewCell: UITableViewCell {
                 timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.changeOpacity), userInfo: nil, repeats: true)
                 return
             }
-            let color = App.color(for: departure.line.code)
+            var color = App.color(for: departure.line.code)
 
             destinationLabel.text = App.replacementsNames[departure.line.destination] ?? departure.line.destination
             destinationLabel.textColor = color
@@ -63,6 +64,7 @@ class DeparturesTableViewCell: UITableViewCell {
                 rightTimeLabel.text = ""
                 rightImage.image = #imageLiteral(resourceName: "cross").maskWith(color: .gray)
                 destinationLabel.textColor = .gray
+                color = .gray
                 canBeSelected = false
                 self.accessibilityLabel = String(format: "Direction %@, no more bus".localized, destinationLabel.text ?? "")
             case "0":
@@ -78,6 +80,8 @@ class DeparturesTableViewCell: UITableViewCell {
                                                  destinationLabel.text ?? "", "\(departure.leftTime.accessibleTime)")
             }
 
+            wifiImage.image = departure.wifi ? #imageLiteral(resourceName: "wifi").maskWith(color: color) : nil
+
             rightTimeLabel.textColor = color
             if canBeSelected {
                 accessoryType = .disclosureIndicator
@@ -87,6 +91,7 @@ class DeparturesTableViewCell: UITableViewCell {
                 isUserInteractionEnabled = false
             }
 
+            self.backgroundColor = App.cellBackgroundColor
             self.selectedBackgroundView = UIView()
             self.selectedBackgroundView?.backgroundColor = color.withAlphaComponent(0.1)
             self.loading = false

@@ -15,7 +15,7 @@ protocol DeparturesDelegate: class {
 
 class DeparturesManager: NSObject {
 
-    static let sharedManager = DeparturesManager()
+    static let shared = DeparturesManager()
     var departures: DeparturesGroup? {
         didSet {
             DispatchQueue.main.async {
@@ -107,9 +107,9 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
             loadingImage.setImage(nil)
             guard let departures = departures else {
                 self.errorLabel.setText("")
-                if DeparturesManager.sharedManager.status == .error {
+                if DeparturesManager.shared.status == .error {
                     self.errorLabel.setText("Sorry, we can't fetch new departures. Please, try again.".localized)
-                } else if DeparturesManager.sharedManager.status == .loading {
+                } else if DeparturesManager.shared.status == .loading {
                     loadingImage.setImageNamed("loading-")
                     loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
                 }
@@ -134,8 +134,8 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
             print("Context is not in a valid format")
             return
         }
-        DeparturesManager.sharedManager.addDeparturesDelegate(delegate: self)
-        DeparturesManager.sharedManager.stop = option
+        DeparturesManager.shared.addDeparturesDelegate(delegate: self)
+        DeparturesManager.shared.stop = option
         self.stop = option
         self.setTitle(self.stop?.code)
         self.addMenuItem(with: WKMenuItemIcon.resume, title: "Reload".localized, action: #selector(self.refreshDepartures))
@@ -143,7 +143,7 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
     }
 
     @objc func refreshDepartures() {
-        DeparturesManager.sharedManager.refreshDepartures()
+        DeparturesManager.shared.refreshDepartures()
     }
 
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
@@ -153,10 +153,10 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
     }
 
     func departuresDidUpdate() {
-        self.departures = DeparturesManager.sharedManager.departures
+        self.departures = DeparturesManager.shared.departures
     }
 
     deinit {
-        DeparturesManager.sharedManager.removeDeparturesDelegate(delegate: self)
+        DeparturesManager.shared.removeDeparturesDelegate(delegate: self)
     }
 }

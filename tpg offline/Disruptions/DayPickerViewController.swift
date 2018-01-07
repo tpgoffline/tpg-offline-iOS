@@ -27,12 +27,8 @@ class DayPickerViewController: UIViewController {
             self.saveButton.backgroundColor = .black
             self.saveButton.setTitleColor(App.textColor, for: .normal)
         }
-        // Do any additional setup after loading the view.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        ColorModeManager.shared.addColorModeDelegate(self)
     }
 
     @IBAction func save() {
@@ -50,6 +46,18 @@ class DayPickerViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
+    }
+
+    override func colorModeDidUpdated() {
+        self.tableView.backgroundColor = App.darkMode ? .black : .white
+        self.buttonBackgroundView.backgroundColor = App.cellBackgroundColor
+        self.saveButton.backgroundColor = App.darkMode ? .black : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+        self.saveButton.setTitleColor(.white, for: .normal)
+        self.tableView.reloadData()
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 }
 
@@ -85,10 +93,8 @@ extension DayPickerViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .none
         }
 
-        if App.darkMode {
-            cell.textLabel?.textColor = App.textColor
-            cell.backgroundColor = App.cellBackgroundColor
-        }
+        cell.textLabel?.textColor = App.textColor
+        cell.backgroundColor = App.cellBackgroundColor
 
         return cell
     }

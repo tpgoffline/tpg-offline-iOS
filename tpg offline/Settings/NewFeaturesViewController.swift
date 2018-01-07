@@ -30,6 +30,8 @@ class NewFeaturesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         features.append(Feature(image: #imageLiteral(resourceName: "handshake"), title: "SNOTPG and Orientation".localized, text: "The Maps tab is no longer. Long live the Orientation tab! You will find the plans, as well as the routes and certain information of the lines. Speaking of lines, you can now take the wayback machine, and browse the great work of SNOTPG on the history of tpg.".localized))
         features.append(Feature(image: #imageLiteral(resourceName: "moon"), title: "Dark Mode".localized, text: "The dark mode of iOS would be a feature that makes you dream? Do you appreciate the black depths of the iPhone X? Or you just want to see the fusion between a japanese monster and an evil intergalactic emperor? From now on, tpg offline offers you a dark mode, and it’s easy to activate. Just switch the switch in the settings. We asked for an expert opinion with an independent commission, and the president, a man named Bruce Wayne, said that this mode is sublime.".localized))
         features.append(Feature(image: #imageLiteral(resourceName: "binoculars"), title: "NINJA!".localized, text: "Now you can monitor disruptions. In other words, you can define times when you will receive notification of disruptions on the lines of your choice by Express Notification®. This way, no more bad surprises at the connections (well, you still have some bad surprises, but at least you will not be warned at the last moment. This gives you the opportunity to think about the rest of your journey). The binoculars in the Disruptions tab is the access point.".localized))
@@ -91,6 +93,10 @@ class NewFeaturesViewController: UIViewController {
 
     @IBAction func exit() {
         self.dismiss(animated: true, completion: nil)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 }
 

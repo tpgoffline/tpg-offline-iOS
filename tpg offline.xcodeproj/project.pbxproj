@@ -14,10 +14,10 @@
 		AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */; };
 		AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */; };
 		AD0986941F64185A00CD8403 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986931F64185A00CD8403 /* Route.swift */; };
+		AD0D33B420025659006462D5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0D33B320025659006462D5 /* NetworkExtension.framework */; };
 		AD1E48471FADF70800596076 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48461FADF70800596076 /* App.swift */; };
 		AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */; };
 		AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48561FAE06D100596076 /* SnapshotHelper.swift */; };
-		AD1E48581FAE0D0700596076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
 		AD1E48591FAE0D0A00596076 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
 		AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */; };
@@ -76,6 +76,7 @@
 		AD8CF77F1F979B5100DE9CBC /* OrientationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */; };
 		AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */; };
 		AD92D8BF1F44E10200403258 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BE1F44E10200403258 /* Setting.swift */; };
+		AD9D8DAA200264730021A23E /* DeparturesHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */; };
 		AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */; };
 		AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */; };
 		AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */; };
@@ -116,6 +117,7 @@
 		ADF9C6861F9BB4CF00AE17A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */; };
 		ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */; };
+		ADFE41162000DA3F00FAECF3 /* ColorModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +177,7 @@
 		AD09868F1F64151200CD8403 /* RoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
 		AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
 		AD0986931F64185A00CD8403 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		AD0D33B320025659006462D5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		AD182C6E1F9C7E5500694753 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Routes.strings; sourceTree = "<group>"; };
 		AD1E48461FADF70800596076 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,8 +216,6 @@
 		AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		AD416A801FB73587005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsInterfaceController.swift; sourceTree = "<group>"; };
-		AD4B179A1FE554C100BBBCE1 /* PushNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushNotifications.framework; path = Carthage/Build/iOS/PushNotifications.framework; sourceTree = "<group>"; };
-		AD4B179C1FE5669C00BBBCE1 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = Carthage/Build/iOS/OneSignal.framework; sourceTree = "<group>"; };
 		AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsInterfaceController.swift; sourceTree = "<group>"; };
 		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +234,7 @@
 		AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BE1F44E10200403258 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTabTableViewController.swift; sourceTree = "<group>"; };
 		AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailInterfaceController.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		ADF9C68A1F9BB4D200AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
 		ADF9C68E1F9BDFEB00AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsGeocoding.swift; sourceTree = "<group>"; };
+		ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +301,7 @@
 				AD07A3651F8A60D300E65DE7 /* Crashlytics.framework in Frameworks */,
 				AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */,
 				AD7B47E31FD1570000F8DA23 /* MapKit.framework in Frameworks */,
+				AD0D33B420025659006462D5 /* NetworkExtension.framework in Frameworks */,
 				AD07A3661F8A60D400E65DE7 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +430,7 @@
 				AD37FE7F1F41CA7F00E84220 /* FooterDeparturesTableViewCell.swift */,
 				AD37FE801F41CA7F00E84220 /* StopsTableViewCell.swift */,
 				ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */,
+				AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 				AD1E48461FADF70800596076 /* App.swift */,
 				AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */,
 				AD7B47E01FD155D400F8DA23 /* TabBarController.swift */,
+				ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -500,8 +506,7 @@
 		AD37FEA31F41CABC00E84220 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD4B179C1FE5669C00BBBCE1 /* OneSignal.framework */,
-				AD4B179A1FE554C100BBBCE1 /* PushNotifications.framework */,
+				AD0D33B320025659006462D5 /* NetworkExtension.framework */,
 				AD7B47E21FD1570000F8DA23 /* MapKit.framework */,
 				ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */,
 				AD07A3631F8A60D300E65DE7 /* Crashlytics.framework */,
@@ -669,8 +674,14 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.HotspotConfiguration = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -842,7 +853,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */,
-				AD1E48581FAE0D0700596076 /* Extensions.swift in Sources */,
 				AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,6 +880,7 @@
 				AD7B47E11FD155D400F8DA23 /* TabBarController.swift in Sources */,
 				ADF9C66D1F9B99E000AE17A4 /* CreditsTableViewController.swift in Sources */,
 				AD37FEB41F41CD9300E84220 /* BusRoute.swift in Sources */,
+				AD9D8DAA200264730021A23E /* DeparturesHeaderTableViewCell.swift in Sources */,
 				AD3EB1691FE6BE1200F74261 /* DisruptionMonitoring.swift in Sources */,
 				AD7B47E51FD16A1600F8DA23 /* DevDisruption.swift in Sources */,
 				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
@@ -899,6 +910,7 @@
 				ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */,
 				AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */,
 				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,
+				ADFE41162000DA3F00FAECF3 /* ColorModeManager.swift in Sources */,
 				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
 				AD1E48471FADF70800596076 /* App.swift in Sources */,
 				AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */,

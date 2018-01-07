@@ -89,6 +89,8 @@ class SettingsTableViewController: UITableViewController {
             self.navigationController?.navigationBar.barStyle = .black
             self.tableView.separatorColor = App.separatorColor
         }
+
+        ColorModeManager.shared.addColorModeDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,9 +128,6 @@ class SettingsTableViewController: UITableViewController {
             lightSwitch.isOn = UserDefaults.standard.bool(forKey: "darkMode")
             lightSwitch.addTarget(self, action: #selector(self.darkMode), for: .valueChanged)
             cell.accessoryView = lightSwitch
-            if UserDefaults.standard.bool(forKey: "darkMode") != App.darkMode {
-                cell.detailTextLabel?.text = "App restart needed".localized
-            }
         }
         cell.imageView?.image = setting.icon.maskWith(color: App.textColor)
 
@@ -142,7 +141,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @objc func darkMode() {
-        UserDefaults.standard.set(!(UserDefaults.standard.bool(forKey: "darkMode")), forKey: "darkMode")
+        App.darkMode = !App.darkMode
         self.tableView.reloadRows(at: [IndexPath(row: 5, section: 0)], with: .automatic)
     }
 
@@ -192,6 +191,10 @@ class SettingsTableViewController: UITableViewController {
                 UserDefaults.standard.set(false, forKey: "remindUpdate")
             }
         }
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 }
 

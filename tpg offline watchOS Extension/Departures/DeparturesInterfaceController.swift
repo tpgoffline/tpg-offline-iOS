@@ -14,7 +14,7 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
         didSet {
             loadingImage.setImage(nil)
             guard let a = self.departures else {
-                if DeparturesManager.sharedManager.status == .loading {
+                if DeparturesManager.shared.status == .loading {
                     loadingImage.setImageNamed("loading-")
                     loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
                 }
@@ -40,7 +40,7 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
-        DeparturesManager.sharedManager.addDeparturesDelegate(delegate: self)
+        DeparturesManager.shared.addDeparturesDelegate(delegate: self)
 
         guard let option = context as? [Any] else {
             print("Context is not in a valid format")
@@ -61,10 +61,10 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
     }
 
     @objc func refreshDepartures() {
-        DeparturesManager.sharedManager.departures = nil
+        DeparturesManager.shared.departures = nil
         loadingImage.setImageNamed("loading-")
         loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
-        DeparturesManager.sharedManager.refreshDepartures()
+        DeparturesManager.shared.refreshDepartures()
     }
 
     override func willActivate() {
@@ -73,11 +73,11 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
     }
 
     deinit {
-        DeparturesManager.sharedManager.removeDeparturesDelegate(delegate: self)
+        DeparturesManager.shared.removeDeparturesDelegate(delegate: self)
     }
 
     func departuresDidUpdate() {
-        self.departures = DeparturesManager.sharedManager.departures
+        self.departures = DeparturesManager.shared.departures
     }
 }
 

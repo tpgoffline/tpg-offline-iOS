@@ -48,9 +48,15 @@ class RoutesTableViewController: UITableViewController {
             self.tableView.separatorColor = App.separatorColor
         }
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         guard let rightNavController = self.splitViewController?.viewControllers.last as? UINavigationController,
             let detailViewController = rightNavController.topViewController as? RouteResultsTableViewController else { return }
         self.delegate = detailViewController
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     @objc func reverseStops() {

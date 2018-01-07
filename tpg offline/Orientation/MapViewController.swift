@@ -11,25 +11,27 @@ import Crashlytics
 
 class MapViewController: UIViewController {
 
-        var mapImage: UIImage!
-        @IBOutlet weak var scrollView: UIScrollView!
-        var imageView: UIImageView!
+    var mapImage: UIImage!
+    @IBOutlet weak var scrollView: UIScrollView!
+    var imageView: UIImageView!
 
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            imageView = UIImageView(image: mapImage)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView = UIImageView(image: mapImage)
 
-            scrollView.delegate = self
-            scrollView.backgroundColor = .white
-            scrollView.contentSize = imageView.bounds.size
-            scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-            setZoomScale()
-            scrollView.setContentOffset(CGPoint(x: (scrollView.contentSize.width - scrollView.bounds.size.width) / 2,
-                                                y: (scrollView.contentSize.height - scrollView.bounds.size.height) / 2),
-                                        animated: false)
+        scrollView.delegate = self
+        scrollView.backgroundColor = .white
+        scrollView.contentSize = imageView.bounds.size
+        scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        setZoomScale()
+        scrollView.setContentOffset(CGPoint(x: (scrollView.contentSize.width - scrollView.bounds.size.width) / 2,
+                                            y: (scrollView.contentSize.height - scrollView.bounds.size.height) / 2),
+                                    animated: false)
 
-            scrollView.addSubview(imageView)
-        }
+        scrollView.addSubview(imageView)
+
+        ColorModeManager.shared.addColorModeDelegate(self)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,15 +39,18 @@ class MapViewController: UIViewController {
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
-    */
-
 }
 
 extension MapViewController: UIScrollViewDelegate {

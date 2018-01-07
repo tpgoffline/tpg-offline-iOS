@@ -31,6 +31,8 @@ class HourPickerViewController: UIViewController {
             self.timePicker.maximumDate = Calendar.current.date(from: comps) ?? Date()
         }
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         if App.darkMode {
             self.view.backgroundColor = App.cellBackgroundColor
             self.timePicker.setValue(UIColor.white, forKeyPath: "textColor")
@@ -38,12 +40,6 @@ class HourPickerViewController: UIViewController {
             self.nextButton.backgroundColor = .black
             self.nextButton.setTitleColor(App.textColor, for: .normal)
         }
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func nextButtonPressed() {
@@ -55,6 +51,19 @@ class HourPickerViewController: UIViewController {
             AddMonitoring.fromHour = dateFormatter.string(from: timePicker.date)
             AddMonitoring.fromDate = timePicker.date
         }
+    }
+
+    override func colorModeDidUpdated() {
+        super.colorModeDidUpdated()
+        self.view.backgroundColor = App.cellBackgroundColor
+        self.timePicker.setValue(App.textColor, forKeyPath: "textColor")
+        self.textLabel.textColor = App.textColor
+        self.nextButton.backgroundColor = App.darkMode ? .black : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+        self.nextButton.setTitleColor(.white, for: .normal)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

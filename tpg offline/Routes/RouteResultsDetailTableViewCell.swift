@@ -23,6 +23,8 @@ class RouteResultDetailsTableViewCell: UITableViewCell {
         didSet {
             guard let section = section else { return }
 
+            self.backgroundColor = App.cellBackgroundColor
+
             let destinationName = App.stops.filter({$0.nameTransportAPI == section.journey?.to})[safe: 0]?.name
                 ?? (section.journey?.to ?? "#?!")
 

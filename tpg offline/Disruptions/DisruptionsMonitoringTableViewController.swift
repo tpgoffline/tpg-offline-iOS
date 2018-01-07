@@ -22,7 +22,8 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
                 let alertController = UIAlertController(title: "Sorry".localized,
                                                         message: "You need to be connected to internet to manage disruptions monitoring.".localized,
                                                         preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
+                alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { (_) in
+                    self.navigationController?.popViewController(animated: true) }))
                 self.present(alertController, animated: true, completion: nil)
             }
         }
@@ -88,6 +89,8 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(self.reload), for: .valueChanged)
         refreshControl?.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         reload()
     }
 
@@ -113,6 +116,10 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
 
     @objc func addLineMonitoring() {
         performSegue(withIdentifier: "addLineMonitoring", sender: self)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func viewDidAppear(_ animated: Bool) {

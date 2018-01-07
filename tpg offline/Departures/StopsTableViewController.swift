@@ -174,6 +174,8 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             self.tableView.backgroundColor = .black
         }
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         guard let rightNavController = self.splitViewController?.viewControllers.last as? UINavigationController,
             let detailViewController = rightNavController.topViewController as? DeparturesViewController else { return }
         self.delegate = detailViewController
@@ -264,6 +266,18 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         return true
     }
+
+    override func colorModeDidUpdated() {
+        super.colorModeDidUpdated()
+        self.tableView.backgroundColor = App.darkMode ? .black : .groupTableViewBackground
+        self.tableView.sectionIndexBackgroundColor = App.darkMode ? .black : .white
+        self.tableView.separatorColor = App.separatorColor
+        self.tableView.reloadData()
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
+    }
 }
 
 extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
@@ -315,7 +329,6 @@ extension StopsTableViewController: CLLocationManagerDelegate {
 
 extension StopsTableViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-
         guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
 
         guard let row = tableView.cellForRow(at: indexPath) as? StopsTableViewCell else { return nil }
@@ -329,9 +342,7 @@ extension StopsTableViewController: UIViewControllerPreviewingDelegate {
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-
         show(viewControllerToCommit, sender: self)
-
     }
 }
 

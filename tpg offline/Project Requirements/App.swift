@@ -9,7 +9,7 @@
 import UIKit
 import WatchConnectivity
 #if os(iOS)
-import Crashlytics
+    import Crashlytics
 #endif
 
 struct App {
@@ -58,11 +58,39 @@ struct App {
 
     static var apnsToken: String = ""
 
-    static var darkMode: Bool = false
+    static var darkMode: Bool {
+        get {
+            return (UserDefaults.standard.bool(forKey: #function))
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+            #if os(iOS)
+                ColorModeManager.shared.updateColorMode()
+            #endif
+        }
+    }
 
     static var indexedStops: [Int] {
         get {
             return (UserDefaults.standard.array(forKey: #function) as? [Int]) ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+
+    static var favoritesLines: [String] {
+        get {
+            return (UserDefaults.standard.array(forKey: #function) as? [String]) ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+    
+    static var filterFavoritesLines: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: #function)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: #function)
@@ -98,16 +126,16 @@ struct App {
     @discardableResult static func loadStops() -> Bool {
         do {
             let data: Data
-            if let dataA = UserDefaults.standard.data(forKey: "stops.json") {
-                data = dataA
-            } else {
-                do {
-                    data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
-                } catch {
-                    print("Can't load stops")
-                    abort()
-                }
+            //            if let dataA = UserDefaults.standard.data(forKey: "stops.json") {
+            //                data = dataA
+            //            } else {
+            do {
+                data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
+            } catch {
+                print("Can't load stops")
+                abort()
             }
+            //            }
             let decoder = JSONDecoder()
             let stops = try decoder.decode([Stop].self, from: data)
             App.stops = stops.sorted(by: { $0.name < $1.name })
@@ -162,7 +190,7 @@ struct App {
 
     #if os(iOS)
     static func log(_ string: String) {
-        CLSLogv("%@", getVaList([string]))
+    CLSLogv("%@", getVaList([string]))
     }
     #endif
 }

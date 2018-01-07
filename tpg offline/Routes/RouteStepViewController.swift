@@ -77,10 +77,27 @@ class RouteStepViewController: UIViewController {
             self.buttonBackgroundView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
         }
+
+        ColorModeManager.shared.addColorModeDelegate(self)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    override func colorModeDidUpdated() {
+        super.colorModeDidUpdated()
+        self.tableView.backgroundColor = App.darkMode ? .black : .white
+        self.buttonBackgroundView.backgroundColor = App.darkMode ? .black : .white
+        self.tableView.separatorColor = App.separatorColor
+        self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: self.color.contrast), for: .normal)
+        self.reminderButton.setTitleColor(self.color.contrast, for: .normal)
+        self.reminderButton.backgroundColor = self.color
+        self.tableView.reloadData()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

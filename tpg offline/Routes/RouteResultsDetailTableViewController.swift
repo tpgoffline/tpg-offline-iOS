@@ -35,6 +35,8 @@ class RouteResultsDetailTableViewController: UITableViewController {
             registerForPreviewing(with: self, sourceView: tableView)
         }
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
@@ -145,6 +147,10 @@ class RouteResultsDetailTableViewController: UITableViewController {
 
     @objc func pushMap() {
         performSegue(withIdentifier: "showMap", sender: self)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 }
 

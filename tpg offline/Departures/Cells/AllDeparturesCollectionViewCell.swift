@@ -27,6 +27,7 @@ class AllDeparturesCollectionViewCell: UICollectionViewCell {
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
             self.label.text = dateFormatter.string(from: date)
+            self.label.textColor = App.textColor
             self.loading = false
         }
     }

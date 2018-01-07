@@ -21,6 +21,8 @@ class RouteMapViewController: UIViewController {
         mapView.delegate = self
         title = "Map".localized
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         guard let connection = self.connection else { return }
 
         var allPoints: [CLLocationCoordinate2D] = []
@@ -46,6 +48,10 @@ class RouteMapViewController: UIViewController {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(allPoints[0],
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 }
 

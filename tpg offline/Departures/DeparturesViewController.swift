@@ -19,11 +19,12 @@ class DeparturesViewController: UIViewController {
 
     var stop: Stop? {
         didSet {
-            App.log("Departures: Selected \(stop?.code ?? "XXXX")")
+            guard let stop = stop else { return }
+            App.log("Departures: Selected \(stop.code)")
             Answers.logCustomEvent(withName: "Show departures",
-                                   customAttributes: ["appId": stop?.code ?? "XXXX"])
+                                   customAttributes: ["appId": stop.code])
 
-            navigationItem.title = stop?.name
+            navigationItem.title = stop.name
             navigationItem.accessibilityTraits = UIAccessibilityTraitNone
             refreshDepatures()
 
@@ -32,16 +33,33 @@ class DeparturesViewController: UIViewController {
             guard let mapView = self.mapView else { return }
 
             let regionRadius: CLLocationDistance = 1000
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(stop!.location.coordinate,
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(stop.location.coordinate,
                                                                       regionRadius * 2.0, regionRadius * 2.0)
             mapView.setRegion(coordinateRegion, animated: true)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = stop!.location.coordinate
-            annotation.title = stop?.name
-            mapView.addAnnotation(annotation)
+
+            if !stop.localisations.isEmpty {
+                for localisation in stop.localisations {
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = localisation.location.coordinate
+                    annotation.title = stop.name
+                    var subtitle = ""
+                    for destination in localisation.destinations {
+                        subtitle.append(String(format: "Line %@ - %@\n", destination.line, destination.destination))
+                    }
+                    annotation.subtitle = subtitle
+                    mapView.addAnnotation(annotation)
+                }
+            } else {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = stop.location.coordinate
+                annotation.title = stop.name
+                mapView.addAnnotation(annotation)
+            }
+
         }
     }
     var departures: DeparturesGroup?
+    var filteredLines: [String] = []
     var showMoreLines: [String] = []
     var noInternet = false
     var requestStatus: RequestStatus = .loading {
@@ -51,7 +69,7 @@ class DeparturesViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
+    
     private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -59,6 +77,10 @@ class DeparturesViewController: UIViewController {
 
         if self.stop == nil {
             self.stop = App.stops[0]
+        } else {
+            let stop = self.stop
+            self.stop = nil
+            self.stop = stop
         }
 
         if #available(iOS 10.0, *) {
@@ -90,6 +112,8 @@ class DeparturesViewController: UIViewController {
             self.tableView.separatorColor = App.separatorColor
             self.view.backgroundColor = .black
         }
+
+        ColorModeManager.shared.addColorModeDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -115,7 +139,12 @@ class DeparturesViewController: UIViewController {
                             style: UIBarButtonItemStyle.plain,
                             target: self,
                             action: #selector(self.reload),
-                            accessbilityLabel: "Reload departures".localized)
+                            accessbilityLabel: "Reload departures".localized),
+            UIBarButtonItem(image: App.filterFavoritesLines ? #imageLiteral(resourceName: "filter") : #imageLiteral(resourceName: "filterEmpty"),
+                            style: UIBarButtonItemStyle.plain,
+                            target: self,
+                            action: #selector(self.toggleFilterFavoritesLines),
+                            accessbilityLabel: "Filter favorites lines".localized)
         ]
     }
 
@@ -137,6 +166,7 @@ class DeparturesViewController: UIViewController {
                     do {
                         let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
                         self.departures = json
+                        self.filteredLines = json.lines.filter({ App.favoritesLines.contains($0) })
                         self.requestStatus = .ok
                     } catch {
                         self.loadOfflineDepartures()
@@ -151,6 +181,14 @@ class DeparturesViewController: UIViewController {
                 }
                 self.refreshControl.endRefreshing()
         }
+    }
+
+    @objc func toggleFilterFavoritesLines() {
+        App.filterFavoritesLines = !(App.filterFavoritesLines)
+        self.configureTabBarItems()
+        showMoreLines = []
+        self.filteredLines = self.departures?.lines.filter({ App.favoritesLines.contains($0) }) ?? []
+        self.tableView.reloadData()
     }
 
     func loadOfflineDepartures() {
@@ -185,6 +223,7 @@ class DeparturesViewController: UIViewController {
                 let leftTime2: Int = Int(departure2.leftTime)!
                 return leftTime1 < leftTime2
             })
+            self.filteredLines = self.departures?.lines.filter({ App.favoritesLines.contains($0) }) ?? []
             if self.departures?.lines.count == 0 {
                 self.requestStatus = .noResults
                 return
@@ -206,6 +245,17 @@ class DeparturesViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
+    }
+
+    override func colorModeDidUpdated() {
+        super.colorModeDidUpdated()
+        self.tableView.backgroundColor = App.darkMode ? .black : .groupTableViewBackground
+        self.tableView.separatorColor = App.separatorColor
+        self.tableView.reloadData()
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -257,7 +307,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         } else if self.requestStatus == any(of: .error, .noResults) {
             return 1
         } else {
-            return (self.departures?.lines.count ?? 0) + (self.noInternet ? 1 : 0)
+            if App.filterFavoritesLines {
+                return (self.filteredLines.count) + (self.noInternet ? 1 : 0)
+            } else {
+                return (self.departures?.lines.count ?? 0) + (self.noInternet ? 1 : 0)
+            }
         }
     }
 
@@ -270,6 +324,17 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         let section = section - (self.noInternet ? 1 : 0)
+        if App.filterFavoritesLines {
+            if let count = departures?.departures.filter({$0.line.code == (self.filteredLines[section])}).count {
+                if count > 5 && !(showMoreLines.contains(String(section))) {
+                    return 4
+                } else {
+                    return count
+                }
+            } else {
+                return 0
+            }
+        } else {
         if let count = departures?.departures.filter({$0.line.code == (self.departures?.lines[section] ?? "")}).count {
             if count > 5 && !(showMoreLines.contains(String(section))) {
                 return 4
@@ -278,6 +343,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             return 0
+            }
         }
     }
 
@@ -291,21 +357,30 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if self.requestStatus == .error {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell", for: indexPath)
-            cell.imageView?.image = #imageLiteral(resourceName: "globe")
+            cell.imageView?.image = #imageLiteral(resourceName: "globe").maskWith(color: App.textColor)
             cell.textLabel?.text = "Error".localized
             cell.detailTextLabel?.text = "You don't downloaded offline departures, and you're not connected to internet".localized
+            cell.textLabel?.textColor = App.textColor
+            cell.detailTextLabel?.textColor = App.textColor
+            cell.backgroundColor = App.cellBackgroundColor
             return cell
         } else if self.requestStatus == .noResults {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell", for: indexPath)
-            cell.imageView?.image = #imageLiteral(resourceName: "warningSign")
+            cell.imageView?.image = #imageLiteral(resourceName: "warningSign").maskWith(color: App.textColor)
             cell.textLabel?.text = "That's all for today".localized
             cell.detailTextLabel?.text = "No more bus will come to this stop today.".localized
+            cell.textLabel?.textColor = App.textColor
+            cell.detailTextLabel?.textColor = App.textColor
+            cell.backgroundColor = App.cellBackgroundColor
             return cell
         } else if self.noInternet && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell", for: indexPath)
-            cell.imageView?.image = #imageLiteral(resourceName: "globe")
+            cell.imageView?.image = #imageLiteral(resourceName: "globe").maskWith(color: App.textColor)
             cell.textLabel?.text = "Offline mode".localized
             cell.detailTextLabel?.text = "You are using timetables departures. So departures are subjects to change.".localized
+            cell.textLabel?.textColor = App.textColor
+            cell.detailTextLabel?.textColor = App.textColor
+            cell.backgroundColor = App.cellBackgroundColor
             return cell
         }
         let section = indexPath.section - (self.noInternet ? 1 : 0)
@@ -314,7 +389,12 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
         }
 
-        let departure = departures?.departures.filter({$0.line.code == (self.departures?.lines[section] ?? "")})[indexPath.row]
+        let departure: Departure?
+        if App.filterFavoritesLines {
+            departure = departures?.departures.filter({$0.line.code == (self.filteredLines[section])})[indexPath.row]
+        } else {
+            departure = departures?.departures.filter({$0.line.code == (self.departures?.lines[section] ?? "")})[indexPath.row]
+        }
         cell.departure = departure
 
         return cell
@@ -329,11 +409,15 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return nil
         }
         let section = section - (self.noInternet ? 1 : 0)
-        let count = departures!.departures.filter({$0.line.code == (self.departures?.lines[safe: section] ?? "")}).count
+        var line = self.departures?.lines[safe: section] ?? "?#!"
+        if App.filterFavoritesLines {
+            line = self.filteredLines[section]
+        }
+        let count = departures!.departures.filter({$0.line.code == line}).count
         if count > 5 {
             guard let footerCell = tableView.dequeueReusableCell(withIdentifier: "footerCell") as? FooterDeparturesTableViewCell
                 else { return nil }
-            let color = App.color(for: departures?.lines[section] ?? "?#!")
+            let color = App.color(for: line)
             if showMoreLines.contains(String(section)) {
                 footerCell.button.setTitle("Show less".localized, for: .normal)
             } else {
@@ -359,9 +443,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if self.requestStatus == .loading {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-            headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-            headerCell?.textLabel?.text = ""
+            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? DeparturesHeaderTableViewCell else {
+                return UIView()
+            }
+            headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+            headerCell.titleLabel?.text = ""
             return headerCell
         } else if self.requestStatus == any(of: .error, .noResults) {
             return nil
@@ -369,15 +455,40 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return nil
         }
         let section = section - (self.noInternet ? 1 : 0)
-        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-        let color = App.color(for: departures?.lines[section] ?? "?#!".localized)
-        headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
-        headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
-        headerCell?.textLabel?.textColor = App.darkMode ? color : color.contrast
+        var line = self.departures?.lines[safe: section] ?? "?#!"
+        if App.filterFavoritesLines {
+            line = self.filteredLines[section]
+        }
+        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? DeparturesHeaderTableViewCell else {
+            return UIView()
+        }
+        let color = App.color(for: line)
+        headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
+        headerCell.titleLabel?.text = String(format: "Line %@".localized, "\(line)")
+        headerCell.titleLabel?.textColor = App.darkMode ? color : color.contrast
 
-        headerCell?.accessibilityLabel = String(format: "Departures for the line %@".localized, "\(departures?.lines[section] ?? "?#!".localized)")
+        headerCell.accessibilityLabel = String(format: "Departures for the line %@".localized, "\(line)")
+
+        headerCell.favoriteButton.setImage(App.favoritesLines.contains(line) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"), for: .normal)
+        headerCell.favoriteButton.tintColor = App.darkMode ? color : color.contrast
+        headerCell.favoriteButton.tag = section
+        headerCell.favoriteButton.addTarget(self, action: #selector(self.toggleFavoritesLines(button:)), for: UIControlEvents.touchUpInside)
 
         return headerCell
+    }
+
+    @objc func toggleFavoritesLines(button: UIButton) {
+        let section = button.tag
+        var line = self.departures?.lines[safe: section] ?? "?#!"
+        if App.filterFavoritesLines {
+            line = self.filteredLines[section]
+        }
+        if let index = App.favoritesLines.index(of: line) {
+            App.favoritesLines.remove(at: index)
+        } else {
+            App.favoritesLines.append(line)
+        }
+        self.tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -393,7 +504,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return 0
         }
         let section = section - (self.noInternet ? 1 : 0)
-        let count = departures!.departures.filter({$0.line.code == (self.departures?.lines[section] ?? "")}).count
+        var line = self.departures?.lines[safe: section] ?? "?#!"
+        if App.filterFavoritesLines {
+            line = self.filteredLines[section]
+        }
+        let count = departures!.departures.filter({$0.line.code == line}).count
         if count > 5 {
             return 88
         } else {

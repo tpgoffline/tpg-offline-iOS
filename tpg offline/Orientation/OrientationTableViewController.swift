@@ -38,6 +38,8 @@ class OrientationTableViewController: UITableViewController {
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
+
+        ColorModeManager.shared.addColorModeDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,6 +125,10 @@ class OrientationTableViewController: UITableViewController {
             destinationViewController.line = row.line
         }
     }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
+    }
 }
 
 class MapsTableViewControllerRow: UITableViewCell {
@@ -135,13 +141,13 @@ class MapsTableViewControllerRow: UITableViewCell {
             return mapImageView.image
         } set {
             mapImageView.image = newValue
+            self.titleLabel.textColor = App.textColor
+            self.visualEffectView.effect = UIBlurEffect(style: App.darkMode ? .dark : .light)
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.titleLabel.textColor = App.textColor
-        self.visualEffectView.effect = UIBlurEffect(style: App.darkMode ? .dark : .light)
         let view = UIView()
         view.backgroundColor = .clear
         self.selectedBackgroundView = view

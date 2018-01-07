@@ -85,6 +85,11 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
         }
+        ColorModeManager.shared.addColorModeDelegate(self)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {

@@ -55,32 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
-                if !accepted {
-                    print("Notification access denied.")
-                }
-            }
-        } else {
-            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
-            let setting = UIUserNotificationSettings(types: type, categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(setting)
-        }
-
-        UIApplication.shared.registerForRemoteNotifications()
-
         window?.layer.cornerRadius = 5
         window?.clipsToBounds = true
-
-        if CommandLine.arguments.contains("-reset") {
-            App.loadStops()
-            App.favoritesStops = [App.stops.filter({ $0.code == "CVIN"})[0].appId]
-            App.favoritesRoutes = [Route(from: App.stops.filter({ $0.code == "31DC"})[0],
-                                         to: App.stops.filter({ $0.code == "CVIN"})[0],
-                                         date: Date(), arrivalTime: false)]
-            window?.layer.cornerRadius = 0
-            return true
-        }
 
         if let tabController = (window?.rootViewController as? UITabBarController) {
             tabController.selectedIndex = App.defaultTab
@@ -88,6 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
                 version != UserDefaults.standard.string(forKey: "lastVersion") {
                 tabController.selectedIndex = 4
+            }
+
+            if CommandLine.arguments.contains("-reset") {
+                tabController.selectedIndex = 0
             }
 
             tabController.tabBar.items![0].image = #imageLiteral(resourceName: "clockTabBar")
@@ -106,6 +86,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabController.tabBar.items![4].selectedImage = #imageLiteral(resourceName: "settingsTabBar")
             tabController.tabBar.items![4].title = "Settings".localized
         }
+
+        if CommandLine.arguments.contains("-reset") {
+            App.loadStops()
+            App.favoritesStops = [App.stops.filter({ $0.code == "CVIN"})[0].appId]
+            App.favoritesRoutes = [Route(from: App.stops.filter({ $0.code == "31DC"})[0],
+                                         to: App.stops.filter({ $0.code == "CVIN"})[0],
+                                         date: Date(), arrivalTime: false)]
+            return true
+        }
+
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
+                if !accepted {
+                    print("Notification access denied.")
+                }
+            }
+        } else {
+            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+            let setting = UIUserNotificationSettings(types: type, categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+        }
+
+        UIApplication.shared.registerForRemoteNotifications()
 
         UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
         App.loadLines()

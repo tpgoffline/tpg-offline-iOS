@@ -89,7 +89,7 @@
         <!--Disruptions Monitoring Table View Controller-->
         <scene sceneID="y5P-vz-cDE">
             <objects>
-                <tableViewController id="emf-fy-BIN" customClass="DisruptionsMonitoringTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="disruptionsMonitoring" id="emf-fy-BIN" customClass="DisruptionsMonitoringTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ttv-5m-K6K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

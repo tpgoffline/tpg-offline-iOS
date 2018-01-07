@@ -11,11 +11,15 @@ import Alamofire
 import UserNotifications
 import MapKit
 import MessageUI
+#if !arch(i386) && !arch(x86_64)
+    import NetworkExtension
+#endif
 
 class DetailDeparturesViewController: UIViewController {
 
     @IBOutlet weak var reminderButton: UIButton!
     @IBOutlet weak var allDeparturesButton: UIButton!
+    @IBOutlet weak var wifiButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var stackView: UIStackView!
@@ -35,7 +39,12 @@ class DetailDeparturesViewController: UIViewController {
             for stopCode in stops {
                 guard let stop = App.stops.filter({ $0.code == stopCode })[safe: 0] else { break }
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = stop.location.coordinate
+                if let localisation = stop.localisations.filter({ !($0.destinations.filter({ $0.line == busRouteGroup.lineCode && $0.destination == busRouteGroup.destination }).isEmpty) })[safe: 0] {
+                    annotation.coordinate = localisation.location.coordinate
+                } else {
+                    annotation.coordinate = stop.location.coordinate
+                }
+
                 coordinates.append(annotation.coordinate)
                 annotation.title = stop.name
                 self.names.append(stop.name)
@@ -92,6 +101,7 @@ class DetailDeparturesViewController: UIViewController {
         if let color = self.color {
             self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
             self.allDeparturesButton.setImage(#imageLiteral(resourceName: "clockTabBar").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+            self.wifiButton.setImage(#imageLiteral(resourceName: "wifi").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
 
             self.reminderButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
             self.reminderButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
@@ -99,6 +109,9 @@ class DetailDeparturesViewController: UIViewController {
             self.allDeparturesButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
             self.allDeparturesButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
             self.allDeparturesButton.cornerRadius = 5
+            self.wifiButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            self.wifiButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
+            self.wifiButton.cornerRadius = 5
         }
 
         refreshBusRoute()
@@ -129,11 +142,48 @@ class DetailDeparturesViewController: UIViewController {
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: self.tableView)
         }
+
+        if self.departure?.wifi == false {
+            self.wifiButton.isHidden = true
+        }
+        if #available(iOS 11.0, *) {} else {
+            self.wifiButton.isHidden = true
+        }
+        #if !arch(i386) && !arch(x86_64)
+        #else
+        self.wifiButton.isHidden = true
+        #endif
+
+        ColorModeManager.shared.addColorModeDelegate(self)
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
+    }
+
+    override func colorModeDidUpdated() {
+        super.colorModeDidUpdated()
+        self.buttonsView.backgroundColor = App.darkMode ? .black : .white
+        self.tableView.backgroundColor = App.darkMode ? .black : .white
+        self.tableView.separatorColor = App.separatorColor
+        self.tableView.reloadData()
+
+        if let color = self.color {
+            self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+            self.allDeparturesButton.setImage(#imageLiteral(resourceName: "clockTabBar").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+
+            self.reminderButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            self.reminderButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
+            self.allDeparturesButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            self.allDeparturesButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
+            self.wifiButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            self.wifiButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
+        }
     }
 
     @objc func refreshBusRoute() {
         self.busRouteGroup = nil
-        Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetThermometer", method: .get,
+        Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetThermometer.json", method: .get,
                           parameters: ["key": "d95be980-0830-11e5-a039-0002a5d5c51b",
                                        "departureCode": departure?.code ?? 0])
             .responseData { (response) in
@@ -194,8 +244,22 @@ class DetailDeparturesViewController: UIViewController {
         }
     }
 
+    @IBAction func connectToWifi() {
+        #if !arch(i386) && !arch(x86_64)
+        if #available(iOS 11.0, *) {
+            let configuration = NEHotspotConfiguration(ssid: "tpg-freeWiFi")
+            configuration.joinOnce = false
+            NEHotspotConfigurationManager.shared.apply(configuration, completionHandler: { (error) in
+                print(error)
+            })
+        } else {
+            print("How did you end here ?")
+        }
+        #endif
+    }
+
     @IBAction func remind() {
-        App.log( "Departures: Reminder")
+        App.log("Departures: Reminder")
         self.departure?.calculateLeftTime()
         var alertController = UIAlertController(title: "Reminder".localized,
                                                 message: "When do you want to be reminded?".localized,
@@ -398,8 +462,6 @@ extension DetailDeparturesViewController: UIViewControllerPreviewingDelegate {
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-
         show(viewControllerToCommit, sender: self)
-
     }
 }

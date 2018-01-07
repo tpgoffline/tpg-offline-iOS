@@ -51,6 +51,8 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
             collectionView?.backgroundColor = App.cellBackgroundColor
         }
 
+        ColorModeManager.shared.addColorModeDelegate(self)
+
         refresh()
     }
 
@@ -84,6 +86,10 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                     self.refreshControl.endRefreshing()
                 }
         }
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -150,7 +156,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
                 headerView.title.text = dateFormatter.string(from: dateComponents.date ?? Date())
                 headerView.title.accessibilityLabel = dateFormatter.string(from: dateComponents.date ?? Date())
                 headerView.backgroundColor = App.darkMode ? .black : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-                headerView.title.textColor = .white
+                headerView.title.textColor = App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white
 
                 return headerView
             default:

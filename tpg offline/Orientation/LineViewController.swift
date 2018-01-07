@@ -72,6 +72,8 @@ class LineViewController: UIViewController {
             self.navigationController?.navigationBar.barStyle = .black
             self.tableView.backgroundColor = .black
         }
+
+        ColorModeManager.shared.addColorModeDelegate(self)
     }
 
     @objc func showSnotpgPage() {
@@ -83,6 +85,25 @@ class LineViewController: UIViewController {
         vc.delegate = self
 
         self.present(vc, animated: true)
+    }
+
+    override func colorModeDidUpdated() {
+        super.colorModeDidUpdated()
+        self.departureLabel.textColor = App.textColor
+        self.arrivalLabel.textColor = App.textColor
+        self.view.backgroundColor = App.cellBackgroundColor
+        self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
+        self.tableView.backgroundColor = App.darkMode ? .black : .white
+        self.tableView.reloadData()
+        guard let line = self.line else { return }
+        if line.snotpgURL != "" {
+            let color = App.color(for: line.line)
+            waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+            waybackMachineButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            waybackMachineButton.backgroundColor = App.darkMode ? .black : App.color(for: line.line)
+        } else {
+            self.buttonHeightConstraint.constant = 0
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,6 +130,10 @@ class LineViewController: UIViewController {
             self.tableView.deselectRow(at: indexPath, animated: true)
             destinationViewController.stop = (tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell)?.stop
         }
+    }
+
+    deinit {
+        ColorModeManager.shared.removeColorModeDelegate(self)
     }
 }
 
@@ -177,8 +202,6 @@ extension LineViewController: UIViewControllerPreviewingDelegate {
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-
         show(viewControllerToCommit, sender: self)
-
     }
 }

@@ -54,14 +54,16 @@ struct Departure: Decodable {
     var code: Int
     var leftTime: String
     var timestamp: String
+    var wifi: Bool
     var dateCompenents: DateComponents?
 
-    public init(line: Line, code: Int, leftTime: String, timestamp: String, dateCompenents: DateComponents?) {
+    public init(line: Line, code: Int, leftTime: String, timestamp: String, dateCompenents: DateComponents?, wifi: Bool) {
         self.line = line
         self.code = code
         self.leftTime = leftTime
         self.timestamp = timestamp
         self.dateCompenents = dateCompenents
+        self.wifi = wifi
 
         if self.leftTime == "" {
             self.calculateLeftTime()
@@ -75,6 +77,7 @@ struct Departure: Decodable {
         case code = "departureCode"
         case leftTime
         case timestamp
+        case vehiculeNo
     }
 
     init(from decoder: Decoder) throws {
@@ -86,13 +89,17 @@ struct Departure: Decodable {
                 let code = (try? container.decode(Int.self, forKey: .code)) ?? -1
                 let leftTime = (try? container.decode(String.self, forKey: .leftTime)) ?? ""
                 let timestamp = (try? container.decode(String.self, forKey: .timestamp)) ?? ""
-                self.init(line: line, code: code, leftTime: leftTime, timestamp: timestamp, dateCompenents: nil)
+                let vehiculeNo = (try? container.decode(Int.self, forKey: .vehiculeNo)) ?? -1
+                let wifi = (781 <= vehiculeNo && vehiculeNo <= 790) || (1601 <= vehiculeNo && vehiculeNo <= 1663)
+                self.init(line: line, code: code, leftTime: leftTime, timestamp: timestamp, dateCompenents: nil, wifi: wifi)
             case .offline:
                 let lineString = try container.decode(String.self, forKey: .lineOffline)
                 let destination = try container.decode(String.self, forKey: .destinationOffline)
                 let line = Departure.Line(code: lineString, destination: destination, destinationCode: "")
                 let timestamp = try container.decode(String.self, forKey: .timestamp)
-                self.init(line: line, code: -1, leftTime: "", timestamp: timestamp, dateCompenents: nil)
+                //let vehiculeNo = (try? container.decode(Int.self, forKey: .vehiculeNo)) ?? -1
+                //let wifi = (781 <= vehiculeNo && vehiculeNo <= 790) || (1601 <= vehiculeNo && vehiculeNo <= 1663)
+                self.init(line: line, code: -1, leftTime: "", timestamp: timestamp, dateCompenents: nil, wifi: false)
             }
         } else {
             fatalError("You need to set network status with DeparturesOptions")
