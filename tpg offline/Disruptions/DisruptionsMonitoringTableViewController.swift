@@ -22,8 +22,11 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
                 let alertController = UIAlertController(title: "Sorry".localized,
                                                         message: "You need to be connected to internet to manage disruptions monitoring.".localized,
                                                         preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { (_) in
-                    self.navigationController?.popViewController(animated: true) }))
+                let action = UIAlertAction(title: "OK".localized, style: .default) { _ in
+                    print("AEE")
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+                alertController.addAction(action)
                 self.present(alertController, animated: true, completion: nil)
             }
         }
@@ -56,19 +59,21 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
 
         if App.apnsToken == "" {
             let alertController = UIAlertController(title: "Sorry".localized, message: "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed.".localized, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
-            present(alertController, animated: true) {
-                self.navigationController?.popViewController(animated: true)
+            let action = UIAlertAction(title: "OK".localized, style: .default) { _ in
+                self.navigationController?.popToRootViewController(animated: true)
             }
+            alertController.addAction(action)
+            present(alertController, animated: true, completion: nil)
         }
 
         if firstOpeningOfDisruptionsMonitoring == true, App.apnsToken != "" {
             firstOpeningOfDisruptionsMonitoring = false
             let alertController = UIAlertController(title: "Disruptions monitoring".localized, message: "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification.".localized, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK, thanks".localized, style: .default, handler: nil))
-            present(alertController, animated: true) {
-                self.navigationController?.popViewController(animated: true)
+            let action = UIAlertAction(title: "OK".localized, style: .default) { _ in
+                self.navigationController?.popToRootViewController(animated: true)
             }
+            alertController.addAction(action)
+            present(alertController, animated: true, completion: nil)
         }
 
         title = "Monitoring".localized

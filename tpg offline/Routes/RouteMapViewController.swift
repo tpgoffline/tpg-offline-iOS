@@ -18,6 +18,8 @@ class RouteMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let mapView = self.mapView else { return }
+        
         mapView.delegate = self
         title = "Map".localized
 
