@@ -10,6 +10,11 @@ import UIKit
 import MapKit
 import Alamofire
 import Crashlytics
+import UserNotifications
+import MessageUI
+#if !arch(i386) && !arch(x86_64)
+    import NetworkExtension
+#endif
 
 class DeparturesViewController: UIViewController {
 
@@ -152,10 +157,7 @@ class DeparturesViewController: UIViewController {
         self.departures = nil
         self.requestStatus = .loading
         self.noInternet = false
-        Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json",
-                          method: .get,
-                          parameters: ["key": API.tpg,
-                                       "stopCode": stop!.code])
+        Alamofire.request("https://tpgoffline-apns.alwaysdata.net/api/departures/\(stop!.code)", method: .get)
             .responseData { (response) in
                 if let data = response.result.value {
                     var options = DeparturesOptions()
@@ -270,7 +272,7 @@ class DeparturesViewController: UIViewController {
             destinationViewController.color = App.color(for: row.departure!.line.code)
             destinationViewController.departure = row.departure
             destinationViewController.stop = self.stop
-            App.log( "Departures: Select \(row.departure?.line.code ?? "") - \(row.departure?.line.destination ?? "") - \(row.departure?.timestamp ?? "")") // swiftlint:disable:this line_length
+            App.log("Departures: Select \(row.departure?.line.code ?? "") - \(row.departure?.line.destination ?? "") - \(row.departure?.timestamp ?? "")") // swiftlint:disable:this line_length
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -396,7 +398,6 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             departure = departures?.departures.filter({$0.line.code == (self.departures?.lines[section] ?? "")})[indexPath.row]
         }
         cell.departure = departure
-
         return cell
     }
 
@@ -515,6 +516,192 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return 44
         }
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return self.requestStatus != .loading &&
+        self.requestStatus != .error &&
+        self.requestStatus != .noResults &&
+        !(self.noInternet && indexPath.section == 0)
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var departuree: Departure?
+        if App.filterFavoritesLines {
+            departuree = departures?.departures.filter({$0.line.code == (self.filteredLines[indexPath.section])})[indexPath.row]
+        } else {
+            departuree = departures?.departures.filter({$0.line.code == (self.departures?.lines[indexPath.section] ?? "")})[indexPath.row]
+        }
+
+        guard var departure = departuree else { return [] }
+
+        let reminderAction = UITableViewRowAction(style: .normal, title: "Reminder".localized) { (_, _) in
+            App.log("Departures: Reminder")
+            departure.calculateLeftTime()
+            var alertController = UIAlertController(title: "Reminder".localized,
+                                                    message: "When do you want to be reminded?".localized,
+                                                    preferredStyle: .alert)
+            if departure.leftTime == "0" {
+                alertController.title = "Bus is comming".localized
+                alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
+            } else {
+                let leftTime = Int(departure.leftTime) ?? 0
+                let departureTimeAction = UIAlertAction(title: "At departure time".localized, style: .default) { _ in
+                    self.setAlert(with: 0, departure: departure)
+                }
+                alertController.addAction(departureTimeAction)
+
+                if leftTime > 5 {
+                    let fiveMinutesBeforeAction = UIAlertAction(title: "5 minutes before".localized, style: .default) { _ in
+                        self.setAlert(with: 5, departure: departure)
+                    }
+                    alertController.addAction(fiveMinutesBeforeAction)
+                }
+                if leftTime > 10 {
+                    let tenMinutesBeforeAction = UIAlertAction(title: "10 minutes before".localized, style: .default) { _ in
+                        self.setAlert(with: 10, departure: departure)
+                    }
+                    alertController.addAction(tenMinutesBeforeAction)
+                }
+
+                let otherAction = UIAlertAction(title: "Other".localized, style: .default) { _ in
+                    alertController.dismiss(animated: true, completion: nil)
+                    alertController = UIAlertController(title: "Reminder".localized,
+                                                        message: "When do you want to be reminded".localized,
+                                                        preferredStyle: .alert)
+
+                    alertController.addTextField { textField in
+                        textField.placeholder = "Number of minutes before departure".localized
+                        textField.keyboardType = .numberPad
+                        textField.keyboardAppearance = App.darkMode ? .dark : .light
+                    }
+
+                    let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in
+                        guard let remainingTime = Int(alertController.textFields?[0].text ?? "#!?") else { return }
+                        self.setAlert(with: remainingTime, departure: departure)
+                    }
+                    alertController.addAction(okAction)
+
+                    let cancelAction = UIAlertAction(title: "Cancel".localized, style: .destructive) { _ in
+                    }
+                    alertController.addAction(cancelAction)
+
+                    self.present(alertController, animated: true, completion: nil)
+                }
+
+                alertController.addAction(otherAction)
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancel".localized, style: .destructive) { _ in }
+            alertController.addAction(cancelAction)
+
+            self.present(alertController, animated: true, completion: nil)
+        }
+        if App.darkMode {
+            reminderAction.backgroundColor = .black
+        } else {
+            reminderAction.backgroundColor = #colorLiteral(red: 0.2470588235, green: 0.3176470588, blue: 0.7098039216, alpha: 1)
+        }
+
+        var wifi = true
+        if departure.wifi == false {
+            wifi = false
+        }
+        if #available(iOS 11.0, *) {} else {
+            wifi = false
+        }
+        if !wifi {
+            return [reminderAction]
+        } else {
+            let wifiAction = UITableViewRowAction(style: .normal, title: "Wi-Fi".localized) { (_, _) in
+                self.connectToWifi()
+            }
+            if App.darkMode {
+                wifiAction.backgroundColor = .black
+            } else {
+                wifiAction.backgroundColor = #colorLiteral(red: 0, green: 0.5882352941, blue: 0.5333333333, alpha: 1)
+            }
+            return [reminderAction, wifiAction]
+        }
+
+    }
+
+    func setAlert(with timeBefore: Int, departure: Departure) {
+        var departure = departure
+        departure.calculateLeftTime()
+        let date = departure.dateCompenents?.date?.addingTimeInterval(TimeInterval(timeBefore * -60))
+        let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date ?? Date())
+        if #available(iOS 10.0, *) {
+            dump(components)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            let content = UNMutableNotificationContent()
+
+            content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
+            content.body = String(format: "Take the line %@ to %@".localized,
+                                  "\(departure.line.code)", "\(departure.line.destination)")
+            content.sound = UNNotificationSound.default()
+            content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
+            let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) {(error) in
+                if let error = error {
+                    print("Uh oh! We had an error: \(error)")
+                    let alertController = UIAlertController(title: "An error occurred".localized,
+                                                            message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
+                        preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
+                        let mailComposerVC = MFMailComposeViewController()
+                        mailComposerVC.mailComposeDelegate = self
+
+                        mailComposerVC.setToRecipients(["support@asmartcode.com"])
+                        mailComposerVC.setSubject("tpg offline - Bug report")
+                        mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
+
+                        if MFMailComposeViewController.canSendMail() {
+                            self.present(mailComposerVC, animated: true, completion: nil)
+                        }
+                    }))
+
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "You will be reminded".localized,
+                                                            message: String(format: "A notification will be send %@".localized,
+                                                                            (timeBefore == 0 ? "at the time of departure.".localized :
+                                                                                String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
+                                                            preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        } else {
+            let notification = UILocalNotification()
+            notification.fireDate = date ?? Date()
+            if timeBefore == 0 {
+                notification.alertBody = String(format: "Take the line %@ to %@ now".localized,
+                                                "\(departure.line.code)", "\(departure.line.destination)")
+            } else {
+                notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized,
+                                                "\(departure.line.code)", "\(departure.line.destination)",
+                    "\(timeBefore)")
+            }
+            notification.identifier = "departureNotification-\(String.random(30))"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.shared.scheduleLocalNotification(notification)
+        }
+    }
+
+    @IBAction func connectToWifi() {
+        #if !arch(i386) && !arch(x86_64)
+            if #available(iOS 11.0, *) {
+                let configuration = NEHotspotConfiguration(ssid: "tpg-freeWiFi")
+                configuration.joinOnce = false
+                NEHotspotConfigurationManager.shared.apply(configuration, completionHandler: { (error) in
+                    print(error ?? "")
+                })
+            } else {
+                print("How did you ended here ?")
+            }
+        #endif
+    }
 }
 
 extension DeparturesViewController: UIViewControllerPreviewingDelegate {
@@ -543,5 +730,11 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
 extension DeparturesViewController: StopSelectionDelegate {
     func stopSelected(_ newStop: Stop) {
         self.stop = newStop
+    }
+}
+
+extension DeparturesViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

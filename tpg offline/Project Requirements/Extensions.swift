@@ -42,6 +42,22 @@ extension String {
         }
     }
 
+    static func random(_ length: Int) -> String {
+
+        let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_"
+        let len = UInt32(letters.length)
+
+        var randomString = ""
+
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+
+        return randomString
+    }
+
     var escaped: String {
         return self
             .folding(options: NSString.CompareOptions.diacriticInsensitive, locale: Locale.current)
@@ -54,6 +70,28 @@ extension String {
 }
 
 #if os(iOS)
+    extension UILocalNotification {
+        // Thanks to @konradczenczek - https://gist.github.com/konradczenczek/0caada4a1141fe78ae20b236ff684ef2
+        static let IdentifierKey = "UILocalNotificationIdentifier"
+
+        var identifier: String? {
+            get {
+                return userInfo?[UILocalNotification.IdentifierKey] as? String
+            }
+            set(newIdentifier) {
+                guard let newIdentifier = newIdentifier else {
+                    userInfo?[UILocalNotification.IdentifierKey] = nil
+                    return
+                }
+
+                var newUserInfo: [AnyHashable: Any] = [:]
+                newUserInfo[UILocalNotification.IdentifierKey] = newIdentifier
+                userInfo?.forEach({ newUserInfo[$0] = $1 })
+                userInfo = newUserInfo
+            }
+        }
+    }
+
     extension UIViewController: ColorModeDelegate {
         @objc func colorModeDidUpdated() {
             UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default

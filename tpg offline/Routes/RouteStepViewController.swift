@@ -188,7 +188,7 @@ class RouteStepViewController: UIViewController {
             content.body = String(format: "Take the line %@ to %@".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName)
             content.sound = UNNotificationSound.default()
             content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
-            let request = UNNotificationRequest(identifier: "departureNotification", content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "routeNotification-\(String.random(30))", content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) {(error) in
                 if let error = error {
                     print("Uh oh! We had an error: \(error)")
@@ -229,7 +229,7 @@ class RouteStepViewController: UIViewController {
                 notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized, "\(section.journey?.lineCode ?? "#!?".localized)", destinationName,
                                                 "\(timeBefore)")
             }
-            notification.alertAction = "departureNotification"
+            notification.identifier = "routeNotification-\(String.random(30))"
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.shared.scheduleLocalNotification(notification)
         }

@@ -21,18 +21,22 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         switch self.selectedIndex {
         case 0:
-            App.log( "TabBar: Switch to Departures")
+            App.log("TabBar: Switch to Departures")
         case 1:
-            App.log( "TabBar: Switch to Disruptions")
+            App.log("TabBar: Switch to Disruptions")
         case 2:
-            App.log( "TabBar: Switch to Routes")
+            App.log("TabBar: Switch to Routes")
         case 3:
-            App.log( "TabBar: Switch to Maps")
+            App.log("TabBar: Switch to Maps")
         case 4:
-            App.log( "TabBar: Switch to Settings")
+            App.log("TabBar: Switch to Settings")
         default:
-            App.log( "TabBar: Switch to an unknow item")
+            App.log("TabBar: Switch to an unknow item")
         }
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return true
     }
 
     override func didReceiveMemoryWarning() {

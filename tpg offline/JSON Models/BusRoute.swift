@@ -57,25 +57,30 @@ struct BusRoute: Codable {
         }
     }
 
+    enum Reliability: String, Codable {
+        case reliable = "F"
+        case theoretical = "T"
+    }
+
     var stop: BusRoute.Stop
     var timestamp: Date
-    var visible: Bool
     var arrivalTime: String
     var first: Bool
     var last: Bool
+    var reliability: Reliability
 
     public init(stop: BusRoute.Stop,
                 arrivalTime: String,
                 timestamp: Date,
-                visible: Bool,
                 first: Bool,
-                last: Bool) {
+                last: Bool,
+                reliability: Reliability) {
         self.stop = stop
         self.timestamp = timestamp
-        self.visible = visible
         self.first = first
         self.last = last
         self.arrivalTime = arrivalTime
+        self.reliability = reliability
         if Int(self.arrivalTime) ?? 0 > 60 {
             let hour = (Int(self.arrivalTime) ?? 0) / 60
             let minutes = (Int(self.arrivalTime) ?? 0) % 60
@@ -86,15 +91,15 @@ struct BusRoute: Codable {
     enum CodingKeys: String, CodingKey {
         case stop
         case timestamp
-        case visible
         case arrivalTime
+        case reliability
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let stop = try container.decode(BusRoute.Stop.self, forKey: .stop)
         let timestamp = try container.decode(Date.self, forKey: .timestamp)
-        let visible = try container.decode(Bool.self, forKey: .visible)
+        let reliability = (try? container.decode(Reliability.self, forKey: .reliability)) ?? .reliable
         let arrivalTime: String
         do {
             arrivalTime = try container.decode(String.self, forKey: .arrivalTime)
@@ -107,8 +112,8 @@ struct BusRoute: Codable {
         self.init(stop: stop,
                   arrivalTime: arrivalTime,
                   timestamp: timestamp,
-                  visible: visible,
                   first: first,
-                  last: last)
+                  last: last,
+                  reliability: reliability)
     }
 }

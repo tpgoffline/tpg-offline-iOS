@@ -32,11 +32,12 @@ class HomeInterfaceController: WKInterfaceController {
     }
 
     func loadTableData() {
-        tableView.setNumberOfRows(3, withRowType: "homeRow")
 
         let rows = [BasicRow(icon: #imageLiteral(resourceName: "clock"), title: "Departures".localized),
                     BasicRow(icon: #imageLiteral(resourceName: "warning"), title: "Disruptions".localized),
                     BasicRow(icon: #imageLiteral(resourceName: "routes"), title: "Routes".localized)]
+
+        tableView.setNumberOfRows(rows.count, withRowType: "homeRow")
 
         for (index, row) in rows.enumerated() {
             guard let rowController = self.tableView.rowController(at: index) as? BasicRowController

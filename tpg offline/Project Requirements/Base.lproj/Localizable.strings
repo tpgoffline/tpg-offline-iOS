@@ -48,6 +48,7 @@
 "Error" = "Error"; 
 "Error - Departures not downloaded" = "Error - Departures not downloaded"; 
 "External libraries, used in this project" = "External libraries, used in this project"; 
+"Favorite" = "Favorite"; 
 "Favorites" = "Favorites"; 
 "Filter" = "Filter"; 
 "Filter favorites lines" = "Filter favorites lines"; 
@@ -59,7 +60,7 @@
 "Give your feedback !" = "Give your feedback !"; 
 "Have you seen this logo?" = "Have you seen this logo?"; 
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification."; 
-"If you are lost in all these lines, you can now put some in favorites and filter them." = "If you are lost in all these lines, you can now put some in favorites and filter them."; 
+"If you are lost in all these lines, you can now put some lines in favorites and filter them." = "If you are lost in all these lines, you can now put some lines in favorites and filter them."; 
 "Last features" = "Last features"; 
 "Let's take the bus!" = "Let's take the bus!"; 
 "Line %@" = "Line %@"; 
@@ -81,16 +82,20 @@
 "No results" = "No results"; 
 "Noctambus regional map" = "Noctambus regional map"; 
 "Noctambus urban map" = "Noctambus urban map"; 
+"Notifications" = "Notifications"; 
+"Now" = "Now"; 
 "Now dark mode is available without restarting the application." = "Now dark mode is available without restarting the application."; 
 "Number of minutes" = "Number of minutes"; 
+"Number of minutes before departure" = "Number of minutes before departure"; 
 "OK" = "OK"; 
-"OK, thanks" = "OK, thanks"; 
 "Offline mode" = "Offline mode"; 
 "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm"; 
 "Open data of Geneva public transport" = "Open data of Geneva public transport"; 
 "Open data of Transport API" = "Open data of Transport API"; 
 "Orientation" = "Orientation"; 
 "Other" = "Other"; 
+"Pending notifications" = "Pending notifications"; 
+"Platform %@" = "Platform %@"; 
 "Privacy" = "Privacy"; 
 "Processing %@/%@" = "Processing %@/%@"; 
 "Regional map" = "Regional map"; 
@@ -107,6 +112,7 @@
 "SNOTPG" = "SNOTPG"; 
 "Saturday" = "Saturday"; 
 "Select date" = "Select date"; 
+"Set to now" = "Set to now"; 
 "Settings" = "Settings"; 
 "Show less" = "Show less"; 
 "Show map" = "Show map"; 
@@ -121,6 +127,7 @@
 "Stability improvements" = "Stability improvements"; 
 "Sunday" = "Sunday"; 
 "Take the line %@ to %@" = "Take the line %@ to %@"; 
+"Take the line %@ to %@ at %@" = "Take the line %@ to %@ at %@"; 
 "Take the line %@ to %@ in %@ minutes" = "Take the line %@ to %@ in %@ minutes"; 
 "Take the line %@ to %@ now" = "Take the line %@ to %@ now"; 
 "Testing" = "Testing"; 
@@ -133,6 +140,7 @@
 "To..." = "To..."; 
 "Tuesday" = "Tuesday"; 
 "Unknow" = "Unknow"; 
+"Unknow content" = "Unknow content"; 
 "Unmark this stop as favorite" = "Unmark this stop as favorite"; 
 "Update available" = "Update available"; 
 "Update departures" = "Update departures"; 
@@ -145,6 +153,7 @@
 "What's new!" = "What's new!"; 
 "When do you want to be reminded" = "When do you want to be reminded"; 
 "When do you want to be reminded?" = "When do you want to be reminded?"; 
+"Wi-Fi" = "Wi-Fi"; 
 "You are using timetables departures. So departures are subjects to change." = "You are using timetables departures. So departures are subjects to change."; 
 "You can download them in Settings" = "You can download them in Settings"; 
 "You can't set a timer for this bus, but you should run to take it." = "You can't set a timer for this bus, but you should run to take it."; 

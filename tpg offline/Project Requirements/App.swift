@@ -126,16 +126,16 @@ struct App {
     @discardableResult static func loadStops() -> Bool {
         do {
             let data: Data
-            //            if let dataA = UserDefaults.standard.data(forKey: "stops.json") {
-            //                data = dataA
-            //            } else {
+            if let dataA = UserDefaults.standard.data(forKey: "stops.json") {
+                data = dataA
+            } else {
             do {
                 data = try Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "stops", ofType: "json")!))
             } catch {
                 print("Can't load stops")
                 abort()
             }
-            //            }
+            }
             let decoder = JSONDecoder()
             let stops = try decoder.decode([Stop].self, from: data)
             App.stops = stops.sorted(by: { $0.name < $1.name })

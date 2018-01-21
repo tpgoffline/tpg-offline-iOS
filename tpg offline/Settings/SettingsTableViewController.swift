@@ -46,8 +46,11 @@ class SettingsTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "showDefaultTab", sender: self)
         }))
         self.settings.append(Setting("Update departures".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
-            App.log( "Settings: Update Departures")
+            App.log("Settings: Update Departures")
             self.updateDepartures()
+        }))
+        self.settings.append(Setting("Pending notifications".localized, icon: #imageLiteral(resourceName: "cel-bell"), action: { (_) in
+            self.performSegue(withIdentifier: "showPendingNotifications", sender: self)
         }))
         self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
             self.performSegue(withIdentifier: "showCredits", sender: self)
@@ -62,7 +65,7 @@ class SettingsTableViewController: UITableViewController {
             self.darkMode()
         }))
         self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
-            App.log( "Settings: Give feedback")
+            App.log("Settings: Give feedback")
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
 
@@ -128,6 +131,8 @@ class SettingsTableViewController: UITableViewController {
             lightSwitch.isOn = UserDefaults.standard.bool(forKey: "darkMode")
             lightSwitch.addTarget(self, action: #selector(self.darkMode), for: .valueChanged)
             cell.accessoryView = lightSwitch
+        } else {
+            cell.accessoryView = nil
         }
         cell.imageView?.image = setting.icon.maskWith(color: App.textColor)
 

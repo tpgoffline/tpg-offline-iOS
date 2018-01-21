@@ -14,6 +14,7 @@ open class DatePickerDialog: UIView {
     private let kDatePickerDialogDefaultButtonSpacerHeight: CGFloat = 1
     private let kDatePickerDialogCornerRadius:              CGFloat = 7
     private let kDatePickerDialogDoneButtonTag:             Int     = 1
+    private let kDatePickerDialogNowButtonTag:              Int     = 2
     
     // MARK: - Views
     private var dialogView:   UIView!
@@ -22,6 +23,7 @@ open class DatePickerDialog: UIView {
     open var datePicker:    UIDatePicker!
     private var cancelButton: UIButton!
     private var doneButton:   UIButton!
+    private var nowButton:   UIButton!
     
     // MARK: - Variables
     private var defaultDate:    Date?
@@ -78,9 +80,10 @@ open class DatePickerDialog: UIView {
     }
     
     /// Create the dialog view, and animate opening the dialog
-    open func show(_ title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: Date = Date(), minimumDate: Date? = nil, maximumDate: Date? = nil, datePickerMode: UIDatePickerMode = .dateAndTime, arrivalTime: Bool, callback: @escaping DatePickerCallback) {
+    open func show(_ title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", nowButtonTitle: String = "Set to now", defaultDate: Date = Date(), minimumDate: Date? = nil, maximumDate: Date? = nil, datePickerMode: UIDatePickerMode = .dateAndTime, arrivalTime: Bool, callback: @escaping DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
+        self.nowButton.setTitle(nowButtonTitle, for: .normal)
         if showCancelButton {
             self.cancelButton.setTitle(cancelButtonTitle, for: .normal)
         }
@@ -153,8 +156,8 @@ open class DatePickerDialog: UIView {
         let dialogSize = CGSize(
             width: 350,
             height: 274
-                + kDatePickerDialogDefaultButtonHeight
-                + kDatePickerDialogDefaultButtonSpacerHeight)
+                + (2 * kDatePickerDialogDefaultButtonHeight)
+                + (2 * kDatePickerDialogDefaultButtonSpacerHeight))
         
         // For the black background
         self.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
@@ -182,7 +185,15 @@ open class DatePickerDialog: UIView {
         dialogContainer.layer.borderWidth = 1
         
         // There is a line above the button
-        let lineView = UIView(frame: CGRect(x: 0, y: dialogContainer.bounds.size.height - kDatePickerDialogDefaultButtonHeight - kDatePickerDialogDefaultButtonSpacerHeight, width: dialogContainer.bounds.size.width, height: kDatePickerDialogDefaultButtonSpacerHeight))
+        var lineView = UIView(frame: CGRect(x: 0, y: dialogContainer.bounds.size.height - kDatePickerDialogDefaultButtonHeight - kDatePickerDialogDefaultButtonSpacerHeight, width: dialogContainer.bounds.size.width, height: kDatePickerDialogDefaultButtonSpacerHeight))
+        lineView.backgroundColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1)
+        if App.darkMode {
+            dialogContainer.layer.borderColor = UIColor(red: 57/255, green: 57/255, blue: 57/255, alpha: 1).cgColor
+            lineView.backgroundColor = UIColor(red: 57/255, green: 57/255, blue: 57/255, alpha: 1)
+        }
+        dialogContainer.addSubview(lineView)
+        
+        lineView = UIView(frame: CGRect(x: 0, y: dialogContainer.bounds.size.height - (2 * kDatePickerDialogDefaultButtonHeight) - (2 * kDatePickerDialogDefaultButtonSpacerHeight), width: dialogContainer.bounds.size.width, height: kDatePickerDialogDefaultButtonSpacerHeight))
         lineView.backgroundColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1)
         if App.darkMode {
             dialogContainer.layer.borderColor = UIColor(red: 57/255, green: 57/255, blue: 57/255, alpha: 1).cgColor
@@ -233,6 +244,7 @@ open class DatePickerDialog: UIView {
             width: buttonWidth,
             height: kDatePickerDialogDefaultButtonHeight
         )
+        
         if showCancelButton == false {
             buttonWidth = container.bounds.size.width
             leftButtonFrame = CGRect()
@@ -243,6 +255,13 @@ open class DatePickerDialog: UIView {
                 height: kDatePickerDialogDefaultButtonHeight
             )
         }
+        
+        let nowButtonFrame = CGRect(
+            x: 0,
+            y: container.bounds.size.height - 2 * kDatePickerDialogDefaultButtonHeight,
+            width: container.bounds.size.width,
+            height: kDatePickerDialogDefaultButtonHeight
+        )
         let interfaceLayoutDirection = UIApplication.shared.userInterfaceLayoutDirection
         let isLeftToRightDirection = interfaceLayoutDirection == .leftToRight
         
@@ -256,6 +275,16 @@ open class DatePickerDialog: UIView {
             self.cancelButton.addTarget(self, action: .buttonTapped, for: .touchUpInside)
             container.addSubview(self.cancelButton)
         }
+        self.nowButton = UIButton(type: .custom) as UIButton
+        self.nowButton.frame = nowButtonFrame
+        self.nowButton.tag = kDatePickerDialogNowButtonTag
+        self.nowButton.setTitleColor(self.buttonColor, for: .normal)
+        self.nowButton.setTitleColor(self.buttonColor, for: .highlighted)
+        self.nowButton.titleLabel!.font = self.font.withSize(14)
+        self.nowButton.layer.cornerRadius = kDatePickerDialogCornerRadius
+        self.nowButton.addTarget(self, action: .buttonTapped, for: .touchUpInside)
+        container.addSubview(self.nowButton)
+        
         self.doneButton = UIButton(type: .custom) as UIButton
         self.doneButton.frame = isLeftToRightDirection ? rightButtonFrame : leftButtonFrame
         self.doneButton.tag = kDatePickerDialogDoneButtonTag
@@ -268,13 +297,15 @@ open class DatePickerDialog: UIView {
     }
     
     @objc func buttonTapped(sender: UIButton!) {
-        if sender.tag == kDatePickerDialogDoneButtonTag {
+        if sender.tag == kDatePickerDialogNowButtonTag {
+            self.datePicker.date = Date()
+        } else if sender.tag == kDatePickerDialogDoneButtonTag {
             self.callback?(self.segmentedControl.selectedSegmentIndex == 1, self.datePicker.date)
+            close()
         } else {
             self.callback?(self.segmentedControl.selectedSegmentIndex == 1, nil)
+            close()
         }
-        
-        close()
     }
     
     // MARK: - Helpers

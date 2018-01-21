@@ -109,7 +109,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             }
 
             if !(UserDefaults.standard.bool(forKey: "notFirstLaunch")) {
-                App.log( "First launch !!!")
+                App.log("First launch !!!")
                 UserDefaults.standard.set(true, forKey: "notFirstLaunch")
             }
             if #available(iOS 10.3, *), self.askForRating {
@@ -273,6 +273,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func colorModeDidUpdated() {
         super.colorModeDidUpdated()
+        self.searchController.searchBar.keyboardAppearance = App.darkMode ? .dark : .light
         self.tableView.backgroundColor = App.darkMode ? .black : .groupTableViewBackground
         self.tableView.sectionIndexBackgroundColor = App.darkMode ? .black : .white
         self.tableView.separatorColor = App.separatorColor
@@ -286,7 +287,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
 extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        App.log( "Stops: Search: \(self.searchText) - \(self.searchMode)")
+        App.log("Stops: Search: \(self.searchText) - \(self.searchMode)")
         self.searchText = searchController.searchBar.text ?? ""
         if self.searchMode == .addresses {
             lookForAdresses()
@@ -302,7 +303,7 @@ extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate
         default:
             return
         }
-        App.log( "Stops: Search: \(self.searchText) - \(self.searchMode)")
+        App.log("Stops: Search: \(self.searchText) - \(self.searchMode)")
         if self.searchMode == .addresses {
             lookForAdresses()
         }
@@ -509,6 +510,33 @@ extension StopsTableViewController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
             detailNavigationController.popToRootViewController(animated: false)
         }
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return !(searchMode == .addresses && searchText.escaped != "" && indexPath.row == 0)
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let favoriteAction = UITableViewRowAction(style: .normal, title: "Favorite".localized) { (_, _) in
+            guard let stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
+                return
+            }
+            if let index = App.favoritesStops.index(of: stop.appId) {
+                App.favoritesStops.remove(at: index)
+                App.log("Removed \(stop.appId) from favorites")
+            } else {
+                App.favoritesStops.append(stop.appId)
+                App.log("Added \(stop.appId) from favorites")
+            }
+
+            self.tableView.reloadData()
+        }
+        if App.darkMode {
+            favoriteAction.backgroundColor = .black
+        } else {
+            favoriteAction.backgroundColor = #colorLiteral(red: 0.2470588235, green: 0.3176470588, blue: 0.7098039216, alpha: 1)
+        }
+        return [favoriteAction]
     }
 }
 

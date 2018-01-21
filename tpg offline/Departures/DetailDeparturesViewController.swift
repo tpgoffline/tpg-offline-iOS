@@ -227,7 +227,7 @@ class DetailDeparturesViewController: UIViewController {
             destinationViewController.stop = App.stops.filter({ $0.code ==
                 (tableView.cellForRow(at: indexPath) as? BusRouteTableViewCell)?.busRoute?.stop.code })[safe: 0]
         } else if segue.identifier == "allDepartures" {
-            App.log( "Departures: Show all departures")
+            App.log("Departures: Show all departures")
             guard let destinationViewController = segue.destination as? AllDeparturesCollectionViewController else {
                 return
             }
@@ -253,7 +253,7 @@ class DetailDeparturesViewController: UIViewController {
                 print(error ?? "")
             })
         } else {
-            print("How did you end here ?")
+            print("How did you ended here ?")
         }
         #endif
     }
@@ -270,19 +270,19 @@ class DetailDeparturesViewController: UIViewController {
         } else {
             let leftTime = Int(self.departure?.leftTime ?? "0".localized) ?? 0
             let departureTimeAction = UIAlertAction(title: "At departure time".localized, style: .default) { _ in
-                self.setAlert(with: 0)
+                self.setAlert(with: 0, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
             }
             alertController.addAction(departureTimeAction)
 
             if leftTime > 5 {
                 let fiveMinutesBeforeAction = UIAlertAction(title: "5 minutes before".localized, style: .default) { _ in
-                    self.setAlert(with: 5)
+                    self.setAlert(with: 5, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
                 }
                 alertController.addAction(fiveMinutesBeforeAction)
             }
             if leftTime > 10 {
                 let tenMinutesBeforeAction = UIAlertAction(title: "10 minutes before".localized, style: .default) { _ in
-                    self.setAlert(with: 10)
+                    self.setAlert(with: 10, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
                 }
                 alertController.addAction(tenMinutesBeforeAction)
             }
@@ -294,14 +294,14 @@ class DetailDeparturesViewController: UIViewController {
                                                     preferredStyle: .alert)
 
                 alertController.addTextField { textField in
-                    textField.placeholder = "Number of minutes".localized
+                    textField.placeholder = "Number of minutes before departure".localized
                     textField.keyboardType = .numberPad
                     textField.keyboardAppearance = App.darkMode ? .dark : .light
                 }
 
                 let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in
                     guard let remainingTime = Int(alertController.textFields?[0].text ?? "#!?") else { return }
-                    self.setAlert(with: remainingTime)
+                    self.setAlert(with: remainingTime, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
                 }
                 alertController.addAction(okAction)
 
@@ -321,20 +321,20 @@ class DetailDeparturesViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func setAlert(with timeBefore: Int) {
-        self.departure?.calculateLeftTime()
-        let date = departure?.dateCompenents?.date?.addingTimeInterval(TimeInterval(timeBefore * -60))
-        let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date ?? Date())
+    func setAlert(with timeBefore: Int, date: Date, from: String) {
+        let date = date.addingTimeInterval(TimeInterval(timeBefore * -60))
+        let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date)
         if #available(iOS 10.0, *) {
+            dump(components)
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
             let content = UNMutableNotificationContent()
 
             content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
-            content.body = String(format: "Take the line %@ to %@".localized,
-                                  "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)")
+            content.body = String(format: "Take the line %@ to %@ at %@".localized,
+                                  "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)", from)
             content.sound = UNNotificationSound.default()
             content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
-            let request = UNNotificationRequest(identifier: "departureNotification", content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) {(error) in
                 if let error = error {
                     print("Uh oh! We had an error: \(error)")
@@ -368,7 +368,7 @@ class DetailDeparturesViewController: UIViewController {
             }
         } else {
             let notification = UILocalNotification()
-            notification.fireDate = date ?? Date()
+            notification.fireDate = date
             if timeBefore == 0 {
                 notification.alertBody = String(format: "Take the line %@ to %@ now".localized,
                                                 "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)")
@@ -377,7 +377,7 @@ class DetailDeparturesViewController: UIViewController {
                        "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)",
                 "\(timeBefore)")
             }
-            notification.alertAction = "departureNotification"
+            notification.identifier = "departureNotification-\(String.random(30))"
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.shared.scheduleLocalNotification(notification)
         }
@@ -385,10 +385,6 @@ class DetailDeparturesViewController: UIViewController {
 }
 
 extension DetailDeparturesViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return busRouteGroup?.steps.count ?? 0
     }
@@ -413,6 +409,80 @@ extension DetailDeparturesViewController: UITableViewDelegate, UITableViewDataSo
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return busRouteGroup!.steps[indexPath.row].arrivalTime != ""
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let reminderAction = UITableViewRowAction(style: .normal, title: "Reminder".localized) { (_, _) in
+            App.log("Departures: Reminder")
+            let leftTime = Int(self.busRouteGroup!.steps[indexPath.row].arrivalTime) ?? -1
+            var alertController = UIAlertController(title: "Reminder".localized,
+                                                    message: "When do you want to be reminded?".localized,
+                                                    preferredStyle: .alert)
+            if leftTime == 0 {
+                alertController.title = "Bus is comming".localized
+                alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
+            } else {
+                let departureTimeAction = UIAlertAction(title: "At departure time".localized, style: .default) { _ in
+                    self.setAlert(with: 0, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                }
+                alertController.addAction(departureTimeAction)
+
+                if leftTime > 5 {
+                    let fiveMinutesBeforeAction = UIAlertAction(title: "5 minutes before".localized, style: .default) { _ in
+                        self.setAlert(with: 5, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                    }
+                    alertController.addAction(fiveMinutesBeforeAction)
+                }
+                if leftTime > 10 {
+                    let tenMinutesBeforeAction = UIAlertAction(title: "10 minutes before".localized, style: .default) { _ in
+                        self.setAlert(with: 10, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                    }
+                    alertController.addAction(tenMinutesBeforeAction)
+                }
+
+                let otherAction = UIAlertAction(title: "Other".localized, style: .default) { _ in
+                    alertController.dismiss(animated: true, completion: nil)
+                    alertController = UIAlertController(title: "Reminder".localized,
+                                                        message: "When do you want to be reminded".localized,
+                                                        preferredStyle: .alert)
+
+                    alertController.addTextField { textField in
+                        textField.placeholder = "Number of minutes before departure".localized
+                        textField.keyboardType = .numberPad
+                        textField.keyboardAppearance = App.darkMode ? .dark : .light
+                    }
+
+                    let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in
+                        guard let remainingTime = Int(alertController.textFields?[0].text ?? "#!?") else { return }
+                        self.setAlert(with: remainingTime, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                    }
+                    alertController.addAction(okAction)
+
+                    let cancelAction = UIAlertAction(title: "Cancel".localized, style: .destructive) { _ in
+                    }
+                    alertController.addAction(cancelAction)
+
+                    self.present(alertController, animated: true, completion: nil)
+                }
+
+                alertController.addAction(otherAction)
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancel".localized, style: .destructive) { _ in }
+            alertController.addAction(cancelAction)
+
+            self.present(alertController, animated: true, completion: nil)
+        }
+        if App.darkMode {
+            reminderAction.backgroundColor = .black
+        } else {
+            reminderAction.backgroundColor = #colorLiteral(red: 0.2470588235, green: 0.3176470588, blue: 0.7098039216, alpha: 1)
+        }
+        return [reminderAction]
     }
 }
 

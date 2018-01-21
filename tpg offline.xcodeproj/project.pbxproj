@@ -15,6 +15,7 @@
 		AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986911F64175B00CD8403 /* SearchButtonTableViewCell.swift */; };
 		AD0986941F64185A00CD8403 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986931F64185A00CD8403 /* Route.swift */; };
 		AD0D33B420025659006462D5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0D33B320025659006462D5 /* NetworkExtension.framework */; };
+		AD1D3861200E6184009831A8 /* PendingNotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D3860200E6184009831A8 /* PendingNotificationsTableViewController.swift */; };
 		AD1E48471FADF70800596076 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48461FADF70800596076 /* App.swift */; };
 		AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */; };
 		AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48561FAE06D100596076 /* SnapshotHelper.swift */; };
@@ -179,6 +180,7 @@
 		AD0986931F64185A00CD8403 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		AD0D33B320025659006462D5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		AD182C6E1F9C7E5500694753 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Routes.strings; sourceTree = "<group>"; };
+		AD1D3860200E6184009831A8 /* PendingNotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingNotificationsTableViewController.swift; path = "tpg offline/Settings/PendingNotificationsTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		AD1E48461FADF70800596076 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tpg offline UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UITests.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		AD324D271F4427AF0039B309 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				AD1D3860200E6184009831A8 /* PendingNotificationsTableViewController.swift */,
 				AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */,
 				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
 				AD92D8BE1F44E10200403258 /* Setting.swift */,
@@ -871,6 +874,7 @@
 				AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */,
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
 				ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */,
+				AD1D3861200E6184009831A8 /* PendingNotificationsTableViewController.swift in Sources */,
 				AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */,
 				ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */,
 				AD37FEAF1F41CD9300E84220 /* DeparturesViewController.swift in Sources */,

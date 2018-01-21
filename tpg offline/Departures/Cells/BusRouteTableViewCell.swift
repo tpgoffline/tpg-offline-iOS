@@ -29,7 +29,7 @@ class BusRouteTableViewCell: UITableViewCell {
         titleLabel.text = App.stops.filter({ $0.code == busRoute.stop.code })[safe: 0]?.name ?? "Unknow".localized
 
         remainingTimeLabel.textColor = color
-        remainingTimeLabel.text = busRoute.arrivalTime == "" ? "" : "\(busRoute.arrivalTime)'"
+        remainingTimeLabel.text = busRoute.arrivalTime == "" ? "" : "\(busRoute.reliability == .theoretical ? "~" : "")\(busRoute.arrivalTime)'"
 
         var rectanglePath: UIBezierPath
 

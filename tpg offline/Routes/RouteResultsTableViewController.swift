@@ -17,7 +17,7 @@ class RouteResultsTableViewController: UITableViewController {
             guard let route = self.route else { return }
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-            App.log( "Routes: Search with D: \(route.from?.appId ?? 0)/\(route.from?.code ?? "") - A: \(route.to?.appId ?? 0)/\(route.to?.code ?? "") - H: \(dateFormatter.string(from: route.date)) - IAT: \(String(describing: route.arrivalTime.hashValue))") // swiftlint:disable:this line_length
+            App.log("Routes: Search with D: \(route.from?.appId ?? 0)/\(route.from?.code ?? "") - A: \(route.to?.appId ?? 0)/\(route.to?.code ?? "") - H: \(dateFormatter.string(from: route.date)) - IAT: \(String(describing: route.arrivalTime.hashValue))") // swiftlint:disable:this line_length
 
             Answers.logCustomEvent(withName: "Search route",
                                    customAttributes: ["departure": route.from?.code ?? "XXXX",
@@ -216,7 +216,7 @@ class RouteResultsTableViewController: UITableViewController {
             guard let destinationViewController = segue.destination as? RouteResultsDetailTableViewController else {
                 return
             }
-            App.log( "Routes: Selected \(tableView.indexPathForSelectedRow!.row) row")
+            App.log("Routes: Selected \(tableView.indexPathForSelectedRow!.row) row")
             guard let cell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? RouteResultsTableViewCell else {
                 return
             }

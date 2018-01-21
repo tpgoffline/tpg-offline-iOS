@@ -75,6 +75,7 @@
                         <segue destination="iSR-Cu-zET" kind="show" identifier="showCredits" id="dYG-WX-CTr"/>
                         <segue destination="IHM-cx-AeL" kind="show" identifier="showDefaultTab" id="OXr-dp-XTm"/>
                         <segue destination="pqz-eQ-UZ8" kind="presentation" identifier="showNewFeatures" modalPresentationStyle="fullScreen" id="PDY-f9-k3s"/>
+                        <segue destination="2L4-Jh-Ng2" kind="show" identifier="showPendingNotifications" id="x0Z-CH-7uu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQc-2K-E5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,6 +326,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AC9-Jo-wfw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1039" y="972"/>
+        </scene>
+        <!--Pending Notifications Table View Controller-->
+        <scene sceneID="dGN-ay-0vp">
+            <objects>
+                <tableViewController id="2L4-Jh-Ng2" customClass="PendingNotificationsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UBs-lV-QrX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pendingNotificationCell" textLabel="8Rc-JS-Q6k" detailTextLabel="L4n-RA-ZKS" style="IBUITableViewCellStyleSubtitle" id="pQ3-ou-pyX">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pQ3-ou-pyX" id="Lfs-0b-5q4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Rc-JS-Q6k">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L4n-RA-ZKS">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2L4-Jh-Ng2" id="aXa-8D-SGR"/>
+                            <outlet property="delegate" destination="2L4-Jh-Ng2" id="evG-u0-3Ol"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLk-bI-o7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="972"/>
         </scene>
     </scenes>
     <resources>

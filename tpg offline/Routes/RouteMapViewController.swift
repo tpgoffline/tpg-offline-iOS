@@ -19,7 +19,7 @@ class RouteMapViewController: UIViewController {
         super.viewDidLoad()
 
         guard let mapView = self.mapView else { return }
-        
+
         mapView.delegate = self
         title = "Map".localized
 

@@ -171,16 +171,17 @@ class RoutesTableViewController: UITableViewController {
         }
         switch indexPath.row {
         case 0:
-            App.log( "Selected from stop select")
+            App.log("Selected from stop select")
             performSegue(withIdentifier: "showStopsForRoute", sender: indexPath)
         case 1:
-            App.log( "Selected to stop select")
+            App.log("Selected to stop select")
             performSegue(withIdentifier: "showStopsForRoute", sender: indexPath)
         case 2:
-            App.log( "Selected date select")
+            App.log("Selected date select")
             DatePickerDialog(showCancelButton: false).show("Select date".localized,
                                                            doneButtonTitle: "OK".localized,
                                                            cancelButtonTitle: "Cancel".localized,
+                                                           nowButtonTitle: "Now".localized,
                                                            defaultDate: self.route.date,
                                                            minimumDate: nil,
                                                            maximumDate: nil,
@@ -196,6 +197,40 @@ class RoutesTableViewController: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: false)
         default:
             break
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return (indexPath.row == 2 && indexPath.section == 0) || indexPath.section == 1
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if indexPath.section == 0 {
+            let setToNowAction = UITableViewRowAction(style: .normal, title: "Now".localized) { (_, _) in
+                self.route.date = Date()
+            }
+            if App.darkMode {
+                setToNowAction.backgroundColor = .black
+            } else {
+                setToNowAction.backgroundColor = #colorLiteral(red: 0.2470588235, green: 0.3176470588, blue: 0.7098039216, alpha: 1)
+            }
+            return [setToNowAction]
+        } else {
+            let reverseAction = UITableViewRowAction(style: .normal, title: "Reversed".localized) { (_, _) in
+                self.route = App.favoritesRoutes[indexPath.row]
+                let from = self.route.from
+                let to = self.route.to
+                self.route.from = to
+                self.route.to = from
+                self.route.date = Date()
+                self.search()
+            }
+            if App.darkMode {
+                reverseAction.backgroundColor = .black
+            } else {
+                reverseAction.backgroundColor = #colorLiteral(red: 0.6117647059, green: 0.1529411765, blue: 0.6901960784, alpha: 1)
+            }
+            return [reverseAction]
         }
     }
 }

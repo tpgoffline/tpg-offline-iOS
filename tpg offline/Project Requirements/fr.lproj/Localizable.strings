@@ -48,6 +48,7 @@
 "Error" = "Erreur";
 "Error - Departures not downloaded" = "Erreur - Les départs n'ont pas été téléchargés";
 "External libraries, used in this project" = "Librairies externes, utilisées dans ce projet";
+"Favorite" = "Favoris";
 "Favorites" = "Favoris";
 "Filter" = "Filtrer";
 "Filter favorites lines" = "Filtrer les lignes favorites";
@@ -59,7 +60,7 @@
 "Give your feedback !" = "Donnez votre avis !";
 "Have you seen this logo?" = "Avez-vous vu ce logo ?";
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Ici, vous pouvez choisir quand vous voulez surveiller des lignes. Si une perturbation survient pendant la période de surveillance, nous vous enverrons une notification.";
-"If you are lost in all these lines, you can now put some in favorites and filter them." = "Si vous êtes perdu dans toutes ces lignes, vous pouvez désormais en mettre certaines en favorites et les filtrer.";
+"If you are lost in all these lines, you can now put some lines in favorites and filter them." = "Si vous êtes perdu dans toutes ces lignes, vous pouvez désormais en mettre certaines en favorites et les filtrer.";
 "Last features" = "Dernières nouveautés";
 "Let's take the bus!" = "Prenons le bus !";
 "Line %@" = "Ligne %@";
@@ -81,16 +82,20 @@
 "No results" = "Pas de résultats";
 "Noctambus regional map" = "Plan Noctambus régional";
 "Noctambus urban map" = "Plan Noctambus urbain";
+"Notifications" = "Notifications";
+"Now" = "Maintenant";
 "Now dark mode is available without restarting the application." = "Désormais, le mode sombre est disponible sans relancer l'application.";
 "Number of minutes" = "Nombre de minutes";
+"Number of minutes before departure" = "Nombre de minutes avant le départ";
 "OK" = "OK";
-"OK, thanks" = "OK, merci";
 "Offline mode" = "Mode hors-ligne";
 "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, une erreur est survenue. Merci de réessayer et, en cas d'urgence, de casser la glace et déclencher l'alarme.";
 "Open data of Geneva public transport" = "Open data des Transports Publics Genevois";
 "Open data of Transport API" = "Open data de Transport API";
 "Orientation" = "Orientation";
 "Other" = "Autre";
+"Pending notifications" = "Notifications planifiées";
+"Platform %@" = "Quai %@";
 "Privacy" = "Confidentialité";
 "Processing %@/%@" = "Traitement de %@/%@";
 "Regional map" = "Plan régional";
@@ -107,6 +112,7 @@
 "SNOTPG" = "SNOTPG";
 "Saturday" = "Samedi";
 "Select date" = "Séléctionner une date";
+"Set to now" = "Set to now";
 "Settings" = "Paramètres";
 "Show less" = "Afficher moins";
 "Show map" = "Afficher la carte";
@@ -121,6 +127,7 @@
 "Stability improvements" = "Amélioration de la stabilité générale";
 "Sunday" = "Dimanche";
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
+"Take the line %@ to %@ at %@" = "Prenez la ligne %@ vers %@ à %@";
 "Take the line %@ to %@ in %@ minutes" = "Prenez la ligne %@ vers %@ dans %@ minutes";
 "Take the line %@ to %@ now" = "Prenez la ligne %@ vers %@ maintenant";
 "Testing" = "Test";
@@ -133,6 +140,7 @@
 "To..." = "Vers...";
 "Tuesday" = "Mardi";
 "Unknow" = "Inconnu";
+"Unknow content" = "Contenu inconnu";
 "Unmark this stop as favorite" = "Enlever cet arrêt des favoris";
 "Update available" = "Mise à jour disponible";
 "Update departures" = "Réactualiser les départs";
@@ -145,7 +153,8 @@
 "What's new!" = "Les dernières nouveautés !";
 "When do you want to be reminded" = "Quand voulez-vous être rappelés";
 "When do you want to be reminded?" = "Quand voulez-vous être rappelé ?";
-"You are using timetables departures. So departures are subjects to change." = "Vous êtes en mode hors-ligne. Les horaires sont donc des sujets à des modifications et sont donnés à titre indicatif.";
+"Wi-Fi" = "Wi-Fi";
+"You are using timetables departures. So departures are subjects to change." = "Vous êtes en mode hors-ligne. Les horaires sont donc sujets à des modifications et sont donnés à titre indicatif.";
 "You can download them in Settings" = "Vous pouvez la télécharger dans les paramètres";
 "You can't set a timer for this bus, but you should run to take it." = "Vous ne pouvez pas ajouter de rappels à ce bus, mais vous devriez courir pour le prendre.";
 "You don't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet";

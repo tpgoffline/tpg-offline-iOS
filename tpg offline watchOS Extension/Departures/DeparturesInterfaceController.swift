@@ -107,7 +107,7 @@ class DepartureRowController: NSObject {
                 self.leftTimeLabel.setText("X")
                 self.canBeSelected = false
             default:
-                leftTimeLabel.setText("\(departure.leftTime.time)'")
+                leftTimeLabel.setText("\(departure.reliability == .theoretical ? "~" : "")\(departure.leftTime.time)'")
             }
         }
     }
