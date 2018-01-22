@@ -83,6 +83,10 @@ class RouteResultsTableViewCell: UITableViewCell {
             let selectedView = UIView()
             selectedView.backgroundColor = .black
             self.selectedBackgroundView = selectedView
+        } else {
+            let selectedView = UIView()
+            selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+            self.selectedBackgroundView = selectedView
         }
 
         numberOfConnectionsLabel.text = "--"

@@ -275,6 +275,12 @@ class DeparturesViewController: UIViewController {
             App.log("Departures: Select \(row.departure?.line.code ?? "") - \(row.departure?.line.destination ?? "") - \(row.departure?.timestamp ?? "")") // swiftlint:disable:this line_length
             tableView.deselectRow(at: indexPath, animated: true)
         }
+        if segue.identifier == "showConnectionsMap" {
+            guard let destinationViewController = segue.destination as? ConnectionsMapViewController else {
+                return
+            }
+            destinationViewController.stopCode = self.stop?.code ?? ""
+        }
     }
 
     @objc func setFavorite() {
@@ -310,9 +316,9 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         } else {
             if App.filterFavoritesLines {
-                return (self.filteredLines.count) + (self.noInternet ? 1 : 0)
+                return (self.filteredLines.count) + (self.noInternet ? 1 : 0) + ((self.stop?.connectionsMap ?? false) ? 1 : 0)
             } else {
-                return (self.departures?.lines.count ?? 0) + (self.noInternet ? 1 : 0)
+                return (self.departures?.lines.count ?? 0) + (self.noInternet ? 1 : 0) + ((self.stop?.connectionsMap ?? false) ? 1 : 0)
             }
         }
     }
@@ -322,10 +328,12 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return 5
         } else if self.requestStatus == any(of: .error, .noResults) {
             return 1
+        } else if (self.stop?.connectionsMap ?? false) && section == (1 - (self.noInternet ? 0 : 1)) {
+            return 1
         } else if self.noInternet && section == 0 {
             return 1
         }
-        let section = section - (self.noInternet ? 1 : 0)
+        let section = section - (self.noInternet ? 1 : 0) - ((self.stop?.connectionsMap ?? false) ? 1 : 0)
         if App.filterFavoritesLines {
             if let count = departures?.departures.filter({$0.line.code == (self.filteredLines[section])}).count {
                 if count > 5 && !(showMoreLines.contains(String(section))) {
@@ -366,6 +374,19 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             cell.detailTextLabel?.textColor = App.textColor
             cell.backgroundColor = App.cellBackgroundColor
             return cell
+        } else if (self.stop?.connectionsMap ?? false) && indexPath.section == (1 - (self.noInternet ? 0 : 1)) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "connectionCell", for: indexPath)
+            cell.imageView?.image = #imageLiteral(resourceName: "transfer").maskWith(color: App.textColor)
+            cell.textLabel?.text = "Connections map".localized
+            cell.textLabel?.textColor = App.textColor
+            cell.backgroundColor = App.cellBackgroundColor
+            cell.accessoryType = .disclosureIndicator
+            if App.darkMode {
+                let selectedView = UIView()
+                selectedView.backgroundColor = .black
+                cell.selectedBackgroundView = selectedView
+            }
+            return cell
         } else if self.requestStatus == .noResults {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell", for: indexPath)
             cell.imageView?.image = #imageLiteral(resourceName: "warningSign").maskWith(color: App.textColor)
@@ -385,7 +406,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = App.cellBackgroundColor
             return cell
         }
-        let section = indexPath.section - (self.noInternet ? 1 : 0)
+        let section = indexPath.section - (self.noInternet ? 1 : 0)  - ((self.stop?.connectionsMap ?? false) ? 1 : 0)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "departureCell", for: indexPath)
             as? DeparturesTableViewCell else {
                 return UITableViewCell()
@@ -408,8 +429,10 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return nil
         } else if self.noInternet && section == 0 {
             return nil
+        } else if (self.stop?.connectionsMap ?? false) && section == (1 - (self.noInternet ? 0 : 1)) {
+            return nil
         }
-        let section = section - (self.noInternet ? 1 : 0)
+        let section = section - (self.noInternet ? 1 : 0) - ((self.stop?.connectionsMap ?? false) ? 1 : 0)
         var line = self.departures?.lines[safe: section] ?? "?#!"
         if App.filterFavoritesLines {
             line = self.filteredLines[section]
@@ -454,8 +477,10 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return nil
         } else if self.noInternet && section == 0 {
             return nil
+        } else if (self.stop?.connectionsMap ?? false) && section == (1 - (self.noInternet ? 0 : 1)) {
+            return nil
         }
-        let section = section - (self.noInternet ? 1 : 0)
+        let section = section - (self.noInternet ? 1 : 0) - ((self.stop?.connectionsMap ?? false) ? 1 : 0)
         var line = self.departures?.lines[safe: section] ?? "?#!"
         if App.filterFavoritesLines {
             line = self.filteredLines[section]
@@ -503,8 +528,10 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             return 0
         } else if self.noInternet && section == 0 {
             return 0
+        } else if (self.stop?.connectionsMap ?? false) && section == (1 - (self.noInternet ? 0 : 1)) {
+            return 0
         }
-        let section = section - (self.noInternet ? 1 : 0)
+        let section = section - (self.noInternet ? 1 : 0) - ((self.stop?.connectionsMap ?? false) ? 1 : 0)
         var line = self.departures?.lines[safe: section] ?? "?#!"
         if App.filterFavoritesLines {
             line = self.filteredLines[section]
@@ -521,15 +548,17 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         return self.requestStatus != .loading &&
         self.requestStatus != .error &&
         self.requestStatus != .noResults &&
-        !(self.noInternet && indexPath.section == 0)
+        !(self.noInternet && indexPath.section == 0) &&
+        !((self.stop?.connectionsMap ?? false) && indexPath.section == (1 - (self.noInternet ? 0 : 1)))
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var departuree: Departure?
+        let section = indexPath.section - (self.noInternet ? 1 : 0) - ((self.stop?.connectionsMap ?? false) ? 1 : 0)
         if App.filterFavoritesLines {
-            departuree = departures?.departures.filter({$0.line.code == (self.filteredLines[indexPath.section])})[indexPath.row]
+            departuree = departures?.departures.filter({$0.line.code == (self.filteredLines[section])})[indexPath.row]
         } else {
-            departuree = departures?.departures.filter({$0.line.code == (self.departures?.lines[indexPath.section] ?? "")})[indexPath.row]
+            departuree = departures?.departures.filter({$0.line.code == (self.departures?.lines[section] ?? "")})[indexPath.row]
         }
 
         guard var departure = departuree else { return [] }

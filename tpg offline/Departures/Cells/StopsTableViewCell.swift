@@ -24,6 +24,12 @@ class StopsTableViewCell: UITableViewCell {
             let selectedView = UIView()
             selectedView.backgroundColor = .black
             self.selectedBackgroundView = selectedView
+        } else {
+            self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: .white))
+            self.backgroundColor = App.cellBackgroundColor
+            let selectedView = UIView()
+            selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+            self.selectedBackgroundView = selectedView
         }
 
         let titleAttributes: [NSAttributedStringKey: Any]

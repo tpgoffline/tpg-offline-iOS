@@ -74,12 +74,19 @@ struct Stop: Codable {
     /// The id that represent the stop in the app.
     var appId: Int
 
+    /// Is a connections map aviable for the stop.
+    var connectionsMap: Bool
+
+    /// Is the stop a part of the TAC network
     var isTAC: Bool
 
+    /// Pricing zones for the stop
     var pricingZone: [Int]
 
+    /// Name on the SBB API
     var nameTransportAPI: String
 
+    /// Physical stops of the global stop
     var localisations: [Localisations]
 
     public init(name: String,
@@ -93,7 +100,8 @@ struct Stop: Codable {
                 pricingZone: [Int],
                 nameTransportAPI: String,
                 isTAC: Bool,
-                localisations: [Localisations]) {
+                localisations: [Localisations],
+                connectionsMap: Bool) {
         self.name = name
         self.title = title
         self.subTitle = subTitle
@@ -106,6 +114,7 @@ struct Stop: Codable {
         self.nameTransportAPI = nameTransportAPI
         self.isTAC = isTAC
         self.localisations = localisations
+        self.connectionsMap = connectionsMap
     }
 
     enum CodingKeys: String, CodingKey {
@@ -121,6 +130,7 @@ struct Stop: Codable {
         case nameTransportAPI
         case isTAC
         case localisations
+        case connectionsMap
     }
 
     init(from decoder: Decoder) throws {
@@ -138,6 +148,7 @@ struct Stop: Codable {
         let nameTransportAPI = try container.decode(String.self, forKey: .nameTransportAPI)
         let isTAC = try container.decode(Bool.self, forKey: .isTAC)
         let localisations = try container.decode([Localisations].self, forKey: .localisations)
+        let connectionsMap = try container.decode(Bool.self, forKey: .connectionsMap)
 
         self.init(name: name,
                   title: title,
@@ -150,7 +161,8 @@ struct Stop: Codable {
                   pricingZone: pricingZone,
                   nameTransportAPI: nameTransportAPI,
                   isTAC: isTAC,
-                  localisations: localisations)
+                  localisations: localisations,
+                  connectionsMap: connectionsMap)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -168,6 +180,7 @@ struct Stop: Codable {
         try container.encode(self.nameTransportAPI, forKey: .nameTransportAPI)
         try container.encode(self.isTAC, forKey: .isTAC)
         try container.encode(self.localisations, forKey: .localisations)
+        try container.encode(self.connectionsMap, forKey: .connectionsMap)
     }
 
     static func == (lhd: Stop, rhd: Stop) -> Bool {

@@ -86,6 +86,7 @@
 		ADA14E641FDEC4E100945249 /* lines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADA14E631FDEC4E100945249 /* lines.json */; };
 		ADA14E661FDEC4FE00945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADA14E681FDEC5D300945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
+		ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */; };
 		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
 		ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */; };
 		ADB9278E1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */; };
@@ -244,6 +245,7 @@
 		ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesInterfaceController.swift; sourceTree = "<group>"; };
 		ADA14E631FDEC4E100945249 /* lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lines.json; path = JSON/lines.json; sourceTree = "<group>"; };
 		ADA14E651FDEC4FE00945249 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsMapViewController.swift; sourceTree = "<group>"; };
 		ADABFA091F9CF1D200EEC8D0 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = JSON/stops.json; sourceTree = "<group>"; };
 		ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesViewController.swift; sourceTree = "<group>"; };
 		ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesTableViewCell.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */,
 				ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */,
 				AD37FE7C1F41CA7F00E84220 /* Cells */,
+				ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */,
 			);
 			path = Departures;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
 				AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */,
 				AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */,
+				ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */,
 				AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */,
 				AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */,
 				AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */,
