@@ -32,10 +32,11 @@ class NewFeaturesViewController: UIViewController {
 
         ColorModeManager.shared.addColorModeDelegate(self)
 
-        features.append(Feature(image: #imageLiteral(resourceName: "wifi"), title: "Have you seen this logo?".localized, text: "The tpg have equipped 43 vehicles with Wi-Fi. They will be indicated by this logo in the departures, and, if you are on iOS 11 or higher, you can even connect to it by going into the details of a departure, then in Wi-Fi.".localized))
-        features.append(Feature(image: #imageLiteral(resourceName: "moon"), title: "Dark Mode".localized, text: "Now dark mode is available without restarting the application.".localized))
-        features.append(Feature(image: #imageLiteral(resourceName: "filter"), title: "Filter".localized, text: "If you are lost in all these lines, you can now put some lines in favorites and filter them.".localized))
-        features.append(Feature(image: #imageLiteral(resourceName: "tick"), title: "Stability improvements".localized, text: "As always, this version improve stability and removes bugs.".localized))
+        features.append(Feature(image: #imageLiteral(resourceName: "clock"), title: "Departures informations".localized, text: "From now, bus with an approximate schedule or not accessible for reduced mobility people will be shown.".localized))
+        features.append(Feature(image: #imageLiteral(resourceName: "questionMark"), title: "Tram vs Tram".localized, text: "This is the question that many people at the tramways terminus. Which tramway I have to take? Now, you will have the answer in departures.".localized))
+        features.append(Feature(image: #imageLiteral(resourceName: "walk"), title: "Connections".localized, text: "Connections maps are now available in departures".localized))
+        features.append(Feature(image: #imageLiteral(resourceName: "spacingRight"), title: "Slide to the left".localized, text: "Actions are available at various places if you slide your finger to the left.".localized))
+        features.append(Feature(image: #imageLiteral(resourceName: "palette"), title: "Graphical improvements".localized, text: "Graphic and ergonomic improvements have been integrated into the app".localized))
 
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             UserDefaults.standard.set(version, forKey: "lastVersion")

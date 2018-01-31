@@ -19,6 +19,14 @@ struct App {
     static var lines: [Line] = []
     static var stops: [Stop] = []
     static var sortedStops: [String: [String]] = [:]
+    static var stopsKeys: [String] {
+        get {
+            return (UserDefaults.standard.array(forKey: #function) as? [String]) ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
     static var favoritesStops: [Int] {
         get {
             return (UserDefaults.standard.object(forKey: #function) as? [Int]) ?? []
@@ -142,6 +150,9 @@ struct App {
             for stop in App.stops.map({ $0.name }) {
                 let character = "\(stop.first!)"
                 App.sortedStops[character, default: []].append(stop)
+            }
+            if App.stopsKeys.isEmpty {
+                App.stopsKeys = ["location", "favorites"] + App.sortedStops.keys.sorted()
             }
             for (i, id) in App.favoritesStops.enumerated() {
                 if App.stops.filter({ $0.appId == id })[safe: 0] == nil {

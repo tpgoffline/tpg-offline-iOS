@@ -59,10 +59,7 @@ class DeparturesManager: NSObject {
             return
         }
         self.departures = nil
-        Alamofire.request("https://prod.ivtr-od.tpg.ch/v1/GetNextDepartures.json",
-                          method: .get,
-                          parameters: ["key": API.tpg,
-                                       "stopCode": stop.code])
+        Alamofire.request("https://tpgoffline-apns.alwaysdata.net/api/departures/\(stop.code)", method: .get)
             .responseData { (response) in
                 if let data = response.result.value {
                     var options = DeparturesOptions()

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Crashlytics
 
 class ConnectionsMapViewController: UIViewController {
 
@@ -15,29 +16,32 @@ class ConnectionsMapViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     var imageView: UIImageView!
-    
+
     var stopCode: String = ""
     var downloadData: Data?
     var saved = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        App.log("Show connections maps")
+        Answers.logCustomEvent(withName: "Show connections maps",
+                               customAttributes: ["appCode": stopCode])
         title = "Map".localized
-        
+
         errorLabel.text = "Error. You're not connected to internet."
         errorLabel.textColor = App.textColor
         errorLabel.isHidden = true
-        
+
         loadingView.activityIndicatorViewStyle = App.darkMode ? .white : .gray
         loadingView.startAnimating()
-        
+
         var path: URL
         guard let dirString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
             return
         }
         let dir = URL(fileURLWithPath: dirString)
         path = dir.appendingPathComponent("\(stopCode).jpg")
-        
+
         do {
             let data = try Data(contentsOf: path)
             let image = UIImage(data: data)
@@ -58,7 +62,7 @@ class ConnectionsMapViewController: UIViewController {
                 self.loadingView.isHidden = true
             })
         }
-        
+
         self.view.backgroundColor = App.cellBackgroundColor
         ColorModeManager.shared.addColorModeDelegate(self)
     }
@@ -76,22 +80,22 @@ class ConnectionsMapViewController: UIViewController {
         scrollView.setContentOffset(CGPoint(x: (scrollView.contentSize.width - scrollView.bounds.size.width) / 2,
                                             y: (scrollView.contentSize.height - scrollView.bounds.size.height) / 2),
                                     animated: false)
-        
+
         scrollView.addSubview(imageView)
         setZoomScale()
     }
-    
+
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
-    
+
     override func colorModeDidUpdated() {
         super.colorModeDidUpdated()
         self.view.backgroundColor = App.cellBackgroundColor
         errorLabel.textColor = App.textColor
         loadingView.activityIndicatorViewStyle = App.darkMode ? .white : .gray
     }
-    
+
     @objc func save() {
         if !self.saved {
             guard let downloadData = downloadData else {
@@ -146,7 +150,7 @@ extension ConnectionsMapViewController: UIScrollViewDelegate {
         let scrollViewSize = scrollView.bounds.size
         let widthScale = scrollViewSize.width / imageViewSize.width
         let heightScale = scrollViewSize.height / imageViewSize.height
-        
+
         scrollView.minimumZoomScale = min(widthScale, heightScale)
         scrollView.maximumZoomScale = 10.0
         scrollView.zoomScale = scrollView.minimumZoomScale * 2
@@ -157,10 +161,10 @@ extension ConnectionsMapViewController: UIScrollViewDelegate {
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         let imageViewSize = imageView.frame.size
         let scrollViewSize = scrollView.bounds.size
-        
+
         let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
         let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
-        
+
         scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
     }
 }

@@ -17,6 +17,9 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        App.log("Show map \(title ?? "?")")
+        Answers.logCustomEvent(withName: "Show map",
+                               customAttributes: ["map": (title ?? "?")])
         imageView = UIImageView(image: mapImage)
 
         scrollView.delegate = self

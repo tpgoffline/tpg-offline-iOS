@@ -75,15 +75,15 @@ class RouteResultsDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2 + (connection?.sections?.count ?? 0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return zones.count > 1 ? 1 : 0
-        case 1:
-            return connection?.sections?.count ?? 0
+        case (connection?.sections?.count ?? 0) + 1:
+            return 1
         default:
             return 1
         }
@@ -110,10 +110,19 @@ class RouteResultsDetailTableViewController: UITableViewController {
 
             cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1)
             return cell
-        } else if indexPath.section == 1 {
-            if connection?.sections?[safe: indexPath.row]?.walk != nil {
+        } else if indexPath.section == (connection?.sections?.count ?? 0) + 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath)
+                as? RouteResultsDetailMapTableViewCell, let connection = connection else {
+                    return UITableViewCell()
+            }
+            cell.connection = connection
+            cell.mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pushMap)))
+
+            return cell
+        } else {
+            if connection?.sections?[safe: indexPath.section - 1]?.walk != nil {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "walkConnectionCell", for: indexPath)
-                if let duration = connection?.sections?[safe: indexPath.row]?.walk?.duration,
+                if let duration = connection?.sections?[safe: indexPath.section - 1]?.walk?.duration,
                     duration != 0 {
                     cell.textLabel?.text = String(format: "Walk %@m".localized, "\(duration)")
                 } else {
@@ -126,23 +135,57 @@ class RouteResultsDetailTableViewController: UITableViewController {
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultDetailCell", for: indexPath)
-                    as? RouteResultDetailsTableViewCell, let section = connection?.sections?[safe: indexPath.row] else {
+                    as? RouteResultDetailsTableViewCell, let section = connection?.sections?[safe: indexPath.section - 1] else {
                     return UITableViewCell()
                 }
                 cell.section = section
                 return cell
             }
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath)
-                as? RouteResultsDetailMapTableViewCell, let connection = connection else {
-                    return UITableViewCell()
-            }
-            cell.connection = connection
-            cell.mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pushMap)))
-
-            return cell
         }
 
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
+            return nil
+        }
+
+        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell"),
+            let section = connection?.sections?[safe: section - 1] else {
+            return UIView()
+        }
+        if section.walk != nil { return nil }
+        let destinationName = App.stops.filter({$0.nameTransportAPI == section.journey?.to})[safe: 0]?.name
+            ?? (section.journey?.to ?? "#?!")
+
+        var titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)] as [NSAttributedStringKey: Any]
+        if section.journey?.compagny == "TPG" {
+            headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor :
+                App.color(for: section.journey?.lineCode ?? "")
+            titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ? App.color(for: section.journey?.lineCode ?? "") :
+                App.color(for: section.journey?.lineCode ?? "").contrast
+        } else if section.journey?.compagny == "SBB" {
+            headerCell.textLabel?.text = String(format: "SBB %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)",
+                "\(destinationName)")
+            headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : .red
+            titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ? UIColor.red : UIColor.white
+        } else {
+            headerCell.backgroundColor = App.darkMode ? .black : .white
+            titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ? UIColor.white : UIColor.black
+        }
+        headerCell.textLabel?.attributedText = NSAttributedString(string: String(format: "Line %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)", "\(destinationName)"), attributes: titleAttributes)
+        return headerCell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
+            return 0
+        }
+        if connection?.sections?[safe: section - 1]?.walk != nil {
+            return 0
+        }
+        return 44
     }
 
     @objc func pushMap() {

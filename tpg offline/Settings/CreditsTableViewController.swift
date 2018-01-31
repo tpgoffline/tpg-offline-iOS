@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import Crashlytics
 
 class CreditsTableViewController: UITableViewController, SFSafariViewControllerDelegate {
 
@@ -21,6 +22,9 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        App.log("Show credits")
+        Answers.logCustomEvent(withName: "Show credits")
 
         credits.append([
             Credit(title: "Rémy Da Costa Faro".localized, subTitle: "Design and developement".localized) { (_) in
@@ -121,6 +125,7 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
         cell.detailTextLabel?.numberOfLines = 0
         cell.textLabel?.text = credits[indexPath.section][indexPath.row].title
         cell.detailTextLabel?.text = credits[indexPath.section][indexPath.row].subTitle
+        cell.accessoryType = .disclosureIndicator
 
         return cell
     }

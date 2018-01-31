@@ -82,6 +82,7 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
 }
 
 class DepartureRowController: NSObject {
+    @IBOutlet var platformLabel: WKInterfaceLabel!
     @IBOutlet var destinationLabel: WKInterfaceLabel!
     @IBOutlet var leftTimeLabel: WKInterfaceLabel!
 
@@ -108,6 +109,13 @@ class DepartureRowController: NSObject {
                 self.canBeSelected = false
             default:
                 leftTimeLabel.setText("\(departure.reliability == .theoretical ? "~" : "")\(departure.leftTime.time)'")
+            }
+
+            if let platform = departure.platform {
+                platformLabel.setText(String(format: "Platform %@".localized, platform))
+                platformLabel.setHidden(false)
+            } else {
+                platformLabel.setHidden(true)
             }
         }
     }

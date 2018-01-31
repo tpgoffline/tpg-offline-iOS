@@ -42,7 +42,15 @@ class RouteResultsTableViewCell: UITableViewCell {
                                                   repeats: true)
                 return
             }
+
+            self.numberOfConnectionsLabel.textColor = App.textColor
+            self.departureHourLabel.textColor = App.textColor
+            self.arrivalHourLabel.textColor = App.textColor
+            self.durationLabel.textColor = App.textColor
+            self.departureStopLabel.textColor = App.textColor
+            self.arrivalStopLabel.textColor = App.textColor
             self.backgroundColor = App.cellBackgroundColor
+
             departureStopLabel.text = (App.stops.filter({$0.sbbId == connection.from.station.id})[safe: 0]?.name)
                 ?? connection.from.station.name
             let dateFormatter = DateFormatter()
@@ -67,9 +75,20 @@ class RouteResultsTableViewCell: UITableViewCell {
                 .map({ $0.walk == nil }).contains(false))
 
             loading = false
+            self.accessoryType = .disclosureIndicator
 
             for image in images {
                 image.image = image.image?.maskWith(color: App.textColor)
+            }
+
+            if App.darkMode {
+                let selectedView = UIView()
+                selectedView.backgroundColor = .black
+                self.selectedBackgroundView = selectedView
+            } else {
+                let selectedView = UIView()
+                selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+                self.selectedBackgroundView = selectedView
             }
         }
     }
@@ -78,16 +97,6 @@ class RouteResultsTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         self.backgroundColor = App.cellBackgroundColor
-
-        if App.darkMode {
-            let selectedView = UIView()
-            selectedView.backgroundColor = .black
-            self.selectedBackgroundView = selectedView
-        } else {
-            let selectedView = UIView()
-            selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
-            self.selectedBackgroundView = selectedView
-        }
 
         numberOfConnectionsLabel.text = "--"
         departureHourLabel.text = "--:--"

@@ -20,28 +20,28 @@ class FavoriteRouteTableViewCell: UITableViewCell {
             guard let route = route else { return }
             fromLabel.text = route.from?.name ?? ""
             toLabel.text = route.to?.name ?? ""
+
+            fromLabel.textColor = App.textColor
+            toLabel.textColor = App.textColor
+            self.backgroundColor = App.cellBackgroundColor
+
+            if App.darkMode {
+                let selectedView = UIView()
+                selectedView.backgroundColor = .black
+                self.selectedBackgroundView = selectedView
+            } else {
+                let selectedView = UIView()
+                selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+                self.selectedBackgroundView = selectedView
+            }
+
+            for image in images {
+                image.image = image.image?.maskWith(color: App.textColor)
+            }
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        fromLabel.textColor = App.textColor
-        toLabel.textColor = App.textColor
-        self.backgroundColor = App.cellBackgroundColor
-
-        if App.darkMode {
-            let selectedView = UIView()
-            selectedView.backgroundColor = .black
-            self.selectedBackgroundView = selectedView
-        } else {
-            let selectedView = UIView()
-            selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
-            self.selectedBackgroundView = selectedView
-        }
-
-        for image in images {
-            image.image = image.image?.maskWith(color: App.textColor)
-        }
     }
 }

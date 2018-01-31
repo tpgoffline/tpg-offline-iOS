@@ -43,7 +43,16 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 if let stopCode = App.stops.filter({ $0.code.escaped == self.searchText.escaped })[safe: 0] {
                     self.stopsSearched = [stopCode]
                 } else {
+                    if self.searchText == "Cornavin" {
+                        var b: [String: Double] = [:]
+                        for x in App.stops {
+                            b[x.code] = self.searchText.score(word: x.name, fuzziness: 1.0)
+                        }
+                        dump(b)
+                    }
+
                     self.stopsSearched =  App.stops.filter({ $0.name.escaped.contains(self.searchText.escaped) })
+
                 }
             }
             DispatchQueue.main.async(execute: self.searchRequest!)
@@ -81,6 +90,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = App.darkMode ? .dark : .light
 
+        App.log("TableView Keys: \(App.stopsKeys)")
         App.log("Favorites stops: \(App.favoritesStops)")
 
         if #available(iOS 11.0, *) {
@@ -287,7 +297,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
 extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        App.log("Stops: Search: \(self.searchText) - \(self.searchMode)")
+        App.log("Stops: Search: \(searchController.searchBar.text ?? "???") - \(self.searchMode)")
         self.searchText = searchController.searchBar.text ?? ""
         if self.searchMode == .addresses {
             lookForAdresses()
@@ -356,7 +366,7 @@ extension StopsTableViewController {
         if searchText != "" {
             return 1
         }
-        return App.sortedStops.keys.count + 2
+        return App.stopsKeys.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -369,18 +379,18 @@ extension StopsTableViewController {
             }
 
         }
-        switch section {
-        case 0:
+        let key = App.stopsKeys[section]
+        switch key {
+        case "location":
             return localizedStops.count
-        case 1:
+        case "favorites":
             return App.favoritesStops.count
         default:
-            return App.sortedStops[App.sortedStops.keys.sorted()[section - 2]]?.count ?? 0
+            return App.sortedStops[key]?.count ?? 0
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if self.searchText.escaped != "", self.searchMode == .addresses, indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "stopsCell", for: indexPath)
 
@@ -393,7 +403,7 @@ extension StopsTableViewController {
 
             cell.textLabel?.attributedText = NSAttributedString(string: "Nearest stops from".localized, attributes: titleAttributes)
             cell.detailTextLabel?.attributedText = NSAttributedString(string: addressSearch?.address ?? "", attributes: subtitleAttributes)
-            cell.accessoryView = nil
+            cell.accessoryType = .none
 
             return cell
         }
@@ -418,12 +428,13 @@ extension StopsTableViewController {
                 cell.isNearestStops = true
             }
         } else {
-            switch indexPath.section {
-            case 0:
+            let key = App.stopsKeys[indexPath.section]
+            switch key {
+            case "location":
                 stop = localizedStops[indexPath.row]
                 cell.isFavorite = false
                 cell.isNearestStops = true
-            case 1:
+            case "favorites":
                 guard let a = App.stops.filter({ (App.favoritesStops[safe: indexPath.row] ?? 0) == $0.appId })[safe: 0] else {
                     return UITableViewCell()
                 }
@@ -431,9 +442,6 @@ extension StopsTableViewController {
                 cell.isFavorite = true
                 cell.isNearestStops = false
             default:
-                guard let key = App.sortedStops.keys.sorted()[safe: indexPath.section - 2] else {
-                    return UITableViewCell()
-                }
                 guard let name = App.sortedStops[key]?[safe: indexPath.row] else {
                     return UITableViewCell()
                 }
@@ -449,11 +457,14 @@ extension StopsTableViewController {
     }
 
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return App.sortedStops.keys.sorted()
+        var a = App.stopsKeys
+        a[App.stopsKeys.index(of: "location")!] = "📍"
+        a[App.stopsKeys.index(of: "favorites")!] = "⭐️"
+        return a
     }
 
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return index + 2
+        return index
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -470,13 +481,14 @@ extension StopsTableViewController {
         if searchText != "" {
             return nil
         }
-        if section == 0 {
+        let key = App.stopsKeys[section]
+        if key == "location" {
             headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1)
             let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
                                    NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1) : UIColor.white] as [NSAttributedStringKey: Any]
             headerCell?.textLabel?.attributedText = NSAttributedString(string: "Nearest stops".localized, attributes: titleAttributes)
 
-        } else if section == 1 {
+        } else if key == "favorites" {
             headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1)
             headerCell?.textLabel?.text = "Favorites".localized
             let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
@@ -487,7 +499,7 @@ extension StopsTableViewController {
             let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
                                    NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : UIColor.white] as [NSAttributedStringKey: Any]
             headerCell?.textLabel?.attributedText =
-                NSAttributedString(string: App.sortedStops.keys.sorted()[section - 2], attributes: titleAttributes)
+                NSAttributedString(string: key, attributes: titleAttributes)
         }
 
         return headerCell
@@ -496,6 +508,10 @@ extension StopsTableViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchController.searchBar.resignFirstResponder()
         self.tableView.deselectRow(at: indexPath, animated: true)
+
+        if self.searchText.escaped != "", self.searchMode == .addresses, indexPath.row == 0 {
+            return
+        }
         guard let stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
             return
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import Crashlytics
 
 class PendingNotificationsTableViewController: UITableViewController {
 
@@ -23,6 +24,9 @@ class PendingNotificationsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = "Notifications".localized
+
+        App.log("Show pending notifications")
+        Answers.logCustomEvent(withName: "Show pending notifications")
 
         if App.darkMode {
             self.tableView.backgroundColor = .black

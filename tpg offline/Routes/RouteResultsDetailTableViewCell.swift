@@ -10,8 +10,6 @@ import UIKit
 
 class RouteResultDetailsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lineLabel: UILabel!
-    @IBOutlet weak var lineBackgroundView: UIView!
     @IBOutlet weak var departureStopLabel: UILabel!
     @IBOutlet weak var departureHourLabel: UILabel!
     @IBOutlet weak var arrivalStopLabel: UILabel!
@@ -23,26 +21,14 @@ class RouteResultDetailsTableViewCell: UITableViewCell {
         didSet {
             guard let section = section else { return }
 
-            self.backgroundColor = App.cellBackgroundColor
-
-            let destinationName = App.stops.filter({$0.nameTransportAPI == section.journey?.to})[safe: 0]?.name
-                ?? (section.journey?.to ?? "#?!")
-
-            self.lineLabel.text = String(format: "Line %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)", "\(destinationName)")
-            if section.journey?.compagny == "TPG" {
-                self.lineBackgroundView.backgroundColor = App.darkMode ? App.cellBackgroundColor :
-                    App.color(for: section.journey?.lineCode ?? "")
-                self.lineLabel.textColor = App.darkMode ? App.color(for: section.journey?.lineCode ?? "") :
-                    App.color(for: section.journey?.lineCode ?? "").contrast
-            } else if section.journey?.compagny == "SBB" {
-                self.lineLabel.text = String(format: "SBB %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)",
-                    "\(destinationName)")
-                self.lineBackgroundView.backgroundColor = App.darkMode ? App.cellBackgroundColor : .red
-                self.lineLabel.textColor = App.darkMode ? .red : .white
-            } else {
-                self.lineBackgroundView.backgroundColor = App.darkMode ? .black : .white
-                self.lineLabel.textColor = App.darkMode ? .white : .black
+            departureStopLabel.textColor = App.textColor
+            departureHourLabel.textColor = App.textColor
+            arrivalStopLabel.textColor = App.textColor
+            arrivalHourLabel.textColor = App.textColor
+            for image in images {
+                image.image = image.image?.maskWith(color: App.textColor)
             }
+            self.backgroundColor = App.cellBackgroundColor
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm"
@@ -55,6 +41,7 @@ class RouteResultDetailsTableViewCell: UITableViewCell {
                 ?? section.arrival.station.name
             arrivalHourLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970:
                 TimeInterval(section.arrival.arrivalTimestamp ?? 0)))
+            self.accessoryType = .disclosureIndicator
         }
     }
 

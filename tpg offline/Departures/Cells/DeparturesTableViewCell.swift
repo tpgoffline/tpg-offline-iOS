@@ -20,6 +20,7 @@ class DeparturesTableViewCell: UITableViewCell {
     var loading = true
     var timer: Timer?
     var opacity = 0.5
+    var isTodayWidget = false
 
     var canBeSelected: Bool = true
     var departure: Departure? {
@@ -43,9 +44,9 @@ class DeparturesTableViewCell: UITableViewCell {
             }
             self.loading = false
 
-            var color = App.color(for: departure.line.code)
+            var color = isTodayWidget ? App.textColor : App.color(for: departure.line.code)
 
-            destinationLabel.text = App.replacementsNames[departure.line.destination] ?? departure.line.destination
+            destinationLabel.text = isTodayWidget ? "\(departure.line.code) - \(App.replacementsNames[departure.line.destination] ?? departure.line.destination)" : App.replacementsNames[departure.line.destination] ?? departure.line.destination
             destinationLabel.textColor = color
 
             notPMRImage.image = departure.reducedMobilityAccessibility == .accessible ? nil : #imageLiteral(resourceName: "notPMR").maskWith(color: color)

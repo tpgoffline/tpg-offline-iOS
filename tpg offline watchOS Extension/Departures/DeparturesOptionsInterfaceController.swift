@@ -42,9 +42,35 @@ class DeparturesOptionsInterfaceController: WKInterfaceController {
         case 1:
             pushController(withName: "stopsInterface", context: DeparturesOption.favorites)
         case 2:
-            pushController(withName: "stopsInterface", context: DeparturesOption.allStops)
+            presentAllStops()
         default:
             return
         }
+    }
+
+    func presentAllStops() {
+        presentTextInputController(withSuggestions: App.stops.map({ $0.name }), allowedInputMode: WKTextInputMode.plain, completion: { (resultO) in
+            guard let result = resultO as? [String] else { return }
+            if let stop = App.stops.filter({ $0.name.escaped == result[0].escaped })[safe: 0] {
+                self.pushController(withName: "linesInterface", context: stop)
+            } else if let stop = App.stops.filter({ $0.code.escaped == result[0].escaped })[safe: 0] {
+                self.pushController(withName: "linesInterface", context: stop)
+            } else {
+                guard let stop = App.stops.filter({ $0.name.escaped.contains(result[0].escaped) })[safe: 0] else {
+                    let tryAgainAction = WKAlertAction(title: "Try again".localized, style: .default, handler: {
+                        self.presentAllStops()
+                    })
+                    let cancelAction = WKAlertAction(title: "Cancel".localized, style: .cancel, handler: {})
+                    self.presentAlert(withTitle: "Stop not found", message: "We did not found the stop. Please try with another name.", preferredStyle: .alert, actions: [tryAgainAction, cancelAction])
+                    return
+                }
+
+                let yesAction = WKAlertAction(title: "Yes".localized, style: .default, handler: {
+                    self.pushController(withName: "linesInterface", context: stop)
+                })
+                let cancelAction = WKAlertAction(title: "Cancel".localized, style: .cancel, handler: {})
+                self.presentAlert(withTitle: "Confirmation".localized, message: String(format: "Do you mean %@?".localized, stop.name), preferredStyle: WKAlertControllerStyle.alert, actions: [yesAction, cancelAction])
+            }
+        })
     }
 }

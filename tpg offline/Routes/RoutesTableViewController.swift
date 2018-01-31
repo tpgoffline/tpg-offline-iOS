@@ -87,12 +87,21 @@ class RoutesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 3 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "routesButtonCell", for: indexPath) as? SearchButtonTableViewCell
-                    else { return UITableViewCell() }
-                cell.backgroundColor = App.cellBackgroundColor
-                cell.button.backgroundColor = App.darkMode ? App.cellBackgroundColor.darken(by: 0.1) :  #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-                cell.button.setTitleColor(App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white, for: .normal)
-                cell.button.addTarget(self, action: #selector(self.search), for: .touchUpInside)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell", for: indexPath)
+                cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
+
+                let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)]
+                cell.textLabel?.numberOfLines = 0
+                cell.textLabel?.textColor = App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white
+                cell.imageView?.image = #imageLiteral(resourceName: "magnify").maskWith(color: App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white)
+                cell.textLabel?.attributedText = NSAttributedString(string: "Search".localized, attributes: titleAttributes)
+                cell.detailTextLabel?.text = ""
+                cell.accessoryType = .disclosureIndicator
+
+                let selectedView = UIView()
+                selectedView.backgroundColor = cell.backgroundColor?.darken(by: 0.1)
+                cell.selectedBackgroundView = selectedView
+
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell", for: indexPath)
@@ -138,6 +147,7 @@ class RoutesTableViewController: UITableViewController {
                 return cell
             }
         } else {
+            self.tableView.deselectRow(at: indexPath, animated: true)
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteRouteCell", for: indexPath) as? FavoriteRouteTableViewCell
                 else { return UITableViewCell() }
             cell.route = App.favoritesRoutes[indexPath.row]
@@ -153,6 +163,10 @@ class RoutesTableViewController: UITableViewController {
                 splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
                 detailNavigationController.popToRootViewController(animated: false)
             }
+        } else {
+            let alertView = UIAlertController(title: "Invalid route".localized, message: "Are you sure you set the departure stop and the arrival stop?".localized, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertView, animated: true, completion: nil)
         }
     }
 
@@ -198,7 +212,7 @@ class RoutesTableViewController: UITableViewController {
                                                             }
             }
         case 3:
-            tableView.deselectRow(at: indexPath, animated: false)
+            search()
         default:
             break
         }

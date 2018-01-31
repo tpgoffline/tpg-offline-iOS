@@ -20,10 +20,16 @@ enum OfflineDeparturesStatus {
 
 class SettingsTableViewController: UITableViewController {
 
-    var settings: [Setting] = []
+    var settings: [[Setting]] = []
+    var titles = [
+        "Notifications".localized,
+        "Application".localized,
+        "The project".localized
+    ]
+
     var offlineDeparturesStatus: OfflineDeparturesStatus = .notDownloading {
         didSet {
-            tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+            tableView.reloadRows(at: [IndexPath(row: 2, section: 1)], with: .none)
         }
     }
 
@@ -42,50 +48,64 @@ class SettingsTableViewController: UITableViewController {
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
 
-        self.settings.append(Setting("Default tab on startup".localized, icon: #imageLiteral(resourceName: "menuRounded"), action: { (_) in
-            self.performSegue(withIdentifier: "showDefaultTab", sender: self)
-        }))
-        self.settings.append(Setting("Update departures".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
-            App.log("Settings: Update Departures")
-            self.updateDepartures()
-        }))
-        self.settings.append(Setting("Pending notifications".localized, icon: #imageLiteral(resourceName: "cel-bell"), action: { (_) in
-            self.performSegue(withIdentifier: "showPendingNotifications", sender: self)
-        }))
-        self.settings.append(Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
-            self.performSegue(withIdentifier: "showCredits", sender: self)
-        }))
-        self.settings.append(Setting("Privacy".localized, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
-            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
-        }))
-        self.settings.append(Setting("Last features".localized, icon: #imageLiteral(resourceName: "flag"), action: { (_) in
-            self.performSegue(withIdentifier: "showNewFeatures", sender: self)
-        }))
-        self.settings.append(Setting("Dark Mode".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
-            self.darkMode()
-        }))
-        self.settings.append(Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
-            App.log("Settings: Give feedback")
-            let mailComposerVC = MFMailComposeViewController()
-            mailComposerVC.mailComposeDelegate = self
+        // Notifications
+        self.settings.append([
+            Setting("Pending notifications".localized, icon: #imageLiteral(resourceName: "cel-bell"), action: { (_) in
+                self.performSegue(withIdentifier: "showPendingNotifications", sender: self)
+            })
+        ])
 
-            mailComposerVC.setToRecipients(["helloworld@asmartcode.com"])
-            mailComposerVC.setSubject("tpg offline".localized)
-            mailComposerVC.setMessageBody("", isHTML: false)
+        // Application
+        self.settings.append([
+            Setting("Default tab on startup".localized, icon: #imageLiteral(resourceName: "menuRounded"), action: { (_) in
+                self.performSegue(withIdentifier: "showDefaultTab", sender: self)
+            }),
+            Setting("Reorder stops view".localized, icon: #imageLiteral(resourceName: "reorder"), action: { (_) in
+                self.performSegue(withIdentifier: "showReorderStopsView", sender: self)
+            }),
+            Setting("Update departures".localized, icon: #imageLiteral(resourceName: "download"), action: { (_) in
+                App.log("Settings: Update Departures")
+                self.updateDepartures()
+            }),
+            Setting("Dark Mode".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
+                self.darkMode()
+            }),
+            Setting("Privacy".localized, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
+                UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            })
+        ])
 
-            if MFMailComposeViewController.canSendMail() {
-                self.present(mailComposerVC, animated: true, completion: nil)
-            }
-        }))
-        self.settings.append(Setting("Github webpage".localized, icon: #imageLiteral(resourceName: "github"), action: { (_) in
-            let vc = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: false)
-            if App.darkMode, #available(iOS 10.0, *) {
-                vc.preferredBarTintColor = .black
-            }
-            vc.delegate = self
+        // The project
+        self.settings.append([
+            Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
+                App.log("Settings: Give feedback")
+                let mailComposerVC = MFMailComposeViewController()
+                mailComposerVC.mailComposeDelegate = self
 
-            self.present(vc, animated: true)
-        }))
+                mailComposerVC.setToRecipients(["helloworld@asmartcode.com"])
+                mailComposerVC.setSubject("tpg offline".localized)
+                mailComposerVC.setMessageBody("", isHTML: false)
+
+                if MFMailComposeViewController.canSendMail() {
+                    self.present(mailComposerVC, animated: true, completion: nil)
+                }
+            }),
+            Setting("Last features".localized, icon: #imageLiteral(resourceName: "flag"), action: { (_) in
+                self.performSegue(withIdentifier: "showNewFeatures", sender: self)
+            }),
+            Setting("Credits".localized, icon: #imageLiteral(resourceName: "crows"), action: { (_) in
+                self.performSegue(withIdentifier: "showCredits", sender: self)
+            }),
+            Setting("Github webpage".localized, icon: #imageLiteral(resourceName: "github"), action: { (_) in
+                let vc = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: false)
+                if App.darkMode, #available(iOS 10.0, *) {
+                    vc.preferredBarTintColor = .black
+                }
+                vc.delegate = self
+
+                self.present(vc, animated: true)
+            })
+        ])
 
         if App.darkMode {
             self.tableView.backgroundColor = .black
@@ -100,13 +120,17 @@ class SettingsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.settings.count
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.settings[section].count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath)
-        let setting = self.settings[indexPath.row]
+        let setting = self.settings[indexPath.section][indexPath.row]
 
         cell.textLabel?.text = setting.title
         cell.textLabel?.textColor = App.textColor
@@ -151,13 +175,16 @@ class SettingsTableViewController: UITableViewController {
 
     @objc func darkMode() {
         App.darkMode = !App.darkMode
-        self.tableView.reloadRows(at: [IndexPath(row: 5, section: 0)], with: .automatic)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        let setting = self.settings[indexPath.row]
+        let setting = self.settings[indexPath.section][indexPath.row]
         setting.action(setting)
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return titles[section]
     }
 
     func updateDepartures() {

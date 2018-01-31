@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import Crashlytics
 
 class LineViewController: UIViewController {
 
@@ -31,6 +32,10 @@ class LineViewController: UIViewController {
         guard let line = self.line else { return }
 
         self.title = String(format: "Line %@".localized, line.line)
+
+        App.log("Show line \(line.line)")
+        Answers.logCustomEvent(withName: "Show departures",
+                               customAttributes: ["line": line.line])
 
         self.departureLabel.text = line.departureName
         self.departureLabel.textColor = App.textColor

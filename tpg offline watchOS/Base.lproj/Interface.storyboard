@@ -203,7 +203,14 @@
                                 <tableRow identifier="departureCell" id="Epd-Ze-vy6" customClass="DepartureRowController" customModule="tpg_offline_watchOS_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="gUB-yW-t6l">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" text="fdbvdfgxertdfbrtgb" numberOfLines="0" id="fnT-zm-b3A"/>
+                                            <group alignment="left" layout="vertical" id="TjI-aP-hFR">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="fdbvdfgxertdfbrtgb" numberOfLines="0" id="fnT-zm-b3A"/>
+                                                    <label alignment="left" verticalAlignment="bottom" text="Voie 3" id="b8j-ak-Eix">
+                                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                    </label>
+                                                </items>
+                                            </group>
                                             <label width="40" alignment="right" verticalAlignment="center" text="9h22" textAlignment="right" numberOfLines="0" id="fph-2W-fta"/>
                                         </items>
                                         <edgeInsets key="margins" left="8" right="8" top="8" bottom="8"/>
@@ -211,6 +218,7 @@
                                     <connections>
                                         <outlet property="destinationLabel" destination="fnT-zm-b3A" id="Tv1-O3-87O"/>
                                         <outlet property="leftTimeLabel" destination="fph-2W-fta" id="8aQ-nx-j6z"/>
+                                        <outlet property="platformLabel" destination="b8j-ak-Eix" id="Nae-H6-2d2"/>
                                     </connections>
                                 </tableRow>
                             </items>

@@ -74,6 +74,8 @@ class BusRouteTableViewCell: UITableViewCell {
 
         self.selectedBackgroundView = UIView()
         self.selectedBackgroundView?.backgroundColor = color.withAlphaComponent(0.1)
+
+        self.accessoryType = .disclosureIndicator
     }
 
     func configure(with stopId: Int, color: UIColor, first: Bool, last: Bool) {
@@ -140,5 +142,7 @@ class BusRouteTableViewCell: UITableViewCell {
 
         self.selectedBackgroundView = UIView()
         self.selectedBackgroundView?.backgroundColor = color.withAlphaComponent(0.1)
+
+        self.accessoryType = .disclosureIndicator
     }
 }

@@ -15,17 +15,15 @@ class StopsTableViewCell: UITableViewCell {
 
     func configure(with stop: Stop) {
         self.stop = stop
-        self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)))
+        self.accessoryType = .disclosureIndicator
         self.backgroundColor = .white
 
         if App.darkMode {
-            self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: .white))
             self.backgroundColor = App.cellBackgroundColor
             let selectedView = UIView()
             selectedView.backgroundColor = .black
             self.selectedBackgroundView = selectedView
         } else {
-            self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "next").maskWith(color: .white))
             self.backgroundColor = App.cellBackgroundColor
             let selectedView = UIView()
             selectedView.backgroundColor = UIColor.white.darken(by: 0.1)

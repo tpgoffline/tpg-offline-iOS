@@ -41,9 +41,9 @@ class RouteStepViewController: UIViewController {
             self.color = .red
         }
 
-        self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: self.color.contrast), for: .normal)
-        self.reminderButton.setTitleColor(self.color.contrast, for: .normal)
-        self.reminderButton.backgroundColor = self.color
+        self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+        self.reminderButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+        self.reminderButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
         self.reminderButton.cornerRadius = 5
 
         var coordinates: [CLLocationCoordinate2D] = []
@@ -94,9 +94,9 @@ class RouteStepViewController: UIViewController {
         self.tableView.backgroundColor = App.darkMode ? .black : .white
         self.buttonBackgroundView.backgroundColor = App.darkMode ? .black : .white
         self.tableView.separatorColor = App.separatorColor
-        self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: self.color.contrast), for: .normal)
-        self.reminderButton.setTitleColor(self.color.contrast, for: .normal)
-        self.reminderButton.backgroundColor = self.color
+        self.reminderButton.setImage(#imageLiteral(resourceName: "cel-bell").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
+        self.reminderButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+        self.reminderButton.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
         self.tableView.reloadData()
     }
 

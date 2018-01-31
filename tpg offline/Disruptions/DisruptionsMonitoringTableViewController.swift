@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Crashlytics
 
 class DisruptionsMonitoringTableViewController: UITableViewController {
 
@@ -50,6 +51,9 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        App.log("Show disruptions monitoring")
+        Answers.logCustomEvent(withName: "Show disruptions monitoring")
 
         self.navigationItem.rightBarButtonItems = [
             self.editButtonItem,

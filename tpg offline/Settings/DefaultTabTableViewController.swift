@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class DefaultTabTableViewController: UITableViewController {
 
@@ -14,6 +15,10 @@ class DefaultTabTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.title = "Default tab".localized
+
+        App.log("Show default tab")
+        Answers.logCustomEvent(withName: "Show default tab")
+
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor

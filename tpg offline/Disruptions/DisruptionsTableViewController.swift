@@ -85,6 +85,8 @@ class DisruptionsTableViewController: UITableViewController {
             self.tableView.separatorColor = App.separatorColor
         }
 
+        self.tableView.sectionIndexBackgroundColor = App.darkMode ? App.cellBackgroundColor : .white
+
         ColorModeManager.shared.addColorModeDelegate(self)
     }
 
@@ -140,6 +142,14 @@ class DisruptionsTableViewController: UITableViewController {
         } else {
             return (self.devDisruptions?.count ?? 0) + (disruptions?.disruptions.count ?? 0)
         }
+    }
+
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return self.keys
+    }
+
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index + (self.devDisruptions?.count ?? 0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
