@@ -21,7 +21,7 @@ struct App {
     static var sortedStops: [String: [String]] = [:]
     static var stopsKeys: [String] {
         get {
-            return (UserDefaults.standard.array(forKey: #function) as? [String]) ?? []
+            return (UserDefaults.standard.array(forKey: #function) as? [String]) ?? (["location", "favorites"] + App.sortedStops.keys.sorted())
         }
         set {
             UserDefaults.standard.set(newValue, forKey: #function)

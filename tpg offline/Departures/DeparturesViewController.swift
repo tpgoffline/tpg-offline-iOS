@@ -102,7 +102,7 @@ class DeparturesViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 62
 
-        if self.view.traitCollection.verticalSizeClass == .compact && UIDevice.current.userInterfaceIdiom == .phone {
+        if (self.view.traitCollection.verticalSizeClass == .compact && UIDevice.current.userInterfaceIdiom == .phone) {
             self.stackView.axis = .horizontal
         } else {
             self.stackView.axis = .vertical

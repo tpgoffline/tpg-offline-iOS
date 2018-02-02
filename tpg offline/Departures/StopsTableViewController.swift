@@ -123,7 +123,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 UserDefaults.standard.set(true, forKey: "notFirstLaunch")
             }
             if #available(iOS 10.3, *), self.askForRating {
-                SKStoreReviewController.requestReview()
+                //SKStoreReviewController.requestReview()
 
                 Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
                     if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5"),
@@ -458,8 +458,12 @@ extension StopsTableViewController {
 
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var a = App.stopsKeys
-        a[App.stopsKeys.index(of: "location")!] = "📍"
-        a[App.stopsKeys.index(of: "favorites")!] = "⭐️"
+        if let location = App.stopsKeys.index(of: "location") {
+            a[location] = "📍"
+        }
+        if let favorites = App.stopsKeys.index(of: "favorites") {
+            a[favorites] = "⭐️"
+        }
         return a
     }
 
