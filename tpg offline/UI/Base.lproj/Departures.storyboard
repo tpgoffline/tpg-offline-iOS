@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0M-rN-Mzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14101" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0M-rN-Mzg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -211,9 +211,7 @@
                                                     <outlet property="rightImage" destination="DSI-ZB-4Cw" id="whP-19-GG1"/>
                                                     <outlet property="rightTimeLabel" destination="eIU-ZB-Mbl" id="2m5-b4-Q5E"/>
                                                     <outlet property="wifiImage" destination="p3Y-zt-CS4" id="vyI-uU-7Nl"/>
-                                                    <segue destination="arl-gp-ZJ7" kind="show" identifier="showDeparturesDetail" id="9YM-oy-Uje">
-                                                        <nil key="action"/>
-                                                    </segue>
+                                                    <segue destination="arl-gp-ZJ7" kind="show" identifier="showDeparturesDetail" id="9YM-oy-Uje"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="EY4-kG-zUM" customClass="DeparturesHeaderTableViewCell" customModule="tpg_offline" customModuleProvider="target">
@@ -302,11 +300,11 @@
                                                 <rect key="frame" x="0.0" y="357.5" width="375" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jjn-ya-LXW" id="kRE-9t-aPh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="syb-A0-g0V">
-                                                            <rect key="frame" x="15" y="0.0" width="345" height="79.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="345" height="80"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -317,6 +315,23 @@
                                                 <connections>
                                                     <segue destination="G1r-p0-yl0" kind="show" identifier="showConnectionsMap" id="Uw9-4a-nQ5"/>
                                                 </connections>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="filterCell" textLabel="4sj-ZJ-p4f" rowHeight="80" style="IBUITableViewCellStyleDefault" id="Yge-GU-9H3" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="437.5" width="375" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yge-GU-9H3" id="Xr6-aQ-bzn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4sj-ZJ-p4f">
+                                                            <rect key="frame" x="15" y="0.0" width="345" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -681,6 +696,7 @@ Departures</string>
         <image name="clockTabBar" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9YM-oy-Uje"/>
         <segue reference="Gud-b6-ejT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

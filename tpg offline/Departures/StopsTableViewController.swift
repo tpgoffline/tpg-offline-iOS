@@ -43,14 +43,6 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 if let stopCode = App.stops.filter({ $0.code.escaped == self.searchText.escaped })[safe: 0] {
                     self.stopsSearched = [stopCode]
                 } else {
-                    if self.searchText == "Cornavin" {
-                        var b: [String: Double] = [:]
-                        for x in App.stops {
-                            b[x.code] = self.searchText.score(word: x.name, fuzziness: 1.0)
-                        }
-                        dump(b)
-                    }
-
                     self.stopsSearched =  App.stops.filter({ $0.name.escaped.contains(self.searchText.escaped) })
 
                 }
@@ -123,7 +115,11 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 UserDefaults.standard.set(true, forKey: "notFirstLaunch")
             }
             if #available(iOS 10.3, *), self.askForRating {
-                //SKStoreReviewController.requestReview()
+                #if DEBUG
+                print("DEBUG MODE: SKStoreReviewController not activated")
+                #else
+                SKStoreReviewController.requestReview()
+                #endif
 
                 Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
                     if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5"),
@@ -473,7 +469,7 @@ extension StopsTableViewController {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if searchText != "" {
-            return 0
+            return CGFloat.leastNonzeroMagnitude
         } else {
             return 28
         }

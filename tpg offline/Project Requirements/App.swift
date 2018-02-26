@@ -21,7 +21,11 @@ struct App {
     static var sortedStops: [String: [String]] = [:]
     static var stopsKeys: [String] {
         get {
-            return (UserDefaults.standard.array(forKey: #function) as? [String]) ?? (["location", "favorites"] + App.sortedStops.keys.sorted())
+            guard let a = (UserDefaults.standard.array(forKey: #function) as? [String]) else {
+                UserDefaults.standard.set(["location", "favorites"] + App.sortedStops.keys.sorted(), forKey: #function)
+                return ["location", "favorites"] + App.sortedStops.keys.sorted()
+            }
+            return a
         }
         set {
             UserDefaults.standard.set(newValue, forKey: #function)
@@ -150,9 +154,6 @@ struct App {
             for stop in App.stops.map({ $0.name }) {
                 let character = "\(stop.first!)"
                 App.sortedStops[character, default: []].append(stop)
-            }
-            if App.stopsKeys.isEmpty {
-                App.stopsKeys = ["location", "favorites"] + App.sortedStops.keys.sorted()
             }
             for (i, id) in App.favoritesStops.enumerated() {
                 if App.stops.filter({ $0.appId == id })[safe: 0] == nil {

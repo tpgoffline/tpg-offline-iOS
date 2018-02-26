@@ -19,7 +19,15 @@ class ReorderStopsTableViewController: UITableViewController {
 
         self.tableView.allowsSelection = false
         self.tableView.setEditing(true, animated: false)
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reinitOrder))
+
         ColorModeManager.shared.addColorModeDelegate(self)
+
+        if App.darkMode {
+            self.tableView.backgroundColor = .black
+            self.tableView.separatorColor = App.separatorColor
+        }
 
         title = "Reorder stops view".localized
     }
@@ -41,10 +49,10 @@ class ReorderStopsTableViewController: UITableViewController {
         let key = App.stopsKeys[indexPath.row]
         if key == "location" {
             cell.textLabel?.text = "Nearest stops".localized
-            cell.imageView?.image = #imageLiteral(resourceName: "location")
+            cell.imageView?.image = #imageLiteral(resourceName: "location").maskWith(color: App.textColor)
         } else if key == "favorites" {
             cell.textLabel?.text = "Favorites".localized
-            cell.imageView?.image = #imageLiteral(resourceName: "star")
+            cell.imageView?.image = #imageLiteral(resourceName: "star").maskWith(color: App.textColor)
         } else {
             cell.textLabel?.text = key
             cell.imageView?.image = nil
@@ -67,6 +75,17 @@ class ReorderStopsTableViewController: UITableViewController {
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
+
+    @objc func reinitOrder() {
+        let alertController = UIAlertController(title: "Warning!".localized, message: "Do you want to reinit the stops list to the alphabetical order?".localized, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "No".localized, style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Yes!".localized, style: .default, handler: { (_) in
+            App.stopsKeys = ["location", "favorites"] + App.sortedStops.keys.sorted()
+            self.tableView.reloadData()
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
     /*
     // MARK: - Navigation
 

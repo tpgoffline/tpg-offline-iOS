@@ -20,7 +20,7 @@ class HourPickerViewController: UIViewController {
         title = "Add new".localized
 
         if endHour {
-            self.timePicker.minimumDate = AddMonitoring.fromDate
+            self.timePicker.minimumDate = AddMonitoring.fromDate.addingTimeInterval(60)
 
             var comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
             comps.day = (comps.day ?? 0) + 1

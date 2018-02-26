@@ -32,11 +32,7 @@ class NewFeaturesViewController: UIViewController {
 
         ColorModeManager.shared.addColorModeDelegate(self)
 
-        features.append(Feature(image: #imageLiteral(resourceName: "clock"), title: "Departures informations".localized, text: "From now, bus with an approximate schedule or not accessible for reduced mobility people will be shown.".localized))
-        features.append(Feature(image: #imageLiteral(resourceName: "questionMark"), title: "Tram vs Tram".localized, text: "This is the question that many people at the tramways terminus. Which tramway I have to take? Now, you will have the answer in departures.".localized))
-        features.append(Feature(image: #imageLiteral(resourceName: "walk"), title: "Connections".localized, text: "Connections maps are now available in departures".localized))
-        features.append(Feature(image: #imageLiteral(resourceName: "spacingRight"), title: "Slide to the left".localized, text: "Actions are available at various places if you slide your finger to the left.".localized))
-        features.append(Feature(image: #imageLiteral(resourceName: "palette"), title: "Graphical improvements".localized, text: "Graphic and ergonomic improvements have been integrated into the app".localized))
+        features.append(Feature(image: #imageLiteral(resourceName: "bug"), title: "Stability improvements".localized, text: "We improved the stability and we made some cosmetic improvements.".localized))
 
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             UserDefaults.standard.set(version, forKey: "lastVersion")

@@ -19,7 +19,6 @@ struct Route: Codable, Equatable {
 
     static func == (lhs: Route, rhs: Route) -> Bool {
         return lhs.from?.appId == rhs.from?.appId &&
-            lhs.to?.appId == rhs.to?.appId &&
-            lhs.arrivalTime == rhs.arrivalTime
+            lhs.to?.appId == rhs.to?.appId
     }
 }

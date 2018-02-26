@@ -21,6 +21,7 @@ class DayPickerViewController: UIViewController {
         super.viewDidLoad()
         title = "Add new".localized
 
+        tableView.separatorColor = App.separatorColor
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.buttonBackgroundView.backgroundColor = App.cellBackgroundColor
@@ -32,6 +33,11 @@ class DayPickerViewController: UIViewController {
     }
 
     @IBAction func save() {
+        if selectedRows.isEmpty {
+            let alertController = UIAlertController(title: "Wait a minute...".localized, message: "You forgot to add some days...".localized, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
         AddMonitoring.days = selectedRows.joined(separator: ":")
         Alamofire.request("https://tpgoffline-apns.alwaysdata.net/add/\(App.apnsToken)/\(AddMonitoring.line)/\(Locale.current.languageCode ?? "en")/\(AddMonitoring.fromHour)/\(AddMonitoring.toHour)/\(AddMonitoring.days)").responseString { (response) in
             if let string = response.result.value, string == "1" {
@@ -95,7 +101,9 @@ extension DayPickerViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.textLabel?.textColor = App.textColor
         cell.backgroundColor = App.cellBackgroundColor
-
+        let selectedView = UIView()
+        selectedView.backgroundColor = App.darkMode ? .black : .white
+        cell.selectedBackgroundView = selectedView
         return cell
     }
 

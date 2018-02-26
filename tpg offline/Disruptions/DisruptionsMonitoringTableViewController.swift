@@ -18,18 +18,6 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
         didSet {
             self.tableView.allowsSelection = requestStatus == .ok
             self.tableView.reloadData()
-
-            if requestStatus == .error {
-                let alertController = UIAlertController(title: "Sorry".localized,
-                                                        message: "You need to be connected to internet to manage disruptions monitoring.".localized,
-                                                        preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK".localized, style: .default) { _ in
-                    print("AEE")
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-                alertController.addAction(action)
-                self.present(alertController, animated: true, completion: nil)
-            }
         }
     }
 
@@ -143,31 +131,58 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if requestStatus == any(of: .loading, .error, .noResults) {
+            return 1
+        }
         return lines.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if requestStatus == any(of: .loading, .error, .noResults) {
+            return 1
+        }
         return disruptionMonitoringList.filter({ $0.line == lines[section] }).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "disruptionsMonitoringCell", for: indexPath)
-            as? DisruptionsMonitoringTableViewCell else {
-            return UITableViewCell()
+        if requestStatus == any(of: .loading, .error, .noResults) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "contextCell", for: indexPath)
+            cell.textLabel?.numberOfLines = 0
+            cell.detailTextLabel?.numberOfLines = 0
+            let selectedView = UIView()
+            cell.backgroundColor = App.cellBackgroundColor
+            cell.textLabel?.textColor = App.textColor
+            cell.detailTextLabel?.textColor = App.textColor
+            selectedView.backgroundColor = App.darkMode ? .black : .white
+            cell.selectedBackgroundView = selectedView
+            switch requestStatus {
+            case .loading:
+                cell.textLabel?.text = "Loading...".localized
+                cell.detailTextLabel?.text = ""
+            case .noResults:
+                cell.textLabel?.text = "No lines monitored".localized
+                cell.detailTextLabel?.text = "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?".localized
+            case .error:
+                cell.textLabel?.text = "Sorry, you need to be connected to internet to manage monitored lines."
+                cell.detailTextLabel?.text = "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines.".localized
+            default:
+                print("Seriously, how did you ended here?")
+            }
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "disruptionsMonitoringCell", for: indexPath)
+                as? DisruptionsMonitoringTableViewCell else {
+                    return UITableViewCell()
+            }
+
+            cell.disruptionMonitoring = disruptionMonitoringList.filter({ $0.line == lines[indexPath.section] })[indexPath.row]
+
+            return cell
         }
-
-        cell.disruptionMonitoring = disruptionMonitoringList.filter({ $0.line == lines[indexPath.section] })[indexPath.row]
-
-        return cell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if self.requestStatus == .loading {
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-            headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-            headerCell?.textLabel?.text = ""
-            return headerCell
-        } else if self.requestStatus == any(of: .error, .noResults) {
+        if requestStatus == any(of: .loading, .error, .noResults) {
             return nil
         }
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
@@ -180,10 +195,16 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if requestStatus == any(of: .loading, .error, .noResults) {
+            return CGFloat.leastNonzeroMagnitude
+        }
         return 44
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if requestStatus == any(of: .loading, .error, .noResults) {
+            return false
+        }
         return true
     }
 
@@ -202,32 +223,6 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
             }
         }
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 class DisruptionsMonitoringTableViewCell: UITableViewCell {
@@ -241,9 +236,9 @@ class DisruptionsMonitoringTableViewCell: UITableViewCell {
             dateFormatter.dateFormat = "HH:mm"
             var time = dateFormatter.date(from: disruptionMonitoring.fromHour)
             let fromHour = DateFormatter.localizedString(
-                    from: time ?? Date(),
-                    dateStyle: DateFormatter.Style.none,
-                    timeStyle: DateFormatter.Style.short)
+                from: time ?? Date(),
+                dateStyle: DateFormatter.Style.none,
+                timeStyle: DateFormatter.Style.short)
             time = dateFormatter.date(from: disruptionMonitoring.toHour)
             let toHour = DateFormatter.localizedString(
                 from: time ?? Date(),
@@ -277,12 +272,10 @@ class DisruptionsMonitoringTableViewCell: UITableViewCell {
             let selectedView = UIView()
             selectedView.backgroundColor = .white
 
-            if App.darkMode {
-                self.backgroundColor = App.cellBackgroundColor
-                self.hoursLabel.textColor = App.textColor
-                self.daysLabel.textColor = App.textColor
-                selectedView.backgroundColor = .black
-            }
+            self.backgroundColor = App.cellBackgroundColor
+            self.hoursLabel.textColor = App.textColor
+            self.daysLabel.textColor = App.textColor
+            selectedView.backgroundColor = App.darkMode ? .black : .white
             self.selectedBackgroundView = selectedView
         }
     }

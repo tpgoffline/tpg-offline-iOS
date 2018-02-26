@@ -13,6 +13,8 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mapView: MKMapView!
 
+    var points: [CLLocationCoordinate2D] = []
+
     var connection: RouteConnection? {
         didSet {
             guard let connection = self.connection else { return }

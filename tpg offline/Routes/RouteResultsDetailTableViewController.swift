@@ -189,6 +189,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
     }
 
     @objc func pushMap() {
+        //if connection.
         performSegue(withIdentifier: "showMap", sender: self)
     }
 

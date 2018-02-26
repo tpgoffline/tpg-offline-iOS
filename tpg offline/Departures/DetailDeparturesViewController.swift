@@ -261,14 +261,14 @@ class DetailDeparturesViewController: UIViewController {
     @IBAction func remind() {
         App.log("Departures: Reminder")
         self.departure?.calculateLeftTime()
+        let leftTime = Int(self.departure?.leftTime ?? "0".localized) ?? 0
         var alertController = UIAlertController(title: "Reminder".localized,
-                                                message: "When do you want to be reminded?".localized,
+                                                message: String(format: "At %@ - In %@ minutes\nWhen do you want to be reminded?".localized, stop?.name ?? "??", "\(leftTime)"),
                                                 preferredStyle: .alert)
         if self.departure?.leftTime == "0" {
             alertController.title = "Bus is comming".localized
             alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
         } else {
-            let leftTime = Int(self.departure?.leftTime ?? "0".localized) ?? 0
             let departureTimeAction = UIAlertAction(title: "At departure time".localized, style: .default) { _ in
                 self.setAlert(with: 0, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
             }
@@ -420,7 +420,7 @@ extension DetailDeparturesViewController: UITableViewDelegate, UITableViewDataSo
             App.log("Departures: Reminder")
             let leftTime = Int(self.busRouteGroup!.steps[indexPath.row].arrivalTime) ?? -1
             var alertController = UIAlertController(title: "Reminder".localized,
-                                                    message: "When do you want to be reminded?".localized,
+                                                    message: String(format: "At %@ - In %@ minutes\nWhen do you want to be reminded?".localized, self.stop?.name ?? "??", "\(leftTime)"),
                                                     preferredStyle: .alert)
             if leftTime == 0 {
                 alertController.title = "Bus is comming".localized

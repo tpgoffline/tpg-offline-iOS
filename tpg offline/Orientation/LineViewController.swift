@@ -34,7 +34,7 @@ class LineViewController: UIViewController {
         self.title = String(format: "Line %@".localized, line.line)
 
         App.log("Show line \(line.line)")
-        Answers.logCustomEvent(withName: "Show departures",
+        Answers.logCustomEvent(withName: "Show Orientation Line",
                                customAttributes: ["line": line.line])
 
         self.departureLabel.text = line.departureName
@@ -88,6 +88,9 @@ class LineViewController: UIViewController {
             vc.preferredBarTintColor = .black
         }
         vc.delegate = self
+
+        Answers.logCustomEvent(withName: "Show SNOTPG Webpage",
+                               customAttributes: ["line": line.line])
 
         self.present(vc, animated: true)
     }

@@ -97,7 +97,7 @@ class SettingsTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "showCredits", sender: self)
             }),
             Setting("Github webpage".localized, icon: #imageLiteral(resourceName: "github"), action: { (_) in
-                let vc = SFSafariViewController(url: URL(string: "https://github.com/RemyDCF/tpg-offline")!, entersReaderIfAvailable: false)
+                let vc = SFSafariViewController(url: URL(string: "https://github.com/tpgoffline/tpg-offline-iOS")!, entersReaderIfAvailable: false)
                 if App.darkMode, #available(iOS 10.0, *) {
                     vc.preferredBarTintColor = .black
                 }

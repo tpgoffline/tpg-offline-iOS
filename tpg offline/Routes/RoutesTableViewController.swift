@@ -59,6 +59,11 @@ class RoutesTableViewController: UITableViewController {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+    }
+
     @objc func reverseStops() {
         let from = self.route.from
         let to = self.route.to
@@ -184,6 +189,7 @@ class RoutesTableViewController: UITableViewController {
         if indexPath.section == 1 {
             self.route = App.favoritesRoutes[indexPath.row]
             self.route.date = Date()
+            self.route.arrivalTime = false
             search()
             return
         }
