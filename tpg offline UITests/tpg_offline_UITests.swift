@@ -29,6 +29,7 @@ class tpg_offline_UITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        XCUIApplication().terminate()
     }
     
 //    func testOpenStop() {
@@ -55,14 +56,37 @@ class tpg_offline_UITests: XCTestCase {
     func testScreenshot() {
         let app = XCUIApplication()
         app.tabBars.buttons.element(boundBy: 0).tap()
+        sleep(5)
         snapshot("stops")
         app.tables.staticTexts["31 Décembre"].tap()
+        sleep(5)
         snapshot("departures")
+        app.tabBars.buttons.element(boundBy: 4).tap()
+        app.tables.staticTexts["Dark Mode".localized].tap()
+        app.tabBars.buttons.element(boundBy: 0).tap()
+        snapshot("departuresDarkMode")
+        app.tabBars.buttons.element(boundBy: 4).tap()
+        app.tables.staticTexts["Dark Mode".localized].tap()
+        app.tabBars.buttons.element(boundBy: 0).tap()
+        app.tables.cells.element(boundBy: 0).tap()
+        sleep(10)
+        snapshot("busRoute")
         app.tabBars.buttons.element(boundBy: 1).tap()
+        sleep(10)
         snapshot("disruptions")
         app.tabBars.buttons.element(boundBy: 2).tap()
         snapshot("routes")
         app.tabBars.buttons.element(boundBy: 3).tap()
         snapshot("maps")
+        app.tables.staticTexts[String(format: "Line %@".localized, "14")].tap()
+        snapshot("line")
+        app.tabBars.buttons.element(boundBy: 4).tap()
+        snapshot("settings")
+    }
+}
+
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
 }

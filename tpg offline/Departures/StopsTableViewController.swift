@@ -34,6 +34,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     weak var delegate: StopSelectionDelegate?
 
     @IBOutlet weak var tableView: UITableView!
+    var canRefreshTableView = true
 
     let locationManager = CLLocationManager()
     var searchText: String! = "" {
@@ -72,8 +73,10 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
 
+        if !CommandLine.arguments.contains("-reset") {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
         searchController.searchBar.placeholder = "Let's take the bus!".localized
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -329,7 +332,9 @@ extension StopsTableViewController: CLLocationManagerDelegate {
             self.localizedStops.sort(by: { $0.distance < $1.distance })
             self.localizedStops = Array(self.localizedStops.prefix(5))
             self.localizedStops = self.localizedStops.filter({ $0.distance < 1500 })
-            self.tableView.reloadData()
+            if canRefreshTableView {
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -530,6 +535,14 @@ extension StopsTableViewController {
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return !(searchMode == .addresses && searchText.escaped != "" && indexPath.row == 0)
+    }
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        canRefreshTableView = false
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        canRefreshTableView = true
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

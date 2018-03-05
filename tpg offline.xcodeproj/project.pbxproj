@@ -375,15 +375,15 @@
 		AD324D271F4427AF0039B309 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AD1D3860200E6184009831A8 /* PendingNotificationsTableViewController.swift */,
-				AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */,
-				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
-				AD92D8BE1F44E10200403258 /* Setting.swift */,
-				ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */,
 				ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */,
-				ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */,
+				ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */,
+				AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */,
 				ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */,
+				ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */,
+				AD1D3860200E6184009831A8 /* PendingNotificationsTableViewController.swift */,
 				ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */,
+				AD92D8BE1F44E10200403258 /* Setting.swift */,
+				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

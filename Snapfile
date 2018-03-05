@@ -2,18 +2,18 @@
 
 #A list of devices you want to take the screenshots from
 devices([
-   "iPhone 4s",
-   "iPhone 8",
-   "iPhone 8 Plus",
-   "iPhone 5s",
-   "iPhone X",
+#   "iPhone 8",
+#   "iPhone 8 Plus",
+#   "iPhone 5s",
+#   "iPhone X",
    "iPad Pro (12.9-inch)",
-   "iPad Pro (9.7-inch)"
+#   "iPad Pro (9.7-inch)",
+#   "iPad Pro (10.5-inch)",
 ])
 
 languages([
   "en-US",
-  "fr-FR",
+#  "fr-FR",
 ])
 
 # The name of the scheme which contains the UI Tests
@@ -27,7 +27,7 @@ languages([
 # Choose which project/workspace to use
 # project "./Project.xcodeproj"
 # workspace "./Project.xcworkspace"
-
+stop_after_first_error(true)
 # Arguments to pass to the app on launch. See https://docs.fastlane.tools/actions/snapshot/#launch-arguments
 # launch_arguments(["-favColor red"])
 

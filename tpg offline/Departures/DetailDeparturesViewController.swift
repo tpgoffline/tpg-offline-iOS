@@ -34,24 +34,39 @@ class DetailDeparturesViewController: UIViewController {
 
             guard let busRouteGroup = self.busRouteGroup else { return }
 
-            let stops = busRouteGroup.steps.map({ $0.stop.code })
+            let steps = busRouteGroup.steps
             var coordinates: [CLLocationCoordinate2D] = []
-            for stopCode in stops {
-                guard let stop = App.stops.filter({ $0.code == stopCode })[safe: 0] else { break }
+            var passedCoordinated: [CLLocationCoordinate2D] = []
+            var passed = true
+            for step in steps {
+                guard let stop = App.stops.filter({ $0.code == step.stop.code })[safe: 0] else { break }
                 let annotation = MKPointAnnotation()
                 if let localisation = stop.localisations.filter({ !($0.destinations.filter({ $0.line == busRouteGroup.lineCode && $0.destination == busRouteGroup.destination }).isEmpty) })[safe: 0] {
                     annotation.coordinate = localisation.location.coordinate
                 } else {
                     annotation.coordinate = stop.location.coordinate
                 }
-
-                coordinates.append(annotation.coordinate)
+                
+                if step.arrivalTime == "" {
+                    passedCoordinated.append(annotation.coordinate)
+                } else if step.arrivalTime != "", passed {
+                    passedCoordinated.append(annotation.coordinate)
+                    coordinates.append(annotation.coordinate)
+                    passed = false
+                } else {
+                    coordinates.append(annotation.coordinate)
+                }
+                
                 annotation.title = stop.name
                 self.names.append(stop.name)
                 mapView.addAnnotation(annotation)
             }
 
+            let geodesicPassed = MKPolyline(coordinates: &passedCoordinated, count: passedCoordinated.count)
+            geodesicPassed.title = "Passed Stops"
+            mapView.add(geodesicPassed)
             let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            geodesic.title = "Next Stops"
             mapView.add(geodesic)
 
             let regionRadius: CLLocationDistance = 1000
@@ -490,7 +505,11 @@ extension DetailDeparturesViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = self.color
+            if ((overlay.title ?? "") ?? "") == "Passed Stops" {
+                polylineRenderer.strokeColor = .gray
+            } else {
+                polylineRenderer.strokeColor = self.color
+            }
             polylineRenderer.lineWidth = 5
             return polylineRenderer
         }

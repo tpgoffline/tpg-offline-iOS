@@ -89,6 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if CommandLine.arguments.contains("-reset") {
             App.loadStops()
+            App.loadLines()
+            App.darkMode = false
             App.favoritesStops = [App.stops.filter({ $0.code == "CVIN"})[0].appId]
             App.favoritesRoutes = [Route(from: App.stops.filter({ $0.code == "31DC"})[0],
                                          to: App.stops.filter({ $0.code == "CVIN"})[0],

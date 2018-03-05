@@ -20,7 +20,19 @@ class DisruptionTableViewCell: UITableViewCell {
 
     var disruption: Disruption? = nil {
         didSet {
-            guard let disruption = disruption else { return }
+            guard let disruption = disruption else {
+                self.backgroundColor = App.cellBackgroundColor
+                titleLabel.backgroundColor = .gray
+                descriptionLabel.backgroundColor = .gray
+                titleLabel.text = "   "
+                descriptionLabel.text = "\n\n\n"
+                titleLabel.cornerRadius = 10
+                descriptionLabel.cornerRadius = 10
+                titleLabel.clipsToBounds = true
+                descriptionLabel.clipsToBounds = true
+                timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.changeOpacity), userInfo: nil, repeats: true)
+                return
+            }
             self.color = App.color(for: disruption.line)
 
             titleLabel.backgroundColor = App.cellBackgroundColor
@@ -31,31 +43,12 @@ class DisruptionTableViewCell: UITableViewCell {
             titleLabel.cornerRadius = 0
             descriptionLabel.cornerRadius = 0
 
-            titleLabel.text = disruption.nature
+            titleLabel.text = disruption.nature.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "' ", with: "'")
             if disruption.place != "" {
-                titleLabel.text = titleLabel.text?.appending(" - \(disruption.place)")
+                titleLabel.text = titleLabel.text?.appending(" - \(disruption.place.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "' ", with: "'"))")
             }
             self.backgroundColor = App.cellBackgroundColor
-            descriptionLabel.text = disruption.consequence
-            self.loading = false
-        }
-    }
-
-    var devDisruption: DevDisruption? = nil {
-        didSet {
-            guard let devDisruption = devDisruption else { return }
-
-            self.backgroundColor = App.cellBackgroundColor
-            titleLabel.backgroundColor = App.cellBackgroundColor
-            descriptionLabel.backgroundColor = App.cellBackgroundColor
-            titleLabel.textColor = App.textColor
-            descriptionLabel.textColor = App.textColor
-
-            titleLabel.cornerRadius = 0
-            descriptionLabel.cornerRadius = 0
-
-            titleLabel.text = devDisruption.title
-            descriptionLabel.text = devDisruption.text
+            descriptionLabel.text = disruption.consequence.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "' ", with: "'")
             self.loading = false
         }
     }
@@ -92,15 +85,5 @@ class DisruptionTableViewCell: UITableViewCell {
             titleLabel.alpha = opacity
             descriptionLabel.alpha = opacity
         }
-    }
-}
-
-class DisruptionCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var lineLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        self.clipsToBounds = true
     }
 }
