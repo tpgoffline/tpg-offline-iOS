@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         #if DEBUG
-            print("WARNING: Debug mode, Crashlytics deactivated, Dotzu activated")
+            print("WARNING: Debug mode, Crashlytics desactivated")
         #else
             Fabric.with([Crashlytics.self])
         #endif
@@ -171,10 +171,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         (window?.rootViewController as? UITabBarController)?.selectedIndex = selectedIndex
 
         completionHandler(true)
-    }
-
-    @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(UNNotificationPresentationOptions.alert)
     }
 }

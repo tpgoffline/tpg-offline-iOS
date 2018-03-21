@@ -536,11 +536,11 @@ extension StopsTableViewController {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return !(searchMode == .addresses && searchText.escaped != "" && indexPath.row == 0)
     }
-
+    
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         canRefreshTableView = false
     }
-
+    
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         canRefreshTableView = true
     }

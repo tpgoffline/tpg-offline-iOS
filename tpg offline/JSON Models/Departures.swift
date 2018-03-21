@@ -13,7 +13,7 @@ struct DeparturesGroup: Decodable {
     var lines: [String]
 
     public init(departures: [Departure]) {
-        self.departures = departures.filter({ $0.leftTime != "no more"  })
+        self.departures = departures.filter({ $0.leftTime != "no more" && $0.leftTime != "-1" })
         self.lines = departures.map({$0.line.code}).uniqueElements.sorted(by: {
             if let a = Int($0), let b = Int($1) {
                 return a < b
@@ -26,10 +26,7 @@ struct DeparturesGroup: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        var departures = try container.decode([Departure].self, forKey: .departures)
-        if let options = decoder.userInfo[DeparturesOptions.key] as? DeparturesOptions, options.networkStatus == .offline {
-            departures = departures.filter({ $0.leftTime != "-1" })
-        }
+        let departures = try container.decode([Departure].self, forKey: .departures)
         self.init(departures: departures)
     }
 }
@@ -123,7 +120,6 @@ struct Departure: Decodable {
                 let line = Departure.Line(code: lineString, destination: destination, destinationCode: "")
                 let timestamp = try container.decode(String.self, forKey: .timestamp)
                 self.init(line: line, code: -1, leftTime: "", timestamp: timestamp, dateCompenents: nil, wifi: false, reliability: .reliable, reducedMobilityAccessibility: .accessible, platform: nil)
-            
             }
         } else {
             fatalError("You need to set network status with DeparturesOptions")

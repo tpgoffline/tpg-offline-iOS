@@ -51,7 +51,6 @@
 		AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */; };
 		AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A801FB73587005052F3 /* WatchSessionManager.swift */; };
 		AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */; };
-		AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4921E8205E5A16002A1ED9 /* SmartNotificationStatus.swift */; };
 		AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
@@ -231,7 +230,6 @@
 		AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		AD416A801FB73587005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsInterfaceController.swift; sourceTree = "<group>"; };
-		AD4921E8205E5A16002A1ED9 /* SmartNotificationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartNotificationStatus.swift; sourceTree = "<group>"; };
 		AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsInterfaceController.swift; sourceTree = "<group>"; };
 		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 		AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesOptionsInterfaceController.swift; sourceTree = "<group>"; };
 		AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
 		AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationTableViewController.swift; sourceTree = "<group>"; };
-		AD8E14F12062E27E000ADF3D /* Dotzu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dotzu.framework; path = Carthage/Build/iOS/Dotzu.framework; sourceTree = "<group>"; };
 		AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BE1F44E10200403258 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -492,7 +489,6 @@
 				ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */,
 				ADA14E651FDEC4FE00945249 /* Line.swift */,
 				AD3EB1681FE6BE1200F74261 /* DisruptionMonitoring.swift */,
-				AD4921E8205E5A16002A1ED9 /* SmartNotificationStatus.swift */,
 			);
 			path = "JSON Models";
 			sourceTree = "<group>";
@@ -530,7 +526,6 @@
 		AD37FEA31F41CABC00E84220 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD8E14F12062E27E000ADF3D /* Dotzu.framework */,
 				AD0D33B320025659006462D5 /* NetworkExtension.framework */,
 				AD7B47E21FD1570000F8DA23 /* MapKit.framework */,
 				ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */,
@@ -928,7 +923,6 @@
 				AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */,
 				AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */,
 				AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */,
-				AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */,
 				AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */,
 				ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */,
 				AD3EB1671FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift in Sources */,

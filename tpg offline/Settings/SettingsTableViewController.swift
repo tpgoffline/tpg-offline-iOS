@@ -191,7 +191,7 @@ class SettingsTableViewController: UITableViewController {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return nil }
         return (section + 1) == tableView.numberOfSections ? String(format: "tpg offline, version %@".localized, version) : nil
     }
-
+    
     func updateDepartures() {
         self.offlineDeparturesStatus = .downloading
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json").responseJSON { (response) in

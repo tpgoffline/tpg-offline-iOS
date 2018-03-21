@@ -13,7 +13,7 @@ import Crashlytics
 import UserNotifications
 import MessageUI
 #if !arch(i386) && !arch(x86_64)
-import NetworkExtension
+    import NetworkExtension
 #endif
 
 class DeparturesViewController: UIViewController {
@@ -164,6 +164,7 @@ class DeparturesViewController: UIViewController {
                     options.networkStatus = .online
                     let jsonDecoder = JSONDecoder()
                     jsonDecoder.userInfo = [ DeparturesOptions.key: options ]
+
                     do {
                         let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
                         self.departures = json
@@ -567,9 +568,9 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return self.requestStatus != .loading &&
-            self.requestStatus != .error &&
-            self.requestStatus != .noResults &&
-            !(indexPath.section == any(of: 0, 1, 2))
+        self.requestStatus != .error &&
+        self.requestStatus != .noResults &&
+        !(indexPath.section == any(of: 0, 1, 2))
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -585,13 +586,12 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         guard var departure = departuree else { return [] }
-        let smartNotificationActivated = (!self.noInternet && App.smartReminders && (departure.code != -1) && stop?.code != nil)
 
         let reminderAction = UITableViewRowAction(style: .normal, title: "Reminder".localized) { (_, _) in
             App.log("Departures: Reminder")
             departure.calculateLeftTime()
             let leftTime = Int(departure.leftTime) ?? 0
-            var alertController = UIAlertController(title: smartNotificationActivated ? "Smart Reminder".localized : "Reminder".localized,
+            var alertController = UIAlertController(title: "Reminder".localized,
                                                     message: String(format: "At %@ - In %@ minutes\nWhen do you want to be reminded?".localized, self.stop?.name ?? "??", "\(leftTime)"),
                                                     preferredStyle: .alert)
             if departure.leftTime == "0" {
@@ -678,33 +678,43 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
 
-    func setAlert(with timeBefore: Int, departure: Departure, forceDisableSmartReminders: Bool = false) {
+    func setAlert(with timeBefore: Int, departure: Departure) {
         var departure = departure
         departure.calculateLeftTime()
         let date = departure.dateCompenents?.date?.addingTimeInterval(TimeInterval(timeBefore * -60))
         let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date ?? Date())
+        if #available(iOS 10.0, *) {
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            let content = UNMutableNotificationContent()
 
-        if !self.noInternet, App.smartReminders, !forceDisableSmartReminders, departure.code != -1, let stopCode = stop?.code {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
-            var parameters: Parameters = [
-                "device": App.apnsToken,
-                "departureCode": departure.code,
-                "title": timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)"),
-                "text": String(format: "Take the line %@ to %@".localized,
-                               "\(departure.line.code)", "\(departure.line.destination)"),
-                "line": departure.line.code,
-                "reminderTimeBeforeDeparture": timeBefore,
-                "stopCode": stopCode,
-                "estimatedArrivalTime": formatter.string(from: Calendar.current.date(from: departure.dateCompenents!)!),
-                "sandbox": false
-            ]
-            #if DEBUG
-            parameters["sandbox"] = true
-            #endif
-            Alamofire.request("https://tpgoffline-apns.alwaysdata.net/reminders/add", method: .post, parameters: parameters).responseString(completionHandler: { (response) in
-                dump(response)
-                if let string = response.result.value, string == "1" {
+            content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
+            content.body = String(format: "Take the line %@ to %@".localized,
+                                  "\(departure.line.code)", "\(departure.line.destination)")
+            content.sound = UNNotificationSound.default()
+            content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
+            let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) {(error) in
+                if let error = error {
+                    print("Uh oh! We had an error: \(error)")
+                    let alertController = UIAlertController(title: "An error occurred".localized,
+                                                            message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
+                        preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
+                        let mailComposerVC = MFMailComposeViewController()
+                        mailComposerVC.mailComposeDelegate = self
+
+                        mailComposerVC.setToRecipients(["support@asmartcode.com"])
+                        mailComposerVC.setSubject("tpg offline - Bug report")
+                        mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
+
+                        if MFMailComposeViewController.canSendMail() {
+                            self.present(mailComposerVC, animated: true, completion: nil)
+                        }
+                    }))
+
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
                     let alertController = UIAlertController(title: "You will be reminded".localized,
                                                             message: String(format: "A notification will be send %@".localized,
                                                                             (timeBefore == 0 ? "at the time of departure.".localized :
@@ -712,95 +722,36 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
                                                             preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
-                } else if let string = response.result.value, string == "0" {
-                    let alertController = UIAlertController(title: "Duplicated reminder".localized,
-                                                            message: "We already sheduled a reminder with these parameters.".localized,
-                                                            preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alertController, animated: true, completion: nil)
-                } else {
-                    let alertController = UIAlertController(title: "Error".localized, message: "Sorry, but we were not able to add your smart notification. Do you want to try again?".localized, preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "Try again".localized, style: .default, handler: { (_) in
-                        self.setAlert(with: timeBefore, departure: departure, forceDisableSmartReminders: false)
-                    }))
-                    alertController.addAction(UIAlertAction(title: "Try again without Smart Reminders".localized, style: .default, handler: { (_) in
-                        self.setAlert(with: timeBefore, departure: departure, forceDisableSmartReminders: true)
-                    }))
-                    alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil))
-                    self.present(alertController, animated: true, completion: nil)
                 }
-            })
-        } else {
-            if #available(iOS 10.0, *) {
-                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-                let content = UNMutableNotificationContent()
-
-                content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
-                content.body = String(format: "Take the line %@ to %@".localized,
-                                      "\(departure.line.code)", "\(departure.line.destination)")
-                content.sound = UNNotificationSound.default()
-                content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
-                let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request) {(error) in
-                    if let error = error {
-                        print("Uh oh! We had an error: \(error)")
-                        let alertController = UIAlertController(title: "An error occurred".localized,
-                                                                message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
-                            preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
-                            let mailComposerVC = MFMailComposeViewController()
-                            mailComposerVC.mailComposeDelegate = self
-
-                            mailComposerVC.setToRecipients(["support@asmartcode.com"])
-                            mailComposerVC.setSubject("tpg offline - Bug report")
-                            mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
-
-                            if MFMailComposeViewController.canSendMail() {
-                                self.present(mailComposerVC, animated: true, completion: nil)
-                            }
-                        }))
-
-                        self.present(alertController, animated: true, completion: nil)
-                    } else {
-                        let alertController = UIAlertController(title: "You will be reminded".localized,
-                                                                message: String(format: "A notification will be send %@".localized,
-                                                                                (timeBefore == 0 ? "at the time of departure.".localized :
-                                                                                    String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
-                                                                preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self.present(alertController, animated: true, completion: nil)
-                    }
-                }
-            } else {
-                let notification = UILocalNotification()
-                notification.fireDate = date ?? Date()
-                if timeBefore == 0 {
-                    notification.alertBody = String(format: "Take the line %@ to %@ now".localized,
-                                                    "\(departure.line.code)", "\(departure.line.destination)")
-                } else {
-                    notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized,
-                                                    "\(departure.line.code)", "\(departure.line.destination)",
-                        "\(timeBefore)")
-                }
-                notification.identifier = "departureNotification-\(String.random(30))"
-                notification.soundName = UILocalNotificationDefaultSoundName
-                UIApplication.shared.scheduleLocalNotification(notification)
             }
+        } else {
+            let notification = UILocalNotification()
+            notification.fireDate = date ?? Date()
+            if timeBefore == 0 {
+                notification.alertBody = String(format: "Take the line %@ to %@ now".localized,
+                                                "\(departure.line.code)", "\(departure.line.destination)")
+            } else {
+                notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized,
+                                                "\(departure.line.code)", "\(departure.line.destination)",
+                    "\(timeBefore)")
+            }
+            notification.identifier = "departureNotification-\(String.random(30))"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.shared.scheduleLocalNotification(notification)
         }
     }
 
     @IBAction func connectToWifi() {
         #if !arch(i386) && !arch(x86_64)
-        if #available(iOS 11.0, *) {
-            let configuration = NEHotspotConfiguration(ssid: "tpg-freeWiFi")
-            configuration.joinOnce = false
-            NEHotspotConfigurationManager.shared.apply(configuration, completionHandler: { (error) in
-                print(error ?? "")
-            })
-        } else {
-            print("How did you ended here ?")
-        }
+            if #available(iOS 11.0, *) {
+                let configuration = NEHotspotConfiguration(ssid: "tpg-freeWiFi")
+                configuration.joinOnce = false
+                NEHotspotConfigurationManager.shared.apply(configuration, completionHandler: { (error) in
+                    print(error ?? "")
+                })
+            } else {
+                print("How did you ended here ?")
+            }
         #endif
     }
 }

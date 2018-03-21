@@ -187,7 +187,7 @@ class DisruptionsTableViewController: UITableViewController {
 
         headerCell?.textLabel?.text = "Loading".localized
         headerCell?.textLabel?.textColor = App.textColor
-
+        
         headerCell?.backgroundColor = App.darkMode ? .black : .white
 
         if requestStatus != .loading {
