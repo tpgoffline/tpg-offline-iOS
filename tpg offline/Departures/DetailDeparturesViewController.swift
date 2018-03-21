@@ -46,7 +46,7 @@ class DetailDeparturesViewController: UIViewController {
                 } else {
                     annotation.coordinate = stop.location.coordinate
                 }
-                
+
                 if step.arrivalTime == "" {
                     passedCoordinated.append(annotation.coordinate)
                 } else if step.arrivalTime != "", passed {
@@ -56,7 +56,7 @@ class DetailDeparturesViewController: UIViewController {
                 } else {
                     coordinates.append(annotation.coordinate)
                 }
-                
+
                 annotation.title = stop.name
                 self.names.append(stop.name)
                 mapView.addAnnotation(annotation)

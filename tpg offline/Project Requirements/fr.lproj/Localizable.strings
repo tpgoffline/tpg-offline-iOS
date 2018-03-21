@@ -17,6 +17,7 @@
 "All Stops" = "Tous les arrêts"; 
 "An error occurred" = "Une erreur est survenue"; 
 "Application" = "Application"; 
+"Are you connected to internet?" = "Êtes-vous connecté à internet ?"; 
 "Are you looking for a stop ?" = "Recherchez-vous un arrêt ?"; 
 "Are you sure you set the departure stop and the arrival stop?" = "Êtes-vous sûr que vous avez défini un arrêt de départ et d'arrivée ?"; 
 "Arrival at" = "Arrivée à"; 
@@ -29,6 +30,7 @@
 "Cédric Da Costa Faro" = "Cédric Da Costa Faro"; 
 "Confirmation" = "Confirmation"; 
 "Connections map" = "Plan des connexions"; 
+"Could not load Smart Notifications" = "Impossible de charger les Notification Intelligentes."; 
 "Credits" = "Crédits"; 
 "Dark Mode" = "Mode sombre"; 
 "Data providers" = "Fournisseurs de données"; 
@@ -51,6 +53,7 @@
 "Do you want to reinit the stops list to the alphabetical order?" = "Voulez-vous réinitialiser la liste d'arrêt dans l'ordre alphabétique ?"; 
 "Download the map" = "Télécharger le plan"; 
 "Downloading" = "Téléchargement"; 
+"Duplicated reminder" = "Notification en double"; 
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire"; 
 "Error" = "Erreur"; 
 "Error - Departures not downloaded" = "Erreur - Les départs n'ont pas été téléchargés"; 
@@ -75,6 +78,7 @@
 "Lines" = "Lignes"; 
 "Lines history and moral and material support" = "Histoires des lignes et soutien moral et matériel"; 
 "Loading" = "Chargement"; 
+"Loading Smart Notifications" = "Chargement des Notifications Intelligentes"; 
 "Loading..." = "Chargement..."; 
 "Map" = "Plan"; 
 "Maps" = "Plans"; 
@@ -129,10 +133,13 @@
 "Show less" = "Afficher moins"; 
 "Show map" = "Afficher la carte"; 
 "Show more" = "Afficher plus"; 
+"Smart Notifications" = "Notifications Intelligentes"; 
+"Smart Reminder" = "Notification intelligente"; 
 "Sorry" = "Désolé"; 
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Désolé pour cela. Pourriez-vous réessayer ou nous envoyer un mail si le problème persiste ?"; 
 "Sorry, but no results was found. Please try with other parameters." = "Désolé, mais aucun résultat n'a été trouvé. Merci d'essayer avec d'autres paramètres."; 
 "Sorry, but we were not able to add your monitoring request. Are you sure you are connected to internet?" = "Désolé, mais nous n'avons pas pu ajouter votre requête. Êtes vous sûr d'être connecté à internet."; 
+"Sorry, but we were not able to add your smart notification. Do you want to try again?" = "Désolé, mais nous n'avons pas pu ajouter votre notification intelligente. Voulez-vous réessayer ?"; 
 "Sorry, there is an error. Are you sure your are connected to internet ?" = "Désolé, mais une erreur est survenue. Êtes-vous sûr d'être connecté à internet ?"; 
 "Sorry, we can't fetch new departures. Please, try again." = "Désolé, nous ne pouvons pas accéder aux derniers départs. Merci de réessayer."; 
 "Special thanks" = "Remerciement spéciaux"; 
@@ -151,6 +158,7 @@
 "To" = "Vers"; 
 "To..." = "Vers..."; 
 "Try again" = "Réessayer"; 
+"Try again without Smart Reminders" = "Réessayer sans Notifications Intelligente"; 
 "Tuesday" = "Mardi"; 
 "Unknow" = "Inconnu"; 
 "Unknow content" = "Contenu inconnu"; 
@@ -163,11 +171,12 @@
 "Walk %@m" = "Marcher %@m"; 
 "Warning!" = "Attention !"; 
 "Wayback Machine" = "Remonter le temps"; 
+"We already sheduled a reminder with these parameters." = "Nous avons déjà programmé un rappel avec ces paramètres."; 
 "We improved the stability and we made some cosmetic improvements." = "Nous avons amélioré la stabilité et nous avons apporté quelques améliorations cosmétiques."; 
 "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed." = "Nous avons besoin de votre identifiant unique d'appareil pour vous envoyer des notifications, même si l'application est fermée (excepté si l'appareil est éteint). Vérifiez si les notifications et l'actualisation en arrière-plan sont activés."; 
 "Wednesday" = "Mercredi"; 
 "What's new!" = "Les dernières nouveautés !"; 
-"When do you want to be reminded" = "Quand voulez-vous être rappelés"; 
+"When do you want to be reminded" = "Quand voulez-vous être rappelé"; 
 "When do you want to be reminded?" = "Quand voulez-vous être rappelé ?"; 
 "Wi-Fi" = "Wi-Fi"; 
 "Yes" = "Oui"; 
@@ -177,7 +186,8 @@
 "You can't set a timer for this bus, but you should run to take it." = "Vous ne pouvez pas ajouter de rappels à ce bus, mais vous devriez courir pour le prendre."; 
 "You don't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet"; 
 "You forgot to add some days..." = "Vous avez oublié d'ajouter quelques jours..."; 
-"You will be reminded" = "Vous serez rappelés"; 
+"You will be reminded" = "Vous serez rappelé"; 
 "at the time of departure." = "au départ"; 
 "tpg offline" = "tpg offline"; 
+"tpg offline, version %@" = "tpg offline, version %@"; 
 

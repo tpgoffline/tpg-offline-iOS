@@ -82,6 +82,16 @@ struct App {
         }
     }
 
+    static var smartReminders: Bool {
+        get {
+            return true
+            //return (UserDefaults.standard.bool(forKey: #function))
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+
     static var indexedStops: [Int] {
         get {
             return (UserDefaults.standard.array(forKey: #function) as? [Int]) ?? []
