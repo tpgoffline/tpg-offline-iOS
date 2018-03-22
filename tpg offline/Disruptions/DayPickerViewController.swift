@@ -39,7 +39,19 @@ class DayPickerViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
         AddMonitoring.days = selectedRows.joined(separator: ":")
-        Alamofire.request("https://tpgoffline-apns.alwaysdata.net/add/\(App.apnsToken)/\(AddMonitoring.line)/\(Locale.current.languageCode ?? "en")/\(AddMonitoring.fromHour)/\(AddMonitoring.toHour)/\(AddMonitoring.days)").responseString { (response) in
+        var parameters: Parameters = [
+            "device": App.apnsToken,
+            "line": AddMonitoring.line,
+            "language": Locale.current.languageCode ?? "en",
+            "fromHour": AddMonitoring.fromHour,
+            "toHour": AddMonitoring.toHour,
+            "days": AddMonitoring.days,
+            "sandbox": false
+        ]
+        #if DEBUG
+        parameters["sandbox"] = true
+        #endif
+        Alamofire.request("https://tpgoffline-apns.alwaysdata.net/add", method: .post, parameters: parameters).responseString { (response) in
             if let string = response.result.value, string == "1" {
                 guard let viewController = self.navigationController?.viewControllers[1] else {
                     self.navigationController?.popToRootViewController(animated: true)

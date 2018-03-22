@@ -64,7 +64,7 @@ class DeparturesTableViewCell: UITableViewCell {
                     rightTimeLabel.isHidden = false
                     rightImage.image = nil
                     rightImage.isHidden = true
-                    self.accessibilityLabel = String(format: "Direction %x@, departure at %@".localized,
+                    self.accessibilityLabel = String(format: "Direction %@, departure at %@".localized,
                     destinationLabel.text ?? "", rightTimeLabel.text ?? "")
                 } else {
                     rightTimeLabel.text = ""
