@@ -70,6 +70,9 @@ class SettingsTableViewController: UITableViewController {
             Setting("Dark Mode".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
                 self.darkMode()
             }),
+            Setting("Smart Reminders".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
+                self.smartReminders()
+            }),
             Setting("Privacy".localized, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
                 UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
             })
@@ -152,8 +155,13 @@ class SettingsTableViewController: UITableViewController {
         }
         if setting.title == "Dark Mode".localized {
             let lightSwitch = UISwitch(frame: CGRect.zero) as UISwitch
-            lightSwitch.isOn = UserDefaults.standard.bool(forKey: "darkMode")
+            lightSwitch.isOn = App.darkMode
             lightSwitch.addTarget(self, action: #selector(self.darkMode), for: .valueChanged)
+            cell.accessoryView = lightSwitch
+        } else if setting.title == "Smart Reminders".localized {
+            let lightSwitch = UISwitch(frame: CGRect.zero) as UISwitch
+            lightSwitch.isOn = App.smartReminders
+            lightSwitch.addTarget(self, action: #selector(self.smartReminders), for: .valueChanged)
             cell.accessoryView = lightSwitch
         } else {
             cell.accessoryView = nil
@@ -175,6 +183,10 @@ class SettingsTableViewController: UITableViewController {
 
     @objc func darkMode() {
         App.darkMode = !App.darkMode
+    }
+
+    @objc func smartReminders() {
+        App.smartReminders = !App.smartReminders
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

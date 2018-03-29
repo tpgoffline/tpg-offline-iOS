@@ -87,13 +87,13 @@
 		ADA14E641FDEC4E100945249 /* lines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADA14E631FDEC4E100945249 /* lines.json */; };
 		ADA14E661FDEC4FE00945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADA14E681FDEC5D300945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
+		ADA2877B20638E26006EEF39 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2877A20638E26006EEF39 /* API.swift */; };
+		ADA2877C206390A5006EEF39 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2877A20638E26006EEF39 /* API.swift */; };
 		ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */; };
 		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
 		ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */; };
 		ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */; };
 		ADB9278E1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */; };
-		ADBB0CE81FDE845200210902 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB0CE71FDE845200210902 /* API.swift */; };
-		ADBB0CE91FDE84A800210902 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB0CE71FDE845200210902 /* API.swift */; };
 		ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */; };
 		ADBC1C711FAF0E2700162195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C701FAF0E2700162195 /* Assets.xcassets */; };
 		ADBC1C781FAF0E2700162195 /* tpg offline watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -259,12 +259,12 @@
 		ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesInterfaceController.swift; sourceTree = "<group>"; };
 		ADA14E631FDEC4E100945249 /* lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lines.json; path = JSON/lines.json; sourceTree = "<group>"; };
 		ADA14E651FDEC4FE00945249 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		ADA2877A20638E26006EEF39 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsMapViewController.swift; sourceTree = "<group>"; };
 		ADABFA091F9CF1D200EEC8D0 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = JSON/stops.json; sourceTree = "<group>"; };
 		ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderStopsTableViewController.swift; sourceTree = "<group>"; };
 		ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesViewController.swift; sourceTree = "<group>"; };
 		ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesTableViewCell.swift; sourceTree = "<group>"; };
-		ADBB0CE71FDE845200210902 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBC1C6E1FAF0E2700162195 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		ADBC1C701FAF0E2700162195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -468,11 +468,11 @@
 				AD6A47A81F77992400AE1762 /* Extensions.swift */,
 				ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */,
 				AD28200D1FA0E5D800767462 /* InfoPlist.strings */,
-				ADBB0CE71FDE845200210902 /* API.swift */,
 				AD1E48461FADF70800596076 /* App.swift */,
 				AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */,
 				AD7B47E01FD155D400F8DA23 /* TabBarController.swift */,
 				ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */,
+				ADA2877A20638E26006EEF39 /* API.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -915,7 +915,6 @@
 				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
 				AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */,
 				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
-				ADBB0CE81FDE845200210902 /* API.swift in Sources */,
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
 				ADA14E661FDEC4FE00945249 /* Line.swift in Sources */,
 				ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */,
@@ -927,6 +926,7 @@
 				AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */,
 				AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */,
 				AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */,
+				ADA2877B20638E26006EEF39 /* API.swift in Sources */,
 				AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */,
 				AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */,
 				AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */,
@@ -971,7 +971,6 @@
 				AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */,
 				AD0644401FBB366200E61E5A /* RoutesInterfaceController.swift in Sources */,
 				ADBC1C811FAF0E2700162195 /* NotificationController.swift in Sources */,
-				ADBB0CE91FDE84A800210902 /* API.swift in Sources */,
 				AD3DF3B11FB1FF0300F2AFA5 /* Extensions.swift in Sources */,
 				ADBC1C7F1FAF0E2700162195 /* ExtensionDelegate.swift in Sources */,
 				AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */,
@@ -979,6 +978,7 @@
 				AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */,
 				ADA14E681FDEC5D300945249 /* Line.swift in Sources */,
 				AD708DAF1FB0AC420076B3AC /* BusRoute.swift in Sources */,
+				ADA2877C206390A5006EEF39 /* API.swift in Sources */,
 				ADBC1C7D1FAF0E2700162195 /* HomeInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

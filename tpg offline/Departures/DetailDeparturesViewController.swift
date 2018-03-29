@@ -12,7 +12,7 @@ import UserNotifications
 import MapKit
 import MessageUI
 #if !arch(i386) && !arch(x86_64)
-    import NetworkExtension
+import NetworkExtension
 #endif
 
 class DetailDeparturesViewController: UIViewController {
@@ -217,8 +217,8 @@ class DetailDeparturesViewController: UIViewController {
                                 ((self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count) ?? 0), section: 0)
                         if self.tableView.numberOfRows(inSection: 0) > indexPath.row {
                             self.tableView.scrollToRow(at: indexPath,
-                                                   at: UITableViewScrollPosition.top,
-                                                   animated: true)
+                                                       at: UITableViewScrollPosition.top,
+                                                       animated: true)
                         }
                     }
 
@@ -285,19 +285,19 @@ class DetailDeparturesViewController: UIViewController {
             alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
         } else {
             let departureTimeAction = UIAlertAction(title: "At departure time".localized, style: .default) { _ in
-                self.setAlert(with: 0, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
+                self.setAlert(with: 0, date: (self.departure?.dateCompenents?.date ?? Date()), fromName: self.stop?.name ?? "", fromCode: self.stop?.code ?? "")
             }
             alertController.addAction(departureTimeAction)
 
             if leftTime > 5 {
                 let fiveMinutesBeforeAction = UIAlertAction(title: "5 minutes before".localized, style: .default) { _ in
-                    self.setAlert(with: 5, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
+                    self.setAlert(with: 5, date: (self.departure?.dateCompenents?.date ?? Date()), fromName: self.stop?.name ?? "", fromCode: self.stop?.code ?? "")
                 }
                 alertController.addAction(fiveMinutesBeforeAction)
             }
             if leftTime > 10 {
                 let tenMinutesBeforeAction = UIAlertAction(title: "10 minutes before".localized, style: .default) { _ in
-                    self.setAlert(with: 10, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
+                    self.setAlert(with: 10, date: (self.departure?.dateCompenents?.date ?? Date()), fromName: self.stop?.name ?? "", fromCode: self.stop?.code ?? "")
                 }
                 alertController.addAction(tenMinutesBeforeAction)
             }
@@ -316,7 +316,7 @@ class DetailDeparturesViewController: UIViewController {
 
                 let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in
                     guard let remainingTime = Int(alertController.textFields?[0].text ?? "#!?") else { return }
-                    self.setAlert(with: remainingTime, date: (self.departure?.dateCompenents?.date ?? Date()), from: self.stop?.name ?? "")
+                    self.setAlert(with: remainingTime, date: (self.departure?.dateCompenents?.date ?? Date()), fromName: self.stop?.name ?? "", fromCode: self.stop?.code ?? "")
                 }
                 alertController.addAction(okAction)
 
@@ -336,42 +336,30 @@ class DetailDeparturesViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func setAlert(with timeBefore: Int, date: Date, from: String) {
-        let date = date.addingTimeInterval(TimeInterval(timeBefore * -60))
-        let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date)
-        if #available(iOS 10.0, *) {
-            dump(components)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-            let content = UNMutableNotificationContent()
-
-            content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
-            content.body = String(format: "Take the line %@ to %@ at %@".localized,
-                                  "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)", from)
-            content.sound = UNNotificationSound.default()
-            content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
-            let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request) {(error) in
-                if let error = error {
-                    print("Uh oh! We had an error: \(error)")
-                    let alertController = UIAlertController(title: "An error occurred".localized,
-                                                            message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
-                        preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
-                        let mailComposerVC = MFMailComposeViewController()
-                        mailComposerVC.mailComposeDelegate = self
-
-                        mailComposerVC.setToRecipients(["support@asmartcode.com"])
-                        mailComposerVC.setSubject("tpg offline - Bug report")
-                        mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
-
-                        if MFMailComposeViewController.canSendMail() {
-                            self.present(mailComposerVC, animated: true, completion: nil)
-                        }
-                    }))
-
-                    self.present(alertController, animated: true, completion: nil)
-                } else {
+    func setAlert(with timeBefore: Int, date: Date, fromName: String, fromCode: String, forceDisableSmartReminders: Bool = false) {
+        let newDate = date.addingTimeInterval(TimeInterval(timeBefore * -60))
+        let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: newDate)
+        if App.smartReminders, !forceDisableSmartReminders, let departure = self.departure, departure.code != -1 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            var parameters: Parameters = [
+                "device": App.apnsToken,
+                "departureCode": departure.code,
+                "title": timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)"),
+                "text": String(format: "Take the line %@ to %@ at %@".localized,
+                               departure.line.code, departure.line.destination, fromName),
+                "line": departure.line.code,
+                "reminderTimeBeforeDeparture": timeBefore,
+                "stopCode": fromCode,
+                "estimatedArrivalTime": formatter.string(from: date),
+                "sandbox": false
+            ]
+            #if DEBUG
+            parameters["sandbox"] = true
+            #endif
+            Alamofire.request("https://tpgoffline-apns.alwaysdata.net/reminders/add", method: .post, parameters: parameters).responseString(completionHandler: { (response) in
+                dump(response)
+                if let string = response.result.value, string == "1" {
                     let alertController = UIAlertController(title: "You will be reminded".localized,
                                                             message: String(format: "A notification will be send %@".localized,
                                                                             (timeBefore == 0 ? "at the time of departure.".localized :
@@ -379,22 +367,82 @@ class DetailDeparturesViewController: UIViewController {
                                                             preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
+                } else if let string = response.result.value, string == "0" {
+                    let alertController = UIAlertController(title: "Duplicated reminder".localized,
+                                                            message: "We already sheduled a reminder with these parameters.".localized,
+                                                            preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "Error".localized, message: "Sorry, but we were not able to add your smart notification. Do you want to try again?".localized, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Try again".localized, style: .default, handler: { (_) in
+                        self.setAlert(with: timeBefore, date: newDate, fromName: fromName, fromCode: fromCode, forceDisableSmartReminders: false)
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Try again without Smart Reminders".localized, style: .default, handler: { (_) in
+                        self.setAlert(with: timeBefore, date: newDate, fromName: fromName, fromCode: fromCode, forceDisableSmartReminders: true)
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
-            }
+            })
         } else {
-            let notification = UILocalNotification()
-            notification.fireDate = date
-            if timeBefore == 0 {
-                notification.alertBody = String(format: "Take the line %@ to %@ now".localized,
-                                                "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)")
+            if #available(iOS 10.0, *) {
+                dump(components)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+                let content = UNMutableNotificationContent()
+
+                content.title = timeBefore == 0 ? "The bus is comming now!".localized : String(format: "%@ minutes left!".localized, "\(timeBefore)")
+                content.body = String(format: "Take the line %@ to %@ at %@".localized,
+                                      "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)", fromName)
+                content.sound = UNNotificationSound.default()
+                content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
+                let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request) {(error) in
+                    if let error = error {
+                        print("Uh oh! We had an error: \(error)")
+                        let alertController = UIAlertController(title: "An error occurred".localized,
+                                                                message: "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized, // swiftlint:disable:this line_length
+                            preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        alertController.addAction(UIAlertAction(title: "Send email", style: .default, handler: { (_) in
+                            let mailComposerVC = MFMailComposeViewController()
+                            mailComposerVC.mailComposeDelegate = self
+
+                            mailComposerVC.setToRecipients(["support@asmartcode.com"])
+                            mailComposerVC.setSubject("tpg offline - Bug report")
+                            mailComposerVC.setMessageBody("\(error.localizedDescription)", isHTML: false)
+
+                            if MFMailComposeViewController.canSendMail() {
+                                self.present(mailComposerVC, animated: true, completion: nil)
+                            }
+                        }))
+
+                        self.present(alertController, animated: true, completion: nil)
+                    } else {
+                        let alertController = UIAlertController(title: "You will be reminded".localized,
+                                                                message: String(format: "A notification will be send %@".localized,
+                                                                                (timeBefore == 0 ? "at the time of departure.".localized :
+                                                                                    String(format: "%@ minutes before.".localized, "\(timeBefore)"))),
+                                                                preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
             } else {
-                notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized,
-                       "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)",
-                "\(timeBefore)")
+                let notification = UILocalNotification()
+                notification.fireDate = newDate
+                if timeBefore == 0 {
+                    notification.alertBody = String(format: "Take the line %@ to %@ now".localized,
+                                                    "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)")
+                } else {
+                    notification.alertBody = String(format: "Take the line %@ to %@ in %@ minutes".localized,
+                                                    "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)",
+                        "\(timeBefore)")
+                }
+                notification.identifier = "departureNotification-\(String.random(30))"
+                notification.soundName = UILocalNotificationDefaultSoundName
+                UIApplication.shared.scheduleLocalNotification(notification)
             }
-            notification.identifier = "departureNotification-\(String.random(30))"
-            notification.soundName = UILocalNotificationDefaultSoundName
-            UIApplication.shared.scheduleLocalNotification(notification)
         }
     }
 }
@@ -442,19 +490,19 @@ extension DetailDeparturesViewController: UITableViewDelegate, UITableViewDataSo
                 alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
             } else {
                 let departureTimeAction = UIAlertAction(title: "At departure time".localized, style: .default) { _ in
-                    self.setAlert(with: 0, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                    self.setAlert(with: 0, date: self.busRouteGroup!.steps[indexPath.row].timestamp, fromName: self.busRouteGroup!.steps[indexPath.row].stop.name, fromCode: self.busRouteGroup!.steps[indexPath.row].stop.code)
                 }
                 alertController.addAction(departureTimeAction)
 
                 if leftTime > 5 {
                     let fiveMinutesBeforeAction = UIAlertAction(title: "5 minutes before".localized, style: .default) { _ in
-                        self.setAlert(with: 5, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                        self.setAlert(with: 5, date: self.busRouteGroup!.steps[indexPath.row].timestamp, fromName: self.busRouteGroup!.steps[indexPath.row].stop.name, fromCode: self.busRouteGroup!.steps[indexPath.row].stop.code)
                     }
                     alertController.addAction(fiveMinutesBeforeAction)
                 }
                 if leftTime > 10 {
                     let tenMinutesBeforeAction = UIAlertAction(title: "10 minutes before".localized, style: .default) { _ in
-                        self.setAlert(with: 10, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                        self.setAlert(with: 10, date: self.busRouteGroup!.steps[indexPath.row].timestamp, fromName: self.busRouteGroup!.steps[indexPath.row].stop.name, fromCode: self.busRouteGroup!.steps[indexPath.row].stop.code)
                     }
                     alertController.addAction(tenMinutesBeforeAction)
                 }
@@ -473,7 +521,7 @@ extension DetailDeparturesViewController: UITableViewDelegate, UITableViewDataSo
 
                     let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in
                         guard let remainingTime = Int(alertController.textFields?[0].text ?? "#!?") else { return }
-                        self.setAlert(with: remainingTime, date: self.busRouteGroup!.steps[indexPath.row].timestamp, from: self.busRouteGroup!.steps[indexPath.row].stop.name)
+                        self.setAlert(with: remainingTime, date: self.busRouteGroup!.steps[indexPath.row].timestamp, fromName: self.busRouteGroup!.steps[indexPath.row].stop.name, fromCode: self.busRouteGroup!.steps[indexPath.row].stop.code)
                     }
                     alertController.addAction(okAction)
 
