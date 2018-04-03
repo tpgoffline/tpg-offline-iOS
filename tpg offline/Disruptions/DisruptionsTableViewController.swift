@@ -131,7 +131,11 @@ class DisruptionsTableViewController: UITableViewController {
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.keys
+        #if swift(>=4.1)
+        return self.keys.compactMap({ $0.count > 4 ? "/" : $0 })
+        #else
+        return self.keys.flatMap({ $0.count > 4 ? "/" : $0 })
+        #endif
     }
 
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -193,7 +197,7 @@ class DisruptionsTableViewController: UITableViewController {
         if requestStatus != .loading {
             let lineColor = App.color(for: (self.keys[section]))
             headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : lineColor
-            headerCell?.textLabel?.text = String(format: "Line %@".localized, "\(self.keys[section])")
+            headerCell?.textLabel?.text = self.keys[section] == "Whole tpg network".localized ? "Whole tpg network".localized : String(format: "Line %@".localized, "\(self.keys[section])")
             headerCell?.textLabel?.textColor = App.darkMode ? lineColor :
                 headerCell?.backgroundColor?.contrast
         }

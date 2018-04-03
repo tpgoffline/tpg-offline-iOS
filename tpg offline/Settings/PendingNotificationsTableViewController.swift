@@ -129,10 +129,10 @@ class PendingNotificationsTableViewController: UITableViewController {
             dateFormatter.timeStyle = .short
             switch requestStatus {
             case .error:
-                cell.textLabel?.attributedText = NSAttributedString(string: "Could not load Smart Notifications".localized, attributes: titleAttributes)
+                cell.textLabel?.attributedText = NSAttributedString(string: "Could not load Smart Reminders".localized, attributes: titleAttributes)
                 cell.detailTextLabel?.attributedText = NSAttributedString(string: "Are you connected to internet?".localized, attributes: subtitleAttributes)
             case .loading:
-                cell.textLabel?.attributedText = NSAttributedString(string: "Loading Smart Notifications".localized, attributes: titleAttributes)
+                cell.textLabel?.attributedText = NSAttributedString(string: "Loading Smart Reminders".localized, attributes: titleAttributes)
                 cell.detailTextLabel?.attributedText = NSAttributedString(string: "", attributes: subtitleAttributes)
             case .ok:
                 cell.textLabel?.attributedText = NSAttributedString(string: "\(dateFormatter.string(from: smartNotifications[indexPath.row].estimatedTriggerTime)) - \(smartNotifications[indexPath.row].title)", attributes: titleAttributes)
@@ -189,7 +189,7 @@ class PendingNotificationsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ["Notifications".localized, "Smart Notifications".localized][section]
+        return ["Notifications".localized, "Smart Reminders".localized][section]
     }
     /*
     // Override to support rearranging the table view.

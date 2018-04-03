@@ -24,15 +24,25 @@ struct DisruptionsGroup: Decodable {
 
         let disruptions = try container.decode([Disruption].self, forKey: .disruptions)
         var a: [String: [Disruption]] = [:]
+        var multilineAlreadySetDisruptions: [[String: String]] = []
         for disruption in disruptions {
-            a[disruption.line, default: []].append(disruption)
+            let filteredDisruptions = disruptions.filter({ $0.nature == disruption.nature && $0.place == $0.place && $0.consequence == disruption.consequence })
+            if filteredDisruptions.count > 1 {
+                if multilineAlreadySetDisruptions.index(of: ["nature": disruption.nature, "place": disruption.place, "consequence": disruption.consequence]) == nil {
+                    var y = disruption
+                    y.line = filteredDisruptions.count == App.lines.count ? "Whole tpg network".localized : filteredDisruptions.map({ $0.line }).joined(separator: " / ")
+                    a[y.line, default: []].append(y)
+                    multilineAlreadySetDisruptions.append(["nature": disruption.nature, "place": disruption.place, "consequence": disruption.consequence])
+                }
+            } else {
+                a[disruption.line, default: []].append(disruption)
+            }
         }
-
         self.init(disruptions: a)
     }
 }
 
-struct Disruption: Decodable {
+struct Disruption: Decodable, Equatable {
 
     var place: String
     var consequence: String
@@ -70,5 +80,9 @@ struct Disruption: Decodable {
         let line = try container.decode(String.self, forKey: .line)
 
         self.init(place: place, consequence: consequence, nature: nature, line: line)
+    }
+
+    static func ==(lhd: Disruption, rhd: Disruption) -> Bool {
+        return lhd.place == rhd.place && lhd.consequence == rhd.consequence && lhd.nature == rhd.nature && lhd.line == rhd.line
     }
 }

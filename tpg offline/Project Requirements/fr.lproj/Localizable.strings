@@ -30,10 +30,11 @@
 "Cédric Da Costa Faro" = "Cédric Da Costa Faro"; 
 "Confirmation" = "Confirmation"; 
 "Connections map" = "Plan des connexions"; 
-"Could not load Smart Notifications" = "Impossible de charger les Rappels Intelligents."; 
+"Could not load Smart Reminders" = "Impossible de charger les Rappels Intelligents."; 
 "Credits" = "Crédits"; 
 "Dark Mode" = "Mode sombre"; 
 "Data providers" = "Fournisseurs de données"; 
+"Deactivating Smart Reminders does not remove existing Smart Reminders. Use the Pending notifications section to remove them." = "Désactiver les Rappels Intelligents ne supprime pas les Rappels Intelligents existants. Merci d'utiliser la section Notifications planifiées pour les supprimer"; 
 "Default tab" = "Menu par défaut"; 
 "Default tab on startup" = "Menu par défaut au démarrage"; 
 "Departure at" = "Départ à"; 
@@ -78,7 +79,7 @@
 "Lines" = "Lignes"; 
 "Lines history and moral and material support" = "Histoires des lignes et soutien moral et matériel"; 
 "Loading" = "Chargement"; 
-"Loading Smart Notifications" = "Chargement des Rappels Intelligents"; 
+"Loading Smart Reminders" = "Chargement des Rappels Intelligents"; 
 "Loading..." = "Chargement..."; 
 "Map" = "Plan"; 
 "Maps" = "Plans"; 
@@ -102,6 +103,7 @@
 "Number of minutes" = "Nombre de minutes"; 
 "Number of minutes before departure" = "Nombre de minutes avant le départ"; 
 "OK" = "OK"; 
+"OK, deactivate Smart Reminders" = "OK, désactiver les Rappels Intelligents"; 
 "Offline mode" = "Mode hors-ligne"; 
 "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, une erreur est survenue. Merci de réessayer et, en cas d'urgence, de casser la glace et déclencher l'alarme."; 
 "Open data of Geneva public transport" = "Open data des Transports Publics Genevois"; 
@@ -133,9 +135,8 @@
 "Show less" = "Afficher moins"; 
 "Show map" = "Afficher la carte"; 
 "Show more" = "Afficher plus"; 
-"Smart Notifications" = "Rappels Intelligents"; 
 "Smart Reminder" = "Rappel intelligent"; 
-"Smart Reminders" = "Notifications intelligentes"; 
+"Smart Reminders" = "Rappels intelligents"; 
 "Sorry" = "Désolé"; 
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Désolé pour cela. Pourriez-vous réessayer ou nous envoyer un mail si le problème persiste ?"; 
 "Sorry, but no results was found. Please try with other parameters." = "Désolé, mais aucun résultat n'a été trouvé. Merci d'essayer avec d'autres paramètres."; 
@@ -179,6 +180,7 @@
 "What's new!" = "Les dernières nouveautés !"; 
 "When do you want to be reminded" = "Quand voulez-vous être rappelé"; 
 "When do you want to be reminded?" = "Quand voulez-vous être rappelé ?"; 
+"Whole tpg network" = "Réseau tpg"; 
 "Wi-Fi" = "Wi-Fi"; 
 "Yes" = "Oui"; 
 "Yes!" = "Oui !"; 

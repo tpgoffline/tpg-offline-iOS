@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabController.selectedIndex = App.defaultTab
 
             if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-                version != UserDefaults.standard.string(forKey: "lastVersion") {
+                version != UserDefaults.standard.string(forKey: "lastVersion") && UserDefaults.standard.string(forKey: "lastVersion") != nil {
                 tabController.selectedIndex = 4
             }
 

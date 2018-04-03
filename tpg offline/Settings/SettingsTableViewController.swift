@@ -53,7 +53,7 @@ class SettingsTableViewController: UITableViewController {
             Setting("Pending notifications".localized, icon: #imageLiteral(resourceName: "cel-bell"), action: { (_) in
                 self.performSegue(withIdentifier: "showPendingNotifications", sender: self)
             })
-        ])
+            ])
 
         // Application
         self.settings.append([
@@ -70,13 +70,13 @@ class SettingsTableViewController: UITableViewController {
             Setting("Dark Mode".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
                 self.darkMode()
             }),
-            Setting("Smart Reminders".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
+            Setting("Smart Reminders".localized, icon: #imageLiteral(resourceName: "alarm"), action: { (_) in
                 self.smartReminders()
             }),
             Setting("Privacy".localized, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
                 UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
             })
-        ])
+            ])
 
         // The project
         self.settings.append([
@@ -108,7 +108,7 @@ class SettingsTableViewController: UITableViewController {
 
                 self.present(vc, animated: true)
             })
-        ])
+            ])
 
         if App.darkMode {
             self.tableView.backgroundColor = .black
@@ -187,6 +187,16 @@ class SettingsTableViewController: UITableViewController {
 
     @objc func smartReminders() {
         App.smartReminders = !App.smartReminders
+        self.tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .none)
+        if !App.smartReminders {
+            let alert = UIAlertController(title: "Warning!".localized, message: "Deactivating Smart Reminders does not remove existing Smart Reminders. Use the Pending notifications section to remove them.".localized, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: { (_) in
+                App.smartReminders = !App.smartReminders
+                self.tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .none)
+            }))
+            alert.addAction(UIAlertAction(title: "OK, deactivate Smart Reminders".localized, style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -835,6 +835,7 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
 extension DeparturesViewController: StopSelectionDelegate {
     func stopSelected(_ newStop: Stop) {
         self.stop = newStop
+        self.mapView.removeAnnotations(mapView.annotations)
     }
 }
 
