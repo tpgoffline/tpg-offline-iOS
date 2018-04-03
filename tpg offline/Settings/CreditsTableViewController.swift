@@ -84,6 +84,16 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
                     vc.delegate = self
 
                     self.present(vc, animated: true)
+            },
+            Credit(title: "Fabric".localized,
+                      subTitle: "Crash Reporting".localized) { (_) in
+                        let vc = SFSafariViewController(url: URL(string: "https://get.fabric.io/")!, entersReaderIfAvailable: false)
+                        if App.darkMode, #available(iOS 10.0, *) {
+                            vc.preferredBarTintColor = .black
+                        }
+                        vc.delegate = self
+
+                        self.present(vc, animated: true)
             }])
         if App.darkMode {
             self.tableView.backgroundColor = .black

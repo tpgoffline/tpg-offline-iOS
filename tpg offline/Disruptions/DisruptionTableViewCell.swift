@@ -35,6 +35,9 @@ class DisruptionTableViewCell: UITableViewCell {
             }
             self.color = App.color(for: disruption.line)
 
+            titleLabel.alpha = 1
+            descriptionLabel.alpha = 1
+
             titleLabel.backgroundColor = App.cellBackgroundColor
             descriptionLabel.backgroundColor = App.cellBackgroundColor
             titleLabel.textColor = color

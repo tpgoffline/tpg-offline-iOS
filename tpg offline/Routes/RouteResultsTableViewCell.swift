@@ -43,6 +43,12 @@ class RouteResultsTableViewCell: UITableViewCell {
                 return
             }
 
+            durationLabel.alpha = 1
+            numberOfConnectionsLabel.alpha = 1
+            departureHourLabel.alpha = 1
+            arrivalHourLabel.alpha = 1
+            durationLabel.alpha = 1
+
             self.numberOfConnectionsLabel.textColor = App.textColor
             self.departureHourLabel.textColor = App.textColor
             self.arrivalHourLabel.textColor = App.textColor

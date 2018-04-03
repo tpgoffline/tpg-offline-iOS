@@ -9,9 +9,8 @@
 import UIKit
 
 struct AddMonitoring {
-    static var line: String = ""
+    static var lines: [String] = []
     static var fromHour: String = ""
-    static var fromDate: Date = Date()
     static var toHour: String = ""
     static var days: String = ""
 }
@@ -21,7 +20,7 @@ class AddMonitoringLinesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Add new".localized
+        title = "Lines".localized
 
         if App.darkMode {
             self.tableView.backgroundColor = .black
@@ -51,7 +50,17 @@ class AddMonitoringLinesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AddMonitoring.line = App.lines[indexPath.row].line
+        if let index = AddMonitoring.lines.index(of: App.lines[indexPath.row].line) {
+            AddMonitoring.lines.remove(at: index)
+            guard let cell = tableView.cellForRow(at: indexPath) as? LineTableViewControllerRow
+                else { return }
+            cell.accessoryType = .none
+        } else {
+            AddMonitoring.lines.append(App.lines[indexPath.row].line)
+            guard let cell = tableView.cellForRow(at: indexPath) as? LineTableViewControllerRow
+                else { return }
+            cell.accessoryType = .checkmark
+        }
     }
 
 }

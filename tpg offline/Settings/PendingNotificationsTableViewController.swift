@@ -85,7 +85,6 @@ class PendingNotificationsTableViewController: UITableViewController {
                     self.smartNotifications = json ?? []
                     self.requestStatus = .ok
                 } else {
-                    print(response.error)
                     self.requestStatus = .error
                 }
         }

@@ -164,7 +164,7 @@ class SettingsTableViewController: UITableViewController {
             lightSwitch.addTarget(self, action: #selector(self.smartReminders), for: .valueChanged)
             cell.accessoryView = lightSwitch
         } else {
-            cell.accessoryView = nil
+            cell.accessoryType = .disclosureIndicator
         }
         cell.imageView?.image = setting.icon.maskWith(color: App.textColor)
 

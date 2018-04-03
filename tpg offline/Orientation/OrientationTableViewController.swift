@@ -166,6 +166,7 @@ class LineTableViewControllerRow: UITableViewCell {
                 self.backgroundColor = App.color(for: line.line)
                 self.textLabel?.textColor = App.color(for: line.line).contrast
             }
+            self.tintColor = self.textLabel?.textColor
         }
     }
 

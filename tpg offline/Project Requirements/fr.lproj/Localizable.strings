@@ -11,7 +11,6 @@
 "5 minutes before" = "5 minutes avant"; 
 "?#!" = "?#!"; 
 "A notification will be send %@" = "Une notification sera envoyée %@"; 
-"Add new" = "Ajout"; 
 "Address" = "Adresses"; 
 "Alamofire" = "Alamofire"; 
 "All Stops" = "Tous les arrêts"; 
@@ -31,9 +30,11 @@
 "Confirmation" = "Confirmation"; 
 "Connections map" = "Plan des connexions"; 
 "Could not load Smart Reminders" = "Impossible de charger les Rappels Intelligents."; 
+"Crash Reporting" = "Rapports des arrêts d'application inopinés"; 
 "Credits" = "Crédits"; 
 "Dark Mode" = "Mode sombre"; 
 "Data providers" = "Fournisseurs de données"; 
+"Days" = "Jours"; 
 "Deactivating Smart Reminders does not remove existing Smart Reminders. Use the Pending notifications section to remove them." = "Désactiver les Rappels Intelligents ne supprime pas les Rappels Intelligents existants. Merci d'utiliser la section Notifications planifiées pour les supprimer"; 
 "Default tab" = "Menu par défaut"; 
 "Default tab on startup" = "Menu par défaut au démarrage"; 
@@ -59,6 +60,7 @@
 "Error" = "Erreur"; 
 "Error - Departures not downloaded" = "Erreur - Les départs n'ont pas été téléchargés"; 
 "External libraries, used in this project" = "Librairies externes, utilisées dans ce projet"; 
+"Fabric" = "Fabric"; 
 "Favorite" = "Favoris"; 
 "Favorites" = "Favoris"; 
 "Filter activated" = "Filtre activé"; 
@@ -67,9 +69,11 @@
 "Friday" = "Vendredi"; 
 "From" = "De"; 
 "From..." = "De..."; 
+"General" = "Général"; 
 "Github webpage" = "Page Github du projet"; 
 "Give your feedback !" = "Donnez votre avis !"; 
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Ici, vous pouvez choisir quand vous voulez surveiller des lignes. Si une perturbation survient pendant la période de surveillance, nous vous enverrons une notification."; 
+"Hours" = "Heures"; 
 "Invalid route" = "Itinéraire invalide"; 
 "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?" = "Il semble que vous ne surveillez aucune ligne.\nSurveiller une ligne vous permettra de recevoir une notification en cas de perturbations sur vos lignes préférées. Pourquoi ne pas essayer en appuyant sur le bouton +, en haut à droite de votre appareil ?"; 
 "Last features" = "Dernières nouveautés"; 
@@ -145,6 +149,7 @@
 "Sorry, there is an error. Are you sure your are connected to internet ?" = "Désolé, mais une erreur est survenue. Êtes-vous sûr d'être connecté à internet ?"; 
 "Sorry, we can't fetch new departures. Please, try again." = "Désolé, nous ne pouvons pas accéder aux derniers départs. Merci de réessayer."; 
 "Special thanks" = "Remerciement spéciaux"; 
+"Specific" = "Spécifique"; 
 "Stability improvements" = "Amélioration de la stabilité générale"; 
 "Sunday" = "Dimanche"; 
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@"; 
@@ -177,6 +182,8 @@
 "We improved the stability and we made some cosmetic improvements." = "Nous avons amélioré la stabilité et nous avons apporté quelques améliorations cosmétiques."; 
 "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed." = "Nous avons besoin de votre identifiant unique d'appareil pour vous envoyer des notifications, même si l'application est fermée (excepté si l'appareil est éteint). Vérifiez si les notifications et l'actualisation en arrière-plan sont activés."; 
 "Wednesday" = "Mercredi"; 
+"Weekdays" = "Semaine"; 
+"Weekend" = "Week-end"; 
 "What's new!" = "Les dernières nouveautés !"; 
 "When do you want to be reminded" = "Quand voulez-vous être rappelé"; 
 "When do you want to be reminded?" = "Quand voulez-vous être rappelé ?"; 

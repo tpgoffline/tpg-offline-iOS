@@ -43,6 +43,9 @@ class DeparturesTableViewCell: UITableViewCell {
             }
             self.loading = false
 
+            destinationLabel.alpha = 1
+            rightTimeLabel.alpha = 1
+
             var color = App.color(for: departure.line.code)
 
             destinationLabel.text = App.replacementsNames[departure.line.destination] ?? departure.line.destination

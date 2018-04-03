@@ -36,6 +36,7 @@ class DeparturesViewController: UIViewController {
             configureTabBarItems()
 
             guard let mapView = self.mapView else { return }
+            mapView.removeAnnotations(mapView.annotations)
 
             let regionRadius: CLLocationDistance = 1000
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(stop.location.coordinate,
@@ -243,7 +244,7 @@ class DeparturesViewController: UIViewController {
 
     @objc func showMap() {
         self.mapView.isHidden = !self.mapView.isHidden
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
     }
@@ -835,7 +836,6 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
 extension DeparturesViewController: StopSelectionDelegate {
     func stopSelected(_ newStop: Stop) {
         self.stop = newStop
-        self.mapView.removeAnnotations(mapView.annotations)
     }
 }
 

@@ -10,69 +10,80 @@ import UIKit
 
 class HourPickerViewController: UIViewController {
 
-    var endHour = false
-    @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var beginTimePicker: UIDatePicker!
+    @IBOutlet weak var endTimePicker: UIDatePicker!
+    @IBOutlet weak var beginTextLabel: UILabel!
+    @IBOutlet weak var endTextLabel: UILabel!
+    @IBOutlet weak var beginImageView: UIImageView!
+    @IBOutlet weak var endImageView: UIImageView!
+    @IBOutlet weak var stackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Add new".localized
 
-        if endHour {
-            self.timePicker.minimumDate = AddMonitoring.fromDate.addingTimeInterval(60)
+        title = "Hours".localized
 
-            var comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
-            comps.day = (comps.day ?? 0) + 1
-            comps.hour = 0
-            comps.minute = 0
-            comps.second = 0
+        var comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        comps.day = (comps.day ?? 0) + 1
+        comps.hour = 0
+        comps.minute = 0
+        comps.second = 0
 
-            self.timePicker.maximumDate = Calendar.current.date(from: comps) ?? Date()
-        }
+        self.endTimePicker.maximumDate = Calendar.current.date(from: comps) ?? Date()
 
         ColorModeManager.shared.addColorModeDelegate(self)
 
-        if App.darkMode {
-            self.view.backgroundColor = App.cellBackgroundColor
-            self.timePicker.setValue(UIColor.white, forKeyPath: "textColor")
-            self.textLabel.textColor = App.textColor
-            self.nextButton.backgroundColor = .black
-            self.nextButton.setTitleColor(App.textColor, for: .normal)
+        self.view.backgroundColor = App.cellBackgroundColor
+        self.beginTimePicker.setValue(App.textColor, forKeyPath: "textColor")
+        self.endTimePicker.setValue(App.textColor, forKeyPath: "textColor")
+        self.beginTextLabel.textColor = App.textColor
+        self.endTextLabel.textColor = App.textColor
+        self.beginImageView.image = #imageLiteral(resourceName: "clock").maskWith(color: App.textColor)
+        self.endImageView.image = #imageLiteral(resourceName: "clock-reversed").maskWith(color: App.textColor)
+
+        self.endTimePicker.minimumDate = beginTimePicker.date.addingTimeInterval(60)
+
+        if UIDevice.current.orientation.isLandscape && UIDevice.current.userInterfaceIdiom == .phone {
+            self.stackView.axis = .horizontal
+        } else {
+            self.stackView.axis = .vertical
         }
     }
 
-    @IBAction func nextButtonPressed() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        if endHour {
-            AddMonitoring.toHour = dateFormatter.string(from: timePicker.date)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape && UIDevice.current.userInterfaceIdiom == .phone {
+            self.stackView.axis = .horizontal
         } else {
-            AddMonitoring.fromHour = dateFormatter.string(from: timePicker.date)
-            AddMonitoring.fromDate = timePicker.date
+            self.stackView.axis = .vertical
         }
     }
 
     override func colorModeDidUpdated() {
         super.colorModeDidUpdated()
         self.view.backgroundColor = App.cellBackgroundColor
-        self.timePicker.setValue(App.textColor, forKeyPath: "textColor")
-        self.textLabel.textColor = App.textColor
-        self.nextButton.backgroundColor = App.darkMode ? .black : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-        self.nextButton.setTitleColor(.white, for: .normal)
+        self.beginTimePicker.setValue(App.textColor, forKeyPath: "textColor")
+        self.endTimePicker.setValue(App.textColor, forKeyPath: "textColor")
+        self.beginTextLabel.textColor = App.textColor
+        self.endTextLabel.textColor = App.textColor
+        self.beginImageView.image = #imageLiteral(resourceName: "clock").maskWith(color: App.textColor)
+        self.endImageView.image = #imageLiteral(resourceName: "clock-reversed").maskWith(color: App.textColor)
+    }
+
+    @IBAction func beginTimePickerChanged() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        AddMonitoring.fromHour = dateFormatter.string(from: beginTimePicker.date)
+        self.endTimePicker.minimumDate = beginTimePicker.date.addingTimeInterval(60)
+    }
+
+    @IBAction func endTimePickerChanger() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        AddMonitoring.toHour = dateFormatter.string(from: endTimePicker.date)
+        self.beginTimePicker.maximumDate = endTimePicker.date.addingTimeInterval(-60)
     }
 
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showEndHour" {
-            guard let destination = segue.destination as? HourPickerViewController else {
-                return
-            }
-            destination.endHour = true
-        }
-    }
-
 }
