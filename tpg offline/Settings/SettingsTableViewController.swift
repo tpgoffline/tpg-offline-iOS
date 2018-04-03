@@ -73,6 +73,9 @@ class SettingsTableViewController: UITableViewController {
             Setting("Smart Reminders".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
                 self.smartReminders()
             }),
+            Setting("Use tpg offline Routes Algorithm".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
+                self.toggleAlgorithm()
+            }),
             Setting("Privacy".localized, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
                 UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
             })
@@ -163,6 +166,11 @@ class SettingsTableViewController: UITableViewController {
             lightSwitch.isOn = App.smartReminders
             lightSwitch.addTarget(self, action: #selector(self.smartReminders), for: .valueChanged)
             cell.accessoryView = lightSwitch
+        } else if setting.title == "Use tpg offline Routes Algorithm".localized {
+            let lightSwitch = UISwitch(frame: CGRect.zero) as UISwitch
+            lightSwitch.isOn = App.tpgofflineRoutesAlgorithm
+            lightSwitch.addTarget(self, action: #selector(self.toggleAlgorithm), for: .valueChanged)
+            cell.accessoryView = lightSwitch
         } else {
             cell.accessoryView = nil
         }
@@ -179,6 +187,10 @@ class SettingsTableViewController: UITableViewController {
         }
 
         return cell
+    }
+
+    @objc func toggleAlgorithm() {
+        App.tpgofflineRoutesAlgorithm = !App.tpgofflineRoutesAlgorithm
     }
 
     @objc func darkMode() {

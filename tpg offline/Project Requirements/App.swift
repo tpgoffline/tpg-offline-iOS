@@ -82,6 +82,15 @@ struct App {
         }
     }
 
+    static var tpgofflineRoutesAlgorithm: Bool {
+        get {
+            return (UserDefaults.standard.bool(forKey: #function))
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+
     static var smartReminders: Bool {
         get {
             return (UserDefaults.standard.bool(forKey: #function))
