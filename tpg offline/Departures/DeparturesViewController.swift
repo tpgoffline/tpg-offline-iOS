@@ -280,6 +280,9 @@ class DeparturesViewController: UIViewController {
                 return
             }
             destinationViewController.stopCode = self.stop?.code ?? ""
+            if let indexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
 
@@ -595,7 +598,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             var alertController = UIAlertController(title: smartNotificationActivated ? "Smart Reminder".localized : "Reminder".localized,
                                                     message: String(format: "At %@ - In %@ minutes\nWhen do you want to be reminded?".localized, self.stop?.name ?? "??", "\(leftTime)"),
                                                     preferredStyle: .alert)
-            if departure.leftTime == "0" {
+            if departure.leftTime == "0" || leftTime < 0 {
                 alertController.title = "Bus is comming".localized
                 alertController.message = "You can't set a timer for this bus, but you should run to take it.".localized
             } else {

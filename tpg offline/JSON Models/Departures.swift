@@ -72,8 +72,9 @@ struct Departure: Decodable {
     var dateCompenents: DateComponents?
     var reducedMobilityAccessibility: ReducedMobilityAccessibility
     var platform: String?
+    var vehiculeNo: Int
 
-    public init(line: Line, code: Int, leftTime: String, timestamp: String, dateCompenents: DateComponents?, wifi: Bool, reliability: Reliability, reducedMobilityAccessibility: ReducedMobilityAccessibility, platform: String?) {
+    public init(line: Line, code: Int, leftTime: String, timestamp: String, dateCompenents: DateComponents?, wifi: Bool, reliability: Reliability, reducedMobilityAccessibility: ReducedMobilityAccessibility, platform: String?, vehiculeNo: Int) {
         self.line = line
         self.code = code
         self.leftTime = leftTime
@@ -83,6 +84,7 @@ struct Departure: Decodable {
         self.reliability = reliability
         self.reducedMobilityAccessibility = reducedMobilityAccessibility
         self.platform = platform
+        self.vehiculeNo = vehiculeNo
 
         if self.leftTime == "" {
             self.calculateLeftTime()
@@ -100,6 +102,7 @@ struct Departure: Decodable {
         case reliability
         case characteristics
         case platform
+        case wifi
     }
 
     init(from decoder: Decoder) throws {
@@ -112,17 +115,17 @@ struct Departure: Decodable {
                 let leftTime = (try? container.decode(String.self, forKey: .leftTime)) ?? ""
                 let timestamp = (try? container.decode(String.self, forKey: .timestamp)) ?? ""
                 let vehiculeNo = (try? container.decode(Int.self, forKey: .vehiculeNo)) ?? -1
-                let wifi = (781 <= vehiculeNo && vehiculeNo <= 790) || (1601 <= vehiculeNo && vehiculeNo <= 1663)
+                let wifi = (try? container.decode(Bool.self, forKey: .wifi)) ?? false
                 let reliability = (try? container.decode(Reliability.self, forKey: .reliability)) ?? .reliable
                 let reducedMobilityAccessibility: ReducedMobilityAccessibility = ((try? container.decode(String.self, forKey: .characteristics)) ?? "PMR") == "PMR" ? .accessible : .inaccessible
                 let platform = try? container.decode(String.self, forKey: .platform)
-                self.init(line: line, code: code, leftTime: leftTime, timestamp: timestamp, dateCompenents: nil, wifi: wifi, reliability: reliability, reducedMobilityAccessibility: reducedMobilityAccessibility, platform: platform)
+                self.init(line: line, code: code, leftTime: leftTime, timestamp: timestamp, dateCompenents: nil, wifi: wifi, reliability: reliability, reducedMobilityAccessibility: reducedMobilityAccessibility, platform: platform, vehiculeNo: vehiculeNo)
             case .offline:
                 let lineString = try container.decode(String.self, forKey: .lineOffline)
                 let destination = try container.decode(String.self, forKey: .destinationOffline)
                 let line = Departure.Line(code: lineString, destination: destination, destinationCode: "")
                 let timestamp = try container.decode(String.self, forKey: .timestamp)
-                self.init(line: line, code: -1, leftTime: "", timestamp: timestamp, dateCompenents: nil, wifi: false, reliability: .reliable, reducedMobilityAccessibility: .accessible, platform: nil)
+                self.init(line: line, code: -1, leftTime: "", timestamp: timestamp, dateCompenents: nil, wifi: false, reliability: .reliable, reducedMobilityAccessibility: .accessible, platform: nil, vehiculeNo: -1)
 
             }
         } else {

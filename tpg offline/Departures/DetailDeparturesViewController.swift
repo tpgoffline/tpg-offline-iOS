@@ -34,6 +34,17 @@ class DetailDeparturesViewController: UIViewController {
 
             guard let busRouteGroup = self.busRouteGroup else { return }
 
+            let indexPath = IndexPath(row:
+                (busRouteGroup.steps.count) -
+                    (busRouteGroup.steps.filter({ $0.arrivalTime != "" }).count), section: 0)
+            if self.tableView.numberOfRows(inSection: 0) > indexPath.row {
+                DispatchQueue.main.async {
+                self.tableView.scrollToRow(at: indexPath,
+                                           at: UITableViewScrollPosition.top,
+                                           animated: false)
+                }
+            }
+
             let steps = busRouteGroup.steps
             var coordinates: [CLLocationCoordinate2D] = []
             var passedCoordinated: [CLLocationCoordinate2D] = []
@@ -210,18 +221,6 @@ class DetailDeparturesViewController: UIViewController {
                     let json = try? jsonDecoder.decode(BusRouteGroup.self, from: data)
 
                     self.busRouteGroup = json
-
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                        let indexPath = IndexPath(row:
-                            ((self.busRouteGroup?.steps.count) ?? 0) -
-                                ((self.busRouteGroup?.steps.filter({ $0.arrivalTime != "" }).count) ?? 0), section: 0)
-                        if self.tableView.numberOfRows(inSection: 0) > indexPath.row {
-                            self.tableView.scrollToRow(at: indexPath,
-                                                       at: UITableViewScrollPosition.top,
-                                                       animated: true)
-                        }
-                    }
-
                 }
                 self.refreshControl.endRefreshing()
         }

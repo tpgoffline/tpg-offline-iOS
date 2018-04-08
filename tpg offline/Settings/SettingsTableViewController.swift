@@ -42,7 +42,7 @@ class SettingsTableViewController: UITableViewController {
         }
 
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-            version != UserDefaults.standard.string(forKey: "lastVersion") {
+            version != UserDefaults.standard.string(forKey: "lastVersion") && UserDefaults.standard.string(forKey: "lastVersion") != nil {
             self.performSegue(withIdentifier: "showNewFeatures", sender: self)
         }
 
@@ -52,6 +52,9 @@ class SettingsTableViewController: UITableViewController {
         self.settings.append([
             Setting("Pending notifications".localized, icon: #imageLiteral(resourceName: "cel-bell"), action: { (_) in
                 self.performSegue(withIdentifier: "showPendingNotifications", sender: self)
+            }),
+            Setting("Smart Reminders".localized, icon: #imageLiteral(resourceName: "alarm"), action: { (_) in
+                self.performSegue(withIdentifier: "showSmartReminders", sender: self)
             })
             ])
 
@@ -69,9 +72,6 @@ class SettingsTableViewController: UITableViewController {
             }),
             Setting("Dark Mode".localized, icon: #imageLiteral(resourceName: "moon"), action: { (_) in
                 self.darkMode()
-            }),
-            Setting("Smart Reminders".localized, icon: #imageLiteral(resourceName: "alarm"), action: { (_) in
-                self.smartReminders()
             }),
             Setting("Privacy".localized, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
                 UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
@@ -158,11 +158,6 @@ class SettingsTableViewController: UITableViewController {
             lightSwitch.isOn = App.darkMode
             lightSwitch.addTarget(self, action: #selector(self.darkMode), for: .valueChanged)
             cell.accessoryView = lightSwitch
-        } else if setting.title == "Smart Reminders".localized {
-            let lightSwitch = UISwitch(frame: CGRect.zero) as UISwitch
-            lightSwitch.isOn = App.smartReminders
-            lightSwitch.addTarget(self, action: #selector(self.smartReminders), for: .valueChanged)
-            cell.accessoryView = lightSwitch
         } else {
             cell.accessoryType = .disclosureIndicator
         }
@@ -183,20 +178,6 @@ class SettingsTableViewController: UITableViewController {
 
     @objc func darkMode() {
         App.darkMode = !App.darkMode
-    }
-
-    @objc func smartReminders() {
-        App.smartReminders = !App.smartReminders
-        self.tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .none)
-        if !App.smartReminders {
-            let alert = UIAlertController(title: "Warning!".localized, message: "Deactivating Smart Reminders does not remove existing Smart Reminders. Use the Pending notifications section to remove them.".localized, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: { (_) in
-                App.smartReminders = !App.smartReminders
-                self.tableView.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .none)
-            }))
-            alert.addAction(UIAlertAction(title: "OK, deactivate Smart Reminders".localized, style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

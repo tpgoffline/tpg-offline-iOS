@@ -76,6 +76,7 @@ class OrientationTableViewController: UITableViewController {
                 return UITableViewCell()
             }
             cell.line = App.lines[indexPath.row]
+            cell.accessoryType = .disclosureIndicator
             return cell
         }
     }
@@ -203,8 +204,6 @@ extension OrientationTableViewController: UIViewControllerPreviewingDelegate {
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-
         show(viewControllerToCommit, sender: self)
-
     }
 }

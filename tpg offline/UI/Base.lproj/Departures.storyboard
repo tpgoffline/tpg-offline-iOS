@@ -473,33 +473,45 @@ Departures</string>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E97-I9-cmo">
-                                                            <rect key="frame" x="58" y="11" width="272" height="22"/>
+                                                            <rect key="frame" x="58" y="11" width="230" height="22"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10'" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3Y-PJ-W9g">
-                                                            <rect key="frame" x="338" y="11" width="22" height="22"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="esd-bH-Vtx">
+                                                            <rect key="frame" x="296" y="9" width="64" height="25"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AsX-v3-qFL">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="25" id="MvU-1l-2Uc"/>
+                                                                        <constraint firstAttribute="width" constant="25" id="sQq-Lx-u42"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10'" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3Y-PJ-W9g">
+                                                                    <rect key="frame" x="42" y="0.0" width="22" height="25"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="Nst-61-SZT" firstAttribute="leading" secondItem="ut8-25-Wpb" secondAttribute="leading" id="2w3-M7-wgb"/>
                                                         <constraint firstItem="E97-I9-cmo" firstAttribute="leading" secondItem="Nst-61-SZT" secondAttribute="trailing" constant="8" id="69s-Wb-JvP"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="B3Y-PJ-W9g" secondAttribute="trailing" id="Hw7-0A-zrz"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="B3Y-PJ-W9g" secondAttribute="bottom" id="MNJ-tR-sb6"/>
+                                                        <constraint firstItem="esd-bH-Vtx" firstAttribute="centerY" secondItem="ut8-25-Wpb" secondAttribute="centerY" id="G5Q-af-Kdl"/>
                                                         <constraint firstItem="Nst-61-SZT" firstAttribute="top" secondItem="ut8-25-Wpb" secondAttribute="top" id="NBV-1f-srV"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="E97-I9-cmo" secondAttribute="bottom" id="Rnn-Lm-Ra5"/>
                                                         <constraint firstItem="E97-I9-cmo" firstAttribute="top" secondItem="ut8-25-Wpb" secondAttribute="topMargin" id="cS7-2e-AeW"/>
                                                         <constraint firstAttribute="bottom" secondItem="Nst-61-SZT" secondAttribute="bottom" id="fLJ-2w-3wJ"/>
-                                                        <constraint firstItem="B3Y-PJ-W9g" firstAttribute="leading" secondItem="E97-I9-cmo" secondAttribute="trailing" constant="8" id="omK-L3-Xqs"/>
-                                                        <constraint firstItem="B3Y-PJ-W9g" firstAttribute="top" secondItem="ut8-25-Wpb" secondAttribute="topMargin" id="znt-wK-hkn"/>
+                                                        <constraint firstItem="esd-bH-Vtx" firstAttribute="leading" secondItem="E97-I9-cmo" secondAttribute="trailing" constant="8" id="zBp-u1-AsK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="esd-bH-Vtx" secondAttribute="trailing" constant="15" id="zct-D3-JrD"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="busTrackView" destination="Nst-61-SZT" id="HH0-nF-2nY"/>
+                                                    <outlet property="busImageView" destination="AsX-v3-qFL" id="93y-9X-m4S"/>
+                                                    <outlet property="busTrackView" destination="Nst-61-SZT" id="CQ8-NZ-Eho"/>
                                                     <outlet property="remainingTimeLabel" destination="B3Y-PJ-W9g" id="tiu-dB-c1F"/>
                                                     <outlet property="titleLabel" destination="E97-I9-cmo" id="odq-xp-hVK"/>
                                                     <segue destination="HRP-23-FYi" kind="show" identifier="showStopFromBusRoute" id="Gud-b6-ejT"/>

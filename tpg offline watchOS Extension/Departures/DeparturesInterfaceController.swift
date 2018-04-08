@@ -79,6 +79,21 @@ class DeparturesInterfaceController: WKInterfaceController, DeparturesDelegate {
     func departuresDidUpdate() {
         self.departures = DeparturesManager.shared.departures
     }
+
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        guard let rowController = self.tableView.rowController(at: rowIndex) as? DepartureRowController
+            else { return }
+        if rowController.canBeSelected {
+            if rowController.departure.leftTime == "0" {
+                let action = WKAlertAction(title: "OK", style: .default, handler: {})
+                self.presentAlert(withTitle: "Bus is comming".localized,
+                                  message: "You can't set a timer for this bus, but you should run to take it.".localized,
+                                  preferredStyle: .alert, actions: [action])
+            } else {
+                presentController(withName: "reminderInterface", context: rowController.departure)
+            }
+        }
+    }
 }
 
 class DepartureRowController: NSObject {
@@ -86,7 +101,7 @@ class DepartureRowController: NSObject {
     @IBOutlet var destinationLabel: WKInterfaceLabel!
     @IBOutlet var leftTimeLabel: WKInterfaceLabel!
 
-    private var canBeSelected: Bool = true
+    var canBeSelected: Bool = true
 
     var departure: Departure! {
         didSet {
@@ -103,6 +118,7 @@ class DepartureRowController: NSObject {
                         timeStyle: DateFormatter.Style.short))
                 } else {
                     self.leftTimeLabel.setText("?")
+                    self.canBeSelected = false
                 }
             case "no more":
                 self.leftTimeLabel.setText("X")

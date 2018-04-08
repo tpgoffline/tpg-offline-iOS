@@ -77,6 +77,7 @@
                         <segue destination="pqz-eQ-UZ8" kind="presentation" identifier="showNewFeatures" modalPresentationStyle="fullScreen" id="PDY-f9-k3s"/>
                         <segue destination="2L4-Jh-Ng2" kind="show" identifier="showPendingNotifications" id="x0Z-CH-7uu"/>
                         <segue destination="5ID-rc-vMN" kind="show" identifier="showReorderStopsView" id="hTd-oi-G7a"/>
+                        <segue destination="rEy-ZF-iGk" kind="show" identifier="showSmartReminders" id="zWz-oa-SEz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQc-2K-E5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,7 +333,7 @@
         <scene sceneID="dGN-ay-0vp">
             <objects>
                 <tableViewController id="2L4-Jh-Ng2" customClass="PendingNotificationsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="UBs-lV-QrX">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="UBs-lV-QrX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -408,6 +409,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vl4-s3-yun" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2439" y="972"/>
+        </scene>
+        <!--Smart Reminders Settings Table View Controller-->
+        <scene sceneID="Qno-va-6YZ">
+            <objects>
+                <tableViewController id="rEy-ZF-iGk" customClass="SmartRemindersSettingsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="kTs-zb-9Zl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="3B0-SY-RxI" style="IBUITableViewCellStyleDefault" id="5bA-xE-E4H">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5bA-xE-E4H" id="VFf-g5-G1B">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3B0-SY-RxI">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rEy-ZF-iGk" id="0UN-y3-LEq"/>
+                            <outlet property="delegate" destination="rEy-ZF-iGk" id="XUD-wu-wWm"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbg-0h-OZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3130" y="972"/>
         </scene>
     </scenes>
     <resources>

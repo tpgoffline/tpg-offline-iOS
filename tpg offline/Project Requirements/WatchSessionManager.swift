@@ -61,7 +61,9 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
                 let applicationDict: [String: Any] = [
                     "favoritesStops": App.favoritesStops,
                     "favoritesRoutes": favoritesRoutes,
-                    "replacementsNames": App.replacementsNames
+                    "replacementsNames": App.replacementsNames,
+                    "smartReminders": App.smartReminders,
+                    "apnsToken": App.apnsToken
                 ]
                 try self.updateApplicationContext(applicationDict)
             } catch {

@@ -13,6 +13,7 @@ class BusRouteTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var busTrackView: UIView!
     @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var busImageView: UIImageView!
 
     var busRoute: BusRoute?
     var stop: Stop?
@@ -29,7 +30,17 @@ class BusRouteTableViewCell: UITableViewCell {
         titleLabel.text = App.stops.filter({ $0.code == busRoute.stop.code })[safe: 0]?.name ?? "Unknow".localized
 
         remainingTimeLabel.textColor = color
-        remainingTimeLabel.text = busRoute.arrivalTime == "" ? "" : "\(busRoute.reliability == .theoretical ? "~" : "")\(busRoute.arrivalTime)'"
+
+        if busRoute.arrivalTime == "00" {
+            remainingTimeLabel.isHidden = true
+            busImageView.image = #imageLiteral(resourceName: "bus").maskWith(color: color)
+            busImageView.isHidden = false
+        } else {
+            remainingTimeLabel.text = busRoute.arrivalTime == "" ? "" : "\(busRoute.reliability == .theoretical ? "~" : "")\(busRoute.arrivalTime)'"
+            remainingTimeLabel.isHidden = false
+            busImageView.image = nil
+            busImageView.isHidden = true
+        }
 
         var rectanglePath: UIBezierPath
 

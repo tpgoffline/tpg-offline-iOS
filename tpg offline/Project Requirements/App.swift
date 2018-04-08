@@ -68,7 +68,13 @@ struct App {
         }
     }
 
-    static var apnsToken: String = ""
+    static var apnsToken: String = "" {
+        didSet {
+            #if os(iOS)
+                watchSessionManager.sync()
+            #endif
+        }
+    }
 
     static var darkMode: Bool {
         get {
@@ -83,6 +89,18 @@ struct App {
     }
 
     static var smartReminders: Bool {
+        get {
+            return (UserDefaults.standard.bool(forKey: #function))
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+            #if os(iOS)
+                watchSessionManager.sync()
+            #endif
+        }
+    }
+    
+    static var disableForceSmartReminders: Bool {
         get {
             return (UserDefaults.standard.bool(forKey: #function))
         }

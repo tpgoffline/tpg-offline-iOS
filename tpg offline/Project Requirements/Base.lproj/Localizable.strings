@@ -11,6 +11,7 @@
 "5 minutes before" = "5 minutes before"; 
 "?#!" = "?#!"; 
 "A notification will be send %@" = "A notification will be send %@"; 
+"Activated" = "Activated"; 
 "Address" = "Address"; 
 "Alamofire" = "Alamofire"; 
 "All Stops" = "All Stops"; 
@@ -20,6 +21,7 @@
 "Are you looking for a stop ?" = "Are you looking for a stop ?"; 
 "Are you sure you set the departure stop and the arrival stop?" = "Are you sure you set the departure stop and the arrival stop?"; 
 "Arrival at" = "Arrival at"; 
+"As well as this part" = "As well as this part"; 
 "At %@ - In %@ minutes\nWhen do you want to be reminded?" = "At %@ - In %@ minutes\nWhen do you want to be reminded?"; 
 "At departure time" = "At departure time"; 
 "At the core of the project" = "At the core of the project"; 
@@ -68,6 +70,7 @@
 "Fortunately, there is no disruptions at this time." = "Fortunately, there is no disruptions at this time."; 
 "Friday" = "Friday"; 
 "From" = "From"; 
+"From now on, instead of having several disturbances displayed several times for several lines, the disturbances will be merged into one and same category to be more readable and take up less space." = "From now on, instead of having several disturbances displayed several times for several lines, the disturbances will be merged into one and same category to be more readable and take up less space."; 
 "From..." = "From..."; 
 "General" = "General"; 
 "Github webpage" = "Github webpage"; 
@@ -88,6 +91,7 @@
 "Map" = "Map"; 
 "Maps" = "Maps"; 
 "Mark this stop as favorite" = "Mark this stop as favorite"; 
+"Merged disruptions" = "Merged disruptions"; 
 "Monday" = "Monday"; 
 "Monitoring" = "Monitoring"; 
 "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines." = "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines."; 
@@ -104,6 +108,7 @@
 "Noctambus urban map" = "Noctambus urban map"; 
 "Notifications" = "Notifications"; 
 "Now" = "Now"; 
+"Now, you can add departures reminders from your Apple Watch" = "Now, you can add departures reminders from your Apple Watch"; 
 "Number of minutes" = "Number of minutes"; 
 "Number of minutes before departure" = "Number of minutes before departure"; 
 "OK" = "OK"; 
@@ -118,11 +123,14 @@
 "Platform %@" = "Platform %@"; 
 "Privacy" = "Privacy"; 
 "Processing %@/%@" = "Processing %@/%@"; 
+"Redesigned Monitoring section" = "Redesigned Monitoring section"; 
 "Regional map" = "Regional map"; 
 "Regional route" = "Regional route"; 
 "Reload" = "Reload"; 
 "Reload departures" = "Reload departures"; 
+"Reload the map" = "Reload the map"; 
 "Reminder" = "Reminder"; 
+"Reminders on the Apple Watch" = "Reminders on the Apple Watch"; 
 "Reorder stops view" = "Reorder stops view"; 
 "Result" = "Result"; 
 "Results" = "Results"; 
@@ -141,6 +149,7 @@
 "Show more" = "Show more"; 
 "Smart Reminder" = "Smart Reminder"; 
 "Smart Reminders" = "Smart Reminders"; 
+"Smart reminders are departures reminders that, unlike standard reminders, take into account traffic variations and bus delays.\rThis feature requires an Internet connection to work, so it will not be offered in offline mode, and you can disabled it if you want in online mode." = "Smart reminders are departures reminders that, unlike standard reminders, take into account traffic variations and bus delays.\rThis feature requires an Internet connection to work, so it will not be offered in offline mode, and you can disabled it if you want in online mode."; 
 "Sorry" = "Sorry"; 
 "Sorry for that. Can you try again, or send an email to us if the problem persist?" = "Sorry for that. Can you try again, or send an email to us if the problem persist?"; 
 "Sorry, but no results was found. Please try with other parameters." = "Sorry, but no results was found. Please try with other parameters."; 
@@ -159,7 +168,9 @@
 "Testing" = "Testing"; 
 "That's all for today" = "That's all for today"; 
 "The bus is comming now!" = "The bus is comming now!"; 
+"The monitoring section was redesigned to make easier to manage disruptions monitoring" = "The monitoring section was redesigned to make easier to manage disruptions monitoring"; 
 "The project" = "The project"; 
+"This part is empty. That's mean you have to add a Smart Reminder to see something here." = "This part is empty. That's mean you have to add a Smart Reminder to see something here."; 
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n"; 
 "Thursday" = "Thursday"; 
 "To" = "To"; 
@@ -179,6 +190,7 @@
 "Warning!" = "Warning!"; 
 "Wayback Machine" = "Wayback Machine"; 
 "We already sheduled a reminder with these parameters." = "We already sheduled a reminder with these parameters."; 
+"We have to say the truth. Sometimes, this part of the table is empty" = "We have to say the truth. Sometimes, this part of the table is empty"; 
 "We improved the stability and we made some cosmetic improvements." = "We improved the stability and we made some cosmetic improvements."; 
 "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed." = "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed."; 
 "Wednesday" = "Wednesday"; 

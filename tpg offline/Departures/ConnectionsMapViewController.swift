@@ -67,12 +67,29 @@ class ConnectionsMapViewController: UIViewController {
         ColorModeManager.shared.addColorModeDelegate(self)
     }
 
+    @objc func reload() {
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/Connections%20Maps/\(stopCode).jpg").responseData(completionHandler: { (response) in
+            if let data = response.result.value {
+                self.save()
+                self.downloadData = data
+                let image = UIImage(data: data)
+                self.imageView = UIImageView(image: image)
+                self.adjustScrollView()
+                self.save()
+            } else {
+                self.errorLabel.isHidden = false
+            }
+            self.loadingView.isHidden = true
+        })
+    }
+
     func adjustScrollView() {
         navigationItem.rightBarButtonItems = [UIBarButtonItem(image: saved ? #imageLiteral(resourceName: "trash") : #imageLiteral(resourceName: "download"),
-                                                                                  style: .plain,
-                                                                                  target: self,
-                                                                                  action: #selector(save),
-                                                                                  accessbilityLabel: "Download the map".localized)]
+                                                              style: .plain,
+                                                              target: self,
+                                                              action: #selector(save),
+                                                              accessbilityLabel: "Download the map".localized),
+                                              UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"), style: .plain, target: self, action: #selector(reload), accessbilityLabel: "Reload the map".localized)]
         scrollView.delegate = self
         scrollView.backgroundColor = .white
         scrollView.contentSize = imageView.bounds.size
@@ -109,10 +126,11 @@ class ConnectionsMapViewController: UIViewController {
                     self.saved = true
                     DispatchQueue.main.async {
                         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: self.saved ? #imageLiteral(resourceName: "trash") : #imageLiteral(resourceName: "download"),
-                                                                                   style: .plain,
-                                                                                   target: self,
-                                                                                   action: #selector(self.save),
-                                                                                   accessbilityLabel: "Download the map".localized)]
+                                                                              style: .plain,
+                                                                              target: self,
+                                                                              action: #selector(self.save),
+                                                                              accessbilityLabel: "Download the map".localized),
+                                                              UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"), style: .plain, target: self, action: #selector(self.reload), accessbilityLabel: "Reload the map".localized)]
                     }
                 } catch let error {
                     print(error)
@@ -127,10 +145,11 @@ class ConnectionsMapViewController: UIViewController {
                     self.saved = false
                     DispatchQueue.main.async {
                         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: self.saved ? #imageLiteral(resourceName: "trash") : #imageLiteral(resourceName: "download"),
-                                                                                   style: .plain,
-                                                                                   target: self,
-                                                                                   action: #selector(self.save),
-                                                                                   accessbilityLabel: "Download the map".localized)]
+                                                                              style: .plain,
+                                                                              target: self,
+                                                                              action: #selector(self.save),
+                                                                              accessbilityLabel: "Download the map".localized),
+                                                              UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"), style: .plain, target: self, action: #selector(self.reload), accessbilityLabel: "Reload the map".localized)]
                     }
                 } catch let error {
                     print(error)
