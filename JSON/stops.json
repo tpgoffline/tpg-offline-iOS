@@ -37293,6 +37293,11 @@
             {
                 "destinations": [
                     {
+                        "destination": "Bachet-de-Pesay",
+                        "destinationTransportAPI": "Grand-Lancy, Bachet-de-Pesay",
+                        "line": "12"
+                    },
+                    {
                         "destination": "Palettes",
                         "destinationTransportAPI": "Grand-Lancy, Palettes",
                         "line": "12"
@@ -37300,6 +37305,16 @@
                     {
                         "destination": "Palettes",
                         "destinationTransportAPI": "Grand-Lancy, Palettes",
+                        "line": "18"
+                    },
+                    {
+                        "destination": "Bachet-de-Pesay",
+                        "destinationTransportAPI": "Grand-Lancy, Bachet-de-Pesay",
+                        "line": "18"
+                    },
+                    {
+                        "destination": "De-Staël",
+                        "destinationTransportAPI": "Carouge GE, De Staël",
                         "line": "18"
                     }
                 ],
@@ -38919,11 +38934,6 @@
                         "destination": "Palettes-Bachet",
                         "destinationTransportAPI": "Grand-Lancy, Palettes",
                         "line": "15"
-                    },
-                    {
-                        "destination": "CERN",
-                        "destinationTransportAPI": "Meyrin, CERN",
-                        "line": "18"
                     }
                 ],
                 "latitude": 46.171653,
@@ -38950,16 +38960,6 @@
                         "destination": "Nations",
                         "destinationTransportAPI": "Genève, Nations",
                         "line": "15"
-                    },
-                    {
-                        "destination": "Bachet-de-Pesay",
-                        "destinationTransportAPI": "Grand-Lancy, Bachet-de-Pesay",
-                        "line": "18"
-                    },
-                    {
-                        "destination": "De-Staël",
-                        "destinationTransportAPI": "Carouge GE, De Staël",
-                        "line": "18"
                     },
                     {
                         "destination": "Palettes",
