@@ -25283,6 +25283,11 @@
                         "destination": "Gex",
                         "destinationTransportAPI": "Gex, Aiglette (F)",
                         "line": "F"
+                    },
+                    {
+                        "destination": "Rieu",
+                        "destinationTransportAPI": "Genève, Rieu",
+                        "line": "5+"
                     }
                 ],
                 "latitude": 46.228761,
@@ -25299,6 +25304,11 @@
                         "destination": "Gare Cornavin",
                         "destinationTransportAPI": "Genève, Cornavin",
                         "line": "F"
+                    },
+                    {
+                        "destination": "Thônex-Vallard",
+                        "destinationTransportAPI": "Thônex, Vallard",
+                        "line": "5+"
                     }
                 ],
                 "latitude": 46.228627,
@@ -30808,7 +30818,12 @@
                         "destination": "Gex",
                         "destinationTransportAPI": "Gex, Aiglette (F)",
                         "line": "F"
-                    }
+                    },
+                    {
+                        "destination": "Rieu",
+                        "destinationTransportAPI": "Genève, Rieu",
+                        "line": "5+"
+                    },
                 ],
                 "latitude": 46.23061,
                 "longitude": 6.124889
@@ -30829,6 +30844,11 @@
                         "destination": "Gare Cornavin",
                         "destinationTransportAPI": "Genève, Cornavin",
                         "line": "F"
+                    },
+                    {
+                        "destination": "Thônex-Vallard",
+                        "destinationTransportAPI": "Thônex, Vallard",
+                        "line": "5+"
                     }
                 ],
                 "latitude": 46.231052,
@@ -45428,5 +45448,46 @@
         "sbbId": "8596096",
         "subTitle": "",
         "title": "Vieux-Bureau"
+    },
+    {
+        "appId": 253952,
+        "code": "DANC",
+        "connectionsMap": false,
+        "connections": [],
+        "isTAC": false,
+        "latitude": 46.192655,
+        "localisations": [
+            {
+                "destinations": [
+                    {
+                        "destination": "Beau-Séjour",
+                        "destinationTransportAPI": "Genève, Beau-Séjour",
+                        "line": "35"
+                    }
+                ],
+                "latitude": 46.192655,
+                "longitude": 6.142205
+            },
+            {
+                "destinations": [
+                    {
+                        "destination": "Sainte-Clotilde",
+                        "destinationTransportAPI": "Genève, Sainte-Clotilde",
+                        "line": "35"
+                    }
+                ],
+                "latitude": 46.19318,
+                "longitude": 6.142478
+            }
+        ],
+        "longitude": 6.142205,
+        "name": "Dancet",
+        "nameTransportAPI": "Genève, Dancet",
+        "pricingZone": [
+            10
+        ],
+        "sbbId": "8592780",
+        "subTitle": "",
+        "title": "Dancet"
     }
 ]
