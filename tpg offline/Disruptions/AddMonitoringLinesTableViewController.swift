@@ -41,6 +41,11 @@ class AddMonitoringLinesTableViewController: UITableViewController {
             else { return UITableViewCell() }
 
         cell.line = App.lines[indexPath.row]
+        if AddMonitoring.lines.index(of: App.lines[indexPath.row].line) != nil {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
 
         return cell
     }
