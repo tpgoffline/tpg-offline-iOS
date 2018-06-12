@@ -48,6 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         App.darkMode = UserDefaults.standard.bool(forKey: "darkMode")
+        if App.automaticDarkMode && App.sunriseSunsetManager?.isDaytime ?? false && App.darkMode == true {
+            App.darkMode = false
+        } else if App.automaticDarkMode && App.sunriseSunsetManager?.isNighttime ?? false && App.darkMode == false {
+            App.darkMode = true
+        }
 
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/replacementsNames.json").responseJSON { (response) in
             if let json = response.result.value as? [String: String] {
@@ -101,20 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                          date: Date(), arrivalTime: false)]
             return true
         }
-
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
-                if !accepted {
-                    print("Notification access denied.")
-                }
-            }
-        } else {
-            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
-            let setting = UIUserNotificationSettings(types: type, categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(setting)
-        }
-
-        UIApplication.shared.registerForRemoteNotifications()
 
         UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
         App.loadLines()

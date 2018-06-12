@@ -122,7 +122,7 @@ extension String {
             if let range = lString.range(of:
                 String(lWord[lWord.index(lWord.startIndex, offsetBy: i)] as Character),
                                          options: NSString.CompareOptions.caseInsensitive,
-                                         range: Range<String.Index>(startAt..<lString.endIndex),
+                                         range: (startAt..<lString.endIndex),
                                          locale: nil
                 ) {
                 // start index of word's i-th character in string.

@@ -59,6 +59,9 @@
 		AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */; };
 		AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */; };
 		AD5FC1DF1FE6D9F90016BC35 /* DayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */; };
+		AD675C9620CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */; };
+		AD675C9820CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD675C9720CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift */; };
+		AD675C9A20CEB7EF00B13C8A /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD675C9920CEB7EF00B13C8A /* Reachability.framework */; };
 		AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
 		AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */; };
 		AD708DAF1FB0AC420076B3AC /* BusRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE891F41CA8000E84220 /* BusRoute.swift */; };
@@ -82,6 +85,8 @@
 		AD92D8BF1F44E10200403258 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92D8BE1F44E10200403258 /* Setting.swift */; };
 		AD9D8DAA200264730021A23E /* DeparturesHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */; };
 		AD9EFE031F9B27BB0065C1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */; };
+		AD9F018420CE7F320069B486 /* Solar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9F018320CE7F320069B486 /* Solar.framework */; };
+		AD9F018620CE827D0069B486 /* DarkModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F018520CE827D0069B486 /* DarkModeTableViewController.swift */; };
 		AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */; };
 		AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */; };
 		ADA0D3601FB33EFF001DAC9F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */; };
@@ -240,6 +245,9 @@
 		AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMonitoringLinesTableViewController.swift; sourceTree = "<group>"; };
 		AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourPickerViewController.swift; sourceTree = "<group>"; };
 		AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerViewController.swift; sourceTree = "<group>"; };
+		AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeparturesTableViewController.swift; sourceTree = "<group>"; };
+		AD675C9720CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOfflineDeparturesManager.swift; sourceTree = "<group>"; };
+		AD675C9920CEB7EF00B13C8A /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		AD6A47A81F77992400AE1762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
 		AD6AD6EB1FA098D900CEA271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -257,6 +265,8 @@
 		AD92D8BE1F44E10200403258 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AD9EFE021F9B27BB0065C1FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AD9F018320CE7F320069B486 /* Solar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Solar.framework; path = Carthage/Build/iOS/Solar.framework; sourceTree = "<group>"; };
+		AD9F018520CE827D0069B486 /* DarkModeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeTableViewController.swift; sourceTree = "<group>"; };
 		AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTabTableViewController.swift; sourceTree = "<group>"; };
 		AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailInterfaceController.swift; sourceTree = "<group>"; };
 		ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -327,6 +337,8 @@
 				AD7B47E31FD1570000F8DA23 /* MapKit.framework in Frameworks */,
 				AD0D33B420025659006462D5 /* NetworkExtension.framework in Frameworks */,
 				AD07A3661F8A60D400E65DE7 /* Fabric.framework in Frameworks */,
+				AD675C9A20CEB7EF00B13C8A /* Reachability.framework in Frameworks */,
+				AD9F018420CE7F320069B486 /* Solar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +404,8 @@
 				AD92D8BE1F44E10200403258 /* Setting.swift */,
 				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
 				AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */,
+				AD9F018520CE827D0069B486 /* DarkModeTableViewController.swift */,
+				AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -478,6 +492,7 @@
 				AD7B47E01FD155D400F8DA23 /* TabBarController.swift */,
 				ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */,
 				ADA2877A20638E26006EEF39 /* API.swift */,
+				AD675C9720CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -535,6 +550,8 @@
 		AD37FEA31F41CABC00E84220 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD675C9920CEB7EF00B13C8A /* Reachability.framework */,
+				AD9F018320CE7F320069B486 /* Solar.framework */,
 				AD8E14F12062E27E000ADF3D /* Dotzu.framework */,
 				AD0D33B320025659006462D5 /* NetworkExtension.framework */,
 				AD7B47E21FD1570000F8DA23 /* MapKit.framework */,
@@ -842,6 +859,8 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Solar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -900,6 +919,7 @@
 				AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */,
 				AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */,
 				AD8CF77F1F979B5100DE9CBC /* OrientationTableViewController.swift in Sources */,
+				AD675C9820CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift in Sources */,
 				AD37FEAD1F41CD9300E84220 /* FooterDeparturesTableViewCell.swift in Sources */,
 				AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */,
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
@@ -924,6 +944,7 @@
 				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
 				ADA14E661FDEC4FE00945249 /* Line.swift in Sources */,
+				AD9F018620CE827D0069B486 /* DarkModeTableViewController.swift in Sources */,
 				ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */,
 				ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */,
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
@@ -938,6 +959,7 @@
 				AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */,
 				AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */,
 				ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */,
+				AD675C9620CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift in Sources */,
 				AD3EB1671FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift in Sources */,
 				AD07A3681F8A6BF300E65DE7 /* RouteStepViewController.swift in Sources */,
 				ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */,

@@ -688,6 +688,20 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         let date = departure.dateCompenents?.date?.addingTimeInterval(TimeInterval(timeBefore * -60))
         let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: date ?? Date())
 
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
+                if !accepted {
+                    print("Notification access denied.")
+                }
+            }
+        } else {
+            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+            let setting = UIUserNotificationSettings(types: type, categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+        }
+        
+        UIApplication.shared.registerForRemoteNotifications()
+        
         if !self.noInternet, App.smartReminders, !forceDisableSmartReminders, departure.code != -1, let stopCode = stop?.code {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"

@@ -336,6 +336,20 @@ class DetailDeparturesViewController: UIViewController {
     }
 
     func setAlert(with timeBefore: Int, date: Date, fromName: String, fromCode: String, forceDisableSmartReminders: Bool = false) {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
+                if !accepted {
+                    print("Notification access denied.")
+                }
+            }
+        } else {
+            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+            let setting = UIUserNotificationSettings(types: type, categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+        }
+        
+        UIApplication.shared.registerForRemoteNotifications()
+        
         let newDate = date.addingTimeInterval(TimeInterval(timeBefore * -60))
         let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: newDate)
         if App.smartReminders, !forceDisableSmartReminders, let departure = self.departure, departure.code != -1 {

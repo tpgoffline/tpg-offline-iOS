@@ -12,6 +12,7 @@ import CoreSpotlight
 import MobileCoreServices
 import StoreKit
 import Alamofire
+import Solar
 
 struct GoogleMapsGeocodingSearch {
     var address: String
@@ -124,16 +125,7 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 SKStoreReviewController.requestReview()
                 #endif
 
-                Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
-                    if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5"),
-                        UserDefaults.standard.bool(forKey: "remindUpdate") == false {
-                        UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
-                        UserDefaults.standard.set(true, forKey: "remindUpdate")
-                        let alertController = UIAlertController(title: "New offline departures available".localized, message: "You can download them in Settings".localized, preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
-                        self.present(alertController, animated: true, completion: nil)
-                    }
-                }
+                DownloadOfflineDeparturesManager.shared.checkUpdate(viewController: self)
             }
         }
 
@@ -312,7 +304,7 @@ extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate
         default:
             return
         }
-        App.log("Stops: Search: \(self.searchText) - \(self.searchMode)")
+        App.log("Stops: Search: \(self.searchText ?? "") - \(self.searchMode)")
         if self.searchMode == .addresses {
             lookForAdresses()
         }
@@ -323,6 +315,7 @@ extension StopsTableViewController: UISearchResultsUpdating, UISearchBarDelegate
 extension StopsTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations[safe: 0] {
+            App.sunriseSunsetManager = Solar(coordinate: location.coordinate)
             self.localizedStops.removeAll()
             for stop in App.stops {
                 var stopA = stop

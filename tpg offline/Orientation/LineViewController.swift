@@ -9,22 +9,21 @@
 import UIKit
 import SafariServices
 import Crashlytics
+import MapKit
 
 class LineViewController: UIViewController {
 
     @IBOutlet weak var departureLabel: UILabel!
     @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var waybackMachineButton: UIButton!
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var mapView: MKMapView!
 
     @IBOutlet weak var arrowsImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var descriptionLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pathsSegmentedControl: UISegmentedControl!
 
     var line: Line?
+    var names: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +40,33 @@ class LineViewController: UIViewController {
         self.departureLabel.textColor = App.textColor
         self.arrivalLabel.text = line.arrivalName
         self.arrivalLabel.textColor = App.textColor
-        self.descriptionLabel.textColor = App.textColor
+        self.pathsSegmentedControl.removeAllSegments()
+        for index in (0...line.courses.count - 1) {
+            self.pathsSegmentedControl.insertSegment(withTitle: String(format: "Path %@".localized, "\(index + 1)"), at: index, animated: true)
+        }
+        self.pathsSegmentedControl.selectedSegmentIndex = 0
+        self.departureLabel.text = App.stops.filter({ $0.appId == line.courses[0].first}).first?.name ?? ""
+        self.arrivalLabel.text = App.stops.filter({ $0.appId == line.courses[0].last}).first?.name ?? ""
+        var coordinates: [CLLocationCoordinate2D] = []
+        for appId in line.courses[0] {
+            if let stop = App.stops.filter({ $0.appId == appId}).first {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = stop.location.coordinate
+                coordinates.append(stop.location.coordinate)
+                annotation.title = stop.name
+                self.names.append(stop.name)
+                mapView.addAnnotation(annotation)
+            }
+        }
+        
+        let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+        mapView.add(geodesic)
+        
+        let regionRadius: CLLocationDistance = 1000
+        let centerPoint: CLLocationCoordinate2D = coordinates.first!
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
+                                                              regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
 
         self.view.backgroundColor = App.cellBackgroundColor
         self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
@@ -50,27 +75,19 @@ class LineViewController: UIViewController {
             registerForPreviewing(with: self, sourceView: tableView)
         }
 
-        if Locale.current.languageCode == "fr", let descriptionFR = line.textFR {
-            self.descriptionLabel.text = descriptionFR
-        } else if let descriptionEN = line.textEN {
-            self.descriptionLabel.text = descriptionEN
-        } else {
-            self.descriptionLabel.text = ""
-            descriptionLabelTopConstraint.constant = 0
-        }
-
         if line.snotpgURL != "" {
             let color = App.color(for: line.line)
             waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
-            waybackMachineButton.setTitle("Wayback Machine".localized, for: .normal)
+            waybackMachineButton.setTitle("See line history".localized, for: .normal)
             waybackMachineButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            waybackMachineButton.tintColor = App.darkMode ? color : color.contrast
             waybackMachineButton.addTarget(self, action: #selector(self.showSnotpgPage), for: .touchUpInside)
             waybackMachineButton.backgroundColor = App.darkMode ? .black : App.color(for: line.line)
             waybackMachineButton.cornerRadius = waybackMachineButton.bounds.height / 2
             waybackMachineButton.clipsToBounds = true
-        } else {
-            self.buttonHeightConstraint.constant = 0
         }
+        
+        self.pathsSegmentedControl.tintColor = App.color(for: line.line)
 
         if App.darkMode {
             self.tableView.sectionIndexBackgroundColor = App.cellBackgroundColor
@@ -100,6 +117,7 @@ class LineViewController: UIViewController {
         self.departureLabel.textColor = App.textColor
         self.arrivalLabel.textColor = App.textColor
         self.view.backgroundColor = App.cellBackgroundColor
+        self.pathsSegmentedControl.tintColor = App.color(for: (line?.line)!)
         self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
         self.tableView.backgroundColor = App.darkMode ? .black : .white
         self.tableView.reloadData()
@@ -108,25 +126,14 @@ class LineViewController: UIViewController {
             let color = App.color(for: line.line)
             waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: App.darkMode ? color : color.contrast), for: .normal)
             waybackMachineButton.setTitleColor(App.darkMode ? color : color.contrast, for: .normal)
+            waybackMachineButton.tintColor = App.darkMode ? color : color.contrast
             waybackMachineButton.backgroundColor = App.darkMode ? .black : App.color(for: line.line)
-        } else {
-            self.buttonHeightConstraint.constant = 0
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if self.view.traitCollection.verticalSizeClass == .compact && UIDevice.current.userInterfaceIdiom == .phone {
-            self.stackView.axis = .horizontal
-            self.stackView.distribution = .fillEqually
-        } else {
-            self.stackView.axis = .vertical
-            self.stackView.distribution = .fill
-        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -143,15 +150,45 @@ class LineViewController: UIViewController {
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
+    
+    @IBAction func segmentedControlChanged() {
+        self.tableView.reloadData()
+        self.departureLabel.text = App.stops.filter({ $0.appId == line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].first}).first?.name ?? ""
+        self.arrivalLabel.text = App.stops.filter({ $0.appId == line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].last}).first?.name ?? ""
+        self.names = []
+        guard let line = self.line else { return }
+        mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
+        var coordinates: [CLLocationCoordinate2D] = []
+        for appId in line.courses[self.pathsSegmentedControl.selectedSegmentIndex] {
+            if let stop = App.stops.filter({ $0.appId == appId}).first {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = stop.location.coordinate
+                coordinates.append(stop.location.coordinate)
+                annotation.title = stop.name
+                self.names.append(stop.name)
+                mapView.addAnnotation(annotation)
+            }
+        }
+        
+        let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+        mapView.add(geodesic)
+        
+        let regionRadius: CLLocationDistance = 1000
+        let centerPoint: CLLocationCoordinate2D = coordinates.first!
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
 }
 
 extension LineViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.line?.courses.count ?? 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.line?.courses[safe: section]?.count ?? 0
+        return self.line?.courses[safe: pathsSegmentedControl.selectedSegmentIndex]?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -162,29 +199,36 @@ extension LineViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
         }
 
-        cell.configure(with: self.line?.courses[safe: indexPath.section]?[safe: indexPath.row] ?? 0,
+        cell.configure(with: self.line?.courses[safe: pathsSegmentedControl.selectedSegmentIndex]?[safe: indexPath.row] ?? 0,
                        color: App.color(for: line?.line ?? ""),
                        first: indexPath.row == 0,
-                       last: (indexPath.row + 1) == self.line?.courses[safe: indexPath.section]?.count)
+                       last: (indexPath.row + 1) == self.line?.courses[safe: pathsSegmentedControl.selectedSegmentIndex]?.count)
 
         return cell
     }
+}
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-        let departureId = line?.courses[safe: section]?[safe: 0] ?? 0
-        let departure = App.stops.filter({ $0.appId == departureId })[safe: 0]
-        let arrivalId = line?.courses[safe: section]?[safe: (line?.courses[safe: section]?.count ?? 1) - 1]
-        let arrival = App.stops.filter({ $0.appId == arrivalId })[safe: 0]
-        headerCell?.textLabel?.text = "\(departure?.name ?? "") - \(arrival?.name ?? "")"
-        headerCell?.backgroundColor = App.darkMode ? .black : App.color(for: line?.line ?? "")
-        headerCell?.textLabel?.textColor = App.darkMode ? App.color(for: line?.line ?? "") : headerCell?.backgroundColor?.contrast
-
-        return headerCell
+extension LineViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = App.color(for: line?.line ?? "")
+            polylineRenderer.lineWidth = 5
+            return polylineRenderer
+        }
+        
+        return MKOverlayRenderer()
     }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let titleSelected = view.annotation?.title! ?? ""
+        if let index = self.names.index(of: titleSelected) {
+            self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        //titleSelected = ""
     }
 }
 
