@@ -163,6 +163,7 @@ class RouteResultsTableViewController: UITableViewController {
             "connections/sections/arrival/arrivalTimestamp"
         ]
         parameters["limit"] = 6
+        parameters["via"] = (route.via ?? []).map({ $0.sbbId })
 
         Alamofire.request("https://transport.opendata.ch/v1/connections", method: .get, parameters: parameters).responseData { (response) in
             if let data = response.result.value {

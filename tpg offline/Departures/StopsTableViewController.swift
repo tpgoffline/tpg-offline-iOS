@@ -46,7 +46,6 @@ class StopsTableViewController: UIViewController, UITableViewDelegate, UITableVi
                     self.stopsSearched = [stopCode]
                 } else {
                     self.stopsSearched =  App.stops.filter({ $0.name.escaped.contains(self.searchText.escaped) })
-
                 }
             }
             DispatchQueue.main.async(execute: self.searchRequest!)
@@ -410,7 +409,8 @@ extension StopsTableViewController {
         if self.searchText.escaped != "" {
             switch self.searchMode {
             case .stops:
-                stop = stopsSearched[indexPath.row]
+                guard let stopA = stopsSearched[safe: indexPath.row] else { return UITableViewCell() }
+                stop = stopA
                 cell.isFavorite = false
                 cell.isNearestStops = false
             case .addresses:

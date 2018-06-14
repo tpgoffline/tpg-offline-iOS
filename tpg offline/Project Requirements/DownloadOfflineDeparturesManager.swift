@@ -15,21 +15,44 @@ class DownloadOfflineDeparturesManager: NSObject {
         super.init()
     }
     
+    let reachability = Reachability()!
+    
     func checkUpdate(viewController: UIViewController) {
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
             if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
-                if App.automaticDeparturesDownload && Reachability()!.connection == .wifi {
+                if App.automaticDeparturesDownload && self.reachability.connection == .wifi {
                     DownloadOfflineDeparturesManager.shared.download()
                 }
                 else if UserDefaults.standard.bool(forKey: "remindUpdate") == false {
                     UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
                     UserDefaults.standard.set(true, forKey: "remindUpdate")
-                    let alertController = UIAlertController(title: "New offline departures available".localized, message: "You can download them in Settings".localized, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "New offline departures available".localized, message: App.automaticDeparturesDownload ? "You can download them in Settings or you can activate Wi-Fi to automatically download them." : "You can download them in Settings".localized, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
                     viewController.present(alertController, animated: true, completion: nil)
+                    if App.automaticDeparturesDownload {
+                        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(note:)), name: .reachabilityChanged, object: self.reachability)
+                        do {
+                            try self.reachability.startNotifier()
+                        } catch {
+                            print("could not start reachability notifier")
+                        }
+                    }
                 }
             }
         }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
+            if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
+                if App.automaticDeparturesDownload && reachability.connection == .wifi {
+                    DownloadOfflineDeparturesManager.shared.download()
+                }
+            }
+        }
+        //reachability.stopNotifier()
+        //NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }
     
     func download() {

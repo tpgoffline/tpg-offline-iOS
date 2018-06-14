@@ -8,14 +8,27 @@
 
 import UIKit
 
+enum FromToVia {
+    case from
+    case to
+    case via(Int)
+}
+
 class StopsForRouteTableViewController: StopsTableViewController {
 
-    var isFrom = true
+    var fromToVia: FromToVia = .from
 
     override func viewDidLoad() {
         self.askForRating = false
         super.viewDidLoad()
-        title = isFrom ? "From...".localized : "To...".localized
+        switch fromToVia {
+        case .from:
+            title = "From...".localized
+        case .to:
+            title = "To...".localized
+        case .via(_):
+            title = "Via...".localized
+        }
         self.searchController.searchBar.placeholder = "Are you looking for a stop ?".localized
     }
 
@@ -27,10 +40,28 @@ class StopsForRouteTableViewController: StopsTableViewController {
         self.searchController.searchBar.resignFirstResponder()
         let stop = (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop
         App.log("Selected \(stop?.code ?? "#!?") stop")
-        if isFrom {
+        switch fromToVia {
+        case .from:
+            title = "From...".localized
+        case .to:
+            title = "To...".localized
+        case .via:
+            title = "Via...".localized
+        }
+        switch fromToVia {
+        case .from:
             viewController.route.from = stop
-        } else {
+        case .to:
             viewController.route.to = stop
+        case .via(let index):
+            guard let stop = stop else { return }
+            if viewController.route.via == nil {
+                viewController.route.via = [stop]
+            } else if viewController.route.via![safe: index] != nil {
+                viewController.route.via![index] = stop
+            } else {
+                viewController.route.via!.append(stop)
+            }
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -39,14 +70,4 @@ class StopsForRouteTableViewController: StopsTableViewController {
                                     viewControllerForLocation location: CGPoint) -> UIViewController? {
         return nil
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -40,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         #if DEBUG
             print("WARNING: Debug mode, Crashlytics deactivated, Dotzu activated")
         #else
@@ -103,6 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             App.favoritesStops = [App.stops.filter({ $0.code == "CVIN"})[0].appId]
             App.favoritesRoutes = [Route(from: App.stops.filter({ $0.code == "31DC"})[0],
                                          to: App.stops.filter({ $0.code == "CVIN"})[0],
+                                         via: [],
                                          date: Date(), arrivalTime: false)]
             return true
         }

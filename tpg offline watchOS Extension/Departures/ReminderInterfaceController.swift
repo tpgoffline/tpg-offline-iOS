@@ -139,7 +139,6 @@ class ReminderInterfaceController: WKInterfaceController, WKCrownDelegate {
             content.body = String(format: "Take the line %@ to %@".localized,
                                   "\(departure.line.code)", "\(departure.line.destination)")
             content.sound = UNNotificationSound.default()
-            content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
             let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) {(error) in
                 if let error = error {

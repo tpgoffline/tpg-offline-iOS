@@ -408,7 +408,6 @@ class DetailDeparturesViewController: UIViewController {
                 content.body = String(format: "Take the line %@ to %@ at %@".localized,
                                       "\(departure?.line.code ?? "#?!".localized)", "\(departure?.line.destination ?? "#?!".localized)", fromName)
                 content.sound = UNNotificationSound.default()
-                content.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
                 let request = UNNotificationRequest(identifier: "departureNotification-\(String.random(30))", content: content, trigger: trigger)
                 UNUserNotificationCenter.current().add(request) {(error) in
                     if let error = error {

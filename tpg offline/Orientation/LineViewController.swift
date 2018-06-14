@@ -85,6 +85,8 @@ class LineViewController: UIViewController {
             waybackMachineButton.backgroundColor = App.darkMode ? .black : App.color(for: line.line)
             waybackMachineButton.cornerRadius = waybackMachineButton.bounds.height / 2
             waybackMachineButton.clipsToBounds = true
+        } else {
+            waybackMachineButton.isHidden = true
         }
         
         self.pathsSegmentedControl.tintColor = App.color(for: line.line)
