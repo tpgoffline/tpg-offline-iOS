@@ -108,9 +108,9 @@ class PendingNotificationsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
             if requestStatus == any(of: .error, .loading) { return 1 }
-            return smartNotifications.count == 0 ? 1 : smartNotifications.count
+            return smartNotifications.count
         }
-        return pendingNotifications.count == 0 ? 1 : pendingNotifications.count
+        return pendingNotifications.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,15 +123,6 @@ class PendingNotificationsTableViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.numberOfLines = 0
         if indexPath.section == 1 {
-            if smartNotifications.count == 0 {
-                if pendingNotifications.count == 0 {
-                    cell.textLabel?.attributedText = NSAttributedString(string: "As well as this part".localized, attributes: titleAttributes)
-                    cell.detailTextLabel?.text = ""
-                } else {
-                    cell.textLabel?.attributedText = NSAttributedString(string: "This part is empty. That's mean you have to add a Smart Reminder to see something here.".localized, attributes: titleAttributes)
-                    cell.detailTextLabel?.text = ""
-                }
-            } else {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
@@ -148,15 +139,9 @@ class PendingNotificationsTableViewController: UITableViewController {
             default:
                 print("I may repeat myself, but how did you ended here?")
             }
-            }
         } else {
-            if pendingNotifications.count == 0 {
-                cell.textLabel?.attributedText = NSAttributedString(string: "We have to say the truth. Sometimes, this part of the table is empty".localized, attributes: titleAttributes)
-                cell.detailTextLabel?.text = ""
-            } else {
             cell.textLabel?.attributedText = NSAttributedString(string: pendingNotifications[indexPath.row][0], attributes: titleAttributes)
             cell.detailTextLabel?.attributedText = NSAttributedString(string: pendingNotifications[indexPath.row][1], attributes: subtitleAttributes)
-            }
         }
         cell.backgroundColor = App.cellBackgroundColor
         let view = UIView()
