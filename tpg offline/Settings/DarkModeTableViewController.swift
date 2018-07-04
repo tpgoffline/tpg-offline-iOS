@@ -14,16 +14,16 @@ class DarkModeTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = "Dark mode".localized
-        
+
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.navigationController?.navigationBar.barStyle = .black
             self.tableView.separatorColor = App.separatorColor
         }
-        
+
         ColorModeManager.shared.addColorModeDelegate(self)
     }
-    
+
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
@@ -48,7 +48,7 @@ class DarkModeTableViewController: UITableViewController {
 
         let statusSwitch = UISwitch(frame: CGRect.zero) as UISwitch
         cell.backgroundColor = App.cellBackgroundColor
-        
+
         if indexPath.section == 0 {
             cell.textLabel?.text = "Automatic".localized
             cell.textLabel?.textColor = App.textColor
@@ -63,9 +63,9 @@ class DarkModeTableViewController: UITableViewController {
             statusSwitch.isOn = App.darkMode
             statusSwitch.addTarget(self, action: #selector(self.changeManual), for: .valueChanged)
         }
-        
+
         cell.accessoryView = statusSwitch
-        
+
         if App.darkMode {
             let selectedView = UIView()
             selectedView.backgroundColor = .black
@@ -75,10 +75,10 @@ class DarkModeTableViewController: UITableViewController {
             selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
             cell.selectedBackgroundView = selectedView
         }
-        
+
         return cell
     }
-    
+
     @objc func changeAutomatic() {
         App.automaticDarkMode = !App.automaticDarkMode
         if App.automaticDarkMode && App.sunriseSunsetManager?.isDaytime ?? false && App.darkMode == true {
@@ -88,7 +88,7 @@ class DarkModeTableViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
-    
+
     @objc func changeManual() {
         App.darkMode = !App.darkMode
         if App.darkMode {
@@ -96,7 +96,7 @@ class DarkModeTableViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             changeAutomatic()

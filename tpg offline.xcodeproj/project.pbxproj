@@ -121,7 +121,6 @@
 		ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976D1F657CC0004AA662 /* RouteResults.swift */; };
 		ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */; };
 		ADF9C66D1F9B99E000AE17A4 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */; };
-		ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */; };
 		ADF9C6771F9BB3C800AE17A4 /* Disruptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */; };
 		ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */; };
 		ADF9C6811F9BB4A500AE17A4 /* Orientation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6831F9BB4A500AE17A4 /* Orientation.storyboard */; };
@@ -303,7 +302,6 @@
 		ADF0976D1F657CC0004AA662 /* RouteResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResults.swift; sourceTree = "<group>"; };
 		ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewController.swift; sourceTree = "<group>"; };
 		ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
-		ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		ADF9C6721F9BB26400AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Departures.strings; sourceTree = "<group>"; };
 		ADF9C6731F9BB26400AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		ADF9C6741F9BB26500AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 		AD324D271F4427AF0039B309 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				ADF9C66E1F9B99EC00AE17A4 /* Credit.swift */,
 				ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */,
 				AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */,
 				ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */,
@@ -975,7 +972,6 @@
 				AD1E48471FADF70800596076 /* App.swift in Sources */,
 				AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */,
 				AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */,
-				ADF9C66F1F9B99EC00AE17A4 /* Credit.swift in Sources */,
 				ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */,
 				AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */,
 			);

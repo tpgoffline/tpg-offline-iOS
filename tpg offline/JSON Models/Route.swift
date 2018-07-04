@@ -14,8 +14,26 @@ struct Route: Codable, Equatable {
     var via: [Stop]? = []
     var date: Date = Date()
     var arrivalTime: Bool = false
-    var validRoute: Bool {
-        return from != nil && to != nil
+    var validRoute: RouteValidation {
+        if from == nil && to == nil {
+            return .departureAndArrivalMissing
+        } else if from == nil {
+            return .departureMissing
+        } else if to == nil {
+            return .arrivalMissing
+        } else if from! == to! && (via?.isEmpty ?? true) {
+            return .sameDepartureAndArrival
+        } else {
+            return .valid
+        }
+    }
+
+    enum RouteValidation {
+        case valid
+        case sameDepartureAndArrival
+        case departureAndArrivalMissing
+        case departureMissing
+        case arrivalMissing
     }
 
     static func == (lhs: Route, rhs: Route) -> Bool {

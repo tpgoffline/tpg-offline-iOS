@@ -158,3 +158,9 @@ class CreditsTableViewController: UITableViewController, SFSafariViewControllerD
     }
 
 }
+
+struct Credit {
+    var title: String = ""
+    var subTitle: String = ""
+    var action: ((Credit) -> Void)!
+}

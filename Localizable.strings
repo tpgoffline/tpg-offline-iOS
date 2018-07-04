@@ -22,7 +22,6 @@
 "Are you looking for a stop ?" = "Are you looking for a stop ?"; 
 "Are you sure you set the departure stop and the arrival stop?" = "Are you sure you set the departure stop and the arrival stop?"; 
 "Arrival at" = "Arrival at"; 
-"As well as this part" = "As well as this part"; 
 "At %@ - In %@ minutes\nWhen do you want to be reminded?" = "At %@ - In %@ minutes\nWhen do you want to be reminded?"; 
 "At departure time" = "At departure time"; 
 "At the core of the project" = "At the core of the project"; 
@@ -31,6 +30,7 @@
 "Bus is comming" = "Bus is comming"; 
 "Cancel" = "Cancel"; 
 "Confirmation" = "Confirmation"; 
+"Connect to tpg-freeWiFi" = "Connect to tpg-freeWiFi"; 
 "Connections map" = "Connections map"; 
 "Could not load Smart Reminders" = "Could not load Smart Reminders"; 
 "Crash Reporting" = "Crash Reporting"; 
@@ -43,6 +43,7 @@
 "Deactivating Smart Reminders does not remove existing Smart Reminders. Use the Pending notifications section to remove them." = "Deactivating Smart Reminders does not remove existing Smart Reminders. Use the Pending notifications section to remove them."; 
 "Default tab" = "Default tab"; 
 "Default tab on startup" = "Default tab on startup"; 
+"Delete" = "Delete"; 
 "Departure at" = "Departure at"; 
 "Departures" = "Departures"; 
 "Departures for the line %@" = "Departures for the line %@"; 
@@ -108,6 +109,7 @@
 "No disruptions" = "No disruptions"; 
 "No lines monitored" = "No lines monitored"; 
 "No more bus will come to this stop today." = "No more bus will come to this stop today."; 
+"No offline departures installed" = "No offline departures installed"; 
 "No results" = "No results"; 
 "Noctambus regional map" = "Noctambus regional map"; 
 "Noctambus urban map" = "Noctambus urban map"; 
@@ -119,11 +121,13 @@
 "OK" = "OK"; 
 "OK, deactivate Smart Reminders" = "OK, deactivate Smart Reminders"; 
 "Offline departures" = "Offline departures"; 
+"Offline departures version: %@" = "Offline departures version: %@"; 
 "Offline departures will be downloaded with a Wi-Fi connection" = "Offline departures will be downloaded with a Wi-Fi connection"; 
 "Offline mode" = "Offline mode"; 
 "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm"; 
 "Open data of Geneva public transport" = "Open data of Geneva public transport"; 
 "Open data of Transport API" = "Open data of Transport API"; 
+"Optional" = "Optional"; 
 "Orientation" = "Orientation"; 
 "Other" = "Other"; 
 "Path %@" = "Path %@"; 
@@ -179,7 +183,6 @@
 "The bus is comming now!" = "The bus is comming now!"; 
 "The monitoring section was redesigned to make easier to manage disruptions monitoring" = "The monitoring section was redesigned to make easier to manage disruptions monitoring"; 
 "The project" = "The project"; 
-"This part is empty. That's mean you have to add a Smart Reminder to see something here." = "This part is empty. That's mean you have to add a Smart Reminder to see something here."; 
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n"; 
 "Thursday" = "Thursday"; 
 "To" = "To"; 
@@ -192,12 +195,15 @@
 "Unmark this stop as favorite" = "Unmark this stop as favorite"; 
 "Update departures" = "Update departures"; 
 "Urban map" = "Urban map"; 
+"Via" = "Via"; 
+"Via %@" = "Via %@"; 
+"Via..." = "Via..."; 
+"Via: %@" = "Via: %@"; 
 "Wait a minute..." = "Wait a minute..."; 
 "Walk" = "Walk"; 
 "Walk %@m" = "Walk %@m"; 
 "Warning!" = "Warning!"; 
 "We already sheduled a reminder with these parameters." = "We already sheduled a reminder with these parameters."; 
-"We have to say the truth. Sometimes, this part of the table is empty" = "We have to say the truth. Sometimes, this part of the table is empty"; 
 "We improved the stability and we made some cosmetic improvements." = "We improved the stability and we made some cosmetic improvements."; 
 "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed." = "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed."; 
 "Wednesday" = "Wednesday"; 

@@ -14,16 +14,15 @@ class DownloadOfflineDeparturesManager: NSObject {
     fileprivate override init() {
         super.init()
     }
-    
+
     let reachability = Reachability()!
-    
+
     func checkUpdate(viewController: UIViewController) {
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
             if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
                 if App.automaticDeparturesDownload && self.reachability.connection == .wifi {
                     DownloadOfflineDeparturesManager.shared.download()
-                }
-                else if UserDefaults.standard.bool(forKey: "remindUpdate") == false {
+                } else if UserDefaults.standard.bool(forKey: "remindUpdate") == false {
                     UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
                     UserDefaults.standard.set(true, forKey: "remindUpdate")
                     let alertController = UIAlertController(title: "New offline departures available".localized, message: App.automaticDeparturesDownload ? "You can download them in Settings or you can activate Wi-Fi to automatically download them." : "You can download them in Settings".localized, preferredStyle: .alert)
@@ -41,9 +40,9 @@ class DownloadOfflineDeparturesManager: NSObject {
             }
         }
     }
-    
+
     @objc func reachabilityChanged(note: Notification) {
-        let reachability = note.object as! Reachability
+        guard let reachability = note.object as? Reachability else { return }
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
             if let updatedMD5 = response.result.value, updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
                 if App.automaticDeparturesDownload && reachability.connection == .wifi {
@@ -54,7 +53,7 @@ class DownloadOfflineDeparturesManager: NSObject {
         //reachability.stopNotifier()
         //NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }
-    
+
     func download() {
         DownloadOfflineDeparturesManager.shared.status = .downloading
         Alamofire.request("https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/departures.json.md5").responseString { (response) in
@@ -63,7 +62,7 @@ class DownloadOfflineDeparturesManager: NSObject {
                     if let data = response.result.value as? [String: String] {
                         DownloadOfflineDeparturesManager.shared.status = .processing
                         var index: UInt = 0
-                        
+
                         let source = DispatchSource.makeUserDataAddSource(queue: .main)
                         source.setEventHandler {
                             index += source.data
@@ -94,27 +93,27 @@ class DownloadOfflineDeparturesManager: NSObject {
             }
         }
     }
-    
+
     enum OfflineDeparturesStatus {
         case notDownloading
         case downloading
         case processing
         case error
     }
-    
+
     static let shared = DownloadOfflineDeparturesManager()
     var status: OfflineDeparturesStatus = .notDownloading {
         didSet {
             DownloadOfflineDeparturesManager.shared.updateDownloadStatus()
         }
     }
-    
+
     private var downloadOfflineDeparturesDelegates = [DownloadOfflineDeparturesDelegate]()
-    
+
     func addDownloadOfflineDeparturesDelegate<T>(_ delegate: T) where T: DownloadOfflineDeparturesDelegate, T: Equatable {
         downloadOfflineDeparturesDelegates.append(delegate)
     }
-    
+
     func removeDownloadOfflineDeparturesDelegate<T>(_ delegate: T) where T: DownloadOfflineDeparturesDelegate, T: Equatable {
         for (index, downloadOfflineDeparturesDelegate) in downloadOfflineDeparturesDelegates.enumerated() {
             if let downloadOfflineDeparturesDelegate = downloadOfflineDeparturesDelegate as? T, downloadOfflineDeparturesDelegate == delegate {
@@ -123,7 +122,7 @@ class DownloadOfflineDeparturesManager: NSObject {
             }
         }
     }
-    
+
     func updateDownloadStatus() {
         DispatchQueue.main.async {
             self.downloadOfflineDeparturesDelegates.forEach { $0.updateDownloadStatus() }

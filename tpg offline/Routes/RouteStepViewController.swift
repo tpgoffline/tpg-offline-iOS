@@ -178,7 +178,7 @@ class RouteStepViewController: UIViewController {
 
         let destinationName = App.stops.filter({$0.nameTransportAPI == section.journey?.to})[safe: 0]?.name
             ?? (section.journey?.to ?? "#?!")
-        
+
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
                 if !accepted {
@@ -190,7 +190,7 @@ class RouteStepViewController: UIViewController {
             let setting = UIUserNotificationSettings(types: type, categories: nil)
             UIApplication.shared.registerUserNotificationSettings(setting)
         }
-        
+
         UIApplication.shared.registerForRemoteNotifications()
 
         if #available(iOS 10.0, *) {

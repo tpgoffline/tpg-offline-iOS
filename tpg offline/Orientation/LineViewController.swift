@@ -22,6 +22,8 @@ class LineViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pathsSegmentedControl: UISegmentedControl!
 
+    @IBOutlet weak var waybackMachineHeightConstraint: NSLayoutConstraint!
+
     var line: Line?
     var names: [String] = []
 
@@ -58,10 +60,10 @@ class LineViewController: UIViewController {
                 mapView.addAnnotation(annotation)
             }
         }
-        
+
         let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
         mapView.add(geodesic)
-        
+
         let regionRadius: CLLocationDistance = 1000
         let centerPoint: CLLocationCoordinate2D = coordinates.first!
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
@@ -87,8 +89,9 @@ class LineViewController: UIViewController {
             waybackMachineButton.clipsToBounds = true
         } else {
             waybackMachineButton.isHidden = true
+            waybackMachineHeightConstraint.priority = UILayoutPriority(997)
         }
-        
+
         self.pathsSegmentedControl.tintColor = App.color(for: line.line)
 
         if App.darkMode {
@@ -132,7 +135,7 @@ class LineViewController: UIViewController {
             waybackMachineButton.backgroundColor = App.darkMode ? .black : App.color(for: line.line)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -152,7 +155,7 @@ class LineViewController: UIViewController {
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
-    
+
     @IBAction func segmentedControlChanged() {
         self.tableView.reloadData()
         self.departureLabel.text = App.stops.filter({ $0.appId == line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].first}).first?.name ?? ""
@@ -172,10 +175,10 @@ class LineViewController: UIViewController {
                 mapView.addAnnotation(annotation)
             }
         }
-        
+
         let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
         mapView.add(geodesic)
-        
+
         let regionRadius: CLLocationDistance = 1000
         let centerPoint: CLLocationCoordinate2D = coordinates.first!
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
@@ -218,17 +221,17 @@ extension LineViewController: MKMapViewDelegate {
             polylineRenderer.lineWidth = 5
             return polylineRenderer
         }
-        
+
         return MKOverlayRenderer()
     }
-    
+
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let titleSelected = view.annotation?.title! ?? ""
         if let index = self.names.index(of: titleSelected) {
             self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
         }
     }
-    
+
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         //titleSelected = ""
     }

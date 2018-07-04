@@ -425,7 +425,8 @@ extension StopsTableViewController {
             let key = App.stopsKeys[indexPath.section]
             switch key {
             case "location":
-                stop = localizedStops[indexPath.row]
+                guard let stopA = localizedStops[safe: indexPath.row] else { return UITableViewCell() }
+                stop = stopA
                 cell.isFavorite = false
                 cell.isNearestStops = true
             case "favorites":

@@ -7,95 +7,96 @@
 //
 
 import UIKit
+import Crashlytics
 
 protocol RouteSelectionDelegate: class {
     func routeSelected(_ newRoute: Route)
 }
 
 class RoutesTableViewController: UITableViewController {
-    
+
     public var route = Route() {
         didSet {
             self.tableView.reloadData()
         }
     }
-    
+
     weak var delegate: RouteSelectionDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
-        
+
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
-        
+
         navigationItem.rightBarButtonItems = [
             self.editButtonItem,
             UIBarButtonItem(image: #imageLiteral(resourceName: "reverse"), style: .plain, target: self, action: #selector(self.reverseStops))
         ]
-        
+
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
         }
-        
+
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
-        
+
         if App.darkMode {
             self.navigationController?.navigationBar.barStyle = .black
             self.tableView.backgroundColor = .black
             self.tableView.separatorColor = App.separatorColor
         }
-        
+
         ColorModeManager.shared.addColorModeDelegate(self)
-        
+
         guard let rightNavController = self.splitViewController?.viewControllers.last as? UINavigationController,
             let detailViewController = rightNavController.topViewController as? RouteResultsTableViewController else { return }
         self.delegate = detailViewController
     }
-    
+
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
     }
-    
+
     @objc func reverseStops() {
         let from = self.route.from
         let to = self.route.to
         self.route.from = to
         self.route.to = from
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: - Table view data source
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
             return App.favoritesRoutes.count
         }
         return 5 + ((self.route.via?.count ?? 0) >= 5 ? 4 : (self.route.via?.count ?? 0))
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 4 + (self.route.via?.count ?? 0) - ((self.route.via?.count ?? 0) >= 5 ? 1 : 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell", for: indexPath)
                 cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-                
+
                 let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)]
                 cell.textLabel?.numberOfLines = 0
                 cell.textLabel?.textColor = App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white
@@ -103,11 +104,11 @@ class RoutesTableViewController: UITableViewController {
                 cell.textLabel?.attributedText = NSAttributedString(string: "Search".localized, attributes: titleAttributes)
                 cell.detailTextLabel?.text = ""
                 cell.accessoryType = .disclosureIndicator
-                
+
                 let selectedView = UIView()
                 selectedView.backgroundColor = cell.backgroundColor?.darken(by: 0.1)
                 cell.selectedBackgroundView = selectedView
-                
+
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell", for: indexPath)
@@ -119,7 +120,7 @@ class RoutesTableViewController: UITableViewController {
                 cell.detailTextLabel?.textColor = App.textColor
                 cell.backgroundColor = App.cellBackgroundColor
                 cell.accessoryType = .disclosureIndicator
-                
+
                 if App.darkMode {
                     let selectedView = UIView()
                     selectedView.backgroundColor = .black
@@ -129,7 +130,7 @@ class RoutesTableViewController: UITableViewController {
                     selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
                     cell.selectedBackgroundView = selectedView
                 }
-                
+
                 switch indexPath.row {
                 case 0:
                     cell.imageView?.image = #imageLiteral(resourceName: "from").maskWith(color: App.textColor)
@@ -156,7 +157,7 @@ class RoutesTableViewController: UITableViewController {
                     } else {
                         cell.textLabel?.attributedText = NSAttributedString(string: String(format: "Via %@".localized, "\(viaNumber + 1)"), attributes: titleAttributes)
                     }
-                    
+
                     if let stop = self.route.via?[safe: viaNumber] {
                         cell.detailTextLabel?.attributedText = NSAttributedString(string: stop.name, attributes: subtitleAttributes)
                     } else {
@@ -179,9 +180,13 @@ class RoutesTableViewController: UITableViewController {
             return cell
         }
     }
-    
+
     @objc func search() {
-        if route.validRoute {
+        if route.to == nil, let stop = route.via?.last {
+            route.to = stop
+            route.via?.removeLast()
+        }
+        if route.validRoute == .valid {
             self.delegate?.routeSelected(self.route)
             if let detailViewController = delegate as? RouteResultsTableViewController,
                 let detailNavigationController = detailViewController.navigationController {
@@ -189,12 +194,25 @@ class RoutesTableViewController: UITableViewController {
                 detailNavigationController.popToRootViewController(animated: false)
             }
         } else {
-            let alertView = UIAlertController(title: "Invalid route".localized, message: "Are you sure you set the departure stop and the arrival stop?".localized, preferredStyle: .alert)
+            let message: String
+            switch route.validRoute {
+            case .departureAndArrivalMissing:
+                message = "Departure and arrival stops are missing".localized
+            case .departureMissing:
+                message = "Departure stop is missing"
+            case .arrivalMissing:
+                message = "Arrival stop is missing"
+            case .sameDepartureAndArrival:
+                message = "The departure and the arrival stops are the same.".localized
+            default:
+                message = "I dont know... The error message is missing.".localized
+            }
+            let alertView = UIAlertController(title: "Invalid route".localized, message: message, preferredStyle: .alert)
             alertView.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertView, animated: true, completion: nil)
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showStopsForRoute" {
             guard let indexPath = sender as? IndexPath else { return }
@@ -211,7 +229,7 @@ class RoutesTableViewController: UITableViewController {
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             self.route = App.favoritesRoutes[indexPath.row]
@@ -251,7 +269,7 @@ class RoutesTableViewController: UITableViewController {
             performSegue(withIdentifier: "showStopsForRoute", sender: indexPath)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section == 1 {
             return true
@@ -272,7 +290,7 @@ class RoutesTableViewController: UITableViewController {
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.section == 0 && indexPath.row == 3 + (self.route.via?.count ?? 0) - ((self.route.via?.count ?? 0) >= 5 ? 1 : 0) {
             let setToNowAction = UITableViewRowAction(style: .normal, title: "Now".localized) { (_, _) in
@@ -310,11 +328,11 @@ class RoutesTableViewController: UITableViewController {
             })]
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         App.favoritesRoutes.rearrange(from: fromIndexPath.row, to: to.row)
     }
-    
+
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == 1
     }

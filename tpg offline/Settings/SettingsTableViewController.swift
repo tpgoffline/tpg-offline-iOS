@@ -15,29 +15,29 @@ import NetworkExtension
 #endif
 
 class SettingsTableViewController: UITableViewController {
-    
+
     var settings: [[Setting]] = []
     var titles = [
         "Notifications".localized,
         "Application".localized,
         "The project".localized
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
         }
-        
+
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
             version != UserDefaults.standard.string(forKey: "lastVersion") && UserDefaults.standard.string(forKey: "lastVersion") != nil {
             self.performSegue(withIdentifier: "showNewFeatures", sender: self)
         }
-        
+
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: App.textColor]
-        
+
         // Notifications
         self.settings.append([
             Setting("Pending notifications".localized, icon: #imageLiteral(resourceName: "cel-bell"), action: { (_) in
@@ -47,7 +47,7 @@ class SettingsTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "showSmartReminders", sender: self)
             })
             ])
-        
+
         // Application
         self.settings.append([
             Setting("Default tab on startup".localized, icon: #imageLiteral(resourceName: "menuRounded"), action: { (_) in
@@ -67,7 +67,7 @@ class SettingsTableViewController: UITableViewController {
                 UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
             })
             ])
-        
+
         #if !arch(i386) && !arch(x86_64)
         self.settings[1].append(Setting("Connect to tpg-freeWiFi".localized, icon: #imageLiteral(resourceName: "wifi"), action: { (_) in
             if #available(iOS 11.0, *) {
@@ -81,18 +81,18 @@ class SettingsTableViewController: UITableViewController {
             }
         }))
         #endif
-        
+
         // The project
         self.settings.append([
             Setting("Give your feedback !".localized, icon: #imageLiteral(resourceName: "megaphone"), action: { ( _ ) in
                 App.log("Settings: Give feedback")
                 let mailComposerVC = MFMailComposeViewController()
                 mailComposerVC.mailComposeDelegate = self
-                
+
                 mailComposerVC.setToRecipients(["helloworld@asmartcode.com"])
                 mailComposerVC.setSubject("tpg offline".localized)
                 mailComposerVC.setMessageBody("", isHTML: false)
-                
+
                 if MFMailComposeViewController.canSendMail() {
                     self.present(mailComposerVC, animated: true, completion: nil)
                 }
@@ -109,36 +109,36 @@ class SettingsTableViewController: UITableViewController {
                     vc.preferredBarTintColor = .black
                 }
                 vc.delegate = self
-                
+
                 self.present(vc, animated: true)
             })
             ])
-        
+
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.navigationController?.navigationBar.barStyle = .black
             self.tableView.separatorColor = App.separatorColor
         }
-        
+
         ColorModeManager.shared.addColorModeDelegate(self)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.settings.count
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.settings[section].count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath)
         let setting = self.settings[indexPath.section][indexPath.row]
-        
+
         cell.textLabel?.text = setting.title
         cell.textLabel?.textColor = App.textColor
         cell.detailTextLabel?.text = ""
@@ -146,7 +146,7 @@ class SettingsTableViewController: UITableViewController {
         cell.backgroundColor = App.cellBackgroundColor
         cell.accessoryType = .disclosureIndicator
         cell.imageView?.image = setting.icon.maskWith(color: App.textColor)
-        
+
         if App.darkMode {
             let selectedView = UIView()
             selectedView.backgroundColor = .black
@@ -156,25 +156,25 @@ class SettingsTableViewController: UITableViewController {
             selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
             cell.selectedBackgroundView = selectedView
         }
-        
+
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         let setting = self.settings[indexPath.section][indexPath.row]
         setting.action(setting)
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return titles[section]
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return nil }
         return (section + 1) == tableView.numberOfSections ? String(format: "tpg offline, version %@".localized, version) : nil
     }
-    
+
     deinit {
         ColorModeManager.shared.removeColorModeDelegate(self)
     }

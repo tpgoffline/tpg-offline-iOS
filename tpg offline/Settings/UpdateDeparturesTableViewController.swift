@@ -15,7 +15,7 @@ class UpdateDeparturesTableViewController: UITableViewController, DownloadOfflin
         title = "Offline departures".localized
         DownloadOfflineDeparturesManager.shared.addDownloadOfflineDeparturesDelegate(self)
         ColorModeManager.shared.addColorModeDelegate(self)
-        
+
         if App.darkMode {
             self.tableView.backgroundColor = .black
             self.navigationController?.navigationBar.barStyle = .black
@@ -34,7 +34,7 @@ class UpdateDeparturesTableViewController: UITableViewController, DownloadOfflin
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.section == 0) {
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "updateDeparturesCell", for: indexPath)
             let statusSwitch = UISwitch(frame: CGRect.zero) as UISwitch
             cell.backgroundColor = App.cellBackgroundColor
@@ -74,9 +74,9 @@ class UpdateDeparturesTableViewController: UITableViewController, DownloadOfflin
             cell.detailTextLabel?.text = ""
             cell.backgroundColor = App.cellBackgroundColor
             return cell
-        }        
+        }
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 1 {
             if DownloadOfflineDeparturesManager.shared.status == .error {
@@ -89,18 +89,18 @@ class UpdateDeparturesTableViewController: UITableViewController, DownloadOfflin
             return ""
         }
     }
-    
+
     @objc func changeAutomatic() {
         App.automaticDeparturesDownload = !App.automaticDeparturesDownload
         self.tableView.reloadData()
     }
-    
+
     func updateDownloadStatus() {
         if DownloadOfflineDeparturesManager.shared.status == .notDownloading {
             self.tableView.reloadData()
         }
     }
-    
+
     deinit {
         DownloadOfflineDeparturesManager.shared.removeDownloadOfflineDeparturesDelegate(self)
         ColorModeManager.shared.removeColorModeDelegate(self)
@@ -111,19 +111,19 @@ class UpdateDeparturesButton: UITableViewCell, DownloadOfflineDeparturesDelegate
     func updateDownloadStatus() {
         self.state = DownloadOfflineDeparturesManager.shared.status
     }
-    
+
     @IBOutlet weak var button: UIButton!
-    
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         DownloadOfflineDeparturesManager.shared.addDownloadOfflineDeparturesDelegate(self)
         self.state = DownloadOfflineDeparturesManager.shared.status
     }
-    
+
     deinit {
         DownloadOfflineDeparturesManager.shared.removeDownloadOfflineDeparturesDelegate(self)
     }
-    
+
     var state: DownloadOfflineDeparturesManager.OfflineDeparturesStatus = .notDownloading {
         didSet {
             switch state {
@@ -139,8 +139,10 @@ class UpdateDeparturesButton: UITableViewCell, DownloadOfflineDeparturesDelegate
             }
         }
     }
-    
+
     @IBAction func downloadButtonPushed() {
-        DownloadOfflineDeparturesManager.shared.download()
+        if DownloadOfflineDeparturesManager.shared.status == any(of: .notDownloading, .error) {
+            DownloadOfflineDeparturesManager.shared.download()
+        }
     }
 }

@@ -95,9 +95,7 @@ extension DayPickerViewController: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "Weekdays".localized
-                if self.selectedRows.index(of: "0") != nil, self.selectedRows.index(of: "1") != nil,
-                    self.selectedRows.index(of: "2") != nil, self.selectedRows.index(of: "3") != nil,
-                    self.selectedRows.index(of: "4") != nil {
+                if ["0", "1", "2", "3", "4"].compactMap({ self.selectedRows.contains($0) }).contains(false) {
                     cell.accessoryType = .checkmark
                 } else {
                     cell.accessoryType = .none

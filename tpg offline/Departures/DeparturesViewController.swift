@@ -699,9 +699,9 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
             let setting = UIUserNotificationSettings(types: type, categories: nil)
             UIApplication.shared.registerUserNotificationSettings(setting)
         }
-        
+
         UIApplication.shared.registerForRemoteNotifications()
-        
+
         if !self.noInternet, App.smartReminders, !forceDisableSmartReminders, departure.code != -1, let stopCode = stop?.code {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"

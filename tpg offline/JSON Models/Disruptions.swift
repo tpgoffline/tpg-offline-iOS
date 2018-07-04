@@ -82,7 +82,7 @@ struct Disruption: Decodable, Equatable {
         self.init(place: place, consequence: consequence, nature: nature, line: line)
     }
 
-    static func ==(lhd: Disruption, rhd: Disruption) -> Bool {
+    static func == (lhd: Disruption, rhd: Disruption) -> Bool {
         return lhd.place == rhd.place && lhd.consequence == rhd.consequence && lhd.nature == rhd.nature && lhd.line == rhd.line
     }
 }

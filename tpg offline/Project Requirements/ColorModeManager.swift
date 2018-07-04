@@ -11,10 +11,10 @@ import Foundation
 class ColorModeManager: NSObject {
     fileprivate override init() {
         super.init()
-        
+
         _ = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(checkTime), userInfo: nil, repeats: true)
     }
-    
+
     @objc func checkTime() {
         if App.automaticDarkMode && App.sunriseSunsetManager?.isDaytime ?? false && App.darkMode == true {
             App.darkMode = false

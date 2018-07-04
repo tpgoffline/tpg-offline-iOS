@@ -347,9 +347,9 @@ class DetailDeparturesViewController: UIViewController {
             let setting = UIUserNotificationSettings(types: type, categories: nil)
             UIApplication.shared.registerUserNotificationSettings(setting)
         }
-        
+
         UIApplication.shared.registerForRemoteNotifications()
-        
+
         let newDate = date.addingTimeInterval(TimeInterval(timeBefore * -60))
         let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: newDate)
         if App.smartReminders, !forceDisableSmartReminders, let departure = self.departure, departure.code != -1 {

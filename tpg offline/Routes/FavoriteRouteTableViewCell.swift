@@ -38,7 +38,7 @@ class FavoriteRouteTableViewCell: UITableViewCell {
             for image in images {
                 image.image = image.image?.maskWith(color: App.textColor)
             }
-            
+
             if let viaArray = route.via, viaArray.count != 0 {
                 let via = viaArray.map({ $0.name })
                 viaLabel.text = String(format: "Via: %@".localized, via.joined(separator: ", "))

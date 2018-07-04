@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.layer.cornerRadius = 5
         window?.clipsToBounds = true
-        
+
         if !App.disableForceSmartReminders {
             App.smartReminders = true
         }

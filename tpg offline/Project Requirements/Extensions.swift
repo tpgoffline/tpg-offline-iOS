@@ -64,11 +64,13 @@ extension String {
             "on est": "onex",
             "nancy": "lancy",
             "cinq": "st",
-            "saint": "st",
             "argent": "archamps",
             "veuillat": "feuillat",
             "plus air": "r",
-            "plus r": "r"
+            "plus r": "r",
+            "sai": "st",
+            "sain": "st",
+            "saint": "st"
         ]
         var p = self.folding(options: NSString.CompareOptions.diacriticInsensitive, locale: Locale.current)
             .replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "+", with: "").replacingOccurrences(of: "-", with: "").lowercased()
@@ -379,6 +381,7 @@ public extension Sequence where Iterator.Element: Hashable {
         return Array( Set(self) )
     }
 }
+
 public extension Sequence where Iterator.Element: Equatable {
     var uniqueElements: [Iterator.Element] {
         return self.reduce([]) { uniqueElements, element in

@@ -26,7 +26,7 @@ class StopsForRouteTableViewController: StopsTableViewController {
             title = "From...".localized
         case .to:
             title = "To...".localized
-        case .via(_):
+        case .via:
             title = "Via...".localized
         }
         self.searchController.searchBar.placeholder = "Are you looking for a stop ?".localized

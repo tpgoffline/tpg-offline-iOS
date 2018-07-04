@@ -69,11 +69,11 @@ struct App {
             #endif
         }
     }
-    
+
     #if os(iOS)
     static var sunriseSunsetManager = Solar(coordinate: CLLocationCoordinate2D(latitude: 46.204391, longitude: 6.143158))
     #endif
-    
+
     static var apnsToken: String = "" {
         didSet {
             #if os(iOS)
@@ -93,7 +93,7 @@ struct App {
             #endif
         }
     }
-    
+
     #if os(iOS)
     static var automaticDarkMode: Bool {
         get {
@@ -116,7 +116,7 @@ struct App {
             #endif
         }
     }
-    
+
     static var disableForceSmartReminders: Bool {
         get {
             return (UserDefaults.standard.bool(forKey: #function))
@@ -125,7 +125,7 @@ struct App {
             UserDefaults.standard.set(newValue, forKey: #function)
         }
     }
-    
+
     static var automaticDeparturesDownload: Bool {
         // Here, get and set are inverted to set this value to true by default
         get {
