@@ -7,214 +7,364 @@
 //
 
 import UIKit
+import CoreLocation
+import UserNotifications
 
 class RouteResultsDetailTableViewController: UITableViewController {
 
-    var connection: RouteConnection?
-    var zones: [Int] = []
+  var connection: RouteConnection?
+  var zones: [Int] = []
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        title = "Result".localized
+    title = "Result".localized
 
-        var stopsId = connection!.sections!.map({ $0.departure.station.id })
-        stopsId += connection!.sections!.map({ $0.arrival.station.id })
-        var stops: [Stop] = []
-        for e in stopsId {
-            if let stop = App.stops.filter({ $0.sbbId == e })[safe: 0] {
-                stops.append(stop)
-            }
-        }
-        for zone in stops.map({$0.pricingZone}) {
-            zones += zone
-        }
-        zones = zones.uniqueElements
+    var stopsId = connection!.sections!.map({ $0.departure.station.id })
+    stopsId += connection!.sections!.map({ $0.arrival.station.id })
+    var stops: [Stop] = []
+    for e in stopsId {
+      if let stop = App.stops.filter({ $0.sbbId == e })[safe: 0] {
+        stops.append(stop)
+      }
+    }
+    for zone in stops.map({$0.pricingZone}) {
+      zones += zone
+    }
+    zones = zones.uniqueElements
 
-        if traitCollection.forceTouchCapability == .available {
-            registerForPreviewing(with: self, sourceView: tableView)
-        }
-
-        ColorModeManager.shared.addColorModeDelegate(self)
-
-        if App.darkMode {
-            self.tableView.backgroundColor = .black
-            self.tableView.separatorColor = App.separatorColor
-        }
+    if traitCollection.forceTouchCapability == .available {
+      registerForPreviewing(with: self, sourceView: tableView)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    ColorModeManager.shared.addColorModeDelegate(self)
+
+    if App.darkMode {
+      self.tableView.backgroundColor = .black
+      self.tableView.separatorColor = App.separatorColor
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showStep" {
-            guard let destinationViewController = segue.destination as? RouteStepViewController else {
-                return
-            }
-            guard let selectedIndexPath = tableView.indexPathForSelectedRow else {
-                return
-            }
-            guard let row = tableView.cellForRow(at: selectedIndexPath) as? RouteResultDetailsTableViewCell else {
-                return
-            }
-            destinationViewController.section = row.section
-            App.log("Routes: Selected \(selectedIndexPath.row) detail row")
-        } else if segue.identifier == "showMap" {
-            guard let destinationViewController = segue.destination as? RouteMapViewController else {
-                return
-            }
-            guard let connection = connection else {
-                return
-            }
-            destinationViewController.connection = connection
-            App.log("Routes: Show map")
-        }
+    navigationItem.rightBarButtonItem =
+      UIBarButtonItem(title: "Go!".localized,
+                      style: .plain,
+                      target: self,
+                      action: #selector(self.goMode))
+  }
+
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showStep" {
+      guard let destinationViewController = segue.destination
+        as? RouteStepViewController else { return }
+      guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+      guard let row = tableView.cellForRow(at: selectedIndexPath)
+        as? RouteResultDetailsTableViewCell else { return }
+
+      destinationViewController.section = row.section
+      App.log("Routes: Selected \(selectedIndexPath.row) detail row")
+    } else if segue.identifier == "showMap" {
+      guard let destinationViewController = segue.destination
+        as? RouteMapViewController else { return }
+      guard let connection = connection else { return }
+      destinationViewController.connection = connection
+      App.log("Routes: Show map")
     }
+  }
 
-    // MARK: - Table view data source
+  // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2 + (connection?.sections?.count ?? 0)
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 2 + (connection?.sections?.count ?? 0)
+  }
+
+  override func tableView(_ tableView: UITableView,
+                          numberOfRowsInSection section: Int) -> Int {
+    switch section {
+    case 0:
+      return zones.count > 1 ? 1 : 0
+    case (connection?.sections?.count ?? 0) + 1:
+      return 1
+    default:
+      return 1
     }
+  }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return zones.count > 1 ? 1 : 0
-        case (connection?.sections?.count ?? 0) + 1:
-            return 1
-        default:
-            return 1
-        }
-    }
+  override func tableView(_ tableView: UITableView,
+                          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if indexPath.section == 0 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: "warningCell",
+                                               for: indexPath)
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "warningCell", for: indexPath)
+      let titleAttributes =
+        [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
+         NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
+          as [NSAttributedStringKey: Any]
+      cell.textLabel?.numberOfLines = 0
+      cell.textLabel?.attributedText =
+        NSAttributedString(string: Text.regionalRoute,
+                           attributes: titleAttributes)
+      var zonesText = ""
+      zones.forEach({ zonesText.append("\($0) / ")})
+      zonesText.removeLast()
+      zonesText.removeLast()
+      let text = NSMutableAttributedString()
+      text.normal(Text.routeCrossZones)
+      text.bold(zonesText)
+      cell.detailTextLabel?.attributedText = text
+      cell.detailTextLabel?.numberOfLines = 0
+      cell.selectionStyle = .none
 
-            let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-                                   NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor] as [NSAttributedStringKey: Any]
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.attributedText = NSAttributedString(string: "Regional route".localized, attributes: titleAttributes)
-            var zonesText = ""
-            zones.forEach({ zonesText.append("\($0) / ")})
-            zonesText.removeLast()
-            zonesText.removeLast()
-            let text = NSMutableAttributedString()
-            text.normal("This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n".localized)
-            text.bold(zonesText)
-            cell.detailTextLabel?.attributedText = text
-            cell.detailTextLabel?.numberOfLines = 0
-            cell.selectionStyle = .none
+      cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1)
+      return cell
+    } else if indexPath.section == (connection?.sections?.count ?? 0) + 1 {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell",
+                                                     for: indexPath)
+        as? RouteResultsDetailMapTableViewCell, let connection = connection else {
+          return UITableViewCell()
+      }
+      cell.connection = connection
+      cell.mapView.addGestureRecognizer(
+        UITapGestureRecognizer(target: self,
+                               action: #selector(self.pushMap)))
 
-            cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1)
-            return cell
-        } else if indexPath.section == (connection?.sections?.count ?? 0) + 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath)
-                as? RouteResultsDetailMapTableViewCell, let connection = connection else {
-                    return UITableViewCell()
-            }
-            cell.connection = connection
-            cell.mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.pushMap)))
-
-            return cell
+      return cell
+    } else {
+      if connection?.sections?[safe: indexPath.section - 1]?.walk != nil {
+        let cell =
+          tableView.dequeueReusableCell(withIdentifier: "walkConnectionCell",
+                                        for: indexPath)
+        if let duration =
+          connection?.sections?[safe: indexPath.section - 1]?.walk?.duration,
+          duration != 0 {
+          cell.textLabel?.text = String(format: "Walk %@m".localized, "\(duration)")
         } else {
-            if connection?.sections?[safe: indexPath.section - 1]?.walk != nil {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "walkConnectionCell", for: indexPath)
-                if let duration = connection?.sections?[safe: indexPath.section - 1]?.walk?.duration,
-                    duration != 0 {
-                    cell.textLabel?.text = String(format: "Walk %@m".localized, "\(duration)")
-                } else {
-                    cell.textLabel?.text = "Walk".localized
-                }
-                cell.textLabel?.textColor = App.textColor
-                cell.imageView?.image = #imageLiteral(resourceName: "transfer").maskWith(color: App.textColor)
-                cell.selectionStyle = .none
-                cell.backgroundColor = App.cellBackgroundColor
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultDetailCell", for: indexPath)
-                    as? RouteResultDetailsTableViewCell, let section = connection?.sections?[safe: indexPath.section - 1] else {
-                    return UITableViewCell()
-                }
-                cell.section = section
-                return cell
-            }
+          cell.textLabel?.text = "Walk".localized
         }
-
+        cell.textLabel?.textColor = App.textColor
+        cell.imageView?.image = #imageLiteral(resourceName: "transfer").maskWith(color: App.textColor)
+        cell.selectionStyle = .none
+        cell.backgroundColor = App.cellBackgroundColor
+        return cell
+      } else {
+        guard let cell =
+          tableView.dequeueReusableCell(withIdentifier: "resultDetailCell",
+                                        for: indexPath)
+            as? RouteResultDetailsTableViewCell,
+          let section = connection?.sections?[safe: indexPath.section - 1] else {
+            return UITableViewCell()
+        }
+        cell.section = section
+        return cell
+      }
     }
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+  }
 
-        if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
-            return nil
-        }
+  override func tableView(_ tableView: UITableView,
+                          viewForHeaderInSection section: Int) -> UIView? {
 
-        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell"),
-            let section = connection?.sections?[safe: section - 1] else {
-            return UIView()
-        }
-        if section.walk != nil { return nil }
-        let destinationName = App.stops.filter({$0.nameTransportAPI == section.journey?.to})[safe: 0]?.name
-            ?? (section.journey?.to ?? "#?!")
-
-        var titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)] as [NSAttributedStringKey: Any]
-        if section.journey?.compagny == "TPG" {
-            headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor :
-                App.color(for: section.journey?.lineCode ?? "")
-            titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ? App.color(for: section.journey?.lineCode ?? "") :
-                App.color(for: section.journey?.lineCode ?? "").contrast
-        } else if section.journey?.compagny == "SBB" {
-            headerCell.textLabel?.text = String(format: "SBB %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)",
-                "\(destinationName)")
-            headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : .red
-            titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ? UIColor.red : UIColor.white
-        } else {
-            headerCell.backgroundColor = App.darkMode ? .black : .white
-            titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ? UIColor.white : UIColor.black
-        }
-        headerCell.textLabel?.attributedText = NSAttributedString(string: String(format: "Line %@ - %@".localized, "\(section.journey?.lineCode ?? "#?!".localized)", "\(destinationName)"), attributes: titleAttributes)
-        return headerCell
+    if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
+      return nil
     }
 
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
-            return 0
-        }
-        if connection?.sections?[safe: section - 1]?.walk != nil {
-            return 0
-        }
-        return 44
+    guard
+      let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell"),
+      let section = connection?.sections?[safe: section - 1] else {
+        return UIView()
     }
+    if section.walk != nil { return nil }
+    let destinationName =
+      App.stops.filter({$0.nameTransportAPI == section.journey?.to})[safe: 0]?.name
+        ?? (section.journey?.to ?? "#?!")
 
-    @objc func pushMap() {
-        //if connection.
-        performSegue(withIdentifier: "showMap", sender: self)
-    }
+    var titleAttributes =
+      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)]
+        as [NSAttributedStringKey: Any]
 
-    deinit {
-        ColorModeManager.shared.removeColorModeDelegate(self)
+    if section.journey?.compagny == "TPG" {
+      headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor :
+        App.color(for: section.journey?.lineCode ?? "")
+      titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ?
+        App.color(for: section.journey?.lineCode ?? "") :
+        App.color(for: section.journey?.lineCode ?? "").contrast
+    } else if section.journey?.compagny == "SBB" {
+      headerCell.textLabel?.text = Text.sbb(line: section.journey?.lineCode,
+                                            destination: destinationName)
+      headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : .red
+      titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ?
+        UIColor.red : UIColor.white
+    } else {
+      headerCell.backgroundColor = App.darkMode ? .black : .white
+      titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ?
+        UIColor.white : UIColor.black
     }
+    headerCell.textLabel?.attributedText =
+      NSAttributedString(string:
+        Text.line(section.journey?.lineCode,
+                  destination: destinationName),
+                         attributes: titleAttributes)
+    return headerCell
+  }
+
+  override func tableView(_ tableView: UITableView,
+                          heightForHeaderInSection section: Int) -> CGFloat {
+    if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
+      return 0
+    }
+    if connection?.sections?[safe: section - 1]?.walk != nil {
+      return 0
+    }
+    return 44
+  }
+
+  @objc func pushMap() {
+    //if connection.
+    performSegue(withIdentifier: "showMap", sender: self)
+  }
+
+  deinit {
+    ColorModeManager.shared.removeColorModeDelegate(self)
+  }
 }
 
 extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDelegate {
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+  func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                         viewControllerForLocation location: CGPoint) -> UIViewController? {
+    // swiftlint:disable:previous line_length
 
-        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+    guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
 
-        guard let row = tableView.cellForRow(at: indexPath) as? RouteResultDetailsTableViewCell else { return nil }
+    guard let row = tableView.cellForRow(at: indexPath)
+      as? RouteResultDetailsTableViewCell else { return nil }
 
-        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "routeStepViewController") as?
-            RouteStepViewController
-            else { return nil }
+    guard let detailVC = storyboard?
+      .instantiateViewController(withIdentifier: "routeStepViewController") as?
+      RouteStepViewController else { return nil }
 
-        detailVC.section = row.section
-        previewingContext.sourceRect = row.frame
-        return detailVC
+    detailVC.section = row.section
+    previewingContext.sourceRect = row.frame
+    return detailVC
+  }
+
+  func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                         commit viewControllerToCommit: UIViewController) {
+    show(viewControllerToCommit, sender: self)
+  }
+
+  @objc func goMode() {
+    guard let sections = connection?.sections else {
+      return
     }
 
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        show(viewControllerToCommit, sender: self)
+    if !UserDefaults.standard.bool(forKey: "firstTimeGoMode") {
+      UserDefaults.standard.set(true, forKey: "firstTimeGoMode")
+      let alert = UIAlertController(title: Text.goMode,
+                                    message: Text.goModeHelp,
+                                    preferredStyle: .alert)
+      let continueAction = UIAlertAction(title: Text.continue,
+                                         style: .default) { (_) in
+        self.goMode()
+      }
+      let cancelAction = UIAlertAction(title: Text.cancel,
+                                       style: .default,
+                                       handler: nil)
+
+      alert.addAction(cancelAction)
+      alert.addAction(continueAction)
+      self.present(alert, animated: true, completion: nil)
+    } else {
+      var locationAllowed: Bool
+      if CLLocationManager.locationServicesEnabled() {
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined, .restricted, .denied:
+          locationAllowed = false
+        case .authorizedAlways, .authorizedWhenInUse:
+          locationAllowed = true
+        }
+      } else {
+        locationAllowed = false
+      }
+
+      for (index, section) in sections.enumerated() where section.journey != nil &&
+        section.walk == nil {
+          if #available(iOS 10.0, *) {
+            let content = UNMutableNotificationContent()
+            content.title = Text.goNextStop
+            if index == sections.count - 1 {
+              content.body = Text.rememberLeaveDestination(stop: (App.stops.filter({
+                $0.sbbId == section.arrival.station.id
+              })[safe: 0]?.name) ?? section.arrival.station.name)
+            } else {
+              content.body =
+                Text.rememberLeaveLine(stop: (App.stops.filter({
+                  $0.sbbId == section.arrival.station.id
+                })[safe: 0]?.name) ?? section.arrival.station.name,
+                                       line: sections[index + 1].journey?.lineCode)
+            }
+
+            let passList = section.journey!.passList
+
+            let request: UNNotificationRequest
+            if locationAllowed {
+              let center = CLLocationCoordinate2D(latitude:
+                passList[passList.endIndex - 1].station.coordinate.x,
+                                                  longitude:
+                passList[passList.endIndex - 1].station.coordinate.y)
+              let region = CLCircularRegion(center: center,
+                                            radius: 300.0,
+                                            identifier:
+                passList[passList.endIndex - 1].station.id)
+              region.notifyOnEntry = true
+              region.notifyOnExit = false
+              let trigger = UNLocationNotificationTrigger(region: region,
+                                                          repeats: false)
+              let uuidString = UUID().uuidString
+              request = UNNotificationRequest(identifier: uuidString,
+                                              content: content,
+                                              trigger: trigger)
+            } else {
+              let dateComponents =
+                Calendar.current.dateComponents([.hour,
+                                                 .minute,
+                                                 .day,
+                                                 .month,
+                                                 .year],
+                                                from:
+                  Date(timeIntervalSince1970:
+                    Double(passList[passList.endIndex - 1].arrivalTimestamp ?? 0)))
+
+              let trigger =
+                UNCalendarNotificationTrigger(dateMatching: dateComponents,
+                                              repeats: false)
+              let uuidString = UUID().uuidString
+              request = UNNotificationRequest(identifier: uuidString,
+                                              content: content,
+                                              trigger: trigger)
+            }
+
+            // Schedule the request with the system.
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.add(request) { (error) in
+              if let error = error {
+                print(error)
+              }
+            }
+
+            let alert = UIAlertController(title: Text.goModeActivated,
+                                          message: Text.goModeActivatedSubtitle,
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Cancel".localized,
+                                         style: .default,
+                                         handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+          } else {
+
+          }
+      }
     }
+  }
 }

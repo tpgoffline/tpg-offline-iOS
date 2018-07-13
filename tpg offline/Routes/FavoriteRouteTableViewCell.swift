@@ -10,45 +10,45 @@ import UIKit
 
 class FavoriteRouteTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var fromLabel: UILabel!
-    @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var viaLabel: UILabel!
+  @IBOutlet weak var fromLabel: UILabel!
+  @IBOutlet weak var toLabel: UILabel!
+  @IBOutlet weak var viaLabel: UILabel!
 
-    @IBOutlet var images: [UIImageView]!
+  @IBOutlet var images: [UIImageView]!
 
-    var route: Route? = nil {
-        didSet {
-            guard let route = route else { return }
-            fromLabel.text = route.from?.name ?? ""
-            toLabel.text = route.to?.name ?? ""
+  var route: Route? = nil {
+    didSet {
+      guard let route = route else { return }
+      fromLabel.text = route.from?.name ?? ""
+      toLabel.text = route.to?.name ?? ""
 
-            fromLabel.textColor = App.textColor
-            toLabel.textColor = App.textColor
+      fromLabel.textColor = App.textColor
+      toLabel.textColor = App.textColor
 
-            if App.darkMode {
-                let selectedView = UIView()
-                selectedView.backgroundColor = .black
-                self.selectedBackgroundView = selectedView
-            } else {
-                let selectedView = UIView()
-                selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
-                self.selectedBackgroundView = selectedView
-            }
+      if App.darkMode {
+        let selectedView = UIView()
+        selectedView.backgroundColor = .black
+        self.selectedBackgroundView = selectedView
+      } else {
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+        self.selectedBackgroundView = selectedView
+      }
 
-            for image in images {
-                image.image = image.image?.maskWith(color: App.textColor)
-            }
+      for image in images {
+        image.image = image.image?.maskWith(color: App.textColor)
+      }
 
-            if let viaArray = route.via, viaArray.count != 0 {
-                let via = viaArray.map({ $0.name })
-                viaLabel.text = String(format: "Via: %@".localized, via.joined(separator: ", "))
-            } else {
-                viaLabel.text = ""
-            }
-        }
+      if let viaArray = route.via, viaArray.count != 0 {
+        let via = viaArray.map({ $0.name })
+        viaLabel.text = Text.via(list: via)
+      } else {
+        viaLabel.text = ""
+      }
     }
+  }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 }

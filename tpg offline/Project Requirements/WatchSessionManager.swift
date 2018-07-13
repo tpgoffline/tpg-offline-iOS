@@ -18,7 +18,9 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     }
 
     @available(iOS 9.3, *)
-    open func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    open func session(_ session: WCSession,
+                      activationDidCompleteWith activationState: WCSessionActivationState, // swiftlint:disable:this line_length
+                      error: Error?) {
 
     }
 
@@ -29,10 +31,13 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         self.startSession()
     }
 
-    fileprivate let watchSession: WCSession? = WCSession.isSupported() ? WCSession.default : nil
+    fileprivate let watchSession: WCSession? = WCSession.isSupported() ?
+      WCSession.default : nil
 
     fileprivate var validSession: WCSession? {
-        if let session = watchSession, session.isPaired && session.isWatchAppInstalled {
+        if let session = watchSession,
+          session.isPaired,
+          session.isWatchAppInstalled {
             return session
         }
         return nil

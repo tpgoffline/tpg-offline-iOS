@@ -1,5 +1,5 @@
 "#!?" = "#!?";
-"#?!" = "#?!"; 
+"#?!" = "#?!";
 "%@ hours %@" = "%@ heure %@";
 "%@ meters, about %@ minutes to walk" = "%@ mètres, environ %@ minutes de marche";
 "%@ minutes before." = "%@ minutes avant.";
@@ -20,9 +20,7 @@
 "Application" = "Application";
 "Are you connected to internet?" = "Êtes-vous connecté à internet ?";
 "Are you looking for a stop ?" = "Recherchez-vous un arrêt ?";
-"Are you sure you set the departure stop and the arrival stop?" = "Êtes-vous sûr que vous avez défini un arrêt de départ et d'arrivée ?";
 "Arrival at" = "Arrivée à";
-"As well as this part" = "Tout comme cette partie, d'ailleurs";
 "At %@ - In %@ minutes\nWhen do you want to be reminded?" = "À %@ - Dans %@ minutes\nQuand voulez-vous être rappelé ?";
 "At departure time" = "Au départ";
 "At the core of the project" = "Au cœur du projet";
@@ -31,6 +29,7 @@
 "Bus is comming" = "Le bus arrive !";
 "Cancel" = "Annuler";
 "Confirmation" = "Confirmation";
+"Connect to tpg-freeWiFi" = "Se connecter à tpg-freeWiFi";
 "Connections map" = "Plan des connexions";
 "Could not load Smart Reminders" = "Impossible de charger les Rappels Intelligents.";
 "Crash Reporting" = "Rapports des arrêts d'application inopinés";
@@ -43,6 +42,8 @@
 "Deactivating Smart Reminders does not remove existing Smart Reminders. Use the Pending notifications section to remove them." = "Désactiver les Rappels Intelligents ne supprime pas les Rappels Intelligents existants. Merci d'utiliser la section Notifications planifiées pour les supprimer";
 "Default tab" = "Menu par défaut";
 "Default tab on startup" = "Menu par défaut au démarrage";
+"Delete" = "Supprimer";
+"Departure and arrival stops are missing" = "Les arrêts de départ et d'arrivée sont manquants";
 "Departure at" = "Départ à";
 "Departures" = "Départs";
 "Departures for the line %@" = "Départs pour la ligne %@";
@@ -81,6 +82,7 @@
 "Give your feedback !" = "Donnez votre avis !";
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Ici, vous pouvez choisir quand vous voulez surveiller des lignes. Si une perturbation survient pendant la période de surveillance, nous vous enverrons une notification.";
 "Hours" = "Heures";
+"I dont know... The error message is missing." = "Je ne sais pas... Le message d'erreur est manquant.";
 "Invalid route" = "Itinéraire invalide";
 "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?" = "Il semble que vous ne surveillez aucune ligne.\nSurveiller une ligne vous permettra de recevoir une notification en cas de perturbations sur vos lignes préférées. Pourquoi ne pas essayer en appuyant sur le bouton +, en haut à droite de votre appareil ?";
 "Last features" = "Dernières nouveautés";
@@ -107,7 +109,8 @@
 "No" = "Non";
 "No disruptions" = "Pas de pertubations";
 "No lines monitored" = "Aucune lignes surveillées";
-"No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à arrêt.";
+"No more bus will come to this stop today." = "Aucun bus ne viendra aujourd'hui à cet arrêt.";
+"No offline departures installed" = "Aucun départ hors-ligne téléchargé";
 "No results" = "Pas de résultats";
 "Noctambus regional map" = "Plan Noctambus régional";
 "Noctambus urban map" = "Plan Noctambus urbain";
@@ -119,11 +122,13 @@
 "OK" = "OK";
 "OK, deactivate Smart Reminders" = "OK, désactiver les Rappels Intelligents";
 "Offline departures" = "Départs hors-ligne";
+"Offline departures version: %@" = "Version des départs hors-ligne: %@";
 "Offline departures will be downloaded with a Wi-Fi connection" = "Les départs hors-ligne seront téléchargés avec une connexion Wi-Fi";
 "Offline mode" = "Mode hors-ligne";
 "Oops, an error occurred. Please try again, and, in case of emergency, break the glass and trigger the alarm" = "Oops, une erreur est survenue. Merci de réessayer et, en cas d'urgence, de casser la glace et déclencher l'alarme.";
 "Open data of Geneva public transport" = "Open data des Transports Publics Genevois";
 "Open data of Transport API" = "Open data de Transport API";
+"Optional" = "Optionnel";
 "Orientation" = "Orientation";
 "Other" = "Autre";
 "Path %@" = "Trajet %@";
@@ -170,6 +175,7 @@
 "Specific" = "Spécifique";
 "Stability improvements" = "Amélioration de la stabilité générale";
 "Sunday" = "Dimanche";
+"TAC Network - Approximate timetable" = "Réseau TAC - Horaires approximatifs";
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
 "Take the line %@ to %@ at %@" = "Prenez la ligne %@ vers %@ à %@";
 "Take the line %@ to %@ in %@ minutes" = "Prenez la ligne %@ vers %@ dans %@ minutes";
@@ -177,9 +183,9 @@
 "Testing" = "Test";
 "That's all for today" = "C'est tout pour aujourd'hui";
 "The bus is comming now!" = "Le bus arrive maintenant !";
+"The departure and the arrival stops are the same." = "Les arrêts de départ et d'arrivée sont les mêmes.";
 "The monitoring section was redesigned to make easier to manage disruptions monitoring" = "La section de surveillance des perturbations a été repensée pour faciliter la gestion des différentes surveillances.";
 "The project" = "Le projet";
-"This part is empty. That's mean you have to add a Smart Reminder to see something here." = "Cette partie est vide. Cela veut dire que vous devez ajouter un Rappel Intelligent pour voir apparaître quelque chose ici.";
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "Cet itinéraire traverse plusieurs zones. Vous devez donc acquérir un ticket/abonnement correspondant à ces zones :\n";
 "Thursday" = "Jeudi";
 "To" = "Vers";
@@ -192,12 +198,15 @@
 "Unmark this stop as favorite" = "Enlever cet arrêt des favoris";
 "Update departures" = "Réactualiser les départs";
 "Urban map" = "Plan urbain";
+"Via" = "Via";
+"Via %@" = "Via %@";
+"Via..." = "Via...";
+"Via: %@" = "Via: %@";
 "Wait a minute..." = "Une seconde...";
 "Walk" = "Marcher";
 "Walk %@m" = "Marcher %@m";
 "Warning!" = "Attention !";
 "We already sheduled a reminder with these parameters." = "Nous avons déjà programmé un rappel avec ces paramètres.";
-"We have to say the truth. Sometimes, this part of the table is empty" = "Nous devons dire la vérité. Parfois, cette partie de la liste est vide.";
 "We improved the stability and we made some cosmetic improvements." = "Nous avons amélioré la stabilité et nous avons apporté quelques améliorations cosmétiques.";
 "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed." = "Nous avons besoin de votre identifiant unique d'appareil pour vous envoyer des notifications, même si l'application est fermée (excepté si l'appareil est éteint). Vérifiez si les notifications et l'actualisation en arrière-plan sont activés.";
 "Wednesday" = "Mercredi";
@@ -219,3 +228,4 @@
 "at the time of departure." = "au départ";
 "tpg offline" = "tpg offline";
 "tpg offline, version %@" = "tpg offline, version %@";
+

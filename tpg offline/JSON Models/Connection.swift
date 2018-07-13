@@ -9,13 +9,13 @@
 import Foundation
 
 struct Connection: Codable {
-    var destinationCode: String
-    var line: String
-    var destinationName: String
+  var destinationCode: String
+  var line: String
+  var destinationName: String
 
-    enum CodingKeys: String, CodingKey {
-        case destinationCode
-        case line = "lineCode"
-        case destinationName
-    }
+  enum CodingKeys: String, CodingKey {
+    case destinationCode
+    case line = "lineCode"
+    case destinationName
+  }
 }

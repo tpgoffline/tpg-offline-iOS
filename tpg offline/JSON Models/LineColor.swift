@@ -9,6 +9,6 @@
 import UIKit
 
 struct LineColor {
-    var line: String
-    var color: UIColor
+  var line: String
+  var color: UIColor
 }

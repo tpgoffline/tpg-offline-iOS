@@ -18,7 +18,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.barStyle = App.darkMode ? .black : .default
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController,
+                          didSelect viewController: UIViewController) {
         switch self.selectedIndex {
         case 0:
             App.log("TabBar: Switch to Departures")
@@ -35,7 +36,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
 
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
         return true
     }
 

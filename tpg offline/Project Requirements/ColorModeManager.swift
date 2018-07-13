@@ -12,13 +12,21 @@ class ColorModeManager: NSObject {
     fileprivate override init() {
         super.init()
 
-        _ = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(checkTime), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 300,
+                                 target: self,
+                                 selector: #selector(checkTime),
+                                 userInfo: nil,
+                                 repeats: true)
     }
 
     @objc func checkTime() {
-        if App.automaticDarkMode && App.sunriseSunsetManager?.isDaytime ?? false && App.darkMode == true {
+        if App.automaticDarkMode,
+          App.sunriseSunsetManager?.isDaytime ?? false,
+          App.darkMode == true {
             App.darkMode = false
-        } else if App.automaticDarkMode && App.sunriseSunsetManager?.isNighttime ?? false && App.darkMode == false {
+        } else if App.automaticDarkMode,
+          App.sunriseSunsetManager?.isNighttime ?? false,
+          App.darkMode == false {
             App.darkMode = true
         }
     }
@@ -27,13 +35,16 @@ class ColorModeManager: NSObject {
 
     private var colorModeDelegates = [ColorModeDelegate]()
 
-    func addColorModeDelegate<T>(_ delegate: T) where T: ColorModeDelegate, T: Equatable {
+    func addColorModeDelegate<T>(_ delegate: T) where
+      T: ColorModeDelegate, T: Equatable {
         colorModeDelegates.append(delegate)
     }
 
-    func removeColorModeDelegate<T>(_ delegate: T) where T: ColorModeDelegate, T: Equatable {
+    func removeColorModeDelegate<T>(_ delegate: T) where
+      T: ColorModeDelegate, T: Equatable {
         for (index, colorModeDelegate) in colorModeDelegates.enumerated() {
-            if let colorModeDelegate = colorModeDelegate as? T, colorModeDelegate == delegate {
+            if let colorModeDelegate = colorModeDelegate as? T,
+              colorModeDelegate == delegate {
                 colorModeDelegates.remove(at: index)
                 break
             }

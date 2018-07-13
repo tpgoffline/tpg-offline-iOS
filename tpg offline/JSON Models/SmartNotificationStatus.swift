@@ -9,8 +9,8 @@
 import Foundation
 
 struct SmartNotificationStatus: Codable {
-    var estimatedTriggerTime: Date
-    var title: String
-    var text: String
-    var id: Int
+  var estimatedTriggerTime: Date
+  var title: String
+  var text: String
+  var id: Int
 }

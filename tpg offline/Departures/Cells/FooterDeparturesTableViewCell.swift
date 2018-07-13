@@ -9,5 +9,5 @@
 import UIKit
 
 class FooterDeparturesTableViewCell: UITableViewCell {
-    @IBOutlet weak var button: UIButton!
+  @IBOutlet weak var button: UIButton!
 }

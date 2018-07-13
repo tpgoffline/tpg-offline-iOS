@@ -53,6 +53,8 @@
 		AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */; };
 		AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4921E8205E5A16002A1ED9 /* SmartNotificationStatus.swift */; };
 		AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
+		AD5628DB20F67193009508D2 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED520F6005800DABB25 /* Text.swift */; };
+		AD5628DC20F67193009508D2 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED720F6050A00DABB25 /* URL.swift */; };
 		AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
 		AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */; };
@@ -60,7 +62,7 @@
 		AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */; };
 		AD5FC1DF1FE6D9F90016BC35 /* DayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */; };
 		AD675C9620CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */; };
-		AD675C9820CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD675C9720CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift */; };
+		AD675C9820CEB00200B13C8A /* OfflineDeparturesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD675C9720CEB00200B13C8A /* OfflineDeparturesManager.swift */; };
 		AD675C9A20CEB7EF00B13C8A /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD675C9920CEB7EF00B13C8A /* Reachability.framework */; };
 		AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
 		AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */; };
@@ -75,7 +77,6 @@
 		AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */; };
 		AD7B47E11FD155D400F8DA23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B47E01FD155D400F8DA23 /* TabBarController.swift */; };
 		AD7B47E31FD1570000F8DA23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B47E21FD1570000F8DA23 /* MapKit.framework */; };
-		AD7B47E51FD16A1600F8DA23 /* DevDisruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */; };
 		AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */; };
 		AD7C3ECD2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */; };
 		AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */; };
@@ -99,6 +100,7 @@
 		ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */; };
 		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
 		ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */; };
+		ADB5812320F10E9800FD2F6F /* AddressHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */; };
 		ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */; };
 		ADB9278E1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */; };
 		ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */; };
@@ -120,6 +122,8 @@
 		ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */; };
 		ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976D1F657CC0004AA662 /* RouteResults.swift */; };
 		ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */; };
+		ADF6BED620F6005800DABB25 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED520F6005800DABB25 /* Text.swift */; };
+		ADF6BED820F6050A00DABB25 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED720F6050A00DABB25 /* URL.swift */; };
 		ADF9C66D1F9B99E000AE17A4 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */; };
 		ADF9C6771F9BB3C800AE17A4 /* Disruptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */; };
 		ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */; };
@@ -208,6 +212,7 @@
 		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD2E6ADF20F35F250014635A /* Bus.gpx */ = {isa = PBXFileReference; lastKnownFileType = text; name = Bus.gpx; path = ../../../../../../Users/remy/Downloads/Bus.gpx; sourceTree = "<group>"; };
 		AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewController.swift; sourceTree = "<group>"; };
 		AD37FE611F41CA4600E84220 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteTableViewCell.swift; sourceTree = "<group>"; };
@@ -245,7 +250,7 @@
 		AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourPickerViewController.swift; sourceTree = "<group>"; };
 		AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerViewController.swift; sourceTree = "<group>"; };
 		AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeparturesTableViewController.swift; sourceTree = "<group>"; };
-		AD675C9720CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOfflineDeparturesManager.swift; sourceTree = "<group>"; };
+		AD675C9720CEB00200B13C8A /* OfflineDeparturesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDeparturesManager.swift; sourceTree = "<group>"; };
 		AD675C9920CEB7EF00B13C8A /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		AD6A47A81F77992400AE1762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AD6A47AA1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouteTableViewCell.swift; sourceTree = "<group>"; };
@@ -253,7 +258,6 @@
 		AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsTableViewCell.swift; sourceTree = "<group>"; };
 		AD7B47E01FD155D400F8DA23 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AD7B47E21FD1570000F8DA23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDisruption.swift; sourceTree = "<group>"; };
 		AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesOptionsInterfaceController.swift; sourceTree = "<group>"; };
 		AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRemindersSettingsTableViewController.swift; sourceTree = "<group>"; };
 		AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsMapViewController.swift; sourceTree = "<group>"; };
 		ADABFA091F9CF1D200EEC8D0 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = JSON/stops.json; sourceTree = "<group>"; };
 		ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderStopsTableViewController.swift; sourceTree = "<group>"; };
+		ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesViewController.swift; sourceTree = "<group>"; };
 		ADB9278D1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesTableViewCell.swift; sourceTree = "<group>"; };
 		ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +306,8 @@
 		ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsTableViewController.swift; sourceTree = "<group>"; };
 		ADF0976D1F657CC0004AA662 /* RouteResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResults.swift; sourceTree = "<group>"; };
 		ADF0976F1F659EB6004AA662 /* RouteResultsDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewController.swift; sourceTree = "<group>"; };
+		ADF6BED520F6005800DABB25 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		ADF6BED720F6050A00DABB25 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		ADF9C66C1F9B99E000AE17A4 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
 		ADF9C6721F9BB26400AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Departures.strings; sourceTree = "<group>"; };
 		ADF9C6731F9BB26400AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -410,6 +417,7 @@
 		AD37FE581F41CA4600E84220 = {
 			isa = PBXGroup;
 			children = (
+				AD2E6ADF20F35F250014635A /* Bus.gpx */,
 				ADABFA091F9CF1D200EEC8D0 /* stops.json */,
 				ADA14E631FDEC4E100945249 /* lines.json */,
 				AD37FE631F41CA4600E84220 /* tpg offline */,
@@ -470,6 +478,7 @@
 				AD37FE801F41CA7F00E84220 /* StopsTableViewCell.swift */,
 				ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */,
 				AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */,
+				ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -489,7 +498,9 @@
 				AD7B47E01FD155D400F8DA23 /* TabBarController.swift */,
 				ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */,
 				ADA2877A20638E26006EEF39 /* API.swift */,
-				AD675C9720CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift */,
+				AD675C9720CEB00200B13C8A /* OfflineDeparturesManager.swift */,
+				ADF6BED520F6005800DABB25 /* Text.swift */,
+				ADF6BED720F6050A00DABB25 /* URL.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -505,7 +516,6 @@
 				AD37FE8E1F41CA8000E84220 /* Stop.swift */,
 				AD0986931F64185A00CD8403 /* Route.swift */,
 				ADF0976D1F657CC0004AA662 /* RouteResults.swift */,
-				AD7B47E41FD16A1600F8DA23 /* DevDisruption.swift */,
 				ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */,
 				ADA14E651FDEC4FE00945249 /* Line.swift */,
 				AD3EB1681FE6BE1200F74261 /* DisruptionMonitoring.swift */,
@@ -913,10 +923,12 @@
 				AD5FC1DF1FE6D9F90016BC35 /* DayPickerViewController.swift in Sources */,
 				ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */,
 				AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */,
+				ADB5812320F10E9800FD2F6F /* AddressHeaderTableViewCell.swift in Sources */,
+				ADF6BED620F6005800DABB25 /* Text.swift in Sources */,
 				AD37FEAC1F41CD9300E84220 /* DeparturesTableViewCell.swift in Sources */,
 				AD0986921F64175B00CD8403 /* SearchButtonTableViewCell.swift in Sources */,
 				AD8CF77F1F979B5100DE9CBC /* OrientationTableViewController.swift in Sources */,
-				AD675C9820CEB00200B13C8A /* DownloadOfflineDeparturesManager.swift in Sources */,
+				AD675C9820CEB00200B13C8A /* OfflineDeparturesManager.swift in Sources */,
 				AD37FEAD1F41CD9300E84220 /* FooterDeparturesTableViewCell.swift in Sources */,
 				AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */,
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
@@ -933,7 +945,6 @@
 				AD37FEB41F41CD9300E84220 /* BusRoute.swift in Sources */,
 				AD9D8DAA200264730021A23E /* DeparturesHeaderTableViewCell.swift in Sources */,
 				AD3EB1691FE6BE1200F74261 /* DisruptionMonitoring.swift in Sources */,
-				AD7B47E51FD16A1600F8DA23 /* DevDisruption.swift in Sources */,
 				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
 				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
 				AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */,
@@ -945,6 +956,7 @@
 				ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */,
 				ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */,
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
+				ADF6BED820F6050A00DABB25 /* URL.swift in Sources */,
 				AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */,
 				AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */,
 				ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */,
@@ -989,8 +1001,10 @@
 				AD3DF3B01FB1FE8500F2AFA5 /* App.swift in Sources */,
 				AD708DB41FB0AC420076B3AC /* Stop.swift in Sources */,
 				AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */,
+				AD5628DB20F67193009508D2 /* Text.swift in Sources */,
 				AD708DB51FB0AC420076B3AC /* Route.swift in Sources */,
 				AD708DB61FB0AC420076B3AC /* RouteResults.swift in Sources */,
+				AD5628DC20F67193009508D2 /* URL.swift in Sources */,
 				AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */,
 				AD708DB21FB0AC420076B3AC /* Disruptions.swift in Sources */,
 				AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */,

@@ -10,11 +10,11 @@ import UIKit
 
 class SearchButtonTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var button: UIButton!
+  @IBOutlet weak var button: UIButton!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.selectedBackgroundView = UIView()
-        self.selectedBackgroundView?.backgroundColor = .white
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.selectedBackgroundView = UIView()
+    self.selectedBackgroundView?.backgroundColor = .white
+  }
 }

@@ -9,11 +9,11 @@
 import Foundation
 
 struct Line: Codable {
-    var courses: [[Int]]
-    var snotpgURL: String
-    var line: String
-    var departureName: String
-    var arrivalName: String
-    var textFR: String?
-    var textEN: String?
+  var courses: [[Int]]
+  var snotpgURL: String
+  var line: String
+  var departureName: String
+  var arrivalName: String
+  var textFR: String?
+  var textEN: String?
 }

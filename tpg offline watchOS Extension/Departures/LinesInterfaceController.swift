@@ -10,150 +10,160 @@ import WatchKit
 import Alamofire
 
 protocol DeparturesDelegate: class {
-    func departuresDidUpdate()
+  func departuresDidUpdate()
 }
 
 class DeparturesManager: NSObject {
 
-    static let shared = DeparturesManager()
-    var departures: DeparturesGroup? {
-        didSet {
-            DispatchQueue.main.async {
-                self.departuresDelegate.forEach { $0.departuresDidUpdate() }
-            }
-        }
+  static let shared = DeparturesManager()
+  var departures: DeparturesGroup? {
+    didSet {
+      DispatchQueue.main.async {
+        self.departuresDelegate.forEach { $0.departuresDidUpdate() }
+      }
     }
-    var status = RequestStatus.noResults {
-        didSet {
-            DispatchQueue.main.async {
-                self.departuresDelegate.forEach { $0.departuresDidUpdate() }
-            }
-        }
+  }
+  var status = RequestStatus.noResults {
+    didSet {
+      DispatchQueue.main.async {
+        self.departuresDelegate.forEach { $0.departuresDidUpdate() }
+      }
     }
+  }
 
-    var stop: Stop?
+  var stop: Stop?
 
-    fileprivate override init() {
-        super.init()
+  fileprivate override init() {
+    super.init()
+  }
+
+  private var departuresDelegate = [DeparturesDelegate]()
+
+  func addDeparturesDelegate<T>(delegate: T) where
+    T: DeparturesDelegate, T: Equatable {
+    departuresDelegate.append(delegate)
+  }
+
+  func removeDeparturesDelegate<T>(delegate: T) where
+    T: DeparturesDelegate, T: Equatable {
+    for (index, departuresADelegate) in departuresDelegate.enumerated() {
+      if let departureDelegate = departuresADelegate as? T,
+        departureDelegate == delegate {
+        departuresDelegate.remove(at: index)
+        break
+      }
     }
+  }
 
-    private var departuresDelegate = [DeparturesDelegate]()
-
-    func addDeparturesDelegate<T>(delegate: T) where T: DeparturesDelegate, T: Equatable {
-        departuresDelegate.append(delegate)
+  func refreshDepartures() {
+    self.status = .loading
+    guard let stop = self.stop else {
+      self.status = .error
+      return
     }
+    self.departures = nil
+    Alamofire.request(URL.departures(with: stop.code), method: .get)
+      .responseData { (response) in
+        if let data = response.result.value {
+          var options = DeparturesOptions()
+          options.networkStatus = .online
+          let jsonDecoder = JSONDecoder()
+          jsonDecoder.userInfo = [ DeparturesOptions.key: options ]
 
-    func removeDeparturesDelegate<T>(delegate: T) where T: DeparturesDelegate, T: Equatable {
-        for (index, departuresADelegate) in departuresDelegate.enumerated() {
-            if let departureDelegate = departuresADelegate as? T, departureDelegate == delegate {
-                departuresDelegate.remove(at: index)
-                break
-            }
-        }
-    }
-
-    func refreshDepartures() {
-        self.status = .loading
-        guard let stop = self.stop else {
-            self.status = .error
+          do {
+            let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
+            self.departures = json
+            self.status = .ok
+          } catch {
+            print("No Internet")
             return
-        }
-        self.departures = nil
-        Alamofire.request("https://tpgoffline-apns.alwaysdata.net/api/departures/\(stop.code)", method: .get)
-            .responseData { (response) in
-                if let data = response.result.value {
-                    var options = DeparturesOptions()
-                    options.networkStatus = .online
-                    let jsonDecoder = JSONDecoder()
-                    jsonDecoder.userInfo = [ DeparturesOptions.key: options ]
+          }
 
-                    do {
-                        let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
-                        self.departures = json
-                        self.status = .ok
-                    } catch {
-                        print("No Internet")
-                        return
-                    }
-
-                    if self.departures?.lines.count == 0 {
-                        self.departures = nil
-                        self.status = .noResults
-                    }
-                } else {
-                    self.departures = nil
-                    self.status = .error
-                }
+          if self.departures?.lines.count == 0 {
+            self.departures = nil
+            self.status = .noResults
+          }
+        } else {
+          self.departures = nil
+          self.status = .error
         }
     }
+  }
 }
 
 class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
-    @IBOutlet weak var tableView: WKInterfaceTable!
-    @IBOutlet weak var loadingImage: WKInterfaceImage!
-    @IBOutlet weak var errorLabel: WKInterfaceLabel!
+  @IBOutlet weak var tableView: WKInterfaceTable!
+  @IBOutlet weak var loadingImage: WKInterfaceImage!
+  @IBOutlet weak var errorLabel: WKInterfaceLabel!
 
-    var stop: Stop? = nil {
-        didSet {
-            refreshDepartures()
-        }
+  var stop: Stop? = nil {
+    didSet {
+      refreshDepartures()
     }
+  }
 
-    var departures: DeparturesGroup? = nil {
-        didSet {
-            loadingImage.setImage(nil)
-            guard let departures = departures else {
-                self.errorLabel.setText("")
-                if DeparturesManager.shared.status == .error {
-                    self.errorLabel.setText("Sorry, we can't fetch new departures. Please, try again.".localized)
-                } else if DeparturesManager.shared.status == .loading {
-                    loadingImage.setImageNamed("loading-")
-                    loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 60), duration: 2, repeatCount: -1)
-                }
-                tableView.setNumberOfRows(0, withRowType: "linesRow")
-                return
-            }
-            self.errorLabel.setText("")
-            tableView.setNumberOfRows(departures.lines.count, withRowType: "linesRow")
-            for (index, line) in departures.lines.enumerated() {
-                guard let rowController = self.tableView.rowController(at: index) as? BasicRowController
-                    else { continue }
-                rowController.row = BasicRow(icon: nil, title: String(format: "Line %@".localized, line))
-                rowController.group.setBackgroundColor(App.color(for: line))
-                rowController.titleLabel.setTextColor(App.color(for: line).contrast)
-            }
-        }
-    }
-
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
-        guard let option = context as? Stop else {
-            print("Context is not in a valid format")
-            return
-        }
-        DeparturesManager.shared.addDeparturesDelegate(delegate: self)
-        DeparturesManager.shared.stop = option
-        self.stop = option
-        self.setTitle(self.stop?.code)
-        self.addMenuItem(with: WKMenuItemIcon.resume, title: "Reload".localized, action: #selector(self.refreshDepartures))
+  var departures: DeparturesGroup? = nil {
+    didSet {
+      loadingImage.setImage(nil)
+      guard let departures = departures else {
         self.errorLabel.setText("")
+        if DeparturesManager.shared.status == .error {
+          self.errorLabel.setText(Text.errorNoInternet)
+        } else if DeparturesManager.shared.status == .loading {
+          loadingImage.setImageNamed("loading-")
+          loadingImage.startAnimatingWithImages(in: NSRange(location: 0,
+                                                            length: 60),
+                                                duration: 2,
+                                                repeatCount: -1)
+        }
+        tableView.setNumberOfRows(0, withRowType: "linesRow")
+        return
+      }
+      self.errorLabel.setText("")
+      tableView.setNumberOfRows(departures.lines.count, withRowType: "linesRow")
+      for (index, line) in departures.lines.enumerated() {
+        guard let rowController = self.tableView.rowController(at: index)
+          as? BasicRowController else { continue }
+        rowController.row = BasicRow(icon: nil, title: Text.line(line))
+        rowController.group.setBackgroundColor(App.color(for: line,
+                                                         operator: .tpg))
+        rowController.titleLabel.setTextColor(App.color(for: line,
+                                                        operator: .tpg).contrast)
+      }
     }
+  }
 
-    @objc func refreshDepartures() {
-        DeparturesManager.shared.refreshDepartures()
+  override func awake(withContext context: Any?) {
+    super.awake(withContext: context)
+    guard let option = context as? Stop else {
+      print("Context is not in a valid format")
+      return
     }
+    DeparturesManager.shared.addDeparturesDelegate(delegate: self)
+    DeparturesManager.shared.stop = option
+    self.stop = option
+    self.setTitle(self.stop?.code)
+    self.addMenuItem(with: WKMenuItemIcon.resume,
+                     title: "Reload".localized,
+                     action: #selector(self.refreshDepartures))
+    self.errorLabel.setText("")
+  }
 
-    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        guard let line = departures?.lines[rowIndex] else { return }
-        guard let departures = self.departures else { return }
-        pushController(withName: "departuresInterface", context: [departures, line])
-    }
+  @objc func refreshDepartures() {
+    DeparturesManager.shared.refreshDepartures()
+  }
 
-    func departuresDidUpdate() {
-        self.departures = DeparturesManager.shared.departures
-    }
+  override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+    guard let line = departures?.lines[rowIndex] else { return }
+    guard let departures = self.departures else { return }
+    pushController(withName: "departuresInterface", context: [departures, line])
+  }
 
-    deinit {
-        DeparturesManager.shared.removeDeparturesDelegate(delegate: self)
-    }
+  func departuresDidUpdate() {
+    self.departures = DeparturesManager.shared.departures
+  }
+
+  deinit {
+    DeparturesManager.shared.removeDeparturesDelegate(delegate: self)
+  }
 }

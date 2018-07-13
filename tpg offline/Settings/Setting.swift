@@ -9,13 +9,13 @@
 import UIKit
 
 struct Setting {
-    var title: String
-    var icon: UIImage
-    var action: ((Setting) -> Void)!
+  var title: String
+  var icon: UIImage
+  var action: ((Setting) -> Void)!
 
-    init(_ title: String, icon: UIImage, action: ((Setting) -> Void)!) {
-        self.title = title
-        self.icon = icon
-        self.action = action
-    }
+  init(_ title: String, icon: UIImage, action: ((Setting) -> Void)!) {
+    self.title = title
+    self.icon = icon
+    self.action = action
+  }
 }
