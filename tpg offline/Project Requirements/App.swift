@@ -73,12 +73,12 @@ struct App {
       #endif
     }
   }
-  
+
   #if os(iOS)
   static var sunriseSunsetManager = Solar(coordinate:
     CLLocationCoordinate2D(latitude: 46.204391, longitude: 6.143158))
   #endif
-  
+
   static var apnsToken: String = "" {
     didSet {
       #if os(iOS)
@@ -86,7 +86,7 @@ struct App {
       #endif
     }
   }
-  
+
   static var darkMode: Bool {
     get {
       return (UserDefaults.standard.bool(forKey: #function))
@@ -98,7 +98,7 @@ struct App {
       #endif
     }
   }
-  
+
   #if os(iOS)
   static var automaticDarkMode: Bool {
     get {
@@ -109,7 +109,7 @@ struct App {
     }
   }
   #endif
-  
+
   static var smartReminders: Bool {
     get {
       return (UserDefaults.standard.bool(forKey: #function))
@@ -121,7 +121,7 @@ struct App {
       #endif
     }
   }
-  
+
   static var disableForceSmartReminders: Bool {
     get {
       return (UserDefaults.standard.bool(forKey: #function))
@@ -130,7 +130,7 @@ struct App {
       UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
-  
+
   static var automaticDeparturesDownload: Bool {
     // Here, get and set are inverted to set this value to true by default
     get {
@@ -140,7 +140,7 @@ struct App {
       UserDefaults.standard.set(!newValue, forKey: #function)
     }
   }
-  
+
   static var indexedStops: [Int] {
     get {
       return (UserDefaults.standard.array(forKey: #function) as? [Int]) ?? []
@@ -149,7 +149,7 @@ struct App {
       UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
-  
+
   static var favoritesLines: [String] {
     get {
       return (UserDefaults.standard.array(forKey: #function) as? [String])
@@ -159,7 +159,7 @@ struct App {
       UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
-  
+
   static var filterFavoritesLines: Bool {
     get {
       return UserDefaults.standard.bool(forKey: #function)
@@ -168,7 +168,7 @@ struct App {
       UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
-  
+
   static var defaultTab: Int {
     get {
       return UserDefaults.standard.integer(forKey: #function)
@@ -177,7 +177,7 @@ struct App {
       UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
-  
+
   static var tpgLinesColor: [LineColor] =
     [LineColor(line: "1", color: UIColor(hexString: "5a1e82")!),
      LineColor(line: "2", color: UIColor(hexString: "cccc33")!),
@@ -269,7 +269,7 @@ struct App {
      LineColor(line: "94", color: UIColor(hexString: "000000")!),
      LineColor(line: "96", color: UIColor(hexString: "000000")!),
      LineColor(line: "97", color: UIColor(hexString: "000000")!)]
-  
+
   static var tacLinesColor: [LineColor] =
     [LineColor(line: "R", color: UIColor(hexString: "d21513")!),
      LineColor(line: "T2", color: UIColor(hexString: "2083be")!),
@@ -279,7 +279,7 @@ struct App {
      LineColor(line: "6", color: UIColor(hexString: "deda51")!),
      LineColor(line: "7", color: UIColor(hexString: "b47231")!),
      LineColor(line: "DA", color: UIColor(hexString: "40655b")!)]
-  
+
   static func color(for lineCode: String,
                     operator stopOperator: Stop.Operator = .tpg) -> UIColor {
     var color: UIColor
@@ -298,11 +298,11 @@ struct App {
     }
     return color
   }
-  
+
   static var separatorColor: UIColor {
     return App.darkMode ? #colorLiteral(red: 0.2313459218, green: 0.2313911617, blue: 0.2313399315, alpha: 1) : .gray
   }
-  
+
   @discardableResult static func loadStops(forceLocal: Bool = false) -> Bool {
     do {
       let data: Data
@@ -337,11 +337,11 @@ struct App {
   static var textColor: UIColor {
     return darkMode ? .white : #colorLiteral(red: 0.2392156863, green: 0.1960784314, blue: 0.1843137255, alpha: 1)
   }
-  
+
   static var cellBackgroundColor: UIColor {
     return darkMode ? UIColor.black.lighten(by: 0.05) : .white
   }
-  
+
   @discardableResult static func loadLines(forceLocal: Bool = false) -> Bool {
     do {
       let data: Data
@@ -367,7 +367,7 @@ struct App {
       return loadLines(forceLocal: true)
     }
   }
-  
+
   #if os(iOS)
   static func log(_ string: String) {
     CLSLogv("%@", getVaList([string]))

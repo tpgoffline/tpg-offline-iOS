@@ -95,6 +95,7 @@ struct Departure: Decodable {
   var reducedMobilityAccessibility: ReducedMobilityAccessibility
   var platform: String?
   var vehiculeNo: Int
+  var offline: Bool
 
   public init(line: Line,
               code: Int,
@@ -105,7 +106,8 @@ struct Departure: Decodable {
               reliability: Reliability,
               reducedMobilityAccessibility: ReducedMobilityAccessibility,
               platform: String?,
-              vehiculeNo: Int) {
+              vehiculeNo: Int,
+              offline: Bool) {
     self.line = line
     self.code = code
     self.leftTime = leftTime
@@ -116,6 +118,7 @@ struct Departure: Decodable {
     self.reducedMobilityAccessibility = reducedMobilityAccessibility
     self.platform = platform
     self.vehiculeNo = vehiculeNo
+    self.offline = offline
 
     if self.leftTime == "" {
       self.calculateLeftTime()
@@ -162,7 +165,8 @@ struct Departure: Decodable {
                   reliability: reliability,
                   reducedMobilityAccessibility: reducedMobilityAccessibility,
                   platform: platform,
-                  vehiculeNo: vehiculeNo)
+                  vehiculeNo: vehiculeNo,
+                  offline: false)
       case .offline:
         let lineString = try container.decode(String.self, forKey: .line)
         let destinationId =
@@ -182,7 +186,8 @@ struct Departure: Decodable {
                   reliability: .reliable,
                   reducedMobilityAccessibility: .accessible,
                   platform: nil,
-                  vehiculeNo: -1)
+                  vehiculeNo: -1,
+                  offline: true)
 
       }
     } else {
@@ -195,7 +200,11 @@ struct Departure: Decodable {
       self.leftTime = "-1"
     } else {
       let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+      if self.offline {
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+      } else {
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+      }
       let time = dateFormatter.date(from: timestamp)
       var timestampDateComponents: DateComponents = Calendar.current.dateComponents([
         .year,

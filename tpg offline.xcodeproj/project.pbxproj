@@ -20,6 +20,11 @@
 		AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */; };
 		AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48561FAE06D100596076 /* SnapshotHelper.swift */; };
 		AD1E48591FAE0D0A00596076 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
+		AD23865720F9D5BA001D9881 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD23865620F9D5BA001D9881 /* UserNotifications.framework */; };
+		AD23865920F9D5BA001D9881 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD23865820F9D5BA001D9881 /* UserNotificationsUI.framework */; };
+		AD23865C20F9D5BA001D9881 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23865B20F9D5BA001D9881 /* NotificationViewController.swift */; };
+		AD23865F20F9D5BA001D9881 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD23865D20F9D5BA001D9881 /* MainInterface.storyboard */; };
+		AD23866320F9D5BA001D9881 /* tpg offline Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD23865520F9D5BA001D9881 /* tpg offline Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
 		AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */; };
 		AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
@@ -142,6 +147,13 @@
 			remoteGlobalIDString = AD37FE601F41CA4600E84220;
 			remoteInfo = "tpg offline";
 		};
+		AD23866120F9D5BA001D9881 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD23865420F9D5BA001D9881;
+			remoteInfo = "tpg offline Notification";
+		};
 		ADBC1C791FAF0E2700162195 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
@@ -187,6 +199,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				AD23866320F9D5BA001D9881 /* tpg offline Notification.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +222,12 @@
 		AD1E484E1FADFF6A00596076 /* tpg_offline_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tpg_offline_UITests.swift; sourceTree = "<group>"; };
 		AD1E48501FADFF6A00596076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1E48561FAE06D100596076 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		AD23865520F9D5BA001D9881 /* tpg offline Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline Notification.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD23865620F9D5BA001D9881 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		AD23865820F9D5BA001D9881 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		AD23865B20F9D5BA001D9881 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		AD23865E20F9D5BA001D9881 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		AD23866020F9D5BA001D9881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -333,6 +352,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD23865220F9D5BA001D9881 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD23865920F9D5BA001D9881 /* UserNotificationsUI.framework in Frameworks */,
+				AD23865720F9D5BA001D9881 /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD37FE5E1F41CA4600E84220 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +404,16 @@
 				AD1E48501FADFF6A00596076 /* Info.plist */,
 			);
 			path = "tpg offline UITests";
+			sourceTree = "<group>";
+		};
+		AD23865A20F9D5BA001D9881 /* tpg offline Notification */ = {
+			isa = PBXGroup;
+			children = (
+				AD23865B20F9D5BA001D9881 /* NotificationViewController.swift */,
+				AD23865D20F9D5BA001D9881 /* MainInterface.storyboard */,
+				AD23866020F9D5BA001D9881 /* Info.plist */,
+			);
+			path = "tpg offline Notification";
 			sourceTree = "<group>";
 		};
 		AD27098E1F49C46C002802F9 /* Routes */ = {
@@ -424,6 +462,7 @@
 				AD1E484D1FADFF6A00596076 /* tpg offline UITests */,
 				ADBC1C6C1FAF0E2700162195 /* tpg offline watchOS */,
 				ADBC1C7B1FAF0E2700162195 /* tpg offline watchOS Extension */,
+				AD23865A20F9D5BA001D9881 /* tpg offline Notification */,
 				AD37FEA31F41CABC00E84220 /* Frameworks */,
 				AD37FE621F41CA4600E84220 /* Products */,
 			);
@@ -436,6 +475,7 @@
 				AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */,
 				ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */,
 				ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */,
+				AD23865520F9D5BA001D9881 /* tpg offline Notification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -567,6 +607,8 @@
 				AD07A3641F8A60D300E65DE7 /* Fabric.framework */,
 				AD37FEA81F41CAC300E84220 /* Alamofire.framework */,
 				ADFE4A68201B053F005093C2 /* NotificationCenter.framework */,
+				AD23865620F9D5BA001D9881 /* UserNotifications.framework */,
+				AD23865820F9D5BA001D9881 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -649,6 +691,23 @@
 			productReference = AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		AD23865420F9D5BA001D9881 /* tpg offline Notification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD23866620F9D5BA001D9881 /* Build configuration list for PBXNativeTarget "tpg offline Notification" */;
+			buildPhases = (
+				AD23865120F9D5BA001D9881 /* Sources */,
+				AD23865220F9D5BA001D9881 /* Frameworks */,
+				AD23865320F9D5BA001D9881 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tpg offline Notification";
+			productName = "tpg offline Notification";
+			productReference = AD23865520F9D5BA001D9881 /* tpg offline Notification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		AD37FE601F41CA4600E84220 /* tpg offline */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD37FE731F41CA4600E84220 /* Build configuration list for PBXNativeTarget "tpg offline" */;
@@ -666,6 +725,7 @@
 			);
 			dependencies = (
 				ADBC1C871FAF0E2700162195 /* PBXTargetDependency */,
+				AD23866220F9D5BA001D9881 /* PBXTargetDependency */,
 			);
 			name = "tpg offline";
 			productName = "tpg offline";
@@ -713,7 +773,8 @@
 		AD37FE591F41CA4600E84220 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				DefaultBuildSystemTypeForWorkspace = Latest;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Remy;
 				TargetAttributes = {
@@ -721,6 +782,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = AD37FE601F41CA4600E84220;
+					};
+					AD23865420F9D5BA001D9881 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 					};
 					AD37FE601F41CA4600E84220 = {
 						CreatedOnToolsVersion = 9.0;
@@ -789,6 +854,7 @@
 				AD1E484B1FADFF6A00596076 /* tpg offline UITests */,
 				ADBC1C6A1FAF0E2700162195 /* tpg offline watchOS */,
 				ADBC1C761FAF0E2700162195 /* tpg offline watchOS Extension */,
+				AD23865420F9D5BA001D9881 /* tpg offline Notification */,
 			);
 		};
 /* End PBXProject section */
@@ -799,6 +865,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD1E48591FAE0D0A00596076 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD23865320F9D5BA001D9881 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD23865F20F9D5BA001D9881 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +987,14 @@
 			files = (
 				AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */,
 				AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD23865120F9D5BA001D9881 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD23865C20F9D5BA001D9881 /* NotificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1031,6 +1113,11 @@
 			target = AD37FE601F41CA4600E84220 /* tpg offline */;
 			targetProxy = AD1E48511FADFF6A00596076 /* PBXContainerItemProxy */;
 		};
+		AD23866220F9D5BA001D9881 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD23865420F9D5BA001D9881 /* tpg offline Notification */;
+			targetProxy = AD23866120F9D5BA001D9881 /* PBXContainerItemProxy */;
+		};
 		ADBC1C7A1FAF0E2700162195 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ADBC1C761FAF0E2700162195 /* tpg offline watchOS Extension */;
@@ -1044,6 +1131,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AD23865D20F9D5BA001D9881 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD23865E20F9D5BA001D9881 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		AD28200D1FA0E5D800767462 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1167,6 +1262,43 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "tpg offline";
+			};
+			name = Release;
+		};
+		AD23866420F9D5BA001D9881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				INFOPLIST_FILE = "tpg offline Notification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Notification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD23866520F9D5BA001D9881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				INFOPLIST_FILE = "tpg offline Notification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Notification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1439,6 +1571,15 @@
 			buildConfigurations = (
 				AD1E48531FADFF6A00596076 /* Debug */,
 				AD1E48541FADFF6A00596076 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD23866620F9D5BA001D9881 /* Build configuration list for PBXNativeTarget "tpg offline Notification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD23866420F9D5BA001D9881 /* Debug */,
+				AD23866520F9D5BA001D9881 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

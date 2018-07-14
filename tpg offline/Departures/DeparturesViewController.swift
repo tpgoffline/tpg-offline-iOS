@@ -861,6 +861,33 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         content.body = Text.take(line: departure.line.code,
                                  to: departure.line.destination)
         content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = "departureNotification"
+
+        var localisations = stop?.localisations ?? []
+        for (index, localisation) in localisations.enumerated() {
+          localisations[index].destinations = localisation.destinations.filter({
+            (destination) -> Bool in
+            destination.line == departure.line.code &&
+            destination.destination == departure.line.destination
+          })
+        }
+        localisations = localisations.filter { (localisation) -> Bool in
+          !localisation.destinations.isEmpty
+        }
+
+        if let location = localisations[safe: 0]?.location {
+          content.userInfo = [
+            "x": location.coordinate.latitude,
+            "y": location.coordinate.longitude,
+            "stopName": stop?.name ?? ""
+          ]
+        } else {
+          content.userInfo = [
+            "x": stop?.location.coordinate.latitude ?? 0,
+            "y": stop?.location.coordinate.longitude ?? 0,
+            "stopName": stop?.name ?? ""
+          ]
+        }
         let notificationIdentifier = "departureNotification-\(String.random(30))"
         let request = UNNotificationRequest(identifier: notificationIdentifier,
                                             content: content,
