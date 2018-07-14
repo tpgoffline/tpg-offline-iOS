@@ -70,7 +70,7 @@ class DeparturesViewController: UIViewController {
       // Siri Intent
       if #available(iOS 12.0, *) {
         let intent = DeparturesIntent()
-        intent.stop = INObject(identifier: "\(stop.appId)", display: stop.name)
+        intent.stop = INObject(identifier: "\(stop.code)", display: stop.name)
         
         let interaction = INInteraction(intent: intent, response: nil)
         interaction.donate { (error) in
