@@ -51,7 +51,7 @@ class DeparturesTableViewCell: UITableViewCell {
       destinationLabel.alpha = 1
       rightTimeLabel.alpha = 1
 
-      var color = App.color(for: departure.line.code,
+      var color = LineColorManager.color(for: departure.line.code,
                             operator: stop.lines[departure.line.code] ?? .tpg)
 
       destinationLabel.text = App.replacementsNames[departure.line.destination] ??

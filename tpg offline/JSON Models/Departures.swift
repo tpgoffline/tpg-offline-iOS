@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intents
 
 struct DeparturesGroup: Decodable {
   var departures: [Departure]
@@ -37,7 +38,7 @@ struct DeparturesGroup: Decodable {
   }
 
   mutating func mergeWithTac(_ departuresWithTac: DeparturesGroup?,
-                             linesWithTac: [String: Stop.Operator]?) {
+                             linesWithTac: [String: Operator]?) {
     guard let departuresWithTac = departuresWithTac,
       let linesWithTac = linesWithTac else {
         return
@@ -53,6 +54,20 @@ struct DeparturesGroup: Decodable {
       if let a = Int($0), let b = Int($1) {
         return a < b
       } else { return $0 < $1 }})
+  }
+
+  @available(iOS 12.0, *)
+  @available(watchOSApplicationExtension 5.0, *)
+  var intentResponse: DeparturesIntentResponse {
+    let response = DeparturesIntentResponse(code: .success, userActivity: nil)
+    response.departures = self.departures.map({ (departure) -> INObject in
+      let destination = departure.line.destination
+      let lineCode = departure.line.code
+      let leftTime = departure.leftTime
+      return INObject(identifier: "\(lineCode),\(destination),\(leftTime)",
+                      display: destination)
+    })
+    return response
   }
 }
 

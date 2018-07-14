@@ -35,7 +35,6 @@
 		AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8A1F41CA8000E84220 /* Connection.swift */; };
 		AD37FEB61F41CD9300E84220 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8B1F41CA8000E84220 /* Departures.swift */; };
 		AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8C1F41CA8000E84220 /* Disruptions.swift */; };
-		AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8D1F41CA8000E84220 /* LineColor.swift */; };
 		AD37FEB91F41CD9300E84220 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8E1F41CA8000E84220 /* Stop.swift */; };
 		AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE851F41CA8000E84220 /* AppDelegate.swift */; };
 		AD37FEBD1F41CDA300E84220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD37FE901F41CA8000E84220 /* Assets.xcassets */; };
@@ -61,6 +60,36 @@
 		AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */; };
 		AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */; };
 		AD5FC1DF1FE6D9F90016BC35 /* DayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */; };
+		AD66BDE720F90AFA009731D4 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BDE620F90AFA009731D4 /* IntentHandler.swift */; };
+		AD66BDEF20F90AFB009731D4 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD66BDEE20F90AFB009731D4 /* IntentsUI.framework */; };
+		AD66BDF220F90AFB009731D4 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BDF120F90AFB009731D4 /* IntentViewController.swift */; };
+		AD66BDF520F90AFB009731D4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD66BDF320F90AFB009731D4 /* MainInterface.storyboard */; };
+		AD66BDF920F90AFB009731D4 /* tpg offline SiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD66BDED20F90AFA009731D4 /* tpg offline SiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD66BDFC20F90AFB009731D4 /* tpg offline Siri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD66BDE420F90AFA009731D4 /* tpg offline Siri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD66BE0420F90BA9009731D4 /* DeparturesIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE0320F90BA9009731D4 /* DeparturesIntentHandler.swift */; };
+		AD66BE0B20F90CE5009731D4 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE1020F90CE5009731D4 /* Intents.intentdefinition */; };
+		AD66BE0C20F90CE5009731D4 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE1020F90CE5009731D4 /* Intents.intentdefinition */; };
+		AD66BE0D20F90CE5009731D4 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE1020F90CE5009731D4 /* Intents.intentdefinition */; };
+		AD66BE0E20F90CE5009731D4 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE1020F90CE5009731D4 /* Intents.intentdefinition */; };
+		AD66BE1320F90F21009731D4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
+		AD66BE1520F90F4E009731D4 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED520F6005800DABB25 /* Text.swift */; };
+		AD66BE1620F90F4E009731D4 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED720F6050A00DABB25 /* URL.swift */; };
+		AD66BE1720F90F4E009731D4 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED520F6005800DABB25 /* Text.swift */; };
+		AD66BE1820F90F4E009731D4 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED720F6050A00DABB25 /* URL.swift */; };
+		AD66BE1A20F90F6D009731D4 /* SiriExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE1920F90F6D009731D4 /* SiriExtensions.swift */; };
+		AD66BE1B20F90FFA009731D4 /* SiriExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE1920F90F6D009731D4 /* SiriExtensions.swift */; };
+		AD66BE1C20F91042009731D4 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8B1F41CA8000E84220 /* Departures.swift */; };
+		AD66BE1D20F91043009731D4 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8B1F41CA8000E84220 /* Departures.swift */; };
+		AD66BE2120F911D3009731D4 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2020F911D3009731D4 /* Operator.swift */; };
+		AD66BE2220F91207009731D4 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2020F911D3009731D4 /* Operator.swift */; };
+		AD66BE2320F91208009731D4 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2020F911D3009731D4 /* Operator.swift */; };
+		AD66BE2420F91209009731D4 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2020F911D3009731D4 /* Operator.swift */; };
+		AD66BE2520F912B0009731D4 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8E1F41CA8000E84220 /* Stop.swift */; };
+		AD66BE2620F912B0009731D4 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8E1F41CA8000E84220 /* Stop.swift */; };
+		AD66BE2820F91DB2009731D4 /* LineColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2720F91DB2009731D4 /* LineColorManager.swift */; };
+		AD66BE2920F91E04009731D4 /* LineColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2720F91DB2009731D4 /* LineColorManager.swift */; };
+		AD66BE2A20F91E04009731D4 /* LineColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2720F91DB2009731D4 /* LineColorManager.swift */; };
+		AD66BE2B20F91E05009731D4 /* LineColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BE2720F91DB2009731D4 /* LineColorManager.swift */; };
 		AD675C9620CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */; };
 		AD675C9820CEB00200B13C8A /* OfflineDeparturesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD675C9720CEB00200B13C8A /* OfflineDeparturesManager.swift */; };
 		AD675C9A20CEB7EF00B13C8A /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD675C9920CEB7EF00B13C8A /* Reachability.framework */; };
@@ -70,7 +99,6 @@
 		AD708DB01FB0AC420076B3AC /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8A1F41CA8000E84220 /* Connection.swift */; };
 		AD708DB11FB0AC420076B3AC /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8B1F41CA8000E84220 /* Departures.swift */; };
 		AD708DB21FB0AC420076B3AC /* Disruptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8C1F41CA8000E84220 /* Disruptions.swift */; };
-		AD708DB31FB0AC420076B3AC /* LineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8D1F41CA8000E84220 /* LineColor.swift */; };
 		AD708DB41FB0AC420076B3AC /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE8E1F41CA8000E84220 /* Stop.swift */; };
 		AD708DB51FB0AC420076B3AC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0986931F64185A00CD8403 /* Route.swift */; };
 		AD708DB61FB0AC420076B3AC /* RouteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976D1F657CC0004AA662 /* RouteResults.swift */; };
@@ -142,6 +170,20 @@
 			remoteGlobalIDString = AD37FE601F41CA4600E84220;
 			remoteInfo = "tpg offline";
 		};
+		AD66BDF720F90AFB009731D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD66BDEC20F90AFA009731D4;
+			remoteInfo = "tpg offline SiriUI";
+		};
+		AD66BDFA20F90AFB009731D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD66BDE320F90AFA009731D4;
+			remoteInfo = "tpg offline Siri";
+		};
 		ADBC1C791FAF0E2700162195 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AD37FE591F41CA4600E84220 /* Project object */;
@@ -187,6 +229,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				AD66BDF920F90AFB009731D4 /* tpg offline SiriUI.appex in Embed App Extensions */,
+				AD66BDFC20F90AFB009731D4 /* tpg offline Siri.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +271,6 @@
 		AD37FE8A1F41CA8000E84220 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AD37FE8B1F41CA8000E84220 /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
 		AD37FE8C1F41CA8000E84220 /* Disruptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disruptions.swift; sourceTree = "<group>"; };
-		AD37FE8D1F41CA8000E84220 /* LineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineColor.swift; sourceTree = "<group>"; };
 		AD37FE8E1F41CA8000E84220 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		AD37FE901F41CA8000E84220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD37FE941F41CA8000E84220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -249,6 +292,20 @@
 		AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMonitoringLinesTableViewController.swift; sourceTree = "<group>"; };
 		AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourPickerViewController.swift; sourceTree = "<group>"; };
 		AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerViewController.swift; sourceTree = "<group>"; };
+		AD66BDE420F90AFA009731D4 /* tpg offline Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline Siri.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD66BDE620F90AFA009731D4 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		AD66BDE820F90AFA009731D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD66BDED20F90AFA009731D4 /* tpg offline SiriUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline SiriUI.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD66BDEE20F90AFB009731D4 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		AD66BDF120F90AFB009731D4 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		AD66BDF420F90AFB009731D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		AD66BDF620F90AFB009731D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD66BE0320F90BA9009731D4 /* DeparturesIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesIntentHandler.swift; sourceTree = "<group>"; };
+		AD66BE0F20F90CE5009731D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
+		AD66BE1220F90CEC009731D4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Intents.strings; sourceTree = "<group>"; };
+		AD66BE1920F90F6D009731D4 /* SiriExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriExtensions.swift; sourceTree = "<group>"; };
+		AD66BE2020F911D3009731D4 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
+		AD66BE2720F91DB2009731D4 /* LineColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineColorManager.swift; sourceTree = "<group>"; };
 		AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeparturesTableViewController.swift; sourceTree = "<group>"; };
 		AD675C9720CEB00200B13C8A /* OfflineDeparturesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDeparturesManager.swift; sourceTree = "<group>"; };
 		AD675C9920CEB7EF00B13C8A /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
@@ -263,7 +320,6 @@
 		AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
 		AD8B77EF2077A2680034CFBD /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationTableViewController.swift; sourceTree = "<group>"; };
-		AD8E14F12062E27E000ADF3D /* Dotzu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dotzu.framework; path = Carthage/Build/iOS/Dotzu.framework; sourceTree = "<group>"; };
 		AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		AD92D8BE1F44E10200403258 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -347,6 +403,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD66BDE120F90AFA009731D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD66BE1320F90F21009731D4 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD66BDEA20F90AFA009731D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD66BDEF20F90AFB009731D4 /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADBC1C741FAF0E2700162195 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,12 +490,15 @@
 			isa = PBXGroup;
 			children = (
 				AD2E6ADF20F35F250014635A /* Bus.gpx */,
+				AD66BE1020F90CE5009731D4 /* Intents.intentdefinition */,
 				ADABFA091F9CF1D200EEC8D0 /* stops.json */,
 				ADA14E631FDEC4E100945249 /* lines.json */,
 				AD37FE631F41CA4600E84220 /* tpg offline */,
 				AD1E484D1FADFF6A00596076 /* tpg offline UITests */,
 				ADBC1C6C1FAF0E2700162195 /* tpg offline watchOS */,
 				ADBC1C7B1FAF0E2700162195 /* tpg offline watchOS Extension */,
+				AD66BDE520F90AFA009731D4 /* tpg offline Siri */,
+				AD66BDF020F90AFB009731D4 /* tpg offline SiriUI */,
 				AD37FEA31F41CABC00E84220 /* Frameworks */,
 				AD37FE621F41CA4600E84220 /* Products */,
 			);
@@ -436,6 +511,8 @@
 				AD1E484C1FADFF6A00596076 /* tpg offline UITests.xctest */,
 				ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */,
 				ADBC1C771FAF0E2700162195 /* tpg offline watchOS Extension.appex */,
+				AD66BDE420F90AFA009731D4 /* tpg offline Siri.appex */,
+				AD66BDED20F90AFA009731D4 /* tpg offline SiriUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -501,6 +578,7 @@
 				AD675C9720CEB00200B13C8A /* OfflineDeparturesManager.swift */,
 				ADF6BED520F6005800DABB25 /* Text.swift */,
 				ADF6BED720F6050A00DABB25 /* URL.swift */,
+				AD66BE2720F91DB2009731D4 /* LineColorManager.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -512,7 +590,6 @@
 				AD37FE8A1F41CA8000E84220 /* Connection.swift */,
 				AD37FE8B1F41CA8000E84220 /* Departures.swift */,
 				AD37FE8C1F41CA8000E84220 /* Disruptions.swift */,
-				AD37FE8D1F41CA8000E84220 /* LineColor.swift */,
 				AD37FE8E1F41CA8000E84220 /* Stop.swift */,
 				AD0986931F64185A00CD8403 /* Route.swift */,
 				ADF0976D1F657CC0004AA662 /* RouteResults.swift */,
@@ -520,6 +597,7 @@
 				ADA14E651FDEC4FE00945249 /* Line.swift */,
 				AD3EB1681FE6BE1200F74261 /* DisruptionMonitoring.swift */,
 				AD4921E8205E5A16002A1ED9 /* SmartNotificationStatus.swift */,
+				AD66BE2020F911D3009731D4 /* Operator.swift */,
 			);
 			path = "JSON Models";
 			sourceTree = "<group>";
@@ -559,7 +637,6 @@
 			children = (
 				AD675C9920CEB7EF00B13C8A /* Reachability.framework */,
 				AD9F018320CE7F320069B486 /* Solar.framework */,
-				AD8E14F12062E27E000ADF3D /* Dotzu.framework */,
 				AD0D33B320025659006462D5 /* NetworkExtension.framework */,
 				AD7B47E21FD1570000F8DA23 /* MapKit.framework */,
 				ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */,
@@ -567,6 +644,7 @@
 				AD07A3641F8A60D300E65DE7 /* Fabric.framework */,
 				AD37FEA81F41CAC300E84220 /* Alamofire.framework */,
 				ADFE4A68201B053F005093C2 /* NotificationCenter.framework */,
+				AD66BDEE20F90AFB009731D4 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -589,6 +667,27 @@
 				AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */,
 			);
 			path = Disruptions;
+			sourceTree = "<group>";
+		};
+		AD66BDE520F90AFA009731D4 /* tpg offline Siri */ = {
+			isa = PBXGroup;
+			children = (
+				AD66BDE620F90AFA009731D4 /* IntentHandler.swift */,
+				AD66BDE820F90AFA009731D4 /* Info.plist */,
+				AD66BE0320F90BA9009731D4 /* DeparturesIntentHandler.swift */,
+				AD66BE1920F90F6D009731D4 /* SiriExtensions.swift */,
+			);
+			path = "tpg offline Siri";
+			sourceTree = "<group>";
+		};
+		AD66BDF020F90AFB009731D4 /* tpg offline SiriUI */ = {
+			isa = PBXGroup;
+			children = (
+				AD66BDF120F90AFB009731D4 /* IntentViewController.swift */,
+				AD66BDF320F90AFB009731D4 /* MainInterface.storyboard */,
+				AD66BDF620F90AFB009731D4 /* Info.plist */,
+			);
+			path = "tpg offline SiriUI";
 			sourceTree = "<group>";
 		};
 		AD8CF77D1F979B3000DE9CBC /* Orientation */ = {
@@ -666,11 +765,48 @@
 			);
 			dependencies = (
 				ADBC1C871FAF0E2700162195 /* PBXTargetDependency */,
+				AD66BDF820F90AFB009731D4 /* PBXTargetDependency */,
+				AD66BDFB20F90AFB009731D4 /* PBXTargetDependency */,
 			);
 			name = "tpg offline";
 			productName = "tpg offline";
 			productReference = AD37FE611F41CA4600E84220 /* tpg offline.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AD66BDE320F90AFA009731D4 /* tpg offline Siri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD66BE0020F90AFB009731D4 /* Build configuration list for PBXNativeTarget "tpg offline Siri" */;
+			buildPhases = (
+				AD66BDE020F90AFA009731D4 /* Sources */,
+				AD66BDE120F90AFA009731D4 /* Frameworks */,
+				AD66BDE220F90AFA009731D4 /* Resources */,
+				AD66BE1420F90F30009731D4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tpg offline Siri";
+			productName = "tpg offline Siri";
+			productReference = AD66BDE420F90AFA009731D4 /* tpg offline Siri.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		AD66BDEC20F90AFA009731D4 /* tpg offline SiriUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD66BDFD20F90AFB009731D4 /* Build configuration list for PBXNativeTarget "tpg offline SiriUI" */;
+			buildPhases = (
+				AD66BDE920F90AFA009731D4 /* Sources */,
+				AD66BDEA20F90AFA009731D4 /* Frameworks */,
+				AD66BDEB20F90AFA009731D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tpg offline SiriUI";
+			productName = "tpg offline SiriUI";
+			productReference = AD66BDED20F90AFA009731D4 /* tpg offline SiriUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		ADBC1C6A1FAF0E2700162195 /* tpg offline watchOS */ = {
 			isa = PBXNativeTarget;
@@ -713,7 +849,8 @@
 		AD37FE591F41CA4600E84220 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				DefaultBuildSystemTypeForWorkspace = Latest;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Remy;
 				TargetAttributes = {
@@ -743,10 +880,21 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 0;
 							};
 						};
+					};
+					AD66BDE320F90AFA009731D4 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
+					AD66BDEC20F90AFA009731D4 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 					};
 					ADBC1C6A1FAF0E2700162195 = {
 						CreatedOnToolsVersion = 9.2;
@@ -789,6 +937,8 @@
 				AD1E484B1FADFF6A00596076 /* tpg offline UITests */,
 				ADBC1C6A1FAF0E2700162195 /* tpg offline watchOS */,
 				ADBC1C761FAF0E2700162195 /* tpg offline watchOS Extension */,
+				AD66BDE320F90AFA009731D4 /* tpg offline Siri */,
+				AD66BDEC20F90AFA009731D4 /* tpg offline SiriUI */,
 			);
 		};
 /* End PBXProject section */
@@ -819,6 +969,21 @@
 				ADF9C6811F9BB4A500AE17A4 /* Orientation.storyboard in Resources */,
 				ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */,
 				ADA14E641FDEC4E100945249 /* lines.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD66BDE220F90AFA009731D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD66BDEB20F90AFA009731D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD66BDF520F90AFB009731D4 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,7 +1039,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		AD37FEC51F41CF1800E84220 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -889,6 +1054,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		AD66BE1420F90F30009731D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		ADA0D3611FB33F0C001DAC9F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -934,6 +1117,7 @@
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
 				ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */,
 				AD1D3861200E6184009831A8 /* PendingNotificationsTableViewController.swift in Sources */,
+				AD66BE0B20F90CE5009731D4 /* Intents.intentdefinition in Sources */,
 				AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */,
 				ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */,
 				AD37FEAF1F41CD9300E84220 /* DeparturesViewController.swift in Sources */,
@@ -948,6 +1132,7 @@
 				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
 				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
 				AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */,
+				AD66BE2120F911D3009731D4 /* Operator.swift in Sources */,
 				AD7C3ECD2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift in Sources */,
 				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
@@ -966,7 +1151,7 @@
 				ADA2877B20638E26006EEF39 /* API.swift in Sources */,
 				AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */,
 				AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */,
-				AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */,
+				AD66BE2820F91DB2009731D4 /* LineColorManager.swift in Sources */,
 				ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */,
 				AD675C9620CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift in Sources */,
 				AD3EB1671FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift in Sources */,
@@ -989,14 +1174,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD66BDE020F90AFA009731D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD66BE1620F90F4E009731D4 /* URL.swift in Sources */,
+				AD66BE0D20F90CE5009731D4 /* Intents.intentdefinition in Sources */,
+				AD66BE2520F912B0009731D4 /* Stop.swift in Sources */,
+				AD66BE1A20F90F6D009731D4 /* SiriExtensions.swift in Sources */,
+				AD66BDE720F90AFA009731D4 /* IntentHandler.swift in Sources */,
+				AD66BE2920F91E04009731D4 /* LineColorManager.swift in Sources */,
+				AD66BE1520F90F4E009731D4 /* Text.swift in Sources */,
+				AD66BE2420F91209009731D4 /* Operator.swift in Sources */,
+				AD66BE0420F90BA9009731D4 /* DeparturesIntentHandler.swift in Sources */,
+				AD66BE1C20F91042009731D4 /* Departures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD66BDE920F90AFA009731D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD66BE1D20F91043009731D4 /* Departures.swift in Sources */,
+				AD66BE0E20F90CE5009731D4 /* Intents.intentdefinition in Sources */,
+				AD66BE1B20F90FFA009731D4 /* SiriExtensions.swift in Sources */,
+				AD66BE2620F912B0009731D4 /* Stop.swift in Sources */,
+				AD66BE2A20F91E04009731D4 /* LineColorManager.swift in Sources */,
+				AD66BE1720F90F4E009731D4 /* Text.swift in Sources */,
+				AD66BE2320F91208009731D4 /* Operator.swift in Sources */,
+				AD66BDF220F90AFB009731D4 /* IntentViewController.swift in Sources */,
+				AD66BE1820F90F4E009731D4 /* URL.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADBC1C731FAF0E2700162195 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ADC487D01FB1EE7600675593 /* LinesInterfaceController.swift in Sources */,
 				AD708DB11FB0AC420076B3AC /* Departures.swift in Sources */,
+				AD66BE2220F91207009731D4 /* Operator.swift in Sources */,
 				ADA0D3631FB34E59001DAC9F /* DeparturesInterfaceController.swift in Sources */,
-				AD708DB31FB0AC420076B3AC /* LineColor.swift in Sources */,
 				AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */,
 				AD3DF3B01FB1FE8500F2AFA5 /* App.swift in Sources */,
 				AD708DB41FB0AC420076B3AC /* Stop.swift in Sources */,
@@ -1007,6 +1225,7 @@
 				AD5628DC20F67193009508D2 /* URL.swift in Sources */,
 				AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */,
 				AD708DB21FB0AC420076B3AC /* Disruptions.swift in Sources */,
+				AD66BE0C20F90CE5009731D4 /* Intents.intentdefinition in Sources */,
 				AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */,
 				AD8B77F02077A2680034CFBD /* ReminderInterfaceController.swift in Sources */,
 				AD0644401FBB366200E61E5A /* RoutesInterfaceController.swift in Sources */,
@@ -1016,6 +1235,7 @@
 				AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */,
 				AD708DB01FB0AC420076B3AC /* Connection.swift in Sources */,
 				AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */,
+				AD66BE2B20F91E05009731D4 /* LineColorManager.swift in Sources */,
 				ADA14E681FDEC5D300945249 /* Line.swift in Sources */,
 				AD708DAF1FB0AC420076B3AC /* BusRoute.swift in Sources */,
 				ADA2877C206390A5006EEF39 /* API.swift in Sources */,
@@ -1030,6 +1250,16 @@
 			isa = PBXTargetDependency;
 			target = AD37FE601F41CA4600E84220 /* tpg offline */;
 			targetProxy = AD1E48511FADFF6A00596076 /* PBXContainerItemProxy */;
+		};
+		AD66BDF820F90AFB009731D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD66BDEC20F90AFA009731D4 /* tpg offline SiriUI */;
+			targetProxy = AD66BDF720F90AFB009731D4 /* PBXContainerItemProxy */;
+		};
+		AD66BDFB20F90AFB009731D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD66BDE320F90AFA009731D4 /* tpg offline Siri */;
+			targetProxy = AD66BDFA20F90AFB009731D4 /* PBXContainerItemProxy */;
 		};
 		ADBC1C7A1FAF0E2700162195 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1078,6 +1308,23 @@
 				ADF9C6721F9BB26400AE17A4 /* fr */,
 			);
 			name = Departures.storyboard;
+			sourceTree = "<group>";
+		};
+		AD66BDF320F90AFB009731D4 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD66BDF420F90AFB009731D4 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		AD66BE1020F90CE5009731D4 /* Intents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD66BE0F20F90CE5009731D4 /* Base */,
+				AD66BE1220F90CEC009731D4 /* fr */,
+			);
+			name = Intents.intentdefinition;
 			sourceTree = "<group>";
 		};
 		ADBC1C6D1FAF0E2700162195 /* Interface.storyboard */ = {
@@ -1333,6 +1580,88 @@
 			};
 			name = Release;
 		};
+		AD66BDFE20F90AFB009731D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				INFOPLIST_FILE = "tpg offline SiriUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-SiriUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD66BDFF20F90AFB009731D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				INFOPLIST_FILE = "tpg offline SiriUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-SiriUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AD66BE0120F90AFB009731D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "tpg offline Siri/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Siri";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD66BE0220F90AFB009731D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "tpg offline Siri/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Siri";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		ADBC1C8A1FAF0E2700162195 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1457,6 +1786,24 @@
 			buildConfigurations = (
 				AD37FE741F41CA4600E84220 /* Debug */,
 				AD37FE751F41CA4600E84220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD66BDFD20F90AFB009731D4 /* Build configuration list for PBXNativeTarget "tpg offline SiriUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD66BDFE20F90AFB009731D4 /* Debug */,
+				AD66BDFF20F90AFB009731D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD66BE0020F90AFB009731D4 /* Build configuration list for PBXNativeTarget "tpg offline Siri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD66BE0120F90AFB009731D4 /* Debug */,
+				AD66BE0220F90AFB009731D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

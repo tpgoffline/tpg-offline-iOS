@@ -12,6 +12,7 @@ import Alamofire
 import CoreSpotlight
 import Fabric
 import Crashlytics
+import Intents
 
 enum TouchActions: String {
   case departures = "departures"
@@ -69,6 +70,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     if !App.disableForceSmartReminders {
       App.smartReminders = true
+    }
+
+    if #available(iOS 10.0, *) {
+      INPreferences.requestSiriAuthorization { status in
+        if status == .authorized {
+          print("Hey, Siri!")
+        } else {
+          print("Nay, Siri!")
+        }
+      }
     }
 
     if let tabController = (window?.rootViewController as? UITabBarController) {

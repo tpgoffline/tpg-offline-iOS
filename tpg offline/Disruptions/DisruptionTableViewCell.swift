@@ -37,7 +37,7 @@ class DisruptionTableViewCell: UITableViewCell {
                                      repeats: true)
         return
       }
-      self.color = App.color(for: disruption.line)
+      self.color = LineColorManager.color(for: disruption.line)
 
       titleLabel.alpha = 1
       descriptionLabel.alpha = 1

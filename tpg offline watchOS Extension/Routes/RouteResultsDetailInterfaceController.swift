@@ -73,7 +73,7 @@ class RoutesResultDetailRowController: NSObject {
       self.lineLabel.setText(Text.line(section.journey?.lineCode,
                                        destination: destinationName))
       if section.journey?.compagny == "TPG" {
-        color = App.color(for: section.journey?.lineCode ?? "")
+        color = LineColorManager.color(for: section.journey?.lineCode ?? "")
       } else if section.journey?.compagny == "SBB" {
         self.lineLabel.setText(Text.sbb(line: section.journey?.lineCode,
                                         destination: destinationName))

@@ -125,9 +125,9 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
         guard let rowController = self.tableView.rowController(at: index)
           as? BasicRowController else { continue }
         rowController.row = BasicRow(icon: nil, title: Text.line(line))
-        rowController.group.setBackgroundColor(App.color(for: line,
+        rowController.group.setBackgroundColor(LineColorManager.color(for: line,
                                                          operator: .tpg))
-        rowController.titleLabel.setTextColor(App.color(for: line,
+        rowController.titleLabel.setTextColor(LineColorManager.color(for: line,
                                                         operator: .tpg).contrast)
       }
     }

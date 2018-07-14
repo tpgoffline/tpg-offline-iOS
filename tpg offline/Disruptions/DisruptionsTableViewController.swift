@@ -210,7 +210,7 @@ class DisruptionsTableViewController: UITableViewController {
     headerCell?.backgroundColor = App.darkMode ? .black : .white
 
     if requestStatus != .loading {
-      let lineColor = App.color(for: (self.keys[section]))
+      let lineColor = LineColorManager.color(for: (self.keys[section]))
       headerCell?.backgroundColor =
         App.darkMode ? App.cellBackgroundColor : lineColor
       headerCell?.textLabel?.text = self.keys[section] == Text.wholeTpgNetwork ?

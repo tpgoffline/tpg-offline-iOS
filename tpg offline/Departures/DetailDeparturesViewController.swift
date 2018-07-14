@@ -608,7 +608,7 @@ extension DetailDeparturesViewController: UITableViewDelegate,
       else { return UITableViewCell() }
 
     cell.configure(with: busRouteGroup!.steps[indexPath.row],
-                   color: App.color(for: busRouteGroup!.lineCode),
+                   color: LineColorManager.color(for: busRouteGroup!.lineCode),
                    selected: titleSelected == stop.name)
 
     return cell

@@ -207,7 +207,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
       return nil
     }
     let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-    let color = App.color(for: lines[section])
+    let color = LineColorManager.color(for: lines[section])
     headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
     headerCell?.textLabel?.text = String(format: "Line %@".localized, lines[section])
     headerCell?.textLabel?.textColor = App.darkMode ? color : color.contrast

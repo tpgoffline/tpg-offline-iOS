@@ -12,6 +12,7 @@ import Alamofire
 import Crashlytics
 import UserNotifications
 import MessageUI
+import Intents
 #if !arch(i386) && !arch(x86_64)
 import NetworkExtension
 #endif
@@ -66,6 +67,18 @@ class DeparturesViewController: UIViewController {
         mapView.addAnnotation(annotation)
       }
 
+      // Siri Intent
+      if #available(iOS 12.0, *) {
+        let intent = DeparturesIntent()
+        intent.stop = INObject(identifier: "\(stop.appId)", display: stop.name)
+        
+        let interaction = INInteraction(intent: intent, response: nil)
+        interaction.donate { (error) in
+          if let error = error {
+            print(error.localizedDescription)
+          }
+        }
+      }
     }
   }
   var departures: DeparturesGroup?
@@ -248,7 +261,8 @@ class DeparturesViewController: UIViewController {
         as? DeparturesTableViewCell else {
         return
       }
-      destinationViewController.color = App.color(for: row.departure!.line.code)
+      destinationViewController.color =
+        LineColorManager.color(for: row.departure!.line.code)
       destinationViewController.departure = row.departure
       destinationViewController.stop = self.stop
       App.log(String(format: "Departures: Select %@ - %@ - %@",
@@ -468,7 +482,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         else { return nil }
 
       let footerAction = #selector(self.addRemoveFromShowMore(button:))
-      let color = App.color(for: line, operator: self.stop?.lines[line] ?? .tpg)
+      let color = LineColorManager.color(for: line,
+                                         operator: self.stop?.lines[line] ?? .tpg)
 
       if showMoreLines.contains(String(section)) {
         footerCell.button.setTitle("Show less".localized, for: .normal)
@@ -522,7 +537,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return UIView()
     }
 
-    let color = App.color(for: line, operator: self.stop?.lines[line] ?? .tpg)
+    let color = LineColorManager.color(for: line,
+                                       operator: self.stop?.lines[line] ?? .tpg)
     let headerCellAction = #selector(self.toggleFavoritesLines(button:))
     headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
     if line.count == 2 && line.first == "N" {
@@ -961,7 +977,7 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
       return nil
     }
 
-    detailVC.color = App.color(for: departure.line.code)
+    detailVC.color = LineColorManager.color(for: departure.line.code)
     detailVC.departure = cell.departure
     detailVC.stop = self.stop
     previewingContext.sourceRect = cell.frame

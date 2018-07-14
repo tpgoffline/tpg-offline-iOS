@@ -85,7 +85,7 @@ class LineViewController: UIViewController {
     }
 
     if line.snotpgURL != "" {
-      let color = App.color(for: line.line)
+      let color = LineColorManager.color(for: line.line)
       let buttonColor = App.darkMode ? color : color.contrast
       waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: buttonColor), for: .normal)
       waybackMachineButton.setTitle("See line history".localized, for: .normal)
@@ -95,7 +95,7 @@ class LineViewController: UIViewController {
                                      action: #selector(self.showSnotpgPage),
                                      for: .touchUpInside)
       waybackMachineButton.backgroundColor = App.darkMode ?
-        .black : App.color(for: line.line)
+        .black : LineColorManager.color(for: line.line)
       waybackMachineButton.cornerRadius = waybackMachineButton.bounds.height / 2
       waybackMachineButton.clipsToBounds = true
     } else {
@@ -103,7 +103,7 @@ class LineViewController: UIViewController {
       waybackMachineHeightConstraint.priority = UILayoutPriority(997)
     }
 
-    self.pathsSegmentedControl.tintColor = App.color(for: line.line)
+    self.pathsSegmentedControl.tintColor = LineColorManager.color(for: line.line)
 
     if App.darkMode {
       self.tableView.sectionIndexBackgroundColor = App.cellBackgroundColor
@@ -134,19 +134,19 @@ class LineViewController: UIViewController {
     self.departureLabel.textColor = App.textColor
     self.arrivalLabel.textColor = App.textColor
     self.view.backgroundColor = App.cellBackgroundColor
-    self.pathsSegmentedControl.tintColor = App.color(for: (line?.line)!)
+    self.pathsSegmentedControl.tintColor = LineColorManager.color(for: (line?.line)!)
     self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
     self.tableView.backgroundColor = App.darkMode ? .black : .white
     self.tableView.reloadData()
     guard let line = self.line else { return }
     if line.snotpgURL != "" {
-      let color = App.color(for: line.line)
+      let color = LineColorManager.color(for: line.line)
       let buttonColor = App.darkMode ? color : color.contrast
       waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: buttonColor), for: .normal)
       waybackMachineButton.setTitleColor(buttonColor, for: .normal)
       waybackMachineButton.tintColor = buttonColor
       waybackMachineButton.backgroundColor = App.darkMode ?
-        .black : App.color(for: line.line)
+        .black : LineColorManager.color(for: line.line)
     }
   }
 
@@ -233,7 +233,7 @@ extension LineViewController: UITableViewDelegate, UITableViewDataSource {
     let last = (indexPath.row + 1) ==
       self.line?.courses[safe: pathsSegmentedControl.selectedSegmentIndex]?.count
     cell.configure(with: course,
-                   color: App.color(for: line?.line ?? ""),
+                   color: LineColorManager.color(for: line?.line ?? ""),
                    first: indexPath.row == 0,
                    last: last)
 
@@ -246,7 +246,7 @@ extension LineViewController: MKMapViewDelegate {
                rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
     if overlay is MKPolyline {
       let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-      polylineRenderer.strokeColor = App.color(for: line?.line ?? "")
+      polylineRenderer.strokeColor = LineColorManager.color(for: line?.line ?? "")
       polylineRenderer.lineWidth = 5
       return polylineRenderer
     }

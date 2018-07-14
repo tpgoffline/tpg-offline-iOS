@@ -188,9 +188,4 @@ struct Stop: Codable {
   static func == (lhd: Stop, rhd: Stop) -> Bool {
     return lhd.appId == rhd.appId
   }
-
-  enum Operator: String, Codable {
-    case tpg = "tpg"
-    case tac = "tac"
-  }
 }

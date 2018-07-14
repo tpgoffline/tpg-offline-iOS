@@ -186,10 +186,10 @@ class RouteResultsDetailTableViewController: UITableViewController {
 
     if section.journey?.compagny == "TPG" {
       headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor :
-        App.color(for: section.journey?.lineCode ?? "")
+        LineColorManager.color(for: section.journey?.lineCode ?? "")
       titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ?
-        App.color(for: section.journey?.lineCode ?? "") :
-        App.color(for: section.journey?.lineCode ?? "").contrast
+        LineColorManager.color(for: section.journey?.lineCode ?? "") :
+        LineColorManager.color(for: section.journey?.lineCode ?? "").contrast
     } else if section.journey?.compagny == "SBB" {
       headerCell.textLabel?.text = Text.sbb(line: section.journey?.lineCode,
                                             destination: destinationName)

@@ -69,7 +69,8 @@ extension RouteResultsDetailMapTableViewCell: MKMapViewDelegate {
     }
 
     let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-    polylineRenderer.strokeColor = App.color(for: (overlay.title ?? "") ?? "")
+    polylineRenderer.strokeColor =
+      LineColorManager.color(for: (overlay.title ?? "") ?? "")
     polylineRenderer.lineWidth = 5
     return polylineRenderer
   }

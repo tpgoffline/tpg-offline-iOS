@@ -209,10 +209,10 @@ class LineTableViewControllerRow: UITableViewCell {
       self.textLabel?.text = String(format: "Line %@".localized, line.line)
       if App.darkMode {
         self.backgroundColor = App.cellBackgroundColor
-        self.textLabel?.textColor = App.color(for: line.line)
+        self.textLabel?.textColor = LineColorManager.color(for: line.line)
       } else {
-        self.backgroundColor = App.color(for: line.line)
-        self.textLabel?.textColor = App.color(for: line.line).contrast
+        self.backgroundColor = LineColorManager.color(for: line.line)
+        self.textLabel?.textColor = LineColorManager.color(for: line.line).contrast
       }
       self.tintColor = self.textLabel?.textColor
     }

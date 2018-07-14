@@ -35,7 +35,7 @@ class RouteStepViewController: UIViewController {
     title = Text.line(section.journey?.lineCode)
 
     if section.journey?.compagny == "TPG" {
-      self.color = App.color(for: section.journey?.lineCode ?? "")
+      self.color = LineColorManager.color(for: section.journey?.lineCode ?? "")
     } else if section.journey?.compagny == "SBB" {
       title = Text.sbb(line: section.journey?.lineCode)
       self.color = .red
