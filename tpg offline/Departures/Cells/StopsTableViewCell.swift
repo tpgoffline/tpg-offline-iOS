@@ -62,8 +62,9 @@ class StopsTableViewCell: UITableViewCell {
                          attributes: subtitleAttributes)
 
     if isNearestStops {
-      self.textLabel?.attributedText = NSAttributedString(string: stop.name,
-                                                          attributes: titleAttributes)
+      self.textLabel?.attributedText =
+        NSAttributedString(string: stop.name,
+                           attributes: titleAttributes)
       let walkDuration = Int(stop.distance / 1000 / 5 * 60)
       let walkDurationString = Text.distance(meters: stop.distance,
                                            minutes: walkDuration)

@@ -185,6 +185,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                               willPresent notification: UNNotification,
                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     //swiftlint:disable:previous line_length
-    completionHandler(UNNotificationPresentationOptions.alert)
+    completionHandler([.alert, .badge, .sound])
   }
 }

@@ -75,7 +75,9 @@ open class DatePickerDialog: UIView {
     @objc func deviceOrientationDidChange(_ notification: Notification) {
         self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         let screenSize = countScreenSize()
-        let dialogSize = CGSize(width: 350, height: 230 + kDatePickerDialogDefaultButtonHeight + kDatePickerDialogDefaultButtonSpacerHeight)
+      let dialogSize = CGSize(width: 350, height: 274
+        + (2 * kDatePickerDialogDefaultButtonHeight)
+        + (2 * kDatePickerDialogDefaultButtonSpacerHeight))
         dialogView.frame = CGRect(x: (screenSize.width - dialogSize.width) / 2, y: (screenSize.height - dialogSize.height) / 2, width: dialogSize.width, height: dialogSize.height)
     }
     
@@ -172,9 +174,9 @@ open class DatePickerDialog: UIView {
                            UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1).cgColor,
                            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor]
         if App.darkMode {
-            gradient.colors = [UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1).cgColor,
-                               UIColor(red: 22/255, green: 22/255, blue: 22/255, alpha: 1).cgColor,
-                               UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1).cgColor]
+            gradient.colors = [UIColor(red: 22/255, green: 22/255, blue: 22/255, alpha: 1).cgColor,
+                               UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1).cgColor,
+                               UIColor(red: 22/255, green: 22/255, blue: 22/255, alpha: 1).cgColor]
         }
         let cornerRadius = kDatePickerDialogCornerRadius
         gradient.cornerRadius = cornerRadius

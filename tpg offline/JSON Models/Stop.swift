@@ -14,6 +14,7 @@ struct Stop: Codable {
     struct Destinations: Codable {
       var line: String
       var destination: String
+      var destinationTransportAPI: String
     }
 
     var location: CLLocation

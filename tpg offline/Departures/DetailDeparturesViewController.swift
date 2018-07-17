@@ -326,13 +326,8 @@ class DetailDeparturesViewController: UIViewController {
     App.log("Departures: Reminder")
     self.departure?.calculateLeftTime()
     let leftTime = Int(self.departure?.leftTime ?? "0".localized) ?? 0
-    let alertText = String(format: """
-At %@ - In %@ minutes
-When do you want to be reminded?
-""".localized,
-                           stop?.name ?? "??", "\(leftTime)")
-    var alertController = UIAlertController(title: "Reminder".localized,
-                                            message: alertText,
+    var alertController = UIAlertController(title: Text.reminder,
+                                            message: Text.whenReminder,
                                             preferredStyle: .alert)
     if self.departure?.leftTime == "0" {
       alertController.title = Text.busIsComming

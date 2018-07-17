@@ -41,6 +41,35 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
         geodesic.title = section.journey?.lineCode ?? ""
         mapView.add(geodesic)
       }
+      
+      if allPoints.isEmpty {
+        allPoints = [
+          CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
+                                 longitude: connection.from.station.coordinate.y),
+          CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
+                                 longitude: connection.to.station.coordinate.y)]
+        let fromAnnotation = MKPointAnnotation()
+        fromAnnotation.title = (App.stops.filter({
+          $0.sbbId == connection.from.station.id
+        })[safe: 0]?.name) ?? connection.from.station.name
+        fromAnnotation.coordinate =
+          CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
+                                 longitude: connection.from.station.coordinate.y)
+        mapView.addAnnotation(fromAnnotation)
+        
+        let toAnnotation = MKPointAnnotation()
+        toAnnotation.title = (App.stops.filter({
+          $0.sbbId == connection.to.station.id
+        })[safe: 0]?.name) ?? connection.to.station.name
+        toAnnotation.coordinate =
+          CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
+                                 longitude: connection.to.station.coordinate.y)
+        mapView.addAnnotation(toAnnotation)
+        
+        let geodesic = MKPolyline(coordinates: &allPoints, count: allPoints.count)
+        geodesic.title = "Walk"
+        mapView.add(geodesic)
+      }
 
       let regionRadius: CLLocationDistance = 2000
       guard let point = allPoints[safe: 0] else { return }
@@ -70,6 +99,9 @@ extension RouteResultsDetailMapTableViewCell: MKMapViewDelegate {
 
     let polylineRenderer = MKPolylineRenderer(overlay: polyline)
     polylineRenderer.strokeColor = App.color(for: (overlay.title ?? "") ?? "")
+    if overlay.title == "Walk" {
+      polylineRenderer.strokeColor = .black
+    }
     polylineRenderer.lineWidth = 5
     return polylineRenderer
   }

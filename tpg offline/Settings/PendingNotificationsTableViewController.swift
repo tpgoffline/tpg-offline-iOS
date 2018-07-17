@@ -68,6 +68,11 @@ class PendingNotificationsTableViewController: UITableViewController {
               "\(dateFormatter.string(from: date)) - \(request.content.title)",
               request.content.body,
               request.identifier])
+          } else if let trigger = (request.trigger
+            as? UNLocationNotificationTrigger) {
+            self.pendingNotifications.append([Text.goMode,
+                                              request.content.body,
+                                              request.identifier])
           }
         }
       }

@@ -288,15 +288,18 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
         locationAllowed = false
       }
 
-      for (index, section) in sections.enumerated() where section.journey != nil &&
-        section.walk == nil {
+      let filtredSection = sections.filter({ $0.journey != nil && $0.walk == nil })
+      for (index, section) in filtredSection.enumerated() {
+        let arrivalName = (App.stops.filter({
+          $0.sbbId == section.arrival.station.id
+        })[safe: 0]?.name) ?? section.arrival.station.name
+        let passList = section.journey!.passList
           if #available(iOS 10.0, *) {
             let content = UNMutableNotificationContent()
             content.title = Text.goNextStop
+
             if index == sections.count - 1 {
-              content.body = Text.rememberLeaveDestination(stop: (App.stops.filter({
-                $0.sbbId == section.arrival.station.id
-              })[safe: 0]?.name) ?? section.arrival.station.name)
+              content.body = Text.rememberLeaveDestination(stop: arrivalName)
             } else {
               content.body =
                 Text.rememberLeaveLine(stop: (App.stops.filter({
@@ -305,7 +308,28 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
                                        line: sections[index + 1].journey?.lineCode)
             }
 
-            let passList = section.journey!.passList
+            content.categoryIdentifier = "goNotification"
+
+            if index == filtredSection.endIndex {
+              content.userInfo = [
+                "arrivalX": section.arrival.station.coordinate.x,
+                "arrivalY": section.arrival.station.coordinate.y,
+                "arrivalName": arrivalName
+              ]
+            } else {
+              let departureName = (App.stops.filter({
+                $0.sbbId == section.departure.station.id
+              })[safe: 0]?.name) ?? section.departure.station.name
+
+              content.userInfo = [
+                "arrivalX": section.arrival.station.coordinate.x,
+                "arrivalY": section.arrival.station.coordinate.y,
+                "arrivalName": arrivalName,
+                "departureX": section.departure.station.coordinate.x,
+                "departureY": section.departure.station.coordinate.y,
+                "departureName": departureName
+              ]
+            }
 
             let request: UNNotificationRequest
             if locationAllowed {
@@ -314,7 +338,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
                                                   longitude:
                 passList[passList.endIndex - 1].station.coordinate.y)
               let region = CLCircularRegion(center: center,
-                                            radius: 300.0,
+                                            radius: 200.0,
                                             identifier:
                 passList[passList.endIndex - 1].station.id)
               region.notifyOnEntry = true
@@ -356,13 +380,28 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
             let alert = UIAlertController(title: Text.goModeActivated,
                                           message: Text.goModeActivatedSubtitle,
                                           preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Cancel".localized,
+            let okAction = UIAlertAction(title: Text.ok,
                                          style: .default,
                                          handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
           } else {
-
+            let notification = UILocalNotification()
+            notification.fireDate = Date(timeIntervalSince1970:
+              Double(passList[passList.endIndex - 2].arrivalTimestamp ?? 0))
+            if index == sections.count - 1 {
+              notification.alertBody =
+                Text.rememberLeaveDestination(stop: arrivalName)
+            } else {
+              notification.alertBody =
+                Text.rememberLeaveLine(stop: (App.stops.filter({
+                  $0.sbbId == section.arrival.station.id
+                })[safe: 0]?.name) ?? section.arrival.station.name,
+                                       line: sections[index + 1].journey?.lineCode)
+            }
+            notification.identifier = "departureNotification-\(String.random(30))"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.shared.scheduleLocalNotification(notification)
           }
       }
     }

@@ -314,6 +314,7 @@ struct App {
             Bundle.main.path(forResource: "stops", ofType: "json")!))
         } catch {
           print("Can't load stops")
+          //Crashlytics.sharedInstance().recordError(error)
           return false
         }
       }
