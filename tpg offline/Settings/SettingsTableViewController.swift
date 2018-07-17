@@ -68,8 +68,7 @@ class SettingsTableViewController: UITableViewController {
         self.performSegue(withIdentifier: "showDarkMode", sender: self)
       }),
       Setting(Text.privacy, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
-        UIApplication.shared
-          .openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+        self.performSegue(withIdentifier: "showPrivacy", sender: self)
       })
       ])
 

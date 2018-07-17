@@ -42,9 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     //swiftlint:disable:previous line_length
     #if DEBUG
-    print("WARNING: Debug mode, Crashlytics deactivated, Dotzu activated")
+    print("WARNING: Debug mode, Crashlytics deactivated")
     #else
-    Fabric.with([Crashlytics.self])
+    if App.fabric {
+      Fabric.with([Crashlytics.self])
+    }
     #endif
 
     App.darkMode = UserDefaults.standard.bool(forKey: "darkMode")

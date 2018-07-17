@@ -122,6 +122,7 @@
 		ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */; };
 		ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */; };
 		ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */; };
+		ADDBCE4820FDF34C0090D4E0 /* PrivacyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDBCE4720FDF34C0090D4E0 /* PrivacyTableViewController.swift */; };
 		ADE930751FC071DF000D703C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
 		ADE9830F1F933DED0069EACA /* Maps.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE9830E1F933DED0069EACA /* Maps.xcassets */; };
 		ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */; };
@@ -321,6 +322,7 @@
 		ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewCell.swift; sourceTree = "<group>"; };
 		ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
+		ADDBCE4720FDF34C0090D4E0 /* PrivacyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTableViewController.swift; sourceTree = "<group>"; };
 		ADE9830E1F933DED0069EACA /* Maps.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Maps.xcassets; sourceTree = "<group>"; };
 		ADF0976B1F657938004AA662 /* RouteResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsTableViewController.swift; sourceTree = "<group>"; };
 		ADF0976D1F657CC0004AA662 /* RouteResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResults.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */,
 				AD9F018520CE827D0069B486 /* DarkModeTableViewController.swift */,
 				AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */,
+				ADDBCE4720FDF34C0090D4E0 /* PrivacyTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1047,6 +1050,7 @@
 				AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */,
 				ADA2877B20638E26006EEF39 /* API.swift in Sources */,
 				AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */,
+				ADDBCE4820FDF34C0090D4E0 /* PrivacyTableViewController.swift in Sources */,
 				AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */,
 				AD37FEB81F41CD9300E84220 /* LineColor.swift in Sources */,
 				ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */,

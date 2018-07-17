@@ -46,5 +46,5 @@ extension URL {
   static let alamofire = "https://github.com/Alamofire/Alamofire"
   static let fabric = "https://get.fabric.io/"
   static let github = "https://github.com/tpgoffline/tpg-offline-iOS"
-  static let privacyStatement = "https://wikitpgoffline.asmartcode.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en".localized
+  static let privacyStatement = "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en".localized
 }

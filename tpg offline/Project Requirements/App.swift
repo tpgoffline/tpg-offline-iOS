@@ -121,6 +121,16 @@ struct App {
       #endif
     }
   }
+  
+  static var fabric: Bool {
+    // Here, get and set are inverted to set this value to true by default
+    get {
+      return !(UserDefaults.standard.bool(forKey: #function))
+    }
+    set {
+      UserDefaults.standard.set(!newValue, forKey: #function)
+    }
+  }
 
   static var disableForceSmartReminders: Bool {
     get {

@@ -20,6 +20,7 @@ struct Text {
   static let alamofireDescription = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire".localized
   static let apnsError = "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed.".localized
   static let application = "Application".localized
+  static let appPermissions = "App permissions".localized
   static let alreadySheduled = "We already sheduled a reminder with these parameters.".localized
   static let areYouConnected = "Are you connected to internet?".localized
   static let arrivalAt = "Arrival at".localized
@@ -184,6 +185,7 @@ struct Text {
     return String(format: "Platform %@".localized, number)
   }
   static let privacy = "Privacy".localized
+  static let privacyStatement = "Privacy Statement".localized
   static let project = "The project".localized
   static let reinitAlphabeticalOrder = "Do you want to reinit the stops list to the alphabetical order?".localized
   static let regionalMap = "Regional map".localized
