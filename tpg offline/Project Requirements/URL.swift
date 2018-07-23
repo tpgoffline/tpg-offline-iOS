@@ -11,7 +11,7 @@ import Foundation
 
 extension URL {
   static func departures(with stopCode: String) -> String {
-    return "https://tpgoffline-apns.alwaysdata.net/api/departures/\(stopCode)"
+    return "https://api.tpgoffline.com/departures/\(stopCode)?key=\(API.tpg)"
   }
   static func connectionsMap(stopCode: String) -> String {
     return "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/Connections%20Maps/\(stopCode).jpg"

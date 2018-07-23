@@ -96,6 +96,7 @@ class PrivacyTableViewController: UITableViewController {
         toogleFabric()
       }
     }
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
   @objc func toogleFabric() {

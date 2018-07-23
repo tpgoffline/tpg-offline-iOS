@@ -35,25 +35,6 @@ struct DeparturesGroup: Decodable {
     }
     self.init(departures: departures)
   }
-
-  mutating func mergeWithTac(_ departuresWithTac: DeparturesGroup?,
-                             linesWithTac: [String: Stop.Operator]?) {
-    guard let departuresWithTac = departuresWithTac,
-      let linesWithTac = linesWithTac else {
-        return
-    }
-    let tacLines = linesWithTac.filter({ $1 == .tac })
-    for line in tacLines {
-      self.departures.removeAll(where: { $0.line.code == line.key })
-      self.departures.append(contentsOf: departuresWithTac.departures.filter({
-        $0.line.code == line.key
-      }))
-    }
-    self.lines = departures.map({$0.line.code}).uniqueElements.sorted(by: {
-      if let a = Int($0), let b = Int($1) {
-        return a < b
-      } else { return $0 < $1 }})
-  }
 }
 
 struct Departure: Decodable {

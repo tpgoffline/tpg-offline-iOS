@@ -110,7 +110,7 @@ struct Text {
   static let goMode = "Go! Mode".localized
   static let goModeActivated = "Go! Mode activated".localized
   static let goModeActivatedSubtitle = "You will receive notifications when you will soon need to leave the bus".localized
-  static let goModeHelp = "This mode sends you notifications to guide you on your route, like \"Take the bus\" and \"Leave the bus soon\" reminders."
+  static let goModeHelp = "This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders.".localized
   static let goNextStop = "(Go!) You're leaving the bus at the next stop!".localized
   static let invalidRoute = "Invalid route".localized
   static let lastFeatures = "Last features".localized

@@ -173,21 +173,13 @@ class DeparturesViewController: UIViewController {
             self.filteredLines = json.lines.filter({
               App.favoritesLines.contains($0)
             })
-
-            if self.stop?.lines.values.contains(.tac) ?? false,
-              let sbbId = self.stop?.sbbId {
-              let (offlineDepartures, _, _) =
-                OfflineDeparturesManager.shared.loadDepartures(sbbId)
-              self.departures?.mergeWithTac(offlineDepartures,
-                                            linesWithTac: self.stop?.lines)
-            }
             self.requestStatus = .ok
           } catch {
             if let sbbId = self.stop?.sbbId {
-            (self.departures, self.requestStatus, self.filteredLines) =
-              OfflineDeparturesManager.shared.loadDepartures(sbbId)
+              (self.departures, self.requestStatus, self.filteredLines) =
+                OfflineDeparturesManager.shared.loadDepartures(sbbId)
             }
-            return
+            self.noInternet = true
           }
 
           if self.departures?.lines.count == 0 {
