@@ -43,15 +43,16 @@ class StopsTableViewController: UIViewController {
     didSet {
       self.searchRequest?.cancel()
       self.searchRequest = DispatchWorkItem(flags: .inheritQoS) {
+        var stops = App.stops.filter({
+          $0.name.escaped.contains(self.searchText.escaped)
+        })
         if let stopCode = App.stops.filter({
           $0.code.escaped == self.searchText.escaped
         })[safe: 0] {
-          self.stopsSearched = [stopCode]
-        } else {
-          self.stopsSearched =  App.stops.filter({
-            $0.name.escaped.contains(self.searchText.escaped)
-          })
+          stops.removeAll(where: { $0.code == stopCode.code })
+          stops.insert(stopCode, at: 0)
         }
+        self.stopsSearched = stops
       }
       DispatchQueue.main.async(execute: self.searchRequest!)
     }
