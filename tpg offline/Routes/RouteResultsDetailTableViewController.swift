@@ -310,7 +310,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
 
             content.categoryIdentifier = "goNotification"
 
-            if index == filtredSection.endIndex {
+            if index == filtredSection.endIndex - 1 {
               content.userInfo = [
                 "arrivalX": section.arrival.station.coordinate.x,
                 "arrivalY": section.arrival.station.coordinate.y,
@@ -318,17 +318,42 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
               ]
             } else {
               let departureName = (App.stops.filter({
-                $0.sbbId == section.departure.station.id
-              })[safe: 0]?.name) ?? section.departure.station.name
-
-              content.userInfo = [
-                "arrivalX": section.arrival.station.coordinate.x,
-                "arrivalY": section.arrival.station.coordinate.y,
-                "arrivalName": arrivalName,
-                "departureX": section.departure.station.coordinate.x,
-                "departureY": section.departure.station.coordinate.y,
-                "departureName": departureName
-              ]
+                $0.sbbId == filtredSection[index + 1].departure.station.id
+              })[safe: 0]?.name) ?? filtredSection[index + 1].departure.station.name
+              
+              var departureLocalisations = App.stops.filter({
+                $0.sbbId == section.arrival.station.id
+              })[safe: 0]?.localisations ?? []
+              for (indexA, x) in departureLocalisations.enumerated() {
+                departureLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == section.journey?.to
+                  })
+              }
+              
+              var arrivalLocalisations = App.stops.filter({
+                $0.sbbId == filtredSection[index + 1].departure.station.id
+              })[safe: 0]?.localisations ?? []
+              for (indexA, x) in arrivalLocalisations.enumerated() {
+                arrivalLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == filtredSection[index + 1].journey?.to
+                })
+              }
+              
+              if let departureLocalisation = departureLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0],
+                let arrivalLocalisation = arrivalLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0] {
+                content.userInfo = [
+                  "arrivalX": arrivalLocalisation.location.coordinate.latitude,
+                  "arrivalY": arrivalLocalisation.location.coordinate.longitude,
+                  "arrivalName": departureName,
+                  "departureX": departureLocalisation.location.coordinate.latitude,
+                  "departureY": departureLocalisation.location.coordinate.longitude,
+                  "departureName": arrivalName
+                ]
+              } else {
+                content.userInfo = [
+                  "arrivalX": section.arrival.station.coordinate.x,
+                  "arrivalY": section.arrival.station.coordinate.y,
+                  "arrivalName": arrivalName
+                ]
+              }
             }
 
             let request: UNNotificationRequest

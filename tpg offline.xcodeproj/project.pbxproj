@@ -63,6 +63,7 @@
 		AD585E6A1FBB8BB500380720 /* RouteResultsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */; };
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
 		AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */; };
+		AD5C637F2105D6C000CD7B74 /* Bus.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AD5C637E2105D6C000CD7B74 /* Bus.gpx */; };
 		AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */; };
 		AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */; };
 		AD5FC1DF1FE6D9F90016BC35 /* DayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */; };
@@ -232,7 +233,6 @@
 		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AD2E6ADF20F35F250014635A /* Bus.gpx */ = {isa = PBXFileReference; lastKnownFileType = text; name = Bus.gpx; path = ../../../../../../Users/remy/Downloads/Bus.gpx; sourceTree = "<group>"; };
 		AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewController.swift; sourceTree = "<group>"; };
 		AD37FE611F41CA4600E84220 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteTableViewCell.swift; sourceTree = "<group>"; };
@@ -266,6 +266,7 @@
 		AD585E691FBB8BB500380720 /* RouteResultsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsInterfaceController.swift; sourceTree = "<group>"; };
 		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
+		AD5C637E2105D6C000CD7B74 /* Bus.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bus.gpx; sourceTree = "<group>"; };
 		AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMonitoringLinesTableViewController.swift; sourceTree = "<group>"; };
 		AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourPickerViewController.swift; sourceTree = "<group>"; };
 		AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerViewController.swift; sourceTree = "<group>"; };
@@ -458,7 +459,7 @@
 		AD37FE581F41CA4600E84220 = {
 			isa = PBXGroup;
 			children = (
-				AD2E6ADF20F35F250014635A /* Bus.gpx */,
+				AD5C637E2105D6C000CD7B74 /* Bus.gpx */,
 				ADABFA091F9CF1D200EEC8D0 /* stops.json */,
 				ADA14E631FDEC4E100945249 /* lines.json */,
 				AD37FE631F41CA4600E84220 /* tpg offline */,
@@ -887,6 +888,7 @@
 				AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */,
 				AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */,
 				ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */,
+				AD5C637F2105D6C000CD7B74 /* Bus.gpx in Resources */,
 				ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */,
 				AD37FEBF1F41CDA300E84220 /* LaunchScreen.storyboard in Resources */,
 				ADF9C6861F9BB4CF00AE17A4 /* Settings.storyboard in Resources */,
