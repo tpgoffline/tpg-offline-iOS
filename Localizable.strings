@@ -16,6 +16,7 @@
 "All Stops" = "All Stops"; 
 "An error occurred" = "An error occurred"; 
 "An update is available" = "An update is available"; 
+"App permissions" = "App permissions"; 
 "Application" = "Application"; 
 "Are you connected to internet?" = "Are you connected to internet?"; 
 "Are you looking for a stop ?" = "Are you looking for a stop ?"; 
@@ -27,6 +28,7 @@
 "Automatic" = "Automatic"; 
 "Bus Stop" = "Bus Stop"; 
 "Bus is comming" = "Bus is comming"; 
+"Buses from Annemasse are now available in approximate schedule" = "Buses from Annemasse are now available in approximate schedule"; 
 "Can't load Smart Reminders" = "Can't load Smart Reminders"; 
 "Cancel" = "Cancel"; 
 "Confirmation" = "Confirmation"; 
@@ -74,7 +76,6 @@
 "Friday" = "Friday"; 
 "From" = "From"; 
 "From Sunset to Sunrise" = "From Sunset to Sunrise"; 
-"From now on, instead of having several disturbances displayed several times for several lines, the disturbances will be merged into one and same category to be more readable and take up less space." = "From now on, instead of having several disturbances displayed several times for several lines, the disturbances will be merged into one and same category to be more readable and take up less space."; 
 "From..." = "From..."; 
 "General" = "General"; 
 "Github webpage" = "Github webpage"; 
@@ -85,6 +86,7 @@
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification."; 
 "Hours" = "Hours"; 
 "I dont know... The error message is missing." = "I dont know... The error message is missing."; 
+"If you're using a departure reminder or the Go! Mode, the notifications will show a map to guide you" = "If you're using a departure reminder or the Go! Mode, the notifications will show a map to guide you"; 
 "Invalid route" = "Invalid route"; 
 "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?" = "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?"; 
 "Last features" = "Last features"; 
@@ -99,8 +101,8 @@
 "Manual" = "Manual"; 
 "Map" = "Map"; 
 "Maps" = "Maps"; 
+"Maps in notifications" = "Maps in notifications"; 
 "Mark this stop as favorite" = "Mark this stop as favorite"; 
-"Merged disruptions" = "Merged disruptions"; 
 "Monday" = "Monday"; 
 "Monitoring" = "Monitoring"; 
 "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines." = "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines."; 
@@ -118,7 +120,6 @@
 "Noctambus urban map" = "Noctambus urban map"; 
 "Notifications" = "Notifications"; 
 "Now" = "Now"; 
-"Now, you can add departures reminders from your Apple Watch" = "Now, you can add departures reminders from your Apple Watch"; 
 "Number of minutes before departure" = "Number of minutes before departure"; 
 "OK" = "OK"; 
 "Offline departures" = "Offline departures"; 
@@ -137,7 +138,7 @@
 "Pending notifications" = "Pending notifications"; 
 "Platform %@" = "Platform %@"; 
 "Privacy" = "Privacy"; 
-"Redesigned Monitoring section" = "Redesigned Monitoring section"; 
+"Privacy Statement" = "Privacy Statement"; 
 "Regional map" = "Regional map"; 
 "Regional route" = "Regional route"; 
 "Reload" = "Reload"; 
@@ -146,7 +147,6 @@
 "Remember you have to leave at %@ to take the line %@" = "Remember you have to leave at %@ to take the line %@"; 
 "Remember you have to leave at %@, your destination" = "Remember you have to leave at %@, your destination"; 
 "Reminder" = "Reminder"; 
-"Reminders on the Apple Watch" = "Reminders on the Apple Watch"; 
 "Reorder stops view" = "Reorder stops view"; 
 "Result" = "Result"; 
 "Results" = "Results"; 
@@ -180,6 +180,7 @@
 "Specific" = "Specific"; 
 "Stability improvements" = "Stability improvements"; 
 "Sunday" = "Sunday"; 
+"TAC" = "TAC"; 
 "TAC Network - Approximate timetable" = "TAC Network - Approximate timetable"; 
 "Take the line %@ to %@" = "Take the line %@ to %@"; 
 "Take the line %@ to %@ in %@" = "Take the line %@ to %@ in %@"; 
@@ -188,8 +189,8 @@
 "That's all for today" = "That's all for today"; 
 "The bus is comming now!" = "The bus is comming now!"; 
 "The departure and the arrival stops are the same." = "The departure and the arrival stops are the same."; 
-"The monitoring section was redesigned to make easier to manage disruptions monitoring" = "The monitoring section was redesigned to make easier to manage disruptions monitoring"; 
 "The project" = "The project"; 
+"This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders." = "This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders."; 
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n"; 
 "Thursday" = "Thursday"; 
 "To" = "To"; 
@@ -229,7 +230,7 @@
 "You will be reminded" = "You will be reminded"; 
 "You will receive notifications when you will soon need to leave the bus" = "You will receive notifications when you will soon need to leave the bus"; 
 "at the time of departure." = "at the time of departure."; 
-"https://wikitpgoffline.asmartcode.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en" = "https://wikitpgoffline.asmartcode.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en"; 
+"https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en" = "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en"; 
 "tpg offline" = "tpg offline"; 
 "tpg offline, version %@" = "tpg offline, version %@"; 
 
