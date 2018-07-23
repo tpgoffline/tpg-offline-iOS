@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     #endif
 
     App.darkMode = UserDefaults.standard.bool(forKey: "darkMode")
+    App.apnsToken = "abc"
     if App.automaticDarkMode,
       App.sunriseSunsetManager?.isDaytime ?? false,
       App.darkMode == true {

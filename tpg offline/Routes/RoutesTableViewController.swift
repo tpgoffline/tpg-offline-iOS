@@ -151,7 +151,7 @@ class RoutesTableViewController: UITableViewController {
 
         switch indexPath.row {
         case 0:
-          cell.imageView?.image = #imageLiteral(resourceName: "from").maskWith(color: App.textColor)
+          cell.imageView?.image = #imageLiteral(resourceName: "firstStep@20").maskWith(color: App.textColor)
           cell.textLabel?.attributedText =
             NSAttributedString(string: Text.from, attributes: titleAttributes)
           cell.detailTextLabel?.attributedText =
@@ -159,7 +159,7 @@ class RoutesTableViewController: UITableViewController {
                                attributes: subtitleAttributes)
         case 2 + (self.route.via?.count ?? 0) -
           ((self.route.via?.count ?? 0) >= 5 ? 1 : 0):
-          cell.imageView?.image = #imageLiteral(resourceName: "to").maskWith(color: App.textColor)
+          cell.imageView?.image = #imageLiteral(resourceName: "endStep@20").maskWith(color: App.textColor)
           cell.textLabel?.attributedText =
             NSAttributedString(string: Text.to,
                                attributes: titleAttributes)
@@ -181,7 +181,7 @@ class RoutesTableViewController: UITableViewController {
             NSAttributedString(string: dateFormatter.string(from: self.route.date),
                                attributes: subtitleAttributes)
         default:
-          cell.imageView?.image = #imageLiteral(resourceName: "to").maskWith(color: App.textColor)
+          cell.imageView?.image = #imageLiteral(resourceName: "middleStep@20").maskWith(color: App.textColor)
           let viaNumber = indexPath.row - 1
           if (self.route.via?.count ?? 0) == 0 {
             cell.textLabel?.attributedText =

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0M-rN-Mzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0M-rN-Mzg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -522,12 +522,6 @@ Departures</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nst-61-SZT">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="IwV-D7-fsy"/>
-                                                            </constraints>
-                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E97-I9-cmo">
                                                             <rect key="frame" x="58" y="11" width="230" height="22"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -552,22 +546,28 @@ Departures</string>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8fl-uU-2Ww">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="nrA-T1-izB"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="Nst-61-SZT" firstAttribute="leading" secondItem="ut8-25-Wpb" secondAttribute="leading" id="2w3-M7-wgb"/>
-                                                        <constraint firstItem="E97-I9-cmo" firstAttribute="leading" secondItem="Nst-61-SZT" secondAttribute="trailing" constant="8" id="69s-Wb-JvP"/>
+                                                        <constraint firstAttribute="bottom" secondItem="8fl-uU-2Ww" secondAttribute="bottom" id="FQB-nn-Gat"/>
                                                         <constraint firstItem="esd-bH-Vtx" firstAttribute="centerY" secondItem="ut8-25-Wpb" secondAttribute="centerY" id="G5Q-af-Kdl"/>
-                                                        <constraint firstItem="Nst-61-SZT" firstAttribute="top" secondItem="ut8-25-Wpb" secondAttribute="top" id="NBV-1f-srV"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="E97-I9-cmo" secondAttribute="bottom" id="Rnn-Lm-Ra5"/>
                                                         <constraint firstItem="E97-I9-cmo" firstAttribute="top" secondItem="ut8-25-Wpb" secondAttribute="topMargin" id="cS7-2e-AeW"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Nst-61-SZT" secondAttribute="bottom" id="fLJ-2w-3wJ"/>
+                                                        <constraint firstItem="8fl-uU-2Ww" firstAttribute="top" secondItem="ut8-25-Wpb" secondAttribute="top" id="fWx-2q-ZVE"/>
+                                                        <constraint firstItem="E97-I9-cmo" firstAttribute="leading" secondItem="8fl-uU-2Ww" secondAttribute="trailing" constant="8" id="mPv-cZ-aHy"/>
+                                                        <constraint firstItem="8fl-uU-2Ww" firstAttribute="leading" secondItem="ut8-25-Wpb" secondAttribute="leading" id="sq8-Yb-ref"/>
                                                         <constraint firstItem="esd-bH-Vtx" firstAttribute="leading" secondItem="E97-I9-cmo" secondAttribute="trailing" constant="8" id="zBp-u1-AsK"/>
                                                         <constraint firstAttribute="trailing" secondItem="esd-bH-Vtx" secondAttribute="trailing" constant="15" id="zct-D3-JrD"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="busImageView" destination="AsX-v3-qFL" id="93y-9X-m4S"/>
-                                                    <outlet property="busTrackView" destination="Nst-61-SZT" id="CQ8-NZ-Eho"/>
+                                                    <outlet property="busImageView" destination="AsX-v3-qFL" id="zuz-YN-ZgT"/>
+                                                    <outlet property="busTrackView" destination="8fl-uU-2Ww" id="6uz-7y-t6C"/>
                                                     <outlet property="remainingTimeLabel" destination="B3Y-PJ-W9g" id="tiu-dB-c1F"/>
                                                     <outlet property="titleLabel" destination="E97-I9-cmo" id="odq-xp-hVK"/>
                                                     <segue destination="HRP-23-FYi" kind="show" identifier="showStopFromBusRoute" id="Gud-b6-ejT"/>

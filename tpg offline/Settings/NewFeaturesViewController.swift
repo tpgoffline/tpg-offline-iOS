@@ -35,7 +35,8 @@ class NewFeaturesViewController: UIViewController {
 
     // swiftlint:disable line_length
     features.append(Feature(image: #imageLiteral(resourceName: "alarm"), title: "TAC".localized, text: "Buses from Annemasse are now available in approximate schedule".localized))
-     features.append(Feature(image: #imageLiteral(resourceName: "cel-bell"), title: "Go! Mode".localized, text: Text.goModeHelp))
+    features.append(Feature(image: #imageLiteral(resourceName: "cel-bell"), title: "Go! Mode".localized, text: Text.goModeHelp))
+    features.append(Feature(image: #imageLiteral(resourceName: "middleStep"), title: "Via".localized, text: "If you wanted to go somewhere with a via, now you can.".localized))
      features.append(Feature(image: #imageLiteral(resourceName: "binoculars"), title: "Maps in notifications".localized, text: "If you're using a departure reminder or the Go! Mode, the notifications will show a map to guide you".localized))
      features.append(Feature(image: #imageLiteral(resourceName: "bug"), title: "Stability improvements".localized, text: "We improved the stability and we made some cosmetic improvements.".localized))
     // swiftlint:enable line_length

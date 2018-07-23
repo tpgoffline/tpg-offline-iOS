@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eBY-aW-3fT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eBY-aW-3fT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,9 +30,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
                                         </imageView>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJd-bz-f8b">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="36.5"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wz1-sL-SDf">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="36.5"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-Yi-gMY">
@@ -251,12 +249,6 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qW6-yk-bQN">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="51"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="6zk-Nb-ctw"/>
-                                                            </constraints>
-                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTt-QT-yEp">
                                                             <rect key="frame" x="58" y="12" width="279" height="27.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -269,21 +261,27 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HZe-h4-Pow">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="51.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="3hF-CH-BoZ"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="1VW-AW-bSe" firstAttribute="leading" secondItem="PTt-QT-yEp" secondAttribute="trailing" constant="8" id="0ae-gr-aku"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="PTt-QT-yEp" secondAttribute="bottom" constant="4" id="GDg-Gh-ZAn"/>
-                                                        <constraint firstItem="PTt-QT-yEp" firstAttribute="leading" secondItem="qW6-yk-bQN" secondAttribute="trailing" constant="8" id="P5f-8i-TZH"/>
+                                                        <constraint firstItem="HZe-h4-Pow" firstAttribute="top" secondItem="RcI-q7-Jnu" secondAttribute="top" id="KTg-tr-ghV"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="1VW-AW-bSe" secondAttribute="trailing" id="RaG-OI-JVA"/>
-                                                        <constraint firstAttribute="bottom" secondItem="qW6-yk-bQN" secondAttribute="bottom" id="a8h-qE-Mxi"/>
-                                                        <constraint firstItem="qW6-yk-bQN" firstAttribute="top" secondItem="RcI-q7-Jnu" secondAttribute="top" id="c0V-zs-JbD"/>
-                                                        <constraint firstItem="qW6-yk-bQN" firstAttribute="leading" secondItem="RcI-q7-Jnu" secondAttribute="leading" id="gPF-c2-Zt5"/>
+                                                        <constraint firstItem="PTt-QT-yEp" firstAttribute="leading" secondItem="HZe-h4-Pow" secondAttribute="trailing" constant="8" id="Sx3-8S-zJn"/>
+                                                        <constraint firstItem="HZe-h4-Pow" firstAttribute="leading" secondItem="RcI-q7-Jnu" secondAttribute="leading" id="aqZ-mb-oBg"/>
                                                         <constraint firstItem="PTt-QT-yEp" firstAttribute="top" secondItem="RcI-q7-Jnu" secondAttribute="topMargin" constant="4" id="ghV-MB-xik"/>
+                                                        <constraint firstAttribute="bottom" secondItem="HZe-h4-Pow" secondAttribute="bottom" id="lTC-Cn-9n5"/>
                                                         <constraint firstItem="1VW-AW-bSe" firstAttribute="centerY" secondItem="RcI-q7-Jnu" secondAttribute="centerY" id="uNO-aJ-UJO"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="busTrackView" destination="qW6-yk-bQN" id="kwN-X4-GK2"/>
+                                                    <outlet property="busTrackView" destination="HZe-h4-Pow" id="yJt-gC-7Fd"/>
                                                     <outlet property="remainingTimeLabel" destination="1VW-AW-bSe" id="fTW-sh-6DN"/>
                                                     <outlet property="titleLabel" destination="PTt-QT-yEp" id="jzI-MC-9xN"/>
                                                     <segue destination="CfE-xc-wtz" kind="show" identifier="showDepartures" id="K7D-tu-chH"/>
@@ -355,7 +353,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="horizontalReverse" width="24" height="24"/>
+        <image name="horizontalReverse" width="48" height="48"/>
         <image name="nocPeriurbainMap" width="2716" height="1842"/>
         <image name="orientationTabBar" width="32" height="32"/>
     </resources>

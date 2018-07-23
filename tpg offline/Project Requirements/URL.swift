@@ -16,14 +16,12 @@ extension URL {
   static func connectionsMap(stopCode: String) -> String {
     return "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/Connections%20Maps/\(stopCode).jpg"
   }
-  static func removeMonitoring(line: String, fromHour: String, toHour: String, days: String) -> String {
-    return "https://tpgoffline-apns.alwaysdata.net/remove/\(App.apnsToken)/\(line)/\(fromHour)/\(toHour)/\(days)"
+  static var monitoring: String {
+    return "https://api.tpgoffline.com/disruptionsmonitoring/\(App.apnsToken)"
   }
-  static let addMonitoring = "https://tpgoffline-apns.alwaysdata.net/add"
-  static var smartRemindersStatus: String {
-    return "https://tpgoffline-apns.alwaysdata.net/status/\(App.apnsToken)"
+  static var smartReminders: String {
+    return "https://api.tpgoffline.com/reminders/\(App.apnsToken)"
   }
-  static let addSmartReminder = "https://tpgoffline-apns.alwaysdata.net/reminders/add"
   static let thermometer = "https://prod.ivtr-od.tpg.ch/v1/GetThermometer.json"
   static let offlineDeparturesMD5 = "https://raw.githubusercontent.com/tpgoffline/tpgoffline-data/master/departures.json.md5"
   static let offlineDepartures = "https://raw.githubusercontent.com/tpgoffline/tpgoffline-data/master/departures.json"
@@ -36,7 +34,6 @@ extension URL {
   static let disruptions = "https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json"
   static let replacementNames = "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/replacementsNames.json"
   static let connections = "https://transport.opendata.ch/v1/connections"
-  static let removeSmartReminder = "https://tpgoffline-apns.alwaysdata.net/reminders/remove"
   static let asmartcode = "https://asmartcode.com"
   static let dacostafaro = "http://dacostafaro.com"
   static let snotpg = "https://www.snotpg.ch/site/"

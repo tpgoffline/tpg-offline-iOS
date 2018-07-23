@@ -440,7 +440,6 @@ class DetailDeparturesViewController: UIViewController {
       let formatter = DateFormatter()
       formatter.dateFormat = "HH:mm"
       var parameters: Parameters = [
-        "device": App.apnsToken,
         "departureCode": departure.code,
         "title": timeBefore == 0 ?
           Text.busIsCommingNow : Text.minutesLeft(timeBefore),
@@ -456,7 +455,7 @@ class DetailDeparturesViewController: UIViewController {
       parameters["sandbox"] = true
       #endif
       Alamofire
-        .request(URL.addSmartReminder,
+        .request(URL.smartReminders,
                         method: .post,
                         parameters: parameters)
         .responseString(completionHandler: { (response) in

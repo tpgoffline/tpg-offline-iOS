@@ -68,8 +68,8 @@ class PendingNotificationsTableViewController: UITableViewController {
               "\(dateFormatter.string(from: date)) - \(request.content.title)",
               request.content.body,
               request.identifier])
-          } else if let trigger = (request.trigger
-            as? UNLocationNotificationTrigger) {
+          } else if (request.trigger
+            as? UNLocationNotificationTrigger) != nil {
             self.pendingNotifications.append([Text.goMode,
                                               request.content.body,
                                               request.identifier])
@@ -86,7 +86,7 @@ class PendingNotificationsTableViewController: UITableViewController {
     }
 
     self.requestStatus = .loading
-    Alamofire.request(URL.smartRemindersStatus)
+    Alamofire.request(URL.smartReminders)
       .responseData { (response) in
         if let data = response.result.value {
           let jsonDecoder = JSONDecoder()
@@ -203,12 +203,11 @@ class PendingNotificationsTableViewController: UITableViewController {
     if editingStyle == .delete {
       if indexPath.section == 1, smartNotifications.count != 0 {
         let parameters: Parameters = [
-          "device": App.apnsToken,
           "id": smartNotifications[indexPath.row].id
         ]
         Alamofire
-          .request(URL.removeSmartReminder,
-                   method: .post,
+          .request(URL.smartReminders,
+                   method: .delete,
                    parameters: parameters)
           .responseString(completionHandler: { (response) in
           if let string = response.result.value, string == "1" {

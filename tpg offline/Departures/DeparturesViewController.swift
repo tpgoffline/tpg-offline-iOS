@@ -166,7 +166,7 @@ class DeparturesViewController: UIViewController {
           var options = DeparturesOptions()
           options.networkStatus = .online
           let jsonDecoder = JSONDecoder()
-          jsonDecoder.userInfo = [ DeparturesOptions.key: options ]
+          jsonDecoder.userInfo = [DeparturesOptions.key: options]
           do {
             let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
             self.departures = json
@@ -776,7 +776,6 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       let formatter = DateFormatter()
       formatter.dateFormat = "HH:mm"
       var parameters: Parameters = [
-        "device": App.apnsToken,
         "departureCode": departure.code,
         "title": timeBefore == 0 ?
           Text.busIsCommingNow : Text.minutesLeft(timeBefore),
@@ -793,7 +792,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       parameters["sandbox"] = true
       #endif
       Alamofire
-        .request(URL.addSmartReminder,
+        .request(URL.smartReminders,
                         method: .post,
                         parameters: parameters)
         .responseString(completionHandler: { (response) in
