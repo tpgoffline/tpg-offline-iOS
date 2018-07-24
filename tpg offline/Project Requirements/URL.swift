@@ -31,7 +31,7 @@ extension URL {
   static let lines = "https://raw.githubusercontent.com/tpgoffline/tpgoffline-data/master/lines.json"
   static let googleMapsGeocode = "https://maps.googleapis.com/maps/api/geocode/json"
   static let allNextDepartures = "https://prod.ivtr-od.tpg.ch/v1/GetAllNextDepartures.json"
-  static let disruptions = "https://prod.ivtr-od.tpg.ch/v1/GetDisruptions.json"
+  static let disruptions = "https://api.tpgoffline.com/disruptions"
   static let replacementNames = "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/JSON/replacementsNames.json"
   static let connections = "https://transport.opendata.ch/v1/connections"
   static let asmartcode = "https://asmartcode.com"
