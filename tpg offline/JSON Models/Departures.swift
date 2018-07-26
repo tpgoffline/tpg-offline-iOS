@@ -157,7 +157,7 @@ struct Departure: Decodable {
         let line = Departure.Line(code: lineString,
                                   destination: destination,
                                   destinationCode: "")
-        let timestamp = try container.decode(String.self, forKey: .timestamp)
+        let timestamp = (try container.decode(String.self, forKey: .timestamp)) + "+0200"
         self.init(line: line,
                   code: -1,
                   leftTime: "",
@@ -181,11 +181,7 @@ struct Departure: Decodable {
       self.leftTime = "-1"
     } else {
       let dateFormatter = DateFormatter()
-      if self.offline {
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-      } else {
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-      }
+      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
       let time = dateFormatter.date(from: timestamp)
       var timestampDateComponents: DateComponents = Calendar.current.dateComponents([
         .year,
@@ -205,7 +201,6 @@ struct Departure: Decodable {
       timestampDateComponents.month = now.month
       timestampDateComponents.day = now.day
       timestampDateComponents.calendar = Calendar.current
-      timestampDateComponents.timeZone = now.timeZone
 
       dateCompenents = timestampDateComponents
 

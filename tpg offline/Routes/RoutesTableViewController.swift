@@ -389,7 +389,7 @@ class RoutesTableViewController: UITableViewController {
       return [UITableViewRowAction(style: .destructive,
                                    title: Text.delete,
                                    handler: { (_, indexPath) in
-        self.route.via?.remove(at: 1 - indexPath.row)
+        self.route.via?.remove(at: indexPath.row - 1)
         self.tableView.reloadData()
       })]
     }

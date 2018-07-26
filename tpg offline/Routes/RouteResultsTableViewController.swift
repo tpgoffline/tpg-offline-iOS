@@ -137,6 +137,7 @@ class RouteResultsTableViewController: UITableViewController {
     parameters["to"] = route.to?.sbbId
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.timeZone = TimeZone(identifier: "Europe/Paris")
     parameters["date"] = dateFormatter.string(from: route.date)
     dateFormatter.dateFormat = "HH:mm"
     parameters["time"] = dateFormatter.string(from: route.date)
