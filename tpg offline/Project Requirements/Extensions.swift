@@ -22,6 +22,11 @@ enum RequestStatus {
 }
 
 extension String {
+  var toStopName: String {
+    return App.stops.filter({$0.nameTransportAPI == self})[safe: 0]?.name
+      ?? self
+  }
+  
   var time: String {
     if Int(self) ?? 0 > 60 {
       let hour = (Int(self) ?? 0) / 60

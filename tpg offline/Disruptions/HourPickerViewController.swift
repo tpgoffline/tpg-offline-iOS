@@ -46,7 +46,8 @@ class HourPickerViewController: UIViewController {
     self.beginImageView.image = #imageLiteral(resourceName: "clock").maskWith(color: App.textColor)
     self.endImageView.image = #imageLiteral(resourceName: "clock-reversed").maskWith(color: App.textColor)
 
-    self.endTimePicker.minimumDate = beginTimePicker.date.addingTimeInterval(60)
+    beginTimePickerChanged()
+    endTimePickerChanger()
 
     if UIDevice.current.orientation.isLandscape,
       UIDevice.current.userInterfaceIdiom == .phone {

@@ -38,9 +38,7 @@ class RouteMapViewController: UIViewController {
                                  longitude: step.station.coordinate.y)
         coordinates.append(annotation.coordinate)
         allPoints.append(annotation.coordinate)
-        annotation.title =  (App.stops.filter({
-          $0.sbbId == step.station.id
-        })[safe: 0]?.name) ?? step.station.name
+        annotation.title = step.station.name.toStopName
         mapView.addAnnotation(annotation)
       }
 
@@ -56,18 +54,14 @@ class RouteMapViewController: UIViewController {
         CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                longitude: connection.to.station.coordinate.y)]
       let fromAnnotation = MKPointAnnotation()
-      fromAnnotation.title = (App.stops.filter({
-        $0.sbbId == connection.from.station.id
-      })[safe: 0]?.name) ?? connection.from.station.name
+      fromAnnotation.title = connection.from.station.name.toStopName
       fromAnnotation.coordinate =
         CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
                                longitude: connection.from.station.coordinate.y)
       mapView.addAnnotation(fromAnnotation)
       
       let toAnnotation = MKPointAnnotation()
-      toAnnotation.title = (App.stops.filter({
-        $0.sbbId == connection.to.station.id
-      })[safe: 0]?.name) ?? connection.to.station.name
+      toAnnotation.title = connection.to.station.name.toStopName
       toAnnotation.coordinate =
         CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                longitude: connection.to.station.coordinate.y)

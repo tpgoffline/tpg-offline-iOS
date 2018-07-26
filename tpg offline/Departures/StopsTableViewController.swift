@@ -49,7 +49,14 @@ class StopsTableViewController: UIViewController {
         if let stopCode = App.stops.filter({
           $0.code.escaped == self.searchText.escaped
         })[safe: 0] {
-          stops.removeAll(where: { $0.code == stopCode.code })
+          //stops.removeAll(where: { $0.code == stopCode.code })
+          var a: [Stop] = []
+          for stop in stops {
+            if stop.code != stopCode.code {
+              a.append(stop)
+            }
+          }
+          stops = a
           stops.insert(stopCode, at: 0)
         }
         self.stopsSearched = stops

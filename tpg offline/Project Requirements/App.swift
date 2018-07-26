@@ -101,11 +101,12 @@ struct App {
 
   #if os(iOS)
   static var automaticDarkMode: Bool {
+    // Here, get and set are inverted to set this value to true by default
     get {
-      return (UserDefaults.standard.bool(forKey: #function))
+      return !(UserDefaults.standard.bool(forKey: #function))
     }
     set {
-      UserDefaults.standard.set(newValue, forKey: #function)
+      UserDefaults.standard.set(!newValue, forKey: #function)
     }
   }
   #endif

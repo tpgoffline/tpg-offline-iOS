@@ -5,6 +5,7 @@
 "%@ minutes left!" = "%@ minutes left!"; 
 "%@m" = "%@m"; 
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)"; 
+"(Go!) Time to go!" = "(Go!) Time to go!"; 
 "(Go!) You're leaving the bus at the next stop!" = "(Go!) You're leaving the bus at the next stop!"; 
 "0" = "0"; 
 "10 minutes before" = "10 minutes before"; 
@@ -184,7 +185,7 @@
 "TAC" = "TAC"; 
 "TAC Network - Approximate timetable" = "TAC Network - Approximate timetable"; 
 "Take the line %@ to %@" = "Take the line %@ to %@"; 
-"Take the line %@ to %@ in %@" = "Take the line %@ to %@ in %@"; 
+"Take the line %@ to %@ in %@ minutes" = "Take the line %@ to %@ in %@ minutes"; 
 "Take the line %@ to %@ now" = "Take the line %@ to %@ now"; 
 "Testing" = "Testing"; 
 "That's all for today" = "That's all for today"; 
@@ -225,11 +226,13 @@
 "Yes" = "Yes"; 
 "You are using timetables departures. So departures are subjects to change." = "You are using timetables departures. So departures are subjects to change."; 
 "You can download them in Settings" = "You can download them in Settings"; 
+"You can download them in Settings or you can activate Wi-Fi to automatically download them." = "You can download them in Settings or you can activate Wi-Fi to automatically download them."; 
 "You can't set a timer for this bus, but you should run to take it." = "You can't set a timer for this bus, but you should run to take it."; 
 "You didn't downloaded offline departures, and you're not connected to internet" = "You didn't downloaded offline departures, and you're not connected to internet"; 
 "You forgot to add some days..." = "You forgot to add some days..."; 
 "You will be reminded" = "You will be reminded"; 
 "You will receive notifications when you will soon need to leave the bus" = "You will receive notifications when you will soon need to leave the bus"; 
+"\nDeep push to show a map" = "\nDeep push to show a map"; 
 "at the time of departure." = "at the time of departure."; 
 "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en" = "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en"; 
 "tpg offline" = "tpg offline"; 

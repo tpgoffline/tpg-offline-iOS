@@ -58,13 +58,9 @@ class RouteStepViewController: UIViewController {
                                longitude: step.station.coordinate.y)
       coordinates.append(annotation.coordinate)
 
-      annotation.title =  (App.stops.filter({
-        $0.sbbId == step.station.id
-      })[safe: 0]?.name) ?? step.station.name
+      annotation.title = step.station.name.toStopName
 
-      self.names.append((App.stops.filter({
-        $0.sbbId == step.station.id
-      })[safe: 0]?.name) ?? step.station.name)
+      self.names.append(step.station.name.toStopName)
 
       mapView.addAnnotation(annotation)
     }
@@ -213,9 +209,7 @@ class RouteStepViewController: UIViewController {
                                                       .month,
                                                       .year], from: date)
 
-    let destinationName = App.stops.filter({
-      $0.nameTransportAPI == section.journey?.to
-    })[safe: 0]?.name ?? (section.journey?.to ?? "#?!")
+    let destinationName = (section.journey?.to ?? "#?!").toStopName
 
     if #available(iOS 10.0, *) {
       UNUserNotificationCenter
@@ -365,9 +359,7 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
 
     let routeResultsStop = self.section.journey?.passList[indexPath.row]
 
-    let name = (App.stops.filter({
-      $0.sbbId == routeResultsStop?.station.id ?? ""
-    })[safe: 0]?.name) ?? (routeResultsStop?.station.name ?? "")
+    let name = (routeResultsStop?.station.name ?? "").toStopName
 
     if titleSelected == name {
       if App.darkMode {

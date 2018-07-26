@@ -38,7 +38,7 @@ extension URL {
   static let dacostafaro = "http://dacostafaro.com"
   static let snotpg = "https://www.snotpg.ch/site/"
   static let openData = "http://www.tpg.ch/web/open-data/"
-  static let gtfs = "https://opentransportdata.swiss/dataset/timetable-2018-gtfs"
+  static let gtfs = "https://opendata.swiss/fr/dataset/timetable-2018-gtfs"
   static let transportApi = "https://transport.opendata.ch"
   static let alamofire = "https://github.com/Alamofire/Alamofire"
   static let fabric = "https://get.fabric.io/"

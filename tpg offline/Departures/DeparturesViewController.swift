@@ -175,22 +175,22 @@ class DeparturesViewController: UIViewController {
             })
             self.requestStatus = .ok
           } catch {
+            self.noInternet = true
             if let sbbId = self.stop?.sbbId {
               (self.departures, self.requestStatus, self.filteredLines) =
                 OfflineDeparturesManager.shared.loadDepartures(sbbId)
             }
-            self.noInternet = true
           }
 
           if self.departures?.lines.count == 0 {
             self.requestStatus = .noResults
           }
         } else {
+          self.noInternet = true
           if let sbbId = self.stop?.sbbId {
             (self.departures, self.requestStatus, self.filteredLines) =
               OfflineDeparturesManager.shared.loadDepartures(sbbId)
           }
-          self.noInternet = true
         }
         self.refreshControl.endRefreshing()
     }
@@ -768,6 +768,18 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
 
     UIApplication.shared.registerForRemoteNotifications()
 
+    var localisations = stop?.localisations ?? []
+    for (index, localisation) in localisations.enumerated() {
+      localisations[index].destinations = localisation.destinations.filter({
+        (destination) -> Bool in
+        destination.line == departure.line.code &&
+          destination.destination == departure.line.destination
+      })
+    }
+    localisations = localisations.filter { (localisation) -> Bool in
+      !localisation.destinations.isEmpty
+    }
+    
     if !self.noInternet,
       App.smartReminders,
       !forceDisableSmartReminders,
@@ -788,6 +800,15 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
           Calendar.current.date(from: departure.dateCompenents!)!),
         "sandbox": false
       ]
+      if let location = localisations[safe: 0]?.location {
+        parameters["x"] = location.coordinate.latitude
+        parameters["y"] = location.coordinate.longitude
+        parameters["stopName"] = stop?.name ?? ""
+      } else {
+        parameters["x"] = stop?.location.coordinate.latitude ?? 0
+        parameters["y"] = stop?.location.coordinate.longitude ?? 0
+        parameters["stopName"] = stop?.name ?? ""
+      }
       #if DEBUG
       parameters["sandbox"] = true
       #endif
@@ -850,21 +871,9 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         content.title = timeBefore == 0 ?
           Text.busIsCommingNow : Text.minutesLeft(timeBefore)
         content.body = Text.take(line: departure.line.code,
-                                 to: departure.line.destination)
+                                 to: departure.line.destination) + Text.pushToShowMap
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "departureNotification"
-
-        var localisations = stop?.localisations ?? []
-        for (index, localisation) in localisations.enumerated() {
-          localisations[index].destinations = localisation.destinations.filter({
-            (destination) -> Bool in
-            destination.line == departure.line.code &&
-            destination.destination == departure.line.destination
-          })
-        }
-        localisations = localisations.filter { (localisation) -> Bool in
-          !localisation.destinations.isEmpty
-        }
 
         if let location = localisations[safe: 0]?.location {
           content.userInfo = [

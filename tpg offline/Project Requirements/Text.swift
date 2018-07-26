@@ -112,6 +112,7 @@ struct Text {
   static let goModeActivatedSubtitle = "You will receive notifications when you will soon need to leave the bus".localized
   static let goModeHelp = "This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders.".localized
   static let goNextStop = "(Go!) You're leaving the bus at the next stop!".localized
+  static let goTimeToGo = "(Go!) Time to go!".localized
   static let invalidRoute = "Invalid route".localized
   static let lastFeatures = "Last features".localized
   static let letsTakeTheBus = "Let's take the bus!".localized
@@ -138,7 +139,7 @@ struct Text {
   static let nearestStopsFrom = "Nearest stops from".localized
   static let newOfflineDepartures = "New offline departures available".localized
   static var newOfflineDeparturesSubtitle: String {
-    return App.automaticDeparturesDownload ? "You can download them in Settings or you can activate Wi-Fi to automatically download them." : "You can download them in Settings".localized
+    return App.automaticDeparturesDownload ? "You can download them in Settings or you can activate Wi-Fi to automatically download them.".localized : "You can download them in Settings".localized
   }
   static let nextStops = "Next Stops".localized
   static let noBusWillCome = "No more bus will come to this stop today.".localized
@@ -187,6 +188,7 @@ struct Text {
   static let privacy = "Privacy".localized
   static let privacyStatement = "Privacy Statement".localized
   static let project = "The project".localized
+  static let pushToShowMap = "\nDeep push to show a map".localized
   static let reinitAlphabeticalOrder = "Do you want to reinit the stops list to the alphabetical order?".localized
   static let regionalMap = "Regional map".localized
   static let regionalRoute = "Regional route".localized
@@ -235,7 +237,7 @@ struct Text {
     return String(format: "Take the line %@ to %@".localized, line ?? "?#!".localized, destination)
   }
   static func take(line: String?, to destination: String, in minutes: Int) -> String {
-    return String(format: "Take the line %@ to %@ in %@".localized,
+    return String(format: "Take the line %@ to %@ in %@ minutes".localized,
                   line ?? "?#!".localized, destination, "\(minutes)")
   }
   static func takeNow(line: String?, to destination: String) -> String {

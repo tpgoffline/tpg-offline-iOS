@@ -5,6 +5,7 @@
 "%@ minutes left!" = "%@ minutes restantes !";
 "%@m" = "%@m";
 "%@m (~%@ minutes)" = "%@m (~%@ minutes)";
+"(Go!) Time to go!" = "(Go !) Il est l'heure de partir !";
 "(Go!) You're leaving the bus at the next stop!" = "(Go!) Vous quittez le bus au prochain arrêt !";
 "0" = "0";
 "10 minutes before" = "10 minutes avant";
@@ -184,7 +185,7 @@
 "TAC" = "TAC";
 "TAC Network - Approximate timetable" = "Réseau TAC - Horaires approximatifs";
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
-"Take the line %@ to %@ in %@" = "Prenez la ligne %@ vers %@ à %@";
+"Take the line %@ to %@ in %@ minutes" = "Prenez la ligne %@ vers %@ dans %@ minutes";
 "Take the line %@ to %@ now" = "Prenez la ligne %@ vers %@ maintenant";
 "Testing" = "Test";
 "That's all for today" = "C'est tout pour aujourd'hui";
@@ -225,13 +226,14 @@
 "Yes" = "Oui";
 "You are using timetables departures. So departures are subjects to change." = "Vous êtes en mode hors-ligne. Les horaires sont donc sujets à des modifications et sont donnés à titre indicatif.";
 "You can download them in Settings" = "Vous pouvez la télécharger dans les paramètres";
+"You can download them in Settings or you can activate Wi-Fi to automatically download them." = "Vous pouvez la télécharger dans les paramètres ou activer le Wi-Fi pour la télécharger automatiquement.";
 "You can't set a timer for this bus, but you should run to take it." = "Vous ne pouvez pas ajouter de rappels à ce bus, mais vous devriez courir pour le prendre.";
 "You didn't downloaded offline departures, and you're not connected to internet" = "Vous n'avez pas téléchargé les départs hors ligne et vous n'êtes pas connecté à Internet";
 "You forgot to add some days..." = "Vous avez oublié d'ajouter quelques jours...";
 "You will be reminded" = "Vous serez rappelé";
 "You will receive notifications when you will soon need to leave the bus" = "Vous recevrez des notifications quand vous devrez partir pour prendre votre bus";
+"\nDeep push to show a map" = "\nAppuyez fortement pour afficher le plan";
 "at the time of departure." = "au départ";
 "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en" = "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/fr";
 "tpg offline" = "tpg offline";
 "tpg offline, version %@" = "tpg offline, version %@";
-

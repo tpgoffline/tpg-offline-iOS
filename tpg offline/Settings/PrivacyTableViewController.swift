@@ -100,7 +100,8 @@ class PrivacyTableViewController: UITableViewController {
   }
   
   @objc func toogleFabric() {
-    App.fabric.toggle()
+    //App.fabric.toggle()
+    App.fabric = !App.fabric
     self.tableView.reloadData()
   }
   

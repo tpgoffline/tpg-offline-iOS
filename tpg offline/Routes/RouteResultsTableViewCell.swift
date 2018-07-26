@@ -57,17 +57,13 @@ class RouteResultsTableViewCell: UITableViewCell {
       self.arrivalStopLabel.textColor = App.textColor
       self.backgroundColor = App.cellBackgroundColor
 
-      departureStopLabel.text = (App.stops.filter({
-        $0.sbbId == connection.from.station.id
-      })[safe: 0]?.name) ?? connection.from.station.name
+      departureStopLabel.text = connection.from.station.name.toStopName
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "HH:mm"
       departureHourLabel.text = dateFormatter.string(from:
         Date(timeIntervalSince1970:
           TimeInterval(connection.from.departureTimestamp ?? 0)))
-      arrivalStopLabel.text = (App.stops.filter({
-        $0.sbbId == connection.to.station.id
-      })[safe: 0]?.name) ?? connection.to.station.name
+      arrivalStopLabel.text = connection.to.station.name.toStopName
       arrivalHourLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970:
         TimeInterval(connection.to.arrivalTimestamp ?? 0)))
       var duration = connection.duration ?? ""

@@ -64,9 +64,7 @@ class RoutesResultDetailRowController: NSObject {
     didSet {
       guard let section = section else { return }
 
-      let destinationName = App.stops.filter({
-        $0.nameTransportAPI == section.journey?.to
-      })[safe: 0]?.name ?? (section.journey?.to ?? "#?!")
+      let destinationName = (section.journey?.to ?? "#?!").toStopName
 
       var color = UIColor.black
 
@@ -96,14 +94,10 @@ class RoutesResultDetailRowController: NSObject {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "HH:mm"
 
-      fromStop.setText((App.stops.filter({
-        $0.sbbId == section.departure.station.id
-      })[safe: 0]?.name) ?? section.departure.station.name)
+      fromStop.setText(section.departure.station.name.toStopName)
       fromHour.setText(dateFormatter.string(from: Date(timeIntervalSince1970:
         TimeInterval(section.departure.departureTimestamp ?? 0))))
-      toStop.setText((App.stops.filter({
-        $0.sbbId == section.arrival.station.id
-      })[safe: 0]?.name) ?? section.arrival.station.name)
+      toStop.setText(section.arrival.station.name.toStopName)
       toHour.setText(dateFormatter.string(from: Date(timeIntervalSince1970:
         TimeInterval(section.arrival.arrivalTimestamp ?? 0))))
     }
