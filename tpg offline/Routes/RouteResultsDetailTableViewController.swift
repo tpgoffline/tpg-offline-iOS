@@ -253,10 +253,6 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
   }
   
   @objc func goMode() {
-    guard let sections = connection?.sections else {
-      return
-    }
-    
     if !UserDefaults.standard.bool(forKey: "firstTimeGoMode") {
       UserDefaults.standard.set(true, forKey: "firstTimeGoMode")
       let alert = UIAlertController(title: Text.goMode,
@@ -274,194 +270,228 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
       alert.addAction(continueAction)
       self.present(alert, animated: true, completion: nil)
     } else {
-      var locationAllowed: Bool
-      if CLLocationManager.locationServicesEnabled() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined, .restricted, .denied:
-          locationAllowed = false
-        case .authorizedAlways, .authorizedWhenInUse:
-          locationAllowed = true
+      let alert = UIAlertController(title: Text.reminder,
+                                    message: Text.goModeReminder,
+                                    preferredStyle: .alert)
+      let fiveMinutesAction = UIAlertAction(title: Text.fiveMinutesBefore,
+                                         style: .default) { (_) in
+                                          self.setGoMode(minutes: 5)
+      }
+      let tenMinutesAction = UIAlertAction(title: Text.tenMinutesBefore,
+                                       style: .default) { (_) in
+                                        self.setGoMode(minutes: 10)
+      }
+      let fifteenMinutesAction = UIAlertAction(title: Text.fifteenMinutesBefore,
+                                           style: .default) { (_) in
+                                            self.setGoMode(minutes: 15)
+      }
+      
+      let cancelAction = UIAlertAction(title: Text.cancel,
+                                       style: .default,
+                                       handler: nil)
+      
+      alert.addAction(fiveMinutesAction)
+      alert.addAction(tenMinutesAction)
+      alert.addAction(fifteenMinutesAction)
+      alert.addAction(cancelAction)
+      self.present(alert, animated: true, completion: nil)
+    }
+  }
+  
+  func setGoMode(minutes: Int) {
+    guard let sections = connection?.sections else {
+      return
+    }
+    
+    var locationAllowed: Bool
+    if CLLocationManager.locationServicesEnabled() {
+      switch CLLocationManager.authorizationStatus() {
+      case .notDetermined, .restricted, .denied:
+        locationAllowed = false
+      case .authorizedAlways, .authorizedWhenInUse:
+        locationAllowed = true
+      }
+    } else {
+      locationAllowed = false
+    }
+    
+    if let departureTimestamp = connection?.from.departureTimestamp {
+      let dateComponents =
+        Calendar.current.dateComponents([.hour,
+                                         .minute,
+                                         .day,
+                                         .month,
+                                         .year],
+                                        from:
+          Date(timeIntervalSince1970:
+            Double(departureTimestamp))
+            .addingTimeInterval(TimeInterval(-60 * minutes)))
+      
+      if #available(iOS 10.0, *) {
+        let content = UNMutableNotificationContent()
+        content.title = Text.goTimeToGo
+        content.body = Text.take(line: sections[0].journey?.lineCode ?? "",
+                                 to: sections[0].journey?.to.toStopName ?? "",
+                                 in: minutes) + Text.pushToShowMap
+        
+        let trigger =
+          UNCalendarNotificationTrigger(dateMatching: dateComponents,
+                                        repeats: false)
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString,
+                                            content: content,
+                                            trigger: trigger)
+        
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+          if let error = error {
+            print(error)
+          }
         }
       } else {
-        locationAllowed = false
+        let notification = UILocalNotification()
+        notification.fireDate = Date(timeIntervalSince1970: Double(departureTimestamp)).addingTimeInterval(TimeInterval(-60 * minutes))
+        notification.alertBody = Text.take(line: sections[0].journey?.lineCode ?? "",
+                                           to: sections[0].journey?.to ?? "",
+                                           in: minutes)
+        notification.identifier = "departureNotification-\(String.random(30))"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.shared.scheduleLocalNotification(notification)
       }
-      
-      if let departureTimestamp = connection?.from.departureTimestamp {
-        let dateComponents =
-          Calendar.current.dateComponents([.hour,
-                                           .minute,
-                                           .day,
-                                           .month,
-                                           .year],
-                                          from:
-            Date(timeIntervalSince1970: Double(departureTimestamp)).addingTimeInterval(-300))
+    }
+    
+    let filtredSection = sections.filter({ $0.journey != nil && $0.walk == nil })
+    for (index, section) in filtredSection.enumerated() {
+      let arrivalName = section.arrival.station.name.toStopName
+      let passList = section.journey!.passList
+      if #available(iOS 10.0, *) {
+        let content = UNMutableNotificationContent()
+        content.title = Text.goNextStop
         
-        if #available(iOS 10.0, *) {
-          let content = UNMutableNotificationContent()
-          content.title = Text.goTimeToGo
-          content.body = Text.take(line: sections[0].journey?.lineCode ?? "",
-                                   to: sections[0].journey?.to.toStopName ?? "",
-                                   in: 5) + Text.pushToShowMap
-          
-          let trigger =
-            UNCalendarNotificationTrigger(dateMatching: dateComponents,
-                                          repeats: false)
-          let uuidString = UUID().uuidString
-          let request = UNNotificationRequest(identifier: uuidString,
-                                          content: content,
-                                          trigger: trigger)
-          
-          // Schedule the request with the system.
-          let notificationCenter = UNUserNotificationCenter.current()
-          notificationCenter.add(request) { (error) in
-            if let error = error {
-              print(error)
-            }
-          }
+        if index == sections.count - 1 {
+          content.body = Text.rememberLeaveDestination(stop: arrivalName) + Text.pushToShowMap
         } else {
-          let notification = UILocalNotification()
-          notification.fireDate = Date(timeIntervalSince1970: Double(departureTimestamp)).addingTimeInterval(-300)
-          notification.alertBody = Text.take(line: sections[0].journey?.lineCode ?? "",
-                                             to: sections[0].journey?.to ?? "",
-                                             in: 5)
-          notification.identifier = "departureNotification-\(String.random(30))"
-          notification.soundName = UILocalNotificationDefaultSoundName
-          UIApplication.shared.scheduleLocalNotification(notification)
+          content.body =
+            Text.rememberLeaveLine(stop: section.arrival.station.name.toStopName,
+                                   line: sections[index + 1].journey?.lineCode) + Text.pushToShowMap
         }
-      }
-      
-      let filtredSection = sections.filter({ $0.journey != nil && $0.walk == nil })
-      for (index, section) in filtredSection.enumerated() {
-        let arrivalName = section.arrival.station.name.toStopName
-        let passList = section.journey!.passList
-        if #available(iOS 10.0, *) {
-          let content = UNMutableNotificationContent()
-          content.title = Text.goNextStop
+        
+        content.categoryIdentifier = "goNotification"
+        
+        if index == filtredSection.endIndex - 1 {
+          content.userInfo = [
+            "arrivalX": section.arrival.station.coordinate.x,
+            "arrivalY": section.arrival.station.coordinate.y,
+            "arrivalName": arrivalName
+          ]
+        } else {
+          let departureName = filtredSection[index + 1].departure.station.name.toStopName
           
-          if index == sections.count - 1 {
-            content.body = Text.rememberLeaveDestination(stop: arrivalName) + Text.pushToShowMap
-          } else {
-            content.body =
-              Text.rememberLeaveLine(stop: section.arrival.station.name.toStopName,
-                                     line: sections[index + 1].journey?.lineCode) + Text.pushToShowMap
+          var departureLocalisations = App.stops.filter({
+            $0.sbbId == section.arrival.station.id
+          })[safe: 0]?.localisations ?? []
+          for (indexA, x) in departureLocalisations.enumerated() {
+            departureLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == section.journey?.to
+            })
           }
           
-          content.categoryIdentifier = "goNotification"
+          var arrivalLocalisations = App.stops.filter({
+            $0.sbbId == filtredSection[index + 1].departure.station.id
+          })[safe: 0]?.localisations ?? []
+          for (indexA, x) in arrivalLocalisations.enumerated() {
+            arrivalLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == filtredSection[index + 1].journey?.to
+            })
+          }
           
-          if index == filtredSection.endIndex - 1 {
+          if let departureLocalisation = departureLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0],
+            let arrivalLocalisation = arrivalLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0] {
+            content.userInfo = [
+              "arrivalX": arrivalLocalisation.location.coordinate.latitude,
+              "arrivalY": arrivalLocalisation.location.coordinate.longitude,
+              "arrivalName": departureName,
+              "departureX": departureLocalisation.location.coordinate.latitude,
+              "departureY": departureLocalisation.location.coordinate.longitude,
+              "departureName": arrivalName
+            ]
+          } else {
             content.userInfo = [
               "arrivalX": section.arrival.station.coordinate.x,
               "arrivalY": section.arrival.station.coordinate.y,
               "arrivalName": arrivalName
             ]
-          } else {
-            let departureName = filtredSection[index + 1].departure.station.name.toStopName
-            
-            var departureLocalisations = App.stops.filter({
-              $0.sbbId == section.arrival.station.id
-            })[safe: 0]?.localisations ?? []
-            for (indexA, x) in departureLocalisations.enumerated() {
-              departureLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == section.journey?.to
-              })
-            }
-            
-            var arrivalLocalisations = App.stops.filter({
-              $0.sbbId == filtredSection[index + 1].departure.station.id
-            })[safe: 0]?.localisations ?? []
-            for (indexA, x) in arrivalLocalisations.enumerated() {
-              arrivalLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == filtredSection[index + 1].journey?.to
-              })
-            }
-            
-            if let departureLocalisation = departureLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0],
-              let arrivalLocalisation = arrivalLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0] {
-              content.userInfo = [
-                "arrivalX": arrivalLocalisation.location.coordinate.latitude,
-                "arrivalY": arrivalLocalisation.location.coordinate.longitude,
-                "arrivalName": departureName,
-                "departureX": departureLocalisation.location.coordinate.latitude,
-                "departureY": departureLocalisation.location.coordinate.longitude,
-                "departureName": arrivalName
-              ]
-            } else {
-              content.userInfo = [
-                "arrivalX": section.arrival.station.coordinate.x,
-                "arrivalY": section.arrival.station.coordinate.y,
-                "arrivalName": arrivalName
-              ]
-            }
           }
-          
-          let request: UNNotificationRequest
-          if locationAllowed {
-            let center = CLLocationCoordinate2D(latitude:
-              passList[passList.endIndex - 1].station.coordinate.x,
-                                                longitude:
-              passList[passList.endIndex - 1].station.coordinate.y)
-            let region = CLCircularRegion(center: center,
-                                          radius: 200.0,
-                                          identifier:
-              passList[passList.endIndex - 1].station.id)
-            region.notifyOnEntry = true
-            region.notifyOnExit = false
-            let trigger = UNLocationNotificationTrigger(region: region,
-                                                        repeats: false)
-            let uuidString = UUID().uuidString
-            request = UNNotificationRequest(identifier: uuidString,
-                                            content: content,
-                                            trigger: trigger)
-          } else {
-            let dateComponents =
-              Calendar.current.dateComponents([.hour,
-                                               .minute,
-                                               .day,
-                                               .month,
-                                               .year],
-                                              from:
-                Date(timeIntervalSince1970:
-                  Double(passList[passList.endIndex - 1].arrivalTimestamp ?? 0)).addingTimeInterval(-120))
-            
-            let trigger =
-              UNCalendarNotificationTrigger(dateMatching: dateComponents,
-                                            repeats: false)
-            let uuidString = UUID().uuidString
-            request = UNNotificationRequest(identifier: uuidString,
-                                            content: content,
-                                            trigger: trigger)
-          }
-          
-          // Schedule the request with the system.
-          let notificationCenter = UNUserNotificationCenter.current()
-          notificationCenter.add(request) { (error) in
-            if let error = error {
-              print(error)
-            }
-          }
-          
-          let alert = UIAlertController(title: Text.goModeActivated,
-                                        message: Text.goModeActivatedSubtitle,
-                                        preferredStyle: .alert)
-          let okAction = UIAlertAction(title: Text.ok,
-                                       style: .default,
-                                       handler: nil)
-          alert.addAction(okAction)
-          self.present(alert, animated: true, completion: nil)
-        } else {
-          let notification = UILocalNotification()
-          notification.fireDate = Date(timeIntervalSince1970:
-            Double(passList[passList.endIndex - 2].arrivalTimestamp ?? 0))
-          if index == sections.count - 1 {
-            notification.alertBody =
-              Text.rememberLeaveDestination(stop: arrivalName)
-          } else {
-            notification.alertBody =
-              Text.rememberLeaveLine(stop: section.arrival.station.name.toStopName,
-                                     line: sections[index + 1].journey?.lineCode)
-          }
-          notification.identifier = "departureNotification-\(String.random(30))"
-          notification.soundName = UILocalNotificationDefaultSoundName
-          UIApplication.shared.scheduleLocalNotification(notification)
         }
+        
+        let request: UNNotificationRequest
+        if locationAllowed {
+          let center = CLLocationCoordinate2D(latitude:
+            passList[passList.endIndex - 1].station.coordinate.x,
+                                              longitude:
+            passList[passList.endIndex - 1].station.coordinate.y)
+          let region = CLCircularRegion(center: center,
+                                        radius: 200.0,
+                                        identifier:
+            passList[passList.endIndex - 1].station.id)
+          region.notifyOnEntry = true
+          region.notifyOnExit = false
+          let trigger = UNLocationNotificationTrigger(region: region,
+                                                      repeats: false)
+          let uuidString = UUID().uuidString
+          request = UNNotificationRequest(identifier: uuidString,
+                                          content: content,
+                                          trigger: trigger)
+        } else {
+          let dateComponents =
+            Calendar.current.dateComponents([.hour,
+                                             .minute,
+                                             .day,
+                                             .month,
+                                             .year],
+                                            from:
+              Date(timeIntervalSince1970:
+                Double(passList[passList.endIndex - 1].arrivalTimestamp ?? 0)).addingTimeInterval(-120))
+          
+          let trigger =
+            UNCalendarNotificationTrigger(dateMatching: dateComponents,
+                                          repeats: false)
+          let uuidString = UUID().uuidString
+          request = UNNotificationRequest(identifier: uuidString,
+                                          content: content,
+                                          trigger: trigger)
+        }
+        
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+          if let error = error {
+            print(error)
+          }
+        }
+        
+        let alert = UIAlertController(title: Text.goModeActivated,
+                                      message: Text.goModeActivatedSubtitle,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Text.ok,
+                                     style: .default,
+                                     handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+      } else {
+        let notification = UILocalNotification()
+        notification.fireDate = Date(timeIntervalSince1970:
+          Double(passList[passList.endIndex - 2].arrivalTimestamp ?? 0))
+        if index == sections.count - 1 {
+          notification.alertBody =
+            Text.rememberLeaveDestination(stop: arrivalName)
+        } else {
+          notification.alertBody =
+            Text.rememberLeaveLine(stop: section.arrival.station.name.toStopName,
+                                   line: sections[index + 1].journey?.lineCode)
+        }
+        notification.identifier = "departureNotification-\(String.random(30))"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.shared.scheduleLocalNotification(notification)
       }
     }
   }

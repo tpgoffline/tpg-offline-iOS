@@ -99,6 +99,7 @@ struct Text {
   static let externalProject = "External libraries, used in this project".localized
   static let fabricDescription = "Crash Reporting and Analytics".localized
   static let favorites = "Favorites".localized
+  static let fifteenMinutesBefore = "15 minutes before".localized
   static let fiveMinutesBefore = "5 minutes before".localized
   static let friday = "Friday".localized
   static let from = "From".localized
@@ -202,6 +203,7 @@ struct Text {
     return String(format: "Remember you have to leave at %@ to take the line %@".localized, stop, line ?? "#@?")
   }
   static let reminder = "Reminder".localized
+  static let goModeReminder = "When do you want to be reminded before taking the first bus?".localized
   static func reminderMessage(stopName: String, leftTime: String) -> String {
     return String(format: "At %@ - In %@ minutes\nWhen do you want to be reminded?".localized, stopName, leftTime)
   }
