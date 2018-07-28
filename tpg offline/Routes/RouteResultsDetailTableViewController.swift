@@ -333,6 +333,29 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
         content.body = Text.take(line: sections[0].journey?.lineCode ?? "",
                                  to: sections[0].journey?.to.toStopName ?? "",
                                  in: minutes) + Text.pushToShowMap
+        content.categoryIdentifier = "departureNotification"
+        
+        var departureLocalisations = App.stops.filter({
+          $0.sbbId == sections[0].departure.station.id
+        })[safe: 0]?.localisations ?? []
+        for (indexA, x) in departureLocalisations.enumerated() {
+          departureLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == (sections[0].journey?.to ?? "")
+          })
+        }
+        
+        if let departureLocalisation = departureLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0]  {
+          content.userInfo = [
+            "x": departureLocalisation.location.coordinate.latitude,
+            "y": departureLocalisation.location.coordinate.longitude,
+            "stopName":  sections[0].departure.station.name.toStopName
+          ]
+        } else {
+          content.userInfo = [
+            "x": sections[0].departure.station.coordinate.x,
+            "y": sections[0].departure.station.coordinate.y,
+            "stopName": sections[0].departure.station.name.toStopName
+          ]
+        }
         
         let trigger =
           UNCalendarNotificationTrigger(dateMatching: dateComponents,

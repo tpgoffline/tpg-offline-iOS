@@ -31,7 +31,7 @@ class RouteResultsTableViewCell: UITableViewCell {
         self.numberOfConnectionsLabel.text = "--"
         self.departureHourLabel.text = "--:--"
         self.arrivalHourLabel.text = "--:--"
-        self.durationLabel.text = "--:--:--"
+        self.durationLabel.text = "--:--"
         self.departureStopLabel.text = ""
         self.arrivalStopLabel.text = ""
 
@@ -66,11 +66,11 @@ class RouteResultsTableViewCell: UITableViewCell {
       arrivalStopLabel.text = connection.to.station.name.toStopName
       arrivalHourLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970:
         TimeInterval(connection.to.arrivalTimestamp ?? 0)))
-      var duration = connection.duration ?? ""
-      duration.remove(at: duration.startIndex)
-      duration.remove(at: duration.startIndex)
-      duration.remove(at: duration.startIndex)
-      durationLabel.text = duration
+      let duration = connection.duration ?? ""
+      let indexStartOfText = duration.index(duration.startIndex, offsetBy: 3)
+      let indexEndOfText = duration.index(duration.endIndex, offsetBy: -3)
+      durationLabel.text = String(duration[indexStartOfText..<indexEndOfText])
+      
 
       numberOfConnectionsImageView.isHidden = connection.sections?.count == 1
       numberOfConnectionsLabel.isHidden = connection.sections?.count == 1
@@ -106,7 +106,7 @@ class RouteResultsTableViewCell: UITableViewCell {
     numberOfConnectionsLabel.text = "--"
     departureHourLabel.text = "--:--"
     arrivalHourLabel.text = "--:--"
-    durationLabel.text = "--:--:--"
+    durationLabel.text = "--:--"
 
     self.numberOfConnectionsLabel.textColor = App.textColor
     self.departureHourLabel.textColor = App.textColor
