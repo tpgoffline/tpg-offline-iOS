@@ -117,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
     App.loadLines()
+    UIApplication.shared.registerForRemoteNotifications()
     return App.loadStops()
   }
 
@@ -126,6 +127,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
     print(token)
     App.apnsToken = token
+  }
+  
+  func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    print(error)
   }
 
   func application(_ application: UIApplication,
