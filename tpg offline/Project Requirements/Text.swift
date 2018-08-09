@@ -117,6 +117,7 @@ struct Text {
   static let invalidRoute = "Invalid route".localized
   static let lastFeatures = "Last features".localized
   static let letsTakeTheBus = "Let's take the bus!".localized
+  static let lines = "Lines".localized
   static func line(_ line: String?) -> String {
     return String(format: "Line %@".localized,
                   "\(line ?? "?#!".localized)")
@@ -130,6 +131,7 @@ struct Text {
   static let lookingForAStop = "Are you looking for a stop ?".localized
   static let manual = "Manual".localized
   static let map = "Map".localized
+  static let maps = "Maps".localized
   static func minutesLeft(_ minutes: Int) -> String {
     return String(format: "%@ minutes left!".localized, "\(minutes)")
   }
@@ -271,7 +273,7 @@ struct Text {
   static let unknow = "Unknow".localized
   static let unknowContent = "Unknow content".localized
   static let updateAvailable = "An update is available".localized
-  static let updateDepartures = "Update departures".localized
+  static let updateOfflineData = "Update offline data".localized
   static let urbanMap = "Urban map".localized
   static let via = "Via".localized
   static func via(number: Int) -> String {

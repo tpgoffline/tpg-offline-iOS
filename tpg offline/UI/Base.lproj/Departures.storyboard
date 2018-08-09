@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0M-rN-Mzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0M-rN-Mzg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,7 +93,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressHeaderCell" rowHeight="204" id="5sb-cq-5PU" customClass="AddressHeaderTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="204"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5sb-cq-5PU" id="F9y-D2-Hug">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5sb-cq-5PU" id="F9y-D2-Hug">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -104,34 +104,35 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="ezdsklrdhfgkerjfdhgjkfdhgjkdfhgddfhkjgfdhjkfxhgjkdhfjhdfhjkfdhjk" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCq-ds-Xmc">
-                                                    <rect key="frame" x="15" y="24" width="345" height="22"/>
+                                                    <rect key="frame" x="15" y="24" width="345" height="43"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0Yc-z7-gBM">
-                                                    <rect key="frame" x="0.0" y="54" width="375" height="150"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dd1-HU-VeB" customClass="MGLMapView">
+                                                    <rect key="frame" x="0.0" y="75" width="375" height="200"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="rNN-jr-wxw"/>
+                                                        <constraint firstAttribute="height" constant="200" id="78J-nE-xaf"/>
                                                     </constraints>
-                                                </mapView>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Arh-2N-j4U" secondAttribute="trailing" id="1BI-TH-FsQ"/>
                                                 <constraint firstItem="Arh-2N-j4U" firstAttribute="top" secondItem="F9y-D2-Hug" secondAttribute="top" constant="8" id="1rw-9P-jqo"/>
                                                 <constraint firstItem="DCq-ds-Xmc" firstAttribute="top" secondItem="Arh-2N-j4U" secondAttribute="bottom" id="368-HH-R8B"/>
-                                                <constraint firstItem="0Yc-z7-gBM" firstAttribute="leading" secondItem="F9y-D2-Hug" secondAttribute="leading" id="KQ6-hq-fhO"/>
-                                                <constraint firstAttribute="bottom" secondItem="0Yc-z7-gBM" secondAttribute="bottom" id="O4S-TT-fZR"/>
+                                                <constraint firstAttribute="trailing" secondItem="dd1-HU-VeB" secondAttribute="trailing" id="GqV-Yb-7HD"/>
                                                 <constraint firstItem="DCq-ds-Xmc" firstAttribute="leading" secondItem="F9y-D2-Hug" secondAttribute="leadingMargin" id="VAJ-q4-RBh"/>
-                                                <constraint firstItem="0Yc-z7-gBM" firstAttribute="top" secondItem="DCq-ds-Xmc" secondAttribute="bottom" constant="8" id="Wo2-Bi-uDJ"/>
                                                 <constraint firstItem="Arh-2N-j4U" firstAttribute="leading" secondItem="F9y-D2-Hug" secondAttribute="leadingMargin" id="bzD-Sm-th2"/>
+                                                <constraint firstItem="dd1-HU-VeB" firstAttribute="leading" secondItem="F9y-D2-Hug" secondAttribute="leading" id="iyW-ME-TnV"/>
+                                                <constraint firstAttribute="bottom" secondItem="dd1-HU-VeB" secondAttribute="bottom" id="krJ-QG-1we"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="DCq-ds-Xmc" secondAttribute="trailing" id="mOg-ym-8f9"/>
-                                                <constraint firstAttribute="trailing" secondItem="0Yc-z7-gBM" secondAttribute="trailing" id="uYS-BS-enM"/>
+                                                <constraint firstItem="dd1-HU-VeB" firstAttribute="top" secondItem="DCq-ds-Xmc" secondAttribute="bottom" constant="8" id="tFN-LA-80D"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="DCq-ds-Xmc" id="CQI-8d-NVh"/>
-                                            <outlet property="mapView" destination="0Yc-z7-gBM" id="mb6-3x-5ez"/>
+                                            <outlet property="mapView" destination="dd1-HU-VeB" id="MXW-pR-f5j"/>
                                             <outlet property="subtitleLabel" destination="Arh-2N-j4U" id="1W4-P3-iZt"/>
                                         </connections>
                                     </tableViewCell>
@@ -171,12 +172,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yhT-mP-nhs">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-ap-owa">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaV-zn-Ume" customClass="MGLMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" priority="750" id="tkh-7R-VlL"/>
-                                        </constraints>
-                                    </mapView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="62" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Ji-Va-eQb">
                                         <rect key="frame" x="0.0" y="323.5" width="375" height="323.5"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -409,7 +408,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oCa-RD-dtP"/>
                     <connections>
-                        <outlet property="mapView" destination="T5h-ap-owa" id="9yS-7K-fYX"/>
+                        <outlet property="mapView" destination="CaV-zn-Ume" id="pjJ-gs-NMH"/>
                         <outlet property="stackView" destination="yhT-mP-nhs" id="fgv-CN-yfj"/>
                         <outlet property="tableView" destination="8Ji-Va-eQb" id="b8e-K2-9nw"/>
                     </connections>
@@ -418,7 +417,7 @@
             </objects>
             <point key="canvasLocation" x="2312.5" y="136.5"/>
         </scene>
-        <!--Detail Departures View Controller-->
+        <!--Delegate-->
         <scene sceneID="xgw-OB-wUj">
             <objects>
                 <viewController storyboardIdentifier="detailDeparturesViewController" extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="arl-gp-ZJ7" customClass="DetailDeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -505,12 +504,13 @@ Departures</string>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OYL-lr-Byh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-42-CO3">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HVR-FO-2Yv" customClass="MGLMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="delegate" destination="arl-gp-ZJ7" id="myd-qz-4Jt"/>
+                                            <outlet property="delegate" destination="arl-gp-ZJ7" id="5wN-bM-Gjb"/>
                                         </connections>
-                                    </mapView>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AoP-Jw-VKZ">
                                         <rect key="frame" x="0.0" y="300.5" width="375" height="300.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -587,8 +587,8 @@ Departures</string>
                             <constraint firstItem="OYL-lr-Byh" firstAttribute="leading" secondItem="mL5-8t-yg4" secondAttribute="leading" id="2tD-R4-YVu"/>
                             <constraint firstItem="4QV-eH-iJI" firstAttribute="top" secondItem="OYL-lr-Byh" secondAttribute="bottom" id="DbX-Uo-qwE"/>
                             <constraint firstItem="4QV-eH-iJI" firstAttribute="leading" secondItem="mL5-8t-yg4" secondAttribute="leading" id="H3e-NU-Jvz"/>
-                            <constraint firstItem="OYL-lr-Byh" firstAttribute="top" secondItem="T7r-wc-ePM" secondAttribute="top" id="QXc-we-nKr"/>
-                            <constraint firstAttribute="trailing" secondItem="OYL-lr-Byh" secondAttribute="trailing" id="s08-rM-a3z"/>
+                            <constraint firstItem="OYL-lr-Byh" firstAttribute="top" secondItem="mL5-8t-yg4" secondAttribute="top" id="QXc-we-nKr"/>
+                            <constraint firstItem="mL5-8t-yg4" firstAttribute="trailing" secondItem="OYL-lr-Byh" secondAttribute="trailing" id="s08-rM-a3z"/>
                             <constraint firstItem="4QV-eH-iJI" firstAttribute="trailing" secondItem="mL5-8t-yg4" secondAttribute="trailing" id="uNw-jj-3jm"/>
                             <constraint firstItem="4QV-eH-iJI" firstAttribute="bottom" secondItem="mL5-8t-yg4" secondAttribute="bottom" id="xPM-VT-gQg"/>
                         </constraints>
@@ -598,7 +598,7 @@ Departures</string>
                     <connections>
                         <outlet property="allDeparturesButton" destination="x2E-QG-EGf" id="Zwf-Rh-lqV"/>
                         <outlet property="buttonsView" destination="4QV-eH-iJI" id="mDg-4z-epO"/>
-                        <outlet property="mapView" destination="bpQ-42-CO3" id="gY5-Kw-PXb"/>
+                        <outlet property="mapView" destination="HVR-FO-2Yv" id="mFg-Me-drM"/>
                         <outlet property="reminderButton" destination="RMa-dB-KF2" id="4xE-gU-g4a"/>
                         <outlet property="stackView" destination="OYL-lr-Byh" id="gFA-1r-fDw"/>
                         <outlet property="tableView" destination="AoP-Jw-VKZ" id="l8g-fg-pRi"/>

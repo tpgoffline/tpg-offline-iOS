@@ -36,7 +36,7 @@ class PendingNotificationsTableViewController: UITableViewController {
     title = Text.notifications
 
     App.log("Show pending notifications")
-    Answers.logCustomEvent(withName: "Show pending notifications")
+    App.logEvent("Show pending notifications")
 
     if App.darkMode {
       self.tableView.backgroundColor = .black

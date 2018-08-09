@@ -40,7 +40,7 @@ class DisruptionsTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    Answers.logCustomEvent(withName: "Show disruptions", customAttributes: [:])
+    App.logEvent("Show disruptions", attributes: [:])
 
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 140

@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import UserNotifications
-import MapKit
+import Mapbox
 import MessageUI
 #if !arch(i386) && !arch(x86_64)
 import NetworkExtension
@@ -21,7 +21,7 @@ class DetailDeparturesViewController: UIViewController {
   @IBOutlet weak var allDeparturesButton: UIButton!
   @IBOutlet weak var wifiButton: UIButton!
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var buttonsView: UIView!
 
@@ -29,8 +29,9 @@ class DetailDeparturesViewController: UIViewController {
   var busRouteGroup: BusRouteGroup? {
     didSet {
       self.tableView.reloadData()
-      mapView.removeAnnotations(mapView.annotations)
-      mapView.removeOverlays(mapView.overlays)
+      if let annotations = mapView.annotations {
+        mapView.removeAnnotations(annotations)
+      }
 
       guard let busRouteGroup = self.busRouteGroup else { return }
 
@@ -51,7 +52,7 @@ class DetailDeparturesViewController: UIViewController {
       for step in steps {
         guard let stop = App.stops.filter({ $0.code == step.stop.code })[safe: 0]
           else { break }
-        let annotation = MKPointAnnotation()
+        let annotation = MGLPointAnnotation()
         if let localisation = stop.localisations.filter({
           !($0.destinations.filter({
             $0.line == busRouteGroup.lineCode &&
@@ -77,16 +78,15 @@ class DetailDeparturesViewController: UIViewController {
         mapView.addAnnotation(annotation)
       }
 
-      let geodesicPassed = MKPolyline(coordinates: &passedCoordinated,
-                                      count: passedCoordinated.count)
+      let geodesicPassed = MGLPolyline(coordinates: &passedCoordinated,
+                                       count: UInt(passedCoordinated.count))
       geodesicPassed.title = Text.passedStops
-      mapView.add(geodesicPassed)
-      let geodesic = MKPolyline(coordinates: &coordinates,
-                                count: coordinates.count)
+      mapView.addAnnotation(geodesicPassed)
+      let geodesic = MGLPolyline(coordinates: &coordinates,
+                                 count: UInt(coordinates.count))
       geodesic.title = Text.nextStops
-      mapView.add(geodesic)
+      mapView.addAnnotation(geodesic)
 
-      let regionRadius: CLLocationDistance = 2000
       let centerPoint: CLLocationCoordinate2D
       if busRouteGroup.steps.filter({
         $0.stop.code == self.stop?.code
@@ -100,10 +100,7 @@ class DetailDeparturesViewController: UIViewController {
           } else {
             coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
           }
-          let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate,
-                                                                    regionRadius,
-                                                                    regionRadius)
-          mapView.setRegion(coordinateRegion, animated: true)
+          mapView.setCenter(coordinate, zoomLevel: 14, animated: false)
           return
         }
         let nextStop = i.stop.code
@@ -122,10 +119,7 @@ class DetailDeparturesViewController: UIViewController {
           })[safe: 0] ?? coordinates[0]
         }
       }
-      let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
-                                                                regionRadius,
-                                                                regionRadius)
-      mapView.setRegion(coordinateRegion, animated: true)
+      mapView.setCenter(centerPoint, zoomLevel: 14, animated: false)
     }
   }
   var color: UIColor?
@@ -716,34 +710,37 @@ extension DetailDeparturesViewController: UITableViewDelegate,
   }
 }
 
-extension DetailDeparturesViewController: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView,
-               rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    if overlay is MKPolyline {
-      let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-      if ((overlay.title ?? "") ?? "") == "Passed Stops" {
-        polylineRenderer.strokeColor = .gray
+extension DetailDeparturesViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    if let annotation = annotation as? MGLPolyline {
+      if (annotation.title ?? "") == Text.passedStops {
+        return .gray
       } else {
-        polylineRenderer.strokeColor = self.color
+        return self.color ?? .black
       }
-      polylineRenderer.lineWidth = 5
-      return polylineRenderer
     }
-
-    return MKOverlayRenderer()
+    return .black
   }
 
-  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    titleSelected = view.annotation?.title! ?? ""
-    if let index = self.names.index(of: titleSelected) {
+  func mapView(_ mapView: MGLMapView, didSelect annotationView: MGLAnnotationView) {
+    if let titleSelected = (annotationView.annotation?.title ?? ""),
+      let index = self.names.index(of: titleSelected) {
       self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
                                  at: .top,
                                  animated: true)
     }
   }
-
-  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+  
+  func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
     titleSelected = ""
+  }
+  
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    if annotation is MGLPolyline {
+      return false
+    } else {
+      return true
+    }
   }
 }
 

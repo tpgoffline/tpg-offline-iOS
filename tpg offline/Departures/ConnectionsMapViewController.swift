@@ -24,8 +24,8 @@ class ConnectionsMapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     App.log("Show connections maps")
-    Answers.logCustomEvent(withName: "Show connections maps",
-                           customAttributes: ["appCode": stopCode])
+    App.logEvent("Show connections maps",
+                 attributes: ["appCode": stopCode])
     title = "Map".localized
 
     errorLabel.text = "Error. You're not connected to internet."

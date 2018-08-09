@@ -15,7 +15,7 @@ class ReorderStopsTableViewController: UITableViewController {
     super.viewDidLoad()
 
     App.log("Show reorder stops view")
-    Answers.logCustomEvent(withName: "Show reorder stops view")
+    App.logEvent("Show reorder stops view")
 
     self.tableView.allowsSelection = false
     self.tableView.setEditing(true, animated: false)

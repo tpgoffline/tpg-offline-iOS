@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 
 class RouteResultsDetailMapTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
 
   var points: [CLLocationCoordinate2D] = []
 
@@ -24,7 +24,7 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
         var coordinates: [CLLocationCoordinate2D] = []
 
         for step in section.journey?.passList ?? [] {
-          let annotation = MKPointAnnotation()
+          let annotation = MGLPointAnnotation()
           annotation.coordinate =
             CLLocationCoordinate2D(latitude: step.station.coordinate.x,
                                    longitude: step.station.coordinate.y)
@@ -34,8 +34,8 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
           mapView.addAnnotation(annotation)
         }
 
-        let geodesic = MKPolyline(coordinates: &coordinates,
-                                  count: coordinates.count)
+        let geodesic = MGLPolyline(coordinates: &coordinates,
+                                   count: UInt(coordinates.count))
         geodesic.title = section.journey?.lineCode ?? ""
         mapView.add(geodesic)
       }
@@ -46,31 +46,27 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
                                  longitude: connection.from.station.coordinate.y),
           CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                  longitude: connection.to.station.coordinate.y)]
-        let fromAnnotation = MKPointAnnotation()
+        let fromAnnotation = MGLPointAnnotation()
         fromAnnotation.title = connection.from.station.name.toStopName
         fromAnnotation.coordinate =
           CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
                                  longitude: connection.from.station.coordinate.y)
         mapView.addAnnotation(fromAnnotation)
         
-        let toAnnotation = MKPointAnnotation()
+        let toAnnotation = MGLPointAnnotation()
         toAnnotation.title = connection.to.station.name.toStopName
         toAnnotation.coordinate =
           CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                  longitude: connection.to.station.coordinate.y)
         mapView.addAnnotation(toAnnotation)
         
-        let geodesic = MKPolyline(coordinates: &allPoints, count: allPoints.count)
+        let geodesic = MGLPolyline(coordinates: &allPoints, count: UInt(allPoints.count))
         geodesic.title = "Walk"
         mapView.add(geodesic)
       }
 
-      let regionRadius: CLLocationDistance = 2000
       guard let point = allPoints[safe: 0] else { return }
-      let coordinateRegion = MKCoordinateRegionMakeWithDistance(point,
-                                                                regionRadius,
-                                                                regionRadius)
-      mapView.setRegion(coordinateRegion, animated: true)
+      mapView.setCenter(point, zoomLevel: 14, animated: false)
     }
   }
 
@@ -84,19 +80,16 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
   }
 }
 
-extension RouteResultsDetailMapTableViewCell: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView,
-               rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    guard let polyline = overlay as? MKPolyline else {
-      return MKOverlayRenderer()
+extension RouteResultsDetailMapTableViewCell: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    if let annotation = annotation as? MGLPolyline {
+      if (annotation.title ?? "") == "Walk" {
+        return App.darkMode ? .white : .black
+      } else {
+        return App.color(for: (annotation.title ?? ""))
+      }
+    } else {
+      return App.darkMode ? .white : .black
     }
-
-    let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-    polylineRenderer.strokeColor = App.color(for: (overlay.title ?? "") ?? "")
-    if overlay.title == "Walk" {
-      polylineRenderer.strokeColor = .black
-    }
-    polylineRenderer.lineWidth = 5
-    return polylineRenderer
   }
 }

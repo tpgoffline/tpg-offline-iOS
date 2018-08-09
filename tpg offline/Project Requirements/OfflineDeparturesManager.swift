@@ -9,6 +9,7 @@
 import UIKit
 import Reachability
 import Alamofire
+import Mapbox
 
 class OfflineDeparturesManager: NSObject {
   fileprivate override init() {
@@ -18,6 +19,10 @@ class OfflineDeparturesManager: NSObject {
   let reachability = Reachability()!
 
   func checkUpdate(viewController: UIViewController) {
+    if self.reachability.connection == .wifi {
+      self.downloadMap()
+    }
+    
     Alamofire.request(URL.offlineDeparturesMD5).responseString { (response) in
       if let updatedMD5 = response.result.value,
         updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
@@ -60,6 +65,53 @@ class OfflineDeparturesManager: NSObject {
           OfflineDeparturesManager.shared.download()
         }
       }
+    }
+  }
+  
+  func downloadMap() {
+    print("🔻 Downloading maps")
+    NotificationCenter.default.addObserver(self, selector: #selector(offlinePackProgressDidChange), name: NSNotification.Name.MGLOfflinePackProgressChanged, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(offlinePackDidReceiveError), name: NSNotification.Name.MGLOfflinePackError, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(offlinePackDidReceiveMaximumAllowedMapboxTiles), name: NSNotification.Name.MGLOfflinePackMaximumMapboxTilesReached, object: nil)
+    
+    let sw = CLLocationCoordinate2D(latitude: 46.10381, longitude: 5.94847)
+    let ne = CLLocationCoordinate2D(latitude: 46.31884, longitude: 6.33044)
+    let regionLight = MGLTilePyramidOfflineRegion(styleURL: URL.mapLight,
+                                             bounds: MGLCoordinateBounds(sw: sw, ne: ne),
+                                             fromZoomLevel: 10,
+                                             toZoomLevel: 15)
+    
+    let userInfoLight = ["name": "Geneva Offline Light"]
+    let contextLight = NSKeyedArchiver.archivedData(withRootObject: userInfoLight)
+    
+    MGLOfflineStorage.shared.addPack(for: regionLight, withContext: contextLight) { (pack, error) in
+      guard error == nil else {
+        // The pack couldn’t be created for some reason.
+        print("Error: \(error?.localizedDescription ?? "unknown error")")
+        return
+      }
+      
+      // Start downloading.
+      pack!.resume()
+    }
+    
+    let regionDark = MGLTilePyramidOfflineRegion(styleURL: URL.mapDark,
+                                                  bounds: MGLCoordinateBounds(sw: sw, ne: ne),
+                                                  fromZoomLevel: 10,
+                                                  toZoomLevel: 15)
+    
+    let userInfoDark = ["name": "Geneva Offline Dark"]
+    let contextDark = NSKeyedArchiver.archivedData(withRootObject: userInfoDark)
+    
+    MGLOfflineStorage.shared.addPack(for: regionDark, withContext: contextDark) { (pack, error) in
+      guard error == nil else {
+        // The pack couldn’t be created for some reason.
+        print("Error: \(error?.localizedDescription ?? "unknown error")")
+        return
+      }
+      
+      // Start downloading.
+      pack!.resume()
     }
   }
 
@@ -196,6 +248,48 @@ class OfflineDeparturesManager: NSObject {
       return (departures, .ok, filteredLines)
     } catch {
       return (nil, .error, [])
+    }
+  }
+  
+  // MARK: - MGLOfflinePack notification handlers
+  
+  @objc func offlinePackProgressDidChange(notification: NSNotification) {
+    // Get the offline pack this notification is regarding,
+    // and the associated user info for the pack; in this case, `name = My Offline Pack`
+    if let pack = notification.object as? MGLOfflinePack,
+      let userInfo = NSKeyedUnarchiver.unarchiveObject(with: pack.context) as? [String: String] {
+      let progress = pack.progress
+      // or notification.userInfo![MGLOfflinePackProgressUserInfoKey]!.MGLOfflinePackProgressValue
+      let completedResources = progress.countOfResourcesCompleted
+      let expectedResources = progress.countOfResourcesExpected
+      
+      // Calculate current progress percentage.
+      let progressPercentage = Float(completedResources) / Float(expectedResources)
+      
+      // If this pack has finished, print its size and resource count.
+      if completedResources == expectedResources {
+        let byteCount = ByteCountFormatter.string(fromByteCount: Int64(pack.progress.countOfBytesCompleted), countStyle: ByteCountFormatter.CountStyle.memory)
+        print("🔻 Offline pack “\(userInfo["name"] ?? "unknown")” completed: \(byteCount), \(completedResources) resources")
+      } else {
+        // Otherwise, print download/verification progress.
+        print("🔻  Offline pack “\(userInfo["name"] ?? "unknown")” has \(completedResources) of \(expectedResources) resources — \(progressPercentage * 100)%.")
+      }
+    }
+  }
+  
+  @objc func offlinePackDidReceiveError(notification: NSNotification) {
+    if let pack = notification.object as? MGLOfflinePack,
+      let userInfo = NSKeyedUnarchiver.unarchiveObject(with: pack.context) as? [String: String],
+      let error = notification.userInfo?[MGLOfflinePackUserInfoKey.error] as? NSError {
+      print("🔻  Offline pack “\(userInfo["name"] ?? "unknown")” received error: \(error.localizedFailureReason ?? "unknown error")")
+    }
+  }
+  
+  @objc func offlinePackDidReceiveMaximumAllowedMapboxTiles(notification: NSNotification) {
+    if let pack = notification.object as? MGLOfflinePack,
+      let userInfo = NSKeyedUnarchiver.unarchiveObject(with: pack.context) as? [String: String],
+      let maximumCount = (notification.userInfo?[MGLOfflinePackUserInfoKey.maximumCount] as AnyObject).uint64Value {
+      print("🔻  Offline pack “\(userInfo["name"] ?? "unknown")” reached limit of \(maximumCount) tiles.")
     }
   }
 }

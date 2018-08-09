@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 import Alamofire
-import Crashlytics
 import UserNotifications
 import MessageUI
 #if !arch(i386) && !arch(x86_64)
@@ -18,7 +17,7 @@ import NetworkExtension
 
 class DeparturesViewController: UIViewController {
 
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var stackView: UIStackView!
 
@@ -26,46 +25,15 @@ class DeparturesViewController: UIViewController {
     didSet {
       guard let stop = stop else { return }
       App.log("Departures: Selected \(stop.code)")
-      Answers.logCustomEvent(withName: "Show departures",
-                             customAttributes: ["appId": stop.code])
+      App.logEvent("Show departures",
+                   attributes: ["appId": stop.code])
 
       navigationItem.title = stop.name
       navigationItem.accessibilityTraits = UIAccessibilityTraitNone
       refreshDepatures()
 
       configureTabBarItems()
-
-      guard let mapView = self.mapView else { return }
-      mapView.removeAnnotations(mapView.annotations)
-
-      let regionRadius: CLLocationDistance = 2000
-      let stopCoordinate = stop.location.coordinate
-      let coordinateRegion = MKCoordinateRegionMakeWithDistance(stopCoordinate,
-                                                                regionRadius,
-                                                                regionRadius)
-      mapView.setRegion(coordinateRegion, animated: true)
-
-      if !stop.localisations.isEmpty {
-        for localisation in stop.localisations {
-          let annotation = MKPointAnnotation()
-          annotation.coordinate = localisation.location.coordinate
-          annotation.title = stop.name
-          var subtitle = ""
-          for destination in localisation.destinations {
-            subtitle.append(
-              Text.line(destination.line,
-                        destination: destination.destination))
-          }
-          annotation.subtitle = subtitle
-          mapView.addAnnotation(annotation)
-        }
-      } else {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = stop.location.coordinate
-        annotation.title = stop.name
-        mapView.addAnnotation(annotation)
-      }
-
+      loadMap()
     }
   }
   var departures: DeparturesGroup?
@@ -120,6 +88,9 @@ class DeparturesViewController: UIViewController {
       self.tableView.separatorColor = App.separatorColor
       self.view.backgroundColor = .black
     }
+    
+    mapView.delegate = self
+    loadMap()
 
     ColorModeManager.shared.addColorModeDelegate(self)
   }
@@ -285,6 +256,38 @@ class DeparturesViewController: UIViewController {
       self.stackView.axis = .horizontal
     } else {
       self.stackView.axis = .vertical
+    }
+  }
+  
+  func loadMap() {
+    guard let mapView = self.mapView else { return }
+    guard let stop = self.stop else { return }
+    if let annotations = mapView.annotations {
+      mapView.removeAnnotations(annotations)
+    }
+    
+    let stopCoordinate = stop.location.coordinate
+    mapView.setCenter(stopCoordinate, zoomLevel: 14, animated: false)
+    
+    if !stop.localisations.isEmpty {
+      for localisation in stop.localisations {
+        let annotation = MGLPointAnnotation()
+        annotation.coordinate = localisation.location.coordinate
+        annotation.title = stop.name
+        var subtitle = ""
+        for destination in localisation.destinations {
+          subtitle.append(
+            Text.line(destination.line,
+                      destination: destination.destination))
+        }
+        annotation.subtitle = subtitle
+        mapView.addAnnotation(annotation)
+      }
+    } else {
+      let annotation = MGLPointAnnotation()
+      annotation.coordinate = stop.location.coordinate
+      annotation.title = stop.name
+      mapView.addAnnotation(annotation)
     }
   }
 }
@@ -1012,5 +1015,11 @@ extension DeparturesViewController: MFMailComposeViewControllerDelegate {
                              didFinishWith result: MFMailComposeResult,
                              error: Error?) {
     controller.dismiss(animated: true, completion: nil)
+  }
+}
+
+extension DeparturesViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    return true
   }
 }

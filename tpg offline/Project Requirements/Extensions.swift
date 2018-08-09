@@ -299,9 +299,9 @@ extension UIColor {
   func adjust(by percentage: CGFloat=0.3) -> UIColor {
     var r: CGFloat=0, g: CGFloat=0, b: CGFloat=0, a: CGFloat=0
     if (self.getRed(&r, green: &g, blue: &b, alpha: &a)) {
-      return UIColor(red: min(r + percentage, 1.0),
-                     green: min(g + percentage, 1.0),
-                     blue: min(b + percentage, 1.0),
+      return UIColor(red: max(min(r + percentage, 1.0), 0),
+                     green: max(min(g + percentage, 1.0), 0),
+                     blue: max(min(b + percentage, 1.0), 0),
                      alpha: a)
     } else {
       print("Color adjustement failed")

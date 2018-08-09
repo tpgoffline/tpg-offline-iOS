@@ -60,7 +60,7 @@ class SettingsTableViewController: UITableViewController {
       Setting(Text.reorderStops, icon: #imageLiteral(resourceName: "reorder"), action: { (_) in
         self.performSegue(withIdentifier: "showReorderStopsView", sender: self)
       }),
-      Setting(Text.updateDepartures, icon: #imageLiteral(resourceName: "download"), action: { (_) in
+      Setting(Text.updateOfflineData, icon: #imageLiteral(resourceName: "download"), action: { (_) in
         App.log("Settings: Update Departures")
         self.performSegue(withIdentifier: "showUpdateDepartures", sender: self)
       }),

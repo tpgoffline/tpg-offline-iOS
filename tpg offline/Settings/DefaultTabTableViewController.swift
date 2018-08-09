@@ -17,7 +17,7 @@ class DefaultTabTableViewController: UITableViewController {
     self.title = Text.defaultTab
 
     App.log("Show default tab")
-    Answers.logCustomEvent(withName: "Show default tab")
+    App.logEvent("Show default tab")
 
     if App.darkMode {
       self.tableView.backgroundColor = .black

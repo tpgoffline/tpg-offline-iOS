@@ -1,3 +1,4 @@
 github "Alamofire/Alamofire" "master"
 github "ceeK/Solar" "master"
 github "ashleymills/Reachability.swift" "master"
+binary "https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json" ~> 4.2

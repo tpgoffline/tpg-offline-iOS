@@ -56,6 +56,7 @@
 		AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */; };
 		AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A801FB73587005052F3 /* WatchSessionManager.swift */; };
 		AD416A851FB73FFF005052F3 /* DisruptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A841FB73FFF005052F3 /* DisruptionsInterfaceController.swift */; };
+		AD438DA9211C314E008316F4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B47E21FD1570000F8DA23 /* MapKit.framework */; };
 		AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4921E8205E5A16002A1ED9 /* SmartNotificationStatus.swift */; };
 		AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
 		AD5628DB20F67193009508D2 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6BED520F6005800DABB25 /* Text.swift */; };
@@ -82,7 +83,6 @@
 		AD708DB61FB0AC420076B3AC /* RouteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0976D1F657CC0004AA662 /* RouteResults.swift */; };
 		AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */; };
 		AD7B47E11FD155D400F8DA23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B47E01FD155D400F8DA23 /* TabBarController.swift */; };
-		AD7B47E31FD1570000F8DA23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B47E21FD1570000F8DA23 /* MapKit.framework */; };
 		AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */; };
 		AD7C3ECD2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */; };
 		AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */; };
@@ -117,6 +117,7 @@
 		ADBC1C811FAF0E2700162195 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC1C801FAF0E2700162195 /* NotificationController.swift */; };
 		ADBC1C831FAF0E2700162195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBC1C821FAF0E2700162195 /* Assets.xcassets */; };
 		ADBC1C881FAF0E2700162195 /* tpg offline watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = ADBC1C6B1FAF0E2700162195 /* tpg offline watchOS.app */; };
+		ADBECE36211B384200AE66A4 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBECE35211B384200AE66A4 /* Mapbox.framework */; };
 		ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */; };
 		ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */; };
 		ADC487D01FB1EE7600675593 /* LinesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */; };
@@ -315,6 +316,7 @@
 		ADBC1C821FAF0E2700162195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADBC1C841FAF0E2700162195 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADBC1C851FAF0E2700162195 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		ADBECE35211B384200AE66A4 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Carthage/Build/iOS/Mapbox.framework; sourceTree = "<group>"; };
 		ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewController.swift; sourceTree = "<group>"; };
 		ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesInterfaceController.swift; sourceTree = "<group>"; };
@@ -368,12 +370,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD438DA9211C314E008316F4 /* MapKit.framework in Frameworks */,
 				AD07A3651F8A60D300E65DE7 /* Crashlytics.framework in Frameworks */,
 				AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */,
-				AD7B47E31FD1570000F8DA23 /* MapKit.framework in Frameworks */,
 				AD0D33B420025659006462D5 /* NetworkExtension.framework in Frameworks */,
 				AD07A3661F8A60D400E65DE7 /* Fabric.framework in Frameworks */,
 				AD675C9A20CEB7EF00B13C8A /* Reachability.framework in Frameworks */,
+				ADBECE36211B384200AE66A4 /* Mapbox.framework in Frameworks */,
 				AD9F018420CE7F320069B486 /* Solar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +604,7 @@
 		AD37FEA31F41CABC00E84220 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADBECE35211B384200AE66A4 /* Mapbox.framework */,
 				AD675C9920CEB7EF00B13C8A /* Reachability.framework */,
 				AD9F018320CE7F320069B486 /* Solar.framework */,
 				AD8E14F12062E27E000ADF3D /* Dotzu.framework */,
@@ -947,12 +951,14 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Solar.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Mapbox.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Solar.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Reachability.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Mapbox.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

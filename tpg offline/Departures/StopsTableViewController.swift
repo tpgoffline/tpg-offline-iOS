@@ -588,11 +588,6 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
       indexPath.row == 0 {
       return
     }
-    guard let stop =
-      (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
-      return
-    }
-    self.delegate?.stopSelected(stop)
 
     let backItem = UIBarButtonItem()
     backItem.title = ""
@@ -604,6 +599,12 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
                                                     sender: nil)
       detailNavigationController.popToRootViewController(animated: false)
     }
+    
+    guard let stop =
+      (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
+        return
+    }
+    self.delegate?.stopSelected(stop)
   }
 
   func tableView(_ tableView: UITableView,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K7c-Pb-4uh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K7c-Pb-4uh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -223,49 +223,50 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressHeaderCell" rowHeight="204" id="0z1-0p-7o6" customClass="AddressHeaderTableViewCell" customModule="tpg_offline" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="204"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressHeaderCell" rowHeight="204" id="EJR-zq-xd4" customClass="AddressHeaderTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="231" width="375" height="204"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0z1-0p-7o6" id="iVy-Zm-eSv">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EJR-zq-xd4" id="3O4-7X-54V">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upB-xa-nIB">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymL-ce-IBQ">
                                                     <rect key="frame" x="15" y="8" width="345" height="16"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="ezdsklrdhfgkerjfdhgjkfdhgjkdfhgddfhkjgfdhjkfxhgjkdhfjhdfhjkfdhjk" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ub9-u2-Sc1">
-                                                    <rect key="frame" x="15" y="24" width="345" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="ezdsklrdhfgkerjfdhgjkfdhgjkdfhgddfhkjgfdhjkfxhgjkdhfjhdfhjkfdhjk" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0Q-I0-QoO">
+                                                    <rect key="frame" x="15" y="24" width="345" height="43"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="O0k-v6-dVK">
-                                                    <rect key="frame" x="0.0" y="54" width="375" height="150"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olf-ed-uoR" customClass="MGLMapView">
+                                                    <rect key="frame" x="0.0" y="75" width="375" height="200"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="xDr-Cp-sdS"/>
+                                                        <constraint firstAttribute="height" constant="200" id="YIl-pU-g5o"/>
                                                     </constraints>
-                                                </mapView>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="O0k-v6-dVK" secondAttribute="trailing" id="7Jd-tD-4Rt"/>
-                                                <constraint firstAttribute="bottom" secondItem="O0k-v6-dVK" secondAttribute="bottom" id="DHX-hj-TPz"/>
-                                                <constraint firstItem="O0k-v6-dVK" firstAttribute="top" secondItem="ub9-u2-Sc1" secondAttribute="bottom" constant="8" id="NS5-12-6AD"/>
-                                                <constraint firstItem="upB-xa-nIB" firstAttribute="leading" secondItem="iVy-Zm-eSv" secondAttribute="leadingMargin" id="SdN-rE-0Pv"/>
-                                                <constraint firstItem="ub9-u2-Sc1" firstAttribute="top" secondItem="upB-xa-nIB" secondAttribute="bottom" id="Tvs-Cn-16x"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="upB-xa-nIB" secondAttribute="trailing" id="g0D-F0-rst"/>
-                                                <constraint firstItem="ub9-u2-Sc1" firstAttribute="leading" secondItem="iVy-Zm-eSv" secondAttribute="leadingMargin" id="hbR-sd-xD8"/>
-                                                <constraint firstItem="O0k-v6-dVK" firstAttribute="leading" secondItem="iVy-Zm-eSv" secondAttribute="leading" id="hmx-4j-vu1"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ub9-u2-Sc1" secondAttribute="trailing" id="nqr-Gq-CQb"/>
-                                                <constraint firstItem="upB-xa-nIB" firstAttribute="top" secondItem="iVy-Zm-eSv" secondAttribute="top" constant="8" id="ygR-gn-i6a"/>
+                                                <constraint firstItem="o0Q-I0-QoO" firstAttribute="top" secondItem="ymL-ce-IBQ" secondAttribute="bottom" id="2ob-Kr-0c9"/>
+                                                <constraint firstAttribute="bottom" secondItem="Olf-ed-uoR" secondAttribute="bottom" id="6GM-Fc-g5B"/>
+                                                <constraint firstItem="Olf-ed-uoR" firstAttribute="leading" secondItem="3O4-7X-54V" secondAttribute="leading" id="FFi-tS-D7y"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ymL-ce-IBQ" secondAttribute="trailing" id="MNg-Pk-PqZ"/>
+                                                <constraint firstItem="ymL-ce-IBQ" firstAttribute="top" secondItem="3O4-7X-54V" secondAttribute="top" constant="8" id="WSk-qz-F2f"/>
+                                                <constraint firstAttribute="trailing" secondItem="Olf-ed-uoR" secondAttribute="trailing" id="aWP-HX-473"/>
+                                                <constraint firstItem="ymL-ce-IBQ" firstAttribute="leading" secondItem="3O4-7X-54V" secondAttribute="leadingMargin" id="agF-lM-e50"/>
+                                                <constraint firstItem="Olf-ed-uoR" firstAttribute="top" secondItem="o0Q-I0-QoO" secondAttribute="bottom" constant="8" id="gGU-TH-vdV"/>
+                                                <constraint firstItem="o0Q-I0-QoO" firstAttribute="leading" secondItem="3O4-7X-54V" secondAttribute="leadingMargin" id="i6R-It-oIW"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="o0Q-I0-QoO" secondAttribute="trailing" id="za2-Uq-lMq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addressLabel" destination="ub9-u2-Sc1" id="a3S-dV-F62"/>
-                                            <outlet property="mapView" destination="O0k-v6-dVK" id="iYg-pU-U9J"/>
-                                            <outlet property="subtitleLabel" destination="upB-xa-nIB" id="s6h-HU-Awm"/>
+                                            <outlet property="addressLabel" destination="o0Q-I0-QoO" id="UMy-EW-lzG"/>
+                                            <outlet property="mapView" destination="Olf-ed-uoR" id="ebR-1d-zOp"/>
+                                            <outlet property="subtitleLabel" destination="ymL-ce-IBQ" id="ddu-lx-ecF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stopsHeader" textLabel="HYF-Vd-2yO" style="IBUITableViewCellStyleDefault" id="d6y-UO-ARp" customClass="StopsTableViewCell" customModule="tpg_offline" customModuleProvider="target">
@@ -660,26 +661,30 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapCell" rowHeight="150" id="e2n-5y-bw5" customClass="RouteResultsDetailMapTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="191" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e2n-5y-bw5" id="Llr-3d-MVH">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e2n-5y-bw5" id="Llr-3d-MVH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8l4-nE-fzg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tao-uR-84z" customClass="MGLMapView">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="150" id="bXf-u3-lkj"/>
+                                                <constraint firstAttribute="height" constant="150" id="xtB-fU-EB2"/>
                                             </constraints>
-                                        </mapView>
+                                            <connections>
+                                                <outlet property="delegate" destination="Llr-3d-MVH" id="Ekm-6W-INm"/>
+                                            </connections>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="8l4-nE-fzg" firstAttribute="leading" secondItem="Llr-3d-MVH" secondAttribute="leadingMargin" constant="-16" id="9Bm-9G-r6t"/>
-                                        <constraint firstItem="8l4-nE-fzg" firstAttribute="top" secondItem="Llr-3d-MVH" secondAttribute="topMargin" constant="-11" id="p1n-JC-wHX"/>
-                                        <constraint firstItem="8l4-nE-fzg" firstAttribute="trailing" secondItem="Llr-3d-MVH" secondAttribute="trailingMargin" constant="16" id="rBY-LW-v74"/>
-                                        <constraint firstItem="8l4-nE-fzg" firstAttribute="bottom" secondItem="Llr-3d-MVH" secondAttribute="bottomMargin" constant="11" id="y75-Nm-agU"/>
+                                        <constraint firstAttribute="bottom" secondItem="Tao-uR-84z" secondAttribute="bottom" id="4L5-Xm-3e8"/>
+                                        <constraint firstItem="Tao-uR-84z" firstAttribute="leading" secondItem="Llr-3d-MVH" secondAttribute="leading" id="GdC-Ww-6dy"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tao-uR-84z" secondAttribute="trailing" id="mkT-hJ-eDX"/>
+                                        <constraint firstItem="Tao-uR-84z" firstAttribute="top" secondItem="Llr-3d-MVH" secondAttribute="top" id="mrg-iL-iNB"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="mapView" destination="8l4-nE-fzg" id="JT4-B4-16U"/>
+                                    <outlet property="mapView" destination="Tao-uR-84z" id="h4w-5M-jIs"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" textLabel="7l6-z8-vcg" style="IBUITableViewCellStyleDefault" id="AZE-9C-TLC" customClass="StopsTableViewCell" customModule="tpg_offline" customModuleProvider="target">
@@ -713,7 +718,7 @@
             </objects>
             <point key="canvasLocation" x="2359.1999999999998" y="917.99100449775119"/>
         </scene>
-        <!--Route Step View Controller-->
+        <!--Delegate-->
         <scene sceneID="aop-G7-8Y5">
             <objects>
                 <viewController storyboardIdentifier="routeStepViewController" extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="wZo-sI-as6" customClass="RouteStepViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -760,12 +765,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yWp-mW-uXQ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="537"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jD2-qT-aLK">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wq-f3-n8U" customClass="MGLMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="268.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="delegate" destination="wZo-sI-as6" id="9tw-Lc-ju4"/>
+                                            <outlet property="delegate" destination="wZo-sI-as6" id="fP2-l4-cuK"/>
                                         </connections>
-                                    </mapView>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uHC-KH-j95">
                                         <rect key="frame" x="0.0" y="268.5" width="375" height="268.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -817,7 +823,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonBackgroundView" destination="Vzv-na-GJR" id="hIh-Ds-Fqc"/>
-                        <outlet property="mapView" destination="jD2-qT-aLK" id="lMo-Z3-f5Y"/>
+                        <outlet property="mapView" destination="3wq-f3-n8U" id="Am8-Pl-x6X"/>
                         <outlet property="reminderButton" destination="W5G-a4-eEb" id="1fA-zA-4Hf"/>
                         <outlet property="stackView" destination="yWp-mW-uXQ" id="zbQ-rr-fYc"/>
                         <outlet property="tableView" destination="uHC-KH-j95" id="770-79-Awg"/>
@@ -827,7 +833,7 @@
             </objects>
             <point key="canvasLocation" x="3060" y="917.99100449775119"/>
         </scene>
-        <!--Route Map View Controller-->
+        <!--Delegate-->
         <scene sceneID="mR6-pA-EhC">
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="fHd-Ko-gKm" customClass="RouteMapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
@@ -835,26 +841,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="e8G-Yr-L0b">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yc4-BD-eIr" customClass="MGLMapView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </mapView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fHd-Ko-gKm" id="ond-4w-O6u"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="e8G-Yr-L0b" secondAttribute="trailing" id="TD4-k8-pvk"/>
-                            <constraint firstItem="Emp-1r-sRy" firstAttribute="bottom" secondItem="e8G-Yr-L0b" secondAttribute="bottom" id="ZJO-cM-q31"/>
-                            <constraint firstItem="e8G-Yr-L0b" firstAttribute="top" secondItem="Emp-1r-sRy" secondAttribute="top" id="c0U-Ao-mLy"/>
-                            <constraint firstItem="e8G-Yr-L0b" firstAttribute="leading" secondItem="I4R-e4-EXh" secondAttribute="leading" id="zDg-kj-2cH"/>
+                            <constraint firstItem="Yc4-BD-eIr" firstAttribute="top" secondItem="Emp-1r-sRy" secondAttribute="top" id="OmZ-Fy-DQs"/>
+                            <constraint firstItem="Yc4-BD-eIr" firstAttribute="leading" secondItem="Emp-1r-sRy" secondAttribute="leading" id="Wcs-k2-ztG"/>
+                            <constraint firstItem="Emp-1r-sRy" firstAttribute="trailing" secondItem="Yc4-BD-eIr" secondAttribute="trailing" id="blt-px-lNM"/>
+                            <constraint firstItem="Emp-1r-sRy" firstAttribute="bottom" secondItem="Yc4-BD-eIr" secondAttribute="bottom" id="tDK-xt-ebO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Emp-1r-sRy"/>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="e8G-Yr-L0b" id="X3Z-MX-tJD"/>
+                        <outlet property="mapView" destination="Yc4-BD-eIr" id="Yja-wo-Isy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ep-br-jb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2721" y="1582"/>
+            <point key="canvasLocation" x="2910" y="1637"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zDh-hG-nvz">

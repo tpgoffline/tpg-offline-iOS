@@ -41,7 +41,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
     super.viewDidLoad()
 
     App.log("Show disruptions monitoring")
-    Answers.logCustomEvent(withName: "Show disruptions monitoring")
+    App.logEvent("Show disruptions monitoring")
 
     self.navigationItem.rightBarButtonItems = [
       self.editButtonItem,

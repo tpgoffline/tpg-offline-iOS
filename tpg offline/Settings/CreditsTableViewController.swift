@@ -24,7 +24,7 @@ class CreditsTableViewController: UITableViewController {
     super.viewDidLoad()
 
     App.log("Show credits")
-    Answers.logCustomEvent(withName: "Show credits")
+    App.logEvent("Show credits")
 
     credits.append([
       Credit(title: Text.remy, subTitle: Text.designAndDevelopement) { (_) in

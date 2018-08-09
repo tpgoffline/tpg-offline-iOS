@@ -18,8 +18,8 @@ class RouteResultsTableViewController: UITableViewController {
       dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
       App.log("Routes: Search with D: \(route.from?.appId ?? 0)/\(route.from?.code ?? "") - A: \(route.to?.appId ?? 0)/\(route.to?.code ?? "") - H: \(dateFormatter.string(from: route.date)) - IAT: \(route.arrivalTime.description)") // swiftlint:disable:this line_length
 
-      Answers.logCustomEvent(withName: "Search route",
-                             customAttributes:
+      App.logEvent("Search route",
+                   attributes:
         ["departure": route.from?.code ?? "XXXX",
          "arrival": route.to?.code ?? "XXXX",
          "route": "\(route.from?.code ?? "XXXX")-\(route.to?.code ?? "XXXX")"])

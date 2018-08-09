@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 
 class AddressHeaderTableViewCell: UITableViewCell {
 
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var addressLabel: UILabel!
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
 
   var search: GoogleMapsGeocodingSearch? {
     didSet {
@@ -28,16 +28,15 @@ class AddressHeaderTableViewCell: UITableViewCell {
       addressLabel.text = search.address
 
       guard let mapView = self.mapView else { return }
-      mapView.removeAnnotations(mapView.annotations)
+      if let annotations = mapView.annotations {
+        mapView.removeAnnotations(annotations)
+      }
+      
+      mapView.styleURL = URL.mapUrl
+      mapView.reloadStyle(self)
+      mapView.setCenter(search.location.coordinate, zoomLevel: 14, animated: false)
 
-      let regionRadius: CLLocationDistance = 2000
-      let coordinateRegion =
-        MKCoordinateRegionMakeWithDistance(search.location.coordinate,
-                                           regionRadius,
-                                           regionRadius)
-      mapView.setRegion(coordinateRegion, animated: true)
-
-      let annotation = MKPointAnnotation()
+      let annotation = MGLPointAnnotation()
       annotation.coordinate = search.location.coordinate
       annotation.title = search.address
       mapView.addAnnotation(annotation)
@@ -51,5 +50,13 @@ class AddressHeaderTableViewCell: UITableViewCell {
     addressLabel.text = ""
     addressLabel.textColor = App.textColor
     backgroundColor = App.cellBackgroundColor
+    
+    guard let mapView = self.mapView else { return }
+    if let annotations = mapView.annotations {
+      mapView.removeAnnotations(annotations)
+    }
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.showsUserLocation = true
   }
 }

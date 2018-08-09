@@ -9,14 +9,14 @@
 import UIKit
 import SafariServices
 import Crashlytics
-import MapKit
+import Mapbox
 
 class LineViewController: UIViewController {
 
   @IBOutlet weak var departureLabel: UILabel!
   @IBOutlet weak var arrivalLabel: UILabel!
   @IBOutlet weak var waybackMachineButton: UIButton!
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
 
   @IBOutlet weak var arrowsImageView: UIImageView!
   @IBOutlet weak var tableView: UITableView!
@@ -35,8 +35,13 @@ class LineViewController: UIViewController {
     self.title = Text.line(line.line)
 
     App.log("Show line \(line.line)")
-    Answers.logCustomEvent(withName: "Show Orientation Line",
-                           customAttributes: ["line": line.line])
+    App.logEvent("Show Orientation Line",
+                 attributes: ["line": line.line])
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
+    mapView.delegate = self
+    mapView.showsUserLocation = true
 
     self.departureLabel.text = line.departureName
     self.departureLabel.textColor = App.textColor
@@ -58,7 +63,7 @@ class LineViewController: UIViewController {
     var coordinates: [CLLocationCoordinate2D] = []
     for appId in line.courses[0] {
       if let stop = App.stops.filter({ $0.appId == appId}).first {
-        let annotation = MKPointAnnotation()
+        let annotation = MGLPointAnnotation()
         annotation.coordinate = stop.location.coordinate
         coordinates.append(stop.location.coordinate)
         annotation.title = stop.name
@@ -67,15 +72,9 @@ class LineViewController: UIViewController {
       }
     }
 
-    let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-    mapView.add(geodesic)
-
-    let regionRadius: CLLocationDistance = 2000
-    let centerPoint: CLLocationCoordinate2D = coordinates.first!
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
-                                                              regionRadius,
-                                                              regionRadius)
-    mapView.setRegion(coordinateRegion, animated: true)
+    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+    mapView.addAnnotation(geodesic)
+    mapView.setCenter(coordinates.first!, zoomLevel: 14, animated: false)
 
     self.view.backgroundColor = App.cellBackgroundColor
     self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
@@ -123,8 +122,8 @@ class LineViewController: UIViewController {
     }
     vc.delegate = self
 
-    Answers.logCustomEvent(withName: "Show SNOTPG Webpage",
-                           customAttributes: ["line": line.line])
+    App.logEvent("Show SNOTPG Webpage",
+                 attributes: ["line": line.line])
 
     self.present(vc, animated: true)
   }
@@ -138,6 +137,8 @@ class LineViewController: UIViewController {
     self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
     self.tableView.backgroundColor = App.darkMode ? .black : .white
     self.tableView.reloadData()
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
     guard let line = self.line else { return }
     if line.snotpgURL != "" {
       let color = App.color(for: line.line)
@@ -182,12 +183,13 @@ class LineViewController: UIViewController {
     }).first?.name ?? ""
     self.names = []
     guard let line = self.line else { return }
-    mapView.removeOverlays(mapView.overlays)
-    mapView.removeAnnotations(mapView.annotations)
+    if let annotations = mapView.annotations {
+      mapView.removeAnnotations(annotations)
+    }
     var coordinates: [CLLocationCoordinate2D] = []
     for appId in line.courses[self.pathsSegmentedControl.selectedSegmentIndex] {
       if let stop = App.stops.filter({ $0.appId == appId}).first {
-        let annotation = MKPointAnnotation()
+        let annotation = MGLPointAnnotation()
         annotation.coordinate = stop.location.coordinate
         coordinates.append(stop.location.coordinate)
         annotation.title = stop.name
@@ -196,15 +198,10 @@ class LineViewController: UIViewController {
       }
     }
 
-    let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
     mapView.add(geodesic)
 
-    let regionRadius: CLLocationDistance = 2000
-    let centerPoint: CLLocationCoordinate2D = coordinates.first!
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
-                                                              regionRadius,
-                                                              regionRadius)
-    mapView.setRegion(coordinateRegion, animated: true)
+    mapView.setCenter(coordinates.first!, zoomLevel: 14, animated: true)
   }
 }
 
@@ -241,26 +238,24 @@ extension LineViewController: UITableViewDelegate, UITableViewDataSource {
   }
 }
 
-extension LineViewController: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView,
-               rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    if overlay is MKPolyline {
-      let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-      polylineRenderer.strokeColor = App.color(for: line?.line ?? "")
-      polylineRenderer.lineWidth = 5
-      return polylineRenderer
+extension LineViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
+    if let annotation = annotation as? MGLPointAnnotation {
+      let titleSelected = annotation.title ?? ""
+      if let index = self.names.index(of: titleSelected) {
+        self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
+                                   at: .top,
+                                   animated: true)
+      }
     }
-
-    return MKOverlayRenderer()
   }
-
-  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    let titleSelected = view.annotation?.title! ?? ""
-    if let index = self.names.index(of: titleSelected) {
-      self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
-                                 at: .top,
-                                 animated: true)
-    }
+  
+  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    return App.color(for: line?.line ?? "")
+  }
+  
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    return true
   }
 }
 

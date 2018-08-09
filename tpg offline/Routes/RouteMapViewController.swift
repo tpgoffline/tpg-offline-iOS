@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 
 class RouteMapViewController: UIViewController {
 
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
 
   var connection: RouteConnection?
 
@@ -32,7 +32,7 @@ class RouteMapViewController: UIViewController {
       var coordinates: [CLLocationCoordinate2D] = []
 
       for step in section.journey?.passList ?? [] {
-        let annotation = MKPointAnnotation()
+        let annotation = MGLPointAnnotation()
         annotation.coordinate =
           CLLocationCoordinate2D(latitude: step.station.coordinate.x,
                                  longitude: step.station.coordinate.y)
@@ -42,7 +42,7 @@ class RouteMapViewController: UIViewController {
         mapView.addAnnotation(annotation)
       }
 
-      let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+      let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
       geodesic.title = section.journey?.lineCode ?? ""
       mapView.add(geodesic)
     }
@@ -53,30 +53,26 @@ class RouteMapViewController: UIViewController {
                                longitude: connection.from.station.coordinate.y),
         CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                longitude: connection.to.station.coordinate.y)]
-      let fromAnnotation = MKPointAnnotation()
+      let fromAnnotation = MGLPointAnnotation()
       fromAnnotation.title = connection.from.station.name.toStopName
       fromAnnotation.coordinate =
         CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
                                longitude: connection.from.station.coordinate.y)
       mapView.addAnnotation(fromAnnotation)
       
-      let toAnnotation = MKPointAnnotation()
+      let toAnnotation = MGLPointAnnotation()
       toAnnotation.title = connection.to.station.name.toStopName
       toAnnotation.coordinate =
         CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                longitude: connection.to.station.coordinate.y)
       mapView.addAnnotation(toAnnotation)
       
-      let geodesic = MKPolyline(coordinates: &allPoints, count: allPoints.count)
+      let geodesic = MGLPolyline(coordinates: &allPoints, count: UInt(allPoints.count))
       geodesic.title = "Walk"
       mapView.add(geodesic)
     }
-
-    let regionRadius: CLLocationDistance = 2000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(allPoints[0],
-                                                              regionRadius,
-                                                              regionRadius)
-    mapView.setRegion(coordinateRegion, animated: true)
+    
+    mapView.setCenter(allPoints[0], zoomLevel: 14, animated: false)
   }
 
   deinit {
@@ -84,19 +80,24 @@ class RouteMapViewController: UIViewController {
   }
 }
 
-extension RouteMapViewController: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView,
-               rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    guard let polyline = overlay as? MKPolyline else {
-      return MKOverlayRenderer()
+extension RouteMapViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    if let annotation = annotation as? MGLPolyline {
+      if (annotation.title ?? "") == "Walk" {
+        return App.darkMode ? .white : .black
+      } else {
+        return App.color(for: (annotation.title ?? ""))
+      }
+    } else {
+      return App.darkMode ? .white : .black
     }
-
-    let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-    polylineRenderer.strokeColor = App.color(for: (overlay.title ?? "") ?? "")
-    if overlay.title == "Walk" {
-      polylineRenderer.strokeColor = .black
+  }
+  
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    if annotation is MGLPolyline {
+      return false
+    } else {
+      return true
     }
-    polylineRenderer.lineWidth = 5
-    return polylineRenderer
   }
 }
