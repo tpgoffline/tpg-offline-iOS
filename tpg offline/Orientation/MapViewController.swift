@@ -2,8 +2,8 @@
 //  MapViewController.swift
 //  tpg offline
 //
-//  Created by Remy on 21/10/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 21/10/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit

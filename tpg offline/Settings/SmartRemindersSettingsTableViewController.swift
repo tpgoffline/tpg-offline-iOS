@@ -2,8 +2,8 @@
 //  SmartRemindersSettingsTableViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 05/04/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 05/04/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit

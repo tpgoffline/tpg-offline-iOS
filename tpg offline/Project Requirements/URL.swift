@@ -2,8 +2,8 @@
 //  URL.swift
 //  tpg offline
 //
-//  Created by レミー on 11/07/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 11/07/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 // swiftlint:disable line_length
 

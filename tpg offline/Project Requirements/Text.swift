@@ -2,8 +2,8 @@
 //  Text.swift
 //  tpg offline
 //
-//  Created by Remy on 11/07/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 11/07/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 // Please, do not edit the line below, this file must be excluded from line_length
 // limit

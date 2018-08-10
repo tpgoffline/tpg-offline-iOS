@@ -2,8 +2,8 @@
 //  DetailDeparturesViewController.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 11/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 11/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -29,6 +29,10 @@ class DetailDeparturesViewController: UIViewController {
   var busRouteGroup: BusRouteGroup? {
     didSet {
       self.tableView.reloadData()
+      
+      mapView.styleURL = URL.mapUrl
+      mapView.reloadStyle(self)
+      
       if let annotations = mapView.annotations {
         mapView.removeAnnotations(annotations)
       }
@@ -224,6 +228,9 @@ class DetailDeparturesViewController: UIViewController {
     self.tableView.backgroundColor = App.darkMode ? .black : .white
     self.tableView.separatorColor = App.separatorColor
     self.tableView.reloadData()
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
 
     if let color = self.color {
       let buttonColor = (App.darkMode ? color : color.contrast)

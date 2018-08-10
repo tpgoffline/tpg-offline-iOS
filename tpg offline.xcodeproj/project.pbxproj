@@ -728,6 +728,7 @@
 				AD07A3621F8A60B600E65DE7 /* Fabric */,
 				ADBC1C901FAF0E2700162195 /* Embed Watch Content */,
 				ADFE4A77201B053F005093C2 /* Embed App Extensions */,
+				AD6F32ED211D7467002A7252 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -976,7 +977,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		AD6F32ED211D7467002A7252 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "token_file=\"${SRCROOT}/.mapbox\"\ntoken_file2=\"${SRCROOT}/mapbox\"\ntoken=\"$(cat $token_file 2>/dev/null || cat $token_file2 2>/dev/null)\"\nif [ \"$token\" ]; then\nplutil -replace MGLMapboxAccessToken -string $token \"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\nelse\necho \"error: Missing Mapbox access token. Get an access token from <https://www.mapbox.com/account/access-tokens/>, then create a new file at $token_file or $token_file2 that contains the access token.\"\nreturn -1\nfi\n";
 		};
 		ADA0D3611FB33F0C001DAC9F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

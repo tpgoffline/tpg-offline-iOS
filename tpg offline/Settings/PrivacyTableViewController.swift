@@ -2,8 +2,8 @@
 //  PrivacyTableViewController.swift
 //  tpg offline
 //
-//  Created by レミー on 17/07/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 17/07/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit

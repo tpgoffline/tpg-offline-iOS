@@ -2,8 +2,8 @@
 //  DeparturesViewController.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 10/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 10/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -190,6 +190,10 @@ class DeparturesViewController: UIViewController {
 
   override func colorModeDidUpdated() {
     super.colorModeDidUpdated()
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
+    
     self.tableView.backgroundColor = App.darkMode ? .black :
                                                     .groupTableViewBackground
     self.tableView.separatorColor = App.separatorColor
@@ -289,6 +293,9 @@ class DeparturesViewController: UIViewController {
       annotation.title = stop.name
       mapView.addAnnotation(annotation)
     }
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
   }
 }
 

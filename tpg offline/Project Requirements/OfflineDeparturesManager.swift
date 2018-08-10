@@ -2,8 +2,8 @@
 //  DownloadOfflineDeparturesManager.swift
 //  tpg offline
 //
-//  Created by Rémy on 11/06/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 11/06/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -16,12 +16,21 @@ class OfflineDeparturesManager: NSObject {
     super.init()
   }
 
+  enum DownloadingMapTheme {
+    case current
+    case other
+    case none
+  }
+  
+  var downloadingMapTheme: DownloadingMapTheme = .none
+  
   let reachability = Reachability()!
 
   func checkUpdate(viewController: UIViewController) {
-    if self.reachability.connection == .wifi {
+    //if self.reachability.connection == .wifi {
+    downloadingMapTheme = .current
       self.downloadMap()
-    }
+    //}
     
     Alamofire.request(URL.offlineDeparturesMD5).responseString { (response) in
       if let updatedMD5 = response.result.value,
@@ -76,34 +85,49 @@ class OfflineDeparturesManager: NSObject {
     
     let sw = CLLocationCoordinate2D(latitude: 46.10381, longitude: 5.94847)
     let ne = CLLocationCoordinate2D(latitude: 46.31884, longitude: 6.33044)
-    let regionLight = MGLTilePyramidOfflineRegion(styleURL: URL.mapLight,
+    
+    let region: MGLTilePyramidOfflineRegion
+    let context: Data
+    
+    if downloadingMapTheme == .current {
+      if App.darkMode {
+        region = MGLTilePyramidOfflineRegion(styleURL: URL.mapDark,
                                              bounds: MGLCoordinateBounds(sw: sw, ne: ne),
                                              fromZoomLevel: 10,
                                              toZoomLevel: 15)
-    
-    let userInfoLight = ["name": "Geneva Offline Light"]
-    let contextLight = NSKeyedArchiver.archivedData(withRootObject: userInfoLight)
-    
-    MGLOfflineStorage.shared.addPack(for: regionLight, withContext: contextLight) { (pack, error) in
-      guard error == nil else {
-        // The pack couldn’t be created for some reason.
-        print("Error: \(error?.localizedDescription ?? "unknown error")")
-        return
+        
+        let userInfo = ["name": "Geneva Offline Dark"]
+        context = NSKeyedArchiver.archivedData(withRootObject: userInfo)
+      } else {
+        region = MGLTilePyramidOfflineRegion(styleURL: URL.mapLight,
+                                             bounds: MGLCoordinateBounds(sw: sw, ne: ne),
+                                             fromZoomLevel: 10,
+                                             toZoomLevel: 15)
+        
+        let userInfo = ["name": "Geneva Offline Light"]
+        context = NSKeyedArchiver.archivedData(withRootObject: userInfo)
       }
-      
-      // Start downloading.
-      pack!.resume()
+    } else {
+      if App.darkMode {
+        region = MGLTilePyramidOfflineRegion(styleURL: URL.mapLight,
+                                                      bounds: MGLCoordinateBounds(sw: sw, ne: ne),
+                                                      fromZoomLevel: 10,
+                                                      toZoomLevel: 15)
+        
+        let userInfo = ["name": "Geneva Offline Light"]
+        context = NSKeyedArchiver.archivedData(withRootObject: userInfo)
+      } else {
+        region = MGLTilePyramidOfflineRegion(styleURL: URL.mapDark,
+                                             bounds: MGLCoordinateBounds(sw: sw, ne: ne),
+                                             fromZoomLevel: 10,
+                                             toZoomLevel: 15)
+        
+        let userInfo = ["name": "Geneva Offline Dark"]
+        context = NSKeyedArchiver.archivedData(withRootObject: userInfo)
+      }
     }
     
-    let regionDark = MGLTilePyramidOfflineRegion(styleURL: URL.mapDark,
-                                                  bounds: MGLCoordinateBounds(sw: sw, ne: ne),
-                                                  fromZoomLevel: 10,
-                                                  toZoomLevel: 15)
-    
-    let userInfoDark = ["name": "Geneva Offline Dark"]
-    let contextDark = NSKeyedArchiver.archivedData(withRootObject: userInfoDark)
-    
-    MGLOfflineStorage.shared.addPack(for: regionDark, withContext: contextDark) { (pack, error) in
+    MGLOfflineStorage.shared.addPack(for: region, withContext: context) { (pack, error) in
       guard error == nil else {
         // The pack couldn’t be created for some reason.
         print("Error: \(error?.localizedDescription ?? "unknown error")")
@@ -270,6 +294,12 @@ class OfflineDeparturesManager: NSObject {
       if completedResources == expectedResources {
         let byteCount = ByteCountFormatter.string(fromByteCount: Int64(pack.progress.countOfBytesCompleted), countStyle: ByteCountFormatter.CountStyle.memory)
         print("🔻 Offline pack “\(userInfo["name"] ?? "unknown")” completed: \(byteCount), \(completedResources) resources")
+        if downloadingMapTheme == .current {
+          downloadingMapTheme = .other
+          downloadMap()
+        } else {
+          downloadingMapTheme = .none
+        }
       } else {
         // Otherwise, print download/verification progress.
         print("🔻  Offline pack “\(userInfo["name"] ?? "unknown")” has \(completedResources) of \(expectedResources) resources — \(progressPercentage * 100)%.")

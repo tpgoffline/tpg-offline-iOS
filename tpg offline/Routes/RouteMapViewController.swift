@@ -2,8 +2,8 @@
 //  RouteMapViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 04/11/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 04/11/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
