@@ -27,10 +27,10 @@ class OfflineDeparturesManager: NSObject {
   let reachability = Reachability()!
 
   func checkUpdate(viewController: UIViewController) {
-    //if self.reachability.connection == .wifi {
-    downloadingMapTheme = .current
+    if self.reachability.connection == .wifi && App.downloadMaps {
+      downloadingMapTheme = .current
       self.downloadMap()
-    //}
+    }
     
     Alamofire.request(URL.offlineDeparturesMD5).responseString { (response) in
       if let updatedMD5 = response.result.value,

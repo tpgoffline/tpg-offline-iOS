@@ -22,6 +22,7 @@ struct Text {
   static let application = "Application".localized
   static let appPermissions = "App permissions".localized
   static let alreadySheduled = "We already sheduled a reminder with these parameters.".localized
+  static let downloadMaps = "Download maps".localized
   static let areYouConnected = "Are you connected to internet?".localized
   static let arrivalAt = "Arrival at".localized
   static let arrivalMissing = "Arrival stop is missing".localized

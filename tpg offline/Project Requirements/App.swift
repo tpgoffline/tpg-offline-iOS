@@ -12,6 +12,7 @@ import WatchConnectivity
 import Crashlytics
 import Solar
 import CoreLocation
+import Mapbox
 #endif
 
 struct App {
@@ -188,6 +189,23 @@ struct App {
       UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
+  
+  #if os(iOS)
+  static var downloadMaps: Bool {
+    // Here, get and set are inverted to set this value to true by default
+    get {
+      return !(UserDefaults.standard.bool(forKey: #function))
+    }
+    set {
+      UserDefaults.standard.set(!newValue, forKey: #function)
+      if newValue == false {
+        for pack in MGLOfflineStorage.shared.packs ?? [] {
+          MGLOfflineStorage.shared.removePack(pack, withCompletionHandler: nil)
+        }
+      }
+    }
+  }
+  #endif
 
   static var tpgLinesColor: [LineColor] =
     [LineColor(line: "1", color: UIColor(hexString: "5a1e82")!),
