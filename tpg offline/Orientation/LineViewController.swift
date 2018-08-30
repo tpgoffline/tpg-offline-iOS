@@ -251,7 +251,7 @@ extension LineViewController: MGLMapViewDelegate {
   }
   
   func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
-    return App.color(for: line?.line ?? "")
+    return LineColorManager.color(for: line?.line ?? "")
   }
   
   func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

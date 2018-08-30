@@ -207,12 +207,12 @@ class LineTableViewControllerRow: UITableViewCell {
       self.detailTextLabel?.text = String(format: "%@ ↔︎ %@", line.departureName, line.arrivalName)
       if App.darkMode {
         self.backgroundColor = App.cellBackgroundColor
-        self.textLabel?.textColor = App.color(for: line.line)
-        self.detailTextLabel?.textColor = App.color(for: line.line)
+        self.textLabel?.textColor = LineColorManager.color(for: line.line)
+        self.detailTextLabel?.textColor = LineColorManager.color(for: line.line)
       } else {
-        self.backgroundColor = App.color(for: line.line)
-        self.textLabel?.textColor = App.color(for: line.line).contrast
-        self.detailTextLabel?.textColor = App.color(for: line.line).contrast
+        self.backgroundColor = LineColorManager.color(for: line.line)
+        self.textLabel?.textColor = LineColorManager.color(for: line.line).contrast
+        self.detailTextLabel?.textColor = LineColorManager.color(for: line.line).contrast
       }
       self.tintColor = self.textLabel?.textColor
     }

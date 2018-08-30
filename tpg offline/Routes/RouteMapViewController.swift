@@ -88,7 +88,7 @@ extension RouteMapViewController: MGLMapViewDelegate {
       if (annotation.title ?? "") == "Walk" {
         return App.darkMode ? .white : .black
       } else {
-        return App.color(for: (annotation.title ?? ""))
+        return LineColorManager.color(for: (annotation.title ?? ""))
       }
     } else {
       return App.darkMode ? .white : .black

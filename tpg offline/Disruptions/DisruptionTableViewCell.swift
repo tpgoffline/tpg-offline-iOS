@@ -139,7 +139,7 @@ extension DisruptionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     guard let cell = linesCollectionView.dequeueReusableCell(withReuseIdentifier: "disruptionLineCollectionViewCell", for: indexPath) as? DisruptionLineCollectionViewCell
       else { return UICollectionViewCell() }
     cell.label.text = lines[indexPath.row]
-    let color = lines[indexPath.row] == "tpg" ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : App.color(for: lines[indexPath.row])
+    let color = lines[indexPath.row] == "tpg" ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : LineColorManager.color(for: lines[indexPath.row])
     cell.backgroundColor = App.darkMode ? UIColor.black.lighten(by: 0.1) : color
     cell.label.textColor = App.darkMode ? color : color.contrast
     cell.clipsToBounds = true

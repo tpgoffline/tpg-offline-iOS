@@ -50,6 +50,8 @@ struct LineColorManager {
      LineColor(line: "56", color: UIColor(hexString: "009999")!),
      LineColor(line: "57", color: UIColor(hexString: "99CCCC")!),
      LineColor(line: "61", color: UIColor(hexString: "FF9BAA")!),
+     LineColor(line: "62", color: UIColor(hexString: "EC619F")!),
+     LineColor(line: "63", color: UIColor(hexString: "F5B5D2")!),
      LineColor(line: "A", color: UIColor(hexString: "FF6600")!),
      LineColor(line: "B", color: UIColor(hexString: "FF6600")!),
      LineColor(line: "C", color: UIColor(hexString: "FF6600")!),
