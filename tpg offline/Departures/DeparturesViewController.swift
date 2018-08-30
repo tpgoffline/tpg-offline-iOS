@@ -30,7 +30,7 @@ class DeparturesViewController: UIViewController {
                    attributes: ["appId": stop.code])
 
       navigationItem.title = stop.name
-      navigationItem.accessibilityTraits = UIAccessibilityTraitNone
+      navigationItem.accessibilityTraits = UIAccessibilityTraits.none
       refreshDepatures()
 
       configureTabBarItems()
@@ -83,7 +83,7 @@ class DeparturesViewController: UIViewController {
 
     self.mapView.isHidden = true
 
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 62
 
     if self.view.traitCollection.verticalSizeClass == .compact,
@@ -117,24 +117,24 @@ class DeparturesViewController: UIViewController {
   func configureTabBarItems() {
     navigationItem.rightBarButtonItems = [
       UIBarButtonItem(image: App.filterFavoritesLines ? #imageLiteral(resourceName: "filter") : #imageLiteral(resourceName: "filterEmpty"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.toggleFilterFavoritesLines),
                       accessbilityLabel: "Filter favorites lines".localized),
       UIBarButtonItem(image: App.favoritesStops.contains(stop!.appId) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.setFavorite),
                       accessbilityLabel: App.favoritesStops.contains(stop!.appId) ?
                         "Unmark this stop as favorite".localized :
                         "Mark this stop as favorite".localized),
       UIBarButtonItem(image: #imageLiteral(resourceName: "pinMapNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.showMap),
                       accessbilityLabel: "Show map".localized),
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.reload),
                       accessbilityLabel: "Reload departures".localized)
@@ -569,7 +569,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     headerCell.favoriteButton.tag = section
     headerCell.favoriteButton.addTarget(self,
                                         action: headerCellAction,
-                                        for: UIControlEvents.touchUpInside)
+                                        for: UIControl.Event.touchUpInside)
 
     return headerCell
   }
@@ -894,7 +894,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
           Text.busIsCommingNow : Text.minutesLeft(timeBefore)
         content.body = Text.take(line: departure.line.code,
                                  to: departure.line.destination) + Text.pushToShowMap
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         content.categoryIdentifier = "departureNotification"
 
         if let location = localisations[safe: 0]?.location {

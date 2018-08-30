@@ -171,7 +171,7 @@ class ReminderInterfaceController: WKInterfaceController, WKCrownDelegate {
         Text.busIsCommingNow : Text.minutesLeft(timeBefore)
       content.body = Text.take(line: departure.line.code,
                                to: departure.line.destination)
-      content.sound = UNNotificationSound.default()
+      content.sound = UNNotificationSound.default
       let request =
         UNNotificationRequest(identifier:
           "departureNotification-\(String.random(30))",

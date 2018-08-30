@@ -29,7 +29,7 @@ class SettingsTableViewController: UITableViewController {
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
 
     if let version =
@@ -40,7 +40,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     navigationController?.navigationBar.titleTextAttributes =
-      [NSAttributedStringKey.foregroundColor: App.textColor]
+      [NSAttributedString.Key.foregroundColor: App.textColor]
 
     // Notifications
     self.settings.append([

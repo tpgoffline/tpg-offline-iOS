@@ -29,7 +29,7 @@ class RoutesTableViewController: UITableViewController {
     self.splitViewController?.delegate = self
     self.splitViewController?.preferredDisplayMode = .allVisible
 
-    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.rowHeight = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = 44
 
     navigationItem.rightBarButtonItems = [
@@ -43,11 +43,11 @@ class RoutesTableViewController: UITableViewController {
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
 
     navigationController?.navigationBar.titleTextAttributes =
-      [NSAttributedStringKey.foregroundColor: App.textColor]
+      [NSAttributedString.Key.foregroundColor: App.textColor]
 
     if App.darkMode {
       self.navigationController?.navigationBar.barStyle = .black
@@ -109,7 +109,7 @@ class RoutesTableViewController: UITableViewController {
         cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
 
         let titleAttributes =
-          [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)]
+          [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)]
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textColor = App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white
         cell.imageView?.image = #imageLiteral(resourceName: "magnify").maskWith(color: App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : .white)
@@ -128,9 +128,9 @@ class RoutesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell",
                                                  for: indexPath)
         let titleAttributes =
-          [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)]
+          [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)]
         let subtitleAttributes =
-          [NSAttributedStringKey.font:
+          [NSAttributedString.Key.font:
             UIFont.preferredFont(forTextStyle: .subheadline)]
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textColor = App.textColor

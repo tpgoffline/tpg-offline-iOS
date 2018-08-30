@@ -188,11 +188,11 @@ class StopsTableViewController: UIViewController {
 //      navigationController?.navigationBar.prefersLargeTitles = true
 //      navigationItem.largeTitleDisplayMode = .never
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
 
     navigationController?.navigationBar.titleTextAttributes =
-      [NSAttributedStringKey.foregroundColor: App.textColor]
+      [NSAttributedString.Key.foregroundColor: App.textColor]
 
     if App.darkMode {
       self.tableView.sectionIndexBackgroundColor = App.cellBackgroundColor
@@ -232,7 +232,7 @@ class StopsTableViewController: UIViewController {
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
   }
 
@@ -556,29 +556,29 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
     let font = UIFont.preferredFont(forTextStyle: .headline)
     if key == "location" {
       headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1)
-      let titleAttributes = [NSAttributedStringKey.font: font,
-                             NSAttributedStringKey.foregroundColor:
+      let titleAttributes = [NSAttributedString.Key.font: font,
+                             NSAttributedString.Key.foregroundColor:
                               App.darkMode ? #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1) : UIColor.white]
-        as [NSAttributedStringKey: Any]
+        as [NSAttributedString.Key: Any]
       headerCell?.textLabel?.attributedText =
         NSAttributedString(string: Text.nearestStops,
                            attributes: titleAttributes)
 
     } else if key == "favorites" {
       headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1)
-      let titleAttributes = [NSAttributedStringKey.font: font,
-                             NSAttributedStringKey.foregroundColor:
+      let titleAttributes = [NSAttributedString.Key.font: font,
+                             NSAttributedString.Key.foregroundColor:
                               App.darkMode ? #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1) : UIColor.white]
-        as [NSAttributedStringKey: Any]
+        as [NSAttributedString.Key: Any]
       headerCell?.textLabel?.attributedText =
         NSAttributedString(string: Text.favorites,
                            attributes: titleAttributes)
     } else {
       headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-      let titleAttributes = [NSAttributedStringKey.font: font,
-                             NSAttributedStringKey.foregroundColor:
+      let titleAttributes = [NSAttributedString.Key.font: font,
+                             NSAttributedString.Key.foregroundColor:
                               App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : UIColor.white]
-        as [NSAttributedStringKey: Any]
+        as [NSAttributedString.Key: Any]
       headerCell?.textLabel?.attributedText =
         NSAttributedString(string: key, attributes: titleAttributes)
     }

@@ -63,7 +63,7 @@ class RouteResultsTableViewController: UITableViewController {
     super.viewDidLoad()
 
     title = "Results".localized
-    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.rowHeight = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = 96
 
     self.refreshControl = UIRefreshControl()
@@ -102,11 +102,11 @@ class RouteResultsTableViewController: UITableViewController {
       UIBarButtonItem(image: App.favoritesRoutes.contains(where: {
         $0 == self.route
       }) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.setFavorite)),
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.refresh))
     ]

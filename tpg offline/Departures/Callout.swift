@@ -91,7 +91,7 @@ class CustomCalloutView: UIView, MGLCalloutView {
     //mainBody.setTitle(representedObject.title!, for: .normal)
     
     // Prepare our frame, adding extra space at the bottom for the tip.
-    let size = mainBody.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+    let size = mainBody.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     let frameWidth: CGFloat = size.width
     let frameHeight: CGFloat = size.height + tipHeight
     let frameOriginX = rect.origin.x + (rect.size.width/2.0) - (frameWidth/2.0)

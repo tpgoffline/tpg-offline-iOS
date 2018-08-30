@@ -232,7 +232,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView,
-                          commit editingStyle: UITableViewCellEditingStyle,
+                          commit editingStyle: UITableViewCell.EditingStyle,
                           forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       guard let row = tableView.cellForRow(at: indexPath)

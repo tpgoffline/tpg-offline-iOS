@@ -81,7 +81,7 @@ class PrivacyTableViewController: UITableViewController {
                           didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 {
       UIApplication.shared
-        .openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+        .openURL(URL(string: UIApplication.openSettingsURLString)!)
     } else {
       if indexPath.row == 0 {
         let vc = SFSafariViewController(url: URL(string: URL.privacyStatement)!,

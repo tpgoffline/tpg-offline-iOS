@@ -42,18 +42,18 @@ class DisruptionsTableViewController: UITableViewController {
 
     App.logEvent("Show disruptions", attributes: [:])
 
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 140
     tableView.allowsSelection = false
 
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
 
     navigationController?.navigationBar.titleTextAttributes =
-      [NSAttributedStringKey.foregroundColor: App.textColor]
+      [NSAttributedString.Key.foregroundColor: App.textColor]
 
     self.refreshDisruptions()
 
@@ -77,7 +77,7 @@ class DisruptionsTableViewController: UITableViewController {
                       action: #selector(self.pushDisruptionsMonitoring),
                       accessbilityLabel: Text.disruptionsMonitoring),
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.refreshDisruptions),
                       accessbilityLabel: Text.reloadDepartures)

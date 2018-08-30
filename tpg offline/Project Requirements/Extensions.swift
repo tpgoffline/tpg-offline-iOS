@@ -219,11 +219,11 @@ extension UIViewController: ColorModeDelegate {
 
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
 
     navigationController?.navigationBar.titleTextAttributes =
-      [NSAttributedStringKey.foregroundColor: App.textColor]
+      [NSAttributedString.Key.foregroundColor: App.textColor]
 
     if App.darkMode {
       self.navigationController?.navigationBar.barStyle = .black
@@ -277,7 +277,7 @@ public extension UIView {
 
 public extension UIBarButtonItem {
   convenience init(image: UIImage?,
-                   style: UIBarButtonItemStyle,
+                   style: UIBarButtonItem.Style,
                    target: Any?,
                    action: Selector?,
                    accessbilityLabel: String) {
@@ -513,9 +513,9 @@ extension UIColor {
 extension NSMutableAttributedString {
   @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
     let attrs =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-       NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
+       NSAttributedString.Key.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
+        as [NSAttributedString.Key: Any]
     let boldString = NSMutableAttributedString(string: "\(text)", attributes: attrs)
     self.append(boldString)
     return self
@@ -523,9 +523,9 @@ extension NSMutableAttributedString {
 
   @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
     let attrs =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body),
-       NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
+       NSAttributedString.Key.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
+        as [NSAttributedString.Key: Any]
     let normal = NSAttributedString(string: text, attributes: attrs)
     self.append(normal)
     return self

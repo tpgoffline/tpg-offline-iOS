@@ -105,18 +105,18 @@ class StopRowController: NSObject {
     self.stop = stop
     let headlineFont = UIFont.preferredFont(forTextStyle: .headline)
     let subheadlineFont = UIFont.preferredFont(forTextStyle: .subheadline)
-    let titleAttributes: [NSAttributedStringKey: Any]
-    let subtitleAttributes: [NSAttributedStringKey: Any]
+    let titleAttributes: [NSAttributedString.Key: Any]
+    let subtitleAttributes: [NSAttributedString.Key: Any]
     if stop.subTitle != "", !isNearestStops {
-      titleAttributes = [NSAttributedStringKey.font: subheadlineFont]
-        as [NSAttributedStringKey: Any]
-      subtitleAttributes = [NSAttributedStringKey.font: headlineFont]
-        as [NSAttributedStringKey: Any]
+      titleAttributes = [NSAttributedString.Key.font: subheadlineFont]
+        as [NSAttributedString.Key: Any]
+      subtitleAttributes = [NSAttributedString.Key.font: headlineFont]
+        as [NSAttributedString.Key: Any]
     } else {
-      titleAttributes = [NSAttributedStringKey.font: headlineFont]
-        as [NSAttributedStringKey: Any]
-      subtitleAttributes = [NSAttributedStringKey.font: subheadlineFont]
-        as [NSAttributedStringKey: Any]
+      titleAttributes = [NSAttributedString.Key.font: headlineFont]
+        as [NSAttributedString.Key: Any]
+      subtitleAttributes = [NSAttributedString.Key.font: subheadlineFont]
+        as [NSAttributedString.Key: Any]
     }
     titleLabel.setAttributedText(
       NSAttributedString(string: stop.title,

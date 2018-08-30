@@ -103,7 +103,7 @@ class OrientationTableViewController: UIViewController, UITableViewDelegate, UIT
     if segmentedControl.selectedSegmentIndex == 1 {
       return 190
     } else {
-      return UITableViewAutomaticDimension
+      return UITableView.automaticDimension
     }
   }
 

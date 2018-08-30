@@ -99,9 +99,9 @@ class RouteResultsDetailTableViewController: UITableViewController {
                                                for: indexPath)
       
       let titleAttributes =
-        [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-         NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
-          as [NSAttributedStringKey: Any]
+        [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
+         NSAttributedString.Key.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
+          as [NSAttributedString.Key: Any]
       cell.textLabel?.numberOfLines = 0
       cell.textLabel?.attributedText =
         NSAttributedString(string: Text.regionalRoute,
@@ -179,24 +179,24 @@ class RouteResultsDetailTableViewController: UITableViewController {
     let destinationName = (section.journey?.to ?? "").toStopName
     
     var titleAttributes =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline)]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)]
+        as [NSAttributedString.Key: Any]
     
     if section.journey?.compagny == "TPG" {
       headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor :
         LineColorManager.color(for: section.journey?.lineCode ?? "")
-      titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ?
+      titleAttributes[NSAttributedString.Key.foregroundColor] = App.darkMode ?
         LineColorManager.color(for: section.journey?.lineCode ?? "") :
         LineColorManager.color(for: section.journey?.lineCode ?? "").contrast
     } else if section.journey?.compagny == "SBB" {
       headerCell.textLabel?.text = Text.sbb(line: section.journey?.lineCode,
                                             destination: destinationName)
       headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : .red
-      titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ?
+      titleAttributes[NSAttributedString.Key.foregroundColor] = App.darkMode ?
         UIColor.red : UIColor.white
     } else {
       headerCell.backgroundColor = App.darkMode ? .black : .white
-      titleAttributes[NSAttributedStringKey.foregroundColor] = App.darkMode ?
+      titleAttributes[NSAttributedString.Key.foregroundColor] = App.darkMode ?
         UIColor.white : UIColor.black
     }
     headerCell.textLabel?.attributedText =

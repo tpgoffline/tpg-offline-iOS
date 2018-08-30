@@ -31,9 +31,9 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
       let stopName = notification.request.content.userInfo["stopName"] as? String {
       let coordinate = CLLocationCoordinate2D(latitude: x,
                                               longitude: y)
-      let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate,
-                                                regionRadius,
-                                                regionRadius)
+      let coordinateRegion = MKCoordinateRegion.init(center: coordinate,
+                                                latitudinalMeters: regionRadius,
+                                                longitudinalMeters: regionRadius)
       mapView.setRegion(coordinateRegion, animated: true)
 
       let annotation = MKPointAnnotation()
@@ -76,7 +76,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         self.mapView.showAnnotations([arrivalAnnotation, departureAnnotation],
                                      animated: true )
         
-        let directionRequest = MKDirectionsRequest()
+        let directionRequest = MKDirections.Request()
         directionRequest.source = arrivalMapItem
         directionRequest.destination = departureMapItem
         directionRequest.transportType = .walking
@@ -89,25 +89,25 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
             let coordinates = [arrivalCoordinates, departureCoordinates]
             let geodesic = MKPolyline(coordinates: coordinates,
                                       count: coordinates.count)
-            mapView.add(geodesic)
+            mapView.addOverlay(geodesic)
             
             return
           }
           
           let route = response.routes[0]
           
-          self.mapView.add(route.polyline,
+          self.mapView.addOverlay(route.polyline,
                            level: MKOverlayLevel.aboveRoads)
           
           let rect = route.polyline.boundingMapRect
-          self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+          self.mapView.setRegion(MKCoordinateRegion.init(rect), animated: true)
         }
       } else {
         let coordinate = CLLocationCoordinate2D(latitude: arrivalX,
                                                 longitude: arrivalY)
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate,
-                                                  regionRadius,
-                                                  regionRadius)
+        let coordinateRegion = MKCoordinateRegion.init(center: coordinate,
+                                                  latitudinalMeters: regionRadius,
+                                                  longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
         
         let annotation = MKPointAnnotation()

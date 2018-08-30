@@ -235,7 +235,7 @@ class RouteStepViewController: UIViewController {
         timeBefore == 0 ? Text.busIsCommingNow : Text.minutesLeft(timeBefore)
 
       content.body = Text.take(line: section.journey?.lineCode, to: destinationName)
-      content.sound = UNNotificationSound.default()
+      content.sound = UNNotificationSound.default
       let identifier = "routeNotification-\(String.random(30))"
       let request = UNNotificationRequest(identifier: identifier,
                                           content: content,
@@ -341,13 +341,13 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
                                              for: indexPath)
 
     var titleAttributes =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-       NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
+       NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
     var subtitleAttributes =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
-       NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline),
+       NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
     cell.textLabel?.numberOfLines = 0
     cell.detailTextLabel?.numberOfLines = 0
 

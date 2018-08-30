@@ -30,26 +30,26 @@ class StopsTableViewCell: UITableViewCell {
       self.selectedBackgroundView = selectedView
     }
 
-    let titleAttributes: [NSAttributedStringKey: Any]
-    let subtitleAttributes: [NSAttributedStringKey: Any]
+    let titleAttributes: [NSAttributedString.Key: Any]
+    let subtitleAttributes: [NSAttributedString.Key: Any]
 
     let headlineFont = UIFont.preferredFont(forTextStyle: .headline)
     let subheadlineFont = UIFont.preferredFont(forTextStyle: .subheadline)
 
     if stop.subTitle != "", !isNearestStops {
-      titleAttributes = [NSAttributedStringKey.font: subheadlineFont,
-                         NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
-      subtitleAttributes = [NSAttributedStringKey.font: headlineFont,
-                            NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
+      titleAttributes = [NSAttributedString.Key.font: subheadlineFont,
+                         NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
+      subtitleAttributes = [NSAttributedString.Key.font: headlineFont,
+                            NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
     } else {
-      titleAttributes = [NSAttributedStringKey.font: headlineFont,
-                         NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
-      subtitleAttributes = [NSAttributedStringKey.font: subheadlineFont,
-                            NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
+      titleAttributes = [NSAttributedString.Key.font: headlineFont,
+                         NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
+      subtitleAttributes = [NSAttributedString.Key.font: subheadlineFont,
+                            NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
     }
     self.textLabel?.numberOfLines = 0
     self.detailTextLabel?.numberOfLines = 0

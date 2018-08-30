@@ -44,7 +44,7 @@ class DetailDeparturesViewController: UIViewController {
       if self.tableView.numberOfRows(inSection: 0) > indexPath.row {
         DispatchQueue.main.async {
           self.tableView.scrollToRow(at: indexPath,
-                                     at: UITableViewScrollPosition.top,
+                                     at: UITableView.ScrollPosition.top,
                                      animated: false)
         }
       }
@@ -187,7 +187,7 @@ class DetailDeparturesViewController: UIViewController {
 
     navigationItem.rightBarButtonItems = [
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.refreshBusRoute),
                       accessbilityLabel: Text.reload)
@@ -520,7 +520,7 @@ class DetailDeparturesViewController: UIViewController {
           Text.busIsCommingNow : Text.minutesLeft(timeBefore)
         content.body = Text.take(line: departure.line.code,
                                  to: departure.line.destination)
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         let notificationIdentifier = "departureNotification-\(String.random(30))"
         let request = UNNotificationRequest(identifier: notificationIdentifier,
                                             content: content,
