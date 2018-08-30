@@ -180,8 +180,30 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="siriCell" id="lb8-Ig-7Cx" customClass="AddToSiriTableViewCell" customModule="tpg_offline" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="55.5" width="375" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lb8-Ig-7Cx" id="XRW-T8-0dy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oQM-yd-FBe">
+                                                            <rect key="frame" x="132" y="-61" width="110" height="200"/>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="oQM-yd-FBe" firstAttribute="top" secondItem="XRW-T8-0dy" secondAttribute="topMargin" id="83l-Qa-Xhy"/>
+                                                        <constraint firstItem="oQM-yd-FBe" firstAttribute="leading" secondItem="XRW-T8-0dy" secondAttribute="leadingMargin" id="BUe-Mv-pDs"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="oQM-yd-FBe" secondAttribute="bottom" id="NLt-69-Ypz"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="oQM-yd-FBe" secondAttribute="trailing" id="RO1-BS-TLB"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="stackView" destination="oQM-yd-FBe" id="mST-cc-O0F"/>
+                                                </connections>
+                                            </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="departureCell" rowHeight="90" id="uZb-7Q-Bur" customClass="DeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55.5" width="375" height="90"/>
+                                                <rect key="frame" x="0.0" y="135.5" width="375" height="90"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZb-7Q-Bur" id="ljG-2s-964">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
@@ -257,14 +279,14 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="EY4-kG-zUM" customClass="DeparturesHeaderTableViewCell" customModule="tpg_offline" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="145.5" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="225.5" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EY4-kG-zUM" id="AW1-7h-UaY">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipu-My-uEE">
-                                                            <rect key="frame" x="111" y="15" width="170" height="14"/>
+                                                            <rect key="frame" x="81" y="15" width="238" height="14"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -277,7 +299,7 @@
                                                             </constraints>
                                                         </button>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFT-Zc-h28">
-                                                            <rect key="frame" x="15" y="15" width="45" height="22"/>
+                                                            <rect key="frame" x="15" y="9.5" width="50" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="0Us-m7-7Jg"/>
                                                                 <constraint firstAttribute="width" constant="50" id="tnz-UK-TM5"/>
@@ -312,7 +334,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="footerCell" rowHeight="88" id="rWL-9d-333" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="189.5" width="375" height="88"/>
+                                                <rect key="frame" x="0.0" y="269.5" width="375" height="88"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rWL-9d-333" id="9nQ-5S-L90">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
@@ -336,7 +358,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noInternetCell" textLabel="JId-Vq-hAT" detailTextLabel="fI2-hy-Z6b" rowHeight="80" style="IBUITableViewCellStyleSubtitle" id="5pf-TL-Qp2" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="277.5" width="375" height="80"/>
+                                                <rect key="frame" x="0.0" y="357.5" width="375" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5pf-TL-Qp2" id="EXH-Z8-gqN">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -360,7 +382,7 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="connectionCell" textLabel="syb-A0-g0V" rowHeight="80" style="IBUITableViewCellStyleDefault" id="Jjn-ya-LXW" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="357.5" width="375" height="80"/>
+                                                <rect key="frame" x="0.0" y="437.5" width="375" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jjn-ya-LXW" id="kRE-9t-aPh">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -380,7 +402,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="filterCell" textLabel="4sj-ZJ-p4f" rowHeight="80" style="IBUITableViewCellStyleDefault" id="Yge-GU-9H3" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="437.5" width="375" height="80"/>
+                                                <rect key="frame" x="0.0" y="517.5" width="375" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yge-GU-9H3" id="Xr6-aQ-bzn">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>

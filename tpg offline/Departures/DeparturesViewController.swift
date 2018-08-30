@@ -40,7 +40,6 @@ class DeparturesViewController: UIViewController {
       if #available(iOS 12.0, *) {
         let intent = DeparturesIntent()
         intent.stop = INObject(identifier: "\(stop.code)", display: stop.name)
-        
         let interaction = INInteraction(intent: intent, response: nil)
         interaction.donate { (error) in
           if let error = error {
@@ -322,12 +321,18 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     if self.requestStatus == .loading {
       return 1
     } else if self.requestStatus == any(of: .error, .noResults) {
-      return 1
+      return 2
     } else {
-      if App.filterFavoritesLines {
-        return (self.filteredLines.count) + 3
+      let addSiri: Int
+      if #available(iOS 12.0, *) {
+        addSiri = 1
       } else {
-        return (self.departures?.lines.count ?? 0) + 3
+        addSiri = 0
+      }
+      if App.filterFavoritesLines {
+        return (self.filteredLines.count) + 3 + addSiri
+      } else {
+        return (self.departures?.lines.count ?? 0) + 3 + addSiri
       }
     }
   }
@@ -346,6 +351,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return App.filterFavoritesLines ? 1 : 0
     case 2:
       return (self.stop?.connectionsMap ?? false) ? 1 : 0
+    case (self.departures?.lines.count ?? 0) + 3:
+      return 1
     default:
       let section = section - 3
       if App.filterFavoritesLines {
@@ -386,7 +393,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       }
       cell.departure = nil
       return cell
-    } else if self.requestStatus == .error {
+    } else if self.requestStatus == .error && indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell",
                                                for: indexPath)
       cell.imageView?.image = #imageLiteral(resourceName: "globe").maskWith(color: App.textColor)
@@ -396,7 +403,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       cell.detailTextLabel?.textColor = App.textColor
       cell.backgroundColor = App.cellBackgroundColor
       return cell
-    } else if self.requestStatus == .noResults {
+    } else if self.requestStatus == .noResults && indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell",
                                                for: indexPath)
       cell.imageView?.image = #imageLiteral(resourceName: "warningSign").maskWith(color: App.textColor)
@@ -405,6 +412,18 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       cell.textLabel?.textColor = App.textColor
       cell.detailTextLabel?.textColor = App.textColor
       cell.backgroundColor = App.cellBackgroundColor
+      return cell
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && indexPath.section == 1) || (indexPath.section == (self.departures?.lines.count ?? 0) + 3)) {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "siriCell",
+                                               for: indexPath) as? AddToSiriTableViewCell,
+      let stop = self.stop else {
+                                                return UITableViewCell()
+      }
+      cell.parent = self
+      let intent = DeparturesIntent()
+      intent.stop = INObject(identifier: "\(stop.code)", display: stop.name)
+      cell.shortcut = INShortcut(intent: intent)
       return cell
     } else if indexPath.section == 2 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "connectionCell",
@@ -532,6 +551,9 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return nil
     } else if section == any(of: 0, 1, 2) {
       return nil
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1) || (section == (self.departures?.lines.count ?? 0) + 3)) {
+      return nil
     }
     let section = section - 3
     var line = self.departures?.lines[safe: section] ?? "?#!"
@@ -596,6 +618,9 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return CGFloat.leastNonzeroMagnitude
     } else if section == any(of: 0, 1, 2) {
       return CGFloat.leastNonzeroMagnitude
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1) || (section == (self.departures?.lines.count ?? 0) + 3)) {
+      return CGFloat.leastNonzeroMagnitude
     }
     return 44
   }
@@ -607,6 +632,9 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     } else if self.requestStatus == any(of: .error, .noResults) {
       return CGFloat.leastNonzeroMagnitude
     } else if section == any(of: 0, 1, 2) {
+      return CGFloat.leastNonzeroMagnitude
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1) || (section == (self.departures?.lines.count ?? 0) + 3)) {
       return CGFloat.leastNonzeroMagnitude
     }
     let section = section - 3
@@ -628,6 +656,10 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       self.requestStatus != .error &&
       self.requestStatus != .noResults &&
       !(indexPath.section == any(of: 0, 1, 2))
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 
   func tableView(_ tableView: UITableView,

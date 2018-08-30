@@ -135,6 +135,7 @@
 		ADB08B4F2138681700E20EC0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
 		ADB08B50213868A900E20EC0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
 		ADB08B52213868E700E20EC0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
+		ADB08B542138738300E20EC0 /* AddToSiriTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB08B532138738300E20EC0 /* AddToSiriTableViewCell.swift */; };
 		ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */; };
 		ADB5812320F10E9800FD2F6F /* AddressHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */; };
 		ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */; };
@@ -359,6 +360,7 @@
 		ADA14E631FDEC4E100945249 /* lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lines.json; path = JSON/lines.json; sourceTree = "<group>"; };
 		ADA14E651FDEC4FE00945249 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsMapViewController.swift; sourceTree = "<group>"; };
+		ADB08B532138738300E20EC0 /* AddToSiriTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToSiriTableViewCell.swift; sourceTree = "<group>"; };
 		ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderStopsTableViewController.swift; sourceTree = "<group>"; };
 		ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesViewController.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */,
 				AD9D8DA9200264730021A23E /* DeparturesHeaderTableViewCell.swift */,
 				ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */,
+				ADB08B532138738300E20EC0 /* AddToSiriTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -654,8 +657,8 @@
 		AD37FE8F1F41CA8000E84220 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */,
 				AD37FE9B1F41CA8000E84220 /* Departures.storyboard */,
+				ADF9C6791F9BB3C800AE17A4 /* Disruptions.storyboard */,
 				ADF9C67E1F9BB40500AE17A4 /* Routes.storyboard */,
 				ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */,
 				AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */,
@@ -1263,6 +1266,7 @@
 				AD9F018620CE827D0069B486 /* DarkModeTableViewController.swift in Sources */,
 				ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */,
 				ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */,
+				ADB08B542138738300E20EC0 /* AddToSiriTableViewCell.swift in Sources */,
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
 				ADF6BED820F6050A00DABB25 /* URL.swift in Sources */,
 				AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */,
