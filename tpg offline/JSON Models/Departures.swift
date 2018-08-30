@@ -16,7 +16,7 @@ struct DeparturesGroup: Decodable {
     self.departures = departures.filter({
       $0.leftTime != "no more" && $0.leftTime != "-1"
     })
-    self.lines = departures.map({$0.line.code}).uniqueElements.sorted(by: {
+    self.lines = self.departures.map({$0.line.code}).uniqueElements.sorted(by: {
       if let a = Int($0), let b = Int($1) {
         return a < b
       } else { return $0 < $1 }})

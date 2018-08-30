@@ -269,30 +269,45 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
       alert.addAction(cancelAction)
       alert.addAction(continueAction)
       self.present(alert, animated: true, completion: nil)
-    } else {
+    } else if let departureTimestamp = connection?.from.departureTimestamp {
       let alert = UIAlertController(title: Text.reminder,
                                     message: Text.goModeReminder,
                                     preferredStyle: .alert)
-      let fiveMinutesAction = UIAlertAction(title: Text.fiveMinutesBefore,
-                                         style: .default) { (_) in
-                                          self.setGoMode(minutes: 5)
+      if departureTimestamp.distance(to: Int(Date().timeIntervalSince1970)) >= -300 {
+        self.setGoMode(minutes: -1)
+        return
       }
-      let tenMinutesAction = UIAlertAction(title: Text.tenMinutesBefore,
-                                       style: .default) { (_) in
-                                        self.setGoMode(minutes: 10)
+      if departureTimestamp.distance(to: Int(Date().timeIntervalSince1970)) < -300 {
+        let fiveMinutesAction = UIAlertAction(title: Text.fiveMinutesBefore,
+                                              style: .default) { (_) in
+                                                self.setGoMode(minutes: 5)
+        }
+        alert.addAction(fiveMinutesAction)
       }
-      let fifteenMinutesAction = UIAlertAction(title: Text.fifteenMinutesBefore,
-                                           style: .default) { (_) in
-                                            self.setGoMode(minutes: 15)
+      if departureTimestamp.distance(to: Int(Date().timeIntervalSince1970)) < -600 {
+        let tenMinutesAction = UIAlertAction(title: Text.tenMinutesBefore,
+                                             style: .default) { (_) in
+                                              self.setGoMode(minutes: 10)
+        }
+        alert.addAction(tenMinutesAction)
       }
+      if departureTimestamp.distance(to: Int(Date().timeIntervalSince1970)) < -900 {
+        let fifteenMinutesAction = UIAlertAction(title: Text.fifteenMinutesBefore,
+                                                 style: .default) { (_) in
+                                                  self.setGoMode(minutes: 15)
+        }
+        alert.addAction(fifteenMinutesAction)
+      }
+      let doNotSetReminderAction = UIAlertAction(title: Text.doNotSetReminder,
+                                               style: .default) { (_) in
+                                                self.setGoMode(minutes: -1)
+      }
+      alert.addAction(doNotSetReminderAction)
       
       let cancelAction = UIAlertAction(title: Text.cancel,
                                        style: .default,
                                        handler: nil)
       
-      alert.addAction(fiveMinutesAction)
-      alert.addAction(tenMinutesAction)
-      alert.addAction(fifteenMinutesAction)
       alert.addAction(cancelAction)
       self.present(alert, animated: true, completion: nil)
     }
@@ -301,6 +316,21 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
   func setGoMode(minutes: Int) {
     guard let sections = connection?.sections else {
       return
+    }
+    
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current()
+        .requestAuthorization(options: [.alert, .sound]) { (accepted, _) in
+          if !accepted {
+            print("Notification access denied.")
+          }
+      }
+    } else {
+      let type: UIUserNotificationType = [UIUserNotificationType.badge,
+                                          UIUserNotificationType.alert,
+                                          UIUserNotificationType.sound]
+      let setting = UIUserNotificationSettings(types: type, categories: nil)
+      UIApplication.shared.registerUserNotificationSettings(setting)
     }
     
     var locationAllowed: Bool
@@ -315,7 +345,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
       locationAllowed = false
     }
     
-    if let departureTimestamp = connection?.from.departureTimestamp {
+    if let departureTimestamp = connection?.from.departureTimestamp, minutes != -1 {
       let dateComponents =
         Calendar.current.dateComponents([.hour,
                                          .minute,

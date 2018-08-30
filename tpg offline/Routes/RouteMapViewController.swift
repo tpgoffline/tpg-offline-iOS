@@ -42,9 +42,11 @@ class RouteMapViewController: UIViewController {
         mapView.addAnnotation(annotation)
       }
 
-      let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
-      geodesic.title = section.journey?.lineCode ?? ""
-      mapView.add(geodesic)
+      if coordinates.count > 0 {
+        let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+        geodesic.title = section.journey?.lineCode ?? ""
+        mapView.add(geodesic)
+      }
     }
     
     if allPoints.isEmpty {

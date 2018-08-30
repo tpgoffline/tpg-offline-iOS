@@ -27,7 +27,7 @@ class OfflineDeparturesManager: NSObject {
   let reachability = Reachability()!
 
   func checkUpdate(viewController: UIViewController) {
-    if self.reachability.connection == .wifi && App.downloadMaps {
+    if (self.reachability.connection == .wifi || App.allowDownloadWithMobileData) && App.downloadMaps {
       downloadingMapTheme = .current
       self.downloadMap()
     }
@@ -35,7 +35,7 @@ class OfflineDeparturesManager: NSObject {
     Alamofire.request(URL.offlineDeparturesMD5).responseString { (response) in
       if let updatedMD5 = response.result.value,
         updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
-        if App.automaticDeparturesDownload && self.reachability.connection == .wifi {
+        if App.automaticDeparturesDownload && (self.reachability.connection == .wifi || App.allowDownloadWithMobileData) {
           OfflineDeparturesManager.shared.download()
         } else if UserDefaults.standard.bool(forKey: "remindUpdate") == false {
           UserDefaults.standard.set(true, forKey: "offlineDeparturesUpdateAvailable")
@@ -70,7 +70,7 @@ class OfflineDeparturesManager: NSObject {
     Alamofire.request(URL.offlineDeparturesMD5).responseString { (response) in
       if let updatedMD5 = response.result.value,
         updatedMD5 != UserDefaults.standard.string(forKey: "departures.json.md5") {
-        if App.automaticDeparturesDownload && reachability.connection == .wifi {
+        if App.automaticDeparturesDownload && (reachability.connection == .wifi || App.allowDownloadWithMobileData) {
           OfflineDeparturesManager.shared.download()
         }
       }

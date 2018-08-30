@@ -49,6 +49,8 @@ class OrientationTableViewController: UIViewController, UITableViewDelegate, UIT
     
     self.tableView.backgroundColor = App.darkMode ? .black :
       .groupTableViewBackground
+    self.view.backgroundColor = App.darkMode ? .black :
+      .groupTableViewBackground
     self.tableView.separatorColor = App.separatorColor
     self.tableView.reloadData()
   }

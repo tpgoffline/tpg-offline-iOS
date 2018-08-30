@@ -205,6 +205,15 @@ struct App {
       }
     }
   }
+  
+  static var allowDownloadWithMobileData: Bool {
+    get {
+      return UserDefaults.standard.bool(forKey: #function)
+    }
+    set {
+      UserDefaults.standard.set(newValue, forKey: #function)
+    }
+  }
   #endif
 
   static var tpgLinesColor: [LineColor] =
@@ -371,7 +380,7 @@ struct App {
   }
 
   static var cellBackgroundColor: UIColor {
-    return darkMode ? UIColor.black.lighten(by: 0.05) : .white
+    return darkMode ? UIColor.black : .white
   }
 
   @discardableResult static func loadLines(forceLocal: Bool = false) -> Bool {
@@ -415,7 +424,7 @@ struct App {
     print("🔸 Event logged: \(name)")
     #else
     if App.fabric {
-      App.logEvent(name,
+      Answers.logCustomEvent(withName: name,
                              customAttributes: attributes)
     }
     #endif
@@ -426,7 +435,7 @@ struct App {
     print("🔸 Event logged: \(name)")
     #else
     if App.fabric {
-      App.logEvent(name)
+      Answers.logCustomEvent(withName: name)
     }
     #endif
   }

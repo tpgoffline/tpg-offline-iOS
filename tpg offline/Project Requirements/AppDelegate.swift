@@ -112,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                    to: App.stops.filter({ $0.code == "CVIN"})[0],
                                    via: [],
                                    date: Date(), arrivalTime: false)]
+      App.automaticDarkMode = false
       return true
     }
 

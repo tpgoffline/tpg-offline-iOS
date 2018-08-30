@@ -23,6 +23,7 @@ struct Text {
   static let appPermissions = "App permissions".localized
   static let alreadySheduled = "We already sheduled a reminder with these parameters.".localized
   static let downloadMaps = "Download maps".localized
+  static let allowWithMobileData = "Allow download with mobile data".localized
   static let areYouConnected = "Are you connected to internet?".localized
   static let arrivalAt = "Arrival at".localized
   static let arrivalMissing = "Arrival stop is missing".localized
@@ -91,6 +92,7 @@ struct Text {
     return String(format: "Direction %@, no more bus".localized, to ?? "")
   }
   static let downloadMap = "Download map".localized
+  static let doNotSetReminder = "Do not set departure reminder".localized
   static func doYouMean(_ stopName: String) -> String {
     return String(format: "Do you mean %@?".localized, stopName)
   }

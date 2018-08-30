@@ -279,10 +279,13 @@ class DeparturesViewController: UIViewController {
         annotation.coordinate = localisation.location.coordinate
         annotation.title = stop.name
         var subtitle = ""
-        for destination in localisation.destinations {
+        for (index, destination) in localisation.destinations.enumerated() {
           subtitle.append(
             Text.line(destination.line,
                       destination: destination.destination))
+          if index != localisation.destinations.count - 1 {
+            subtitle.append("\n")
+          }
         }
         annotation.subtitle = subtitle
         mapView.addAnnotation(annotation)
@@ -526,17 +529,18 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
 
     let color = App.color(for: line, operator: self.stop?.lines[line] ?? .tpg)
     let headerCellAction = #selector(self.toggleFavoritesLines(button:))
-    headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
+    
     if line.count == 2 && line.first == "N" {
       line = Text.noctambus(line)
     }
-    headerCell.titleLabel.text = String(format: "Line %@".localized, "\(line)")
+    headerCell.titleLabel.text = line
     headerCell.titleLabel.textColor = App.darkMode ? color : color.contrast
+    headerCell.titleLabel.backgroundColor = App.darkMode ? App.cellBackgroundColor.lighten(by: 0.1) : color
 
     if self.stop?.lines[line] == .tac {
       headerCell.subtitleLabel.isHidden = false
       headerCell.subtitleLabel.text = Text.tacNetwork
-      headerCell.subtitleLabel.textColor = App.darkMode ? color : color.contrast
+      headerCell.subtitleLabel.textColor = App.darkMode ? .white : color
     } else {
       headerCell.subtitleLabel.isHidden = true
     }
@@ -544,7 +548,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     headerCell.accessibilityLabel = Text.departuresFor(line: line)
     headerCell.favoriteButton.setImage(App.favoritesLines.contains(line) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"),
                                        for: .normal)
-    headerCell.favoriteButton.tintColor = App.darkMode ? color : color.contrast
+    headerCell.favoriteButton.tintColor = color
     headerCell.favoriteButton.tag = section
     headerCell.favoriteButton.addTarget(self,
                                         action: headerCellAction,
@@ -576,16 +580,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     } else if section == any(of: 0, 1, 2) {
       return CGFloat.leastNonzeroMagnitude
     }
-    let section = section - 3
-    var line = self.departures?.lines[safe: section] ?? "?#!"
-    if App.filterFavoritesLines {
-      line = self.filteredLines[section]
-    }
-    if self.stop?.lines[line] == .tac {
-      return 60
-    } else {
-      return 44
-    }
+    return 44
   }
 
   func tableView(_ tableView: UITableView,
@@ -1028,5 +1023,10 @@ extension DeparturesViewController: MFMailComposeViewControllerDelegate {
 extension DeparturesViewController: MGLMapViewDelegate {
   func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     return true
+  }
+  
+  func mapView(_ mapView: MGLMapView, calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
+    // Instantiate and return our custom callout view.
+    return CustomCalloutView(representedObject: annotation)
   }
 }

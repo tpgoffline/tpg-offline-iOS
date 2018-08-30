@@ -32,7 +32,7 @@ DownloadOfflineDeparturesDelegate {
   
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return section == 2 ? 2 : 1
   }
   
   override func tableView(_ tableView: UITableView,
@@ -85,30 +85,57 @@ DownloadOfflineDeparturesDelegate {
       cell.backgroundColor = App.cellBackgroundColor
       return cell
     } else {
-      let cell =
-        tableView.dequeueReusableCell(withIdentifier: "updateDeparturesCell",
-                                      for: indexPath)
-      let statusSwitch = UISwitch(frame: CGRect.zero) as UISwitch
-      cell.backgroundColor = App.cellBackgroundColor
-      cell.textLabel?.text = Text.downloadMaps
-      cell.textLabel?.textColor = App.textColor
-      cell.detailTextLabel?.text = ""
-      
-      statusSwitch.isOn = App.downloadMaps
-      statusSwitch.addTarget(self,
-                             action: #selector(self.changeDownloadMaps),
-                             for: .valueChanged)
-      cell.accessoryView = statusSwitch
-      if App.darkMode {
-        let selectedView = UIView()
-        selectedView.backgroundColor = .black
-        cell.selectedBackgroundView = selectedView
+      if indexPath.row == 0 {
+        let cell =
+          tableView.dequeueReusableCell(withIdentifier: "updateDeparturesCell",
+                                        for: indexPath)
+        let statusSwitch = UISwitch(frame: CGRect.zero) as UISwitch
+        cell.backgroundColor = App.cellBackgroundColor
+        cell.textLabel?.text = Text.downloadMaps
+        cell.textLabel?.textColor = App.textColor
+        cell.detailTextLabel?.text = ""
+        
+        statusSwitch.isOn = App.downloadMaps
+        statusSwitch.addTarget(self,
+                               action: #selector(self.changeDownloadMaps),
+                               for: .valueChanged)
+        cell.accessoryView = statusSwitch
+        if App.darkMode {
+          let selectedView = UIView()
+          selectedView.backgroundColor = .black
+          cell.selectedBackgroundView = selectedView
+        } else {
+          let selectedView = UIView()
+          selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+          cell.selectedBackgroundView = selectedView
+        }
+        return cell
       } else {
-        let selectedView = UIView()
-        selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
-        cell.selectedBackgroundView = selectedView
+        let cell =
+          tableView.dequeueReusableCell(withIdentifier: "updateDeparturesCell",
+                                        for: indexPath)
+        let statusSwitch = UISwitch(frame: CGRect.zero) as UISwitch
+        cell.backgroundColor = App.cellBackgroundColor
+        cell.textLabel?.text = Text.allowWithMobileData
+        cell.textLabel?.textColor = App.textColor
+        cell.detailTextLabel?.text = ""
+        
+        statusSwitch.isOn = App.allowDownloadWithMobileData
+        statusSwitch.addTarget(self,
+                               action: #selector(self.changeAllowDownloadWithMobileData),
+                               for: .valueChanged)
+        cell.accessoryView = statusSwitch
+        if App.darkMode {
+          let selectedView = UIView()
+          selectedView.backgroundColor = .black
+          cell.selectedBackgroundView = selectedView
+        } else {
+          let selectedView = UIView()
+          selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+          cell.selectedBackgroundView = selectedView
+        }
+        return cell
       }
-      return cell
     }
   }
   
@@ -138,6 +165,11 @@ DownloadOfflineDeparturesDelegate {
   
   @objc func changeDownloadMaps() {
     App.downloadMaps = !App.downloadMaps
+    self.tableView.reloadData()
+  }
+  
+  @objc func changeAllowDownloadWithMobileData() {
+    App.allowDownloadWithMobileData = !App.allowDownloadWithMobileData
     self.tableView.reloadData()
   }
   

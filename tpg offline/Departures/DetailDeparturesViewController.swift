@@ -55,7 +55,7 @@ class DetailDeparturesViewController: UIViewController {
       var passed = true
       for step in steps {
         guard let stop = App.stops.filter({ $0.code == step.stop.code })[safe: 0]
-          else { break }
+          else { continue }
         let annotation = MGLPointAnnotation()
         if let localisation = stop.localisations.filter({
           !($0.destinations.filter({

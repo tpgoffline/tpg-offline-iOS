@@ -9,12 +9,14 @@
 "(Go!) You're leaving the bus at the next stop!" = "(Go!) Vous quittez le bus au prochain arrêt !";
 "0" = "0";
 "10 minutes before" = "10 minutes avant";
+"15 minutes before" = "15 minutes avant";
 "5 minutes before" = "5 minutes avant";
 "?#!" = "?#!";
 "A notification will be send %@" = "Une notification sera envoyée %@";
 "Activated" = "Activé";
 "Address" = "Adresses";
 "All Stops" = "Tous les arrêts";
+"Allow download with mobile data" = "Autoriser le téléchargement avec les données cellulaires";
 "An error occurred" = "Une erreur est survenue";
 "An update is available" = "Une mise à jour est disponible";
 "App permissions" = "Permissions de l'application";
@@ -29,7 +31,6 @@
 "Automatic" = "Automatique";
 "Bus Stop" = "Arrêts";
 "Bus is comming" = "Le bus arrive !";
-"Buses from Annemasse are now available in approximate schedule" = "Les bus d'Annemasse sont désormais disponibles en horaires approximatifs";
 "Can't load Smart Reminders" = "Impossible de charger les Rappels Intelligents.";
 "Cancel" = "Annuler";
 "Confirmation" = "Confirmation";
@@ -61,9 +62,11 @@
 "Dismiss" = "Fermer";
 "Disruptions" = "Perturbations";
 "Disruptions monitoring" = "Surveillance des perturbations";
+"Do not set departure reminder" = "Ne pas mettre de rappel";
 "Do you mean %@?" = "Est-ce que vous voulez dire %@ ?";
 "Do you want to reinit the stops list to the alphabetical order?" = "Voulez-vous réinitialiser la liste d'arrêt dans l'ordre alphabétique ?";
 "Download map" = "Télécharger le plan";
+"Download maps" = "Télécharger les cartes";
 "Download now" = "Télécharger maintenant";
 "Downloading..." = "Téléchargement...";
 "Duplicate reminder" = "Notification en double";
@@ -87,23 +90,20 @@
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Ici, vous pouvez choisir quand vous voulez surveiller des lignes. Si une perturbation survient pendant la période de surveillance, nous vous enverrons une notification.";
 "Hours" = "Heures";
 "I dont know... The error message is missing." = "Je ne sais pas... Le message d'erreur est manquant.";
-"If you wanted to go somewhere with a via, now you can." = "Si vous avez toujours voulu aller quelque part en tpg, tout en planifiant un via, c'est désormais possible dans la section itinéraire.";
-"If you're using a departure reminder or the Go! Mode, the notifications will show a map to guide you" = "Si vous utilisez un rappel de départ ou le mode Go!, les notifications vont vous afficher un plan pour vous guider";
 "Invalid route" = "Itinéraire invalide";
 "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?" = "Il semble que vous ne surveillez aucune ligne.\nSurveiller une ligne vous permettra de recevoir une notification en cas de perturbations sur vos lignes préférées. Pourquoi ne pas essayer en appuyant sur le bouton +, en haut à droite de votre appareil ?";
 "Last features" = "Dernières nouveautés";
 "Let's take the bus!" = "Prenons le bus !";
 "Line %@" = "Ligne %@";
 "Line %@ - %@" = "Ligne %@ - %@";
+"Line 62 and 63 and maps" = "Ligne 62 et 63 et plans";
 "Lines" = "Lignes";
 "Lines history and moral and material support" = "Histoires des lignes et soutien moral et matériel";
-"Loading" = "Chargement";
 "Loading Smart Reminders" = "Chargement des Rappels Intelligents";
 "Loading..." = "Chargement...";
 "Manual" = "Manuel";
 "Map" = "Plan";
 "Maps" = "Plans";
-"Maps in notifications" = "Plans dans les notifications";
 "Mark this stop as favorite" = "Marquer cet arrêt en favoris";
 "Monday" = "Lundi";
 "Monitoring" = "Surveillance";
@@ -182,7 +182,6 @@
 "Specific" = "Spécifique";
 "Stability improvements" = "Amélioration de la stabilité générale";
 "Sunday" = "Dimanche";
-"TAC" = "TAC";
 "TAC Network - Approximate timetable" = "Réseau TAC - Horaires approximatifs";
 "Take the line %@ to %@" = "Prenez la ligne %@ vers %@";
 "Take the line %@ to %@ in %@ minutes" = "Prenez la ligne %@ vers %@ dans %@ minutes";
@@ -203,7 +202,7 @@
 "Unknow" = "Inconnu";
 "Unknow content" = "Contenu inconnu";
 "Unmark this stop as favorite" = "Enlever cet arrêt des favoris";
-"Update departures" = "Réactualiser les départs";
+"Update offline data" = "Données hors-ligne";
 "Urban map" = "Plan urbain";
 "Via" = "Via";
 "Via %@" = "Via %@";
@@ -221,6 +220,7 @@
 "Weekend" = "Week-end";
 "What's new!" = "Les dernières nouveautés !";
 "When do you want to be reminded" = "Quand voulez-vous être rappelé";
+"When do you want to be reminded before taking the first bus?" = "Quand voulez-vous être rappelé ?";
 "Whole tpg network" = "Réseau tpg";
 "Wi-Fi" = "Wi-Fi";
 "Yes" = "Oui";
@@ -236,4 +236,6 @@
 "at the time of departure." = "au départ";
 "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en" = "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/fr";
 "tpg offline" = "tpg offline";
+"tpg offline is now up to date with the tpg network" = "tpg offline est désormais à jour avec le réseau tpg";
 "tpg offline, version %@" = "tpg offline, version %@";
+

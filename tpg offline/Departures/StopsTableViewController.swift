@@ -115,6 +115,8 @@ class StopsTableViewController: UIViewController {
     }
 
     DispatchQueue.main.async {
+      URLCache.shared.removeAllCachedResponses()
+      
       Alamofire.request(URL.stopsMD5).responseString { (response) in
         if let updatedMD5 = response.result.value,
           updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
@@ -183,7 +185,8 @@ class StopsTableViewController: UIViewController {
     self.tableView.sectionIndexBackgroundColor = .white
 
     if #available(iOS 11.0, *) {
-      navigationController?.navigationBar.prefersLargeTitles = true
+//      navigationController?.navigationBar.prefersLargeTitles = true
+//      navigationItem.largeTitleDisplayMode = .never
       navigationController?.navigationBar.largeTitleTextAttributes =
         [NSAttributedStringKey.foregroundColor: App.textColor]
     }
@@ -226,6 +229,11 @@ class StopsTableViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     searchForNearestStops()
+    if #available(iOS 11.0, *) {
+      navigationController?.navigationBar.prefersLargeTitles = true
+      navigationController?.navigationBar.largeTitleTextAttributes =
+        [NSAttributedStringKey.foregroundColor: App.textColor]
+    }
   }
 
   override func viewDidDisappear(_ animated: Bool) {

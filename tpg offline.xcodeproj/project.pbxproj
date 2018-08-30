@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD03D7E22133E884000CA57E /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = AD03D7E12133E884000CA57E /* stops.json */; };
+		AD03D7E32133E884000CA57E /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = AD03D7E12133E884000CA57E /* stops.json */; };
+		AD03D7E42133E884000CA57E /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = AD03D7E12133E884000CA57E /* stops.json */; };
+		AD03D7E52133E884000CA57E /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = AD03D7E12133E884000CA57E /* stops.json */; };
 		AD0644401FBB366200E61E5A /* RoutesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06443F1FBB366200E61E5A /* RoutesInterfaceController.swift */; };
 		AD06AC722132C92900FF113B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
 		AD06AC732132DA1D00FF113B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
@@ -29,6 +33,7 @@
 		AD23865F20F9D5BA001D9881 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD23865D20F9D5BA001D9881 /* MainInterface.storyboard */; };
 		AD23866320F9D5BA001D9881 /* tpg offline Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD23865520F9D5BA001D9881 /* tpg offline Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD28200D1FA0E5D800767462 /* InfoPlist.strings */; };
+		AD34A2F021344C0D00910BF8 /* Callout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34A2EF21344C0D00910BF8 /* Callout.swift */; };
 		AD34C9A51FE1E2A500BE4843 /* LineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */; };
 		AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
 		AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */; };
@@ -53,7 +58,6 @@
 		AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DF3AB1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift */; };
 		AD3DF3B01FB1FE8500F2AFA5 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48461FADF70800596076 /* App.swift */; };
 		AD3DF3B11FB1FF0300F2AFA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
-		AD3DF3B21FB1FFB400F2AFA5 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
 		AD3EB1671FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3EB1661FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift */; };
 		AD3EB1691FE6BE1200F74261 /* DisruptionMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3EB1681FE6BE1200F74261 /* DisruptionMonitoring.swift */; };
 		AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */; };
@@ -105,7 +109,6 @@
 		ADA14E661FDEC4FE00945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADA14E681FDEC5D300945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */; };
-		ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = ADABFA091F9CF1D200EEC8D0 /* stops.json */; };
 		ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */; };
 		ADB5812320F10E9800FD2F6F /* AddressHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */; };
 		ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */; };
@@ -211,6 +214,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD03D7E12133E884000CA57E /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = "tpg offline/Project Requirements/stops.json"; sourceTree = "<group>"; };
 		AD06443F1FBB366200E61E5A /* RoutesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesInterfaceController.swift; sourceTree = "<group>"; };
 		AD06AC712132C92900FF113B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AD07A3631F8A60D300E65DE7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		AD2820081FA0E54600767462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD28200C1FA0E5D800767462 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD28200E1FA0E5DD00767462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD34A2EF21344C0D00910BF8 /* Callout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callout.swift; sourceTree = "<group>"; };
 		AD34C9A41FE1E2A500BE4843 /* LineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewController.swift; sourceTree = "<group>"; };
 		AD37FE611F41CA4600E84220 /* tpg offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tpg offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37FE7D1F41CA7F00E84220 /* BusRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteTableViewCell.swift; sourceTree = "<group>"; };
@@ -301,7 +306,6 @@
 		ADA14E631FDEC4E100945249 /* lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lines.json; path = JSON/lines.json; sourceTree = "<group>"; };
 		ADA14E651FDEC4FE00945249 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsMapViewController.swift; sourceTree = "<group>"; };
-		ADABFA091F9CF1D200EEC8D0 /* stops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stops.json; path = JSON/stops.json; sourceTree = "<group>"; };
 		ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderStopsTableViewController.swift; sourceTree = "<group>"; };
 		ADB5812220F10E9800FD2F6F /* AddressHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		ADB9278B1FEDC5A700A70F48 /* NewFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturesViewController.swift; sourceTree = "<group>"; };
@@ -464,7 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				AD5C637E2105D6C000CD7B74 /* Bus.gpx */,
-				ADABFA091F9CF1D200EEC8D0 /* stops.json */,
+				AD03D7E12133E884000CA57E /* stops.json */,
 				ADA14E631FDEC4E100945249 /* lines.json */,
 				AD37FE631F41CA4600E84220 /* tpg offline */,
 				AD1E484D1FADFF6A00596076 /* tpg offline UITests */,
@@ -513,6 +517,7 @@
 				ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */,
 				AD37FE7C1F41CA7F00E84220 /* Cells */,
 				ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */,
+				AD34A2EF21344C0D00910BF8 /* Callout.swift */,
 			);
 			path = Departures;
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD23865F20F9D5BA001D9881 /* MainInterface.storyboard in Resources */,
+				AD03D7E52133E884000CA57E /* stops.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +899,7 @@
 				AD37FEBD1F41CDA300E84220 /* Assets.xcassets in Resources */,
 				AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */,
 				AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */,
+				AD03D7E22133E884000CA57E /* stops.json in Resources */,
 				ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */,
 				AD5C637F2105D6C000CD7B74 /* Bus.gpx in Resources */,
 				ADF9C67C1F9BB40500AE17A4 /* Routes.storyboard in Resources */,
@@ -902,7 +909,6 @@
 				AD37FEC01F41CDA300E84220 /* Main.storyboard in Resources */,
 				ADF9C6771F9BB3C800AE17A4 /* Disruptions.storyboard in Resources */,
 				ADF9C6811F9BB4A500AE17A4 /* Orientation.storyboard in Resources */,
-				ADABFA0A1F9CF1D200EEC8D0 /* stops.json in Resources */,
 				ADA14E641FDEC4E100945249 /* lines.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -913,6 +919,7 @@
 			files = (
 				ADBC1C711FAF0E2700162195 /* Assets.xcassets in Resources */,
 				ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */,
+				AD03D7E32133E884000CA57E /* stops.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,7 +930,7 @@
 				ADBC1C831FAF0E2700162195 /* Assets.xcassets in Resources */,
 				AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */,
 				ADE930751FC071DF000D703C /* InfoPlist.strings in Resources */,
-				AD3DF3B21FB1FFB400F2AFA5 /* stops.json in Resources */,
+				AD03D7E42133E884000CA57E /* stops.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,6 +1056,7 @@
 				AD37FEAD1F41CD9300E84220 /* FooterDeparturesTableViewCell.swift in Sources */,
 				AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */,
 				AD37FEAE1F41CD9300E84220 /* StopsTableViewCell.swift in Sources */,
+				AD34A2F021344C0D00910BF8 /* Callout.swift in Sources */,
 				ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */,
 				AD1D3861200E6184009831A8 /* PendingNotificationsTableViewController.swift in Sources */,
 				AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */,
@@ -1308,6 +1316,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "tpg offline Notification/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1329,6 +1341,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 767R4Y4A3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "tpg offline Notification/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

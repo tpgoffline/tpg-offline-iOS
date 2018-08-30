@@ -118,6 +118,12 @@ class DisruptionsTableViewController: UITableViewController {
           self.tableView.reloadData()
         }
         self.refreshControl?.endRefreshing()
+        
+        // Warning: Ugly code ahead
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05, execute: {
+          self.tableView.reloadData()
+        })
+        // End of warning
     }
   }
 
@@ -184,40 +190,20 @@ class DisruptionsTableViewController: UITableViewController {
     } else if requestStatus == .ok {
       let key = self.keys[indexPath.section]
       cell.disruption = disruptions?.disruptions[key]?[indexPath.row]
+      cell.lines = self.keys[indexPath.section] == Text.wholeTpgNetwork ?
+        ["tpg"] : self.keys[indexPath.section].components(separatedBy: " / ")
     } else {
       cell.disruption = nil
     }
 
     return cell
   }
-
-  override func tableView(_ tableView: UITableView,
-                          heightForHeaderInSection section: Int) -> CGFloat {
-    return requestStatus == .noResults ? 0 : 44
-  }
-  override func tableView(_ tableView: UITableView,
-                          viewForHeaderInSection section: Int) -> UIView? {
-    let headerCell =
-      tableView.dequeueReusableCell(withIdentifier: "disruptionsHeader")
-
-    if requestStatus == .noResults {
-      return nil
-    }
-
-    headerCell?.textLabel?.text = "Loading".localized
-    headerCell?.textLabel?.textColor = App.textColor
-
-    headerCell?.backgroundColor = App.darkMode ? .black : .white
-
-    if requestStatus != .loading {
-      let lineColor = App.color(for: (self.keys[section]))
-      headerCell?.backgroundColor =
-        App.darkMode ? App.cellBackgroundColor : lineColor
-      headerCell?.textLabel?.text = self.keys[section] == Text.wholeTpgNetwork ?
-        Text.wholeTpgNetwork : Text.line(self.keys[section])
-      headerCell?.textLabel?.textColor = App.darkMode ? lineColor :
-        headerCell?.backgroundColor?.contrast
-    }
-    return headerCell
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    // Warning: Ugly code ahead
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05, execute: {
+      self.tableView.reloadData()
+    })
+    // End of warning
   }
 }

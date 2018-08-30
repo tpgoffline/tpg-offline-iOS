@@ -9,12 +9,14 @@
 "(Go!) You're leaving the bus at the next stop!" = "(Go!) You're leaving the bus at the next stop!"; 
 "0" = "0"; 
 "10 minutes before" = "10 minutes before"; 
+"15 minutes before" = "15 minutes before"; 
 "5 minutes before" = "5 minutes before"; 
 "?#!" = "?#!"; 
 "A notification will be send %@" = "A notification will be send %@"; 
 "Activated" = "Activated"; 
 "Address" = "Address"; 
 "All Stops" = "All Stops"; 
+"Allow download with mobile data" = "Allow download with mobile data"; 
 "An error occurred" = "An error occurred"; 
 "An update is available" = "An update is available"; 
 "App permissions" = "App permissions"; 
@@ -29,7 +31,6 @@
 "Automatic" = "Automatic"; 
 "Bus Stop" = "Bus Stop"; 
 "Bus is comming" = "Bus is comming"; 
-"Buses from Annemasse are now available in approximate schedule" = "Buses from Annemasse are now available in approximate schedule"; 
 "Can't load Smart Reminders" = "Can't load Smart Reminders"; 
 "Cancel" = "Cancel"; 
 "Confirmation" = "Confirmation"; 
@@ -61,9 +62,11 @@
 "Dismiss" = "Dismiss"; 
 "Disruptions" = "Disruptions"; 
 "Disruptions monitoring" = "Disruptions monitoring"; 
+"Do not set departure reminder" = "Do not set departure reminder"; 
 "Do you mean %@?" = "Do you mean %@?"; 
 "Do you want to reinit the stops list to the alphabetical order?" = "Do you want to reinit the stops list to the alphabetical order?"; 
 "Download map" = "Download map"; 
+"Download maps" = "Download maps"; 
 "Download now" = "Download now"; 
 "Downloading..." = "Downloading..."; 
 "Duplicate reminder" = "Duplicate reminder"; 
@@ -87,23 +90,20 @@
 "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification." = "Here, you can choose when you want to monitor the lines you want. If a disruption occured during the monitoring period, we will send you a notification."; 
 "Hours" = "Hours"; 
 "I dont know... The error message is missing." = "I dont know... The error message is missing."; 
-"If you wanted to go somewhere with a via, now you can." = "If you wanted to go somewhere with a via, now you can."; 
-"If you're using a departure reminder or the Go! Mode, the notifications will show a map to guide you" = "If you're using a departure reminder or the Go! Mode, the notifications will show a map to guide you"; 
 "Invalid route" = "Invalid route"; 
 "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?" = "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?"; 
 "Last features" = "Last features"; 
 "Let's take the bus!" = "Let's take the bus!"; 
 "Line %@" = "Line %@"; 
 "Line %@ - %@" = "Line %@ - %@"; 
+"Line 62 and 63 and maps" = "Line 62 and 63 and maps"; 
 "Lines" = "Lines"; 
 "Lines history and moral and material support" = "Lines history and moral and material support"; 
-"Loading" = "Loading"; 
 "Loading Smart Reminders" = "Loading Smart Reminders"; 
 "Loading..." = "Loading..."; 
 "Manual" = "Manual"; 
 "Map" = "Map"; 
 "Maps" = "Maps"; 
-"Maps in notifications" = "Maps in notifications"; 
 "Mark this stop as favorite" = "Mark this stop as favorite"; 
 "Monday" = "Monday"; 
 "Monitoring" = "Monitoring"; 
@@ -182,7 +182,6 @@
 "Specific" = "Specific"; 
 "Stability improvements" = "Stability improvements"; 
 "Sunday" = "Sunday"; 
-"TAC" = "TAC"; 
 "TAC Network - Approximate timetable" = "TAC Network - Approximate timetable"; 
 "Take the line %@ to %@" = "Take the line %@ to %@"; 
 "Take the line %@ to %@ in %@ minutes" = "Take the line %@ to %@ in %@ minutes"; 
@@ -203,7 +202,7 @@
 "Unknow" = "Unknow"; 
 "Unknow content" = "Unknow content"; 
 "Unmark this stop as favorite" = "Unmark this stop as favorite"; 
-"Update departures" = "Update departures"; 
+"Update offline data" = "Update offline data"; 
 "Urban map" = "Urban map"; 
 "Via" = "Via"; 
 "Via %@" = "Via %@"; 
@@ -221,6 +220,7 @@
 "Weekend" = "Weekend"; 
 "What's new!" = "What's new!"; 
 "When do you want to be reminded" = "When do you want to be reminded"; 
+"When do you want to be reminded before taking the first bus?" = "When do you want to be reminded before taking the first bus?"; 
 "Whole tpg network" = "Whole tpg network"; 
 "Wi-Fi" = "Wi-Fi"; 
 "Yes" = "Yes"; 
@@ -236,5 +236,6 @@
 "at the time of departure." = "at the time of departure."; 
 "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en" = "https://wiki.tpgoffline.com/index.php?title=D%C3%A9claration_de_confidentialit%C3%A9_-_App_iOS/en"; 
 "tpg offline" = "tpg offline"; 
+"tpg offline is now up to date with the tpg network" = "tpg offline is now up to date with the tpg network"; 
 "tpg offline, version %@" = "tpg offline, version %@"; 
 
