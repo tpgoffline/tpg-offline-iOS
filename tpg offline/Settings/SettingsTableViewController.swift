@@ -2,8 +2,8 @@
 //  SettingsTableViewController.swift
 //  tpg offline
 //
-//  Created by Remy on 16/08/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 16/08/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -60,7 +60,7 @@ class SettingsTableViewController: UITableViewController {
       Setting(Text.reorderStops, icon: #imageLiteral(resourceName: "reorder"), action: { (_) in
         self.performSegue(withIdentifier: "showReorderStopsView", sender: self)
       }),
-      Setting(Text.updateDepartures, icon: #imageLiteral(resourceName: "download"), action: { (_) in
+      Setting(Text.updateOfflineData, icon: #imageLiteral(resourceName: "download"), action: { (_) in
         App.log("Settings: Update Departures")
         self.performSegue(withIdentifier: "showUpdateDepartures", sender: self)
       }),
@@ -68,8 +68,7 @@ class SettingsTableViewController: UITableViewController {
         self.performSegue(withIdentifier: "showDarkMode", sender: self)
       }),
       Setting(Text.privacy, icon: #imageLiteral(resourceName: "circuit"), action: { (_) in
-        UIApplication.shared
-          .openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+        self.performSegue(withIdentifier: "showPrivacy", sender: self)
       })
       ])
 

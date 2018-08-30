@@ -2,8 +2,8 @@
 //  Stop.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 09/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 09/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import Foundation
@@ -14,6 +14,7 @@ struct Stop: Codable {
     struct Destinations: Codable {
       var line: String
       var destination: String
+      var destinationTransportAPI: String
     }
 
     var location: CLLocation
@@ -187,5 +188,10 @@ struct Stop: Codable {
 
   static func == (lhd: Stop, rhd: Stop) -> Bool {
     return lhd.appId == rhd.appId
+  }
+  
+  enum Operator: String, Codable {
+    case tpg = "tpg"
+    case tac = "tac"
   }
 }

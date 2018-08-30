@@ -2,8 +2,8 @@
 //  StopsTableViewself.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 29/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 29/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -62,8 +62,9 @@ class StopsTableViewCell: UITableViewCell {
                          attributes: subtitleAttributes)
 
     if isNearestStops {
-      self.textLabel?.attributedText = NSAttributedString(string: stop.name,
-                                                          attributes: titleAttributes)
+      self.textLabel?.attributedText =
+        NSAttributedString(string: stop.name,
+                           attributes: titleAttributes)
       let walkDuration = Int(stop.distance / 1000 / 5 * 60)
       let walkDurationString = Text.distance(meters: stop.distance,
                                            minutes: walkDuration)

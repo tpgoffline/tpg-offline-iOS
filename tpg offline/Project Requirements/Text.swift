@@ -2,8 +2,8 @@
 //  Text.swift
 //  tpg offline
 //
-//  Created by Remy on 11/07/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 11/07/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 // Please, do not edit the line below, this file must be excluded from line_length
 // limit
@@ -20,7 +20,10 @@ struct Text {
   static let alamofireDescription = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire".localized
   static let apnsError = "We need your devices's unique identifier to send you notifications, even if the app is closed (except if the device is off). Check if notifications and background app refresh are allowed.".localized
   static let application = "Application".localized
+  static let appPermissions = "App permissions".localized
   static let alreadySheduled = "We already sheduled a reminder with these parameters.".localized
+  static let downloadMaps = "Download maps".localized
+  static let allowWithMobileData = "Allow download with mobile data".localized
   static let areYouConnected = "Are you connected to internet?".localized
   static let arrivalAt = "Arrival at".localized
   static let arrivalMissing = "Arrival stop is missing".localized
@@ -89,6 +92,7 @@ struct Text {
     return String(format: "Direction %@, no more bus".localized, to ?? "")
   }
   static let downloadMap = "Download map".localized
+  static let doNotSetReminder = "Do not set departure reminder".localized
   static func doYouMean(_ stopName: String) -> String {
     return String(format: "Do you mean %@?".localized, stopName)
   }
@@ -98,6 +102,7 @@ struct Text {
   static let externalProject = "External libraries, used in this project".localized
   static let fabricDescription = "Crash Reporting and Analytics".localized
   static let favorites = "Favorites".localized
+  static let fifteenMinutesBefore = "15 minutes before".localized
   static let fiveMinutesBefore = "5 minutes before".localized
   static let friday = "Friday".localized
   static let from = "From".localized
@@ -109,11 +114,13 @@ struct Text {
   static let goMode = "Go! Mode".localized
   static let goModeActivated = "Go! Mode activated".localized
   static let goModeActivatedSubtitle = "You will receive notifications when you will soon need to leave the bus".localized
-  static let goModeHelp = "This mode sends you notifications to guide you on your route, like \"Take the bus\" and \"Leave the bus soon\" reminders."
+  static let goModeHelp = "This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders.".localized
   static let goNextStop = "(Go!) You're leaving the bus at the next stop!".localized
+  static let goTimeToGo = "(Go!) Time to go!".localized
   static let invalidRoute = "Invalid route".localized
   static let lastFeatures = "Last features".localized
   static let letsTakeTheBus = "Let's take the bus!".localized
+  static let lines = "Lines".localized
   static func line(_ line: String?) -> String {
     return String(format: "Line %@".localized,
                   "\(line ?? "?#!".localized)")
@@ -127,6 +134,7 @@ struct Text {
   static let lookingForAStop = "Are you looking for a stop ?".localized
   static let manual = "Manual".localized
   static let map = "Map".localized
+  static let maps = "Maps".localized
   static func minutesLeft(_ minutes: Int) -> String {
     return String(format: "%@ minutes left!".localized, "\(minutes)")
   }
@@ -137,7 +145,7 @@ struct Text {
   static let nearestStopsFrom = "Nearest stops from".localized
   static let newOfflineDepartures = "New offline departures available".localized
   static var newOfflineDeparturesSubtitle: String {
-    return App.automaticDeparturesDownload ? "You can download them in Settings or you can activate Wi-Fi to automatically download them." : "You can download them in Settings".localized
+    return App.automaticDeparturesDownload ? "You can download them in Settings or you can activate Wi-Fi to automatically download them.".localized : "You can download them in Settings".localized
   }
   static let nextStops = "Next Stops".localized
   static let noBusWillCome = "No more bus will come to this stop today.".localized
@@ -184,7 +192,9 @@ struct Text {
     return String(format: "Platform %@".localized, number)
   }
   static let privacy = "Privacy".localized
+  static let privacyStatement = "Privacy Statement".localized
   static let project = "The project".localized
+  static let pushToShowMap = "\nDeep push to show a map".localized
   static let reinitAlphabeticalOrder = "Do you want to reinit the stops list to the alphabetical order?".localized
   static let regionalMap = "Regional map".localized
   static let regionalRoute = "Regional route".localized
@@ -198,6 +208,7 @@ struct Text {
     return String(format: "Remember you have to leave at %@ to take the line %@".localized, stop, line ?? "#@?")
   }
   static let reminder = "Reminder".localized
+  static let goModeReminder = "When do you want to be reminded before taking the first bus?".localized
   static func reminderMessage(stopName: String, leftTime: String) -> String {
     return String(format: "At %@ - In %@ minutes\nWhen do you want to be reminded?".localized, stopName, leftTime)
   }
@@ -233,7 +244,7 @@ struct Text {
     return String(format: "Take the line %@ to %@".localized, line ?? "?#!".localized, destination)
   }
   static func take(line: String?, to destination: String, in minutes: Int) -> String {
-    return String(format: "Take the line %@ to %@ in %@".localized,
+    return String(format: "Take the line %@ to %@ in %@ minutes".localized,
                   line ?? "?#!".localized, destination, "\(minutes)")
   }
   static func takeNow(line: String?, to destination: String) -> String {
@@ -265,7 +276,7 @@ struct Text {
   static let unknow = "Unknow".localized
   static let unknowContent = "Unknow content".localized
   static let updateAvailable = "An update is available".localized
-  static let updateDepartures = "Update departures".localized
+  static let updateOfflineData = "Update offline data".localized
   static let urbanMap = "Urban map".localized
   static let via = "Via".localized
   static func via(number: Int) -> String {

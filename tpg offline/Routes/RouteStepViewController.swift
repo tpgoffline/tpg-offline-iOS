@@ -2,18 +2,18 @@
 //  RouteStepViewController.swift
 //  tpg offline
 //
-//  Created by Remy on 08/10/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 08/10/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
-import MapKit
+import Mapbox
 import UserNotifications
 import MessageUI
 
 class RouteStepViewController: UIViewController {
 
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var reminderButton: UIButton!
   @IBOutlet weak var stackView: UIStackView!
@@ -52,31 +52,22 @@ class RouteStepViewController: UIViewController {
 
     var coordinates: [CLLocationCoordinate2D] = []
     for step in section.journey?.passList ?? [] {
-      let annotation = MKPointAnnotation()
+      let annotation = MGLPointAnnotation()
       annotation.coordinate =
         CLLocationCoordinate2D(latitude: step.station.coordinate.x,
                                longitude: step.station.coordinate.y)
       coordinates.append(annotation.coordinate)
 
-      annotation.title =  (App.stops.filter({
-        $0.sbbId == step.station.id
-      })[safe: 0]?.name) ?? step.station.name
+      annotation.title = step.station.name.toStopName
 
-      self.names.append((App.stops.filter({
-        $0.sbbId == step.station.id
-      })[safe: 0]?.name) ?? step.station.name)
+      self.names.append(step.station.name.toStopName)
 
       mapView.addAnnotation(annotation)
     }
 
-    let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
     mapView.add(geodesic)
-
-    let regionRadius: CLLocationDistance = 2000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinates[0],
-                                                              regionRadius,
-                                                              regionRadius)
-    mapView.setRegion(coordinateRegion, animated: true)
+    mapView.setCenter(coordinates[0], zoomLevel: 14, animated: false)
 
     if UIDevice.current.orientation.isLandscape,
       UIDevice.current.userInterfaceIdiom == .phone {
@@ -213,9 +204,7 @@ class RouteStepViewController: UIViewController {
                                                       .month,
                                                       .year], from: date)
 
-    let destinationName = App.stops.filter({
-      $0.nameTransportAPI == section.journey?.to
-    })[safe: 0]?.name ?? (section.journey?.to ?? "#?!")
+    let destinationName = (section.journey?.to ?? "#?!").toStopName
 
     if #available(iOS 10.0, *) {
       UNUserNotificationCenter
@@ -306,38 +295,37 @@ class RouteStepViewController: UIViewController {
   }
 }
 
-extension RouteStepViewController: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView,
-               rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    if overlay is MKPolyline {
-      let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-      polylineRenderer.strokeColor = self.color
-      polylineRenderer.lineWidth = 5
-      return polylineRenderer
+extension RouteStepViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    if annotation is MGLPolyline {
+      return self.color
+    } else {
+      return App.darkMode ? .white : .black
     }
-
-    return MKOverlayRenderer()
   }
 
-  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    guard let annotation = view.annotation else {
+  func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
+    guard let annotation = annotation as? MGLPointAnnotation else {
       return
     }
-    titleSelected = (annotation.title ?? "") ?? ""
+    titleSelected = annotation.title ?? ""
     if let index = self.names.index(of: titleSelected) {
       self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
                                  at: .top,
                                  animated: true)
     }
-    let regionRadius: CLLocationDistance = 2000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(annotation.coordinate,
-                                                              regionRadius,
-                                                              regionRadius)
-    mapView.setRegion(coordinateRegion, animated: true)
   }
 
-  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+  func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
     titleSelected = ""
+  }
+  
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    if annotation is MGLPolyline {
+      return false
+    } else {
+      return true
+    }
   }
 }
 
@@ -365,9 +353,7 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
 
     let routeResultsStop = self.section.journey?.passList[indexPath.row]
 
-    let name = (App.stops.filter({
-      $0.sbbId == routeResultsStop?.station.id ?? ""
-    })[safe: 0]?.name) ?? (routeResultsStop?.station.name ?? "")
+    let name = (routeResultsStop?.station.name ?? "").toStopName
 
     if titleSelected == name {
       if App.darkMode {
@@ -416,17 +402,13 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let row = tableView.cellForRow(at: indexPath)
     titleSelected = row?.textLabel?.text ?? ""
-    guard let annotiation = mapView.annotations.filter({
+    guard let annotiation = (mapView.annotations ?? []).filter({
       $0.title ?? "#" == titleSelected
     })[safe: 0] else {
       return
     }
     mapView.selectAnnotation(annotiation, animated: true)
-    let regionRadius: CLLocationDistance = 200
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(annotiation.coordinate,
-                                                              regionRadius,
-                                                              regionRadius)
-    mapView.setRegion(coordinateRegion, animated: true)
+    mapView.setCenter(annotiation.coordinate, zoomLevel: 14, animated: true)
   }
 }
 

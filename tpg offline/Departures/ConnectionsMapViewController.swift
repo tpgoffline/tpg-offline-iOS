@@ -2,8 +2,8 @@
 //  ConnectionsMapViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 21/01/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 21/01/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -24,8 +24,8 @@ class ConnectionsMapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     App.log("Show connections maps")
-    Answers.logCustomEvent(withName: "Show connections maps",
-                           customAttributes: ["appCode": stopCode])
+    App.logEvent("Show connections maps",
+                 attributes: ["appCode": stopCode])
     title = "Map".localized
 
     errorLabel.text = "Error. You're not connected to internet."

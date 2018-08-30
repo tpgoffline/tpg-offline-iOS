@@ -2,8 +2,8 @@
 //  NewFeaturesViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 22/12/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 22/12/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -34,11 +34,8 @@ class NewFeaturesViewController: UIViewController {
     ColorModeManager.shared.addColorModeDelegate(self)
 
     // swiftlint:disable line_length
-    /*features.append(Feature(image: #imageLiteral(resourceName: "alarm"), title: "Smart Reminders".localized, text: "Smart reminders are departures reminders that, unlike standard reminders, take into account traffic variations and bus delays.\rThis feature requires an Internet connection to work, so it will not be offered in offline mode, and you can disabled it if you want in online mode.".localized))
-     features.append(Feature(image: #imageLiteral(resourceName: "cel-bell"), title: "Reminders on the Apple Watch".localized, text: "Now, you can add departures reminders from your Apple Watch".localized))
-     features.append(Feature(image: #imageLiteral(resourceName: "binoculars"), title: "Merged disruptions".localized, text: "From now on, instead of having several disturbances displayed several times for several lines, the disturbances will be merged into one and same category to be more readable and take up less space.".localized))
-     features.append(Feature(image: #imageLiteral(resourceName: "binoculars"), title: "Redesigned Monitoring section".localized, text: "The monitoring section was redesigned to make easier to manage disruptions monitoring".localized))
-     features.append(Feature(image: #imageLiteral(resourceName: "bug"), title: "Stability improvements".localized, text: "We improved the stability and we made some cosmetic improvements.".localized))*/
+    features.append(Feature(image: #imageLiteral(resourceName: "pinMapNavBar"), title: "Line 62 and 63 and maps".localized, text: "tpg offline is now up to date with the tpg network".localized))
+     features.append(Feature(image: #imageLiteral(resourceName: "bug"), title: "Stability improvements".localized, text: "We improved the stability and we made some cosmetic improvements.".localized))
     // swiftlint:enable line_length
 
     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"]

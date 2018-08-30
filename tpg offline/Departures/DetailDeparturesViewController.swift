@@ -2,14 +2,14 @@
 //  DetailDeparturesViewController.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 11/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 11/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 import UserNotifications
-import MapKit
+import Mapbox
 import MessageUI
 #if !arch(i386) && !arch(x86_64)
 import NetworkExtension
@@ -21,7 +21,7 @@ class DetailDeparturesViewController: UIViewController {
   @IBOutlet weak var allDeparturesButton: UIButton!
   @IBOutlet weak var wifiButton: UIButton!
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var buttonsView: UIView!
 
@@ -29,8 +29,13 @@ class DetailDeparturesViewController: UIViewController {
   var busRouteGroup: BusRouteGroup? {
     didSet {
       self.tableView.reloadData()
-      mapView.removeAnnotations(mapView.annotations)
-      mapView.removeOverlays(mapView.overlays)
+      
+      mapView.styleURL = URL.mapUrl
+      mapView.reloadStyle(self)
+      
+      if let annotations = mapView.annotations {
+        mapView.removeAnnotations(annotations)
+      }
 
       guard let busRouteGroup = self.busRouteGroup else { return }
 
@@ -50,8 +55,8 @@ class DetailDeparturesViewController: UIViewController {
       var passed = true
       for step in steps {
         guard let stop = App.stops.filter({ $0.code == step.stop.code })[safe: 0]
-          else { break }
-        let annotation = MKPointAnnotation()
+          else { continue }
+        let annotation = MGLPointAnnotation()
         if let localisation = stop.localisations.filter({
           !($0.destinations.filter({
             $0.line == busRouteGroup.lineCode &&
@@ -77,16 +82,15 @@ class DetailDeparturesViewController: UIViewController {
         mapView.addAnnotation(annotation)
       }
 
-      let geodesicPassed = MKPolyline(coordinates: &passedCoordinated,
-                                      count: passedCoordinated.count)
+      let geodesicPassed = MGLPolyline(coordinates: &passedCoordinated,
+                                       count: UInt(passedCoordinated.count))
       geodesicPassed.title = Text.passedStops
-      mapView.add(geodesicPassed)
-      let geodesic = MKPolyline(coordinates: &coordinates,
-                                count: coordinates.count)
+      mapView.addAnnotation(geodesicPassed)
+      let geodesic = MGLPolyline(coordinates: &coordinates,
+                                 count: UInt(coordinates.count))
       geodesic.title = Text.nextStops
-      mapView.add(geodesic)
+      mapView.addAnnotation(geodesic)
 
-      let regionRadius: CLLocationDistance = 2000
       let centerPoint: CLLocationCoordinate2D
       if busRouteGroup.steps.filter({
         $0.stop.code == self.stop?.code
@@ -100,10 +104,7 @@ class DetailDeparturesViewController: UIViewController {
           } else {
             coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
           }
-          let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate,
-                                                                    regionRadius,
-                                                                    regionRadius)
-          mapView.setRegion(coordinateRegion, animated: true)
+          mapView.setCenter(coordinate, zoomLevel: 14, animated: false)
           return
         }
         let nextStop = i.stop.code
@@ -122,10 +123,7 @@ class DetailDeparturesViewController: UIViewController {
           })[safe: 0] ?? coordinates[0]
         }
       }
-      let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerPoint,
-                                                                regionRadius,
-                                                                regionRadius)
-      mapView.setRegion(coordinateRegion, animated: true)
+      mapView.setCenter(centerPoint, zoomLevel: 14, animated: false)
     }
   }
   var color: UIColor?
@@ -230,6 +228,9 @@ class DetailDeparturesViewController: UIViewController {
     self.tableView.backgroundColor = App.darkMode ? .black : .white
     self.tableView.separatorColor = App.separatorColor
     self.tableView.reloadData()
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
 
     if let color = self.color {
       let buttonColor = (App.darkMode ? color : color.contrast)
@@ -326,13 +327,8 @@ class DetailDeparturesViewController: UIViewController {
     App.log("Departures: Reminder")
     self.departure?.calculateLeftTime()
     let leftTime = Int(self.departure?.leftTime ?? "0".localized) ?? 0
-    let alertText = String(format: """
-At %@ - In %@ minutes
-When do you want to be reminded?
-""".localized,
-                           stop?.name ?? "??", "\(leftTime)")
-    var alertController = UIAlertController(title: "Reminder".localized,
-                                            message: alertText,
+    var alertController = UIAlertController(title: Text.reminder,
+                                            message: Text.whenReminder,
                                             preferredStyle: .alert)
     if self.departure?.leftTime == "0" {
       alertController.title = Text.busIsComming
@@ -445,7 +441,6 @@ When do you want to be reminded?
       let formatter = DateFormatter()
       formatter.dateFormat = "HH:mm"
       var parameters: Parameters = [
-        "device": App.apnsToken,
         "departureCode": departure.code,
         "title": timeBefore == 0 ?
           Text.busIsCommingNow : Text.minutesLeft(timeBefore),
@@ -461,7 +456,7 @@ When do you want to be reminded?
       parameters["sandbox"] = true
       #endif
       Alamofire
-        .request(URL.addSmartReminder,
+        .request(URL.smartReminders,
                         method: .post,
                         parameters: parameters)
         .responseString(completionHandler: { (response) in
@@ -722,34 +717,37 @@ extension DetailDeparturesViewController: UITableViewDelegate,
   }
 }
 
-extension DetailDeparturesViewController: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView,
-               rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    if overlay is MKPolyline {
-      let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-      if ((overlay.title ?? "") ?? "") == "Passed Stops" {
-        polylineRenderer.strokeColor = .gray
+extension DetailDeparturesViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    if let annotation = annotation as? MGLPolyline {
+      if (annotation.title ?? "") == Text.passedStops {
+        return .gray
       } else {
-        polylineRenderer.strokeColor = self.color
+        return self.color ?? .black
       }
-      polylineRenderer.lineWidth = 5
-      return polylineRenderer
     }
-
-    return MKOverlayRenderer()
+    return .black
   }
 
-  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    titleSelected = view.annotation?.title! ?? ""
-    if let index = self.names.index(of: titleSelected) {
+  func mapView(_ mapView: MGLMapView, didSelect annotationView: MGLAnnotationView) {
+    if let titleSelected = (annotationView.annotation?.title ?? ""),
+      let index = self.names.index(of: titleSelected) {
       self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
                                  at: .top,
                                  animated: true)
     }
   }
-
-  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+  
+  func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
     titleSelected = ""
+  }
+  
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    if annotation is MGLPolyline {
+      return false
+    } else {
+      return true
+    }
   }
 }
 

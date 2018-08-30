@@ -112,7 +112,7 @@ struct LineColorManager {
      LineColor(line: "DA", color: UIColor(hexString: "40655b")!)]
   
   static func color(for lineCode: String,
-                    operator stopOperator: Operator = .tpg) -> UIColor {
+                    operator stopOperator: Stop.Operator = .tpg) -> UIColor {
     var color: UIColor
     switch stopOperator {
     case .tpg:

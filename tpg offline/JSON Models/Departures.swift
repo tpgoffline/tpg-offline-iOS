@@ -2,8 +2,8 @@
 //  Departure.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 10/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 10/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,7 @@ struct DeparturesGroup: Decodable {
     self.departures = departures.filter({
       $0.leftTime != "no more" && $0.leftTime != "-1"
     })
-    self.lines = departures.map({$0.line.code}).uniqueElements.sorted(by: {
+    self.lines = self.departures.map({$0.line.code}).uniqueElements.sorted(by: {
       if let a = Int($0), let b = Int($1) {
         return a < b
       } else { return $0 < $1 }})
@@ -35,25 +35,6 @@ struct DeparturesGroup: Decodable {
       departures = departures.filter({ $0.leftTime != "-1" })
     }
     self.init(departures: departures)
-  }
-
-  mutating func mergeWithTac(_ departuresWithTac: DeparturesGroup?,
-                             linesWithTac: [String: Operator]?) {
-    guard let departuresWithTac = departuresWithTac,
-      let linesWithTac = linesWithTac else {
-        return
-    }
-    let tacLines = linesWithTac.filter({ $1 == .tac })
-    for line in tacLines {
-      self.departures.removeAll(where: { $0.line.code == line.key })
-      self.departures.append(contentsOf: departuresWithTac.departures.filter({
-        $0.line.code == line.key
-      }))
-    }
-    self.lines = departures.map({$0.line.code}).uniqueElements.sorted(by: {
-      if let a = Int($0), let b = Int($1) {
-        return a < b
-      } else { return $0 < $1 }})
   }
 
   @available(iOS 12.0, *)
@@ -110,6 +91,7 @@ struct Departure: Decodable {
   var reducedMobilityAccessibility: ReducedMobilityAccessibility
   var platform: String?
   var vehiculeNo: Int
+  var offline: Bool
 
   public init(line: Line,
               code: Int,
@@ -120,7 +102,8 @@ struct Departure: Decodable {
               reliability: Reliability,
               reducedMobilityAccessibility: ReducedMobilityAccessibility,
               platform: String?,
-              vehiculeNo: Int) {
+              vehiculeNo: Int,
+              offline: Bool) {
     self.line = line
     self.code = code
     self.leftTime = leftTime
@@ -131,6 +114,7 @@ struct Departure: Decodable {
     self.reducedMobilityAccessibility = reducedMobilityAccessibility
     self.platform = platform
     self.vehiculeNo = vehiculeNo
+    self.offline = offline
 
     if self.leftTime == "" {
       self.calculateLeftTime()
@@ -177,7 +161,8 @@ struct Departure: Decodable {
                   reliability: reliability,
                   reducedMobilityAccessibility: reducedMobilityAccessibility,
                   platform: platform,
-                  vehiculeNo: vehiculeNo)
+                  vehiculeNo: vehiculeNo,
+                  offline: false)
       case .offline:
         let lineString = try container.decode(String.self, forKey: .line)
         let destinationId =
@@ -187,7 +172,7 @@ struct Departure: Decodable {
         let line = Departure.Line(code: lineString,
                                   destination: destination,
                                   destinationCode: "")
-        let timestamp = try container.decode(String.self, forKey: .timestamp)
+        let timestamp = (try container.decode(String.self, forKey: .timestamp)) + "+0200"
         self.init(line: line,
                   code: -1,
                   leftTime: "",
@@ -197,7 +182,8 @@ struct Departure: Decodable {
                   reliability: .reliable,
                   reducedMobilityAccessibility: .accessible,
                   platform: nil,
-                  vehiculeNo: -1)
+                  vehiculeNo: -1,
+                  offline: true)
 
       }
     } else {
@@ -210,7 +196,7 @@ struct Departure: Decodable {
       self.leftTime = "-1"
     } else {
       let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
       let time = dateFormatter.date(from: timestamp)
       var timestampDateComponents: DateComponents = Calendar.current.dateComponents([
         .year,
@@ -230,7 +216,6 @@ struct Departure: Decodable {
       timestampDateComponents.month = now.month
       timestampDateComponents.day = now.day
       timestampDateComponents.calendar = Calendar.current
-      timestampDateComponents.timeZone = now.timeZone
 
       dateCompenents = timestampDateComponents
 

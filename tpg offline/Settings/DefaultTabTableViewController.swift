@@ -2,8 +2,8 @@
 //  DefaultTabTableViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 17/11/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 17/11/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,7 @@ class DefaultTabTableViewController: UITableViewController {
     self.title = Text.defaultTab
 
     App.log("Show default tab")
-    Answers.logCustomEvent(withName: "Show default tab")
+    App.logEvent("Show default tab")
 
     if App.darkMode {
       self.tableView.backgroundColor = .black

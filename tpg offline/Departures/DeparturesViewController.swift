@@ -2,14 +2,13 @@
 //  DeparturesViewController.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 10/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 10/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
-import MapKit
+import Mapbox
 import Alamofire
-import Crashlytics
 import UserNotifications
 import MessageUI
 import Intents
@@ -19,7 +18,7 @@ import NetworkExtension
 
 class DeparturesViewController: UIViewController {
 
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var stackView: UIStackView!
 
@@ -27,45 +26,15 @@ class DeparturesViewController: UIViewController {
     didSet {
       guard let stop = stop else { return }
       App.log("Departures: Selected \(stop.code)")
-      Answers.logCustomEvent(withName: "Show departures",
-                             customAttributes: ["appId": stop.code])
+      App.logEvent("Show departures",
+                   attributes: ["appId": stop.code])
 
       navigationItem.title = stop.name
       navigationItem.accessibilityTraits = UIAccessibilityTraitNone
       refreshDepatures()
 
       configureTabBarItems()
-
-      guard let mapView = self.mapView else { return }
-      mapView.removeAnnotations(mapView.annotations)
-
-      let regionRadius: CLLocationDistance = 2000
-      let stopCoordinate = stop.location.coordinate
-      let coordinateRegion = MKCoordinateRegionMakeWithDistance(stopCoordinate,
-                                                                regionRadius,
-                                                                regionRadius)
-      mapView.setRegion(coordinateRegion, animated: true)
-
-      if !stop.localisations.isEmpty {
-        for localisation in stop.localisations {
-          let annotation = MKPointAnnotation()
-          annotation.coordinate = localisation.location.coordinate
-          annotation.title = stop.name
-          var subtitle = ""
-          for destination in localisation.destinations {
-            subtitle.append(
-              Text.line(destination.line,
-                        destination: destination.destination))
-          }
-          annotation.subtitle = subtitle
-          mapView.addAnnotation(annotation)
-        }
-      } else {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = stop.location.coordinate
-        annotation.title = stop.name
-        mapView.addAnnotation(annotation)
-      }
+      loadMap()
 
       // Siri Intent
       if #available(iOS 12.0, *) {
@@ -133,6 +102,9 @@ class DeparturesViewController: UIViewController {
       self.tableView.separatorColor = App.separatorColor
       self.view.backgroundColor = .black
     }
+    
+    mapView.delegate = self
+    loadMap()
 
     ColorModeManager.shared.addColorModeDelegate(self)
   }
@@ -179,39 +151,31 @@ class DeparturesViewController: UIViewController {
           var options = DeparturesOptions()
           options.networkStatus = .online
           let jsonDecoder = JSONDecoder()
-          jsonDecoder.userInfo = [ DeparturesOptions.key: options ]
+          jsonDecoder.userInfo = [DeparturesOptions.key: options]
           do {
             let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
             self.departures = json
             self.filteredLines = json.lines.filter({
               App.favoritesLines.contains($0)
             })
-
-            if self.stop?.lines.values.contains(.tac) ?? false,
-              let sbbId = self.stop?.sbbId {
-              let (offlineDepartures, _, _) =
-                OfflineDeparturesManager.shared.loadDepartures(sbbId)
-              self.departures?.mergeWithTac(offlineDepartures,
-                                            linesWithTac: self.stop?.lines)
-            }
             self.requestStatus = .ok
           } catch {
+            self.noInternet = true
             if let sbbId = self.stop?.sbbId {
-            (self.departures, self.requestStatus, self.filteredLines) =
-              OfflineDeparturesManager.shared.loadDepartures(sbbId)
+              (self.departures, self.requestStatus, self.filteredLines) =
+                OfflineDeparturesManager.shared.loadDepartures(sbbId)
             }
-            return
           }
 
           if self.departures?.lines.count == 0 {
             self.requestStatus = .noResults
           }
         } else {
+          self.noInternet = true
           if let sbbId = self.stop?.sbbId {
             (self.departures, self.requestStatus, self.filteredLines) =
               OfflineDeparturesManager.shared.loadDepartures(sbbId)
           }
-          self.noInternet = true
         }
         self.refreshControl.endRefreshing()
     }
@@ -240,6 +204,10 @@ class DeparturesViewController: UIViewController {
 
   override func colorModeDidUpdated() {
     super.colorModeDidUpdated()
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
+    
     self.tableView.backgroundColor = App.darkMode ? .black :
                                                     .groupTableViewBackground
     self.tableView.separatorColor = App.separatorColor
@@ -308,6 +276,44 @@ class DeparturesViewController: UIViewController {
     } else {
       self.stackView.axis = .vertical
     }
+  }
+  
+  func loadMap() {
+    guard let mapView = self.mapView else { return }
+    guard let stop = self.stop else { return }
+    if let annotations = mapView.annotations {
+      mapView.removeAnnotations(annotations)
+    }
+    
+    let stopCoordinate = stop.location.coordinate
+    mapView.setCenter(stopCoordinate, zoomLevel: 14, animated: false)
+    
+    if !stop.localisations.isEmpty {
+      for localisation in stop.localisations {
+        let annotation = MGLPointAnnotation()
+        annotation.coordinate = localisation.location.coordinate
+        annotation.title = stop.name
+        var subtitle = ""
+        for (index, destination) in localisation.destinations.enumerated() {
+          subtitle.append(
+            Text.line(destination.line,
+                      destination: destination.destination))
+          if index != localisation.destinations.count - 1 {
+            subtitle.append("\n")
+          }
+        }
+        annotation.subtitle = subtitle
+        mapView.addAnnotation(annotation)
+      }
+    } else {
+      let annotation = MGLPointAnnotation()
+      annotation.coordinate = stop.location.coordinate
+      annotation.title = stop.name
+      mapView.addAnnotation(annotation)
+    }
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
   }
 }
 
@@ -540,17 +546,18 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     let color = LineColorManager.color(for: line,
                                        operator: self.stop?.lines[line] ?? .tpg)
     let headerCellAction = #selector(self.toggleFavoritesLines(button:))
-    headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
+    
     if line.count == 2 && line.first == "N" {
       line = Text.noctambus(line)
     }
-    headerCell.titleLabel.text = String(format: "Line %@".localized, "\(line)")
+    headerCell.titleLabel.text = line
     headerCell.titleLabel.textColor = App.darkMode ? color : color.contrast
+    headerCell.titleLabel.backgroundColor = App.darkMode ? App.cellBackgroundColor.lighten(by: 0.1) : color
 
     if self.stop?.lines[line] == .tac {
       headerCell.subtitleLabel.isHidden = false
       headerCell.subtitleLabel.text = Text.tacNetwork
-      headerCell.subtitleLabel.textColor = App.darkMode ? color : color.contrast
+      headerCell.subtitleLabel.textColor = App.darkMode ? .white : color
     } else {
       headerCell.subtitleLabel.isHidden = true
     }
@@ -558,7 +565,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     headerCell.accessibilityLabel = Text.departuresFor(line: line)
     headerCell.favoriteButton.setImage(App.favoritesLines.contains(line) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"),
                                        for: .normal)
-    headerCell.favoriteButton.tintColor = App.darkMode ? color : color.contrast
+    headerCell.favoriteButton.tintColor = color
     headerCell.favoriteButton.tag = section
     headerCell.favoriteButton.addTarget(self,
                                         action: headerCellAction,
@@ -590,16 +597,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     } else if section == any(of: 0, 1, 2) {
       return CGFloat.leastNonzeroMagnitude
     }
-    let section = section - 3
-    var line = self.departures?.lines[safe: section] ?? "?#!"
-    if App.filterFavoritesLines {
-      line = self.filteredLines[section]
-    }
-    if self.stop?.lines[line] == .tac {
-      return 60
-    } else {
-      return 44
-    }
+    return 44
   }
 
   func tableView(_ tableView: UITableView,
@@ -792,6 +790,18 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
 
     UIApplication.shared.registerForRemoteNotifications()
 
+    var localisations = stop?.localisations ?? []
+    for (index, localisation) in localisations.enumerated() {
+      localisations[index].destinations = localisation.destinations.filter({
+        (destination) -> Bool in
+        destination.line == departure.line.code &&
+          destination.destination == departure.line.destination
+      })
+    }
+    localisations = localisations.filter { (localisation) -> Bool in
+      !localisation.destinations.isEmpty
+    }
+    
     if !self.noInternet,
       App.smartReminders,
       !forceDisableSmartReminders,
@@ -800,7 +810,6 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       let formatter = DateFormatter()
       formatter.dateFormat = "HH:mm"
       var parameters: Parameters = [
-        "device": App.apnsToken,
         "departureCode": departure.code,
         "title": timeBefore == 0 ?
           Text.busIsCommingNow : Text.minutesLeft(timeBefore),
@@ -813,11 +822,20 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
           Calendar.current.date(from: departure.dateCompenents!)!),
         "sandbox": false
       ]
+      if let location = localisations[safe: 0]?.location {
+        parameters["x"] = location.coordinate.latitude
+        parameters["y"] = location.coordinate.longitude
+        parameters["stopName"] = stop?.name ?? ""
+      } else {
+        parameters["x"] = stop?.location.coordinate.latitude ?? 0
+        parameters["y"] = stop?.location.coordinate.longitude ?? 0
+        parameters["stopName"] = stop?.name ?? ""
+      }
       #if DEBUG
       parameters["sandbox"] = true
       #endif
       Alamofire
-        .request(URL.addSmartReminder,
+        .request(URL.smartReminders,
                         method: .post,
                         parameters: parameters)
         .responseString(completionHandler: { (response) in
@@ -875,8 +893,23 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         content.title = timeBefore == 0 ?
           Text.busIsCommingNow : Text.minutesLeft(timeBefore)
         content.body = Text.take(line: departure.line.code,
-                                 to: departure.line.destination)
+                                 to: departure.line.destination) + Text.pushToShowMap
         content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = "departureNotification"
+
+        if let location = localisations[safe: 0]?.location {
+          content.userInfo = [
+            "x": location.coordinate.latitude,
+            "y": location.coordinate.longitude,
+            "stopName": stop?.name ?? ""
+          ]
+        } else {
+          content.userInfo = [
+            "x": stop?.location.coordinate.latitude ?? 0,
+            "y": stop?.location.coordinate.longitude ?? 0,
+            "stopName": stop?.name ?? ""
+          ]
+        }
         let notificationIdentifier = "departureNotification-\(String.random(30))"
         let request = UNNotificationRequest(identifier: notificationIdentifier,
                                             content: content,
@@ -1001,5 +1034,16 @@ extension DeparturesViewController: MFMailComposeViewControllerDelegate {
                              didFinishWith result: MFMailComposeResult,
                              error: Error?) {
     controller.dismiss(animated: true, completion: nil)
+  }
+}
+
+extension DeparturesViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    return true
+  }
+  
+  func mapView(_ mapView: MGLMapView, calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
+    // Instantiate and return our custom callout view.
+    return CustomCalloutView(representedObject: annotation)
   }
 }

@@ -2,8 +2,8 @@
 //  ReminderInterfaceController.swift
 //  tpg offline watchOS Extension
 //
-//  Created by Rémy DA COSTA FARO on 06/04/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 06/04/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import WatchKit
@@ -97,7 +97,6 @@ class ReminderInterfaceController: WKInterfaceController, WKCrownDelegate {
       let formatter = DateFormatter()
       formatter.dateFormat = "HH:mm"
       var parameters: Parameters = [
-        "device": App.apnsToken,
         "departureCode": departure.code,
         "title": timeBefore == 0 ?
           Text.busIsCommingNow : Text.minutesLeft(timeBefore),
@@ -114,7 +113,7 @@ class ReminderInterfaceController: WKInterfaceController, WKCrownDelegate {
       parameters["sandbox"] = true
       #endif
       Alamofire
-        .request(URL.addSmartReminder,
+        .request(URL.smartReminders,
                  method: .post,
                  parameters: parameters)
         .responseString(completionHandler: { (response) in

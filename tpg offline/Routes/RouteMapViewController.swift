@@ -2,16 +2,16 @@
 //  RouteMapViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 04/11/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 04/11/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
-import MapKit
+import Mapbox
 
 class RouteMapViewController: UIViewController {
 
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: MGLMapView!
 
   var connection: RouteConnection?
 
@@ -32,28 +32,49 @@ class RouteMapViewController: UIViewController {
       var coordinates: [CLLocationCoordinate2D] = []
 
       for step in section.journey?.passList ?? [] {
-        let annotation = MKPointAnnotation()
+        let annotation = MGLPointAnnotation()
         annotation.coordinate =
           CLLocationCoordinate2D(latitude: step.station.coordinate.x,
                                  longitude: step.station.coordinate.y)
         coordinates.append(annotation.coordinate)
         allPoints.append(annotation.coordinate)
-        annotation.title =  (App.stops.filter({
-          $0.sbbId == step.station.id
-        })[safe: 0]?.name) ?? step.station.name
+        annotation.title = step.station.name.toStopName
         mapView.addAnnotation(annotation)
       }
 
-      let geodesic = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-      geodesic.title = section.journey?.lineCode ?? ""
+      if coordinates.count > 0 {
+        let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+        geodesic.title = section.journey?.lineCode ?? ""
+        mapView.add(geodesic)
+      }
+    }
+    
+    if allPoints.isEmpty {
+      allPoints = [
+        CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
+                               longitude: connection.from.station.coordinate.y),
+        CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
+                               longitude: connection.to.station.coordinate.y)]
+      let fromAnnotation = MGLPointAnnotation()
+      fromAnnotation.title = connection.from.station.name.toStopName
+      fromAnnotation.coordinate =
+        CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
+                               longitude: connection.from.station.coordinate.y)
+      mapView.addAnnotation(fromAnnotation)
+      
+      let toAnnotation = MGLPointAnnotation()
+      toAnnotation.title = connection.to.station.name.toStopName
+      toAnnotation.coordinate =
+        CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
+                               longitude: connection.to.station.coordinate.y)
+      mapView.addAnnotation(toAnnotation)
+      
+      let geodesic = MGLPolyline(coordinates: &allPoints, count: UInt(allPoints.count))
+      geodesic.title = "Walk"
       mapView.add(geodesic)
     }
-
-    let regionRadius: CLLocationDistance = 2000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(allPoints[0],
-                                                              regionRadius,
-                                                              regionRadius)
-    mapView.setRegion(coordinateRegion, animated: true)
+    
+    mapView.setCenter(allPoints[0], zoomLevel: 14, animated: false)
   }
 
   deinit {
@@ -61,17 +82,24 @@ class RouteMapViewController: UIViewController {
   }
 }
 
-extension RouteMapViewController: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView,
-               rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    guard let polyline = overlay as? MKPolyline else {
-      return MKOverlayRenderer()
+extension RouteMapViewController: MGLMapViewDelegate {
+  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    if let annotation = annotation as? MGLPolyline {
+      if (annotation.title ?? "") == "Walk" {
+        return App.darkMode ? .white : .black
+      } else {
+        return App.color(for: (annotation.title ?? ""))
+      }
+    } else {
+      return App.darkMode ? .white : .black
     }
-
-    let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-    polylineRenderer.strokeColor =
-      LineColorManager.color(for: (overlay.title ?? "") ?? "")
-    polylineRenderer.lineWidth = 5
-    return polylineRenderer
+  }
+  
+  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    if annotation is MGLPolyline {
+      return false
+    } else {
+      return true
+    }
   }
 }

@@ -2,8 +2,8 @@
 //  DisruptionTableViewCell.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 18/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 18/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,8 @@ class DisruptionTableViewCell: UITableViewCell {
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var linesCollectionView: UICollectionView!
+  @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
 
   var color: UIColor = .white
   var loading = true
@@ -22,6 +24,7 @@ class DisruptionTableViewCell: UITableViewCell {
     didSet {
       guard let disruption = disruption else {
         self.backgroundColor = App.cellBackgroundColor
+        self.linesCollectionView.backgroundColor = App.cellBackgroundColor
         titleLabel.backgroundColor = .gray
         descriptionLabel.backgroundColor = .gray
         titleLabel.text = "   "
@@ -38,14 +41,15 @@ class DisruptionTableViewCell: UITableViewCell {
         return
       }
       self.color = LineColorManager.color(for: disruption.line)
+      self.linesCollectionView.backgroundColor = App.cellBackgroundColor
 
       titleLabel.alpha = 1
       descriptionLabel.alpha = 1
 
       titleLabel.backgroundColor = App.cellBackgroundColor
       descriptionLabel.backgroundColor = App.cellBackgroundColor
-      titleLabel.textColor = color
-      descriptionLabel.textColor = color
+      titleLabel.textColor = App.textColor
+      descriptionLabel.textColor = App.textColor
 
       titleLabel.cornerRadius = 0
       descriptionLabel.cornerRadius = 0
@@ -71,6 +75,8 @@ class DisruptionTableViewCell: UITableViewCell {
     super.awakeFromNib()
 
     self.backgroundColor = App.cellBackgroundColor
+    self.linesCollectionView.backgroundColor = App.cellBackgroundColor
+    lines = []
     titleLabel.backgroundColor = .gray
     descriptionLabel.backgroundColor = .gray
     titleLabel.text = "   "
@@ -84,8 +90,20 @@ class DisruptionTableViewCell: UITableViewCell {
                                  selector: #selector(self.changeOpacity),
                                  userInfo: nil,
                                  repeats: true)
+    linesCollectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.old, context: nil)
+    self.linesCollectionView.reloadData()
   }
 
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    if let observedObject = object as? UICollectionView, observedObject == linesCollectionView {
+      self.collectionViewHeight.constant = self.linesCollectionView.contentSize.height
+    }
+  }
+  
+  deinit {
+    linesCollectionView.removeObserver(self, forKeyPath: "contentSize")
+  }
+  
   @objc func changeOpacity() {
     if loading == false {
       timer?.invalidate()
@@ -104,4 +122,32 @@ class DisruptionTableViewCell: UITableViewCell {
       descriptionLabel.alpha = opacity
     }
   }
+  
+  var lines: [String] = [] {
+    didSet {
+      self.linesCollectionView.reloadData()
+    }
+  }
+}
+
+extension DisruptionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return lines.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = linesCollectionView.dequeueReusableCell(withReuseIdentifier: "disruptionLineCollectionViewCell", for: indexPath) as? DisruptionLineCollectionViewCell
+      else { return UICollectionViewCell() }
+    cell.label.text = lines[indexPath.row]
+    let color = lines[indexPath.row] == "tpg" ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : App.color(for: lines[indexPath.row])
+    cell.backgroundColor = App.darkMode ? UIColor.black.lighten(by: 0.1) : color
+    cell.label.textColor = App.darkMode ? color : color.contrast
+    cell.clipsToBounds = true
+    cell.cornerRadius = cell.bounds.height / 2
+    return cell
+  }
+}
+
+class DisruptionLineCollectionViewCell: UICollectionViewCell {
+  @IBOutlet weak var label: UILabel!
 }

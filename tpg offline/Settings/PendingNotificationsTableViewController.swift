@@ -2,8 +2,8 @@
 //  PendingNotificationsTableViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 16/01/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 16/01/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -36,7 +36,7 @@ class PendingNotificationsTableViewController: UITableViewController {
     title = Text.notifications
 
     App.log("Show pending notifications")
-    Answers.logCustomEvent(withName: "Show pending notifications")
+    App.logEvent("Show pending notifications")
 
     if App.darkMode {
       self.tableView.backgroundColor = .black
@@ -68,6 +68,11 @@ class PendingNotificationsTableViewController: UITableViewController {
               "\(dateFormatter.string(from: date)) - \(request.content.title)",
               request.content.body,
               request.identifier])
+          } else if (request.trigger
+            as? UNLocationNotificationTrigger) != nil {
+            self.pendingNotifications.append([Text.goMode,
+                                              request.content.body,
+                                              request.identifier])
           }
         }
       }
@@ -81,7 +86,7 @@ class PendingNotificationsTableViewController: UITableViewController {
     }
 
     self.requestStatus = .loading
-    Alamofire.request(URL.smartRemindersStatus)
+    Alamofire.request(URL.smartReminders)
       .responseData { (response) in
         if let data = response.result.value {
           let jsonDecoder = JSONDecoder()
@@ -198,12 +203,11 @@ class PendingNotificationsTableViewController: UITableViewController {
     if editingStyle == .delete {
       if indexPath.section == 1, smartNotifications.count != 0 {
         let parameters: Parameters = [
-          "device": App.apnsToken,
           "id": smartNotifications[indexPath.row].id
         ]
         Alamofire
-          .request(URL.removeSmartReminder,
-                   method: .post,
+          .request(URL.smartReminders,
+                   method: .delete,
                    parameters: parameters)
           .responseString(completionHandler: { (response) in
           if let string = response.result.value, string == "1" {

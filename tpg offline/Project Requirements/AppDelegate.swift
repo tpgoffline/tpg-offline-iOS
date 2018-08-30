@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 09/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 09/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -43,9 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     //swiftlint:disable:previous line_length
     #if DEBUG
-    print("WARNING: Debug mode, Crashlytics deactivated, Dotzu activated")
+    print("WARNING: Debug mode, Crashlytics deactivated")
     #else
-    Fabric.with([Crashlytics.self])
+    if App.fabric {
+      Fabric.with([Crashlytics.self])
+    }
     #endif
 
     App.darkMode = UserDefaults.standard.bool(forKey: "darkMode")
@@ -121,11 +123,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                    to: App.stops.filter({ $0.code == "CVIN"})[0],
                                    via: [],
                                    date: Date(), arrivalTime: false)]
+      App.automaticDarkMode = false
       return true
     }
 
     UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
     App.loadLines()
+    UIApplication.shared.registerForRemoteNotifications()
     return App.loadStops()
   }
 
@@ -135,6 +139,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
     print(token)
     App.apnsToken = token
+  }
+  
+  func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    print(error)
   }
 
   func application(_ application: UIApplication,
@@ -196,6 +204,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                               willPresent notification: UNNotification,
                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     //swiftlint:disable:previous line_length
-    completionHandler(UNNotificationPresentationOptions.alert)
+    completionHandler([.alert, .badge, .sound])
   }
 }

@@ -2,8 +2,8 @@
 //  StopsTableViewController.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 09/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 09/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -43,15 +43,23 @@ class StopsTableViewController: UIViewController {
     didSet {
       self.searchRequest?.cancel()
       self.searchRequest = DispatchWorkItem(flags: .inheritQoS) {
+        var stops = App.stops.filter({
+          $0.name.escaped.contains(self.searchText.escaped)
+        })
         if let stopCode = App.stops.filter({
           $0.code.escaped == self.searchText.escaped
         })[safe: 0] {
-          self.stopsSearched = [stopCode]
-        } else {
-          self.stopsSearched =  App.stops.filter({
-            $0.name.escaped.contains(self.searchText.escaped)
-          })
+          //stops.removeAll(where: { $0.code == stopCode.code })
+          var a: [Stop] = []
+          for stop in stops {
+            if stop.code != stopCode.code {
+              a.append(stop)
+            }
+          }
+          stops = a
+          stops.insert(stopCode, at: 0)
         }
+        self.stopsSearched = stops
       }
       DispatchQueue.main.async(execute: self.searchRequest!)
     }
@@ -107,6 +115,8 @@ class StopsTableViewController: UIViewController {
     }
 
     DispatchQueue.main.async {
+      URLCache.shared.removeAllCachedResponses()
+      
       Alamofire.request(URL.stopsMD5).responseString { (response) in
         if let updatedMD5 = response.result.value,
           updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
@@ -175,7 +185,8 @@ class StopsTableViewController: UIViewController {
     self.tableView.sectionIndexBackgroundColor = .white
 
     if #available(iOS 11.0, *) {
-      navigationController?.navigationBar.prefersLargeTitles = true
+//      navigationController?.navigationBar.prefersLargeTitles = true
+//      navigationItem.largeTitleDisplayMode = .never
       navigationController?.navigationBar.largeTitleTextAttributes =
         [NSAttributedStringKey.foregroundColor: App.textColor]
     }
@@ -218,6 +229,11 @@ class StopsTableViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     searchForNearestStops()
+    if #available(iOS 11.0, *) {
+      navigationController?.navigationBar.prefersLargeTitles = true
+      navigationController?.navigationBar.largeTitleTextAttributes =
+        [NSAttributedStringKey.foregroundColor: App.textColor]
+    }
   }
 
   override func viewDidDisappear(_ animated: Bool) {
@@ -580,11 +596,6 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
       indexPath.row == 0 {
       return
     }
-    guard let stop =
-      (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
-      return
-    }
-    self.delegate?.stopSelected(stop)
 
     let backItem = UIBarButtonItem()
     backItem.title = ""
@@ -596,6 +607,12 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
                                                     sender: nil)
       detailNavigationController.popToRootViewController(animated: false)
     }
+    
+    guard let stop =
+      (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
+        return
+    }
+    self.delegate?.stopSelected(stop)
   }
 
   func tableView(_ tableView: UITableView,

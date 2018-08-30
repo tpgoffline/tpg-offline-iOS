@@ -2,8 +2,8 @@
 //  ThermometerTableViewCell.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 11/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 11/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import UIKit
 class BusRouteTableViewCell: UITableViewCell {
 
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var busTrackView: UIView!
+  @IBOutlet weak var busTrackView: UIImageView!
   @IBOutlet weak var remainingTimeLabel: UILabel!
   @IBOutlet weak var busImageView: UIImageView!
 
@@ -46,7 +46,7 @@ class BusRouteTableViewCell: UITableViewCell {
       busImageView.isHidden = true
     }
 
-    var rectanglePath: UIBezierPath
+    /*var rectanglePath: UIBezierPath
 
     if busRoute.first {
       rectanglePath = UIBezierPath(rect: CGRect(x: self.bounds.height / 2 - 4.5,
@@ -92,8 +92,15 @@ class BusRouteTableViewCell: UITableViewCell {
     shapeLayer.backgroundColor = App.cellBackgroundColor.cgColor
     shapeLayer.lineWidth = 3
 
-    self.busTrackView.layer.addSublayer(shapeLayer)
-    self.busTrackView.backgroundColor = self.backgroundColor
+    self.busTrackView.layer.addSublayer(shapeLayer)*/
+    
+    if busRoute.first {
+      self.busTrackView.image = #imageLiteral(resourceName: "firstStep").maskWith(color: color)
+    } else if busRoute.last {
+      self.busTrackView.image = #imageLiteral(resourceName: "endStep").maskWith(color: color)
+    } else {
+      self.busTrackView.image = #imageLiteral(resourceName: "middleStep").maskWith(color: color)
+    }
 
     self.selectedBackgroundView = UIView()
     self.selectedBackgroundView?.backgroundColor = color.withAlphaComponent(0.1)
@@ -122,9 +129,16 @@ class BusRouteTableViewCell: UITableViewCell {
 
     remainingTimeLabel.text = ""
 
-    var rectanglePath: UIBezierPath
+    //var rectanglePath: UIBezierPath
 
     if first {
+      self.busTrackView.image = #imageLiteral(resourceName: "firstStep").maskWith(color: color)
+    } else if last {
+      self.busTrackView.image = #imageLiteral(resourceName: "endStep").maskWith(color: color)
+    } else {
+      self.busTrackView.image = #imageLiteral(resourceName: "middleStep").maskWith(color: color)
+    }
+    /*if first {
       rectanglePath = UIBezierPath(rect: CGRect(x: self.bounds.height / 2 - 4.5,
                                                 y: self.bounds.height / 2,
                                                 width: 9,
@@ -169,7 +183,7 @@ class BusRouteTableViewCell: UITableViewCell {
     shapeLayer.lineWidth = 3
 
     self.busTrackView.layer.addSublayer(shapeLayer)
-    self.busTrackView.backgroundColor = self.backgroundColor
+    self.busTrackView.backgroundColor = self.backgroundColor*/
 
     self.selectedBackgroundView = UIView()
     self.selectedBackgroundView?.backgroundColor = color.withAlphaComponent(0.1)

@@ -2,8 +2,8 @@
 //  CreditsTableViewController.swift
 //  tpg offline
 //
-//  Created by Remy on 21/10/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 21/10/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -24,7 +24,7 @@ class CreditsTableViewController: UITableViewController {
     super.viewDidLoad()
 
     App.log("Show credits")
-    Answers.logCustomEvent(withName: "Show credits")
+    App.logEvent("Show credits")
 
     credits.append([
       Credit(title: Text.remy, subTitle: Text.designAndDevelopement) { (_) in

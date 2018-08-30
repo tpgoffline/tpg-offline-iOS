@@ -2,8 +2,8 @@
 //  DayPicketViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 17/12/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 17/12/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -45,7 +45,6 @@ class DayPickerViewController: UIViewController {
     }
     AddMonitoring.days = selectedRows.joined(separator: ":")
     var parameters: Parameters = [
-      "device": App.apnsToken,
       "lines": AddMonitoring.lines.joined(separator: ":"),
       "language": Locale.current.languageCode ?? "en",
       "fromHour": AddMonitoring.fromHour,
@@ -57,7 +56,7 @@ class DayPickerViewController: UIViewController {
     parameters["sandbox"] = true
     #endif
     Alamofire
-      .request(URL.addSmartReminder, method: .post, parameters: parameters)
+      .request(URL.monitoring, method: .post, parameters: parameters)
       .responseString { (response) in
       if let string = response.result.value, string == "1" {
         guard let vController =
@@ -112,9 +111,9 @@ extension DayPickerViewController: UITableViewDelegate, UITableViewDataSource {
         if ["0", "1", "2", "3", "4"].compactMap({
           self.selectedRows.contains($0)
         }).contains(false) {
-          cell.accessoryType = .checkmark
-        } else {
           cell.accessoryType = .none
+        } else {
+          cell.accessoryType = .checkmark
         }
       case 1:
         cell.textLabel?.text = Text.weekend

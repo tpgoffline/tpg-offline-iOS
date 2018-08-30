@@ -2,8 +2,8 @@
 //  SmartRemindersSettingsTableViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 05/04/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 05/04/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -14,6 +14,13 @@ class SmartRemindersSettingsTableViewController: UITableViewController {
     super.viewDidLoad()
 
     title = Text.smartReminders
+    if App.darkMode {
+      self.tableView.backgroundColor = .black
+      self.navigationController?.navigationBar.barStyle = .black
+      self.tableView.separatorColor = App.separatorColor
+    }
+    
+    ColorModeManager.shared.addColorModeDelegate(self)
   }
 
   // MARK: - Table view data source
@@ -43,6 +50,18 @@ class SmartRemindersSettingsTableViewController: UITableViewController {
       cell.textLabel?.numberOfLines = 0
       cell.textLabel?.text = Text.smartRemindersDescription
     }
+    
+    cell.backgroundColor = App.cellBackgroundColor
+    cell.textLabel?.textColor = App.textColor
+    if App.darkMode {
+      let selectedView = UIView()
+      selectedView.backgroundColor = .black
+      cell.selectedBackgroundView = selectedView
+    } else {
+      let selectedView = UIView()
+      selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
+      cell.selectedBackgroundView = selectedView
+    }
 
     return cell
   }
@@ -66,5 +85,9 @@ class SmartRemindersSettingsTableViewController: UITableViewController {
                                     handler: nil))
       self.present(alert, animated: true, completion: nil)
     }
+  }
+  
+  deinit {
+    ColorModeManager.shared.removeColorModeDelegate(self)
   }
 }

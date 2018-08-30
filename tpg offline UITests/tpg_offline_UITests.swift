@@ -2,8 +2,8 @@
 //  tpg_offline_UITests.swift
 //  tpg offline UITests
 //
-//  Created by Rémy DA COSTA FARO on 04/11/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 04/11/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import XCTest
@@ -62,11 +62,13 @@ class tpg_offline_UITests: XCTestCase {
         sleep(5)
         snapshot("departures")
         app.tabBars.buttons.element(boundBy: 4).tap()
-        app.tables.staticTexts["Dark Mode".localized].tap()
+        app.tables.staticTexts["Mode sombre".localized].tap()
+        app.tables.staticTexts["Manuel".localized].tap()
         app.tabBars.buttons.element(boundBy: 0).tap()
         snapshot("departuresDarkMode")
         app.tabBars.buttons.element(boundBy: 4).tap()
-        app.tables.staticTexts["Dark Mode".localized].tap()
+       // app.tables.staticTexts["Dark mode".localized].tap()
+        app.tables.staticTexts["Manuel".localized].tap()
         app.tabBars.buttons.element(boundBy: 0).tap()
         app.tables.cells.element(boundBy: 0).tap()
         sleep(10)
@@ -78,8 +80,9 @@ class tpg_offline_UITests: XCTestCase {
         snapshot("routes")
         app.tabBars.buttons.element(boundBy: 3).tap()
         snapshot("maps")
-        app.tables.staticTexts[String(format: "Line %@".localized, "14")].tap()
+        app.tables.staticTexts[String(format: "Ligne %@".localized, "14")].tap()
         snapshot("line")
+        app.tabBars.buttons.element(boundBy: 4).tap()
         app.tabBars.buttons.element(boundBy: 4).tap()
         snapshot("settings")
     }

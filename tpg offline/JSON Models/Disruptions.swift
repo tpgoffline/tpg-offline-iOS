@@ -2,8 +2,8 @@
 //  Disruptions.swift
 //  tpgoffline
 //
-//  Created by Remy DA COSTA FARO on 18/06/2017.
-//  Copyright © 2017 Remy DA COSTA FARO. All rights reserved.
+//  Created by Rémy Da Costa Faro on 18/06/2017.
+//  Copyright © 2018 Rémy Da Costa Faro DA COSTA FARO. All rights reserved.
 //
 
 import Foundation

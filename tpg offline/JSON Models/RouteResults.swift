@@ -2,8 +2,8 @@
 //  RouteResults.swift
 //  tpg offline
 //
-//  Created by Remy on 10/09/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 10/09/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import Foundation
@@ -74,8 +74,30 @@ struct RouteConnection: Decodable {
         let compagny = try container.decode(String.self, forKey: .compagny)
         let category = try container.decode(String.self, forKey: .category)
         let to = try container.decode(String.self, forKey: .to)
-        let passList =
+        var passList =
           try container.decode([RouteResultsStops].self, forKey: .passList)
+
+        for (index, result) in passList.enumerated() {
+          guard let stop = App.stops
+            .filter({ $0.sbbId == result.station.id })[safe: 0] else {
+              continue
+          }
+          var localisations = stop.localisations
+          for (index, localisation) in localisations.enumerated() {
+            localisations[index].destinations = localisation.destinations.filter({
+              $0.line == lineCode &&
+              $0.destinationTransportAPI == to
+            })
+          }
+          localisations = localisations.filter({ !$0.destinations.isEmpty })
+          guard let localisation = localisations[safe: 0] else {
+            continue
+          }
+          passList[index].station.coordinate.x =
+            localisation.location.coordinate.latitude
+          passList[index].station.coordinate.y =
+            localisation.location.coordinate.longitude
+        }
 
         self.init(lineCode: lineCode,
                   compagny: compagny,

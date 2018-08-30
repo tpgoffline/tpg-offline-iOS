@@ -2,8 +2,8 @@
 //  HourPickerViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 17/12/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 17/12/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -46,7 +46,8 @@ class HourPickerViewController: UIViewController {
     self.beginImageView.image = #imageLiteral(resourceName: "clock").maskWith(color: App.textColor)
     self.endImageView.image = #imageLiteral(resourceName: "clock-reversed").maskWith(color: App.textColor)
 
-    self.endTimePicker.minimumDate = beginTimePicker.date.addingTimeInterval(60)
+    beginTimePickerChanged()
+    endTimePickerChanger()
 
     if UIDevice.current.orientation.isLandscape,
       UIDevice.current.userInterfaceIdiom == .phone {

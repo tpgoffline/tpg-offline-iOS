@@ -2,8 +2,8 @@
 //  RouteResultsTableViewController.swift
 //  tpg offline
 //
-//  Created by Remy on 10/09/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 10/09/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -18,8 +18,8 @@ class RouteResultsTableViewController: UITableViewController {
       dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
       App.log("Routes: Search with D: \(route.from?.appId ?? 0)/\(route.from?.code ?? "") - A: \(route.to?.appId ?? 0)/\(route.to?.code ?? "") - H: \(dateFormatter.string(from: route.date)) - IAT: \(route.arrivalTime.description)") // swiftlint:disable:this line_length
 
-      Answers.logCustomEvent(withName: "Search route",
-                             customAttributes:
+      App.logEvent("Search route",
+                   attributes:
         ["departure": route.from?.code ?? "XXXX",
          "arrival": route.to?.code ?? "XXXX",
          "route": "\(route.from?.code ?? "XXXX")-\(route.to?.code ?? "XXXX")"])
@@ -137,6 +137,7 @@ class RouteResultsTableViewController: UITableViewController {
     parameters["to"] = route.to?.sbbId
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.timeZone = TimeZone(identifier: "Europe/Paris")
     parameters["date"] = dateFormatter.string(from: route.date)
     dateFormatter.dateFormat = "HH:mm"
     parameters["time"] = dateFormatter.string(from: route.date)

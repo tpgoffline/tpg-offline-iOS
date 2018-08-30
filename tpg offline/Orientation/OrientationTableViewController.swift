@@ -2,13 +2,13 @@
 //  MapsTableViewController.swift
 //  tpg offline
 //
-//  Created by Remy on 18/10/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 18/10/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
 
-class OrientationTableViewController: UITableViewController {
+class OrientationTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   var maps: [String: UIImage] = [
     Text.urbanMap: #imageLiteral(resourceName: "urbainMap"),
@@ -23,6 +23,9 @@ class OrientationTableViewController: UITableViewController {
     Text.noctambusUrbanMap,
     Text.noctambusRegionalMap
   ]
+  
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var segmentedControl: UISegmentedControl!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,23 +42,40 @@ class OrientationTableViewController: UITableViewController {
       registerForPreviewing(with: self, sourceView: tableView)
     }
 
+    segmentedControl.setTitle(Text.lines, forSegmentAt: 0)
+    segmentedControl.setTitle(Text.map, forSegmentAt: 1)
+    segmentedControl.selectedSegmentIndex = 0
     ColorModeManager.shared.addColorModeDelegate(self)
+    
+    self.tableView.backgroundColor = App.darkMode ? .black :
+      .groupTableViewBackground
+    self.view.backgroundColor = App.darkMode ? .black :
+      .groupTableViewBackground
+    self.tableView.separatorColor = App.separatorColor
+    self.tableView.reloadData()
   }
 
+  override func colorModeDidUpdated() {
+    super.colorModeDidUpdated()
+    self.tableView.backgroundColor = App.darkMode ? .black :
+      .groupTableViewBackground
+    self.tableView.separatorColor = App.separatorColor
+    self.tableView.reloadData()
+  }
   // MARK: - Table view data source
 
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
   }
 
-  override func tableView(_ tableView: UITableView,
+  func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
-    return section == 0 ? maps.count  : App.lines.count
+    return segmentedControl.selectedSegmentIndex == 1 ? maps.count : App.lines.count
   }
 
-  override func tableView(_ tableView: UITableView,
+  func tableView(_ tableView: UITableView,
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath.section == 0 {
+    if segmentedControl.selectedSegmentIndex == 1 {
       guard let cell =
         tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath)
           as? MapsTableViewControllerRow else {
@@ -78,41 +98,13 @@ class OrientationTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView,
+  func tableView(_ tableView: UITableView,
                           heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if indexPath.section == 0 {
+    if segmentedControl.selectedSegmentIndex == 1 {
       return 190
     } else {
       return UITableViewAutomaticDimension
     }
-  }
-
-  override func tableView(_ tableView: UITableView,
-                          heightForHeaderInSection section: Int) -> CGFloat {
-    return 40
-  }
-
-  override func tableView(_ tableView: UITableView,
-                          viewForHeaderInSection section: Int) -> UIView? {
-    let headerCell =
-      tableView.dequeueReusableCell(withIdentifier: "orientationHeader")
-
-    let font = UIFont.preferredFont(forTextStyle: .headline)
-    let titleAttributes = [NSAttributedStringKey.font: font,
-                           NSAttributedStringKey.foregroundColor: App.textColor]
-      as [NSAttributedStringKey: Any]
-
-    if section == 0 {
-      headerCell?.textLabel?.attributedText =
-        NSAttributedString(string: "Maps".localized, attributes: titleAttributes)
-    } else {
-      headerCell?.textLabel?.attributedText =
-        NSAttributedString(string: "Lines".localized, attributes: titleAttributes)
-    }
-
-    headerCell?.backgroundColor = App.cellBackgroundColor
-
-    return headerCell
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -141,6 +133,11 @@ class OrientationTableViewController: UITableViewController {
   deinit {
     ColorModeManager.shared.removeColorModeDelegate(self)
   }
+  
+  @IBAction func setTableViewContent() {
+    self.tableView.reloadData()
+    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+  }
 }
 
 extension OrientationTableViewController: UIViewControllerPreviewingDelegate {
@@ -150,7 +147,7 @@ extension OrientationTableViewController: UIViewControllerPreviewingDelegate {
 
     guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
 
-    if indexPath.section == 0 {
+    if segmentedControl.selectedSegmentIndex == 1 {
       guard let row = tableView.cellForRow(at: indexPath)
         as? MapsTableViewControllerRow else { return nil }
       guard let detailVC = storyboard?
@@ -206,13 +203,16 @@ class LineTableViewControllerRow: UITableViewCell {
   var line: Line? {
     didSet {
       guard let line = self.line else { return }
-      self.textLabel?.text = String(format: "Line %@".localized, line.line)
+      self.textLabel?.text = Text.line(line.line)
+      self.detailTextLabel?.text = String(format: "%@ ↔︎ %@", line.departureName, line.arrivalName)
       if App.darkMode {
         self.backgroundColor = App.cellBackgroundColor
-        self.textLabel?.textColor = LineColorManager.color(for: line.line)
+        self.textLabel?.textColor = App.color(for: line.line)
+        self.detailTextLabel?.textColor = App.color(for: line.line)
       } else {
-        self.backgroundColor = LineColorManager.color(for: line.line)
-        self.textLabel?.textColor = LineColorManager.color(for: line.line).contrast
+        self.backgroundColor = App.color(for: line.line)
+        self.textLabel?.textColor = App.color(for: line.line).contrast
+        self.detailTextLabel?.textColor = App.color(for: line.line).contrast
       }
       self.tintColor = self.textLabel?.textColor
     }

@@ -2,8 +2,8 @@
 //  ReorderStopsTableViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 23/01/2018.
-//  Copyright © 2018 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 23/01/2018.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +15,7 @@ class ReorderStopsTableViewController: UITableViewController {
     super.viewDidLoad()
 
     App.log("Show reorder stops view")
-    Answers.logCustomEvent(withName: "Show reorder stops view")
+    App.logEvent("Show reorder stops view")
 
     self.tableView.allowsSelection = false
     self.tableView.setEditing(true, animated: false)

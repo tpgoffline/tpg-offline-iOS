@@ -68,7 +68,7 @@
         ],
         "line": "8",
         "departureName": "OMS",
-        "arrivalName": "Veyrier-Douane\rVeyrier-Tournettes",
+        "arrivalName": "Veyrier-Douane / Veyrier-Tournettes",
         "snotpgURL": "https://www.snotpg.ch/site/la-ligne-8-et-88/"
     },
     {
@@ -107,7 +107,7 @@
             [898230, 967926, 143838, 181745, 319253, 876629, 948660, 116341, 729954, 599635, 529657, 488524, 325951, 629840, 571447, 966783, 444838, 477972, 527887, 672865, 532232, 455900, 964398, 220204, 960598, 980056, 859714]
         ],
         "line": "12",
-        "departureName": "Palettes\rBachet de Pesay",
+        "departureName": "Palettes / Bachet de Pesay",
         "arrivalName": "Moillesulaz",
         "snotpgURL": "https://www.snotpg.ch/site/la-ligne-12/"
     },
@@ -421,7 +421,7 @@
         ],
         "line": "F",
         "departureName": "Gare Cornavin",
-        "arrivalName": "Ferney-Voltaire-Mairie\rGex-Aiglette",
+        "arrivalName": "Ferney-Voltaire-Mairie / Gex-Aiglette",
         "snotpgURL": ""
     },
     {
@@ -433,7 +433,7 @@
         ],
         "line": "G",
         "departureName": "Rive",
-        "arrivalName": "Veigy-Douane\rVeigy-Village",
+        "arrivalName": "Veigy-Douane / Veigy-Village",
         "snotpgURL": ""
     },
     {
@@ -453,7 +453,7 @@
         ],
         "line": "K",
         "departureName": "Lancy-Hubert",
-        "arrivalName": "Chancy-Douane\rPougny-Gare",
+        "arrivalName": "Chancy-Douane / Pougny-Gare",
         "snotpgURL": ""
     },
     {
@@ -550,7 +550,7 @@
     },
     {
         "courses": [
-        	[660324, 974606, 454138, 679001, 946433, 122766, 633833, 906066, 646116, 136987, 934076, 441791, 674831, 233346, 384353, 454938, 532821, 439272, 539139, 205085, 906066, 633833, 122766, 946433, 679001, 234043, 974606, 660324]
+        	[660324, 974606, 454138, 679001, 946433, 122766, 633833, 906066, 646116, 136987, 934076, 441791, 674831, 233346, 384353, 454938, 532821, 439272, 539139, 205085, 906066, 633833, 122766, 946433, 679001, 454138, 974606, 660324]
         ],
         "line": "W",
         "departureName": "Hôpital de La Tour",
@@ -566,7 +566,7 @@
         ],
         "line": "X",
         "departureName": "Chancy-Douane",
-        "arrivalName": "La Plaine-Gare\rDardagny",
+        "arrivalName": "La Plaine-Gare / Dardagny",
         "snotpgURL": ""
     },
     {

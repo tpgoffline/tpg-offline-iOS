@@ -2,8 +2,8 @@
 //  DisruptionsMonitoringTableViewController.swift
 //  tpg offline
 //
-//  Created by Rémy DA COSTA FARO on 17/12/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 17/12/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import UIKit
@@ -41,7 +41,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
     super.viewDidLoad()
 
     App.log("Show disruptions monitoring")
-    Answers.logCustomEvent(withName: "Show disruptions monitoring")
+    App.logEvent("Show disruptions monitoring")
 
     self.navigationItem.rightBarButtonItems = [
       self.editButtonItem,
@@ -105,7 +105,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
   }
 
   @objc func reload() {
-    Alamofire.request(URL.smartRemindersStatus).responseData { (response) in
+    Alamofire.request(URL.monitoring).responseData { (response) in
       if let data = response.data {
         let jsonDecoder = JSONDecoder()
 
@@ -240,11 +240,16 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
       guard let disruptionMonitoring = row.disruptionMonitoring else { return }
       if let position =
         self.disruptionMonitoringList.index(of: disruptionMonitoring) {
+        let parameters: Parameters = [
+          "line": disruptionMonitoring.line,
+          "fromHour": disruptionMonitoring.fromHour,
+          "toHour": disruptionMonitoring.toHour,
+          "days": disruptionMonitoring.days
+        ]
         Alamofire
-          .request(URL.removeMonitoring(line: disruptionMonitoring.line,
-                                        fromHour: disruptionMonitoring.fromHour,
-                                        toHour: disruptionMonitoring.toHour,
-                                        days: disruptionMonitoring.days))
+          .request(URL.monitoring,
+                   method: .delete,
+                   parameters: parameters)
           .responseString(completionHandler: { (response) in
           if let string = response.result.value, string == "1" {
             self.disruptionMonitoringList.remove(at: position)

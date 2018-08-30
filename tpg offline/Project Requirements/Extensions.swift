@@ -2,8 +2,8 @@
 //  Extensions.swift
 //  tpg offline
 //
-//  Created by Remy on 24/09/2017.
-//  Copyright © 2017 Remy. All rights reserved.
+//  Created by Rémy Da Costa Faro on 24/09/2017.
+//  Copyright © 2018 Rémy Da Costa Faro. All rights reserved.
 //
 
 import MapKit
@@ -22,6 +22,11 @@ enum RequestStatus {
 }
 
 extension String {
+  var toStopName: String {
+    return App.stops.filter({$0.nameTransportAPI == self})[safe: 0]?.name
+      ?? self
+  }
+  
   var time: String {
     if Int(self) ?? 0 > 60 {
       let hour = (Int(self) ?? 0) / 60
@@ -294,9 +299,9 @@ extension UIColor {
   func adjust(by percentage: CGFloat=0.3) -> UIColor {
     var r: CGFloat=0, g: CGFloat=0, b: CGFloat=0, a: CGFloat=0
     if (self.getRed(&r, green: &g, blue: &b, alpha: &a)) {
-      return UIColor(red: min(r + percentage, 1.0),
-                     green: min(g + percentage, 1.0),
-                     blue: min(b + percentage, 1.0),
+      return UIColor(red: max(min(r + percentage, 1.0), 0),
+                     green: max(min(g + percentage, 1.0), 0),
+                     blue: max(min(b + percentage, 1.0), 0),
                      alpha: a)
     } else {
       print("Color adjustement failed")
