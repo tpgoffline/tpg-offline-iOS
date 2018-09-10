@@ -42,13 +42,14 @@ class RouteMapViewController: UIViewController {
         mapView.addAnnotation(annotation)
       }
 
-      if coordinates.count > 0 {
-        let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+      if !coordinates.isEmpty {
+        let geodesic = MGLPolyline(coordinates: &coordinates,
+                                   count: UInt(coordinates.count))
         geodesic.title = section.journey?.lineCode ?? ""
         mapView.add(geodesic)
       }
     }
-    
+
     if allPoints.isEmpty {
       allPoints = [
         CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
@@ -61,19 +62,20 @@ class RouteMapViewController: UIViewController {
         CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
                                longitude: connection.from.station.coordinate.y)
       mapView.addAnnotation(fromAnnotation)
-      
+
       let toAnnotation = MGLPointAnnotation()
       toAnnotation.title = connection.to.station.name.toStopName
       toAnnotation.coordinate =
         CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                longitude: connection.to.station.coordinate.y)
       mapView.addAnnotation(toAnnotation)
-      
-      let geodesic = MGLPolyline(coordinates: &allPoints, count: UInt(allPoints.count))
+
+      let geodesic = MGLPolyline(coordinates: &allPoints,
+                                 count: UInt(allPoints.count))
       geodesic.title = "Walk"
       mapView.add(geodesic)
     }
-    
+
     mapView.setCenter(allPoints[0], zoomLevel: 14, animated: false)
   }
 
@@ -83,7 +85,8 @@ class RouteMapViewController: UIViewController {
 }
 
 extension RouteMapViewController: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     if let annotation = annotation as? MGLPolyline {
       if (annotation.title ?? "") == "Walk" {
         return App.darkMode ? .white : .black
@@ -94,8 +97,9 @@ extension RouteMapViewController: MGLMapViewDelegate {
       return App.darkMode ? .white : .black
     }
   }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     if annotation is MGLPolyline {
       return false
     } else {

@@ -60,12 +60,13 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
     guard let stop = self.stop,
       let departure = self.departure else { return }
     loading = true
+    let destinationCode = departure.line.destinationCode
     Alamofire.request(URL.allNextDepartures,
                       method: .get,
                       parameters: ["key": API.tpg,
                                    "stopCode": stop.code,
                                    "lineCode": departure.line.code,
-                                   "destinationCode": departure.line.destinationCode])
+                                   "destinationCode": destinationCode])
       .responseData { (response) in
         if let data = response.result.value {
           var options = DeparturesOptions()

@@ -74,14 +74,14 @@ class DeparturesManager: NSObject {
             let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
             self.departures = json
             self.status = .ok
+
+            if json.lines.isEmpty {
+              self.departures = nil
+              self.status = .noResults
+            }
           } catch {
             print("No Internet")
             return
-          }
-
-          if self.departures?.lines.count == 0 {
-            self.departures = nil
-            self.status = .noResults
           }
         } else {
           self.departures = nil

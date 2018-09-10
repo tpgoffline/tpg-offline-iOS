@@ -112,7 +112,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
         do {
           let json = try jsonDecoder.decode([DisruptionMonitoring].self, from: data)
           self.disruptionMonitoringList = json
-          self.requestStatus = json.count == 0 ? .noResults : .ok
+          self.requestStatus = json.isEmpty ? .noResults : .ok
         } catch {
           self.requestStatus = .error
           return

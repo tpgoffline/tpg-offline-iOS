@@ -62,6 +62,9 @@ struct App {
       #endif
     }
   }
+
+  static var intentsVersionNumber: NSNumber = 1.0
+
   static var replacementsNames: [String: String] {
     get {
       return (UserDefaults.standard.dictionary(forKey: #function)
@@ -123,7 +126,7 @@ struct App {
       #endif
     }
   }
-  
+
   static var fabric: Bool {
     // Here, get and set are inverted to set this value to true by default
     get {
@@ -189,7 +192,7 @@ struct App {
       UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
-  
+
   #if os(iOS)
   static var downloadMaps: Bool {
     // Here, get and set are inverted to set this value to true by default
@@ -205,7 +208,7 @@ struct App {
       }
     }
   }
-  
+
   static var allowDownloadWithMobileData: Bool {
     get {
       return UserDefaults.standard.bool(forKey: #function)
@@ -306,7 +309,7 @@ struct App {
     }
     #endif
   }
-  
+
   static func logEvent(_ name: String) {
     #if DEBUG
     print("🔸 Event logged: \(name)")

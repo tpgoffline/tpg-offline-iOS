@@ -48,6 +48,7 @@ struct DeparturesGroup: Decodable {
       return INObject(identifier: "\(lineCode),\(destination),\(leftTime)",
                       display: destination)
     })
+    response.versionNumber = App.intentsVersionNumber
     return response
   }
 }
@@ -147,7 +148,8 @@ struct Departure: Decodable {
         let vehiculeNo = (try? container.decode(Int.self, forKey: .vehiculeNo)) ?? -1
         let wifi = (try? container.decode(Bool.self, forKey: .wifi)) ?? false
         let reliability =
-          (try? container.decode(Reliability.self, forKey: .reliability)) ?? .reliable
+          (try? container.decode(Reliability.self, forKey: .reliability))
+            ?? .reliable
         let reducedMobilityAccessibility: ReducedMobilityAccessibility =
           ((try? container.decode(String.self, forKey: .characteristics)) ?? "PMR")
             == "PMR" ? .accessible : .inaccessible
@@ -168,11 +170,14 @@ struct Departure: Decodable {
         let destinationId =
           try container.decode(String.self, forKey: .directionOffline)
         let destination =
-          App.stops.filter({ $0.sbbId == destinationId }).first?.name ?? destinationId
+          App.stops.filter({
+            $0.sbbId == destinationId
+          }).first?.name ?? destinationId
         let line = Departure.Line(code: lineString,
                                   destination: destination,
                                   destinationCode: "")
-        let timestamp = (try container.decode(String.self, forKey: .timestamp)) + "+0200"
+        let timestamp = (try container.decode(String.self,
+                                              forKey: .timestamp)) + "+0200"
         self.init(line: line,
                   code: -1,
                   leftTime: "",

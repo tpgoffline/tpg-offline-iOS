@@ -70,7 +70,6 @@ class RouteResultsTableViewCell: UITableViewCell {
       let indexStartOfText = duration.index(duration.startIndex, offsetBy: 3)
       let indexEndOfText = duration.index(duration.endIndex, offsetBy: -3)
       durationLabel.text = String(duration[indexStartOfText..<indexEndOfText])
-      
 
       numberOfConnectionsImageView.isHidden = connection.sections?.count == 1
       numberOfConnectionsLabel.isHidden = connection.sections?.count == 1

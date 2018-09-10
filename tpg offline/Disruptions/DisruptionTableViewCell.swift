@@ -90,20 +90,17 @@ class DisruptionTableViewCell: UITableViewCell {
                                  selector: #selector(self.changeOpacity),
                                  userInfo: nil,
                                  repeats: true)
-    linesCollectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.old, context: nil)
+    _ = linesCollectionView.observe(\.contentSize) { (_, _) in
+      self.collectionViewHeight.constant =
+        self.linesCollectionView.contentSize.height
+    }
     self.linesCollectionView.reloadData()
   }
 
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    if let observedObject = object as? UICollectionView, observedObject == linesCollectionView {
-      self.collectionViewHeight.constant = self.linesCollectionView.contentSize.height
-    }
-  }
-  
   deinit {
     linesCollectionView.removeObserver(self, forKeyPath: "contentSize")
   }
-  
+
   @objc func changeOpacity() {
     if loading == false {
       timer?.invalidate()
@@ -122,7 +119,7 @@ class DisruptionTableViewCell: UITableViewCell {
       descriptionLabel.alpha = opacity
     }
   }
-  
+
   var lines: [String] = [] {
     didSet {
       self.linesCollectionView.reloadData()
@@ -130,16 +127,22 @@ class DisruptionTableViewCell: UITableViewCell {
   }
 }
 
-extension DisruptionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension DisruptionTableViewCell: UICollectionViewDelegate,
+                                   UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView,
+                      numberOfItemsInSection section: Int) -> Int {
     return lines.count
   }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = linesCollectionView.dequeueReusableCell(withReuseIdentifier: "disruptionLineCollectionViewCell", for: indexPath) as? DisruptionLineCollectionViewCell
+
+  func collectionView(_ collectionView: UICollectionView,
+                      cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = linesCollectionView
+      .dequeueReusableCell(withReuseIdentifier: "disruptionLineCollectionViewCell",
+                           for: indexPath) as? DisruptionLineCollectionViewCell
       else { return UICollectionViewCell() }
     cell.label.text = lines[indexPath.row]
-    let color = lines[indexPath.row] == "tpg" ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : LineColorManager.color(for: lines[indexPath.row])
+    let color = lines[indexPath.row] == "tpg" ?
+      #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : LineColorManager.color(for: lines[indexPath.row])
     cell.backgroundColor = App.darkMode ? UIColor.black.lighten(by: 0.1) : color
     cell.label.textColor = App.darkMode ? color : color.contrast
     cell.clipsToBounds = true

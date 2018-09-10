@@ -59,8 +59,9 @@ class PendingNotificationsTableViewController: UITableViewController {
     dateFormatter.timeStyle = .short
 
     if #available(iOS 10.0, *) {
-      UNUserNotificationCenter.current().getPendingNotificationRequests {
-        (requests) in
+      UNUserNotificationCenter
+        .current()
+        .getPendingNotificationRequests { (requests) in
         for request in requests {
           if let trigger = (request.trigger as? UNCalendarNotificationTrigger) {
             let date = Calendar.current.date(from: trigger.dateComponents) ?? Date()
@@ -190,10 +191,10 @@ class PendingNotificationsTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView,
                           canEditRowAt indexPath: IndexPath) -> Bool {
     if indexPath.section == 1 {
-      return (smartNotifications.count != 0 &&
+      return (!smartNotifications.isEmpty &&
         !(requestStatus == any(of: .error, .loading)))
     } else {
-      return pendingNotifications.count != 0
+      return !pendingNotifications.isEmpty
     }
   }
 
@@ -201,7 +202,7 @@ class PendingNotificationsTableViewController: UITableViewController {
                           commit editingStyle: UITableViewCell.EditingStyle,
                           forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      if indexPath.section == 1, smartNotifications.count != 0 {
+      if indexPath.section == 1, !smartNotifications.isEmpty {
         let parameters: Parameters = [
           "id": smartNotifications[indexPath.row].id
         ]
@@ -215,7 +216,7 @@ class PendingNotificationsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
           }
         })
-      } else if pendingNotifications.count != 0 {
+      } else if !pendingNotifications.isEmpty {
         if #available(iOS 10.0, *) {
           UNUserNotificationCenter
             .current()

@@ -27,6 +27,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
                      interactiveBehavior: INUIInteractiveBehavior,
                      context: INUIHostedViewContext,
                      completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
+    // swiftlint:disable:previous line_length
     guard let intent = interaction.intent as? DeparturesIntent,
       let intentResponse = interaction.intentResponse as? DeparturesIntentResponse
       else { return }
@@ -40,16 +41,19 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     }
     departures = departuresTemp
 
+    self.tableView.layoutIfNeeded()
     completion(true, parameters, self.desiredSize)
   }
 
   var desiredSize: CGSize {
-    return self.extensionContext!.hostedViewMaximumAllowedSize
+    return CGSize(width: self.extensionContext!.hostedViewMaximumAllowedSize.width,
+                  height: CGFloat(self.departures.count * 44) + 45)
   }
 }
 
 extension IntentViewController: UITableViewDelegate, UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
     return departures.count
   }
 
@@ -62,6 +66,11 @@ extension IntentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     cell.departureString = self.departures[indexPath.row]
     return cell
+  }
+
+  func tableView(_ tableView: UITableView,
+                 heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 44
   }
 }
 
@@ -76,12 +85,15 @@ class SiriDepartureCell: UITableViewCell {
       guard components.count == 3 else { return }
       let line = String(components[0])
       let destination = String(components[1])
-      let leftTime = String(components[2])
+      var leftTime = String(components[2])
+      if leftTime == "&gt;1h" {
+        leftTime = ">1h"
+      }
 
       lineLabel.text = line
       destinationLabel.text = destination
       leftTimeLabel.text = "\(leftTime)'"
-      
+
       lineLabel.textColor = LineColorManager.color(for: line).contrast
       lineLabel.backgroundColor = LineColorManager.color(for: line)
       lineLabel.layer.cornerRadius = lineLabel.bounds.height / 2

@@ -12,6 +12,8 @@ import Crashlytics
 
 class DisruptionsTableViewController: UITableViewController {
 
+  @IBOutlet weak var disruptionsCenteredView: DisruptionsCenteredView!
+
   var disruptions: DisruptionsGroup? {
     didSet {
       guard let disruptions = self.disruptions else { return }
@@ -25,12 +27,26 @@ class DisruptionsTableViewController: UITableViewController {
   var requestStatus: RequestStatus  = .loading {
     didSet {
       if requestStatus == .error {
-        let alertController = UIAlertController(title: Text.error,
-                                                message: Text.errorNoInternet,
-                                                preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK".localized, style: .default) { _ in }
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        self.disruptionsCenteredView.imageView.image = #imageLiteral(resourceName: "errorHighRes").maskWith(color:
+          App.textColor)
+        self.disruptionsCenteredView.titleLabel.textColor = App.textColor
+        self.disruptionsCenteredView.titleLabel.text = Text.error
+        self.disruptionsCenteredView.subtitleLabel.text = Text.errorNoInternet
+        self.disruptionsCenteredView.subtitleLabel.textColor = App.textColor
+        self.disruptionsCenteredView.isHidden = false
+        self.tableView.separatorStyle = .none
+      } else if requestStatus == .noResults {
+        self.disruptionsCenteredView.imageView.image = #imageLiteral(resourceName: "sunHighRes").maskWith(color:
+          App.textColor)
+        self.disruptionsCenteredView.titleLabel.text = Text.noDisruptions
+        self.disruptionsCenteredView.titleLabel.textColor = App.textColor
+        self.disruptionsCenteredView.subtitleLabel.text = Text.noDisruptionsSubtitle
+        self.disruptionsCenteredView.subtitleLabel.textColor = App.textColor
+        self.disruptionsCenteredView.isHidden = false
+        self.tableView.separatorStyle = .none
+      } else {
+        self.disruptionsCenteredView.isHidden = true
+        self.tableView.separatorStyle = .singleLine
       }
     }
   }
@@ -45,6 +61,21 @@ class DisruptionsTableViewController: UITableViewController {
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 140
     tableView.allowsSelection = false
+
+    //disruptionsCenteredView.center = tableView.center
+    disruptionsCenteredView.translatesAutoresizingMaskIntoConstraints = false
+    self.view.addSubview(disruptionsCenteredView)
+    NSLayoutConstraint.activate([
+      disruptionsCenteredView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                       constant: 16),
+      disruptionsCenteredView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                        constant: 16)
+      ])
+    disruptionsCenteredView.centerXAnchor
+      .constraint(equalTo: self.tableView.centerXAnchor).isActive = true
+    disruptionsCenteredView.centerYAnchor
+      .constraint(equalTo: self.tableView.centerYAnchor).isActive = true
+    disruptionsCenteredView.isHidden = true
 
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
@@ -94,6 +125,14 @@ class DisruptionsTableViewController: UITableViewController {
     ColorModeManager.shared.addColorModeDelegate(self)
   }
 
+  override func colorModeDidUpdated() {
+    super.colorModeDidUpdated()
+    self.disruptionsCenteredView.titleLabel.textColor = App.textColor
+    self.disruptionsCenteredView.subtitleLabel.textColor = App.textColor
+    self.disruptionsCenteredView.imageView.image =
+      self.disruptionsCenteredView.imageView.image?.maskWith(color: App.textColor)
+  }
+
   @objc func pushDisruptionsMonitoring() {
     performSegue(withIdentifier: "pushDisruptionsMonitoring", sender: self)
   }
@@ -118,7 +157,7 @@ class DisruptionsTableViewController: UITableViewController {
           self.tableView.reloadData()
         }
         self.refreshControl?.endRefreshing()
-        
+
         // Warning: Ugly code ahead
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05, execute: {
           self.tableView.reloadData()
@@ -137,7 +176,7 @@ class DisruptionsTableViewController: UITableViewController {
     if requestStatus == .loading {
       return 1
     } else if requestStatus == .noResults {
-      return 1
+      return 0
     } else {
       return (disruptions?.disruptions.count ?? 0)
     }
@@ -160,9 +199,7 @@ class DisruptionsTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
     if requestStatus == .loading {
-      return 4
-    } else if requestStatus == .noResults {
-      return 1
+      return 3
     } else {
       return disruptions?.disruptions[self.keys[section]]?.count ?? 0
     }
@@ -176,18 +213,7 @@ class DisruptionsTableViewController: UITableViewController {
         return UITableViewCell()
     }
 
-    if requestStatus == .noResults {
-      cell.titleLabel.text = Text.noDisruptions
-      cell.descriptionLabel?.text = Text.noDisruptionsSubtitle
-      cell.loading = false
-      cell.titleLabel.backgroundColor = App.cellBackgroundColor
-      cell.descriptionLabel.backgroundColor = App.cellBackgroundColor
-      cell.titleLabel.textColor = App.textColor
-      cell.descriptionLabel.textColor = App.textColor
-      cell.backgroundColor = App.cellBackgroundColor
-
-      return cell
-    } else if requestStatus == .ok {
+    if requestStatus == .ok {
       let key = self.keys[indexPath.section]
       cell.disruption = disruptions?.disruptions[key]?[indexPath.row]
       cell.lines = self.keys[indexPath.section] == Text.wholeTpgNetwork ?
@@ -198,12 +224,20 @@ class DisruptionsTableViewController: UITableViewController {
 
     return cell
   }
-  
-  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+
+  override func viewWillTransition(to size: CGSize,
+                                   with coordinator: UIViewControllerTransitionCoordinator) {
+    // swiftlint:disable:previous line_length
     // Warning: Ugly code ahead
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05, execute: {
       self.tableView.reloadData()
     })
     // End of warning
   }
+}
+
+class DisruptionsCenteredView: UIView {
+  @IBOutlet weak var imageView: UIImageView!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var subtitleLabel: UILabel!
 }

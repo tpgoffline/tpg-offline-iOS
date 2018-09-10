@@ -102,7 +102,7 @@ struct LineColorManager {
      LineColor(line: "94", color: UIColor(hexString: "000000")!),
      LineColor(line: "96", color: UIColor(hexString: "000000")!),
      LineColor(line: "97", color: UIColor(hexString: "000000")!)]
-  
+
   private static var tacLinesColor: [LineColor] =
     [LineColor(line: "R", color: UIColor(hexString: "d21513")!),
      LineColor(line: "T2", color: UIColor(hexString: "2083be")!),
@@ -112,7 +112,7 @@ struct LineColorManager {
      LineColor(line: "6", color: UIColor(hexString: "deda51")!),
      LineColor(line: "7", color: UIColor(hexString: "b47231")!),
      LineColor(line: "DA", color: UIColor(hexString: "40655b")!)]
-  
+
   static func color(for lineCode: String,
                     operator stopOperator: Stop.Operator = .tpg) -> UIColor {
     var color: UIColor

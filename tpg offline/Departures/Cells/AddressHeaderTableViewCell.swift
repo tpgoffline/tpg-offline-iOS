@@ -31,7 +31,7 @@ class AddressHeaderTableViewCell: UITableViewCell {
       if let annotations = mapView.annotations {
         mapView.removeAnnotations(annotations)
       }
-      
+
       mapView.styleURL = URL.mapUrl
       mapView.reloadStyle(self)
       mapView.setCenter(search.location.coordinate, zoomLevel: 14, animated: false)
@@ -50,12 +50,12 @@ class AddressHeaderTableViewCell: UITableViewCell {
     addressLabel.text = ""
     addressLabel.textColor = App.textColor
     backgroundColor = App.cellBackgroundColor
-    
+
     guard let mapView = self.mapView else { return }
     if let annotations = mapView.annotations {
       mapView.removeAnnotations(annotations)
     }
-    
+
     mapView.styleURL = URL.mapUrl
     mapView.showsUserLocation = true
   }

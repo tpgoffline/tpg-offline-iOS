@@ -34,14 +34,14 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
           mapView.addAnnotation(annotation)
         }
 
-        if coordinates.count > 0 {
+        if !coordinates.isEmpty {
           let geodesic = MGLPolyline(coordinates: &coordinates,
                                      count: UInt(coordinates.count))
           geodesic.title = section.journey?.lineCode ?? ""
           mapView.add(geodesic)
         }
       }
-      
+
       if allPoints.isEmpty {
         allPoints = [
           CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
@@ -54,15 +54,16 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
           CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
                                  longitude: connection.from.station.coordinate.y)
         mapView.addAnnotation(fromAnnotation)
-        
+
         let toAnnotation = MGLPointAnnotation()
         toAnnotation.title = connection.to.station.name.toStopName
         toAnnotation.coordinate =
           CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                  longitude: connection.to.station.coordinate.y)
         mapView.addAnnotation(toAnnotation)
-        
-        let geodesic = MGLPolyline(coordinates: &allPoints, count: UInt(allPoints.count))
+
+        let geodesic = MGLPolyline(coordinates: &allPoints,
+                                   count: UInt(allPoints.count))
         geodesic.title = "Walk"
         mapView.add(geodesic)
       }
@@ -83,7 +84,8 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
 }
 
 extension RouteResultsDetailMapTableViewCell: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     if let annotation = annotation as? MGLPolyline {
       if (annotation.title ?? "") == "Walk" {
         return App.darkMode ? .white : .black

@@ -176,7 +176,7 @@ class RouteResultsTableViewController: UITableViewController {
       if let data = response.result.value {
         do {
           let results = try JSONDecoder().decode(RouteResults.self, from: data)
-          self.requestStatus = results.connections.count == 0 ? .noResults : .ok
+          self.requestStatus = results.connections.isEmpty ? .noResults : .ok
           self.results = results
         } catch let error as NSError {
           dump(error)

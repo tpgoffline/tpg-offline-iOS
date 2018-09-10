@@ -49,12 +49,11 @@ class StopsTableViewController: UIViewController {
         if let stopCode = App.stops.filter({
           $0.code.escaped == self.searchText.escaped
         })[safe: 0] {
+
           //stops.removeAll(where: { $0.code == stopCode.code })
           var a: [Stop] = []
-          for stop in stops {
-            if stop.code != stopCode.code {
+          for stop in stops where stop.code != stopCode.code {
               a.append(stop)
-            }
           }
           stops = a
           stops.insert(stopCode, at: 0)
@@ -116,7 +115,7 @@ class StopsTableViewController: UIViewController {
 
     DispatchQueue.main.async {
       URLCache.shared.removeAllCachedResponses()
-      
+
       Alamofire.request(URL.stopsMD5).responseString { (response) in
         if let updatedMD5 = response.result.value,
           updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
@@ -185,8 +184,6 @@ class StopsTableViewController: UIViewController {
     self.tableView.sectionIndexBackgroundColor = .white
 
     if #available(iOS 11.0, *) {
-//      navigationController?.navigationBar.prefersLargeTitles = true
-//      navigationItem.largeTitleDisplayMode = .never
       navigationController?.navigationBar.largeTitleTextAttributes =
         [NSAttributedString.Key.foregroundColor: App.textColor]
     }
@@ -259,7 +256,7 @@ class StopsTableViewController: UIViewController {
     }
   }
 
-  func lookForAdresses() {
+  func searchForAdresses() {
     self.addressRequest?.cancel()
     let requestParameters = [
       "address": searchController.searchBar.text ?? "",
@@ -337,7 +334,7 @@ extension StopsTableViewController: UISearchResultsUpdating,
     App.log("Stops: Search: \(text) - \(self.searchMode)")
     self.searchText = text
     if self.searchMode == .addresses {
-      lookForAdresses()
+      searchForAdresses()
     }
   }
 
@@ -355,7 +352,7 @@ extension StopsTableViewController: UISearchResultsUpdating,
     }
     App.log("Stops: Search: \(self.searchText ?? "") - \(self.searchMode)")
     if self.searchMode == .addresses {
-      lookForAdresses()
+      searchForAdresses()
     }
     self.tableView.reloadData()
   }
@@ -607,7 +604,7 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
                                                     sender: nil)
       detailNavigationController.popToRootViewController(animated: false)
     }
-    
+
     guard let stop =
       (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
         return

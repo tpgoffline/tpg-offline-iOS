@@ -11,15 +11,15 @@ import CoreLocation
 import UserNotifications
 
 class RouteResultsDetailTableViewController: UITableViewController {
-  
+
   var connection: RouteConnection?
   var zones: [Int] = []
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     title = "Result".localized
-    
+
     var stopsId = connection!.sections!.map({ $0.departure.station.id })
     stopsId += connection!.sections!.map({ $0.arrival.station.id })
     var stops: [Stop] = []
@@ -32,29 +32,29 @@ class RouteResultsDetailTableViewController: UITableViewController {
       zones += zone
     }
     zones = zones.uniqueElements
-    
+
     if traitCollection.forceTouchCapability == .available {
       registerForPreviewing(with: self, sourceView: tableView)
     }
-    
+
     ColorModeManager.shared.addColorModeDelegate(self)
-    
+
     if App.darkMode {
       self.tableView.backgroundColor = .black
       self.tableView.separatorColor = App.separatorColor
     }
-    
+
     navigationItem.rightBarButtonItem =
       UIBarButtonItem(title: "Go!".localized,
                       style: .plain,
                       target: self,
                       action: #selector(self.goMode))
   }
-  
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
-  
+
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showStep" {
       guard let destinationViewController = segue.destination
@@ -62,7 +62,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
       guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
       guard let row = tableView.cellForRow(at: selectedIndexPath)
         as? RouteResultDetailsTableViewCell else { return }
-      
+
       destinationViewController.section = row.section
       App.log("Routes: Selected \(selectedIndexPath.row) detail row")
     } else if segue.identifier == "showMap" {
@@ -73,13 +73,13 @@ class RouteResultsDetailTableViewController: UITableViewController {
       App.log("Routes: Show map")
     }
   }
-  
+
   // MARK: - Table view data source
-  
+
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 2 + (connection?.sections?.count ?? 0)
   }
-  
+
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
     switch section {
@@ -91,13 +91,13 @@ class RouteResultsDetailTableViewController: UITableViewController {
       return 1
     }
   }
-  
+
   override func tableView(_ tableView: UITableView,
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "warningCell",
                                                for: indexPath)
-      
+
       let titleAttributes =
         [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
          NSAttributedString.Key.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
@@ -116,7 +116,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
       cell.detailTextLabel?.attributedText = text
       cell.detailTextLabel?.numberOfLines = 0
       cell.selectionStyle = .none
-      
+
       cell.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1)
       return cell
     } else if indexPath.section == (connection?.sections?.count ?? 0) + 1 {
@@ -129,7 +129,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
       cell.mapView.addGestureRecognizer(
         UITapGestureRecognizer(target: self,
                                action: #selector(self.pushMap)))
-      
+
       return cell
     } else {
       if connection?.sections?[safe: indexPath.section - 1]?.walk != nil {
@@ -160,16 +160,16 @@ class RouteResultsDetailTableViewController: UITableViewController {
         return cell
       }
     }
-    
+
   }
-  
+
   override func tableView(_ tableView: UITableView,
                           viewForHeaderInSection section: Int) -> UIView? {
-    
+
     if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
       return nil
     }
-    
+
     guard
       let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell"),
       let section = connection?.sections?[safe: section - 1] else {
@@ -177,11 +177,11 @@ class RouteResultsDetailTableViewController: UITableViewController {
     }
     if section.walk != nil { return nil }
     let destinationName = (section.journey?.to ?? "").toStopName
-    
+
     var titleAttributes =
       [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)]
         as [NSAttributedString.Key: Any]
-    
+
     if section.journey?.compagny == "TPG" {
       headerCell.backgroundColor = App.darkMode ? App.cellBackgroundColor :
         LineColorManager.color(for: section.journey?.lineCode ?? "")
@@ -206,7 +206,7 @@ class RouteResultsDetailTableViewController: UITableViewController {
                          attributes: titleAttributes)
     return headerCell
   }
-  
+
   override func tableView(_ tableView: UITableView,
                           heightForHeaderInSection section: Int) -> CGFloat {
     if section == 0 || section == (connection?.sections?.count ?? 0) + 1 {
@@ -217,12 +217,12 @@ class RouteResultsDetailTableViewController: UITableViewController {
     }
     return 44
   }
-  
+
   @objc func pushMap() {
     //if connection.
     performSegue(withIdentifier: "showMap", sender: self)
   }
-  
+
   deinit {
     ColorModeManager.shared.removeColorModeDelegate(self)
   }
@@ -232,26 +232,26 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
   func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                          viewControllerForLocation location: CGPoint) -> UIViewController? {
     // swiftlint:disable:previous line_length
-    
+
     guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
-    
+
     guard let row = tableView.cellForRow(at: indexPath)
       as? RouteResultDetailsTableViewCell else { return nil }
-    
+
     guard let detailVC = storyboard?
       .instantiateViewController(withIdentifier: "routeStepViewController") as?
       RouteStepViewController else { return nil }
-    
+
     detailVC.section = row.section
     previewingContext.sourceRect = row.frame
     return detailVC
   }
-  
+
   func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                          commit viewControllerToCommit: UIViewController) {
     show(viewControllerToCommit, sender: self)
   }
-  
+
   @objc func goMode() {
     if !UserDefaults.standard.bool(forKey: "firstTimeGoMode") {
       UserDefaults.standard.set(true, forKey: "firstTimeGoMode")
@@ -265,7 +265,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
       let cancelAction = UIAlertAction(title: Text.cancel,
                                        style: .default,
                                        handler: nil)
-      
+
       alert.addAction(cancelAction)
       alert.addAction(continueAction)
       self.present(alert, animated: true, completion: nil)
@@ -303,21 +303,21 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
                                                 self.setGoMode(minutes: -1)
       }
       alert.addAction(doNotSetReminderAction)
-      
+
       let cancelAction = UIAlertAction(title: Text.cancel,
                                        style: .default,
                                        handler: nil)
-      
+
       alert.addAction(cancelAction)
       self.present(alert, animated: true, completion: nil)
     }
   }
-  
+
   func setGoMode(minutes: Int) {
     guard let sections = connection?.sections else {
       return
     }
-    
+
     if #available(iOS 10.0, *) {
       UNUserNotificationCenter.current()
         .requestAuthorization(options: [.alert, .sound]) { (accepted, _) in
@@ -332,7 +332,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
       let setting = UIUserNotificationSettings(types: type, categories: nil)
       UIApplication.shared.registerUserNotificationSettings(setting)
     }
-    
+
     var locationAllowed: Bool
     if CLLocationManager.locationServicesEnabled() {
       switch CLLocationManager.authorizationStatus() {
@@ -344,7 +344,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
     } else {
       locationAllowed = false
     }
-    
+
     if let departureTimestamp = connection?.from.departureTimestamp, minutes != -1 {
       let dateComponents =
         Calendar.current.dateComponents([.hour,
@@ -356,7 +356,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
           Date(timeIntervalSince1970:
             Double(departureTimestamp))
             .addingTimeInterval(TimeInterval(-60 * minutes)))
-      
+
       if #available(iOS 10.0, *) {
         let content = UNMutableNotificationContent()
         content.title = Text.goTimeToGo
@@ -364,20 +364,23 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
                                  to: sections[0].journey?.to.toStopName ?? "",
                                  in: minutes) + Text.pushToShowMap
         content.categoryIdentifier = "departureNotification"
-        
+
         var departureLocalisations = App.stops.filter({
           $0.sbbId == sections[0].departure.station.id
         })[safe: 0]?.localisations ?? []
         for (indexA, x) in departureLocalisations.enumerated() {
-          departureLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == (sections[0].journey?.to ?? "")
+          departureLocalisations[indexA].destinations = x.destinations.filter({
+            $0.destinationTransportAPI == (sections[0].journey?.to ?? "")
           })
         }
-        
-        if let departureLocalisation = departureLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0]  {
+
+        if let departureLocalisation = departureLocalisations.filter({
+          !$0.destinations.isEmpty
+        })[safe: 0] {
           content.userInfo = [
             "x": departureLocalisation.location.coordinate.latitude,
             "y": departureLocalisation.location.coordinate.longitude,
-            "stopName":  sections[0].departure.station.name.toStopName
+            "stopName": sections[0].departure.station.name.toStopName
           ]
         } else {
           content.userInfo = [
@@ -386,7 +389,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
             "stopName": sections[0].departure.station.name.toStopName
           ]
         }
-        
+
         let trigger =
           UNCalendarNotificationTrigger(dateMatching: dateComponents,
                                         repeats: false)
@@ -394,7 +397,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
         let request = UNNotificationRequest(identifier: uuidString,
                                             content: content,
                                             trigger: trigger)
-        
+
         // Schedule the request with the system.
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request) { (error) in
@@ -404,7 +407,8 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
         }
       } else {
         let notification = UILocalNotification()
-        notification.fireDate = Date(timeIntervalSince1970: Double(departureTimestamp)).addingTimeInterval(TimeInterval(-60 * minutes))
+        notification.fireDate = Date(timeIntervalSince1970:
+          Double(departureTimestamp)).addingTimeInterval(TimeInterval(-60 * minutes))
         notification.alertBody = Text.take(line: sections[0].journey?.lineCode ?? "",
                                            to: sections[0].journey?.to ?? "",
                                            in: minutes)
@@ -413,7 +417,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
         UIApplication.shared.scheduleLocalNotification(notification)
       }
     }
-    
+
     let filtredSection = sections.filter({ $0.journey != nil && $0.walk == nil })
     for (index, section) in filtredSection.enumerated() {
       let arrivalName = section.arrival.station.name.toStopName
@@ -421,17 +425,19 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
       if #available(iOS 10.0, *) {
         let content = UNMutableNotificationContent()
         content.title = Text.goNextStop
-        
+
         if index == sections.count - 1 {
-          content.body = Text.rememberLeaveDestination(stop: arrivalName) + Text.pushToShowMap
+          content.body = Text.rememberLeaveDestination(stop: arrivalName)
+                         + Text.pushToShowMap
         } else {
           content.body =
             Text.rememberLeaveLine(stop: section.arrival.station.name.toStopName,
-                                   line: sections[index + 1].journey?.lineCode) + Text.pushToShowMap
+                                   line: sections[index + 1].journey?.lineCode)
+                                         + Text.pushToShowMap
         }
-        
+
         content.categoryIdentifier = "goNotification"
-        
+
         if index == filtredSection.endIndex - 1 {
           content.userInfo = [
             "arrivalX": section.arrival.station.coordinate.x,
@@ -439,26 +445,33 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
             "arrivalName": arrivalName
           ]
         } else {
-          let departureName = filtredSection[index + 1].departure.station.name.toStopName
-          
+          let departureName = filtredSection[index + 1]
+            .departure.station.name.toStopName
+
           var departureLocalisations = App.stops.filter({
             $0.sbbId == section.arrival.station.id
           })[safe: 0]?.localisations ?? []
           for (indexA, x) in departureLocalisations.enumerated() {
-            departureLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == section.journey?.to
+            departureLocalisations[indexA].destinations = x.destinations.filter({
+              $0.destinationTransportAPI == section.journey?.to
             })
           }
-          
+
           var arrivalLocalisations = App.stops.filter({
             $0.sbbId == filtredSection[index + 1].departure.station.id
           })[safe: 0]?.localisations ?? []
           for (indexA, x) in arrivalLocalisations.enumerated() {
-            arrivalLocalisations[indexA].destinations = x.destinations.filter({ $0.destinationTransportAPI == filtredSection[index + 1].journey?.to
+            arrivalLocalisations[indexA].destinations = x.destinations.filter({
+              $0.destinationTransportAPI == filtredSection[index + 1].journey?.to
             })
           }
-          
-          if let departureLocalisation = departureLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0],
-            let arrivalLocalisation = arrivalLocalisations.filter({ !$0.destinations.isEmpty })[safe: 0] {
+
+          if let departureLocalisation = departureLocalisations.filter({
+            !$0.destinations.isEmpty
+          })[safe: 0],
+            let arrivalLocalisation = arrivalLocalisations.filter({
+              !$0.destinations.isEmpty
+            })[safe: 0] {
             content.userInfo = [
               "arrivalX": arrivalLocalisation.location.coordinate.latitude,
               "arrivalY": arrivalLocalisation.location.coordinate.longitude,
@@ -475,7 +488,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
             ]
           }
         }
-        
+
         let request: UNNotificationRequest
         if locationAllowed {
           let center = CLLocationCoordinate2D(latitude:
@@ -503,8 +516,9 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
                                              .year],
                                             from:
               Date(timeIntervalSince1970:
-                Double(passList[passList.endIndex - 1].arrivalTimestamp ?? 0)).addingTimeInterval(-120))
-          
+                Double(passList[passList.endIndex - 1].arrivalTimestamp ?? 0))
+                .addingTimeInterval(-120))
+
           let trigger =
             UNCalendarNotificationTrigger(dateMatching: dateComponents,
                                           repeats: false)
@@ -513,7 +527,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
                                           content: content,
                                           trigger: trigger)
         }
-        
+
         // Schedule the request with the system.
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request) { (error) in
@@ -521,7 +535,7 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
             print(error)
           }
         }
-        
+
         let alert = UIAlertController(title: Text.goModeActivated,
                                       message: Text.goModeActivatedSubtitle,
                                       preferredStyle: .alert)

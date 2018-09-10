@@ -7,9 +7,9 @@
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.0</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>18A326g</string>
+	<string>18A384a</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>10L201y</string>
+	<string>10L232m</string>
 	<key>INIntentDefinitionToolsVersion</key>
 	<string>10.0</string>
 	<key>INIntents</key>
@@ -22,7 +22,7 @@
 			<key>INIntentDescriptionID</key>
 			<string>UTszES</string>
 			<key>INIntentLastParameterTag</key>
-			<integer>3</integer>
+			<integer>5</integer>
 			<key>INIntentName</key>
 			<string>Departures</string>
 			<key>INIntentParameterCombinations</key>
@@ -57,6 +57,18 @@
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
+				<dict>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterName</key>
+					<string>versionNumber</string>
+					<key>INIntentParameterSupportsMultipleValues</key>
+					<false/>
+					<key>INIntentParameterTag</key>
+					<integer>5</integer>
+					<key>INIntentParameterType</key>
+					<string>Decimal</string>
+				</dict>
 			</array>
 			<key>INIntentResponse</key>
 			<dict>
@@ -84,7 +96,7 @@
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>3</integer>
+				<integer>5</integer>
 				<key>INIntentResponseParameters</key>
 				<array>
 					<dict>
@@ -98,6 +110,18 @@
 						<integer>3</integer>
 						<key>INIntentResponseParameterType</key>
 						<string>Object</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>versionNumber</string>
+						<key>INIntentResponseParameterSupportsMultipleValues</key>
+						<false/>
+						<key>INIntentResponseParameterTag</key>
+						<integer>5</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Decimal</string>
 					</dict>
 				</array>
 			</dict>

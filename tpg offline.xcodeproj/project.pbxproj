@@ -114,7 +114,7 @@
 		AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */; };
 		AD7B47E11FD155D400F8DA23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B47E01FD155D400F8DA23 /* TabBarController.swift */; };
 		AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */; };
-		AD7C3ECD2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */; };
+		AD7C3ECD2076CA7900BC7821 /* SmartRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C3ECC2076CA7900BC7821 /* SmartRemindersTableViewController.swift */; };
 		AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */; };
 		AD8B77F02077A2680034CFBD /* ReminderInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B77EF2077A2680034CFBD /* ReminderInterfaceController.swift */; };
 		AD8CF77F1F979B5100DE9CBC /* OrientationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */; };
@@ -343,7 +343,7 @@
 		AD7B47E01FD155D400F8DA23 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AD7B47E21FD1570000F8DA23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesOptionsInterfaceController.swift; sourceTree = "<group>"; };
-		AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRemindersSettingsTableViewController.swift; sourceTree = "<group>"; };
+		AD7C3ECC2076CA7900BC7821 /* SmartRemindersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRemindersTableViewController.swift; sourceTree = "<group>"; };
 		AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
 		AD8B77EF2077A2680034CFBD /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationTableViewController.swift; sourceTree = "<group>"; };
@@ -527,7 +527,7 @@
 				ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */,
 				AD92D8BE1F44E10200403258 /* Setting.swift */,
 				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
-				AD7C3ECC2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift */,
+				AD7C3ECC2076CA7900BC7821 /* SmartRemindersTableViewController.swift */,
 				AD9F018520CE827D0069B486 /* DarkModeTableViewController.swift */,
 				AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */,
 				ADDBCE4720FDF34C0090D4E0 /* PrivacyTableViewController.swift */,
@@ -1259,7 +1259,7 @@
 				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
 				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
 				AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */,
-				AD7C3ECD2076CA7900BC7821 /* SmartRemindersSettingsTableViewController.swift in Sources */,
+				AD7C3ECD2076CA7900BC7821 /* SmartRemindersTableViewController.swift in Sources */,
 				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
 				ADA14E661FDEC4FE00945249 /* Line.swift in Sources */,

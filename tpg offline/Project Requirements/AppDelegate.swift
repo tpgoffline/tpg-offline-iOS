@@ -140,14 +140,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     print(token)
     App.apnsToken = token
   }
-  
-  func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+
+  func application(_ application: UIApplication,
+                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
     print(error)
   }
 
   func application(_ application: UIApplication,
                    continue userActivity: NSUserActivity,
                    restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    // swiftlint:disable:previous line_length
     if userActivity.activityType == CSSearchableItemActionType,
       let id = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String,
       let tabController = (window?.rootViewController as? UITabBarController) {

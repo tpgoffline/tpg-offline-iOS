@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSSiriUsageDescription</key>
-	<string>Siri </string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
@@ -59,6 +57,12 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>tpg offline needs your location to show you the nearest stops.</string>
+	<key>NSSiriUsageDescription</key>
+	<string>Siri </string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>DeparturesIntent</string>
+	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

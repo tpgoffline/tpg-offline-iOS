@@ -37,7 +37,7 @@ class LineViewController: UIViewController {
     App.log("Show line \(line.line)")
     App.logEvent("Show Orientation Line",
                  attributes: ["line": line.line])
-    
+
     mapView.styleURL = URL.mapUrl
     mapView.reloadStyle(self)
     mapView.delegate = self
@@ -72,7 +72,8 @@ class LineViewController: UIViewController {
       }
     }
 
-    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+    let geodesic = MGLPolyline(coordinates: &coordinates,
+                               count: UInt(coordinates.count))
     mapView.addAnnotation(geodesic)
     mapView.setCenter(coordinates.first!, zoomLevel: 14, animated: false)
 
@@ -176,7 +177,8 @@ class LineViewController: UIViewController {
   @IBAction func segmentedControlChanged() {
     self.tableView.reloadData()
     self.departureLabel.text = App.stops.filter({
-      $0.appId == line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].first
+      $0.appId ==
+        line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].first
     }).first?.name ?? ""
     self.arrivalLabel.text = App.stops.filter({
       $0.appId == line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].last
@@ -198,7 +200,8 @@ class LineViewController: UIViewController {
       }
     }
 
-    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+    let geodesic = MGLPolyline(coordinates: &coordinates,
+                               count: UInt(coordinates.count))
     mapView.add(geodesic)
 
     mapView.setCenter(coordinates.first!, zoomLevel: 14, animated: true)
@@ -249,12 +252,14 @@ extension LineViewController: MGLMapViewDelegate {
       }
     }
   }
-  
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     return LineColorManager.color(for: line?.line ?? "")
   }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     return true
   }
 }

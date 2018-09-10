@@ -65,7 +65,8 @@ class RouteStepViewController: UIViewController {
       mapView.addAnnotation(annotation)
     }
 
-    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+    let geodesic = MGLPolyline(coordinates: &coordinates,
+                               count: UInt(coordinates.count))
     mapView.add(geodesic)
     mapView.setCenter(coordinates[0], zoomLevel: 14, animated: false)
 
@@ -296,7 +297,8 @@ class RouteStepViewController: UIViewController {
 }
 
 extension RouteStepViewController: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     if annotation is MGLPolyline {
       return self.color
     } else {
@@ -319,8 +321,9 @@ extension RouteStepViewController: MGLMapViewDelegate {
   func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
     titleSelected = ""
   }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     if annotation is MGLPolyline {
       return false
     } else {

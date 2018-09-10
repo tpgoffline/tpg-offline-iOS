@@ -26,7 +26,7 @@ extension String {
     return App.stops.filter({$0.nameTransportAPI == self})[safe: 0]?.name
       ?? self
   }
-  
+
   var time: String {
     if Int(self) ?? 0 > 60 {
       let hour = (Int(self) ?? 0) / 60
@@ -168,7 +168,7 @@ extension String {
       }
 
       // Same case bonus.
-      if (string[idxOf] == word[word.index(word.startIndex, offsetBy: i)]) {
+      if string[idxOf] == word[word.index(word.startIndex, offsetBy: i)] {
         charScore += 0.1
       }
 
@@ -298,7 +298,7 @@ extension UIColor {
 
   func adjust(by percentage: CGFloat=0.3) -> UIColor {
     var r: CGFloat=0, g: CGFloat=0, b: CGFloat=0, a: CGFloat=0
-    if (self.getRed(&r, green: &g, blue: &b, alpha: &a)) {
+    if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
       return UIColor(red: max(min(r + percentage, 1.0), 0),
                      green: max(min(g + percentage, 1.0), 0),
                      blue: max(min(b + percentage, 1.0), 0),

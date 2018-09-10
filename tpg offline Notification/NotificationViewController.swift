@@ -12,19 +12,19 @@ import UserNotificationsUI
 import MapKit
 
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
-  
+
   @IBOutlet var mapView: MKMapView!
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.mapView.delegate = self
   }
-  
+
   func didReceive(_ notification: UNNotification) {
     guard let mapView = self.mapView else { return }
     mapView.removeAnnotations(mapView.annotations)
     let regionRadius: CLLocationDistance = 2000
-    
+
     if notification.request.content.categoryIdentifier == "departureNotification",
       let x = notification.request.content.userInfo["x"] as? Double,
       let y = notification.request.content.userInfo["y"] as? Double,
@@ -61,44 +61,42 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
                                            addressDictionary: nil)
         let departurePlacemark = MKPlacemark(coordinate: departureCoordinates,
                                              addressDictionary: nil)
-        
+
         let arrivalMapItem = MKMapItem(placemark: arrivalPlacemark)
         let departureMapItem = MKMapItem(placemark: departurePlacemark)
-        
+
         let arrivalAnnotation = MKPointAnnotation()
         arrivalAnnotation.coordinate = arrivalCoordinates
         arrivalAnnotation.title = arrivalName
-        
+
         let departureAnnotation = MKPointAnnotation()
         departureAnnotation.coordinate = departureCoordinates
         departureAnnotation.title = departureName
-        
+
         self.mapView.showAnnotations([arrivalAnnotation, departureAnnotation],
                                      animated: true )
-        
+
         let directionRequest = MKDirections.Request()
         directionRequest.source = arrivalMapItem
         directionRequest.destination = departureMapItem
         directionRequest.transportType = .walking
-        
+
         let directions = MKDirections(request: directionRequest)
-        directions.calculate {
-          (response, error) -> Void in
-          
+        directions.calculate { (response, _) -> Void in
           guard let response = response else {
             let coordinates = [arrivalCoordinates, departureCoordinates]
             let geodesic = MKPolyline(coordinates: coordinates,
                                       count: coordinates.count)
             mapView.addOverlay(geodesic)
-            
+
             return
           }
-          
+
           let route = response.routes[0]
-          
+
           self.mapView.addOverlay(route.polyline,
                            level: MKOverlayLevel.aboveRoads)
-          
+
           let rect = route.polyline.boundingMapRect
           self.mapView.setRegion(MKCoordinateRegion.init(rect), animated: true)
         }
@@ -109,7 +107,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
                                                   latitudinalMeters: regionRadius,
                                                   longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
-        
+
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         annotation.title = arrivalName
@@ -125,7 +123,7 @@ extension NotificationViewController: MKMapViewDelegate {
     guard let polyline = overlay as? MKPolyline else {
       return MKOverlayRenderer()
     }
-    
+
     let polylineRenderer = MKPolylineRenderer(overlay: polyline)
     polylineRenderer.strokeColor = .black
     polylineRenderer.lineWidth = 2

@@ -10,36 +10,36 @@ import UIKit
 import SafariServices
 
 class PrivacyTableViewController: UITableViewController {
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     title = Text.privacy
-    
+
     if App.darkMode {
       self.tableView.backgroundColor = .black
       self.navigationController?.navigationBar.barStyle = .black
       self.tableView.separatorColor = App.separatorColor
     }
-    
+
     ColorModeManager.shared.addColorModeDelegate(self)
   }
-  
+
   // MARK: - Table view data source
-  
+
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
-  
+
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
     return section == 0 ? 1 : 2
   }
-  
+
   override func tableView(_ tableView: UITableView,
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "privacyCell",
                                              for: indexPath)
-    
+
     if indexPath.section == 0 {
       cell.textLabel?.text = Text.appPermissions
       cell.detailTextLabel?.text = ""
@@ -59,7 +59,7 @@ class PrivacyTableViewController: UITableViewController {
         cell.accessoryView = statusSwitch
       }
     }
-    
+
     cell.backgroundColor = App.cellBackgroundColor
     cell.textLabel?.textColor = App.textColor
     cell.detailTextLabel?.textColor = App.textColor
@@ -73,10 +73,10 @@ class PrivacyTableViewController: UITableViewController {
       selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
       cell.selectedBackgroundView = selectedView
     }
-    
+
     return cell
   }
-  
+
   override func tableView(_ tableView: UITableView,
                           didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 {
@@ -90,7 +90,7 @@ class PrivacyTableViewController: UITableViewController {
           vc.preferredBarTintColor = .black
         }
         vc.delegate = self
-        
+
         self.present(vc, animated: true)
       } else {
         toogleFabric()
@@ -98,13 +98,13 @@ class PrivacyTableViewController: UITableViewController {
     }
     tableView.deselectRow(at: indexPath, animated: true)
   }
-  
+
   @objc func toogleFabric() {
     //App.fabric.toggle()
     App.fabric = !App.fabric
     self.tableView.reloadData()
   }
-  
+
   deinit {
     ColorModeManager.shared.removeColorModeDelegate(self)
   }
