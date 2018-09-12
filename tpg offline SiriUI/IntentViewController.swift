@@ -47,7 +47,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
 
   var desiredSize: CGSize {
     return CGSize(width: self.extensionContext!.hostedViewMaximumAllowedSize.width,
-                  height: CGFloat(self.departures.count * 44) + 45)
+                  height: CGFloat(self.departures.count * 44) + 45 + 16)
   }
 }
 

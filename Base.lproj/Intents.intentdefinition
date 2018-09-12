@@ -86,7 +86,7 @@
 					</dict>
 					<dict>
 						<key>INIntentResponseCodeFormatString</key>
-						<string></string>
+						<string>Here are the departures. ${nextDeparturesString}</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>HrcxXu</string>
 						<key>INIntentResponseCodeName</key>
@@ -96,7 +96,7 @@
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>INIntentResponseParameters</key>
 				<array>
 					<dict>
@@ -122,6 +122,18 @@
 						<integer>5</integer>
 						<key>INIntentResponseParameterType</key>
 						<string>Decimal</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>3</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>nextDeparturesString</string>
+						<key>INIntentResponseParameterSupportsMultipleValues</key>
+						<false/>
+						<key>INIntentResponseParameterTag</key>
+						<integer>6</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
 					</dict>
 				</array>
 			</dict>

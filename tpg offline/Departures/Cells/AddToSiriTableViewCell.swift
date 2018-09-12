@@ -38,7 +38,8 @@ class AddToSiriTableViewCell: UITableViewCell,
       }
       let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
       textLabel.textColor = App.textColor
-      textLabel.text = "Voulez-vous voir les départs de cet arrêt d'un coup d'œil ?"
+      textLabel.text =
+        "Do you want to see the departures of this stop at a glance?".localized
       textLabel.numberOfLines = 0
       textLabel.textAlignment = .center
       self.stackView.addArrangedSubview(textLabel)
@@ -48,7 +49,7 @@ class AddToSiriTableViewCell: UITableViewCell,
       self.selectedBackgroundView = selectedBackgroundView
       if INPreferences.siriAuthorizationStatus() != .authorized {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        button.setTitle("Activer Siri dans les paramètres", for: .normal)
+        button.setTitle("Enable Siri in the settings".localized, for: .normal)
         self.stackView.addArrangedSubview(button)
       } else {
         let button = INUIAddVoiceShortcutButton(style:

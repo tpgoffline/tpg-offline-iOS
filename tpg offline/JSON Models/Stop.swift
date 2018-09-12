@@ -98,6 +98,8 @@ struct Stop: Codable {
     let intent = DeparturesIntent()
     intent.stop = INObject(identifier: "\(code)", display: name)
     intent.versionNumber = 1.0
+    intent.suggestedInvocationPhrase =
+        String(format: "View departures for %@".localized, name)
     return intent
   }
 

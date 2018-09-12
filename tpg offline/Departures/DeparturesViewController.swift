@@ -335,8 +335,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     }
   }
 
-  // swiftlint:disable:next line_length
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
     if self.requestStatus == .loading {
       return 5
     } else if self.requestStatus == any(of: .error, .noResults) {

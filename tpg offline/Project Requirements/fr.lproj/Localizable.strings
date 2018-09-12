@@ -40,7 +40,6 @@
 "Crash Reporting and Analytics" = "Rapports des arrêts d'application inopinés et statistiques";
 "Credits" = "Crédits";
 "Cédric Da Costa Faro" = "Cédric Da Costa Faro";
-"Dark Mode" = "Mode sombre";
 "Dark mode" = "Mode sombre";
 "Data providers" = "Fournisseurs de données";
 "Days" = "Jours";
@@ -65,12 +64,14 @@
 "Do not set departure reminder" = "Ne pas mettre de rappel";
 "Do you mean %@?" = "Est-ce que vous voulez dire %@ ?";
 "Do you want to reinit the stops list to the alphabetical order?" = "Voulez-vous réinitialiser la liste d'arrêt dans l'ordre alphabétique ?";
+"Do you want to see the departures of this stop at a glance?" = "Voulez-vous voir les départs de cet arrêt d'un coup d'œil ?";
 "Download map" = "Télécharger le plan";
 "Download maps" = "Télécharger les cartes";
 "Download now" = "Télécharger maintenant";
 "Downloading..." = "Téléchargement...";
 "Duplicate reminder" = "Notification en double";
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire";
+"Enable Siri in the settings" = "Activer Siri dans les paramètres";
 "Error" = "Erreur";
 "External libraries, used in this project" = "Librairies externes, utilisées dans ce projet";
 "Favorites" = "Favoris";
@@ -94,6 +95,7 @@
 "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?" = "Il semble que vous ne surveillez aucune ligne.\nSurveiller une ligne vous permettra de recevoir une notification en cas de perturbations sur vos lignes préférées. Pourquoi ne pas essayer en appuyant sur le bouton +, en haut à droite de votre appareil ?";
 "Last features" = "Dernières nouveautés";
 "Let's take the bus!" = "Prenons le bus !";
+"Ligne %@" = "Ligne %@";
 "Line %@" = "Ligne %@";
 "Line %@ - %@" = "Ligne %@ - %@";
 "Line 62 and 63 and maps" = "Ligne 62 et 63 et plans";
@@ -102,9 +104,11 @@
 "Loading Smart Reminders" = "Chargement des Rappels Intelligents";
 "Loading..." = "Chargement...";
 "Manual" = "Manuel";
+"Manuel" = "Manuel";
 "Map" = "Plan";
 "Maps" = "Plans";
 "Mark this stop as favorite" = "Marquer cet arrêt en favoris";
+"Mode sombre" = "Mode sombre";
 "Monday" = "Lundi";
 "Monitoring" = "Surveillance";
 "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines." = "Surveiller une ligne vous permettra de recevoir une notification en cas de perturbations sur vos lignes préférées.";
@@ -190,7 +194,10 @@
 "That's all for today" = "C'est tout pour aujourd'hui";
 "The bus is comming now!" = "Le bus arrive maintenant !";
 "The departure and the arrival stops are the same." = "Les arrêts de départ et d'arrivée sont les mêmes.";
+"The next departure of the line %@, destination %@, is in %@ minutes, and the next one of the line %@, destination %@, is in %@ minutes." = "Le prochain départ de la ligne %@, direction %@, est dans %@ minutes, et le suivant de la ligne %@, direction %@, est dans %@ minutes.";
+"The next departure of the line %@, destination %@, is in %@ minutes." = "Le prochain départ de la ligne %@, direction %@, est dans %@ minutes.";
 "The project" = "Le projet";
+"There are no upcoming departures." = "Il n'y a aucun prochains départs";
 "This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders." = "Ce mode vous enverra des notifications pour vous guider sur votre itinéraire, tels que 'Prendre le bus' ou 'Quitter le bus bientôt'";
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "Cet itinéraire traverse plusieurs zones. Vous devez donc acquérir un ticket/abonnement correspondant à ces zones :\n";
 "Thursday" = "Jeudi";
@@ -208,6 +215,7 @@
 "Via %@" = "Via %@";
 "Via..." = "Via...";
 "Via: %@" = "Via: %@";
+"View departures for %@" = "Voir les départs pour %@";
 "Wait a minute..." = "Une seconde...";
 "Walk" = "Marcher";
 "Walk %@m" = "Marcher %@m";

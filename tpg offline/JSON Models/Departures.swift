@@ -49,6 +49,24 @@ struct DeparturesGroup: Decodable {
                       display: destination)
     })
     response.versionNumber = App.intentsVersionNumber
+    // swiftlint:disable line_length
+    switch departures.count {
+    case 0:
+        response.nextDeparturesString = "There are no upcoming departures.".localized
+    case 1:
+        response.nextDeparturesString =
+            String(format: "The next departure of the line %@, destination %@, is in %@ minutes.".localized,
+                   departures[0].line.code, departures[0].line.destination,
+                   departures[0].leftTime)
+    default:
+        response.nextDeparturesString =
+            String(format: "The next departure of the line %@, destination %@, is in %@ minutes, and the next one of the line %@, destination %@, is in %@ minutes.".localized,
+                   departures[0].line.code, departures[0].line.destination,
+                   departures[0].leftTime,
+                   departures[1].line.code, departures[1].line.destination,
+                   departures[1].leftTime)
+    }
+    // swiftlint:enable line_length
     return response
   }
 }
