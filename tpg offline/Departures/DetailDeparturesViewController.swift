@@ -29,10 +29,10 @@ class DetailDeparturesViewController: UIViewController {
   var busRouteGroup: BusRouteGroup? {
     didSet {
       self.tableView.reloadData()
-      
+
       mapView.styleURL = URL.mapUrl
       mapView.reloadStyle(self)
-      
+
       if let annotations = mapView.annotations {
         mapView.removeAnnotations(annotations)
       }
@@ -44,7 +44,7 @@ class DetailDeparturesViewController: UIViewController {
       if self.tableView.numberOfRows(inSection: 0) > indexPath.row {
         DispatchQueue.main.async {
           self.tableView.scrollToRow(at: indexPath,
-                                     at: UITableViewScrollPosition.top,
+                                     at: UITableView.ScrollPosition.top,
                                      animated: false)
         }
       }
@@ -114,7 +114,7 @@ class DetailDeparturesViewController: UIViewController {
           centerPoint = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         }
       } else {
-        if coordinates.count == 0 {
+        if coordinates.isEmpty {
           centerPoint = stop?.location.coordinate ??
             CLLocationCoordinate2D(latitude: 0, longitude: 0)
         } else {
@@ -187,7 +187,7 @@ class DetailDeparturesViewController: UIViewController {
 
     navigationItem.rightBarButtonItems = [
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.refreshBusRoute),
                       accessbilityLabel: Text.reload)
@@ -228,7 +228,7 @@ class DetailDeparturesViewController: UIViewController {
     self.tableView.backgroundColor = App.darkMode ? .black : .white
     self.tableView.separatorColor = App.separatorColor
     self.tableView.reloadData()
-    
+
     mapView.styleURL = URL.mapUrl
     mapView.reloadStyle(self)
 
@@ -520,7 +520,7 @@ class DetailDeparturesViewController: UIViewController {
           Text.busIsCommingNow : Text.minutesLeft(timeBefore)
         content.body = Text.take(line: departure.line.code,
                                  to: departure.line.destination)
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         let notificationIdentifier = "departureNotification-\(String.random(30))"
         let request = UNNotificationRequest(identifier: notificationIdentifier,
                                             content: content,
@@ -603,7 +603,7 @@ extension DetailDeparturesViewController: UITableViewDelegate,
       else { return UITableViewCell() }
 
     cell.configure(with: busRouteGroup!.steps[indexPath.row],
-                   color: App.color(for: busRouteGroup!.lineCode),
+                   color: LineColorManager.color(for: busRouteGroup!.lineCode),
                    selected: titleSelected == stop.name)
 
     return cell
@@ -718,7 +718,8 @@ extension DetailDeparturesViewController: UITableViewDelegate,
 }
 
 extension DetailDeparturesViewController: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     if let annotation = annotation as? MGLPolyline {
       if (annotation.title ?? "") == Text.passedStops {
         return .gray
@@ -737,12 +738,13 @@ extension DetailDeparturesViewController: MGLMapViewDelegate {
                                  animated: true)
     }
   }
-  
+
   func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
     titleSelected = ""
   }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     if annotation is MGLPolyline {
       return false
     } else {

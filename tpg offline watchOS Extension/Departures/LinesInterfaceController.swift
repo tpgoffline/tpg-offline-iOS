@@ -74,14 +74,14 @@ class DeparturesManager: NSObject {
             let json = try jsonDecoder.decode(DeparturesGroup.self, from: data)
             self.departures = json
             self.status = .ok
+
+            if json.lines.isEmpty {
+              self.departures = nil
+              self.status = .noResults
+            }
           } catch {
             print("No Internet")
             return
-          }
-
-          if self.departures?.lines.count == 0 {
-            self.departures = nil
-            self.status = .noResults
           }
         } else {
           self.departures = nil
@@ -125,9 +125,9 @@ class LinesInterfaceController: WKInterfaceController, DeparturesDelegate {
         guard let rowController = self.tableView.rowController(at: index)
           as? BasicRowController else { continue }
         rowController.row = BasicRow(icon: nil, title: Text.line(line))
-        rowController.group.setBackgroundColor(App.color(for: line,
+        rowController.group.setBackgroundColor(LineColorManager.color(for: line,
                                                          operator: .tpg))
-        rowController.titleLabel.setTextColor(App.color(for: line,
+        rowController.titleLabel.setTextColor(LineColorManager.color(for: line,
                                                         operator: .tpg).contrast)
       }
     }

@@ -8,14 +8,19 @@
 
 import UIKit
 
-class FavoriteRouteTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+class FavoriteRouteTableViewCell: UITableViewCell,
+                                  UITableViewDelegate,
+                                  UITableViewDataSource {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
     guard let route = self.route else { return 0 }
     return (route.via ?? []).count + 2
   }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
+
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell",
+                                                   for: indexPath)
       as? FavoriteRouteSubTableViewCell else {
       return UITableViewCell()
     }
@@ -33,21 +38,22 @@ class FavoriteRouteTableViewCell: UITableViewCell, UITableViewDelegate, UITableV
     }
     cell.label.textColor = App.textColor
     cell.backgroundColor = .clear
-    
+
     return cell
   }
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+  func tableView(_ tableView: UITableView,
+                 heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 30
   }
-  
+
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var heightConstraint: NSLayoutConstraint!
 
   var route: Route? = nil {
     didSet {
       guard let route = route else { return }
-      
+
       self.tableView.reloadData()
 
       if App.darkMode {
@@ -59,7 +65,7 @@ class FavoriteRouteTableViewCell: UITableViewCell, UITableViewDelegate, UITableV
         selectedView.backgroundColor = UIColor.white.darken(by: 0.1)
         self.selectedBackgroundView = selectedView
       }
-      
+
       heightConstraint.constant = CGFloat(60 + ((route.via ?? []).count * 30))
     }
   }

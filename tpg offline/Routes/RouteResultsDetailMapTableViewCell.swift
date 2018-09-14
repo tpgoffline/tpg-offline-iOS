@@ -19,6 +19,9 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
     didSet {
       guard let connection = self.connection else { return }
 
+      mapView.styleURL = URL.mapUrl
+      mapView.reloadStyle(self)
+
       var allPoints: [CLLocationCoordinate2D] = []
       for section in connection.sections ?? [] {
         var coordinates: [CLLocationCoordinate2D] = []
@@ -34,14 +37,14 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
           mapView.addAnnotation(annotation)
         }
 
-        if coordinates.count > 0 {
+        if !coordinates.isEmpty {
           let geodesic = MGLPolyline(coordinates: &coordinates,
                                      count: UInt(coordinates.count))
           geodesic.title = section.journey?.lineCode ?? ""
           mapView.add(geodesic)
         }
       }
-      
+
       if allPoints.isEmpty {
         allPoints = [
           CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
@@ -54,15 +57,16 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
           CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
                                  longitude: connection.from.station.coordinate.y)
         mapView.addAnnotation(fromAnnotation)
-        
+
         let toAnnotation = MGLPointAnnotation()
         toAnnotation.title = connection.to.station.name.toStopName
         toAnnotation.coordinate =
           CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                  longitude: connection.to.station.coordinate.y)
         mapView.addAnnotation(toAnnotation)
-        
-        let geodesic = MGLPolyline(coordinates: &allPoints, count: UInt(allPoints.count))
+
+        let geodesic = MGLPolyline(coordinates: &allPoints,
+                                   count: UInt(allPoints.count))
         geodesic.title = "Walk"
         mapView.add(geodesic)
       }
@@ -74,6 +78,9 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
+    
     self.mapView.delegate = self
     self.mapView.isPitchEnabled = false
     self.mapView.isZoomEnabled = false
@@ -83,12 +90,13 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
 }
 
 extension RouteResultsDetailMapTableViewCell: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     if let annotation = annotation as? MGLPolyline {
       if (annotation.title ?? "") == "Walk" {
         return App.darkMode ? .white : .black
       } else {
-        return App.color(for: (annotation.title ?? ""))
+        return LineColorManager.color(for: (annotation.title ?? ""))
       }
     } else {
       return App.darkMode ? .white : .black

@@ -10,6 +10,7 @@ import UIKit
 
 class DeparturesHeaderTableViewCell: UITableViewCell {
   @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var titleRoundedView: UIView!
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
 }

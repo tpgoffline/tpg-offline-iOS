@@ -40,7 +40,6 @@
 "Crash Reporting and Analytics" = "Crash Reporting and Analytics"; 
 "Credits" = "Credits"; 
 "Cédric Da Costa Faro" = "Cédric Da Costa Faro"; 
-"Dark Mode" = "Dark Mode"; 
 "Dark mode" = "Dark mode"; 
 "Data providers" = "Data providers"; 
 "Days" = "Days"; 
@@ -65,12 +64,14 @@
 "Do not set departure reminder" = "Do not set departure reminder"; 
 "Do you mean %@?" = "Do you mean %@?"; 
 "Do you want to reinit the stops list to the alphabetical order?" = "Do you want to reinit the stops list to the alphabetical order?"; 
+"Do you want to see the departures of this stop at a glance?" = "Do you want to see the departures of this stop at a glance?"; 
 "Download map" = "Download map"; 
 "Download maps" = "Download maps"; 
 "Download now" = "Download now"; 
 "Downloading..." = "Downloading..."; 
 "Duplicate reminder" = "Duplicate reminder"; 
 "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire" = "Elegant HTTP Networking in Swift - https://github.com/Alamofire/Alamofire"; 
+"Enable Siri in the settings" = "Enable Siri in the settings"; 
 "Error" = "Error"; 
 "External libraries, used in this project" = "External libraries, used in this project"; 
 "Favorites" = "Favorites"; 
@@ -94,6 +95,7 @@
 "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?" = "It's seems you are not not monitoring any line.\nMonitoring a line will allow you to receive a notification in case of disruptions on your favorite lines. Why not to try with pushing the + button, at the top-right angle of your device ?"; 
 "Last features" = "Last features"; 
 "Let's take the bus!" = "Let's take the bus!"; 
+"Ligne %@" = "Ligne %@"; 
 "Line %@" = "Line %@"; 
 "Line %@ - %@" = "Line %@ - %@"; 
 "Line 62 and 63 and maps" = "Line 62 and 63 and maps"; 
@@ -102,9 +104,11 @@
 "Loading Smart Reminders" = "Loading Smart Reminders"; 
 "Loading..." = "Loading..."; 
 "Manual" = "Manual"; 
+"Manuel" = "Manuel"; 
 "Map" = "Map"; 
 "Maps" = "Maps"; 
 "Mark this stop as favorite" = "Mark this stop as favorite"; 
+"Mode sombre" = "Mode sombre"; 
 "Monday" = "Monday"; 
 "Monitoring" = "Monitoring"; 
 "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines." = "Monitoring a line will allow you to receive a notification in case of disruptions on your favorite lines."; 
@@ -190,7 +194,10 @@
 "That's all for today" = "That's all for today"; 
 "The bus is comming now!" = "The bus is comming now!"; 
 "The departure and the arrival stops are the same." = "The departure and the arrival stops are the same."; 
+"The next departure of the line %@, destination %@, is in %@ minutes, and the next one of the line %@, destination %@, is in %@ minutes." = "The next departure of the line %@, destination %@, is in %@ minutes, and the next one of the line %@, destination %@, is in %@ minutes."; 
+"The next departure of the line %@, destination %@, is in %@ minutes." = "The next departure of the line %@, destination %@, is in %@ minutes."; 
 "The project" = "The project"; 
+"There are no upcoming departures." = "There are no upcoming departures."; 
 "This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders." = "This mode sends you notifications to guide you on your route, like 'Take the bus' and 'Leave the bus soon' reminders."; 
 "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n" = "This route crosses several areas. Therefore, you must have a regional ticket/pass corresponding to these zones:\n"; 
 "Thursday" = "Thursday"; 
@@ -208,6 +215,7 @@
 "Via %@" = "Via %@"; 
 "Via..." = "Via..."; 
 "Via: %@" = "Via: %@"; 
+"View departures for %@" = "View departures for %@"; 
 "Wait a minute..." = "Wait a minute..."; 
 "Walk" = "Walk"; 
 "Walk %@m" = "Walk %@m"; 

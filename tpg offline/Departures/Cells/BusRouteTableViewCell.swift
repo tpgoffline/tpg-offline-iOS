@@ -93,7 +93,7 @@ class BusRouteTableViewCell: UITableViewCell {
     shapeLayer.lineWidth = 3
 
     self.busTrackView.layer.addSublayer(shapeLayer)*/
-    
+
     if busRoute.first {
       self.busTrackView.image = #imageLiteral(resourceName: "firstStep").maskWith(color: color)
     } else if busRoute.last {

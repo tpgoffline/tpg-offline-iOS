@@ -92,9 +92,11 @@ class DisruptionsRowController: NSObject {
       self.titleLabel.setText(Text.line(disruption.line,
                                         destination: disruption.nature))
       self.subTitleLabel.setText(String(format: disruption.consequence))
-      self.titleLabel.setTextColor(App.color(for: disruption.line).contrast)
-      self.subTitleLabel.setTextColor(App.color(for: disruption.line).contrast)
-      self.group.setBackgroundColor(App.color(for: disruption.line))
+      self.titleLabel.setTextColor(
+        LineColorManager.color(for: disruption.line).contrast)
+      self.subTitleLabel.setTextColor(
+        LineColorManager.color(for: disruption.line).contrast)
+      self.group.setBackgroundColor(LineColorManager.color(for: disruption.line))
     }
   }
 }

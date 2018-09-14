@@ -59,8 +59,9 @@ class PendingNotificationsTableViewController: UITableViewController {
     dateFormatter.timeStyle = .short
 
     if #available(iOS 10.0, *) {
-      UNUserNotificationCenter.current().getPendingNotificationRequests {
-        (requests) in
+      UNUserNotificationCenter
+        .current()
+        .getPendingNotificationRequests { (requests) in
         for request in requests {
           if let trigger = (request.trigger as? UNCalendarNotificationTrigger) {
             let date = Calendar.current.date(from: trigger.dateComponents) ?? Date()
@@ -129,14 +130,14 @@ class PendingNotificationsTableViewController: UITableViewController {
       tableView.dequeueReusableCell(withIdentifier: "pendingNotificationCell",
                                     for: indexPath)
 
-    let titleAttributes: [NSAttributedStringKey: Any] =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-       NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
-    let subtitleAttributes: [NSAttributedStringKey: Any] =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
-       NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
+    let titleAttributes: [NSAttributedString.Key: Any] =
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
+       NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
+    let subtitleAttributes: [NSAttributedString.Key: Any] =
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline),
+       NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
     cell.textLabel?.numberOfLines = 0
     cell.detailTextLabel?.numberOfLines = 0
     if indexPath.section == 1 {
@@ -190,18 +191,18 @@ class PendingNotificationsTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView,
                           canEditRowAt indexPath: IndexPath) -> Bool {
     if indexPath.section == 1 {
-      return (smartNotifications.count != 0 &&
+      return (!smartNotifications.isEmpty &&
         !(requestStatus == any(of: .error, .loading)))
     } else {
-      return pendingNotifications.count != 0
+      return !pendingNotifications.isEmpty
     }
   }
 
   override func tableView(_ tableView: UITableView,
-                          commit editingStyle: UITableViewCellEditingStyle,
+                          commit editingStyle: UITableViewCell.EditingStyle,
                           forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      if indexPath.section == 1, smartNotifications.count != 0 {
+      if indexPath.section == 1, !smartNotifications.isEmpty {
         let parameters: Parameters = [
           "id": smartNotifications[indexPath.row].id
         ]
@@ -215,7 +216,7 @@ class PendingNotificationsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
           }
         })
-      } else if pendingNotifications.count != 0 {
+      } else if !pendingNotifications.isEmpty {
         if #available(iOS 10.0, *) {
           UNUserNotificationCenter
             .current()

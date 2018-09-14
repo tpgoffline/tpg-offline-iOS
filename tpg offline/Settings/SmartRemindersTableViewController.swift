@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SmartRemindersSettingsTableViewController: UITableViewController {
+class SmartRemindersTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,7 +19,7 @@ class SmartRemindersSettingsTableViewController: UITableViewController {
       self.navigationController?.navigationBar.barStyle = .black
       self.tableView.separatorColor = App.separatorColor
     }
-    
+
     ColorModeManager.shared.addColorModeDelegate(self)
   }
 
@@ -50,7 +50,7 @@ class SmartRemindersSettingsTableViewController: UITableViewController {
       cell.textLabel?.numberOfLines = 0
       cell.textLabel?.text = Text.smartRemindersDescription
     }
-    
+
     cell.backgroundColor = App.cellBackgroundColor
     cell.textLabel?.textColor = App.textColor
     if App.darkMode {
@@ -86,7 +86,7 @@ class SmartRemindersSettingsTableViewController: UITableViewController {
       self.present(alert, animated: true, completion: nil)
     }
   }
-  
+
   deinit {
     ColorModeManager.shared.removeColorModeDelegate(self)
   }

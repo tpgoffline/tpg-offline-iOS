@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intents
 
 struct DeparturesGroup: Decodable {
   var departures: [Departure]
@@ -34,6 +35,39 @@ struct DeparturesGroup: Decodable {
       departures = departures.filter({ $0.leftTime != "-1" })
     }
     self.init(departures: departures)
+  }
+
+  @available(iOS 12.0, *)
+  @available(watchOSApplicationExtension 5.0, *)
+  var intentResponse: DeparturesIntentResponse {
+    let response = DeparturesIntentResponse(code: .success, userActivity: nil)
+    response.departures = self.departures.map({ (departure) -> INObject in
+      let destination = departure.line.destination
+      let lineCode = departure.line.code
+      let leftTime = departure.leftTime
+      return INObject(identifier: "\(lineCode),\(destination),\(leftTime)",
+                      display: destination)
+    })
+    response.versionNumber = App.intentsVersionNumber
+    // swiftlint:disable line_length
+    switch departures.count {
+    case 0:
+        response.nextDeparturesString = "There are no upcoming departures.".localized
+    case 1:
+        response.nextDeparturesString =
+            String(format: "The next departure of the line %@, destination %@, is in %@ minutes.".localized,
+                   departures[0].line.code, departures[0].line.destination,
+                   departures[0].leftTime)
+    default:
+        response.nextDeparturesString =
+            String(format: "The next departure of the line %@, destination %@, is in %@ minutes, and the next one of the line %@, destination %@, is in %@ minutes.".localized,
+                   departures[0].line.code, departures[0].line.destination,
+                   departures[0].leftTime,
+                   departures[1].line.code, departures[1].line.destination,
+                   departures[1].leftTime)
+    }
+    // swiftlint:enable line_length
+    return response
   }
 }
 
@@ -132,7 +166,8 @@ struct Departure: Decodable {
         let vehiculeNo = (try? container.decode(Int.self, forKey: .vehiculeNo)) ?? -1
         let wifi = (try? container.decode(Bool.self, forKey: .wifi)) ?? false
         let reliability =
-          (try? container.decode(Reliability.self, forKey: .reliability)) ?? .reliable
+          (try? container.decode(Reliability.self, forKey: .reliability))
+            ?? .reliable
         let reducedMobilityAccessibility: ReducedMobilityAccessibility =
           ((try? container.decode(String.self, forKey: .characteristics)) ?? "PMR")
             == "PMR" ? .accessible : .inaccessible
@@ -153,11 +188,14 @@ struct Departure: Decodable {
         let destinationId =
           try container.decode(String.self, forKey: .directionOffline)
         let destination =
-          App.stops.filter({ $0.sbbId == destinationId }).first?.name ?? destinationId
+          App.stops.filter({
+            $0.sbbId == destinationId
+          }).first?.name ?? destinationId
         let line = Departure.Line(code: lineString,
                                   destination: destination,
                                   destinationCode: "")
-        let timestamp = (try container.decode(String.self, forKey: .timestamp)) + "+0200"
+        let timestamp = (try container.decode(String.self,
+                                              forKey: .timestamp)) + "+0200"
         self.init(line: line,
                   code: -1,
                   leftTime: "",

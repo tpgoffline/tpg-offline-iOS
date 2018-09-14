@@ -11,7 +11,7 @@ import UIKit
 enum FromToVia {
   case from
   case to
-  case via(Int) // swiftlint:disable:this identifier_name
+  case via(Int)
 }
 
 class StopsForRouteTableViewController: StopsTableViewController {
@@ -32,7 +32,8 @@ class StopsForRouteTableViewController: StopsTableViewController {
     self.searchController.searchBar.placeholder = Text.lookingForAStop
   }
 
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  override func tableView(_ tableView: UITableView,
+                          didSelectRowAt indexPath: IndexPath) {
     guard let viewController = self.navigationController?.viewControllers[0]
       as? RoutesTableViewController else { return }
     self.tableView.deselectRow(at: indexPath, animated: true)

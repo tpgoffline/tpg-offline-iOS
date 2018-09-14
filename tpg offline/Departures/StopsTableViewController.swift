@@ -49,12 +49,11 @@ class StopsTableViewController: UIViewController {
         if let stopCode = App.stops.filter({
           $0.code.escaped == self.searchText.escaped
         })[safe: 0] {
+
           //stops.removeAll(where: { $0.code == stopCode.code })
           var a: [Stop] = []
-          for stop in stops {
-            if stop.code != stopCode.code {
+          for stop in stops where stop.code != stopCode.code {
               a.append(stop)
-            }
           }
           stops = a
           stops.insert(stopCode, at: 0)
@@ -116,7 +115,7 @@ class StopsTableViewController: UIViewController {
 
     DispatchQueue.main.async {
       URLCache.shared.removeAllCachedResponses()
-      
+
       Alamofire.request(URL.stopsMD5).responseString { (response) in
         if let updatedMD5 = response.result.value,
           updatedMD5 != UserDefaults.standard.string(forKey: "stops.json.md5") {
@@ -185,14 +184,12 @@ class StopsTableViewController: UIViewController {
     self.tableView.sectionIndexBackgroundColor = .white
 
     if #available(iOS 11.0, *) {
-//      navigationController?.navigationBar.prefersLargeTitles = true
-//      navigationItem.largeTitleDisplayMode = .never
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
 
     navigationController?.navigationBar.titleTextAttributes =
-      [NSAttributedStringKey.foregroundColor: App.textColor]
+      [NSAttributedString.Key.foregroundColor: App.textColor]
 
     if App.darkMode {
       self.tableView.sectionIndexBackgroundColor = App.cellBackgroundColor
@@ -232,7 +229,7 @@ class StopsTableViewController: UIViewController {
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
   }
 
@@ -259,7 +256,7 @@ class StopsTableViewController: UIViewController {
     }
   }
 
-  func lookForAdresses() {
+  func searchForAdresses() {
     self.addressRequest?.cancel()
     let requestParameters = [
       "address": searchController.searchBar.text ?? "",
@@ -337,7 +334,7 @@ extension StopsTableViewController: UISearchResultsUpdating,
     App.log("Stops: Search: \(text) - \(self.searchMode)")
     self.searchText = text
     if self.searchMode == .addresses {
-      lookForAdresses()
+      searchForAdresses()
     }
   }
 
@@ -355,7 +352,7 @@ extension StopsTableViewController: UISearchResultsUpdating,
     }
     App.log("Stops: Search: \(self.searchText ?? "") - \(self.searchMode)")
     if self.searchMode == .addresses {
-      lookForAdresses()
+      searchForAdresses()
     }
     self.tableView.reloadData()
   }
@@ -556,29 +553,29 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
     let font = UIFont.preferredFont(forTextStyle: .headline)
     if key == "location" {
       headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1)
-      let titleAttributes = [NSAttributedStringKey.font: font,
-                             NSAttributedStringKey.foregroundColor:
+      let titleAttributes = [NSAttributedString.Key.font: font,
+                             NSAttributedString.Key.foregroundColor:
                               App.darkMode ? #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.9529411765, alpha: 1) : UIColor.white]
-        as [NSAttributedStringKey: Any]
+        as [NSAttributedString.Key: Any]
       headerCell?.textLabel?.attributedText =
         NSAttributedString(string: Text.nearestStops,
                            attributes: titleAttributes)
 
     } else if key == "favorites" {
       headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1)
-      let titleAttributes = [NSAttributedStringKey.font: font,
-                             NSAttributedStringKey.foregroundColor:
+      let titleAttributes = [NSAttributedString.Key.font: font,
+                             NSAttributedString.Key.foregroundColor:
                               App.darkMode ? #colorLiteral(red: 0.09411764706, green: 0.7019607843, blue: 0.3921568627, alpha: 1) : UIColor.white]
-        as [NSAttributedStringKey: Any]
+        as [NSAttributedString.Key: Any]
       headerCell?.textLabel?.attributedText =
         NSAttributedString(string: Text.favorites,
                            attributes: titleAttributes)
     } else {
       headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
-      let titleAttributes = [NSAttributedStringKey.font: font,
-                             NSAttributedStringKey.foregroundColor:
+      let titleAttributes = [NSAttributedString.Key.font: font,
+                             NSAttributedString.Key.foregroundColor:
                               App.darkMode ? #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1) : UIColor.white]
-        as [NSAttributedStringKey: Any]
+        as [NSAttributedString.Key: Any]
       headerCell?.textLabel?.attributedText =
         NSAttributedString(string: key, attributes: titleAttributes)
     }
@@ -607,7 +604,7 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
                                                     sender: nil)
       detailNavigationController.popToRootViewController(animated: false)
     }
-    
+
     guard let stop =
       (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
         return

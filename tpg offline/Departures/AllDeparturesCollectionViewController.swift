@@ -31,7 +31,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
 
     navigationItem.rightBarButtonItems = [
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.refresh),
                       accessbilityLabel: "Reload".localized)
@@ -60,12 +60,13 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
     guard let stop = self.stop,
       let departure = self.departure else { return }
     loading = true
+    let destinationCode = departure.line.destinationCode
     Alamofire.request(URL.allNextDepartures,
                       method: .get,
                       parameters: ["key": API.tpg,
                                    "stopCode": stop.code,
                                    "lineCode": departure.line.code,
-                                   "destinationCode": departure.line.destinationCode])
+                                   "destinationCode": destinationCode])
       .responseData { (response) in
         if let data = response.result.value {
           var options = DeparturesOptions()
@@ -155,7 +156,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController {
       return headerView
     } else {
       switch kind {
-      case UICollectionElementKindSectionHeader:
+      case UICollectionView.elementKindSectionHeader:
         let cellId = "allDeparturesHeader"
         guard let headerView = collectionView
           .dequeueReusableSupplementaryView(ofKind: kind,

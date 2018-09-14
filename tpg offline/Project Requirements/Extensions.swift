@@ -26,7 +26,7 @@ extension String {
     return App.stops.filter({$0.nameTransportAPI == self})[safe: 0]?.name
       ?? self
   }
-  
+
   var time: String {
     if Int(self) ?? 0 > 60 {
       let hour = (Int(self) ?? 0) / 60
@@ -168,7 +168,7 @@ extension String {
       }
 
       // Same case bonus.
-      if (string[idxOf] == word[word.index(word.startIndex, offsetBy: i)]) {
+      if string[idxOf] == word[word.index(word.startIndex, offsetBy: i)] {
         charScore += 0.1
       }
 
@@ -219,11 +219,11 @@ extension UIViewController: ColorModeDelegate {
 
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.largeTitleTextAttributes =
-        [NSAttributedStringKey.foregroundColor: App.textColor]
+        [NSAttributedString.Key.foregroundColor: App.textColor]
     }
 
     navigationController?.navigationBar.titleTextAttributes =
-      [NSAttributedStringKey.foregroundColor: App.textColor]
+      [NSAttributedString.Key.foregroundColor: App.textColor]
 
     if App.darkMode {
       self.navigationController?.navigationBar.barStyle = .black
@@ -277,7 +277,7 @@ public extension UIView {
 
 public extension UIBarButtonItem {
   convenience init(image: UIImage?,
-                   style: UIBarButtonItemStyle,
+                   style: UIBarButtonItem.Style,
                    target: Any?,
                    action: Selector?,
                    accessbilityLabel: String) {
@@ -298,7 +298,7 @@ extension UIColor {
 
   func adjust(by percentage: CGFloat=0.3) -> UIColor {
     var r: CGFloat=0, g: CGFloat=0, b: CGFloat=0, a: CGFloat=0
-    if (self.getRed(&r, green: &g, blue: &b, alpha: &a)) {
+    if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
       return UIColor(red: max(min(r + percentage, 1.0), 0),
                      green: max(min(g + percentage, 1.0), 0),
                      blue: max(min(b + percentage, 1.0), 0),
@@ -513,9 +513,9 @@ extension UIColor {
 extension NSMutableAttributedString {
   @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
     let attrs =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-       NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
+       NSAttributedString.Key.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
+        as [NSAttributedString.Key: Any]
     let boldString = NSMutableAttributedString(string: "\(text)", attributes: attrs)
     self.append(boldString)
     return self
@@ -523,9 +523,9 @@ extension NSMutableAttributedString {
 
   @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
     let attrs =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body),
-       NSAttributedStringKey.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
+       NSAttributedString.Key.foregroundColor: App.darkMode ? #colorLiteral(red: 1, green: 0.9215686275, blue: 0.231372549, alpha: 1) : App.textColor]
+        as [NSAttributedString.Key: Any]
     let normal = NSAttributedString(string: text, attributes: attrs)
     self.append(normal)
     return self

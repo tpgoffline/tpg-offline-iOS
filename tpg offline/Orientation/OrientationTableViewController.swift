@@ -8,7 +8,8 @@
 
 import UIKit
 
-class OrientationTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class OrientationTableViewController: UIViewController,
+                                      UITableViewDelegate, UITableViewDataSource {
 
   var maps: [String: UIImage] = [
     Text.urbanMap: #imageLiteral(resourceName: "urbainMap"),
@@ -23,7 +24,7 @@ class OrientationTableViewController: UIViewController, UITableViewDelegate, UIT
     Text.noctambusUrbanMap,
     Text.noctambusRegionalMap
   ]
-  
+
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
 
@@ -46,7 +47,7 @@ class OrientationTableViewController: UIViewController, UITableViewDelegate, UIT
     segmentedControl.setTitle(Text.map, forSegmentAt: 1)
     segmentedControl.selectedSegmentIndex = 0
     ColorModeManager.shared.addColorModeDelegate(self)
-    
+
     self.tableView.backgroundColor = App.darkMode ? .black :
       .groupTableViewBackground
     self.view.backgroundColor = App.darkMode ? .black :
@@ -69,12 +70,12 @@ class OrientationTableViewController: UIViewController, UITableViewDelegate, UIT
   }
 
   func tableView(_ tableView: UITableView,
-                          numberOfRowsInSection section: Int) -> Int {
+                 numberOfRowsInSection section: Int) -> Int {
     return segmentedControl.selectedSegmentIndex == 1 ? maps.count : App.lines.count
   }
 
   func tableView(_ tableView: UITableView,
-                          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if segmentedControl.selectedSegmentIndex == 1 {
       guard let cell =
         tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath)
@@ -99,11 +100,11 @@ class OrientationTableViewController: UIViewController, UITableViewDelegate, UIT
   }
 
   func tableView(_ tableView: UITableView,
-                          heightForRowAt indexPath: IndexPath) -> CGFloat {
+                 heightForRowAt indexPath: IndexPath) -> CGFloat {
     if segmentedControl.selectedSegmentIndex == 1 {
       return 190
     } else {
-      return UITableViewAutomaticDimension
+      return UITableView.automaticDimension
     }
   }
 
@@ -133,10 +134,12 @@ class OrientationTableViewController: UIViewController, UITableViewDelegate, UIT
   deinit {
     ColorModeManager.shared.removeColorModeDelegate(self)
   }
-  
+
   @IBAction func setTableViewContent() {
     self.tableView.reloadData()
-    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
+                               at: .top,
+                               animated: false)
   }
 }
 
@@ -204,15 +207,18 @@ class LineTableViewControllerRow: UITableViewCell {
     didSet {
       guard let line = self.line else { return }
       self.textLabel?.text = Text.line(line.line)
-      self.detailTextLabel?.text = String(format: "%@ ↔︎ %@", line.departureName, line.arrivalName)
+      self.detailTextLabel?.text = String(format: "%@ ↔︎ %@",
+                                          line.departureName,
+                                          line.arrivalName)
       if App.darkMode {
         self.backgroundColor = App.cellBackgroundColor
-        self.textLabel?.textColor = App.color(for: line.line)
-        self.detailTextLabel?.textColor = App.color(for: line.line)
+        self.textLabel?.textColor = LineColorManager.color(for: line.line)
+        self.detailTextLabel?.textColor = LineColorManager.color(for: line.line)
       } else {
-        self.backgroundColor = App.color(for: line.line)
-        self.textLabel?.textColor = App.color(for: line.line).contrast
-        self.detailTextLabel?.textColor = App.color(for: line.line).contrast
+        self.backgroundColor = LineColorManager.color(for: line.line)
+        self.textLabel?.textColor = LineColorManager.color(for: line.line).contrast
+        self.detailTextLabel?.textColor =
+          LineColorManager.color(for: line.line).contrast
       }
       self.tintColor = self.textLabel?.textColor
     }

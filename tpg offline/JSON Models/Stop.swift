@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import Intents
 
 struct Stop: Codable {
   struct Localisations: Codable {
@@ -36,7 +37,8 @@ struct Stop: Codable {
 
       let latitude = try container.decode(Double.self, forKey: .latitude)
       let longitude = try container.decode(Double.self, forKey: .longitude)
-      let destinations = try container.decode([Destinations].self, forKey: .destinations)
+      let destinations = try container.decode([Destinations].self,
+                                              forKey: .destinations)
 
       self.init(location: CLLocation(latitude: latitude, longitude: longitude),
                 destinations: destinations)
@@ -89,6 +91,17 @@ struct Stop: Codable {
 
   /// Lines and operators aviable for the stop
   var lines: [String: Operator]
+
+  @available(iOS 12.0, *)
+  @available(watchOSApplicationExtension 5.0, *)
+  var intent: DeparturesIntent {
+    let intent = DeparturesIntent()
+    intent.stop = INObject(identifier: "\(code)", display: name)
+    intent.versionNumber = 1.0
+    intent.suggestedInvocationPhrase =
+        String(format: "View departures for %@".localized, name)
+    return intent
+  }
 
   public init(name: String,
               title: String,

@@ -12,6 +12,7 @@ import Alamofire
 import CoreSpotlight
 import Fabric
 import Crashlytics
+import Intents
 
 enum TouchActions: String {
   case departures = "departures"
@@ -39,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     //swiftlint:disable:previous line_length
     #if DEBUG
     print("WARNING: Debug mode, Crashlytics deactivated")
@@ -71,6 +72,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     if !App.disableForceSmartReminders {
       App.smartReminders = true
+    }
+
+    if #available(iOS 10.0, *) {
+      INPreferences.requestSiriAuthorization { status in
+        if status == .authorized {
+          print("Hey, Siri!")
+        } else {
+          print("Nay, Siri!")
+        }
+      }
     }
 
     if let tabController = (window?.rootViewController as? UITabBarController) {
@@ -129,14 +140,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     print(token)
     App.apnsToken = token
   }
-  
-  func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+
+  func application(_ application: UIApplication,
+                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
     print(error)
   }
 
   func application(_ application: UIApplication,
                    continue userActivity: NSUserActivity,
-                   restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+                   restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    // swiftlint:disable:previous line_length
     if userActivity.activityType == CSSearchableItemActionType,
       let id = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String,
       let tabController = (window?.rootViewController as? UITabBarController) {

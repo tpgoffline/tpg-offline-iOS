@@ -112,7 +112,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
         do {
           let json = try jsonDecoder.decode([DisruptionMonitoring].self, from: data)
           self.disruptionMonitoringList = json
-          self.requestStatus = json.count == 0 ? .noResults : .ok
+          self.requestStatus = json.isEmpty ? .noResults : .ok
         } catch {
           self.requestStatus = .error
           return
@@ -207,7 +207,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
       return nil
     }
     let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
-    let color = App.color(for: lines[section])
+    let color = LineColorManager.color(for: lines[section])
     headerCell?.backgroundColor = App.darkMode ? App.cellBackgroundColor : color
     headerCell?.textLabel?.text = String(format: "Line %@".localized, lines[section])
     headerCell?.textLabel?.textColor = App.darkMode ? color : color.contrast
@@ -232,7 +232,7 @@ class DisruptionsMonitoringTableViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView,
-                          commit editingStyle: UITableViewCellEditingStyle,
+                          commit editingStyle: UITableViewCell.EditingStyle,
                           forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       guard let row = tableView.cellForRow(at: indexPath)

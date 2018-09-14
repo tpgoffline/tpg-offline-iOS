@@ -21,6 +21,10 @@ class RouteMapViewController: UIViewController {
     guard let mapView = self.mapView else { return }
 
     mapView.delegate = self
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
+    
     title = Text.map
 
     ColorModeManager.shared.addColorModeDelegate(self)
@@ -42,13 +46,14 @@ class RouteMapViewController: UIViewController {
         mapView.addAnnotation(annotation)
       }
 
-      if coordinates.count > 0 {
-        let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+      if !coordinates.isEmpty {
+        let geodesic = MGLPolyline(coordinates: &coordinates,
+                                   count: UInt(coordinates.count))
         geodesic.title = section.journey?.lineCode ?? ""
         mapView.add(geodesic)
       }
     }
-    
+
     if allPoints.isEmpty {
       allPoints = [
         CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
@@ -61,20 +66,27 @@ class RouteMapViewController: UIViewController {
         CLLocationCoordinate2D(latitude: connection.from.station.coordinate.x,
                                longitude: connection.from.station.coordinate.y)
       mapView.addAnnotation(fromAnnotation)
-      
+
       let toAnnotation = MGLPointAnnotation()
       toAnnotation.title = connection.to.station.name.toStopName
       toAnnotation.coordinate =
         CLLocationCoordinate2D(latitude: connection.to.station.coordinate.x,
                                longitude: connection.to.station.coordinate.y)
       mapView.addAnnotation(toAnnotation)
-      
-      let geodesic = MGLPolyline(coordinates: &allPoints, count: UInt(allPoints.count))
+
+      let geodesic = MGLPolyline(coordinates: &allPoints,
+                                 count: UInt(allPoints.count))
       geodesic.title = "Walk"
       mapView.add(geodesic)
     }
-    
+
     mapView.setCenter(allPoints[0], zoomLevel: 14, animated: false)
+  }
+
+  override func colorModeDidUpdated() {
+    super.colorModeDidUpdated()
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
   }
 
   deinit {
@@ -83,19 +95,21 @@ class RouteMapViewController: UIViewController {
 }
 
 extension RouteMapViewController: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     if let annotation = annotation as? MGLPolyline {
       if (annotation.title ?? "") == "Walk" {
         return App.darkMode ? .white : .black
       } else {
-        return App.color(for: (annotation.title ?? ""))
+        return LineColorManager.color(for: (annotation.title ?? ""))
       }
     } else {
       return App.darkMode ? .white : .black
     }
   }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     if annotation is MGLPolyline {
       return false
     } else {

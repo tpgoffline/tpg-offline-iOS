@@ -27,7 +27,7 @@ open class DatePickerDialog: UIView {
     
     // MARK: - Variables
     private var defaultDate:    Date?
-    private var datePickerMode: UIDatePickerMode?
+    private var datePickerMode: UIDatePicker.Mode?
     private var callback:       DatePickerCallback?
     var showCancelButton:Bool = false
     var locale: Locale?
@@ -82,7 +82,7 @@ open class DatePickerDialog: UIView {
     }
     
     /// Create the dialog view, and animate opening the dialog
-    open func show(_ title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", nowButtonTitle: String = "Set to now", defaultDate: Date = Date(), minimumDate: Date? = nil, maximumDate: Date? = nil, datePickerMode: UIDatePickerMode = .dateAndTime, arrivalTime: Bool, callback: @escaping DatePickerCallback) {
+    open func show(_ title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", nowButtonTitle: String = "Set to now", defaultDate: Date = Date(), minimumDate: Date? = nil, maximumDate: Date? = nil, datePickerMode: UIDatePicker.Mode = .dateAndTime, arrivalTime: Bool, callback: @escaping DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
         self.nowButton.setTitle(nowButtonTitle, for: .normal)
@@ -92,7 +92,7 @@ open class DatePickerDialog: UIView {
         self.datePickerMode = datePickerMode
         self.callback = callback
         self.defaultDate = defaultDate
-        self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePickerMode.date
+        self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePicker.Mode.date
         self.datePicker.date = self.defaultDate ?? Date()
         self.datePicker.maximumDate = maximumDate
         self.datePicker.minimumDate = minimumDate
@@ -104,10 +104,10 @@ open class DatePickerDialog: UIView {
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
         guard let window = appDelegate.window else { fatalError() }
         window?.addSubview(self)
-        window?.bringSubview(toFront: self)
+        window?.bringSubviewToFront(self)
         window?.endEditing(true)
         
-        NotificationCenter.default.addObserver(self, selector: .deviceOrientationDidChange, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: .deviceOrientationDidChange, name: UIDevice.orientationDidChangeNotification, object: nil)
         
         /* Anim */
         UIView.animate(

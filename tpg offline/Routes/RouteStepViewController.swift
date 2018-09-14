@@ -35,7 +35,7 @@ class RouteStepViewController: UIViewController {
     title = Text.line(section.journey?.lineCode)
 
     if section.journey?.compagny == "TPG" {
-      self.color = App.color(for: section.journey?.lineCode ?? "")
+      self.color = LineColorManager.color(for: section.journey?.lineCode ?? "")
     } else if section.journey?.compagny == "SBB" {
       title = Text.sbb(line: section.journey?.lineCode)
       self.color = .red
@@ -65,7 +65,8 @@ class RouteStepViewController: UIViewController {
       mapView.addAnnotation(annotation)
     }
 
-    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+    let geodesic = MGLPolyline(coordinates: &coordinates,
+                               count: UInt(coordinates.count))
     mapView.add(geodesic)
     mapView.setCenter(coordinates[0], zoomLevel: 14, animated: false)
 
@@ -235,7 +236,7 @@ class RouteStepViewController: UIViewController {
         timeBefore == 0 ? Text.busIsCommingNow : Text.minutesLeft(timeBefore)
 
       content.body = Text.take(line: section.journey?.lineCode, to: destinationName)
-      content.sound = UNNotificationSound.default()
+      content.sound = UNNotificationSound.default
       let identifier = "routeNotification-\(String.random(30))"
       let request = UNNotificationRequest(identifier: identifier,
                                           content: content,
@@ -296,7 +297,8 @@ class RouteStepViewController: UIViewController {
 }
 
 extension RouteStepViewController: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
     if annotation is MGLPolyline {
       return self.color
     } else {
@@ -319,8 +321,9 @@ extension RouteStepViewController: MGLMapViewDelegate {
   func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
     titleSelected = ""
   }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     if annotation is MGLPolyline {
       return false
     } else {
@@ -341,13 +344,13 @@ extension RouteStepViewController: UITableViewDataSource, UITableViewDelegate {
                                              for: indexPath)
 
     var titleAttributes =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline),
-       NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
+       NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
     var subtitleAttributes =
-      [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
-       NSAttributedStringKey.foregroundColor: App.textColor]
-        as [NSAttributedStringKey: Any]
+      [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline),
+       NSAttributedString.Key.foregroundColor: App.textColor]
+        as [NSAttributedString.Key: Any]
     cell.textLabel?.numberOfLines = 0
     cell.detailTextLabel?.numberOfLines = 0
 

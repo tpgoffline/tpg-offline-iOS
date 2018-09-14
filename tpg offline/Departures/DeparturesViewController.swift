@@ -11,6 +11,7 @@ import Mapbox
 import Alamofire
 import UserNotifications
 import MessageUI
+import Intents
 #if !arch(i386) && !arch(x86_64)
 import NetworkExtension
 #endif
@@ -29,11 +30,21 @@ class DeparturesViewController: UIViewController {
                    attributes: ["appId": stop.code])
 
       navigationItem.title = stop.name
-      navigationItem.accessibilityTraits = UIAccessibilityTraitNone
+      navigationItem.accessibilityTraits = UIAccessibilityTraits.none
       refreshDepatures()
 
       configureTabBarItems()
       loadMap()
+
+      // Siri Intent
+      if #available(iOS 12.0, *) {
+        let interaction = INInteraction(intent: stop.intent, response: nil)
+        interaction.donate { (error) in
+          if let error = error {
+            print(error.localizedDescription)
+          }
+        }
+      }
     }
   }
   var departures: DeparturesGroup?
@@ -69,7 +80,7 @@ class DeparturesViewController: UIViewController {
 
     self.mapView.isHidden = true
 
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 62
 
     if self.view.traitCollection.verticalSizeClass == .compact,
@@ -88,7 +99,7 @@ class DeparturesViewController: UIViewController {
       self.tableView.separatorColor = App.separatorColor
       self.view.backgroundColor = .black
     }
-    
+
     mapView.delegate = self
     loadMap()
 
@@ -103,24 +114,24 @@ class DeparturesViewController: UIViewController {
   func configureTabBarItems() {
     navigationItem.rightBarButtonItems = [
       UIBarButtonItem(image: App.filterFavoritesLines ? #imageLiteral(resourceName: "filter") : #imageLiteral(resourceName: "filterEmpty"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.toggleFilterFavoritesLines),
                       accessbilityLabel: "Filter favorites lines".localized),
       UIBarButtonItem(image: App.favoritesStops.contains(stop!.appId) ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "starEmpty"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.setFavorite),
                       accessbilityLabel: App.favoritesStops.contains(stop!.appId) ?
                         "Unmark this stop as favorite".localized :
                         "Mark this stop as favorite".localized),
       UIBarButtonItem(image: #imageLiteral(resourceName: "pinMapNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.showMap),
                       accessbilityLabel: "Show map".localized),
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
-                      style: UIBarButtonItemStyle.plain,
+                      style: UIBarButtonItem.Style.plain,
                       target: self,
                       action: #selector(self.reload),
                       accessbilityLabel: "Reload departures".localized)
@@ -190,10 +201,10 @@ class DeparturesViewController: UIViewController {
 
   override func colorModeDidUpdated() {
     super.colorModeDidUpdated()
-    
+
     mapView.styleURL = URL.mapUrl
     mapView.reloadStyle(self)
-    
+
     self.tableView.backgroundColor = App.darkMode ? .black :
                                                     .groupTableViewBackground
     self.tableView.separatorColor = App.separatorColor
@@ -215,7 +226,8 @@ class DeparturesViewController: UIViewController {
         as? DeparturesTableViewCell else {
         return
       }
-      destinationViewController.color = App.color(for: row.departure!.line.code)
+      destinationViewController.color =
+        LineColorManager.color(for: row.departure!.line.code)
       destinationViewController.departure = row.departure
       destinationViewController.stop = self.stop
       App.log(String(format: "Departures: Select %@ - %@ - %@",
@@ -262,17 +274,17 @@ class DeparturesViewController: UIViewController {
       self.stackView.axis = .vertical
     }
   }
-  
+
   func loadMap() {
     guard let mapView = self.mapView else { return }
     guard let stop = self.stop else { return }
     if let annotations = mapView.annotations {
       mapView.removeAnnotations(annotations)
     }
-    
+
     let stopCoordinate = stop.location.coordinate
     mapView.setCenter(stopCoordinate, zoomLevel: 14, animated: false)
-    
+
     if !stop.localisations.isEmpty {
       for localisation in stop.localisations {
         let annotation = MGLPointAnnotation()
@@ -296,7 +308,7 @@ class DeparturesViewController: UIViewController {
       annotation.title = stop.name
       mapView.addAnnotation(annotation)
     }
-    
+
     mapView.styleURL = URL.mapUrl
     mapView.reloadStyle(self)
   }
@@ -307,21 +319,33 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     if self.requestStatus == .loading {
       return 1
     } else if self.requestStatus == any(of: .error, .noResults) {
-      return 1
+      return 2
     } else {
-      if App.filterFavoritesLines {
-        return (self.filteredLines.count) + 3
+      let addSiri: Int
+      if #available(iOS 12.0, *) {
+        addSiri = 1
       } else {
-        return (self.departures?.lines.count ?? 0) + 3
+        addSiri = 0
+      }
+      if App.filterFavoritesLines {
+        return (self.filteredLines.count) + 3 + addSiri
+      } else {
+        return (self.departures?.lines.count ?? 0) + 3 + addSiri
       }
     }
   }
 
-  // swiftlint:disable:next line_length
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
     if self.requestStatus == .loading {
       return 5
     } else if self.requestStatus == any(of: .error, .noResults) {
+      return 1
+    }
+    if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1)
+        || (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
       return 1
     }
     switch section {
@@ -331,6 +355,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return App.filterFavoritesLines ? 1 : 0
     case 2:
       return (self.stop?.connectionsMap ?? false) ? 1 : 0
+    case (self.departures?.lines.count ?? 0) + 3:
+      return 1
     default:
       let section = section - 3
       if App.filterFavoritesLines {
@@ -371,7 +397,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       }
       cell.departure = nil
       return cell
-    } else if self.requestStatus == .error {
+    } else if self.requestStatus == .error && indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell",
                                                for: indexPath)
       cell.imageView?.image = #imageLiteral(resourceName: "globe").maskWith(color: App.textColor)
@@ -381,7 +407,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       cell.detailTextLabel?.textColor = App.textColor
       cell.backgroundColor = App.cellBackgroundColor
       return cell
-    } else if self.requestStatus == .noResults {
+    } else if self.requestStatus == .noResults && indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "noInternetCell",
                                                for: indexPath)
       cell.imageView?.image = #imageLiteral(resourceName: "warningSign").maskWith(color: App.textColor)
@@ -390,6 +416,19 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       cell.textLabel?.textColor = App.textColor
       cell.detailTextLabel?.textColor = App.textColor
       cell.backgroundColor = App.cellBackgroundColor
+      return cell
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && indexPath.section == 1)
+        || (indexPath.section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "siriCell",
+                                                     for: indexPath)
+        as? AddToSiriTableViewCell,
+        let stop = self.stop else {
+          return UITableViewCell()
+      }
+      cell.parent = self
+      cell.shortcut = INShortcut(intent: stop.intent)
       return cell
     } else if indexPath.section == 2 {
       let cell = tableView.dequeueReusableCell(withIdentifier: "connectionCell",
@@ -460,6 +499,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return nil
     } else if section == any(of: 0, 1, 2) {
       return nil
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1)
+        || (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
+      return nil
     }
     let section = section - 3
     var line = self.departures?.lines[safe: section] ?? "?#!"
@@ -473,7 +517,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         else { return nil }
 
       let footerAction = #selector(self.addRemoveFromShowMore(button:))
-      let color = App.color(for: line, operator: self.stop?.lines[line] ?? .tpg)
+      let color = LineColorManager.color(for: line,
+                                         operator: self.stop?.lines[line] ?? .tpg)
 
       if showMoreLines.contains(String(section)) {
         footerCell.button.setTitle("Show less".localized, for: .normal)
@@ -516,6 +561,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return nil
     } else if section == any(of: 0, 1, 2) {
       return nil
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1) ||
+        (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
+      return nil
     }
     let section = section - 3
     var line = self.departures?.lines[safe: section] ?? "?#!"
@@ -527,15 +577,17 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return UIView()
     }
 
-    let color = App.color(for: line, operator: self.stop?.lines[line] ?? .tpg)
+    let color = LineColorManager.color(for: line,
+                                       operator: self.stop?.lines[line] ?? .tpg)
     let headerCellAction = #selector(self.toggleFavoritesLines(button:))
-    
+
     if line.count == 2 && line.first == "N" {
       line = Text.noctambus(line)
     }
     headerCell.titleLabel.text = line
     headerCell.titleLabel.textColor = App.darkMode ? color : color.contrast
-    headerCell.titleLabel.backgroundColor = App.darkMode ? App.cellBackgroundColor.lighten(by: 0.1) : color
+    headerCell.titleRoundedView.backgroundColor = App.darkMode ?
+      App.cellBackgroundColor.lighten(by: 0.1) : color
 
     if self.stop?.lines[line] == .tac {
       headerCell.subtitleLabel.isHidden = false
@@ -552,7 +604,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     headerCell.favoriteButton.tag = section
     headerCell.favoriteButton.addTarget(self,
                                         action: headerCellAction,
-                                        for: UIControlEvents.touchUpInside)
+                                        for: UIControl.Event.touchUpInside)
 
     return headerCell
   }
@@ -579,6 +631,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return CGFloat.leastNonzeroMagnitude
     } else if section == any(of: 0, 1, 2) {
       return CGFloat.leastNonzeroMagnitude
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1) ||
+        (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
+      return CGFloat.leastNonzeroMagnitude
     }
     return 44
   }
@@ -590,6 +647,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     } else if self.requestStatus == any(of: .error, .noResults) {
       return CGFloat.leastNonzeroMagnitude
     } else if section == any(of: 0, 1, 2) {
+      return CGFloat.leastNonzeroMagnitude
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1) ||
+        (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
       return CGFloat.leastNonzeroMagnitude
     }
     let section = section - 3
@@ -613,8 +675,13 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       !(indexPath.section == any(of: 0, 1, 2))
   }
 
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
+
   func tableView(_ tableView: UITableView,
                  editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    // swiftlint:disable:previous line_length
     if indexPath.section == any(of: 0, 1, 2) {
       return []
     }
@@ -776,15 +843,14 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     var localisations = stop?.localisations ?? []
     for (index, localisation) in localisations.enumerated() {
       localisations[index].destinations = localisation.destinations.filter({
-        (destination) -> Bool in
-        destination.line == departure.line.code &&
-          destination.destination == departure.line.destination
+        $0.line == departure.line.code &&
+          $0.destination == departure.line.destination
       })
     }
     localisations = localisations.filter { (localisation) -> Bool in
       !localisation.destinations.isEmpty
     }
-    
+
     if !self.noInternet,
       App.smartReminders,
       !forceDisableSmartReminders,
@@ -877,7 +943,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
           Text.busIsCommingNow : Text.minutesLeft(timeBefore)
         content.body = Text.take(line: departure.line.code,
                                  to: departure.line.destination) + Text.pushToShowMap
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         content.categoryIdentifier = "departureNotification"
 
         if let location = localisations[safe: 0]?.location {
@@ -993,7 +1059,7 @@ extension DeparturesViewController: UIViewControllerPreviewingDelegate {
       return nil
     }
 
-    detailVC.color = App.color(for: departure.line.code)
+    detailVC.color = LineColorManager.color(for: departure.line.code)
     detailVC.departure = cell.departure
     detailVC.stop = self.stop
     previewingContext.sourceRect = cell.frame
@@ -1021,11 +1087,13 @@ extension DeparturesViewController: MFMailComposeViewControllerDelegate {
 }
 
 extension DeparturesViewController: MGLMapViewDelegate {
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     return true
   }
-  
-  func mapView(_ mapView: MGLMapView, calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
+
+  func mapView(_ mapView: MGLMapView,
+               calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
     // Instantiate and return our custom callout view.
     return CustomCalloutView(representedObject: annotation)
   }

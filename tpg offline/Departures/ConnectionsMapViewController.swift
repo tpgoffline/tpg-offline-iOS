@@ -32,7 +32,7 @@ class ConnectionsMapViewController: UIViewController {
     errorLabel.textColor = App.textColor
     errorLabel.isHidden = true
 
-    loadingView.activityIndicatorViewStyle = App.darkMode ? .white : .gray
+    loadingView.style = App.darkMode ? .white : .gray
     loadingView.startAnimating()
 
     var path: URL
@@ -104,8 +104,8 @@ class ConnectionsMapViewController: UIViewController {
     scrollView.delegate = self
     scrollView.backgroundColor = .white
     scrollView.contentSize = imageView.bounds.size
-    scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth,
-                                   UIViewAutoresizing.flexibleHeight]
+    scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth,
+                                   UIView.AutoresizingMask.flexibleHeight]
     let point = CGPoint(x: (scrollView.contentSize.width -
                           scrollView.bounds.size.width) / 2,
                         y: (scrollView.contentSize.height -
@@ -125,7 +125,7 @@ class ConnectionsMapViewController: UIViewController {
     super.colorModeDidUpdated()
     self.view.backgroundColor = App.cellBackgroundColor
     errorLabel.textColor = App.textColor
-    loadingView.activityIndicatorViewStyle = App.darkMode ? .white : .gray
+    loadingView.style = App.darkMode ? .white : .gray
   }
 
   @objc func save() {

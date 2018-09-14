@@ -25,8 +25,8 @@ class MapViewController: UIViewController {
     scrollView.delegate = self
     scrollView.backgroundColor = .white
     scrollView.contentSize = imageView.bounds.size
-    scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth,
-                                   UIViewAutoresizing.flexibleHeight]
+    scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth,
+                                   UIView.AutoresizingMask.flexibleHeight]
     setZoomScale()
 
     let point = CGPoint(x: (scrollView.contentSize.width -

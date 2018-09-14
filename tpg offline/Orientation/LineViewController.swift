@@ -37,7 +37,7 @@ class LineViewController: UIViewController {
     App.log("Show line \(line.line)")
     App.logEvent("Show Orientation Line",
                  attributes: ["line": line.line])
-    
+
     mapView.styleURL = URL.mapUrl
     mapView.reloadStyle(self)
     mapView.delegate = self
@@ -72,7 +72,8 @@ class LineViewController: UIViewController {
       }
     }
 
-    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+    let geodesic = MGLPolyline(coordinates: &coordinates,
+                               count: UInt(coordinates.count))
     mapView.addAnnotation(geodesic)
     mapView.setCenter(coordinates.first!, zoomLevel: 14, animated: false)
 
@@ -84,7 +85,7 @@ class LineViewController: UIViewController {
     }
 
     if line.snotpgURL != "" {
-      let color = App.color(for: line.line)
+      let color = LineColorManager.color(for: line.line)
       let buttonColor = App.darkMode ? color : color.contrast
       waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: buttonColor), for: .normal)
       waybackMachineButton.setTitle("See line history".localized, for: .normal)
@@ -94,7 +95,7 @@ class LineViewController: UIViewController {
                                      action: #selector(self.showSnotpgPage),
                                      for: .touchUpInside)
       waybackMachineButton.backgroundColor = App.darkMode ?
-        .black : App.color(for: line.line)
+        .black : LineColorManager.color(for: line.line)
       waybackMachineButton.cornerRadius = waybackMachineButton.bounds.height / 2
       waybackMachineButton.clipsToBounds = true
     } else {
@@ -102,7 +103,7 @@ class LineViewController: UIViewController {
       waybackMachineHeightConstraint.priority = UILayoutPriority(997)
     }
 
-    self.pathsSegmentedControl.tintColor = App.color(for: line.line)
+    self.pathsSegmentedControl.tintColor = LineColorManager.color(for: line.line)
 
     if App.darkMode {
       self.tableView.sectionIndexBackgroundColor = App.cellBackgroundColor
@@ -133,7 +134,7 @@ class LineViewController: UIViewController {
     self.departureLabel.textColor = App.textColor
     self.arrivalLabel.textColor = App.textColor
     self.view.backgroundColor = App.cellBackgroundColor
-    self.pathsSegmentedControl.tintColor = App.color(for: (line?.line)!)
+    self.pathsSegmentedControl.tintColor = LineColorManager.color(for: (line?.line)!)
     self.arrowsImageView.image = #imageLiteral(resourceName: "horizontalReverse").maskWith(color: App.textColor)
     self.tableView.backgroundColor = App.darkMode ? .black : .white
     self.tableView.reloadData()
@@ -141,13 +142,13 @@ class LineViewController: UIViewController {
     mapView.reloadStyle(self)
     guard let line = self.line else { return }
     if line.snotpgURL != "" {
-      let color = App.color(for: line.line)
+      let color = LineColorManager.color(for: line.line)
       let buttonColor = App.darkMode ? color : color.contrast
       waybackMachineButton.setImage(#imageLiteral(resourceName: "rocket").maskWith(color: buttonColor), for: .normal)
       waybackMachineButton.setTitleColor(buttonColor, for: .normal)
       waybackMachineButton.tintColor = buttonColor
       waybackMachineButton.backgroundColor = App.darkMode ?
-        .black : App.color(for: line.line)
+        .black : LineColorManager.color(for: line.line)
     }
   }
 
@@ -176,7 +177,8 @@ class LineViewController: UIViewController {
   @IBAction func segmentedControlChanged() {
     self.tableView.reloadData()
     self.departureLabel.text = App.stops.filter({
-      $0.appId == line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].first
+      $0.appId ==
+        line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].first
     }).first?.name ?? ""
     self.arrivalLabel.text = App.stops.filter({
       $0.appId == line?.courses[self.pathsSegmentedControl.selectedSegmentIndex].last
@@ -198,7 +200,8 @@ class LineViewController: UIViewController {
       }
     }
 
-    let geodesic = MGLPolyline(coordinates: &coordinates, count: UInt(coordinates.count))
+    let geodesic = MGLPolyline(coordinates: &coordinates,
+                               count: UInt(coordinates.count))
     mapView.add(geodesic)
 
     mapView.setCenter(coordinates.first!, zoomLevel: 14, animated: true)
@@ -230,7 +233,7 @@ extension LineViewController: UITableViewDelegate, UITableViewDataSource {
     let last = (indexPath.row + 1) ==
       self.line?.courses[safe: pathsSegmentedControl.selectedSegmentIndex]?.count
     cell.configure(with: course,
-                   color: App.color(for: line?.line ?? ""),
+                   color: LineColorManager.color(for: line?.line ?? ""),
                    first: indexPath.row == 0,
                    last: last)
 
@@ -249,12 +252,14 @@ extension LineViewController: MGLMapViewDelegate {
       }
     }
   }
-  
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
-    return App.color(for: line?.line ?? "")
+
+  func mapView(_ mapView: MGLMapView,
+               strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
+    return LineColorManager.color(for: line?.line ?? "")
   }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+  func mapView(_ mapView: MGLMapView,
+               annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     return true
   }
 }

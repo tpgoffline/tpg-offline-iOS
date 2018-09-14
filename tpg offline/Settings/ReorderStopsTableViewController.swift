@@ -77,7 +77,7 @@ class ReorderStopsTableViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView,
-                          editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+                          editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
     // swiftlint:disable:previous line_length
     return .none
   }
