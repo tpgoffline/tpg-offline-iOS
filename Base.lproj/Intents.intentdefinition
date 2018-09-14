@@ -9,7 +9,7 @@
 	<key>INIntentDefinitionSystemVersion</key>
 	<string>18A384a</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>10L232m</string>
+	<string>10A254a</string>
 	<key>INIntentDefinitionToolsVersion</key>
 	<string>10.0</string>
 	<key>INIntents</key>
@@ -86,7 +86,7 @@
 					</dict>
 					<dict>
 						<key>INIntentResponseCodeFormatString</key>
-						<string>Here are the departures. ${nextDeparturesString}</string>
+						<string>${nextDeparturesString}</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>HrcxXu</string>
 						<key>INIntentResponseCodeName</key>

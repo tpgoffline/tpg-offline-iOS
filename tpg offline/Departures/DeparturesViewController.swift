@@ -342,6 +342,12 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     } else if self.requestStatus == any(of: .error, .noResults) {
       return 1
     }
+    if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1)
+        || (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
+      return 1
+    }
     switch section {
     case 0:
       return self.noInternet ? 1 : 0
@@ -413,7 +419,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return cell
     } else if #available(iOS 12.0, *),
       ((self.requestStatus == any(of: .error, .noResults) && indexPath.section == 1)
-        || (indexPath.section == (self.departures?.lines.count ?? 0) + 3)) {
+        || (indexPath.section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
       guard let cell = tableView.dequeueReusableCell(withIdentifier: "siriCell",
                                                      for: indexPath)
         as? AddToSiriTableViewCell,
@@ -492,6 +499,11 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return nil
     } else if section == any(of: 0, 1, 2) {
       return nil
+    } else if #available(iOS 12.0, *),
+      ((self.requestStatus == any(of: .error, .noResults) && section == 1)
+        || (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
+      return nil
     }
     let section = section - 3
     var line = self.departures?.lines[safe: section] ?? "?#!"
@@ -551,7 +563,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return nil
     } else if #available(iOS 12.0, *),
       ((self.requestStatus == any(of: .error, .noResults) && section == 1) ||
-        (section == (self.departures?.lines.count ?? 0) + 3)) {
+        (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
       return nil
     }
     let section = section - 3
@@ -620,7 +633,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return CGFloat.leastNonzeroMagnitude
     } else if #available(iOS 12.0, *),
       ((self.requestStatus == any(of: .error, .noResults) && section == 1) ||
-        (section == (self.departures?.lines.count ?? 0) + 3)) {
+        (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
       return CGFloat.leastNonzeroMagnitude
     }
     return 44
@@ -636,7 +650,8 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
       return CGFloat.leastNonzeroMagnitude
     } else if #available(iOS 12.0, *),
       ((self.requestStatus == any(of: .error, .noResults) && section == 1) ||
-        (section == (self.departures?.lines.count ?? 0) + 3)) {
+        (section == ((App.filterFavoritesLines ? self.filteredLines : self.departures?.lines ?? []).count) + 3)) {
+      // swiftlint:disable:previous line_length
       return CGFloat.leastNonzeroMagnitude
     }
     let section = section - 3

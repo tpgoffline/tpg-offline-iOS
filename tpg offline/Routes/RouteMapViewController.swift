@@ -21,6 +21,10 @@ class RouteMapViewController: UIViewController {
     guard let mapView = self.mapView else { return }
 
     mapView.delegate = self
+    
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
+    
     title = Text.map
 
     ColorModeManager.shared.addColorModeDelegate(self)
@@ -77,6 +81,12 @@ class RouteMapViewController: UIViewController {
     }
 
     mapView.setCenter(allPoints[0], zoomLevel: 14, animated: false)
+  }
+
+  override func colorModeDidUpdated() {
+    super.colorModeDidUpdated()
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
   }
 
   deinit {

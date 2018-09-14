@@ -128,12 +128,12 @@
 		AD9F018620CE827D0069B486 /* DarkModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F018520CE827D0069B486 /* DarkModeTableViewController.swift */; };
 		AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4B1FBF268100B929BD /* DefaultTabTableViewController.swift */; };
 		AD9F1E4E1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F1E4D1FBF2CE000B929BD /* RouteResultsDetailInterfaceController.swift */; };
-		ADA0D3601FB33EFF001DAC9F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */; };
 		ADA0D3631FB34E59001DAC9F /* DeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0D3621FB34E59001DAC9F /* DeparturesInterfaceController.swift */; };
 		ADA14E641FDEC4E100945249 /* lines.json in Resources */ = {isa = PBXBuildFile; fileRef = ADA14E631FDEC4E100945249 /* lines.json */; };
 		ADA14E661FDEC4FE00945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADA14E681FDEC5D300945249 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA14E651FDEC4FE00945249 /* Line.swift */; };
 		ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3E9BB2014E89400128D8E /* ConnectionsMapViewController.swift */; };
+		ADABD516214BEF7C0039779E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA0D35F1FB33EFF001DAC9F /* Alamofire.framework */; };
 		ADB08B4F2138681700E20EC0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37FEA81F41CAC300E84220 /* Alamofire.framework */; };
 		ADB08B50213868A900E20EC0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
 		ADB08B52213868E700E20EC0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
@@ -463,7 +463,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADA0D3601FB33EFF001DAC9F /* Alamofire.framework in Frameworks */,
+				ADABD516214BEF7C0039779E /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,6 +857,7 @@
 				AD66BDE120F90AFA009731D4 /* Frameworks */,
 				AD66BDE220F90AFA009731D4 /* Resources */,
 				AD66BE1420F90F30009731D4 /* ShellScript */,
+				ADABD4E3214BE6ED0039779E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1207,6 +1208,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		ADABD4E3214BE6ED0039779E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

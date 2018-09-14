@@ -19,6 +19,9 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
     didSet {
       guard let connection = self.connection else { return }
 
+      mapView.styleURL = URL.mapUrl
+      mapView.reloadStyle(self)
+
       var allPoints: [CLLocationCoordinate2D] = []
       for section in connection.sections ?? [] {
         var coordinates: [CLLocationCoordinate2D] = []
@@ -75,6 +78,9 @@ class RouteResultsDetailMapTableViewCell: UITableViewCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
+    mapView.styleURL = URL.mapUrl
+    mapView.reloadStyle(self)
+    
     self.mapView.delegate = self
     self.mapView.isPitchEnabled = false
     self.mapView.isZoomEnabled = false
