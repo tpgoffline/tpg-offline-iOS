@@ -12,7 +12,6 @@
 		AD03D7E42133E884000CA57E /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = AD03D7E12133E884000CA57E /* stops.json */; };
 		AD03D7E52133E884000CA57E /* stops.json in Resources */ = {isa = PBXBuildFile; fileRef = AD03D7E12133E884000CA57E /* stops.json */; };
 		AD0644401FBB366200E61E5A /* RoutesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06443F1FBB366200E61E5A /* RoutesInterfaceController.swift */; };
-		AD06AC722132C92900FF113B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
 		AD06AC732132DA1D00FF113B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
 		AD06AC742132DA1E00FF113B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
 		AD07A3651F8A60D300E65DE7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD07A3631F8A60D300E65DE7 /* Crashlytics.framework */; };
@@ -154,6 +153,7 @@
 		ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */; };
 		ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */; };
 		ADC487D01FB1EE7600675593 /* LinesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */; };
+		ADC8C63E21A85D2500FE5CE2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC8C63D21A85D2500FE5CE2 /* API.swift */; };
 		ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */; };
 		ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */; };
 		ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */; };
@@ -295,7 +295,7 @@
 		AD37FE811F41CA7F00E84220 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
 		AD37FE821F41CA7F00E84220 /* DetailDeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDeparturesViewController.swift; sourceTree = "<group>"; };
 		AD37FE831F41CA7F00E84220 /* StopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
-		AD37FE851F41CA8000E84220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AD37FE851F41CA8000E84220 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 1; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD37FE891F41CA8000E84220 /* BusRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRoute.swift; sourceTree = "<group>"; };
 		AD37FE8A1F41CA8000E84220 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AD37FE8B1F41CA8000E84220 /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
@@ -384,6 +384,7 @@
 		ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesInterfaceController.swift; sourceTree = "<group>"; };
 		ADC5289A1F4F322400EADB0D /* tpg offline.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = "tpg offline.geojson"; sourceTree = "<group>"; };
 		ADC5289B1F4F329800EADB0D /* Bel-Air.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bel-Air.gpx"; sourceTree = "<group>"; };
+		ADC8C63D21A85D2500FE5CE2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewCell.swift; sourceTree = "<group>"; };
 		ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
@@ -634,6 +635,7 @@
 				ADF6BED520F6005800DABB25 /* Text.swift */,
 				ADF6BED720F6050A00DABB25 /* URL.swift */,
 				AD66BE2720F91DB2009731D4 /* LineColorManager.swift */,
+				ADC8C63D21A85D2500FE5CE2 /* API.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -835,6 +837,7 @@
 				ADBC1C901FAF0E2700162195 /* Embed Watch Content */,
 				ADFE4A77201B053F005093C2 /* Embed App Extensions */,
 				AD6F32ED211D7467002A7252 /* ShellScript */,
+				ADCA6BEF21A9AFA90012DFB8 /* Increment build */,
 			);
 			buildRules = (
 			);
@@ -928,7 +931,7 @@
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Remy;
 				TargetAttributes = {
 					AD1E484B1FADFF6A00596076 = {
@@ -1226,6 +1229,24 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi\n";
 		};
+		ADCA6BEF21A9AFA90012DFB8 /* Increment build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Increment build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n#buildNumber=$(($buildNumber + 1))\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1312,6 +1333,7 @@
 				ADB9278E1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift in Sources */,
 				ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */,
 				AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */,
+				ADC8C63E21A85D2500FE5CE2 /* API.swift in Sources */,
 				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,
 				ADFE41162000DA3F00FAECF3 /* ColorModeManager.swift in Sources */,
 				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
@@ -1319,7 +1341,6 @@
 				AD9F1E4C1FBF268100B929BD /* DefaultTabTableViewController.swift in Sources */,
 				AD0986901F64151200CD8403 /* RoutesTableViewController.swift in Sources */,
 				ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */,
-				AD06AC722132C92900FF113B /* API.swift in Sources */,
 				AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

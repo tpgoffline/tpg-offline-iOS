@@ -45,6 +45,7 @@ DownloadOfflineDeparturesDelegate {
       cell.backgroundColor = App.cellBackgroundColor
       cell.textLabel?.text = Text.automatic
       cell.textLabel?.textColor = App.textColor
+      cell.textLabel?.numberOfLines = 0
       cell.detailTextLabel?.text = Text.offlineDeparturesOnWifi
       cell.detailTextLabel?.textColor = App.textColor
       cell.detailTextLabel?.numberOfLines = 0
@@ -93,6 +94,7 @@ DownloadOfflineDeparturesDelegate {
         cell.backgroundColor = App.cellBackgroundColor
         cell.textLabel?.text = Text.downloadMaps
         cell.textLabel?.textColor = App.textColor
+        cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = ""
 
         statusSwitch.isOn = App.downloadMaps
@@ -118,6 +120,7 @@ DownloadOfflineDeparturesDelegate {
         cell.backgroundColor = App.cellBackgroundColor
         cell.textLabel?.text = Text.allowWithMobileData
         cell.textLabel?.textColor = App.textColor
+        cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = ""
 
         statusSwitch.isOn = App.allowDownloadWithMobileData

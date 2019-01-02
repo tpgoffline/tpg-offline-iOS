@@ -86,6 +86,9 @@ class DarkModeTableViewController: UITableViewController {
 
   @objc func changeAutomatic() {
     App.automaticDarkMode = !App.automaticDarkMode
+    if !App.automaticDarkMode {
+      App.darkMode.toggle()
+    }
     if App.automaticDarkMode,
       App.sunriseSunsetManager?.isDaytime ?? false,
       App.darkMode == true {

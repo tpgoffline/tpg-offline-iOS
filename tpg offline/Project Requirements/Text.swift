@@ -253,7 +253,7 @@ struct Text {
   }
   static let tacNetwork = "TAC Network - Approximate timetable".localized
   static let tenMinutesBefore = "10 minutes before".localized
-  static let testing = "Testing".localized
+  static let testing = "Testing, design and funding".localized
   static let thatsAllForToday = "That's all for today".localized
   static let thursday = "Thursday".localized
   static let timetablesDepartures =

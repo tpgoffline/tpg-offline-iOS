@@ -141,7 +141,7 @@ class RouteResultsTableViewController: UITableViewController {
     parameters["date"] = dateFormatter.string(from: route.date)
     dateFormatter.dateFormat = "HH:mm"
     parameters["time"] = dateFormatter.string(from: route.date)
-    parameters["isArrivalTime"] = String(describing: route.arrivalTime.hashValue)
+    parameters["isArrivalTime"] = route.arrivalTime ? 1 : 0 //String(describing: route.arrivalTime.description)
     parameters["fields"] = [
       "connections/duration",
       "connections/from/station/id",
