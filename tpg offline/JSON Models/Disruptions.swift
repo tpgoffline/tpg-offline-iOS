@@ -24,32 +24,8 @@ struct DisruptionsGroup: Decodable {
 
     let disruptions = try container.decode([Disruption].self, forKey: .disruptions)
     var a: [String: [Disruption]] = [:]
-    var multilineAlreadySetDisruptions: [[String: String]] = []
     for disruption in disruptions {
-      let filteredDisruptions = disruptions.filter({
-        $0.nature == disruption.nature &&
-        $0.place == $0.place &&
-        $0.consequence == disruption.consequence
-      })
-      if filteredDisruptions.count > 1 {
-        if multilineAlreadySetDisruptions.index(of: [
-          "nature": disruption.nature,
-          "place": disruption.place,
-          "consequence": disruption.consequence]) == nil {
-          var y = disruption
-          y.line = filteredDisruptions.count == App.lines.count ?
-            Text.wholeTpgNetwork : filteredDisruptions.map({
-              $0.line
-            }).joined(separator: " / ")
-          a[y.line, default: []].append(y)
-          multilineAlreadySetDisruptions.append([
-            "nature": disruption.nature,
-            "place": disruption.place,
-            "consequence": disruption.consequence])
-        }
-      } else {
-        a[disruption.line, default: []].append(disruption)
-      }
+      a[disruption.line, default: []].append(disruption)
     }
     self.init(disruptions: a)
   }

@@ -111,6 +111,7 @@ struct Departure: Decodable {
   var platform: String?
   var vehiculeNo: Int
   var offline: Bool
+  var stop: Int?
 
   public init(line: Line,
               code: Int,
@@ -122,7 +123,8 @@ struct Departure: Decodable {
               reducedMobilityAccessibility: ReducedMobilityAccessibility,
               platform: String?,
               vehiculeNo: Int,
-              offline: Bool) {
+              offline: Bool,
+              stop: Int? = nil) {
     self.line = line
     self.code = code
     self.leftTime = leftTime
@@ -134,6 +136,7 @@ struct Departure: Decodable {
     self.platform = platform
     self.vehiculeNo = vehiculeNo
     self.offline = offline
+    self.stop = stop
 
     if self.leftTime == "" {
       self.calculateLeftTime()
@@ -188,9 +191,9 @@ struct Departure: Decodable {
         let destinationId =
           try container.decode(String.self, forKey: .directionOffline)
         let destination =
-          App.stops.filter({
+          App.stops.first(where: {
             $0.sbbId == destinationId
-          }).first?.name ?? destinationId
+          })?.name ?? destinationId
         let line = Departure.Line(code: lineString,
                                   destination: destination,
                                   destinationCode: "")

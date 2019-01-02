@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AD37FE601F41CA4600E84220"
+               BlueprintIdentifier = "AD685B2B21688C9F000045CB"
                BuildableName = "tpg offline.app"
                BlueprintName = "tpg offline"
                ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -26,34 +26,13 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "fr"
-      region = "FR"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "if [ `defaults read com.apple.iphonesimulator ConnectHardwareKeyboard` -eq 1 ]&#10;then&#10;defaults write com.apple.iphonesimulator ConnectHardwareKeyboard -bool false&#10;killall &quot;Simulator&quot;&#10;fi">
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AD1E484B1FADFF6A00596076"
-               BuildableName = "tpg offline UITests.xctest"
-               BlueprintName = "tpg offline UITests"
-               ReferencedContainer = "container:tpg offline.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AD37FE601F41CA4600E84220"
+            BlueprintIdentifier = "AD685B2B21688C9F000045CB"
             BuildableName = "tpg offline.app"
             BlueprintName = "tpg offline"
             ReferencedContainer = "container:tpg offline.xcodeproj">
@@ -76,25 +55,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AD37FE601F41CA4600E84220"
+            BlueprintIdentifier = "AD685B2B21688C9F000045CB"
             BuildableName = "tpg offline.app"
             BlueprintName = "tpg offline"
             ReferencedContainer = "container:tpg offline.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "_UIConstraintBasedLayoutPlaySoundOnUnsatisfiable___once"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "DYLD_PRINT_STATISTICS"
-            value = "1"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -108,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AD37FE601F41CA4600E84220"
+            BlueprintIdentifier = "AD685B2B21688C9F000045CB"
             BuildableName = "tpg offline.app"
             BlueprintName = "tpg offline"
             ReferencedContainer = "container:tpg offline.xcodeproj">
