@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
     App.loadLines()
     UIApplication.shared.registerForRemoteNotifications()
-    return App.loadStops(forceLocal: true)
+    return App.loadStops()
   }
 
   func application(_ application: UIApplication,
