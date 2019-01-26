@@ -13,7 +13,7 @@
         <!--Pulley View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PulleyViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PulleyViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
         <!--Drawer Container View Controller-->
         <scene sceneID="Xfm-J2-t1Z">
             <objects>
-                <viewController id="gqf-Ty-stL" customClass="DrawerContainerViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gqf-Ty-stL" customClass="DrawerContainerViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Mx-OV-uMc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,7 @@
         <!--Navigation View Controller-->
         <scene sceneID="gxO-a6-s9e">
             <objects>
-                <navigationController id="LtU-jE-hql" customClass="NavigationViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="LtU-jE-hql" customClass="NavigationViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="QPW-9Z-gi1">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -113,7 +113,7 @@
         <!--Home View Controller-->
         <scene sceneID="XUT-R6-Asa">
             <objects>
-                <viewController id="fVP-dn-jll" customClass="HomeViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fVP-dn-jll" customClass="HomeViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J94-Di-H3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +136,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favoriteCell" id="yU7-nR-rXM" customClass="FavoriteStopCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favoriteCell" id="yU7-nR-rXM" customClass="FavoriteStopCell" customModule="tpg_offline" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -148,9 +148,9 @@
                                                                     <color key="backgroundColor" name="AppColor"/>
                                                                 </imageView>
                                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8M-B2-jHi">
-                                                                    <rect key="frame" x="0.0" y="72" width="100" height="28"/>
+                                                                    <rect key="frame" x="0.0" y="71.5" width="100" height="28.5"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uM4-bp-CIx">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="28"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="29"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="6vd-5R-eZs">
@@ -224,7 +224,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="disruptionCell" id="Nfg-K2-0b0" customClass="DisruptionCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="disruptionCell" id="Nfg-K2-0b0" customClass="DisruptionCell" customModule="tpg_offline" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -494,7 +494,7 @@
         <!--Disruptions View Controller-->
         <scene sceneID="rs8-IN-Dh4">
             <objects>
-                <viewController id="a4E-Va-MXw" customClass="DisruptionsViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="a4E-Va-MXw" customClass="DisruptionsViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AcK-Tu-Sdf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -520,7 +520,7 @@
                                 <rect key="frame" x="0.0" y="37" width="375" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="disruptionsCell" rowHeight="258" id="gSb-dz-FnJ" customClass="DisruptionTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="disruptionsCell" rowHeight="258" id="gSb-dz-FnJ" customClass="DisruptionTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="258"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gSb-dz-FnJ" id="SDk-re-NBS">
@@ -545,7 +545,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="disruptionLineCollectionViewCell" id="kmN-Zt-cFA" customClass="DisruptionLineCollectionViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="disruptionLineCollectionViewCell" id="kmN-Zt-cFA" customClass="DisruptionLineCollectionViewCell" customModule="tpg_offline" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -647,7 +647,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTH-U4-qUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="8ZG-6i-5iK" customClass="DisruptionsCenteredView" customModule="tpg_offline_beta" customModuleProvider="target">
+                <view contentMode="scaleToFill" id="8ZG-6i-5iK" customClass="DisruptionsCenteredView" customModule="tpg_offline" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -695,7 +695,7 @@
         <!--Search View Controller-->
         <scene sceneID="WpL-xv-qE9">
             <objects>
-                <viewController id="CpB-GN-qjb" customClass="SearchViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CpB-GN-qjb" customClass="SearchViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ZA-QG-Uif">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -755,13 +755,13 @@
         <!--Departures View Controller-->
         <scene sceneID="cGe-Qc-MVW">
             <objects>
-                <viewController storyboardIdentifier="departuresVC" id="tiw-FH-InN" customClass="DeparturesViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="departuresVC" id="tiw-FH-InN" customClass="DeparturesViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nh8-ZP-g2N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYE-3s-dyE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="185.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="205.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gll-XC-GLE">
                                         <rect key="frame" x="16" y="16" width="343" height="38.5"/>
@@ -781,13 +781,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o8u-Cu-ewu">
-                                        <rect key="frame" x="16" y="62.5" width="343" height="115"/>
+                                        <rect key="frame" x="16" y="62.5" width="343" height="135"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMf-QF-mgM">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="115"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="62" height="135"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="directions" translatesAutoresizingMaskIntoConstraints="NO" id="i0b-za-PgN">
-                                                        <rect key="frame" x="15" y="8" width="50" height="50"/>
+                                                        <rect key="frame" x="6" y="8" width="50" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10057255993150685" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -801,7 +801,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Itinéraires" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="TVH-EV-qEb">
-                                                        <rect key="frame" x="8" y="66" width="64" height="41"/>
+                                                        <rect key="frame" x="8" y="66" width="46" height="61"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -821,10 +821,10 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWr-ze-qcd">
-                                                <rect key="frame" x="88" y="0.0" width="79.5" height="115"/>
+                                                <rect key="frame" x="70" y="0.0" width="62.5" height="135"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refresh" translatesAutoresizingMaskIntoConstraints="NO" id="GqS-sE-DM1">
-                                                        <rect key="frame" x="14.5" y="8" width="50" height="50"/>
+                                                        <rect key="frame" x="6.5" y="8" width="50" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -838,13 +838,13 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recharger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dvu-4f-OTH">
-                                                        <rect key="frame" x="8" y="66" width="63.5" height="41"/>
+                                                        <rect key="frame" x="8" y="66" width="46.5" height="61"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aed-pv-hMh">
-                                                        <rect key="frame" x="29.5" y="23" width="20" height="20"/>
+                                                        <rect key="frame" x="21.5" y="23" width="20" height="20"/>
                                                     </activityIndicatorView>
                                                 </subviews>
                                                 <gestureRecognizers/>
@@ -863,10 +863,10 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrj-tL-NU0">
-                                                <rect key="frame" x="175.5" y="0.0" width="80" height="115"/>
+                                                <rect key="frame" x="140.5" y="0.0" width="62" height="135"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyStar" translatesAutoresizingMaskIntoConstraints="NO" id="LDH-cp-8qP">
-                                                        <rect key="frame" x="15" y="8" width="50" height="50"/>
+                                                        <rect key="frame" x="6" y="8" width="50" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="7wN-OF-IfF"/>
@@ -879,7 +879,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favoris" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Jd8-CU-L76">
-                                                        <rect key="frame" x="8" y="66" width="64" height="41"/>
+                                                        <rect key="frame" x="8" y="66" width="46" height="61"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -900,10 +900,10 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHd-EF-saH">
-                                                <rect key="frame" x="263.5" y="0.0" width="79.5" height="115"/>
+                                                <rect key="frame" x="210.5" y="0.0" width="62.5" height="135"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="siri" translatesAutoresizingMaskIntoConstraints="NO" id="gJo-Pf-cp8">
-                                                        <rect key="frame" x="14.5" y="8" width="50" height="50"/>
+                                                        <rect key="frame" x="6" y="8" width="50" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -917,7 +917,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dkG-2k-FTU">
-                                                        <rect key="frame" x="8" y="66" width="63.5" height="41"/>
+                                                        <rect key="frame" x="8" y="66" width="46.5" height="61"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -936,6 +936,40 @@
                                                     <outletCollection property="gestureRecognizers" destination="405-FU-qZa" appends="YES" id="Vio-i0-dTa"/>
                                                 </connections>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAt-S4-hd7">
+                                                <rect key="frame" x="281" y="0.0" width="62" height="135"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="Nxu-Ix-b7h">
+                                                        <rect key="frame" x="6" y="8" width="50" height="50"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="Utr-id-8hB"/>
+                                                            <constraint firstAttribute="height" constant="50" id="wU6-JL-CTN"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="25"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connexions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-1T-ag2">
+                                                        <rect key="frame" x="8" y="66" width="46" height="61"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstItem="Xpv-1T-ag2" firstAttribute="leading" secondItem="nAt-S4-hd7" secondAttribute="leading" constant="8" id="JqS-rx-eOl"/>
+                                                    <constraint firstItem="Xpv-1T-ag2" firstAttribute="top" secondItem="Nxu-Ix-b7h" secondAttribute="bottom" constant="8" id="K7c-yh-CpT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Xpv-1T-ag2" secondAttribute="trailing" constant="8" id="RHs-cg-mHn"/>
+                                                    <constraint firstItem="Nxu-Ix-b7h" firstAttribute="top" secondItem="nAt-S4-hd7" secondAttribute="top" constant="8" id="Ryu-vO-Yml"/>
+                                                    <constraint firstItem="Nxu-Ix-b7h" firstAttribute="centerX" secondItem="nAt-S4-hd7" secondAttribute="centerX" id="SMA-jk-Dv7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Xpv-1T-ag2" secondAttribute="bottom" constant="8" id="jSJ-eK-Drg"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -950,10 +984,10 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ehi-Vy-IeB">
-                                <rect key="frame" x="0.0" y="249.5" width="375" height="357.5"/>
+                                <rect key="frame" x="0.0" y="269.5" width="375" height="337.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="departureCell" rowHeight="90" id="R6K-RN-mUN" customClass="DeparturesTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="departureCell" rowHeight="90" id="R6K-RN-mUN" customClass="DeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R6K-RN-mUN" id="Qbe-0A-3Mi">
@@ -1028,7 +1062,7 @@
                                             <outlet property="wifiImage" destination="uMk-QL-ErU" id="Hdo-xG-95m"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="WlH-o3-1Cl" customClass="DeparturesHeaderTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="WlH-o3-1Cl" customClass="DeparturesHeaderTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="145.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WlH-o3-1Cl" id="AWl-CV-A8Y">
@@ -1082,7 +1116,7 @@
                                             <outlet property="titleRoundedView" destination="OhJ-C7-gH7" id="gGm-ih-uWa"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="footerCell" rowHeight="88" id="5gI-Qu-uZq" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="footerCell" rowHeight="88" id="5gI-Qu-uZq" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="189.5" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5gI-Qu-uZq" id="2mj-V7-YnM">
@@ -1113,7 +1147,7 @@
                                             <outlet property="button" destination="cei-Dq-Hla" id="RZA-lb-b8y"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="disruptionCell" textLabel="e6P-x1-ZpM" detailTextLabel="RRd-0c-VVQ" imageView="9m0-pJ-AwI" rowHeight="88" style="IBUITableViewCellStyleSubtitle" id="3XY-Xg-dQr" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="disruptionCell" textLabel="e6P-x1-ZpM" detailTextLabel="RRd-0c-VVQ" imageView="9m0-pJ-AwI" rowHeight="88" style="IBUITableViewCellStyleSubtitle" id="3XY-Xg-dQr" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="277.5" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3XY-Xg-dQr" id="gC2-5Q-0ja">
@@ -1185,6 +1219,8 @@
                         <outletCollection property="buttonsImageViews" destination="LDH-cp-8qP" collectionClass="NSMutableArray" id="HC9-XP-hiQ"/>
                         <outletCollection property="buttonsImageViews" destination="GqS-sE-DM1" collectionClass="NSMutableArray" id="ZeV-kx-tve"/>
                         <outletCollection property="buttonsImageViews" destination="i0b-za-PgN" collectionClass="NSMutableArray" id="YZW-ap-Pl5"/>
+                        <outletCollection property="labels" destination="Xpv-1T-ag2" collectionClass="NSMutableArray" id="MO0-gc-gbo"/>
+                        <outletCollection property="buttonsImageViews" destination="Nxu-Ix-b7h" collectionClass="NSMutableArray" id="kle-HY-qQE"/>
                         <segue destination="ast-is-sCv" kind="show" identifier="showBusRoute" id="dgO-O4-wLR"/>
                     </connections>
                 </viewController>
@@ -1211,7 +1247,7 @@
         <!--All Departures For Line View Controller-->
         <scene sceneID="F8p-Ir-7CD">
             <objects>
-                <viewController id="Boo-nH-ozw" customClass="AllDeparturesForLineViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Boo-nH-ozw" customClass="AllDeparturesForLineViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="41y-if-aJE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1220,7 +1256,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="pev-WT-kEe" customClass="DeparturesHeaderTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="pev-WT-kEe" customClass="DeparturesHeaderTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pev-WT-kEe" id="MPu-pt-tX5">
@@ -1274,7 +1310,7 @@
                                             <outlet property="titleRoundedView" destination="TyU-a1-2kD" id="cJy-wP-NQs"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="departureCell" rowHeight="90" id="Uvl-OX-vgx" customClass="DeparturesTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="departureCell" rowHeight="90" id="Uvl-OX-vgx" customClass="DeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uvl-OX-vgx" id="iTO-iZ-63p">
@@ -1349,7 +1385,7 @@
                                             <outlet property="wifiImage" destination="b74-cW-VJU" id="O1A-yq-QQN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="disruptionCell" textLabel="sys-wU-sgV" detailTextLabel="2tv-9W-hny" imageView="z93-IX-tqf" rowHeight="88" style="IBUITableViewCellStyleSubtitle" id="WNg-mg-xv7" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="disruptionCell" textLabel="sys-wU-sgV" detailTextLabel="2tv-9W-hny" imageView="z93-IX-tqf" rowHeight="88" style="IBUITableViewCellStyleSubtitle" id="WNg-mg-xv7" customClass="FooterDeparturesTableViewCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="162" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WNg-mg-xv7" id="dL9-ft-40h">
@@ -1400,7 +1436,7 @@
         <!--Bus Route View Controller-->
         <scene sceneID="Ui4-g4-XBo">
             <objects>
-                <viewController storyboardIdentifier="BusRouteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ast-is-sCv" customClass="BusRouteViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BusRouteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ast-is-sCv" customClass="BusRouteViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F37-dW-phm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1442,7 +1478,7 @@
         <!--Routes Results View Controller-->
         <scene sceneID="Rpa-ah-gUT">
             <objects>
-                <viewController id="98A-IK-ofO" customClass="RoutesResultsViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="98A-IK-ofO" customClass="RoutesResultsViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ehQ-FV-Xh4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1451,14 +1487,14 @@
                                 <rect key="frame" x="0.0" y="198" width="375" height="425"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="routeResultCell" rowHeight="100" id="ZFZ-2H-9YI" customClass="RouteResultCell" customModule="tpg_offline_beta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="routeResultCell" rowHeight="100" id="ZFZ-2H-9YI" customClass="RouteResultCell" customModule="tpg_offline" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZFZ-2H-9YI" id="Tu0-DW-tn8">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2go-cH-daE" customClass="RoutePreviewView" customModule="tpg_offline_beta" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2go-cH-daE" customClass="RoutePreviewView" customModule="tpg_offline" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="61" width="333" height="12"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -1543,7 +1579,7 @@
         <!--Route Settings Table View Controller-->
         <scene sceneID="E6v-9B-vSm">
             <objects>
-                <tableViewController id="zA6-fc-bXU" customClass="RouteSettingsTableViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="zA6-fc-bXU" customClass="RouteSettingsTableViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2cJ-Bg-J2a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1587,7 +1623,7 @@
         <!--Route Preview View Controller-->
         <scene sceneID="DtW-Lh-qFP">
             <objects>
-                <viewController id="1yr-k8-ghh" customClass="RoutePreviewViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1yr-k8-ghh" customClass="RoutePreviewViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P4Y-8q-R8K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1629,7 +1665,7 @@
         <!--Map View Controller-->
         <scene sceneID="IbS-P1-mWT">
             <objects>
-                <viewController id="UE0-Qp-a2T" customClass="MapViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UE0-Qp-a2T" customClass="MapViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d29-4l-05w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1684,7 +1720,7 @@
         <!--Search For Route View Controller-->
         <scene sceneID="U1f-zj-ciu">
             <objects>
-                <viewController storyboardIdentifier="searchForRouteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7iB-b1-w2D" customClass="SearchForRouteViewController" customModule="tpg_offline_beta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchForRouteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7iB-b1-w2D" customClass="SearchForRouteViewController" customModule="tpg_offline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zk4-fq-Is1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1745,6 +1781,7 @@
     <resources>
         <image name="directions" width="48" height="48"/>
         <image name="emptyStar" width="24" height="24"/>
+        <image name="map" width="48" height="48"/>
         <image name="refresh" width="48" height="48"/>
         <image name="rightArrow" width="15" height="15"/>
         <image name="siri" width="48" height="48"/>
