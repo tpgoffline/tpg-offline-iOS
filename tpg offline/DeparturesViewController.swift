@@ -231,7 +231,7 @@ extension DeparturesViewController: UITableViewDataSource {
   }
   
   @IBAction func toogleFavorite() {
-    if let index = FavoritesManager.shared.stops.index(of: stop.appId) {
+    if let index = FavoritesManager.shared.stops.firstIndex(of: stop.appId) {
       FavoritesManager.shared.stops.remove(at: index)
     } else {
       FavoritesManager.shared.stops.append(stop.appId)
