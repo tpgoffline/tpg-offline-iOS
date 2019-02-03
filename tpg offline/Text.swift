@@ -234,7 +234,7 @@ struct Text {
   static let smartRemindersDescription = "Smart reminders are departures reminders that, unlike standard reminders, take into account traffic variations and bus delays.\rThis feature requires an Internet connection to work, so it will not be offered in offline mode, and you can disabled it if you want in online mode.".localized
   static let snotpg = "SNOTPG".localized
   static let sorry = "Sorry".localized
-  static let sorryError = "Sorry for that. Can you try again, or send an email to us if the problem persist?".localized
+  static let sorryError = "Sorry for that. Please, try again".localized
   static let specialThanks = "Special thanks".localized
   static let specific = "Specific".localized
   static let stopNotFound = "Stop not found"

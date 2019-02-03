@@ -8,27 +8,26 @@
 
 import UIKit
 import Alamofire
+import UserNotifications
 
 class BusRouteViewController: ScrollViewController {
   
-  var loadingView: UIActivityIndicatorView!
   var departure: Departure!
+  var stop: Stop!
   @IBOutlet weak var stackView: UIStackView!
+  @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+  @IBOutlet weak var reloadImageView: UIImageView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.loadingView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-    navigationItem.rightBarButtonItems = [
-      UIBarButtonItem(image: #imageLiteral(resourceName: "refresh"), style: .plain, target: self, action: #selector(reload), accessbilityLabel: "Reload"),
-      UIBarButtonItem(customView: loadingView)
-    ]
     self.reload()
   }
   
-  @objc func reload() {
-    self.loadingView.startAnimating()
+  @IBAction func reload() {
     self.stackView.subviews.forEach({ $0.removeFromSuperview() })
+    reloadImageView.image = nil
+    activityIndicatorView.isHidden = false
     if departure.offline {
       let departures = TimetablesManager.shared.offlineDepartures(tripId: departure.vehiculeNo)
       let dateFormatter = DateFormatter()
@@ -82,7 +81,8 @@ class BusRouteViewController: ScrollViewController {
         stop.appId == (departures.first(where: { $0.leftTime != "" }) ?? departures.last!).stop
       })?.location
       MapManager.shared.showPath(stops: stops, color: LineColorManager.color(for: departures.first?.line.code ?? ""), centerTo: centerTo)
-      self.loadingView.stopAnimating()
+      activityIndicatorView.isHidden = true
+      reloadImageView.image = #imageLiteral(resourceName: "refresh")
     } else {
       Alamofire.request(URL.thermometer,
                         method: .get,
@@ -136,7 +136,8 @@ class BusRouteViewController: ScrollViewController {
               
               self.stackView.addArrangedSubview(routePreviewRow)
             }
-            self.loadingView.stopAnimating()
+            self.activityIndicatorView.isHidden = true
+            self.reloadImageView.image = #imageLiteral(resourceName: "refresh")
             
             let stops = (busRouteGroup?.steps ?? []).compactMap { (departure) -> Stop? in
               App.stops.first(where: { (stop) -> Bool in
@@ -149,6 +150,224 @@ class BusRouteViewController: ScrollViewController {
             MapManager.shared.showPath(stops: stops, color: LineColorManager.color(for: self.departure.line.code), centerTo: centerTo)
           }
       }
+    }
+  }
+  
+  @IBAction func remind() {
+    App.log("Departures: Reminder")
+    self.departure?.calculateLeftTime()
+    let leftTime = Int(self.departure?.leftTime ?? "0".localized) ?? 0
+    var alertController = UIAlertController(title: Text.reminder,
+                                            message: Text.whenReminder,
+                                            preferredStyle: .alert)
+    if self.departure?.leftTime == "0" {
+      alertController.title = Text.busIsComming
+      alertController.message = Text.cantSetATimer
+    } else {
+      let departureTimeAction = UIAlertAction(title: Text.atDepartureTime,
+                                              style: .default) { _ in
+                                                self.setAlert(with: 0,
+                                                              date: (self.departure?.dateCompenents?.date ?? Date()),
+                                                              fromName: self.stop?.name ?? "",
+                                                              fromCode: self.stop?.code ?? "")
+      }
+      alertController.addAction(departureTimeAction)
+      
+      if leftTime > 5 {
+        let actionName = Text.fiveMinutesBefore
+        let fiveMinutesBeforeAction = UIAlertAction(title: actionName,
+                                                    style: .default) { _ in
+                                                      self.setAlert(with: 5,
+                                                                    date: (self.departure?.dateCompenents?.date ?? Date()),
+                                                                    fromName: self.stop?.name ?? "",
+                                                                    fromCode: self.stop?.code ?? "")
+        }
+        alertController.addAction(fiveMinutesBeforeAction)
+      }
+      if leftTime > 10 {
+        let actionName = Text.tenMinutesBefore
+        let tenMinutesBeforeAction = UIAlertAction(title: actionName,
+                                                   style: .default) { _ in
+                                                    self.setAlert(with: 10,
+                                                                  date: (self.departure?.dateCompenents?.date ?? Date()),
+                                                                  fromName: self.stop?.name ?? "",
+                                                                  fromCode: self.stop?.code ?? "")
+        }
+        alertController.addAction(tenMinutesBeforeAction)
+      }
+      let otherAction = UIAlertAction(title: Text.other,
+                                      style: .default) { _ in
+                                        alertController.dismiss(animated: true, completion: nil)
+                                        alertController = UIAlertController(title: Text.fiveMinutesBefore,
+                                                                            message: Text.whenReminder,
+                                                                            preferredStyle: .alert)
+                                        
+                                        alertController.addTextField { textField in
+                                          textField.placeholder = Text.numberMinutesBeforeDepartures
+                                          textField.keyboardType = .numberPad
+                                          textField.keyboardAppearance = App.darkMode ? .dark : .light
+                                        }
+                                        
+                                        let okAction = UIAlertAction(title: Text.ok, style: .default) { _ in
+                                          guard let text = alertController.textFields?[0].text else { return }
+                                          guard let remainingTime = Int(text) else { return }
+                                          self.setAlert(with: remainingTime,
+                                                        date: (self.departure?.dateCompenents?.date ?? Date()),
+                                                        fromName: self.stop?.name ?? "",
+                                                        fromCode: self.stop?.code ?? "")
+                                        }
+                                        alertController.addAction(okAction)
+                                        
+                                        let cancelAction = UIAlertAction(title: Text.cancel,
+                                                                         style: .destructive) { _ in
+                                        }
+                                        alertController.addAction(cancelAction)
+                                        
+                                        self.present(alertController, animated: true, completion: nil)
+      }
+      
+      alertController.addAction(otherAction)
+    }
+    
+    let cancelAction = UIAlertAction(title: Text.cancel,
+                                     style: .destructive) { _ in }
+    alertController.addAction(cancelAction)
+    
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  func setAlert(with timeBefore: Int,
+                date: Date,
+                fromName: String,
+                fromCode: String,
+                forceDisableSmartReminders: Bool = false) {
+      UNUserNotificationCenter.current()
+        .requestAuthorization(options: [.alert, .sound]) {(accepted, _) in
+          if !accepted {
+            print("Notification access denied.")
+          }
+      }
+    
+    UIApplication.shared.registerForRemoteNotifications()
+    
+    let newDate = date.addingTimeInterval(TimeInterval(timeBefore * -60))
+    let components = Calendar.current.dateComponents([.hour,
+                                                      .minute,
+                                                      .day,
+                                                      .month,
+                                                      .year], from: newDate)
+    if App.smartReminders,
+      !forceDisableSmartReminders,
+       let departure = self.departure,
+      departure.code != -1 {
+      let formatter = DateFormatter()
+      formatter.dateFormat = "HH:mm"
+      var parameters: Parameters = [
+        "departureCode": departure.code,
+        "title": timeBefore == 0 ?
+          Text.busIsCommingNow : Text.minutesLeft(timeBefore),
+        "text": Text.take(line: departure.line.code,
+                          to: departure.line.destination),
+        "line": departure.line.code,
+        "reminderTimeBeforeDeparture": timeBefore,
+        "stopCode": fromCode,
+        "estimatedArrivalTime": formatter.string(from: date),
+        "sandbox": false
+      ]
+      #if DEBUG
+      parameters["sandbox"] = true
+      #endif
+      Alamofire
+        .request(URL.smartReminders,
+                 method: .post,
+                 parameters: parameters)
+        .responseString(completionHandler: { (response) in
+          dump(response)
+          if let string = response.result.value, string == "1" {
+            let alertMessage = Text.notificationWillBeSend(minutes: timeBefore)
+            let alertController = UIAlertController(title: Text.youWillBeReminded,
+                                                    message: alertMessage,
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Text.ok,
+                                                    style: .default,
+                                                    handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+          } else if let string = response.result.value, string == "0" {
+            let alertController = UIAlertController(title: Text.duplicateReminder,
+                                                    message: Text.alreadySheduled,
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Text.ok,
+                                                    style: .default,
+                                                    handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+          } else {
+            let alertMessage = Text.cantAddSmartReminder
+            let alertController = UIAlertController(title: Text.error,
+                                                    message: alertMessage,
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Text.tryAgain,
+                                                    style: .default,
+                                                    handler: { (_) in
+                                                      self.setAlert(with: timeBefore,
+                                                                    date: newDate,
+                                                                    fromName: fromName,
+                                                                    fromCode: fromCode,
+                                                                    forceDisableSmartReminders: false)
+            }))
+            let actionTitle = Text.tryAgainWithoutSmartRemiders
+            alertController.addAction(UIAlertAction(title: actionTitle,
+                                                    style: .default,
+                                                    handler: { (_) in
+                                                      self.setAlert(with: timeBefore,
+                                                                    date: newDate,
+                                                                    fromName: fromName,
+                                                                    fromCode: fromCode,
+                                                                    forceDisableSmartReminders: true)
+            }))
+            alertController.addAction(UIAlertAction(title: Text.cancel,
+                                                    style: .cancel,
+                                                    handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+          }
+        })
+    } else {
+      guard let departure = departure else { return }
+        dump(components)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components,
+                                                    repeats: false)
+        let content = UNMutableNotificationContent()
+        
+        content.title = timeBefore == 0 ?
+          Text.busIsCommingNow : Text.minutesLeft(timeBefore)
+        content.body = Text.take(line: departure.line.code,
+                                 to: departure.line.destination)
+        content.sound = UNNotificationSound.default
+        let notificationIdentifier = "departureNotification-\(String.random(30))"
+        let request = UNNotificationRequest(identifier: notificationIdentifier,
+                                            content: content,
+                                            trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+          if let error = error {
+            print("Uh oh! We had an error: \(error)")
+            let alertController = UIAlertController(title: Text.error,
+                                                    message: Text.sorryError,
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Text.ok,
+                                                    style: .default,
+                                                    handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+          } else {
+            let alertMessage = Text.notificationWillBeSend(minutes: timeBefore)
+            let alertController = UIAlertController(title: Text.youWillBeReminded,
+                                                    message: alertMessage,
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Text.ok,
+                                                    style: .default,
+                                                    handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+          }
+        }
     }
   }
 }

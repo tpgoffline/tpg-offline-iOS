@@ -313,6 +313,7 @@ extension DeparturesViewController: UITableViewDataSource {
     
     let busRouteViewController = storyboard?.instantiateViewController(withIdentifier: "BusRouteViewController") as! BusRouteViewController
     busRouteViewController.departure = departure
+    busRouteViewController.stop = stop
     self.navigationController?.pushViewController(busRouteViewController, animated: true)
   }
 }
