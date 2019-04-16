@@ -1,4 +1,7 @@
-github "Alamofire/Alamofire" "master"
+github "Alamofire/Alamofire" "4.8.1"
 github "ceeK/Solar" "master"
 github "ashleymills/Reachability.swift" "master"
 binary "https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json" ~> 4.2
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebasePerformanceBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json"

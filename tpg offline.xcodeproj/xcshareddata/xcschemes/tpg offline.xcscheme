@@ -87,6 +87,10 @@
             argument = "_UIConstraintBasedLayoutPlaySoundOnUnsatisfiable___once"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-FIRDebugEnabled"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable

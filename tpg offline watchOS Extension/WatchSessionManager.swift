@@ -49,12 +49,6 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         print("Can't decode favoritesRoutes")
       }
     }
-    if let smartReminders = applicationContext["smartReminders"] as? Bool {
-      App.smartReminders = smartReminders
-    }
-    if let apnsToken = applicationContext["apnsToken"] as? String {
-      App.apnsToken = apnsToken
-    }
     DispatchQueue.main.async {
       self.appDataChangedDelegates.forEach { $0.appDataDidUpdate() }
     }

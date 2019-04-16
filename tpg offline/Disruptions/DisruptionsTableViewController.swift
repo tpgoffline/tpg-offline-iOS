@@ -102,11 +102,6 @@ class DisruptionsTableViewController: UITableViewController {
     refreshControl?.tintColor = #colorLiteral(red: 1, green: 0.3411764706, blue: 0.1333333333, alpha: 1)
 
     navigationItem.rightBarButtonItems = [
-      UIBarButtonItem(image: #imageLiteral(resourceName: "binoculars"),
-                      style: .plain,
-                      target: self,
-                      action: #selector(self.pushDisruptionsMonitoring),
-                      accessbilityLabel: Text.disruptionsMonitoring),
       UIBarButtonItem(image: #imageLiteral(resourceName: "reloadNavBar"),
                       style: UIBarButtonItem.Style.plain,
                       target: self,
@@ -131,10 +126,6 @@ class DisruptionsTableViewController: UITableViewController {
     self.disruptionsCenteredView.subtitleLabel.textColor = App.textColor
     self.disruptionsCenteredView.imageView.image =
       self.disruptionsCenteredView.imageView.image?.maskWith(color: App.textColor)
-  }
-
-  @objc func pushDisruptionsMonitoring() {
-    performSegue(withIdentifier: "pushDisruptionsMonitoring", sender: self)
   }
 
   @objc func refreshDisruptions() {

@@ -249,7 +249,7 @@ class DeparturesViewController: UIViewController {
   }
 
   @objc func setFavorite() {
-    if let index = App.favoritesStops.index(of: stop!.appId) {
+    if let index = App.favoritesStops.firstIndex(of: stop!.appId) {
       App.favoritesStops.remove(at: index)
       App.log("Removed \(stop!.appId) from favorites")
     } else {
@@ -539,7 +539,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   @objc func addRemoveFromShowMore(button: UIButton!) {
-    if let index = showMoreLines.index(of: String(button.tag)) {
+    if let index = showMoreLines.firstIndex(of: String(button.tag)) {
       showMoreLines.remove(at: index)
     } else {
       showMoreLines.append(String(button.tag))
@@ -615,7 +615,7 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     if App.filterFavoritesLines {
       line = self.filteredLines[section]
     }
-    if let index = App.favoritesLines.index(of: line) {
+    if let index = App.favoritesLines.firstIndex(of: line) {
       App.favoritesLines.remove(at: index)
     } else {
       App.favoritesLines.append(line)
@@ -699,20 +699,13 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
 
     guard var departure = departuree else { return [] }
 
-    let smartNotificationActivated = (
-      !self.noInternet &&
-      App.smartReminders &&
-      departure.code != -1
-      && stop?.code != nil)
-
     let reminderAction = UITableViewRowAction(style: .normal,
                                               title: Text.reminder) { (_, _) in
       App.log("Departures: Reminder")
       departure.calculateLeftTime()
       let leftTime = Int(departure.leftTime) ?? 0
 
-      let alertTitle = smartNotificationActivated ?
-        Text.smartReminder : Text.reminder
+      let alertTitle = Text.reminder
       let alertMessage = Text.reminderMessage(stopName: self.stop?.name ?? "??",
                                               leftTime: "\(leftTime)")
       var alertController = UIAlertController(title: alertTitle,
@@ -850,90 +843,6 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
     localisations = localisations.filter { (localisation) -> Bool in
       !localisation.destinations.isEmpty
     }
-
-    if !self.noInternet,
-      App.smartReminders,
-      !forceDisableSmartReminders,
-      departure.code != -1,
-      let stopCode = stop?.code {
-      let formatter = DateFormatter()
-      formatter.dateFormat = "HH:mm"
-      var parameters: Parameters = [
-        "departureCode": departure.code,
-        "title": timeBefore == 0 ?
-          Text.busIsCommingNow : Text.minutesLeft(timeBefore),
-        "text": Text.take(line: departure.line.code,
-                          to: departure.line.destination),
-        "line": departure.line.code,
-        "reminderTimeBeforeDeparture": timeBefore,
-        "stopCode": stopCode,
-        "estimatedArrivalTime": formatter.string(from:
-          Calendar.current.date(from: departure.dateCompenents!)!),
-        "sandbox": false
-      ]
-      if let location = localisations[safe: 0]?.location {
-        parameters["x"] = location.coordinate.latitude
-        parameters["y"] = location.coordinate.longitude
-        parameters["stopName"] = stop?.name ?? ""
-      } else {
-        parameters["x"] = stop?.location.coordinate.latitude ?? 0
-        parameters["y"] = stop?.location.coordinate.longitude ?? 0
-        parameters["stopName"] = stop?.name ?? ""
-      }
-      #if DEBUG
-      parameters["sandbox"] = true
-      #endif
-      Alamofire
-        .request(URL.smartReminders,
-                        method: .post,
-                        parameters: parameters)
-        .responseString(completionHandler: { (response) in
-        if let string = response.result.value, string == "1" {
-          let alertMessage = Text.notificationWillBeSend(minutes: timeBefore)
-          let alertController = UIAlertController(title: Text.youWillBeReminded,
-                                                  message: alertMessage,
-                                                  preferredStyle: .alert)
-          alertController.addAction(UIAlertAction(title: "OK",
-                                                  style: .default,
-                                                  handler: nil))
-          self.present(alertController, animated: true, completion: nil)
-        } else if let string = response.result.value, string == "0" {
-          let alertController = UIAlertController(title: Text.duplicateReminder,
-                                                  message: Text.alreadySheduled,
-                                                  preferredStyle: .alert)
-          alertController.addAction(UIAlertAction(title: "OK",
-                                                  style: .default,
-                                                  handler: nil))
-          self.present(alertController, animated: true, completion: nil)
-        } else {
-          let alertMessage = Text.cantAddSmartReminder
-          let alertController = UIAlertController(title: Text.error,
-                                                  message: alertMessage,
-                                                  preferredStyle: .alert)
-          alertController.addAction(UIAlertAction(title: Text.tryAgain,
-                                                  style: .default,
-                                                  handler: { (_) in
-            self.setAlert(with: timeBefore,
-                          departure: departure,
-                          forceDisableSmartReminders: false)
-          }))
-          let tryAgainText = Text.tryAgainWithoutSmartRemiders
-          alertController.addAction(UIAlertAction(title: tryAgainText,
-                                                  style: .default,
-                                                  handler: { (_) in
-            self.setAlert(with: timeBefore,
-                          departure: departure,
-                          forceDisableSmartReminders: true)
-          }))
-          alertController.addAction(UIAlertAction(title: "Cancel".localized,
-                                                  style: .cancel,
-                                                  handler: nil))
-          self.present(alertController,
-                       animated: true,
-                       completion: nil)
-        }
-      })
-    } else {
       if #available(iOS 10.0, *) {
         let trigger = UNCalendarNotificationTrigger(dateMatching: components,
                                                     repeats: false)
@@ -1014,7 +923,6 @@ extension DeparturesViewController: UITableViewDelegate, UITableViewDataSource {
         notification.identifier = "departureNotification-\(String.random(30))"
         notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.shared.scheduleLocalNotification(notification)
-      }
     }
   }
 

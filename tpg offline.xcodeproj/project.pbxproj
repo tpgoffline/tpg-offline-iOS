@@ -58,7 +58,6 @@
 		AD3DF3AC1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DF3AB1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift */; };
 		AD3DF3B01FB1FE8500F2AFA5 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E48461FADF70800596076 /* App.swift */; };
 		AD3DF3B11FB1FF0300F2AFA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6A47A81F77992400AE1762 /* Extensions.swift */; };
-		AD3EB1671FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3EB1661FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift */; };
 		AD3EB1691FE6BE1200F74261 /* DisruptionMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3EB1681FE6BE1200F74261 /* DisruptionMonitoring.swift */; };
 		AD416A7F1FB6F8AA005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */; };
 		AD416A811FB73587005052F3 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD416A801FB73587005052F3 /* WatchSessionManager.swift */; };
@@ -72,9 +71,6 @@
 		AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */; };
 		AD5C27711F65295900C6BC81 /* StopsForRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */; };
 		AD5C637F2105D6C000CD7B74 /* Bus.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AD5C637E2105D6C000CD7B74 /* Bus.gpx */; };
-		AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */; };
-		AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */; };
-		AD5FC1DF1FE6D9F90016BC35 /* DayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */; };
 		AD66BDE720F90AFA009731D4 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BDE620F90AFA009731D4 /* IntentHandler.swift */; };
 		AD66BDEF20F90AFB009731D4 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD66BDEE20F90AFB009731D4 /* IntentsUI.framework */; };
 		AD66BDF220F90AFB009731D4 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66BDF120F90AFB009731D4 /* IntentViewController.swift */; };
@@ -115,7 +111,6 @@
 		AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7872381F6572DE00C51D82 /* RouteResultsTableViewCell.swift */; };
 		AD7B47E11FD155D400F8DA23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B47E01FD155D400F8DA23 /* TabBarController.swift */; };
 		AD7B61A81FB20A89000169BA /* DeparturesOptionsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */; };
-		AD7C3ECD2076CA7900BC7821 /* SmartRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C3ECC2076CA7900BC7821 /* SmartRemindersTableViewController.swift */; };
 		AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */; };
 		AD8B77F02077A2680034CFBD /* ReminderInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B77EF2077A2680034CFBD /* ReminderInterfaceController.swift */; };
 		AD8CF77F1F979B5100DE9CBC /* OrientationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */; };
@@ -153,7 +148,6 @@
 		ADBF95CF1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95CE1F8122D200A78F81 /* AllDeparturesCollectionViewController.swift */; };
 		ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBF95D01F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift */; };
 		ADC487D01FB1EE7600675593 /* LinesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */; };
-		ADC8C63E21A85D2500FE5CE2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC8C63D21A85D2500FE5CE2 /* API.swift */; };
 		ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */; };
 		ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */; };
 		ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */; };
@@ -171,6 +165,31 @@
 		ADF9C6811F9BB4A500AE17A4 /* Orientation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6831F9BB4A500AE17A4 /* Orientation.storyboard */; };
 		ADF9C6861F9BB4CF00AE17A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C6881F9BB4CF00AE17A4 /* Settings.storyboard */; };
 		ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C68F1F9BDFEB00AE17A4 /* Localizable.strings */; };
+		ADFAA148226233C800109256 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
+		ADFAA149226233CD00109256 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06AC712132C92900FF113B /* API.swift */; };
+		ADFAA14B226236DD00109256 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA14A226236DC00109256 /* GoogleService-Info.plist */; };
+		ADFAA14C226236DD00109256 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA14A226236DC00109256 /* GoogleService-Info.plist */; };
+		ADFAA14D226236DD00109256 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA14A226236DC00109256 /* GoogleService-Info.plist */; };
+		ADFAA14E226236DD00109256 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA14A226236DC00109256 /* GoogleService-Info.plist */; };
+		ADFAA14F226236DD00109256 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA14A226236DC00109256 /* GoogleService-Info.plist */; };
+		ADFAA150226236DD00109256 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA14A226236DC00109256 /* GoogleService-Info.plist */; };
+		ADFAA161226237AB00109256 /* FirebaseRemoteConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA151226237A900109256 /* FirebaseRemoteConfig.framework */; };
+		ADFAA163226237AB00109256 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA153226237A900109256 /* FirebaseCoreDiagnostics.framework */; };
+		ADFAA164226237AB00109256 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA154226237A900109256 /* GoogleAppMeasurement.framework */; };
+		ADFAA165226237AB00109256 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA155226237A900109256 /* nanopb.framework */; };
+		ADFAA166226237AB00109256 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA156226237A900109256 /* GTMSessionFetcher.framework */; };
+		ADFAA167226237AB00109256 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA157226237AA00109256 /* FirebaseMessaging.framework */; };
+		ADFAA168226237AB00109256 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA158226237AA00109256 /* FIRAnalyticsConnector.framework */; };
+		ADFAA169226237AB00109256 /* FirebasePerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA159226237AA00109256 /* FirebasePerformance.framework */; };
+		ADFAA16A226237AB00109256 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA15A226237AA00109256 /* FirebaseCore.framework */; };
+		ADFAA16B226237AB00109256 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA15B226237AA00109256 /* FirebaseAnalytics.framework */; };
+		ADFAA16C226237AB00109256 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA15C226237AA00109256 /* GoogleUtilities.framework */; };
+		ADFAA16D226237AB00109256 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA15D226237AA00109256 /* GoogleToolboxForMac.framework */; };
+		ADFAA16E226237AB00109256 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA15E226237AA00109256 /* FirebaseABTesting.framework */; };
+		ADFAA16F226237AB00109256 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA15F226237AA00109256 /* FirebaseInstanceID.framework */; };
+		ADFAA170226237AB00109256 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA160226237AB00109256 /* Protobuf.framework */; };
+		ADFAA172226237F500109256 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA171226237F500109256 /* libc++.tbd */; };
+		ADFAA1742262380200109256 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFAA1732262380200109256 /* libsqlite3.tbd */; };
 		ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */; };
 		ADFE41162000DA3F00FAECF3 /* ColorModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */; };
 /* End PBXBuildFile section */
@@ -309,7 +328,6 @@
 		AD37FEA81F41CAC300E84220 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AD3DF3AB1FB1EF9B00F2AFA5 /* StopsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsInterfaceController.swift; sourceTree = "<group>"; };
 		AD3DF3AD1FB1F9D100F2AFA5 /* tpg offline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "tpg offline.entitlements"; sourceTree = "<group>"; };
-		AD3EB1661FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionsMonitoringTableViewController.swift; sourceTree = "<group>"; };
 		AD3EB1681FE6BE1200F74261 /* DisruptionMonitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisruptionMonitoring.swift; sourceTree = "<group>"; };
 		AD416A7E1FB6F8AA005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		AD416A801FB73587005052F3 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
@@ -319,9 +337,6 @@
 		AD5C276E1F65212D00C6BC81 /* DatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		AD5C27701F65295900C6BC81 /* StopsForRouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsForRouteTableViewController.swift; sourceTree = "<group>"; };
 		AD5C637E2105D6C000CD7B74 /* Bus.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bus.gpx; sourceTree = "<group>"; };
-		AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMonitoringLinesTableViewController.swift; sourceTree = "<group>"; };
-		AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourPickerViewController.swift; sourceTree = "<group>"; };
-		AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerViewController.swift; sourceTree = "<group>"; };
 		AD66BDE420F90AFA009731D4 /* tpg offline Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "tpg offline Siri.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD66BDE620F90AFA009731D4 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		AD66BDE820F90AFA009731D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -345,7 +360,6 @@
 		AD7B47E01FD155D400F8DA23 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AD7B47E21FD1570000F8DA23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AD7B61A71FB20A89000169BA /* DeparturesOptionsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesOptionsInterfaceController.swift; sourceTree = "<group>"; };
-		AD7C3ECC2076CA7900BC7821 /* SmartRemindersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRemindersTableViewController.swift; sourceTree = "<group>"; };
 		AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisruptionsTableViewController.swift; sourceTree = "<group>"; };
 		AD8B77EF2077A2680034CFBD /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		AD8CF77E1F979B5100DE9CBC /* OrientationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationTableViewController.swift; sourceTree = "<group>"; };
@@ -384,7 +398,6 @@
 		ADC487CF1FB1EE7600675593 /* LinesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesInterfaceController.swift; sourceTree = "<group>"; };
 		ADC5289A1F4F322400EADB0D /* tpg offline.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = "tpg offline.geojson"; sourceTree = "<group>"; };
 		ADC5289B1F4F329800EADB0D /* Bel-Air.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bel-Air.gpx"; sourceTree = "<group>"; };
-		ADC8C63D21A85D2500FE5CE2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADDA21AE1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		ADDA21B01FADB13400338F8B /* RouteResultsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteResultsDetailTableViewCell.swift; sourceTree = "<group>"; };
 		ADDA21B21FADB97E00338F8B /* RouteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +420,25 @@
 		ADF9C6871F9BB4CF00AE17A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		ADF9C68A1F9BB4D200AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
 		ADF9C68E1F9BDFEB00AE17A4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADFAA14A226236DC00109256 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ADFAA151226237A900109256 /* FirebaseRemoteConfig.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseRemoteConfig.framework; path = Carthage/Build/iOS/FirebaseRemoteConfig.framework; sourceTree = "<group>"; };
+		ADFAA152226237A900109256 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
+		ADFAA153226237A900109256 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		ADFAA154226237A900109256 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		ADFAA155226237A900109256 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
+		ADFAA156226237A900109256 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		ADFAA157226237AA00109256 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
+		ADFAA158226237AA00109256 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Carthage/Build/iOS/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
+		ADFAA159226237AA00109256 /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebasePerformance.framework; path = Carthage/Build/iOS/FirebasePerformance.framework; sourceTree = "<group>"; };
+		ADFAA15A226237AA00109256 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
+		ADFAA15B226237AA00109256 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		ADFAA15C226237AA00109256 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
+		ADFAA15D226237AA00109256 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = Carthage/Build/iOS/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		ADFAA15E226237AA00109256 /* FirebaseABTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseABTesting.framework; path = Carthage/Build/iOS/FirebaseABTesting.framework; sourceTree = "<group>"; };
+		ADFAA15F226237AA00109256 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		ADFAA160226237AB00109256 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = "<group>"; };
+		ADFAA171226237F500109256 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		ADFAA1732262380200109256 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		ADFBF9F81FD596B800FB5F90 /* GoogleMapsGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsGeocoding.swift; sourceTree = "<group>"; };
 		ADFE41152000DA3F00FAECF3 /* ColorModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModeManager.swift; sourceTree = "<group>"; };
 		ADFE4A68201B053F005093C2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -433,14 +465,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADFAA1742262380200109256 /* libsqlite3.tbd in Frameworks */,
+				ADFAA172226237F500109256 /* libc++.tbd in Frameworks */,
+				ADFAA16D226237AB00109256 /* GoogleToolboxForMac.framework in Frameworks */,
 				AD438DA9211C314E008316F4 /* MapKit.framework in Frameworks */,
 				AD07A3651F8A60D300E65DE7 /* Crashlytics.framework in Frameworks */,
+				ADFAA16A226237AB00109256 /* FirebaseCore.framework in Frameworks */,
+				ADFAA16F226237AB00109256 /* FirebaseInstanceID.framework in Frameworks */,
+				ADFAA164226237AB00109256 /* GoogleAppMeasurement.framework in Frameworks */,
 				AD37FEA91F41CAC300E84220 /* Alamofire.framework in Frameworks */,
+				ADFAA165226237AB00109256 /* nanopb.framework in Frameworks */,
+				ADFAA16E226237AB00109256 /* FirebaseABTesting.framework in Frameworks */,
 				AD0D33B420025659006462D5 /* NetworkExtension.framework in Frameworks */,
+				ADFAA167226237AB00109256 /* FirebaseMessaging.framework in Frameworks */,
 				AD07A3661F8A60D400E65DE7 /* Fabric.framework in Frameworks */,
 				AD675C9A20CEB7EF00B13C8A /* Reachability.framework in Frameworks */,
+				ADFAA16B226237AB00109256 /* FirebaseAnalytics.framework in Frameworks */,
+				ADFAA163226237AB00109256 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				ADFAA161226237AB00109256 /* FirebaseRemoteConfig.framework in Frameworks */,
 				ADBECE36211B384200AE66A4 /* Mapbox.framework in Frameworks */,
+				ADFAA166226237AB00109256 /* GTMSessionFetcher.framework in Frameworks */,
 				AD9F018420CE7F320069B486 /* Solar.framework in Frameworks */,
+				ADFAA168226237AB00109256 /* FIRAnalyticsConnector.framework in Frameworks */,
+				ADFAA16C226237AB00109256 /* GoogleUtilities.framework in Frameworks */,
+				ADFAA169226237AB00109256 /* FirebasePerformance.framework in Frameworks */,
+				ADFAA170226237AB00109256 /* Protobuf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +579,6 @@
 				ADB575EB2017AADC004E9564 /* ReorderStopsTableViewController.swift */,
 				AD92D8BE1F44E10200403258 /* Setting.swift */,
 				AD92D8BC1F44E0C900403258 /* SettingsTableViewController.swift */,
-				AD7C3ECC2076CA7900BC7821 /* SmartRemindersTableViewController.swift */,
 				AD9F018520CE827D0069B486 /* DarkModeTableViewController.swift */,
 				AD675C9520CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift */,
 				ADDBCE4720FDF34C0090D4E0 /* PrivacyTableViewController.swift */,
@@ -574,6 +622,7 @@
 		AD37FE631F41CA4600E84220 /* tpg offline */ = {
 			isa = PBXGroup;
 			children = (
+				ADFAA14A226236DC00109256 /* GoogleService-Info.plist */,
 				AD3DF3AD1FB1F9D100F2AFA5 /* tpg offline.entitlements */,
 				AD37FE7B1F41CA7F00E84220 /* Departures */,
 				AD37FE9D1F41CA8000E84220 /* Disruptions */,
@@ -635,7 +684,6 @@
 				ADF6BED520F6005800DABB25 /* Text.swift */,
 				ADF6BED720F6050A00DABB25 /* URL.swift */,
 				AD66BE2720F91DB2009731D4 /* LineColorManager.swift */,
-				ADC8C63D21A85D2500FE5CE2 /* API.swift */,
 			);
 			path = "Project Requirements";
 			sourceTree = "<group>";
@@ -680,10 +728,6 @@
 			children = (
 				AD85F3E31FF43AB2009175FB /* DisruptionsTableViewController.swift */,
 				AD37FE9F1F41CA8000E84220 /* DisruptionTableViewCell.swift */,
-				AD3EB1661FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift */,
-				AD5FC1D81FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift */,
-				AD5FC1DC1FE6D8790016BC35 /* HourPickerViewController.swift */,
-				AD5FC1DE1FE6D9F90016BC35 /* DayPickerViewController.swift */,
 			);
 			path = Disruptions;
 			sourceTree = "<group>";
@@ -691,6 +735,24 @@
 		AD37FEA31F41CABC00E84220 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADFAA1732262380200109256 /* libsqlite3.tbd */,
+				ADFAA171226237F500109256 /* libc++.tbd */,
+				ADFAA158226237AA00109256 /* FIRAnalyticsConnector.framework */,
+				ADFAA152226237A900109256 /* Firebase.framework */,
+				ADFAA15E226237AA00109256 /* FirebaseABTesting.framework */,
+				ADFAA15B226237AA00109256 /* FirebaseAnalytics.framework */,
+				ADFAA15A226237AA00109256 /* FirebaseCore.framework */,
+				ADFAA153226237A900109256 /* FirebaseCoreDiagnostics.framework */,
+				ADFAA15F226237AA00109256 /* FirebaseInstanceID.framework */,
+				ADFAA157226237AA00109256 /* FirebaseMessaging.framework */,
+				ADFAA159226237AA00109256 /* FirebasePerformance.framework */,
+				ADFAA151226237A900109256 /* FirebaseRemoteConfig.framework */,
+				ADFAA154226237A900109256 /* GoogleAppMeasurement.framework */,
+				ADFAA15D226237AA00109256 /* GoogleToolboxForMac.framework */,
+				ADFAA15C226237AA00109256 /* GoogleUtilities.framework */,
+				ADFAA156226237A900109256 /* GTMSessionFetcher.framework */,
+				ADFAA155226237A900109256 /* nanopb.framework */,
+				ADFAA160226237AB00109256 /* Protobuf.framework */,
 				ADBECE35211B384200AE66A4 /* Mapbox.framework */,
 				AD675C9920CEB7EF00B13C8A /* Reachability.framework */,
 				AD9F018320CE7F320069B486 /* Solar.framework */,
@@ -936,18 +998,18 @@
 				TargetAttributes = {
 					AD1E484B1FADFF6A00596076 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = AD37FE601F41CA4600E84220;
 					};
 					AD23865420F9D5BA001D9881 = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					AD37FE601F41CA4600E84220 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -977,10 +1039,12 @@
 					};
 					AD66BDE320F90AFA009731D4 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					AD66BDEC20F90AFA009731D4 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					ADBC1C6A1FAF0E2700162195 = {
@@ -994,7 +1058,7 @@
 					};
 					ADBC1C761FAF0E2700162195 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1047,6 +1111,7 @@
 			files = (
 				AD23865F20F9D5BA001D9881 /* MainInterface.storyboard in Resources */,
 				AD03D7E52133E884000CA57E /* stops.json in Resources */,
+				ADFAA14E226236DD00109256 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,6 +1121,7 @@
 			files = (
 				AD37FEBD1F41CDA300E84220 /* Assets.xcassets in Resources */,
 				AD28200B1FA0E5D800767462 /* InfoPlist.strings in Resources */,
+				ADFAA14B226236DD00109256 /* GoogleService-Info.plist in Resources */,
 				AD37FEBE1F41CDA300E84220 /* Departures.storyboard in Resources */,
 				AD03D7E22133E884000CA57E /* stops.json in Resources */,
 				ADF9C68D1F9BDFEB00AE17A4 /* Localizable.strings in Resources */,
@@ -1076,6 +1142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD28E8D02149540E00B1E3CA /* Localizable.strings in Resources */,
+				ADFAA14F226236DD00109256 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,6 +1152,7 @@
 			files = (
 				AD66BDF520F90AFB009731D4 /* MainInterface.storyboard in Resources */,
 				AD28E8D12149540E00B1E3CA /* Localizable.strings in Resources */,
+				ADFAA150226236DD00109256 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1093,6 +1161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADBC1C711FAF0E2700162195 /* Assets.xcassets in Resources */,
+				ADFAA14C226236DD00109256 /* GoogleService-Info.plist in Resources */,
 				ADBC1C6F1FAF0E2700162195 /* Interface.storyboard in Resources */,
 				AD03D7E32133E884000CA57E /* stops.json in Resources */,
 			);
@@ -1104,6 +1173,7 @@
 			files = (
 				ADBC1C831FAF0E2700162195 /* Assets.xcassets in Resources */,
 				AD4C5CD91FC8B22F0094AA30 /* Localizable.strings in Resources */,
+				ADFAA14D226236DD00109256 /* GoogleService-Info.plist in Resources */,
 				ADE930751FC071DF000D703C /* InfoPlist.strings in Resources */,
 				AD03D7E42133E884000CA57E /* stops.json in Resources */,
 			);
@@ -1124,7 +1194,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 75b8798b16086f8a41d0d9fbe73703be77a9706c 598a875e80bdece5e37bb2c05ba976b83626e6d2ac1016c6335b76beadf12eca";
+			shellScript = "./Fabric.framework/run 75b8798b16086f8a41d0d9fbe73703be77a9706c 598a875e80bdece5e37bb2c05ba976b83626e6d2ac1016c6335b76beadf12eca\n";
 		};
 		AD37FEAA1F41CB0600E84220 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1255,6 +1325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD1E484F1FADFF6A00596076 /* tpg_offline_UITests.swift in Sources */,
+				ADFAA149226233CD00109256 /* API.swift in Sources */,
 				AD1E48571FAE06D100596076 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1272,7 +1343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD5FC1DF1FE6D9F90016BC35 /* DayPickerViewController.swift in Sources */,
 				ADDA21AF1FADADE100338F8B /* RouteResultsDetailMapTableViewCell.swift in Sources */,
 				AD37FEAB1F41CD9300E84220 /* BusRouteTableViewCell.swift in Sources */,
 				ADB5812320F10E9800FD2F6F /* AddressHeaderTableViewCell.swift in Sources */,
@@ -1288,7 +1358,6 @@
 				ADF097701F659EB6004AA662 /* RouteResultsDetailTableViewController.swift in Sources */,
 				AD1D3861200E6184009831A8 /* PendingNotificationsTableViewController.swift in Sources */,
 				AD66BE0B20F90CE5009731D4 /* Intents.intentdefinition in Sources */,
-				AD5FC1D91FE6D3400016BC35 /* AddMonitoringLinesTableViewController.swift in Sources */,
 				ADFBF9F91FD596B800FB5F90 /* GoogleMapsGeocoding.swift in Sources */,
 				AD37FEAF1F41CD9300E84220 /* DeparturesViewController.swift in Sources */,
 				AD37FEB01F41CD9300E84220 /* DetailDeparturesViewController.swift in Sources */,
@@ -1302,13 +1371,13 @@
 				AD92D8BF1F44E10200403258 /* Setting.swift in Sources */,
 				AD37FEB51F41CD9300E84220 /* Connection.swift in Sources */,
 				AD85F3E41FF43AB2009175FB /* DisruptionsTableViewController.swift in Sources */,
-				AD7C3ECD2076CA7900BC7821 /* SmartRemindersTableViewController.swift in Sources */,
 				AD0986941F64185A00CD8403 /* Route.swift in Sources */,
 				ADF0976E1F657CC0004AA662 /* RouteResults.swift in Sources */,
 				ADA14E661FDEC4FE00945249 /* Line.swift in Sources */,
 				AD9F018620CE827D0069B486 /* DarkModeTableViewController.swift in Sources */,
 				ADB9278C1FEDC5A700A70F48 /* NewFeaturesViewController.swift in Sources */,
 				ADB575EC2017AADC004E9564 /* ReorderStopsTableViewController.swift in Sources */,
+				ADFAA148226233C800109256 /* API.swift in Sources */,
 				ADB08B542138738300E20EC0 /* AddToSiriTableViewCell.swift in Sources */,
 				ADF0976C1F657938004AA662 /* RouteResultsTableViewController.swift in Sources */,
 				ADF6BED820F6050A00DABB25 /* URL.swift in Sources */,
@@ -1317,14 +1386,12 @@
 				ADA3E9BC2014E89400128D8E /* ConnectionsMapViewController.swift in Sources */,
 				AD6A47A91F77992400AE1762 /* Extensions.swift in Sources */,
 				AD37FEB71F41CD9300E84220 /* Disruptions.swift in Sources */,
-				AD5FC1DD1FE6D8790016BC35 /* HourPickerViewController.swift in Sources */,
 				AD5C276F1F65212D00C6BC81 /* DatePickerDialog.swift in Sources */,
 				ADDBCE4820FDF34C0090D4E0 /* PrivacyTableViewController.swift in Sources */,
 				AD4921E9205E5A16002A1ED9 /* SmartNotificationStatus.swift in Sources */,
 				AD66BE2820F91DB2009731D4 /* LineColorManager.swift in Sources */,
 				ADBF95D11F8128E700A78F81 /* AllDeparturesCollectionViewCell.swift in Sources */,
 				AD675C9620CEAE7600B13C8A /* UpdateDeparturesTableViewController.swift in Sources */,
-				AD3EB1671FE6B96100F74261 /* DisruptionsMonitoringTableViewController.swift in Sources */,
 				AD07A3681F8A6BF300E65DE7 /* RouteStepViewController.swift in Sources */,
 				ADDA21B31FADB97E00338F8B /* RouteMapViewController.swift in Sources */,
 				AD7872391F6572DE00C51D82 /* RouteResultsTableViewCell.swift in Sources */,
@@ -1333,7 +1400,6 @@
 				ADB9278E1FEE3F5900A70F48 /* NewFeaturesTableViewCell.swift in Sources */,
 				ADDA21B11FADB13400338F8B /* RouteResultsDetailTableViewCell.swift in Sources */,
 				AD37FEBA1F41CD9300E84220 /* AppDelegate.swift in Sources */,
-				ADC8C63E21A85D2500FE5CE2 /* API.swift in Sources */,
 				AD6A47AB1F779BDF00AE1762 /* FavoriteRouteTableViewCell.swift in Sources */,
 				ADFE41162000DA3F00FAECF3 /* ColorModeManager.swift in Sources */,
 				AD92D8BD1F44E0C900403258 /* SettingsTableViewController.swift in Sources */,
@@ -1577,7 +1643,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "tpg offline";
 			};
@@ -1594,7 +1660,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpg-offline-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "tpg offline";
 			};
@@ -1619,7 +1685,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1643,7 +1709,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1780,10 +1846,14 @@
 				INFOPLIST_FILE = "$(SRCROOT)/tpg offline/Project Requirements/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1807,10 +1877,14 @@
 				INFOPLIST_FILE = "$(SRCROOT)/tpg offline/Project Requirements/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dacostafaro.tpgoffline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1830,7 +1904,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-SiriUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1848,7 +1922,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-SiriUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1871,7 +1945,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Siri";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1893,7 +1967,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dacostafaro.tpgoffline.tpg-offline-Siri";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1919,7 +1993,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
@@ -1946,7 +2020,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;

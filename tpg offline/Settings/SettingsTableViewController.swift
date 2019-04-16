@@ -46,9 +46,6 @@ class SettingsTableViewController: UITableViewController {
     self.settings.append([
       Setting(Text.pendingNotifications, icon: #imageLiteral(resourceName: "cel-bell"), action: { (_) in
         self.performSegue(withIdentifier: "showPendingNotifications", sender: self)
-      }),
-      Setting(Text.smartReminders, icon: #imageLiteral(resourceName: "alarm"), action: { (_) in
-        self.performSegue(withIdentifier: "showSmartReminders", sender: self)
       })
       ])
 

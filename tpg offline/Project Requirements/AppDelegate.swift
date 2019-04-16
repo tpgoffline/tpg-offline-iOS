@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 import Alamofire
 import CoreSpotlight
-import Fabric
+import Firebase
 import Crashlytics
 import Intents
 
@@ -44,9 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //swiftlint:disable:previous line_length
     #if DEBUG
     print("WARNING: Debug mode, Crashlytics deactivated")
+   FirebaseApp.configure()
     #else
     if App.fabric {
-      Fabric.with([Crashlytics.self])
+      FirebaseApp.configure()
     }
     #endif
 
@@ -69,10 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     window?.layer.cornerRadius = 5
     window?.clipsToBounds = true
-
-    if !App.disableForceSmartReminders {
-      App.smartReminders = true
-    }
 
     if #available(iOS 10.0, *) {
       INPreferences.requestSiriAuthorization { status in
@@ -129,21 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     UIApplication.shared.statusBarStyle = App.darkMode ? .lightContent : .default
     App.loadLines()
-    UIApplication.shared.registerForRemoteNotifications()
     return App.loadStops()
-  }
-
-  func application(_ application: UIApplication,
-                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    //swiftlint:disable:previous line_length
-    let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-    print(token)
-    App.apnsToken = token
-  }
-
-  func application(_ application: UIApplication,
-                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    print(error)
   }
 
   func application(_ application: UIApplication,

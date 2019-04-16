@@ -245,7 +245,7 @@ extension LineViewController: MGLMapViewDelegate {
   func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
     if let annotation = annotation as? MGLPointAnnotation {
       let titleSelected = annotation.title ?? ""
-      if let index = self.names.index(of: titleSelected) {
+      if let index = self.names.firstIndex(of: titleSelected) {
         self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
                                    at: .top,
                                    animated: true)

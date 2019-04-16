@@ -146,7 +146,7 @@ class StopsTableViewController: UIViewController {
     }
 
     DispatchQueue.main.async {
-      for stop in App.stops where App.indexedStops.index(of: stop.appId) == nil {
+      for stop in App.stops where App.indexedStops.firstIndex(of: stop.appId) == nil {
         let attributeSet =
           CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
         attributeSet.title = stop.name
@@ -518,10 +518,10 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
 
   func sectionIndexTitles(for tableView: UITableView) -> [String]? {
     var a = App.stopsKeys
-    if let location = App.stopsKeys.index(of: "location") {
+    if let location = App.stopsKeys.firstIndex(of: "location") {
       a[location] = "📍"
     }
-    if let favorites = App.stopsKeys.index(of: "favorites") {
+    if let favorites = App.stopsKeys.firstIndex(of: "favorites") {
       a[favorites] = "⭐️"
     }
     return a
@@ -639,7 +639,7 @@ extension StopsTableViewController: UITableViewDelegate, UITableViewDataSource {
         (tableView.cellForRow(at: indexPath) as? StopsTableViewCell)?.stop else {
         return
       }
-      if let index = App.favoritesStops.index(of: stop.appId) {
+      if let index = App.favoritesStops.firstIndex(of: stop.appId) {
         App.favoritesStops.remove(at: index)
         App.log("Removed \(stop.appId) from favorites")
       } else {

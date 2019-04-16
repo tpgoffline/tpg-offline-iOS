@@ -32,7 +32,7 @@ struct DisruptionsGroup: Decodable {
         $0.consequence == disruption.consequence
       })
       if filteredDisruptions.count > 1 {
-        if multilineAlreadySetDisruptions.index(of: [
+        if multilineAlreadySetDisruptions.firstIndex(of: [
           "nature": disruption.nature,
           "place": disruption.place,
           "consequence": disruption.consequence]) == nil {

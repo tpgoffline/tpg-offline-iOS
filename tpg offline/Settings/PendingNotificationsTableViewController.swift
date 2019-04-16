@@ -29,7 +29,6 @@ class PendingNotificationsTableViewController: UITableViewController {
     }
   }
 
-  var smartNotifications: [SmartNotificationStatus] = []
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -87,22 +86,6 @@ class PendingNotificationsTableViewController: UITableViewController {
     }
 
     self.requestStatus = .loading
-    Alamofire.request(URL.smartReminders)
-      .responseData { (response) in
-        if let data = response.result.value {
-          let jsonDecoder = JSONDecoder()
-          let dateFormatter = DateFormatter()
-          dateFormatter.dateFormat = "HH:mm"
-          jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
-          let json = try? jsonDecoder.decode([SmartNotificationStatus].self,
-                                             from: data)
-
-          self.smartNotifications = json ?? []
-          self.requestStatus = .ok
-        } else {
-          self.requestStatus = .error
-        }
-    }
   }
 
   deinit {
@@ -112,15 +95,11 @@ class PendingNotificationsTableViewController: UITableViewController {
   // MARK: - Table view data source
 
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    return 1
   }
 
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
-    if section == 1 {
-      if requestStatus == any(of: .error, .loading) { return 1 }
-      return smartNotifications.count
-    }
     return pendingNotifications.count
   }
 
@@ -140,46 +119,12 @@ class PendingNotificationsTableViewController: UITableViewController {
         as [NSAttributedString.Key: Any]
     cell.textLabel?.numberOfLines = 0
     cell.detailTextLabel?.numberOfLines = 0
-    if indexPath.section == 1 {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateStyle = .none
-      dateFormatter.timeStyle = .short
-      switch requestStatus {
-      case .error:
-        cell.textLabel?.attributedText =
-          NSAttributedString(string: Text.cantLoadSmartReminders,
-                             attributes: titleAttributes)
-        cell.detailTextLabel?.attributedText =
-          NSAttributedString(string: Text.areYouConnected,
-                             attributes: subtitleAttributes)
-      case .loading:
-        cell.textLabel?.attributedText =
-          NSAttributedString(string: Text.loadingSmartReminders,
-                             attributes: titleAttributes)
-        cell.detailTextLabel?.attributedText =
-          NSAttributedString(string: "",
-                             attributes: subtitleAttributes)
-      case .ok:
-        let triggerTime = dateFormatter.string(from:
-          smartNotifications[indexPath.row].estimatedTriggerTime)
-        let title = smartNotifications[indexPath.row].title
-        cell.textLabel?.attributedText =
-          NSAttributedString(string: "\(triggerTime) - \(title)",
-                             attributes: titleAttributes)
-        cell.detailTextLabel?.attributedText =
-          NSAttributedString(string: smartNotifications[indexPath.row].text,
-                             attributes: subtitleAttributes)
-      default:
-        print("I may repeat myself, but how did you ended here?")
-      }
-    } else {
-      cell.textLabel?.attributedText =
+    cell.textLabel?.attributedText =
         NSAttributedString(string: pendingNotifications[indexPath.row][0],
                            attributes: titleAttributes)
-      cell.detailTextLabel?.attributedText =
+    cell.detailTextLabel?.attributedText =
         NSAttributedString(string: pendingNotifications[indexPath.row][1],
                            attributes: subtitleAttributes)
-    }
     cell.backgroundColor = App.cellBackgroundColor
     let view = UIView()
     view.backgroundColor = App.cellBackgroundColor.darken(by: 0.1)
@@ -190,33 +135,14 @@ class PendingNotificationsTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView,
                           canEditRowAt indexPath: IndexPath) -> Bool {
-    if indexPath.section == 1 {
-      return (!smartNotifications.isEmpty &&
-        !(requestStatus == any(of: .error, .loading)))
-    } else {
-      return !pendingNotifications.isEmpty
-    }
+    return !pendingNotifications.isEmpty
   }
 
   override func tableView(_ tableView: UITableView,
                           commit editingStyle: UITableViewCell.EditingStyle,
                           forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      if indexPath.section == 1, !smartNotifications.isEmpty {
-        let parameters: Parameters = [
-          "id": smartNotifications[indexPath.row].id
-        ]
-        Alamofire
-          .request(URL.smartReminders,
-                   method: .delete,
-                   parameters: parameters)
-          .responseString(completionHandler: { (response) in
-          if let string = response.result.value, string == "1" {
-            self.smartNotifications.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-          }
-        })
-      } else if !pendingNotifications.isEmpty {
+      if !pendingNotifications.isEmpty {
         if #available(iOS 10.0, *) {
           UNUserNotificationCenter
             .current()
@@ -241,7 +167,7 @@ class PendingNotificationsTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView,
                           titleForHeaderInSection section: Int) -> String? {
-    return [Text.notifications, Text.smartReminders][section]
+    return [Text.notifications][section]
   }
 }
 

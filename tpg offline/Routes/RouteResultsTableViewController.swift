@@ -114,7 +114,7 @@ class RouteResultsTableViewController: UITableViewController {
 
   @objc func setFavorite() {
     guard let route = self.route else { return }
-    if let route = App.favoritesRoutes.index(of: route) {
+    if let route = App.favoritesRoutes.firstIndex(of: route) {
       App.favoritesRoutes.remove(at: route)
     } else {
       App.favoritesRoutes.append(route)

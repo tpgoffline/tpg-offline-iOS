@@ -16,12 +16,6 @@ extension URL {
   static func connectionsMap(stopCode: String) -> String {
     return "https://raw.githubusercontent.com/RemyDCF/tpg-offline/master/Connections%20Maps/\(stopCode).jpg"
   }
-  static var monitoring: String {
-    return "https://api.tpgoffline.com/disruptionsmonitoring/\(App.apnsToken)"
-  }
-  static var smartReminders: String {
-    return "https://api.tpgoffline.com/reminders/\(App.apnsToken)"
-  }
   static let thermometer = "https://prod.ivtr-od.tpg.ch/v1/GetThermometer.json"
   static let offlineDeparturesMD5 = "https://raw.githubusercontent.com/tpgoffline/tpgoffline-data/master/departures.json.md5"
   static let offlineDepartures = "https://raw.githubusercontent.com/tpgoffline/tpgoffline-data/master/departures.json"

@@ -311,7 +311,7 @@ extension RouteStepViewController: MGLMapViewDelegate {
       return
     }
     titleSelected = annotation.title ?? ""
-    if let index = self.names.index(of: titleSelected) {
+    if let index = self.names.firstIndex(of: titleSelected) {
       self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
                                  at: .top,
                                  animated: true)

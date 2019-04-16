@@ -13,6 +13,7 @@ import Crashlytics
 import Solar
 import CoreLocation
 import Mapbox
+import FirebaseAnalytics
 #endif
 
 struct App {
@@ -83,14 +84,6 @@ struct App {
     CLLocationCoordinate2D(latitude: 46.204391, longitude: 6.143158))
   #endif
 
-  static var apnsToken: String = "" {
-    didSet {
-      #if os(iOS)
-      watchSessionManager.sync()
-      #endif
-    }
-  }
-
   static var darkMode: Bool {
     get {
       return (UserDefaults.standard.bool(forKey: #function))
@@ -115,18 +108,6 @@ struct App {
   }
   #endif
 
-  static var smartReminders: Bool {
-    get {
-      return (UserDefaults.standard.bool(forKey: #function))
-    }
-    set {
-      UserDefaults.standard.set(newValue, forKey: #function)
-      #if os(iOS)
-      watchSessionManager.sync()
-      #endif
-    }
-  }
-
   static var fabric: Bool {
     // Here, get and set are inverted to set this value to true by default
     get {
@@ -134,15 +115,6 @@ struct App {
     }
     set {
       UserDefaults.standard.set(!newValue, forKey: #function)
-    }
-  }
-
-  static var disableForceSmartReminders: Bool {
-    get {
-      return (UserDefaults.standard.bool(forKey: #function))
-    }
-    set {
-      UserDefaults.standard.set(newValue, forKey: #function)
     }
   }
 
@@ -304,8 +276,7 @@ struct App {
     print("🔸 Event logged: \(name)")
     #else
     if App.fabric {
-      Answers.logCustomEvent(withName: name,
-                             customAttributes: attributes)
+      Analytics.logEvent(name, parameters: attributes)
     }
     #endif
   }
@@ -315,7 +286,7 @@ struct App {
     print("🔸 Event logged: \(name)")
     #else
     if App.fabric {
-      Answers.logCustomEvent(withName: name)
+      Analytics.logEvent(name, parameters: [:])
     }
     #endif
   }

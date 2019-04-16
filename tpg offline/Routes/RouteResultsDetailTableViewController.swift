@@ -340,6 +340,8 @@ extension RouteResultsDetailTableViewController: UIViewControllerPreviewingDeleg
         locationAllowed = false
       case .authorizedAlways, .authorizedWhenInUse:
         locationAllowed = true
+      @unknown default:
+        locationAllowed = false
       }
     } else {
       locationAllowed = false
